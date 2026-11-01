@@ -22,7 +22,8 @@ export function ShockVasopressorTeaching() {
   return (
     <div className={lessonWrap}>
       <H>MAP target and vasopressor choice</H>
-      <Quote label="SSC 2021 MAP target" />
+      <Quote label="SSC 2026 MAP" />
+      <p>Current SSC 2026 initial MAP target is 65 mm Hg, using a practical range (e.g. within 5 mm Hg); for age ≥65, it separately suggests 60–65 mm Hg. Individualise to perfusion and clinical context; the historical trial below is not the recommendation.</p>
       <Quote label="SSC 2021 norepinephrine" />
       <Quote label="SSC 2021 vasopressin" />
       <p><Reasoning />vasopressin adds a non-adrenergic vasoconstrictor (V1 receptors), so it can spare catecholamine dose. The guideline's own remark that it is usually started at noradrenaline 0.25–0.5 µg/kg/min is a practice note, not a separate recommendation.</p>

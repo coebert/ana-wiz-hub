@@ -2,7 +2,7 @@ import { AnimatedMechanism, AnimatedMechanismStep } from "@/components/diagrams/
 import { DiagramFigure } from "../_shared/DiagramFigure";
 
 /**
- * CICO ("can't intubate, can't oxygenate") — DAS 2015 emergency front-of-neck
+ * CICO ("can't intubate, can't oxygenate") — DAS 2025 adult non-obstetric emergency front-of-neck
  * access drill, presented as a 6-step animated mechanism.
  *
  * The scene is a stylised neck with cricothyroid landmark; the active step
@@ -21,7 +21,7 @@ const STEPS: AnimatedMechanismStep[] = [
         CICO surprisingly often.
       </>
     ),
-    callout: <>Don't waste time on a 4th laryngoscopy. Time-to-FONA &lt; 5 min.</>,
+    callout: <>Once CICO is declared, proceed immediately to eFONA; do not wait for further laryngoscopy or a saturation threshold.</>,
   },
   {
     label: "Position & expose",
@@ -41,8 +41,7 @@ const STEPS: AnimatedMechanismStep[] = [
         Palpate the laryngeal handshake — thyroid notch above, cricoid ring
         below. The <strong>cricothyroid membrane</strong> sits in the dip
         between them, ~1 finger-breadth below the thyroid prominence.
-        Difficult/obese neck: use a longitudinal midline incision first to find
-        the membrane by feel.
+        If membrane anatomy was not explicitly assessed or remains uncertain, default to a vertical midline skin incision to expose and identify it; transverse approach only if confidently identified/marked.
       </>
     ),
     callout: <>Bedside ultrasound (linear probe, transverse) increases first-pass success.</>,
@@ -51,10 +50,7 @@ const STEPS: AnimatedMechanismStep[] = [
     label: "Stab",
     detail: (
       <>
-        <strong>Transverse stab</strong> through skin and CTM with a size-10
-        scalpel, blade pointing caudad. If you cannot palpate the CTM, make a
-        vertical 8–10 cm midline skin incision first, then re-palpate and stab
-        transversely.
+        After identifying the CTM (default vertical skin incision, up to 8 cm, if anatomy is unassessed or uncertain), open the membrane with a size-10 scalpel, blade pointing caudad. A transverse skin/membrane approach is only suitable when the CTM is confidently identified or marked.
       </>
     ),
     callout: <>Expect bleeding — irrelevant if oxygenation is restored.</>,
@@ -93,10 +89,10 @@ export const CICODrillAnimation = () => {
     <DiagramFigure
       id="cico-drill-animation"
       title="CICO drill"
-      description="CICO ('can't intubate, can't oxygenate') — DAS 2015 emergency front-of-neck access drill, presented as a 6-step animated mechanism."
+      description="CICO ('can't intubate, can't oxygenate') — DAS 2025 adult non-obstetric emergency front-of-neck access drill, presented as a 6-step animated mechanism."
     >
                   <AnimatedMechanism
-        title="CICO emergency drill — scalpel-bougie-tube (DAS 2015)"
+        title="CICO emergency drill — scalpel-bougie-tube (DAS 2025)"
         subtitle="Auto-plays through the 6 steps of the front-of-neck access cricothyroidotomy. Use the chips or arrows to scrub. Target: complete drill in under 60 seconds."
         stepMs={2600}
         steps={stepsWithDur}

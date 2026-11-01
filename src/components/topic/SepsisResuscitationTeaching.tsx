@@ -10,8 +10,8 @@ export function ResusRecognitionTeaching() {
     <div className={lessonWrap}>
       <H>Step 1 — Recognise shock and measure perfusion</H>
       <Quote label="Sepsis-3 2016 septic shock" />
-      <Quote label="SSC 2021 qSOFA screening" />
-      <p><Reasoning />do not wait for every Sepsis-3 criterion before acting: hypotension or hypoperfusion with suspected infection starts resuscitation now, and the label is confirmed later. Screening uses a broad tool; qSOFA alone is not enough.</p>
+      <Quote label="SSC 2026 qSOFA" />
+      <p><Reasoning />do not wait for every Sepsis-3 criterion before acting: hypotension or hypoperfusion with suspected infection starts resuscitation now, and the label is confirmed later. SSC 2026 prefers NEWS/NEWS2/MEWS/SIRS over qSOFA as a single screening tool; qSOFA is a bedside risk prompt with limited sensitivity and a low score does not exclude sepsis.</p>
       <Quote label="SSC 2021 lactate" />
       <Quote label="SSC 2021 capillary refill" />
       <p>Lactate and capillary refill give a baseline you can re-measure after each intervention. Full criteria and screening are on <L to="/intensive-care/sepsis">Sepsis &amp; Septic Shock</L>.</p>
@@ -24,9 +24,10 @@ export function ResusAntimicrobialTeaching() {
   return (
     <div className={lessonWrap}>
       <H>Step 2 — Antimicrobials immediately</H>
-      <Quote label="SSC 2021 (Antimicrobial timing)" />
+      <Quote label="SSC 2026 antibiotics" />
+      <Quote label="SSC 2026 possible sepsis" />
       <Quote label="Seymour 2017 NY sepsis mandate" />
-      <p><Reasoning />possible septic shock is the highest-urgency group — "immediately, ideally within 1 h". Seymour's observational data link faster antibiotics, not a faster first fluid bolus, with lower adjusted mortality; association is not proof of cause. Send cultures when it does not meaningfully delay the first dose, and look for a source that needs control. Teaching synthesis, not a prescription — follow local antimicrobial guidance.</p>
+      <p><Reasoning />possible/probable/definite septic shock and probable/definite sepsis without shock require antimicrobials immediately, ideally within 1 h. Only possible sepsis without shock has a rapid diagnostic window up to 3 h if concern persists. Seymour's observational data link faster antibiotics, not a faster first fluid bolus, with lower adjusted mortality; association is not proof of cause. Send cultures when it does not meaningfully delay the first dose, and look for a source that needs control. Teaching synthesis, not a prescription — follow local antimicrobial guidance.</p>
       <Check question="Which time-critical step did Seymour 2017 associate with lower mortality: rapid antibiotics or rapid completion of the initial fluid bolus?">Rapid antibiotics (and the 3-hour bundle); rapid completion of the initial fluid bolus was not associated with lower mortality.</Check>
     </div>
   );
@@ -36,10 +37,11 @@ export function ResusCirculationTeaching() {
   return (
     <div className={lessonWrap}>
       <H>Step 3 — Fluids, then vasopressors to MAP 65</H>
-      <Quote label="SSC 2021" />
+      <Quote label="SSC 2026 fluids" />
       <Quote label="ESICM Shock 2014" />
-      <p><Reasoning />30 mL/kg within 3 hours is a weak suggestion, not a fixed bolus. Give fluid in steps and reassess perfusion and fluid tolerance after each one. Do not leave a patient hypotensive while waiting to finish fluid before starting noradrenaline.</p>
-      <Quote label="SSC 2021 MAP target" />
+      <p><Reasoning />SSC 2026 conditionally suggests at least 30 mL/kg IV crystalloid in the first 3 hours (low certainty), not a mandatory fixed bolus; individual characteristics and context matter. Give fluid in steps and reassess perfusion and fluid tolerance after each one. Do not leave a patient hypotensive while waiting to finish fluid before starting noradrenaline.</p>
+      <Quote label="SSC 2026 MAP" />
+      <p>Initial target 65 mm Hg with practical range (e.g. within 5 mm Hg); age ≥65 suggested initial 60–65 mm Hg, individualised to perfusion.</p>
       <Quote label="SSC 2021 norepinephrine" />
       <Quote label="SSC 2021 vasopressin" />
       <p>Arterial line, MAP targets, vasopressin and steroids are covered on <L to="/intensive-care/septic-shock">Septic Shock: Vasopressors, MAP &amp; Steroids</L>; fluid choice on <L to="/intensive-care/fluid-balance">Fluid Balance and Tonicity</L>.</p>

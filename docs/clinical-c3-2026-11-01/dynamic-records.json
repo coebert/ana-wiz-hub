@@ -1,0 +1,42 @@
+{
+  "changes": [
+    {
+      "id": "fd919f1e-605d-40ff-a86a-0689637df898",
+      "table": "podcasts",
+      "topic_id": "transfusion-coagulation",
+      "before": {
+        "status": "ready",
+        "audit_hold": false,
+        "audit_hold_reason": null,
+        "script_md5": "42e7146a19e519c6c8995e166f475978",
+        "exact_script_guard": "TACO. Both present with pulmonary oedema within six hours of a transfusion."
+      },
+      "after": {
+        "status": "failed",
+        "audit_hold": true,
+        "script_md5": "42e7146a19e519c6c8995e166f475978",
+        "audio_path": "transfusion-coagulation.mp3"
+      },
+      "readback_confirmed": true,
+      "original_script_and_audio_unchanged": true
+    }
+  ],
+  "inspected_unmodified": [
+    {
+      "id": "4c38bd71-b741-45db-be0a-eba0cfce6601",
+      "table": "viva_model_answers",
+      "reason": "Regex false positive: six-hour clause describes TRALI, not TACO. No C3 edit applied."
+    },
+    {
+      "id": "471debfd-9158-4984-88db-bd352fe9a5af",
+      "table": "podcasts",
+      "audit_hold": true
+    },
+    {
+      "id": "d9e181c2-45e5-4f06-b52f-17366a557b34",
+      "table": "podcasts",
+      "audit_hold": true
+    }
+  ],
+  "limits": "Bounded regex/content inspection, not complete dynamic corpus source review. No viva answer or content_override changed. No Ask AI cache table identified in inspected schema."
+}

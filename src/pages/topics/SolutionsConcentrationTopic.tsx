@@ -270,9 +270,7 @@ const SolutionsConcentrationTopic = () => {
               </p>
               <p>
                 <strong>Severe, symptomatic</strong> hyponatraemia (seizures, coma, marked obtundation) is a medical
-                emergency regardless of chronicity: give <strong>150 mL of 3% NaCl over 20 minutes</strong>, and repeat up
-                to <strong>three times</strong>, aiming for either a <strong>5 mmol/L rise</strong> in serum sodium or
-                resolution of symptoms — whichever comes first — then stop the hypertonic saline. Thereafter, the
+                emergency regardless of chronicity: immediate treatment must not await cause, volume-status or urine classification. Give <strong>150 mL of 3% NaCl over 20 minutes</strong> and <strong>check sodium after 20 minutes and between repeat boluses</strong>. The European 2014 first-hour algorithm repeats this bolus up to two further times, or until a <strong>5 mmol/L rise</strong> is reached, with reassessment after each; stop on the symptom/target-rise response and seek urgent specialist help if severe symptoms persist <InlineRef topicId="solutions-concentration" refLabel="Society for Endocrinology Hyponatraemia 2016" />. Thereafter, the
                 <strong> total rise must not exceed 10 mmol/L in the first 24 h and 8 mmol/L in any subsequent 24-h period
                 </strong>. In patients at <strong>high risk of ODS</strong> — serum Na⁺ &lt;105 mmol/L, chronic alcohol
                 excess, malnutrition, hypokalaemia, or advanced liver disease — the correction rate should be limited
@@ -283,8 +281,8 @@ const SolutionsConcentrationTopic = () => {
                 <strong>3% NaCl</strong> contains <strong>513 mmol/L each of Na⁺ and Cl⁻</strong> (osmolarity ≈1026 mosmol/L)
                 — roughly 3.3 times the tonicity of plasma — and is markedly irritant to peripheral veins; it should be
                 given via central access, or via a well-monitored large peripheral cannula with frequent site checks, with
-                sodium re-checked every 2–4 hours during active correction. Always classify by volume status (hypovolaemic,
-                euvolaemic, hypervolaemic) and urine osmolality/Na⁺ before treatment; SIADH is the commonest perioperative
+                after the initial first-hour boluses and interim sodium checks, re-check sodium every 2–4 hours during subsequent active correction. Classify by volume status (hypovolaemic,
+                euvolaemic, hypervolaemic) and urine osmolality/Na⁺ to guide subsequent cause-specific treatment, without delaying emergency hypertonic saline; SIADH is the commonest perioperative
                 cause of euvolaemic hyponatraemia. <InlineRef topicId="solutions-concentration" refLabel="NICE CG174" />
               </p>
               <p>

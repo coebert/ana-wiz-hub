@@ -4,7 +4,7 @@ import { LessonSources } from "@/components/topic/LessonSources";
 import { sepsisFluidComparison } from "@/lib/sepsis-fluids";
 
 const R = ({ label }: { label: string }) => <InlineRef topicId="sepsis" refLabel={label} />;
-const labels = ["NICE NG253 2025 high risk", "NICE NG253 2025 antibiotics", "NICE NG253 2025 fluids", "NICE NG253 2025 escalation", "SSC 2021", "SSC 2021 (Antimicrobial timing)", "CLOVERS 2023", "CLASSIC 2022"];
+const labels = ["NICE NG253 2025 high risk", "NICE NG253 2025 antibiotics", "NICE NG253 2025 fluids", "NICE NG253 2025 escalation", "SSC 2026 fluids", "SSC 2026 antibiotics", "CLOVERS 2023", "CLASSIC 2022"];
 
 function FluidComparison() {
   const [weight, setWeight] = useState("");
@@ -19,7 +19,7 @@ function FluidComparison() {
       </div>
       {r ? (
         <ul className="list-disc pl-5 text-sm space-y-1">
-          <li>SSC 2021 suggestion (at least 30 mL/kg within 3 h): <strong className="text-foreground">{r.sscMl.toLocaleString()} mL</strong></li>
+          <li>SSC 2026 suggestion (at least 30 mL/kg within 3 h): <strong className="text-foreground">{r.sscMl.toLocaleString()} mL</strong></li>
           <li>NICE NG253: {r.seniorReviewDue ? <strong className="text-foreground">1,000 mL reached; senior review now</strong> : <><strong className="text-foreground">{r.niceBolusesBeforeReview} × 250 mL</strong> ({r.niceRemainingMl.toLocaleString()} mL) before senior review, reassessing after each</>}</li>
         </ul>
       ) : <p className="text-sm">Enter a weight above 0 kg and any fluid already given.</p>}
@@ -30,18 +30,18 @@ function FluidComparison() {
 
 export function SepsisPracticeTeaching() {
   return <div className="space-y-4 text-muted-foreground leading-relaxed">
-    <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Latest Guidelines and Bedside Management: NICE NG253, SSC 2021 and the Fluid Trials</h2>
+    <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Latest Guidelines and Bedside Management: NICE NG253, SSC 2026 and the Fluid Trials</h2>
     <p>In November 2025 NICE replaced NG51 with three guidelines: NG253 for adults aged 16 or over, NG254 for under-16s and NG255 for pregnancy. NG253 was last updated on 23 September 2026. Risk is graded by NEWS2. High risk means suspected infection with a NEWS2 of 7 or above, or a lower score with one parameter scoring 3 after medical review.<R label="NICE NG253 2025 high risk" /></p>
 
     <h3 className="text-lg font-semibold text-foreground">UK vs international guidance</h3>
     <div className="overflow-x-auto"><table className="w-full text-sm border border-border">
-      <thead className="bg-muted/50 text-foreground"><tr><th className="p-2 text-left">Issue</th><th className="p-2 text-left">NICE NG253 (UK, 2025–26)</th><th className="p-2 text-left">SSC 2021 (SCCM/ESICM)</th></tr></thead>
+      <thead className="bg-muted/50 text-foreground"><tr><th className="p-2 text-left">Issue</th><th className="p-2 text-left">NICE NG253 (UK, 2025–26)</th><th className="p-2 text-left">SSC 2026 (SCCM/ESICM)</th></tr></thead>
       <tbody>
         <tr className="border-t border-border"><td className="p-2">Screening</td><td className="p-2">NEWS2 risk bands</td><td className="p-2">Recommends against qSOFA as the only screening tool</td></tr>
-        <tr className="border-t border-border"><td className="p-2">Antibiotics</td><td className="p-2">High risk: within 1 h of the NEWS2 score<R label="NICE NG253 2025 antibiotics" /></td><td className="p-2">Possible shock: immediately, ideally within 1 h. Possible sepsis without shock: within 3 h if concern persists<R label="SSC 2021 (Antimicrobial timing)" /></td></tr>
-        <tr className="border-t border-border"><td className="p-2">Initial fluid</td><td className="p-2">250 mL boluses, reassess each time; senior review at 1,000 mL total<R label="NICE NG253 2025 fluids" /></td><td className="p-2">At least 30 mL/kg crystalloid within 3 h (weak suggestion)<R label="SSC 2021" /></td></tr>
+        <tr className="border-t border-border"><td className="p-2">Antibiotics</td><td className="p-2">High risk: within 1 h of the NEWS2 score<R label="NICE NG253 2025 antibiotics" /></td><td className="p-2">Shock or probable/definite sepsis: immediately, ideally within 1 h. Possible sepsis without shock: rapid assessment, within 3 h if concern persists<R label="SSC 2026 antibiotics" /></td></tr>
+        <tr className="border-t border-border"><td className="p-2">Initial fluid</td><td className="p-2">250 mL boluses, reassess each time; senior review at 1,000 mL total<R label="NICE NG253 2025 fluids" /></td><td className="p-2">At least 30 mL/kg crystalloid within 3 h (weak suggestion)<R label="SSC 2026 fluids" /></td></tr>
         <tr className="border-t border-border"><td className="p-2">Fluid type</td><td className="p-2">Balanced crystalloid such as Hartmann's; 0.9% saline if no balanced fluid is available</td><td className="p-2">Balanced crystalloid suggested over saline</td></tr>
-        <tr className="border-t border-border"><td className="p-2">Escalation</td><td className="p-2">No response within 1 h of any intervention: senior clinician attends, critical care involved, consultant informed<R label="NICE NG253 2025 escalation" /></td><td className="p-2">MAP 65 mm Hg; noradrenaline first, then vasopressin</td></tr>
+        <tr className="border-t border-border"><td className="p-2">Escalation</td><td className="p-2">No response within 1 h of any intervention: senior clinician attends, critical care involved, consultant informed<R label="NICE NG253 2025 escalation" /></td><td className="p-2">SSC 2026 initial MAP 65 with practical range; age ≥65 suggested 60–65, individualised to perfusion. Noradrenaline first</td></tr>
       </tbody>
     </table></div>
     <p>The biggest practical difference is fluid. For a 70 kg adult, 30 mL/kg is 2.1 L. NICE reaches senior review at 1 L. In practice, both mean giving fluid in measured steps and reassessing after each one.</p>

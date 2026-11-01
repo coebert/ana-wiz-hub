@@ -1,0 +1,134 @@
+--- 
++++ 
+@@ -381,15 +381,15 @@
+       "q": "What is a rapid sequence induction (RSI)?",
+     },
+     {
+-      "a": "1. WHO checklist, IV access, monitoring, suction, tilting trolley. 2. Pre-oxygenate 3 min with FiO₂ 1.0 to FetO₂ ≥ 0.9 (or 8 vital-capacity breaths). 3. Position: ramped/sniffing. 4. Apnoeic oxygenation 15 L/min nasal cannulae (THRIVE). 5. Pre-determined induction dose + neuromuscular blocker — no test dose, no bag-mask. 6. Consider cricoid pressure (10 N awake → 30 N once asleep) — release if view is poor or ventilation difficult. 7. Intubate, confirm sustained exhaled CO₂ (PUMA: rises with exhalation and falls with inspiration, consistent or increasing over at least seven breaths, peak > 1 kPa above baseline, clinically appropriate); if absent, actively exclude oesophageal intubation and remove the tube by default unless removal is judged more dangerous. Confirm tube depth separately. 8. Inflate cuff, secure tube, ventilate. 9. Have a Plan B (videolaryngoscope) and Plan D (FONA) ready before induction.",
++      "a": "1. WHO checklist, IV access, monitoring, suction, tilting trolley. 2. Pre-oxygenate 3 min with FiO₂ 1.0 to FetO₂ ≥ 0.9 (or 8 vital-capacity breaths). 3. Position: ramped/sniffing. 4. Low-flow nasal apnoeic oxygenation 15 L/min where appropriate; this is not high-flow THRIVE. 5. Pre-determined induction dose + neuromuscular blocker — no test dose, no bag-mask. 6. Consider cricoid pressure (10 N awake → 30 N once asleep) — release if view is poor or ventilation difficult. 7. Intubate, confirm sustained exhaled CO₂ (PUMA: rises with exhalation and falls with inspiration, consistent or increasing over at least seven breaths, peak > 1 kPa above baseline, clinically appropriate); if absent, actively exclude oesophageal intubation and remove the tube by default unless removal is judged more dangerous. Confirm tube depth separately. 8. Inflate cuff, secure tube, ventilate. 9. Use videolaryngoscopy first-line whenever possible for Plan A; have Plan B (second-generation SAD), Plan C (optimised facemask) and Plan D (eFONA) ready before induction (DAS 2025).",
+       "q": "How do you perform a rapid sequence induction step-by-step?",
+     },
+     {
+-      "a": "Cricoid pressure remains part of the DAS / RCoA RSI bundle but its evidence base is weak. The 2018 IRIS trial (3472 patients) failed to demonstrate non-inferiority of sham versus cricoid pressure for aspiration: event rates were low (0.6% vs 0.5%) and the upper confidence limit (relative risk 2.00) exceeded the prespecified 1.50 margin. No significant difference is not proof of equivalence. Current UK practice: apply 10 N awake increasing to 30 N when consciousness is lost, and release immediately if it impairs laryngoscopic view, mask ventilation or supraglottic airway placement. It is not a substitute for fasting or for skilled intubation.",
++      "a": "Cricoid pressure remains part of the DAS / RCoA RSI bundle but its evidence base is weak. The 2018 IRIS trial (3472 patients) failed to demonstrate non-inferiority of sham versus cricoid pressure for aspiration: aspiration occurred in 10/1735 (0.6%) with cricoid pressure and 9/1736 (0.5%) with sham and the upper confidence limit (relative risk 2.00) exceeded the prespecified 1.50 margin. No significant difference is not proof of equivalence. Current UK practice: apply 10 N awake increasing to 30 N when consciousness is lost, and release immediately if it impairs laryngoscopic view, mask ventilation or supraglottic airway placement. It is not a substitute for fasting or for skilled intubation.",
+       "q": "Is cricoid pressure still recommended in RSI?",
+     },
+     {
+-      "a": "The Difficult Airway Society (DAS) 2015 non-obstetric adult algorithm has four sequential plans: Plan A — tracheal intubation (maximum 3 + 1 attempts, changing operator or technique). Plan B — second-generation supraglottic airway (maximum 3 attempts). Plan C — face-mask ventilation; wake the patient if oxygenation is restored. Plan D — emergency front-of-neck access for CICO. The joint OAA/DAS obstetric guideline is deliberately more restrictive and limits tracheal intubation to two attempts in total.",
++      "a": "The current Difficult Airway Society (DAS) 2025 non-obstetric adult algorithm retains four sequential plans (the DAS 2015 version is historical): Plan A — tracheal intubation (maximum 3 + 1 attempts, changing operator or technique; a ceiling, not a requirement before declaring failure; use videolaryngoscopy first-line whenever possible). Plan B — second-generation supraglottic airway (maximum 3 attempts). Plan C — face-mask ventilation; wake the patient if oxygenation is restored. Plan D — emergency front-of-neck access for CICO. The separate OAA/DAS 2015 obstetric guideline uses two attempts as the default limit; a third attempt only by an experienced anaesthetist where appropriate, not the non-obstetric 3+1 allowance.",
+       "q": "What is the DAS unanticipated difficult intubation algorithm?",
+     },
+     {
+@@ -401,7 +401,7 @@
+       "q": "When is awake fibreoptic intubation (AFOI) indicated?",
+     },
+     {
+-      "a": "CICO = Can't Intubate, Can't Oxygenate: failed Plans A, B and C with falling SpO₂. Declare CICO out loud, stop further attempts, summon help and proceed immediately to scalpel-bougie-tube cricothyroidotomy — the trigger is failed oxygenation via tube, SAD and optimised facemask, not a saturation number. Technique: extend neck, palpate cricothyroid membrane, transverse stab with size 10 scalpel, rotate blade caudally, railroad a Frova/bougie, advance a 6.0 cuffed tube 2–3 cm, confirm with capnography. Needle cricothyroidotomy failed in > 60% of NAP4 emergencies and is no longer first-line.",
++      "a": "CICO = Can't Intubate, Can't Oxygenate: failed Plans A, B and C with falling SpO₂. Declare CICO out loud, stop further attempts, summon help and proceed immediately to scalpel-bougie-tube cricothyroidotomy — the trigger is failed oxygenation via tube, SAD and optimised facemask, not a saturation number. Technique (DAS 2025): extend the neck when appropriate. If cricothyroid-membrane anatomy was not explicitly assessed or remains uncertain, default to a midline vertical skin incision and expose/identify the membrane. A transverse approach is suitable only if the membrane is confidently identified or previously marked. Open the membrane with a size 10 scalpel, rotate the blade caudally, insert the bougie into the trachea and railroad a 6.0 cuffed tube; confirm ventilation with waveform capnography. Needle cricothyroidotomy failed in > 60% of NAP4 emergencies and is no longer first-line.",
+       "q": "What is CICO and when should front-of-neck access be performed?",
+     },
+     {
+@@ -413,7 +413,7 @@
+       "q": "What are the key NAP4 lessons for airway management?",
+     },
+     {
+-      "a": "After 3 min of pre-oxygenation to FetO₂ ≥ 0.9, a fit non-obese adult tolerates ~8–10 min before SpO₂ falls below 90%. This shortens dramatically in obesity (3–4 min at BMI 40), pregnancy (2–3 min at term), sepsis, anaemia and small children (< 2 min in neonates). Apnoeic oxygenation with high-flow nasal cannulae (THRIVE, 70 L/min) or low-flow nasal cannulae (15 L/min) extends safe apnoea by passive diffusion of O₂ but does not clear CO₂ — PaCO₂ rises by 3–4 mmHg/min.",
++      "a": "After 3 min of pre-oxygenation to FetO₂ ≥ 0.9, a fit non-obese adult tolerates ~8–10 min before SpO₂ falls below 90%. This shortens dramatically in obesity (3–4 min at BMI 40), pregnancy (2–3 min at term), sepsis, anaemia and small children (< 2 min in neonates). Apnoeic oxygenation with high-flow nasal cannulae (THRIVE, 70 L/min) or low-flow nasal cannulae (15 L/min) may extend apnoea tolerance depending on the patient and airway patency, but neither replaces pre-oxygenation or ventilation; CO₂ continues to accumulate — PaCO₂ rises by 3–4 mmHg/min.",
+       "q": "How long can you safely be apnoeic after pre-oxygenation?",
+     },
+   ],
+@@ -1773,11 +1773,11 @@
+   ],
+   "/intensive-care/sepsis": [
+     {
+-      "a": "Sepsis (Singer, JAMA 2016) is life-threatening organ dysfunction caused by a dysregulated host response to infection, operationalised as a rise of ≥ 2 points in the Sequential Organ Failure Assessment (SOFA) score from baseline in the presence of suspected or proven infection. Septic shock is the subset requiring vasopressors to maintain mean arterial pressure ≥ 65 mmHg AND a serum lactate > 2 mmol/L after adequate fluid resuscitation, identifying a group with hospital mortality > 40%. qSOFA (RR ≥ 22, altered mentation, SBP ≤ 100) is a bedside prompt to consider sepsis — it is a screening tool, not a diagnostic criterion.",
++      "a": "Sepsis (Singer, JAMA 2016) is life-threatening organ dysfunction caused by a dysregulated host response to infection, operationalised as a rise of ≥ 2 points in the Sequential Organ Failure Assessment (SOFA) score from baseline in the presence of suspected or proven infection. Septic shock is the subset requiring vasopressors to maintain mean arterial pressure ≥ 65 mmHg AND a serum lactate > 2 mmol/L after adequate fluid resuscitation, identifying a group with hospital mortality > 40%. qSOFA (RR ≥ 22, altered mentation, SBP ≤ 100) is a bedside prompt to consider sepsis — it is a bedside risk prompt with limited sensitivity, not a diagnostic criterion or a sole screening tool. A low qSOFA score does not exclude sepsis (SSC 2026).",
+       "q": "What is the Sepsis-3 definition of sepsis and septic shock?",
+     },
+     {
+-      "a": "The 2021 Surviving Sepsis Campaign Hour-1 bundle is a recognition-to-action package that should be initiated within 1 hour of sepsis recognition: (1) measure lactate and re-measure if > 2 mmol/L; (2) obtain blood cultures before antibiotics; (3) administer broad-spectrum antibiotics; (4) begin 30 mL/kg crystalloid for hypotension or lactate ≥ 4 mmol/L — SSC 2021 suggests giving this within the first 3 hours (weak recommendation, low-quality evidence); (5) start vasopressors during or after fluid if MAP < 65 mmHg. For sepsis without shock where infection is possible but not proven, SSC 2021 permits up to 3 hours for antibiotics while diagnostic work-up continues.",
++      "a": "The historical SSC 2018 Hour-1 bundle is a recognition-to-action package, not a mandate to complete every intervention within one hour. Current SSC 2026 timing depends on shock and infection likelihood: (1) measure lactate and re-measure if > 2 mmol/L; (2) obtain blood cultures before antibiotics; (3) administer broad-spectrum antibiotics; (4) begin 30 mL/kg crystalloid for hypotension or lactate ≥ 4 mmol/L — SSC 2021 suggests giving this within the first 3 hours (weak recommendation, low-quality evidence); (5) start vasopressors during or after fluid if MAP < 65 mmHg. SSC 2026 recommends antimicrobials immediately, ideally within 1 h, for possible/probable/definite septic shock and probable/definite sepsis without shock; the rapid diagnostic window of up to 3 h applies to possible sepsis without shock if concern persists.",
+       "q": "What is the Surviving Sepsis Hour-1 bundle?",
+     },
+     {
+@@ -1785,7 +1785,7 @@
+       "q": "Why does every hour of delayed antibiotics matter in septic shock?",
+     },
+     {
+-      "a": "Yes — SSC 2021 retains a 30 mL/kg balanced crystalloid bolus over the first 3 hours in sepsis-induced hypoperfusion or septic shock as a weak recommendation. Subsequent boluses should be guided by dynamic measures of fluid responsiveness (passive leg raise, stroke-volume variation, end-expiratory occlusion). CLASSIC (Meyhoff, NEJM 2022) showed that a restrictive fluid strategy after initial resuscitation is safe and feasible (no mortality difference vs liberal). CLOVERS (NHLBI 2023) similarly found no difference between early vasopressor-led vs liberal-fluid strategies — both signals support 'don't over-resuscitate after the first bolus'.",
++      "a": "SSC 2026 conditionally suggests at least 30 mL/kg IV crystalloid in the first 3 h for sepsis-induced hypoperfusion or septic shock (low certainty); it is not a mandatory fixed bolus. Individual characteristics, fluid tolerance and frequent reassessment determine what is given. Subsequent boluses should be guided by dynamic measures of fluid responsiveness (passive leg raise, stroke-volume variation, end-expiratory occlusion). CLASSIC (Meyhoff, NEJM 2022) showed that a restrictive fluid strategy after initial resuscitation is safe and feasible (no mortality difference vs liberal). CLOVERS (NHLBI 2023) similarly found no difference between early vasopressor-led vs liberal-fluid strategies — both signals support 'don't over-resuscitate after the first bolus'.",
+       "q": "Is 30 mL/kg of crystalloid still the recommended initial fluid bolus?",
+     },
+     {
+@@ -4149,7 +4149,7 @@
+         "@type": "Question",
+         "acceptedAnswer": {
+           "@type": "Answer",
+-          "text": "1. WHO checklist, IV access, monitoring, suction, tilting trolley. 2. Pre-oxygenate 3 min with FiO₂ 1.0 to FetO₂ ≥ 0.9 (or 8 vital-capacity breaths). 3. Position: ramped/sniffing. 4. Apnoeic oxygenation 15 L/min nasal cannulae (THRIVE). 5. Pre-determined induction dose + neuromuscular blocker — no test dose, no bag-mask. 6. Consider cricoid pressure (10 N awake → 30 N once asleep) — release if view is poor or ventilation difficult. 7. Intubate, confirm sustained exhaled CO₂ (PUMA: rises with exhalation and falls with inspiration, consistent or increasing over at least seven breaths, peak > 1 kPa above baseline, clinically appropriate); if absent, actively exclude oesophageal intubation and remove the tube by default unless removal is judged more dangerous. Confirm tube depth separately. 8. Inflate cuff, secure tube, ventilate. 9. Have a Plan B (videolaryngoscope) and Plan D (FONA) ready before induction.",
++          "text": "1. WHO checklist, IV access, monitoring, suction, tilting trolley. 2. Pre-oxygenate 3 min with FiO₂ 1.0 to FetO₂ ≥ 0.9 (or 8 vital-capacity breaths). 3. Position: ramped/sniffing. 4. Low-flow nasal apnoeic oxygenation 15 L/min where appropriate; this is not high-flow THRIVE. 5. Pre-determined induction dose + neuromuscular blocker — no test dose, no bag-mask. 6. Consider cricoid pressure (10 N awake → 30 N once asleep) — release if view is poor or ventilation difficult. 7. Intubate, confirm sustained exhaled CO₂ (PUMA: rises with exhalation and falls with inspiration, consistent or increasing over at least seven breaths, peak > 1 kPa above baseline, clinically appropriate); if absent, actively exclude oesophageal intubation and remove the tube by default unless removal is judged more dangerous. Confirm tube depth separately. 8. Inflate cuff, secure tube, ventilate. 9. Use videolaryngoscopy first-line whenever possible for Plan A; have Plan B (second-generation SAD), Plan C (optimised facemask) and Plan D (eFONA) ready before induction (DAS 2025).",
+         },
+         "name": "How do you perform a rapid sequence induction step-by-step?",
+       },
+@@ -4157,7 +4157,7 @@
+         "@type": "Question",
+         "acceptedAnswer": {
+           "@type": "Answer",
+-          "text": "Cricoid pressure remains part of the DAS / RCoA RSI bundle but its evidence base is weak. The 2018 IRIS trial (3472 patients) failed to demonstrate non-inferiority of sham versus cricoid pressure for aspiration: event rates were low (0.6% vs 0.5%) and the upper confidence limit (relative risk 2.00) exceeded the prespecified 1.50 margin. No significant difference is not proof of equivalence. Current UK practice: apply 10 N awake increasing to 30 N when consciousness is lost, and release immediately if it impairs laryngoscopic view, mask ventilation or supraglottic airway placement. It is not a substitute for fasting or for skilled intubation.",
++          "text": "Cricoid pressure remains part of the DAS / RCoA RSI bundle but its evidence base is weak. The 2018 IRIS trial (3472 patients) failed to demonstrate non-inferiority of sham versus cricoid pressure for aspiration: aspiration occurred in 10/1735 (0.6%) with cricoid pressure and 9/1736 (0.5%) with sham and the upper confidence limit (relative risk 2.00) exceeded the prespecified 1.50 margin. No significant difference is not proof of equivalence. Current UK practice: apply 10 N awake increasing to 30 N when consciousness is lost, and release immediately if it impairs laryngoscopic view, mask ventilation or supraglottic airway placement. It is not a substitute for fasting or for skilled intubation.",
+         },
+         "name": "Is cricoid pressure still recommended in RSI?",
+       },
+@@ -4165,7 +4165,7 @@
+         "@type": "Question",
+         "acceptedAnswer": {
+           "@type": "Answer",
+-          "text": "The Difficult Airway Society (DAS) 2015 non-obstetric adult algorithm has four sequential plans: Plan A — tracheal intubation (maximum 3 + 1 attempts, changing operator or technique). Plan B — second-generation supraglottic airway (maximum 3 attempts). Plan C — face-mask ventilation; wake the patient if oxygenation is restored. Plan D — emergency front-of-neck access for CICO. The joint OAA/DAS obstetric guideline is deliberately more restrictive and limits tracheal intubation to two attempts in total.",
++          "text": "The current Difficult Airway Society (DAS) 2025 non-obstetric adult algorithm retains four sequential plans (the DAS 2015 version is historical): Plan A — tracheal intubation (maximum 3 + 1 attempts, changing operator or technique; a ceiling, not a requirement before declaring failure; use videolaryngoscopy first-line whenever possible). Plan B — second-generation supraglottic airway (maximum 3 attempts). Plan C — face-mask ventilation; wake the patient if oxygenation is restored. Plan D — emergency front-of-neck access for CICO. The separate OAA/DAS 2015 obstetric guideline uses two attempts as the default limit; a third attempt only by an experienced anaesthetist where appropriate, not the non-obstetric 3+1 allowance.",
+         },
+         "name": "What is the DAS unanticipated difficult intubation algorithm?",
+       },
+@@ -4189,7 +4189,7 @@
+         "@type": "Question",
+         "acceptedAnswer": {
+           "@type": "Answer",
+-          "text": "CICO = Can't Intubate, Can't Oxygenate: failed Plans A, B and C with falling SpO₂. Declare CICO out loud, stop further attempts, summon help and proceed immediately to scalpel-bougie-tube cricothyroidotomy — the trigger is failed oxygenation via tube, SAD and optimised facemask, not a saturation number. Technique: extend neck, palpate cricothyroid membrane, transverse stab with size 10 scalpel, rotate blade caudally, railroad a Frova/bougie, advance a 6.0 cuffed tube 2–3 cm, confirm with capnography. Needle cricothyroidotomy failed in > 60% of NAP4 emergencies and is no longer first-line.",
++          "text": "CICO = Can't Intubate, Can't Oxygenate: failed Plans A, B and C with falling SpO₂. Declare CICO out loud, stop further attempts, summon help and proceed immediately to scalpel-bougie-tube cricothyroidotomy — the trigger is failed oxygenation via tube, SAD and optimised facemask, not a saturation number. Technique (DAS 2025): extend the neck when appropriate. If cricothyroid-membrane anatomy was not explicitly assessed or remains uncertain, default to a midline vertical skin incision and expose/identify the membrane. A transverse approach is suitable only if the membrane is confidently identified or previously marked. Open the membrane with a size 10 scalpel, rotate the blade caudally, insert the bougie into the trachea and railroad a 6.0 cuffed tube; confirm ventilation with waveform capnography. Needle cricothyroidotomy failed in > 60% of NAP4 emergencies and is no longer first-line.",
+         },
+         "name": "What is CICO and when should front-of-neck access be performed?",
+       },
+@@ -4213,7 +4213,7 @@
+         "@type": "Question",
+         "acceptedAnswer": {
+           "@type": "Answer",
+-          "text": "After 3 min of pre-oxygenation to FetO₂ ≥ 0.9, a fit non-obese adult tolerates ~8–10 min before SpO₂ falls below 90%. This shortens dramatically in obesity (3–4 min at BMI 40), pregnancy (2–3 min at term), sepsis, anaemia and small children (< 2 min in neonates). Apnoeic oxygenation with high-flow nasal cannulae (THRIVE, 70 L/min) or low-flow nasal cannulae (15 L/min) extends safe apnoea by passive diffusion of O₂ but does not clear CO₂ — PaCO₂ rises by 3–4 mmHg/min.",
++          "text": "After 3 min of pre-oxygenation to FetO₂ ≥ 0.9, a fit non-obese adult tolerates ~8–10 min before SpO₂ falls below 90%. This shortens dramatically in obesity (3–4 min at BMI 40), pregnancy (2–3 min at term), sepsis, anaemia and small children (< 2 min in neonates). Apnoeic oxygenation with high-flow nasal cannulae (THRIVE, 70 L/min) or low-flow nasal cannulae (15 L/min) may extend apnoea tolerance depending on the patient and airway patency, but neither replaces pre-oxygenation or ventilation; CO₂ continues to accumulate — PaCO₂ rises by 3–4 mmHg/min.",
+         },
+         "name": "How long can you safely be apnoeic after pre-oxygenation?",
+       },
+@@ -7049,7 +7049,7 @@
+         "@type": "Question",
+         "acceptedAnswer": {
+           "@type": "Answer",
+-          "text": "Sepsis (Singer, JAMA 2016) is life-threatening organ dysfunction caused by a dysregulated host response to infection, operationalised as a rise of ≥ 2 points in the Sequential Organ Failure Assessment (SOFA) score from baseline in the presence of suspected or proven infection. Septic shock is the subset requiring vasopressors to maintain mean arterial pressure ≥ 65 mmHg AND a serum lactate > 2 mmol/L after adequate fluid resuscitation, identifying a group with hospital mortality > 40%. qSOFA (RR ≥ 22, altered mentation, SBP ≤ 100) is a bedside prompt to consider sepsis — it is a screening tool, not a diagnostic criterion.",
++          "text": "Sepsis (Singer, JAMA 2016) is life-threatening organ dysfunction caused by a dysregulated host response to infection, operationalised as a rise of ≥ 2 points in the Sequential Organ Failure Assessment (SOFA) score from baseline in the presence of suspected or proven infection. Septic shock is the subset requiring vasopressors to maintain mean arterial pressure ≥ 65 mmHg AND a serum lactate > 2 mmol/L after adequate fluid resuscitation, identifying a group with hospital mortality > 40%. qSOFA (RR ≥ 22, altered mentation, SBP ≤ 100) is a bedside prompt to consider sepsis — it is a bedside risk prompt with limited sensitivity, not a diagnostic criterion or a sole screening tool. A low qSOFA score does not exclude sepsis (SSC 2026).",
+         },
+         "name": "What is the Sepsis-3 definition of sepsis and septic shock?",
+       },
+@@ -7057,7 +7057,7 @@
+         "@type": "Question",
+         "acceptedAnswer": {
+           "@type": "Answer",
+-          "text": "The 2021 Surviving Sepsis Campaign Hour-1 bundle is a recognition-to-action package that should be initiated within 1 hour of sepsis recognition: (1) measure lactate and re-measure if > 2 mmol/L; (2) obtain blood cultures before antibiotics; (3) administer broad-spectrum antibiotics; (4) begin 30 mL/kg crystalloid for hypotension or lactate ≥ 4 mmol/L — SSC 2021 suggests giving this within the first 3 hours (weak recommendation, low-quality evidence); (5) start vasopressors during or after fluid if MAP < 65 mmHg. For sepsis without shock where infection is possible but not proven, SSC 2021 permits up to 3 hours for antibiotics while diagnostic work-up continues.",
++          "text": "The historical SSC 2018 Hour-1 bundle is a recognition-to-action package, not a mandate to complete every intervention within one hour. Current SSC 2026 timing depends on shock and infection likelihood: (1) measure lactate and re-measure if > 2 mmol/L; (2) obtain blood cultures before antibiotics; (3) administer broad-spectrum antibiotics; (4) begin 30 mL/kg crystalloid for hypotension or lactate ≥ 4 mmol/L — SSC 2021 suggests giving this within the first 3 hours (weak recommendation, low-quality evidence); (5) start vasopressors during or after fluid if MAP < 65 mmHg. SSC 2026 recommends antimicrobials immediately, ideally within 1 h, for possible/probable/definite septic shock and probable/definite sepsis without shock; the rapid diagnostic window of up to 3 h applies to possible sepsis without shock if concern persists.",
+         },
+         "name": "What is the Surviving Sepsis Hour-1 bundle?",
+       },
+@@ -7073,7 +7073,7 @@
+         "@type": "Question",
+         "acceptedAnswer": {
+           "@type": "Answer",
+-          "text": "Yes — SSC 2021 retains a 30 mL/kg balanced crystalloid bolus over the first 3 hours in sepsis-induced hypoperfusion or septic shock as a weak recommendation. Subsequent boluses should be guided by dynamic measures of fluid responsiveness (passive leg raise, stroke-volume variation, end-expiratory occlusion). CLASSIC (Meyhoff, NEJM 2022) showed that a restrictive fluid strategy after initial resuscitation is safe and feasible (no mortality difference vs liberal). CLOVERS (NHLBI 2023) similarly found no difference between early vasopressor-led vs liberal-fluid strategies — both signals support 'don't over-resuscitate after the first bolus'.",
++          "text": "SSC 2026 conditionally suggests at least 30 mL/kg IV crystalloid in the first 3 h for sepsis-induced hypoperfusion or septic shock (low certainty); it is not a mandatory fixed bolus. Individual characteristics, fluid tolerance and frequent reassessment determine what is given. Subsequent boluses should be guided by dynamic measures of fluid responsiveness (passive leg raise, stroke-volume variation, end-expiratory occlusion). CLASSIC (Meyhoff, NEJM 2022) showed that a restrictive fluid strategy after initial resuscitation is safe and feasible (no mortality difference vs liberal). CLOVERS (NHLBI 2023) similarly found no difference between early vasopressor-led vs liberal-fluid strategies — both signals support 'don't over-resuscitate after the first bolus'.",
+         },
+         "name": "Is 30 mL/kg of crystalloid still the recommended initial fluid bolus?",
+       },

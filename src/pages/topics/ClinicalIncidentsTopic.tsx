@@ -162,7 +162,7 @@ const ClinicalIncidentsTopic = () => {
         { text: "MH: rising EtCO₂ + tachycardia is the earliest sign. Dantrolene 2–2.5 mg/kg IV (max 300 mg per dose), repeated every 10 min to effect; 10 mg/kg is not an absolute ceiling", cites: ["EMHG 2024"] },
         { text: "LAST: Intralipid 20% bolus 1.5 mL/kg, infusion 15 mL/kg/h (= 0.25 mL/kg/min). AVOID propofol, lidocaine, and amiodarone in arrest", cites: ["BJA Educ 2011"] },
         { text: "Awareness: NAP5 incidence ~1:19,000. BIS 40-60 reduces risk in TIVA; document, acknowledge, and refer for psychological follow-up", cites: ["NAP Reports"] },
-        { text: <>NMBAs cause ~38% of perioperative anaphylaxis (NAP6), followed by antibiotics (26%) and chlorhexidine (9%) <InlineRef topicId="clinical-incidents" refLabel="NAP6 2018 (Triggers)" /></>, cites: ["AAGBI 2009"] },
+        { text: <>UK NAP6 2018: of 199 identified culprit agents, antibiotics 94 (47%), NMBAs 65 (33%), chlorhexidine 18 (9%) and Patent Blue 9 (5%) <InlineRef topicId="clinical-incidents" refLabel="NAP6 2018 (Triggers)" /></>, cites: ["NAP6 2018 (Triggers)"] },
       ]}
       coreConcepts={
         <>
@@ -170,7 +170,7 @@ const ClinicalIncidentsTopic = () => {
           <ExamSection id="section-anaphylaxis" className="scroll-mt-24" exams={[Exam.FINAL, Exam.FFICM]} curriculumCodes={["RCoA Final — Clinical Anaesthesia"]}>
             <CollapsibleSubsection title="Anaphylaxis" defaultOpen>
             <p className="text-muted-foreground leading-relaxed mb-3">
-              Perioperative anaphylaxis occurs in ~1:10,000 anaesthetics (NAP6). <Link to="/pharmacology/muscle-relaxants" className="text-pharmacology underline">NMBAs</Link> account for ~38% of cases, with antibiotics (especially teicoplanin and co-amoxiclav, ~26%), chlorhexidine (~9%) and patent blue dye making up most of the rest <InlineRef topicId="clinical-incidents" refLabel="NAP6 2018 (Triggers)" />.
+              Perioperative anaphylaxis occurs in ~1:10,000 anaesthetics (UK NAP6 2018). Of 199 identified culprit agents, antibiotics were commonest: 94 (47%), followed by <Link to="/pharmacology/muscle-relaxants" className="text-pharmacology underline">NMBAs</Link> 65 (33%), chlorhexidine 18 (9%) and Patent Blue 9 (5%). These are proportions of identified agents, not all reports <InlineRef topicId="clinical-incidents" refLabel="NAP6 2018 (Triggers)" />.
             </p>
             <div className="rounded-xl border border-border bg-card p-5 space-y-2">
               <p className="font-semibold text-foreground text-sm">RCUK peri-operative anaphylaxis algorithm (2024)</p>
@@ -179,7 +179,7 @@ const ClinicalIncidentsTopic = () => {
                 <li><strong>Adrenaline IV</strong> 50 micrograms bolus (adult/child &gt;12 y), titrated; infusion if poor response. No IV access: 10 micrograms/kg IM (max 500 micrograms). General (non-specialist) IM algorithm: repeat after 5 min</li>
                 <li>High-flow O₂, secure airway, IV access</li>
                 <li>Rapid crystalloid bolus: 500–1000 mL adult, 20 mL/kg child; repeat to response</li>
-                <li>Antihistamines and steroids are not part of immediate ABC treatment; steroids only for refractory reactions or shock</li>
+                <li>Corticosteroids are not routine treatment or biphasic-reaction prevention; consider only specific persistent asthma or refractory shock indications after initial resuscitation. After stabilisation, a non-sedating oral antihistamine may treat residual skin symptoms, never ABC compromise</li>
                 <li>Take mast cell tryptase at presentation, 1–2 h, and a baseline at ≥ 24 h</li>
                 <li>Refer to allergy clinic; document on records and warning bracelet</li>
               </ol>
@@ -445,7 +445,7 @@ const ClinicalIncidentsTopic = () => {
           <ExamPitfallsCallout
             accent="clinical"
             pitfalls={[
-              "Anaphylaxis (NAP6): NMBAs (38%), antibiotics (26%) and chlorhexidine (9%) top the list — adrenaline is first line (titrated IV 50 micrograms boluses in the monitored peri-operative setting).",
+              "Anaphylaxis (UK NAP6 2018): of 199 identified culprit agents, antibiotics 94 (47%), NMBAs 65 (33%), chlorhexidine 18 (9%) and Patent Blue 9 (5%) — adrenaline is first line (titrated IV 50 micrograms boluses in the monitored peri-operative setting).",
               <>Tryptase sampling: ASAP after resuscitation, at 1–2 h, and a baseline at ≥ 24 h — an uninterpretable acute value without the 24 h baseline is a common exam trap <InlineRef topicId="clinical-incidents" refLabel="RCUK Anaphylaxis 2021" /></>,
               "Malignant hyperthermia: stop trigger, hyperventilate 100% O₂ high flows, dantrolene 2–2.5 mg/kg (max 300 mg per dose) every 10 min to effect — no fixed 10 mg/kg ceiling, cool, treat hyperkalaemia.",
               <>LAST: stop injection, ABC, manage seizures, 20% Intralipid 1.5 mL/kg bolus then 15 mL/kg/h (0.25 mL/kg/min) infusion (max cumulative 12 mL/kg) <InlineRef topicId="clinical-incidents" refLabel="AAGBI LAST 2010" /></>,

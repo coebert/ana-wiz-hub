@@ -35,7 +35,7 @@ const tocItems = [
   { id: "section-introduction", label: "Introduction", group: "Core" },
   { id: "section-pre-operative-airway-assessment", label: "Pre-op Assessment", group: "Assessment" },
   { id: "section-airway-equipment", label: "Airway Equipment", group: "Equipment" },
-  { id: "section-das-2015-algorithm-four-sequential-plans", label: "DAS 2015 Algorithm", group: "Algorithms" },
+  { id: "section-das-2015-algorithm-four-sequential-plans", label: "DAS 2025 Algorithm", group: "Algorithms" },
   { id: "section-awake-fibreoptic-intubation", label: "Awake Fibreoptic", group: "Techniques" },
   { id: "section-front-of-neck-access-fona", label: "Front-of-neck Access (FONA)", group: "Techniques" },
   { id: "section-partial-airway-obstruction-level-specific-management", label: "Partial Obstruction", group: "Clinical" },
@@ -48,7 +48,7 @@ const tocItems = [
 const objectives = [
 
   "Describe a structured airway assessment (LEMON, Mallampati, Wilson) and list red-flag predictors of difficulty.",
-  "Apply the DAS 2015 unanticipated difficult intubation algorithm: Plans A → B → C → D with maximum attempts at each step.",
+  "Apply the DAS 2025 adult non-obstetric pathway: Plans A → B → C → D, with attempt ceilings, not quotas, and early declaration of failure.",
   "Compare 1st vs 2nd-generation supraglottic airways, ETT cuffs, and videolaryngoscopes for routine and rescue ventilation.",
   "Outline awake fibreoptic intubation: indications, sensory innervation of the airway, and topicalisation strategy.",
   "Recognise CICO early and perform scalpel-bougie-tube cricothyroidotomy per DAS guidance.",
@@ -64,15 +64,15 @@ const airwayFaqs: Array<[string, string]> = [
   ],
   [
     "How do you perform a rapid sequence induction step-by-step?",
-    "1. WHO checklist, IV access, monitoring, suction, tilting trolley. 2. Pre-oxygenate 3 min with FiO₂ 1.0 to FetO₂ ≥ 0.9 (or 8 vital-capacity breaths). 3. Position: ramped/sniffing. 4. Apnoeic oxygenation 15 L/min nasal cannulae (THRIVE). 5. Pre-determined induction dose + neuromuscular blocker — no test dose, no bag-mask. 6. Consider cricoid pressure (10 N awake → 30 N once asleep) — release if view is poor or ventilation difficult. 7. Intubate, confirm sustained exhaled CO₂ (PUMA: rises with exhalation and falls with inspiration, consistent or increasing over at least seven breaths, peak > 1 kPa above baseline, clinically appropriate); if absent, actively exclude oesophageal intubation and remove the tube by default unless removal is judged more dangerous. Confirm tube depth separately. 8. Inflate cuff, secure tube, ventilate. 9. Have a Plan B (videolaryngoscope) and Plan D (FONA) ready before induction.",
+    "1. WHO checklist, IV access, monitoring, suction, tilting trolley. 2. Pre-oxygenate 3 min with FiO₂ 1.0 to FetO₂ ≥ 0.9 (or 8 vital-capacity breaths). 3. Position: ramped/sniffing. 4. Low-flow nasal apnoeic oxygenation 15 L/min where appropriate; this is not high-flow THRIVE. 5. Pre-determined induction dose + neuromuscular blocker — no test dose, no bag-mask. 6. Consider cricoid pressure (10 N awake → 30 N once asleep) — release if view is poor or ventilation difficult. 7. Intubate, confirm sustained exhaled CO₂ (PUMA: rises with exhalation and falls with inspiration, consistent or increasing over at least seven breaths, peak > 1 kPa above baseline, clinically appropriate); if absent, actively exclude oesophageal intubation and remove the tube by default unless removal is judged more dangerous. Confirm tube depth separately. 8. Inflate cuff, secure tube, ventilate. 9. Use videolaryngoscopy first-line whenever possible for Plan A; have Plan B (second-generation SAD), Plan C (optimised facemask) and Plan D (eFONA) ready before induction (DAS 2025).",
   ],
   [
     "Is cricoid pressure still recommended in RSI?",
-    "Cricoid pressure remains part of the DAS / RCoA RSI bundle but its evidence base is weak. The 2018 IRIS trial (3472 patients) failed to demonstrate non-inferiority of sham versus cricoid pressure for aspiration: event rates were low (0.6% vs 0.5%) and the upper confidence limit (relative risk 2.00) exceeded the prespecified 1.50 margin. No significant difference is not proof of equivalence. Current UK practice: apply 10 N awake increasing to 30 N when consciousness is lost, and release immediately if it impairs laryngoscopic view, mask ventilation or supraglottic airway placement. It is not a substitute for fasting or for skilled intubation.",
+    "Cricoid pressure remains part of the DAS / RCoA RSI bundle but its evidence base is weak. The 2018 IRIS trial (3472 patients) failed to demonstrate non-inferiority of sham versus cricoid pressure for aspiration: aspiration occurred in 10/1735 (0.6%) with cricoid pressure and 9/1736 (0.5%) with sham and the upper confidence limit (relative risk 2.00) exceeded the prespecified 1.50 margin. No significant difference is not proof of equivalence. Current UK practice: apply 10 N awake increasing to 30 N when consciousness is lost, and release immediately if it impairs laryngoscopic view, mask ventilation or supraglottic airway placement. It is not a substitute for fasting or for skilled intubation.",
   ],
   [
     "What is the DAS unanticipated difficult intubation algorithm?",
-    "The Difficult Airway Society (DAS) 2015 non-obstetric adult algorithm has four sequential plans: Plan A — tracheal intubation (maximum 3 + 1 attempts, changing operator or technique). Plan B — second-generation supraglottic airway (maximum 3 attempts). Plan C — face-mask ventilation; wake the patient if oxygenation is restored. Plan D — emergency front-of-neck access for CICO. The joint OAA/DAS obstetric guideline is deliberately more restrictive and limits tracheal intubation to two attempts in total.",
+    "The current Difficult Airway Society (DAS) 2025 non-obstetric adult algorithm retains four sequential plans (the DAS 2015 version is historical): Plan A — tracheal intubation (maximum 3 + 1 attempts, changing operator or technique; a ceiling, not a requirement before declaring failure; use videolaryngoscopy first-line whenever possible). Plan B — second-generation supraglottic airway (maximum 3 attempts). Plan C — face-mask ventilation; wake the patient if oxygenation is restored. Plan D — emergency front-of-neck access for CICO. The separate OAA/DAS 2015 obstetric guideline uses two attempts as the default limit; a third attempt only by an experienced anaesthetist where appropriate, not the non-obstetric 3+1 allowance.",
   ],
   [
     "How do you predict a difficult airway?",
@@ -84,7 +84,7 @@ const airwayFaqs: Array<[string, string]> = [
   ],
   [
     "What is CICO and when should front-of-neck access be performed?",
-    "CICO = Can't Intubate, Can't Oxygenate: failed Plans A, B and C with falling SpO₂. Declare CICO out loud, stop further attempts, summon help and proceed immediately to scalpel-bougie-tube cricothyroidotomy — the trigger is failed oxygenation via tube, SAD and optimised facemask, not a saturation number. Technique: extend neck, palpate cricothyroid membrane, transverse stab with size 10 scalpel, rotate blade caudally, railroad a Frova/bougie, advance a 6.0 cuffed tube 2–3 cm, confirm with capnography. Needle cricothyroidotomy failed in > 60% of NAP4 emergencies and is no longer first-line.",
+    "CICO = Can't Intubate, Can't Oxygenate: failed Plans A, B and C with falling SpO₂. Declare CICO out loud, stop further attempts, summon help and proceed immediately to scalpel-bougie-tube cricothyroidotomy — the trigger is failed oxygenation via tube, SAD and optimised facemask, not a saturation number. Technique (DAS 2025): extend the neck when appropriate. If cricothyroid-membrane anatomy was not explicitly assessed or remains uncertain, default to a midline vertical skin incision and expose/identify the membrane. A transverse approach is suitable only if the membrane is confidently identified or previously marked. Open the membrane with a size 10 scalpel, rotate the blade caudally, insert the bougie into the trachea and railroad a 6.0 cuffed tube; confirm ventilation with waveform capnography. Needle cricothyroidotomy failed in > 60% of NAP4 emergencies and is no longer first-line.",
   ],
   [
     "What's the difference between RSI and a modified RSI?",
@@ -96,7 +96,7 @@ const airwayFaqs: Array<[string, string]> = [
   ],
   [
     "How long can you safely be apnoeic after pre-oxygenation?",
-    "After 3 min of pre-oxygenation to FetO₂ ≥ 0.9, a fit non-obese adult tolerates ~8–10 min before SpO₂ falls below 90%. This shortens dramatically in obesity (3–4 min at BMI 40), pregnancy (2–3 min at term), sepsis, anaemia and small children (< 2 min in neonates). Apnoeic oxygenation with high-flow nasal cannulae (THRIVE, 70 L/min) or low-flow nasal cannulae (15 L/min) extends safe apnoea by passive diffusion of O₂ but does not clear CO₂ — PaCO₂ rises by 3–4 mmHg/min.",
+    "After 3 min of pre-oxygenation to FetO₂ ≥ 0.9, a fit non-obese adult tolerates ~8–10 min before SpO₂ falls below 90%. This shortens dramatically in obesity (3–4 min at BMI 40), pregnancy (2–3 min at term), sepsis, anaemia and small children (< 2 min in neonates). Apnoeic oxygenation with high-flow nasal cannulae (THRIVE, 70 L/min) or low-flow nasal cannulae (15 L/min) may extend apnoea tolerance depending on the patient and airway patency, but neither replaces pre-oxygenation or ventilation; CO₂ continues to accumulate — PaCO₂ rises by 3–4 mmHg/min.",
   ],
 ];
 
@@ -116,8 +116,8 @@ const workedExamples: WorkedExample[] = [
       <div className="space-y-2">
         <p className="font-semibold text-foreground">Step-by-step reasoning</p>
         <ol className="list-decimal list-inside space-y-1">
-          <li><strong>Plan A failed (3 attempts max).</strong> Move on — repeat attempts cause oedema and worsen the situation.</li>
-          <li><strong>Plan B has failed</strong> (SAD inserted, oxygenation inadequate after 3 attempts).</li>
+          <li><strong>Plan A failed after three unsuccessful attempts.</strong> The DAS 2025 3+1 limit is a ceiling, not a quota; declare failure sooner if appropriate. Move on — repeat attempts cause oedema and worsen the situation.</li>
+          <li><strong>Plan B has failed</strong> (SAD oxygenation is inadequate despite optimisation; three attempts is a maximum, not a required sequence).</li>
           <li><strong>Plan C: facemask ventilation</strong> with two-person technique, full muscle relaxation maintained. If oxygenation restored → wake and reassess. Here it has also failed.</li>
           <li><strong>Declare CICO out loud.</strong> Call for help, theatre stops, prepare scalpel, bougie, 6.0 cuffed ETT.</li>
           <li><strong>Perform FONA immediately once CICO is declared.</strong> Do not wait for a saturation threshold or for arrest — the trigger is failure of tracheal intubation, SAD and optimised facemask oxygenation.</li>
@@ -125,7 +125,7 @@ const workedExamples: WorkedExample[] = [
         <div className="mt-2 rounded-md border border-destructive/30 bg-destructive/5 p-2">
           <p className="text-xs font-semibold uppercase tracking-wide text-destructive mb-1">Common traps</p>
           <ul className="list-disc list-inside space-y-1 text-foreground">
-            <li>Repeating Plan A &gt; 3 times — NAP4 highlighted persistence with laryngoscopy as a recurrent failure mode.</li>
+            <li>Exhausting the 3+1 maximum before declaring failure — NAP4 highlighted harmful persistence; move on earlier if oxygenation or conditions deteriorate.</li>
             <li>Reversing rocuronium with sugammadex during CICO: DAS now advises <strong>not</strong> to wake during CICO — proceed to FONA.</li>
             <li>Substituting needle cricothyroidotomy for scalpel technique: NAP4 showed needle techniques fail in &gt; 60 % of emergencies.</li>
           </ul>
@@ -134,7 +134,7 @@ const workedExamples: WorkedExample[] = [
     ),
     answer:
       "Proceed to FONA immediately after declaring CICO. The trigger is the failure of intubation, SAD and face-mask oxygenation — not a particular saturation number: waiting for SpO₂ to fall to an arbitrary threshold such as 80 % introduces dangerous delay, and NAP4 identified exactly this hesitation as a cause of avoidable harm. Perform scalpel-bougie-tube cricothyroidotomy without further attempts at SAD or facemask ventilation.",
-   cites: ["DAS 2015"],
+   cites: ["DAS 2025"],
   },
   {
     title: "Awake fibreoptic intubation in a known difficult airway",
@@ -185,9 +185,9 @@ const AirwayManagementTopic = () => {
         keyPoints: { exams: [Exam.FINAL, Exam.FFICM], curriculumCodes: ["CL_BK_03"] },
       }}
       sectionSources={{
-        objectives: ["DAS 2015", "NAP4 2011"],
-        workedExamples: ["DAS 2015", "NAP4 2011"],
-        keyPoints: ["DAS 2015", "NAP4 2011", "BJA Educ 2017"],
+        objectives: ["DAS 2025", "OAA/DAS 2015", "NAP4 2011"],
+        workedExamples: ["DAS 2025", "NAP4 2011"],
+        keyPoints: ["DAS 2025", "NAP4 2011", "BJA Educ 2017"],
       }}
       coreConcepts={
         <>
@@ -255,7 +255,7 @@ const AirwayManagementTopic = () => {
             <p className="text-foreground/90 leading-relaxed">
               Modern practice favours <strong>2nd-generation supraglottic airways</strong> (i-gel, ProSeal LMA) with gastric
               drain ports and seal pressures of 25–35 cmH₂O. Videolaryngoscopy (Macintosh-blade or hyperangulated) is now
-              recommended as default in patients with predicted difficulty, with Cochrane evidence supporting reduced failed
+              recommended first-line whenever possible for adult tracheal intubation under DAS 2025 <InlineRef topicId="airway-management" refLabel="DAS 2025" />, with Cochrane evidence supporting reduced failed
             </p>
             <div className="mt-4 space-y-4">
               <div className="bg-card rounded-xl border border-border p-6"><AirwayDevicesDiagram /></div>
@@ -265,19 +265,20 @@ const AirwayManagementTopic = () => {
           </ExamSection>
 
           <ExamSection exams={[Exam.FINAL, Exam.FFICM]} curriculumCodes={["CL_BK_03"]}>
-            <CollapsibleSubsection title="DAS 2015 algorithm — four sequential plans">
+            <CollapsibleSubsection title="DAS 2025 algorithm — four sequential plans">
             <p className="text-muted-foreground leading-relaxed mb-3">
-              The non-obstetric DAS 2015 pathway permits a maximum of three attempts plus one by a more experienced
-              operator. Obstetric practice is different: the joint OAA/DAS guideline limits total tracheal-intubation
-              attempts to two because airway trauma and hypoxaemia develop rapidly in pregnancy
+              The current non-obstetric DAS 2025 pathway retains a maximum of three attempts plus one by a more experienced
+              operator, not a required quota; declare failure earlier when appropriate. Videolaryngoscopy is first-line whenever possible
+              <InlineRef topicId="airway-management" refLabel="DAS 2025" />. The DAS 2015 adult pathway is a historical comparison. Obstetric practice is separate: OAA/DAS 2015 uses two attempts as the default limit,
+              with a third only by an experienced anaesthetist where appropriate
               <InlineRef topicId="airway-management" refLabel="OAA/DAS 2015" />.
             </p>
             <div className="space-y-3">
               {[
                 { plan: "Plan A", title: "Facemask ventilation & tracheal intubation", detail: "Optimise position (ramped), pre-oxygenation, videolaryngoscopy as default/early. Maximum 3+1 intubation attempts. Maintain oxygenation throughout." },
-                { plan: "Plan B", title: "Supraglottic airway device (SAD)", detail: "2nd-generation SAD (e.g., i-gel, ProSeal LMA). Maximum 3 attempts. If successful, wake or proceed. If ventilation fails → Plan C." },
+                { plan: "Plan B", title: "Supraglottic airway device (SAD)", detail: "2nd-generation SAD (e.g., i-gel, ProSeal LMA). Maximum 3 attempts. If successful, stop, think and communicate; awakening is the default unless a considered alternative is justified. If intubation through a suitable SAD is essential, consider one attempt only in a stable, adequately oxygenated patient with trained staff, under flexible endoscopic guidance; never blind. If oxygenation fails → Plan C." },
                 { plan: "Plan C", title: "Facemask ventilation", detail: "Two-person technique. Full neuromuscular blockade. If oxygenation maintained → wake patient. If CICO → Plan D." },
-                { plan: "Plan D", title: "Emergency front-of-neck access (FONA)", detail: "Scalpel cricothyroidotomy. Stab incision through cricothyroid membrane, bougie, 6.0 cuffed tube. DECLARE CICO EARLY." },
+                { plan: "Plan D", title: "Emergency front-of-neck access (FONA)", detail: "Scalpel-bougie-tube eFONA. Default vertical skin incision if membrane anatomy was not explicitly assessed or remains uncertain; transverse only if confidently identified/marked. Identify/open membrane, insert bougie, railroad 6.0 cuffed tube. DECLARE CICO EARLY." },
               ].map((p) => (
                 <div key={p.plan} className="p-4 rounded-lg bg-secondary/30 border border-border">
                   <div className="flex items-center gap-2 mb-1">
@@ -336,7 +337,7 @@ const AirwayManagementTopic = () => {
           <ExamSection id="section-airway-equipment" exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]} curriculumCodes={["CL_BK_03"]} className="scroll-mt-24">
             <CollapsibleSubsection title="The Difficult Airway Trolley">
             <p className="text-foreground/90 leading-relaxed mb-3">
-              Every theatre suite, ICU and emergency department should have a standardised difficult airway trolley that is immediately available, checked daily and identical across sites, so that the team can find equipment without thinking during a crisis. A common layout follows the DAS A–B–C–D algorithm, with each drawer matching a step <InlineRef topicId="airway-management" refLabel="Difficult Airway Trolley 2019" /> <InlineRef topicId="airway-management" refLabel="DAS 2015" />.
+              Every theatre suite, ICU and emergency department should have a standardised difficult airway trolley that is immediately available, checked daily and identical across sites, so that the team can find equipment without thinking during a crisis. A common layout follows the DAS A–B–C–D algorithm, with each drawer matching a step <InlineRef topicId="airway-management" refLabel="Difficult Airway Trolley 2019" /> <InlineRef topicId="airway-management" refLabel="DAS 2025" />.
             </p>
             <ul className="list-disc list-inside space-y-1 text-sm text-muted-foreground">
               <li><strong className="text-foreground">Drawer A — tracheal intubation:</strong> videolaryngoscope and blades (including hyperangulated), direct laryngoscope blades, tracheal tubes of several sizes, bougies and stylets.</li>
@@ -354,8 +355,9 @@ const AirwayManagementTopic = () => {
               The DAS-recommended scalpel-bougie-tube technique for can't intubate, can't oxygenate (CICO):
             </p>
             <ol className="list-decimal list-inside space-y-2 text-sm text-muted-foreground">
-              <li>Palpate cricothyroid membrane (or use ultrasound pre-procedure)</li>
-              <li>Transverse stab incision through skin and membrane</li>
+              <li>Assess and verbalise cricothyroid-membrane anatomy before induction; ultrasound identification/marking when appropriate</li>
+              <li>If anatomy was not explicitly assessed or remains uncertain, default to a midline vertical skin incision and expose the membrane. A transverse approach is valid only if confidently identified or marked <InlineRef topicId="airway-management" refLabel="DAS 2025" /></li>
+              <li>Incise the identified membrane with a size 10 scalpel</li>
               <li>Rotate scalpel blade 90° to maintain opening</li>
               <li>Insert bougie caudally (tracheal clicks)</li>
               <li>Railroad 6.0 mm cuffed ETT over bougie</li>
@@ -547,7 +549,7 @@ const AirwayManagementTopic = () => {
           <ExamSection id="section-obstetric-airway" exams={[Exam.FINAL]} className="scroll-mt-24">
             <CollapsibleSubsection title="The Obstetric Difficult Airway">
             <p className="text-muted-foreground leading-relaxed mb-3 text-sm">
-              Failed intubation occurs in roughly 1 in 200–300 obstetric general anaesthetics — about eight times the general surgical rate — because of airway oedema and vascularity, breast and chest-wall interference, reduced FRC with high oxygen consumption (desaturation within 2–3 min), aspiration risk, and the urgency of category 1 delivery. The OAA and DAS produced the first national obstetric guidelines for difficult and failed tracheal intubation, advocating <strong>nasal oxygenation and mask ventilation immediately after induction</strong>, <strong>limiting attempts at laryngoscopy and intubation to two</strong> (a third only by a more experienced colleague), and <strong>early release of cricoid pressure</strong> if difficulty is encountered <InlineRef topicId="airway-management" refLabel="OAA/DAS 2015" />.
+              Failed intubation occurs in roughly 1 in 200–300 obstetric general anaesthetics — about eight times the general surgical rate — because of airway oedema and vascularity, breast and chest-wall interference, reduced FRC with high oxygen consumption (desaturation within 2–3 min), aspiration risk, and the urgency of category 1 delivery. The OAA and DAS produced the first national obstetric guidelines for difficult and failed tracheal intubation, advocating <strong>nasal oxygenation and mask ventilation immediately after induction</strong>, <strong>limiting attempts at laryngoscopy and intubation to two</strong> (a third only by an experienced anaesthetist where appropriate; not the non-obstetric 3+1 allowance), and <strong>early release of cricoid pressure</strong> if difficulty is encountered <InlineRef topicId="airway-management" refLabel="OAA/DAS 2015" />.
             </p>
             <div className="grid md:grid-cols-2 gap-3 mb-3">
               <div className="p-4 rounded-lg border border-border">
@@ -693,9 +695,9 @@ const AirwayManagementTopic = () => {
           <ExamPitfallsCallout
             accent="clinical"
             pitfalls={[
-              "DAS 2015 unanticipated difficult intubation: Plan A (mask + tracheal tube), B (SAD), C (face-mask), D (front-of-neck access).",
+              "DAS 2025 non-obstetric adult pathway: A (videolaryngoscopy first-line whenever possible), B (second-generation SAD), C (optimised facemask), D (eFONA); attempt limits are ceilings, not quotas.",
               "Pre-oxygenation aims for FEtO₂ ≥ 0.9 to extend safe apnoea time; obese, pregnant and septic patients desaturate fast.",
-              "Apnoeic oxygenation (THRIVE / nasal cannulae at 15 L/min) prolongs safe apnoea but does not clear CO₂.",
+              "Apnoeic oxygenation (high-flow THRIVE or distinct low-flow nasal oxygen at 15 L/min) prolongs safe apnoea but does not clear CO₂.",
               "Cricothyroidotomy: scalpel-bougie-tube (size 6.0) for adults — front-of-neck airway is the rescue of last resort, not a delayed option.",
               "Awake fibreoptic intubation remains the gold standard for the predicted difficult airway with adequate time and consent.",
             ]}
@@ -716,6 +718,7 @@ const AirwayManagementTopic = () => {
                   </AccordionTrigger>
                   <AccordionContent className="text-sm text-muted-foreground leading-relaxed">
                     {a}
+                    <InlineRef topicId="airway-management" refLabel={i === 2 ? "IRIS 2019" : "DAS 2025"} />
                   </AccordionContent>
                 </AccordionItem>
               ))}
@@ -738,13 +741,13 @@ const AirwayManagementTopic = () => {
         </>
       }
       keyPoints={[
-        { text: "DAS 2015 — 4 sequential plans: intubation → SAD → facemask → FONA. Maximum 3+1 intubation attempts.", cites: ["DAS 2015"] },
+        { text: "DAS 2025 adult non-obstetric pathway: intubation → second-generation SAD → facemask → eFONA. Maximum 3+1 intubation attempts, not a quota; declare failure earlier when appropriate.", cites: ["DAS 2025"] },
         { text: "Localise partial obstruction by noise: stertor = supraglottic, inspiratory stridor = glottic/extrathoracic, expiratory stridor = intrathoracic, biphasic = fixed.", cites: ["BJA Educ 2017"] },
         { text: "Maintain spontaneous ventilation and avoid muscle relaxants in dynamic obstruction until the airway is secured beyond the lesion.", cites: ["NAP4 2011"] },
         { text: "Extrathoracic lesions collapse on inspiration and are splinted by PPV/CPAP; intrathoracic lesions collapse on expiration and are catastrophically worsened by IPPV in the supine position.", cites: ["DAS 2015"] },
         { text: "FONA does not rescue an intrathoracic obstruction — plan rigid bronchoscopy, stenting or femoro-femoral bypass before induction in high-risk mediastinal masses.", cites: ["BJA Educ 2017"] },
         { text: "2nd-generation SADs have gastric drain ports and seal pressures 25–35 cmH₂O.", cites: ["NAP4 2011"] },
-        { text: "Videolaryngoscopy reduces failed intubation rates (Cochrane 2022) and is now the recommended default in predicted difficulty.", cites: ["DAS 2015"] },
+        { text: "DAS 2025 recommends videolaryngoscopy first-line whenever possible for adult tracheal intubation.", cites: ["DAS 2025"] },
         { text: "AFOI: block V₁/V₂, IX, internal SLN and recurrent laryngeal — sensory map drives the topicalisation plan.", cites: ["BJA Educ 2017"] },
         { text: "CICO requires early declaration and immediate scalpel-bougie-tube cricothyroidotomy — triggered by failed oxygenation, not by waiting for a specific SpO₂ threshold.", cites: ["NAP4 2011"] },
         { text: "NAP4 lessons: failure to plan, failure to plan for failure, and persistence with failing techniques are the dominant themes.", cites: ["DAS 2015"] },

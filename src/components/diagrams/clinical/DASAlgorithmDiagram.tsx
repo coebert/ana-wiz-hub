@@ -17,10 +17,10 @@ const plans: Record<PlanKey, PlanStep> = {
     color: "hsl(145, 55%, 42%)",
     steps: [
       { label: "Optimise position", detail: "Head elevated ('ramped'), sniffing position. Preoxygenation to EtO₂ >90%." },
-      { label: "1st intubation attempt", detail: "Direct or video laryngoscopy. External laryngeal manipulation (ELM). Bougie if needed." },
-      { label: "2nd attempt", detail: "Change device, operator, or approach. Max 3+1 attempts total." },
-      { label: "3rd attempt", detail: "Most experienced available. Consider video laryngoscopy if not already used." },
-      { label: "Declare failure", detail: "If intubation fails after max attempts → move to Plan B." },
+      { label: "1st intubation attempt", detail: "Videolaryngoscopy first-line whenever possible (DAS 2025). Optimise view and use an appropriate introducer." },
+      { label: "2nd attempt", detail: "Change device, operator, or approach. 3+1 is a maximum, not a quota; declare failure earlier if appropriate." },
+      { label: "3rd attempt", detail: "Only attempt again if justified and optimised; a fourth/final attempt is reserved for a more experienced colleague." },
+      { label: "Declare failure", detail: "Declare failed intubation when appropriate, no later than the 3+1 ceiling; move to second-generation SAD rescue." },
     ],
     failAction: "Intubation failed → Plan B",
     succeedAction: "Intubation successful → confirm with capnography",
@@ -31,7 +31,7 @@ const plans: Record<PlanKey, PlanStep> = {
     steps: [
       { label: "Insert 2nd generation SAD", detail: "i-gel or LMA ProSeal. Maximum 3 attempts. Optimise head position." },
       { label: "Oxygenate & ventilate", detail: "Confirm ventilation with capnography. Consider whether to wake or proceed." },
-      { label: "If surgery is essential", detail: "Proceed via SAD if appropriate. Or attempt intubation through SAD (max 1 attempt)." },
+      { label: "If surgery is essential", detail: "Proceed via SAD if appropriate. If essential, consider one intubation attempt through a suitable, well-functioning SAD only with stable physiology, adequate oxygenation and trained staff, under flexible endoscopic guidance; never blind." },
     ],
     failAction: "SAD failed → Plan C",
     succeedAction: "SAD successful → wake patient or proceed",
@@ -52,8 +52,8 @@ const plans: Record<PlanKey, PlanStep> = {
     color: "hsl(0, 70%, 50%)",
     steps: [
       { label: "Declare CICO emergency", detail: "Verbalise: 'This is a Can't Intubate, Can't Oxygenate emergency'. Call for help." },
-      { label: "Scalpel cricothyroidotomy", detail: "Palpate cricothyroid membrane. Stab incision through skin and membrane. Rotate scalpel 90°." },
-      { label: "Bougie insertion", detail: "Railroad bougie through incision into trachea (feel tracheal clicks)." },
+      { label: "Scalpel cricothyroidotomy", detail: "If membrane anatomy was not explicitly assessed or remains uncertain, default to a vertical midline skin incision and expose/identify it. Transverse approach only if confidently identified/marked. Open membrane; rotate scalpel caudally." },
+      { label: "Bougie insertion", detail: "Insert bougie through the membrane opening into the trachea; then railroad the tube over it." },
       { label: "6.0 cuffed tube", detail: "Railroad size 6.0 cuffed ETT over bougie. Inflate cuff. Confirm with capnography." },
       { label: "Ventilate", detail: "Attach to circuit. Confirm EtCO₂. Secure tube. Plan definitive airway." },
     ],
@@ -100,9 +100,9 @@ const DASAlgorithmDiagram = () => {
   };
 
   return (
-    <DiagramFigure id="das-algorithm" title="DAS unanticipated difficult intubation algorithm: Plans A–D" description="Difficult Airway Society algorithm walking through Plan A (laryngoscopy), Plan B (supraglottic rescue), Plan C (face-mask) and Plan D (front-of-neck access).">
+    <DiagramFigure id="das-algorithm" title="DAS unanticipated difficult intubation algorithm: Plans A–D" description="DAS 2025 adult non-obstetric algorithm walking through Plan A (laryngoscopy), Plan B (supraglottic rescue), Plan C (face-mask) and Plan D (front-of-neck access).">
     <div className="border border-border rounded-lg p-4 mb-6">
-      <h3 className="text-lg font-serif font-bold text-foreground mb-1">DAS Difficult Airway Algorithm (2015)</h3>
+      <h3 className="text-lg font-serif font-bold text-foreground mb-1">DAS Difficult Airway Algorithm (2025, non-obstetric adults)</h3>
       <p className="text-xs text-muted-foreground mb-4">Step through Plans A→D. Tap a plan or use arrows to navigate.</p>
 
       {/* Plan selector / flowchart overview */}

@@ -39,6 +39,7 @@
 - Anaesthesia calculator arithmetic lives in a tested shared module with scoped product limits and explicit required weight bases; display rounding must never determine boundary decisions.
 - Podcast clinical holds use row-level audit_hold plus exact original-file playback guards; never reuse held scripts or overwrite original files, so transcript/audio cannot silently diverge.
 - Shared source-scoped clinical audit facts keep duplicate hyperkalaemia teaching aligned; numeric warning tests do not provide intubation or treatment clearance.
+- FAQ extraction resolves explicitly imported shared hyperkalaemia teaching from its executed module so generated FAQs retain the same correction; unknown expressions remain diagnostics.
 - Citation checks share executed reference pools and conservative same-module immutable topic-ID AST resolution; regex approximations cannot preserve imported/merged provenance.
 - Exact legacy topic aliases are recorded in topicRedirects and positively tested; canonical teaching destinations retain synthesis/schema requirements.
 - Diagram provenance uses an unchanged historical baseline plus an explicit residual report; newly exposed source gaps and unknown labels cannot be silently accepted.

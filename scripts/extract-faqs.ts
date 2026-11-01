@@ -24,6 +24,7 @@
  */
 import { readFileSync, existsSync } from "fs";
 import { resolve } from "path";
+import { HYPERKALAEMIA_TEACHING } from "../src/lib/clinical-audit-rules";
 
 export type FaqPair = [string, string];
 export type FaqsByPath = Record<string, FaqPair[]>;
@@ -101,7 +102,12 @@ function extractFaqsFromFile(file: string): FaqPair[] {
   const tryEval = (literal: string): unknown => {
     try {
       // eslint-disable-next-line no-new-func
-      return new Function(`return (${literal});`)();
+      // Resolve only this explicitly imported, source-scoped immutable teaching
+      // fact. Unknown expressions keep their existing visible parse diagnostic.
+      const importsHyperkalaemia = /import\s*\{\s*HYPERKALAEMIA_TEACHING\s*\}\s*from\s*["']@\/lib\/clinical-audit-rules["']/.test(src);
+      return importsHyperkalaemia
+        ? new Function("HYPERKALAEMIA_TEACHING", `return (${literal});`)(HYPERKALAEMIA_TEACHING)
+        : new Function(`return (${literal});`)();
     } catch (err) {
       console.warn(
         `[extract-faqs] failed to parse FAQ literal in ${file}: ${(err as Error).message}`,

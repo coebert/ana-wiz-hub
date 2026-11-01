@@ -103,7 +103,7 @@ const TransfusionCoagulationTopic = () => {
         { text: "Platelets: only 5–7 days at 20–24°C with agitation — bacterial contamination is the leading infectious risk", cites: ["BJA Educ 2015"] },
         { text: "FFP/cryo: 2 years at −30°C; once thawed, use within 24 h (FFP) or 4 h (cryo, room temperature)", cites: ["BSH 2017"] },
         { text: "TACO is now the leading cause of transfusion-related death reported to SHOT — TRALI incidence fell ~10-fold after the UK male-donor FFP policy. TRALI remains a major immune complication (anti-HLA/HNA antibodies from multiparous donors, FFP and apheresis platelets) but is no longer the commonest fatal one", cites: ["NICE NG24"] },
-        { text: "TRALI vs TACO: both cause pulmonary oedema within 6 h — TRALI has normal CVP/JVP and worsens with diuretics; TACO improves with diuresis", cites: ["BJA Educ 2015"] },
+        { text: "TRALI develops during or within 6 h; TACO surveillance includes onset during or up to 12 h after transfusion, and SHOT accepts reports up to 24 h. Assess hydrostatic overload; do not exclude TACO at 6–12 h", cites: ["MHRA TACO 2024", "SHOT TACO 2025"] },
         { text: "Cell salvage washes shed blood, suspends RBCs in saline (Hct ~50–70%), and removes plasma, platelets, heparin, free Hb and most cytokines — returned blood has NO clotting factors or platelets", cites: ["BSH 2017"] },
         { text: "ICS contraindications are largely relative — sickle cell disease, contamination with iodine/topical haemostats, and pharmacological agents not licensed for IV use; obstetric and oncological use is now supported with a leucodepletion filter (NICE TA/OAA-AAGBI)", cites: ["NICE NG24"] },
         { text: "ROTEM/TEG enables goal-directed transfusion — FIBTEM guides fibrinogen, EXTEM guides FFP/platelets", cites: ["BJA Educ 2015"] },
@@ -239,7 +239,7 @@ const TransfusionCoagulationTopic = () => {
             <div className="space-y-2 mb-3">
               {[
                 { trial: "CRYOSTAT-2 (2023)", detail: "Early cryoprecipitate (within 90 min) vs standard care in major trauma haemorrhage. No mortality benefit despite higher fibrinogen levels." },
-                { trial: "FIB-PPH (2023)", detail: "Empiric fibrinogen concentrate 2 g vs placebo in PPH — no reduction in RBC transfusion. Empiric replacement without confirmed hypofibrinogenaemia not beneficial." },
+                { trial: "FIB-PPH (2015)", detail: "Wikkelsø et al., BJA 114:623–633 (doi:10.1093/bja/aeu444): empiric fibrinogen concentrate 2 g vs placebo in largely normofibrinogenaemic PPH did not reduce RBC transfusion. This does not establish lack of benefit in confirmed hypofibrinogenaemia." },
                 { trial: "FIBRES (2019)", detail: "Cardiac surgery, fibrinogen concentrate vs cryo for fibrinogen <2 g/L. Non-inferior, faster to administer." },
               ].map((e) => (
                 <div key={e.trial} className="p-3 rounded-lg border border-border">
@@ -248,6 +248,7 @@ const TransfusionCoagulationTopic = () => {
                 </div>
               ))}
             </div>
+            <p className="text-xs text-muted-foreground"><InlineRef topicId="transfusion-coagulation" refLabel="FIB-PPH 2015" /></p>
             </CollapsibleSubsection>
           </ExamSection>
 
@@ -259,7 +260,7 @@ const TransfusionCoagulationTopic = () => {
                 { reaction: "Delayed Haemolytic (DHTR)", incidence: "1:5,000", features: "Anamnestic IgG response to non-ABO antigens (Kidd, Duffy, Rh) 5–14 d post-transfusion. Falling Hb, jaundice, ↑LDH, +DAT. Supportive; flag for future cross-match." },
                 { reaction: "Febrile Non-Haemolytic (FNHTR)", incidence: "1:300", features: "Cytokine accumulation in stored unit / recipient leucocyte antibodies. Temp ↑ >1°C without other features. Slow or stop, paracetamol, exclude haemolysis." },
                 { reaction: "TRALI", incidence: "1:5,000–1:12,000", features: "Non-cardiogenic pulmonary oedema within 6 h of transfusion. Donor anti-HLA / anti-HNA antibodies (commonly multiparous female plasma) activate recipient neutrophils → capillary leak. Bilateral infiltrates, normal CVP/JVP, PaO₂/FiO₂ ≤300. Supportive; lung-protective ventilation. NO diuretics." },
-                { reaction: "TACO", incidence: "1:100 (elderly / cardiac)", features: "Volume overload within 6 h. Raised BNP/JVP, S3, response to diuresis. Slow rate, sit up, furosemide, oxygen. Now the most commonly reported transfusion-related death in SHOT." },
+                { reaction: "TACO", incidence: "1:100 (elderly / cardiac)", features: "Volume overload during or up to 12 h after transfusion in the surveillance definition; SHOT accepts reports up to 24 h. Raised BNP/JVP, S3, response to diuresis. Slow rate, sit up, furosemide, oxygen. Now the most commonly reported transfusion-related death in SHOT." },
                 { reaction: "Allergic / Anaphylactic", incidence: "Urticaria 1:100, anaphylaxis 1:40,000", features: "Donor plasma proteins; severe in IgA-deficient recipients with anti-IgA. Adrenaline; washed or IgA-deficient products thereafter." },
                 { reaction: "TA-GvHD", incidence: "Rare but ≈100% fatal", features: "Donor T-cells engraft in immunosuppressed recipient (or shared HLA haplotype). Pancytopenia, rash, deranged LFTs 1–4 wk post-transfusion. Prevent by gamma-irradiating cellular components for at-risk patients (Hodgkin's, neonates, intra-uterine, fludarabine, congenital T-cell defects)." },
                 { reaction: "Transfusion-Transmitted Infection (TTI)", incidence: "HIV ~1:6.5M, HBV ~1:1.3M, HCV ~1:28M (UK)", features: "Bacterial sepsis remains the highest infectious risk and is highest in platelets (room-temperature storage). Variant CJD risk → UK leucodepletion + male-donor FFP/imported plasma." },
@@ -296,7 +297,7 @@ const TransfusionCoagulationTopic = () => {
             <div className="p-3 rounded-lg bg-secondary/50 border border-destructive/30">
               <p className="text-sm font-semibold text-foreground mb-1">⚠️ TRALI vs TACO at the bedside</p>
               <p className="text-sm text-muted-foreground">
-                Both present with hypoxia and bilateral infiltrates within 6 h of transfusion. <strong>TRALI</strong>: normal CVP, no S3, BNP normal, fever common, transient leucopenia, worsens with fluid challenge — supportive ventilation only. <strong>TACO</strong>: raised CVP/JVP, S3, BNP &gt;1.5× baseline, hypertension, responds to diuresis. SHOT consistently reports TACO as the leading cause of transfusion-related death in the UK; TRALI incidence has fallen ~10-fold since the male-donor FFP policy. <InlineRef topicId="transfusion-coagulation" refLabel="SHOT 2023" /> In isolated traumatic brain injury, TXA 1 g over 10 min then 1 g over 8 h within 3 h of injury reduced head-injury-related death in mild-to-moderate TBI, whereas POISE-3 studied 1 g IV at the start and 1 g IV at the end of non-cardiac surgery; this is trial evidence, not a universal prescription.<InlineRef topicId="transfusion-coagulation" refLabel="CRASH-3 2019" /><InlineRef topicId="transfusion-coagulation" refLabel="POISE-3 2022" />
+                Both can present with hypoxia and bilateral infiltrates. TRALI onset is during or within 6 h; TACO surveillance includes onset during or up to 12 h after transfusion, and SHOT accepts reports up to 24 h. Do not exclude TACO at 6–12 h <InlineRef topicId="transfusion-coagulation" refLabel="MHRA TACO 2024" /><InlineRef topicId="transfusion-coagulation" refLabel="SHOT TACO 2025" />. <strong>TRALI</strong>: normal CVP, no S3, BNP normal, fever common, transient leucopenia, worsens with fluid challenge — supportive ventilation only. <strong>TACO</strong>: raised CVP/JVP, S3, BNP &gt;1.5× baseline, hypertension, responds to diuresis. SHOT consistently reports TACO as the leading cause of transfusion-related death in the UK; TRALI incidence has fallen ~10-fold since the male-donor FFP policy. <InlineRef topicId="transfusion-coagulation" refLabel="SHOT 2023" /> In isolated traumatic brain injury, TXA 1 g over 10 min then 1 g over 8 h within 3 h of injury reduced head-injury-related death in mild-to-moderate TBI, whereas POISE-3 studied 1 g IV at the start and 1 g IV at the end of non-cardiac surgery; this is trial evidence, not a universal prescription.<InlineRef topicId="transfusion-coagulation" refLabel="CRASH-3 2019" /><InlineRef topicId="transfusion-coagulation" refLabel="POISE-3 2022" />
               </p>
             </div>
 
@@ -676,7 +677,7 @@ const TransfusionCoagulationTopic = () => {
             <div className="p-3 rounded-lg bg-secondary/50 border border-destructive/30">
               <p className="text-sm font-semibold text-foreground mb-1">⚠️ DIC vs TTP/HUS</p>
               <p className="text-sm text-muted-foreground">
-                Both cause MAHA + thrombocytopenia. In TTP: ADAMTS13 &lt;10%, coagulation screen typically NORMAL. Treat with plasma exchange — do NOT transfuse platelets. In DIC: PT/APTT/fibrinogen abnormal. Always check ADAMTS13 if MAHA + thrombocytopenia without clear DIC trigger.
+                Both cause MAHA + thrombocytopenia. In TTP: ADAMTS13 &lt;10%, coagulation screen typically NORMAL. Treat with urgent specialist plasma exchange. Avoid prophylactic platelet transfusion; life-threatening haemorrhage may justify platelets with urgent specialist haematology input <InlineRef topicId="transfusion-coagulation" refLabel="BSH Platelets 2021" />. In DIC: PT/APTT/fibrinogen abnormal. Always check ADAMTS13 if MAHA + thrombocytopenia without clear DIC trigger.
               </p>
             </div>
             </CollapsibleSubsection>

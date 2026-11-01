@@ -1,0 +1,265 @@
+{
+  "changes": [
+    {
+      "before": "NAP6: neuromuscular blockers (38 %, suxamethonium and rocuronium dominate), antibiotics (esp. teicoplanin, co-amoxiclav, 26 %) and chlorhexidine (9 %) account for most perioperative anaphylaxis.",
+      "after": "The distribution of 199 identified culprit agents included antibiotics (94), neuromuscular blocking agents (65), chlorhexidine (18), and Patent Blue dye (9).",
+      "occurrences": 1
+    },
+    {
+      "before": "excerpt: \"Potassium should be added to all rehydration fluids (40 mmol/L) from the outset unless there is anuria. Insulin should not be started until 1-2 hours after intravenous fluid therapy has begun.\"",
+      "after": "reviewNote: \"Historical BSPED 2021/2022 record retained. For current potassium/bolus qualifications use NICE NG18 1.4.23–1.4.31 and the current BSPED resource; the former abbreviated excerpt omitted initial bolus and hyperkalaemia exceptions.\"",
+      "occurrences": 1
+    }
+  ],
+  "added": {
+    "sepsis": [
+      {
+        "label": "SSC 2026 antibiotics",
+        "citation": "Society of Critical Care Medicine / ESICM. Surviving Sepsis Campaign: International Guidelines for Management of Sepsis and Septic Shock 2026. Antimicrobial initiation. Accessed 1 November 2026.",
+        "url": "https://sccm.org/clinical-resources/guidelines/guidelines/surviving-sepsis-campaign-international-guidelines-for-management-of-sepsis-and-septic-shock-2026",
+        "excerpt": "For adults with probable or definite sepsis without shock, we “recommend” administering antimicrobial therapy immediately, ideally within 1 hr of recognition."
+      },
+      {
+        "label": "SSC 2026 possible sepsis",
+        "citation": "Society of Critical Care Medicine / ESICM. Surviving Sepsis Campaign: International Guidelines for Management of Sepsis and Septic Shock 2026. Possible sepsis without shock. Accessed 1 November 2026.",
+        "url": "https://sccm.org/clinical-resources/guidelines/guidelines/surviving-sepsis-campaign-international-guidelines-for-management-of-sepsis-and-septic-shock-2026",
+        "excerpt": "For adults with possible sepsis without shock, we “suggest” a time-limited course of rapid investigation and if concern for infection persists, the administration of antimicrobial therapy within 3 hours from the time when sepsis was first suspected."
+      },
+      {
+        "label": "SSC 2026 fluids",
+        "citation": "Society of Critical Care Medicine / ESICM. Surviving Sepsis Campaign: International Guidelines for Management of Sepsis and Septic Shock 2026. Initial fluid resuscitation. Accessed 1 November 2026.",
+        "url": "https://sccm.org/clinical-resources/guidelines/guidelines/surviving-sepsis-campaign-international-guidelines-for-management-of-sepsis-and-septic-shock-2026",
+        "excerpt": "For adults with sepsis-induced hypoperfusion or septic shock, we “suggest” administering at least 30 mL/kg of IV crystalloid in the first 3 hr."
+      },
+      {
+        "label": "SSC 2026 MAP",
+        "citation": "Society of Critical Care Medicine / ESICM. Surviving Sepsis Campaign: International Guidelines for Management of Sepsis and Septic Shock 2026. Mean arterial pressure. Accessed 1 November 2026.",
+        "url": "https://sccm.org/clinical-resources/guidelines/guidelines/surviving-sepsis-campaign-international-guidelines-for-management-of-sepsis-and-septic-shock-2026",
+        "excerpt": "For adults with septic shock 65 years old or older, we “suggest” an initial MAP range of 60-65 mm Hg over higher ranges."
+      },
+      {
+        "label": "SSC 2026 albumin",
+        "citation": "Society of Critical Care Medicine / ESICM. Surviving Sepsis Campaign: International Guidelines for Management of Sepsis and Septic Shock 2026. Fluid type. Accessed 1 November 2026.",
+        "url": "https://sccm.org/clinical-resources/guidelines/guidelines/surviving-sepsis-campaign-international-guidelines-for-management-of-sepsis-and-septic-shock-2026",
+        "excerpt": "For adults with sepsis or septic shock, we “suggest” using crystalloids alone over crystalloids with supplemental albumin for fluid resuscitation."
+      },
+      {
+        "label": "SSC 2026 source control",
+        "citation": "Society of Critical Care Medicine / ESICM. Surviving Sepsis Campaign: International Guidelines for Management of Sepsis and Septic Shock 2026. Source control. Accessed 1 November 2026.",
+        "url": "https://sccm.org/clinical-resources/guidelines/guidelines/surviving-sepsis-campaign-international-guidelines-for-management-of-sepsis-and-septic-shock-2026",
+        "excerpt": "For adults with sepsis or septic shock and a specific anatomical diagnosis or source of infection that requires source control, we “suggest” early source control over late source control, ideally within 6 hr of diagnosis of sepsis or septic shock requiring source control."
+      },
+      {
+        "label": "SSC 2026 qSOFA",
+        "citation": "Society of Critical Care Medicine / ESICM. Surviving Sepsis Campaign: International Guidelines for Management of Sepsis and Septic Shock 2026. Screening. Accessed 1 November 2026.",
+        "url": "https://sccm.org/clinical-resources/guidelines/guidelines/surviving-sepsis-campaign-international-guidelines-for-management-of-sepsis-and-septic-shock-2026",
+        "reviewNote": "Scoped recommendation and remarks, not individual treatment clearance. No universal peripheral-duration or albumin-volume threshold."
+      },
+      {
+        "label": "SSC 2026 peripheral vasopressors",
+        "citation": "Society of Critical Care Medicine / ESICM. Surviving Sepsis Campaign: International Guidelines for Management of Sepsis and Septic Shock 2026. Peripheral vasopressor initiation. Accessed 1 November 2026.",
+        "url": "https://sccm.org/clinical-resources/guidelines/guidelines/surviving-sepsis-campaign-international-guidelines-for-management-of-sepsis-and-septic-shock-2026",
+        "reviewNote": "Scoped recommendation and remarks, not individual treatment clearance. No universal peripheral-duration or albumin-volume threshold."
+      }
+    ],
+    "septic-shock": [
+      {
+        "label": "SSC 2026 antibiotics",
+        "citation": "Society of Critical Care Medicine / ESICM. Surviving Sepsis Campaign: International Guidelines for Management of Sepsis and Septic Shock 2026. Antimicrobial initiation. Accessed 1 November 2026.",
+        "url": "https://sccm.org/clinical-resources/guidelines/guidelines/surviving-sepsis-campaign-international-guidelines-for-management-of-sepsis-and-septic-shock-2026",
+        "excerpt": "For adults with probable or definite sepsis without shock, we “recommend” administering antimicrobial therapy immediately, ideally within 1 hr of recognition."
+      },
+      {
+        "label": "SSC 2026 possible sepsis",
+        "citation": "Society of Critical Care Medicine / ESICM. Surviving Sepsis Campaign: International Guidelines for Management of Sepsis and Septic Shock 2026. Possible sepsis without shock. Accessed 1 November 2026.",
+        "url": "https://sccm.org/clinical-resources/guidelines/guidelines/surviving-sepsis-campaign-international-guidelines-for-management-of-sepsis-and-septic-shock-2026",
+        "excerpt": "For adults with possible sepsis without shock, we “suggest” a time-limited course of rapid investigation and if concern for infection persists, the administration of antimicrobial therapy within 3 hours from the time when sepsis was first suspected."
+      },
+      {
+        "label": "SSC 2026 fluids",
+        "citation": "Society of Critical Care Medicine / ESICM. Surviving Sepsis Campaign: International Guidelines for Management of Sepsis and Septic Shock 2026. Initial fluid resuscitation. Accessed 1 November 2026.",
+        "url": "https://sccm.org/clinical-resources/guidelines/guidelines/surviving-sepsis-campaign-international-guidelines-for-management-of-sepsis-and-septic-shock-2026",
+        "excerpt": "For adults with sepsis-induced hypoperfusion or septic shock, we “suggest” administering at least 30 mL/kg of IV crystalloid in the first 3 hr."
+      },
+      {
+        "label": "SSC 2026 MAP",
+        "citation": "Society of Critical Care Medicine / ESICM. Surviving Sepsis Campaign: International Guidelines for Management of Sepsis and Septic Shock 2026. Mean arterial pressure. Accessed 1 November 2026.",
+        "url": "https://sccm.org/clinical-resources/guidelines/guidelines/surviving-sepsis-campaign-international-guidelines-for-management-of-sepsis-and-septic-shock-2026",
+        "excerpt": "For adults with septic shock 65 years old or older, we “suggest” an initial MAP range of 60-65 mm Hg over higher ranges."
+      },
+      {
+        "label": "SSC 2026 albumin",
+        "citation": "Society of Critical Care Medicine / ESICM. Surviving Sepsis Campaign: International Guidelines for Management of Sepsis and Septic Shock 2026. Fluid type. Accessed 1 November 2026.",
+        "url": "https://sccm.org/clinical-resources/guidelines/guidelines/surviving-sepsis-campaign-international-guidelines-for-management-of-sepsis-and-septic-shock-2026",
+        "excerpt": "For adults with sepsis or septic shock, we “suggest” using crystalloids alone over crystalloids with supplemental albumin for fluid resuscitation."
+      },
+      {
+        "label": "SSC 2026 source control",
+        "citation": "Society of Critical Care Medicine / ESICM. Surviving Sepsis Campaign: International Guidelines for Management of Sepsis and Septic Shock 2026. Source control. Accessed 1 November 2026.",
+        "url": "https://sccm.org/clinical-resources/guidelines/guidelines/surviving-sepsis-campaign-international-guidelines-for-management-of-sepsis-and-septic-shock-2026",
+        "excerpt": "For adults with sepsis or septic shock and a specific anatomical diagnosis or source of infection that requires source control, we “suggest” early source control over late source control, ideally within 6 hr of diagnosis of sepsis or septic shock requiring source control."
+      },
+      {
+        "label": "SSC 2026 qSOFA",
+        "citation": "Society of Critical Care Medicine / ESICM. Surviving Sepsis Campaign: International Guidelines for Management of Sepsis and Septic Shock 2026. Screening. Accessed 1 November 2026.",
+        "url": "https://sccm.org/clinical-resources/guidelines/guidelines/surviving-sepsis-campaign-international-guidelines-for-management-of-sepsis-and-septic-shock-2026",
+        "reviewNote": "Scoped recommendation and remarks, not individual treatment clearance. No universal peripheral-duration or albumin-volume threshold."
+      },
+      {
+        "label": "SSC 2026 peripheral vasopressors",
+        "citation": "Society of Critical Care Medicine / ESICM. Surviving Sepsis Campaign: International Guidelines for Management of Sepsis and Septic Shock 2026. Peripheral vasopressor initiation. Accessed 1 November 2026.",
+        "url": "https://sccm.org/clinical-resources/guidelines/guidelines/surviving-sepsis-campaign-international-guidelines-for-management-of-sepsis-and-septic-shock-2026",
+        "reviewNote": "Scoped recommendation and remarks, not individual treatment clearance. No universal peripheral-duration or albumin-volume threshold."
+      }
+    ],
+    "sepsis-resuscitation": [
+      {
+        "label": "SSC 2026 antibiotics",
+        "citation": "Society of Critical Care Medicine / ESICM. Surviving Sepsis Campaign: International Guidelines for Management of Sepsis and Septic Shock 2026. Antimicrobial initiation. Accessed 1 November 2026.",
+        "url": "https://sccm.org/clinical-resources/guidelines/guidelines/surviving-sepsis-campaign-international-guidelines-for-management-of-sepsis-and-septic-shock-2026",
+        "excerpt": "For adults with probable or definite sepsis without shock, we “recommend” administering antimicrobial therapy immediately, ideally within 1 hr of recognition."
+      },
+      {
+        "label": "SSC 2026 possible sepsis",
+        "citation": "Society of Critical Care Medicine / ESICM. Surviving Sepsis Campaign: International Guidelines for Management of Sepsis and Septic Shock 2026. Possible sepsis without shock. Accessed 1 November 2026.",
+        "url": "https://sccm.org/clinical-resources/guidelines/guidelines/surviving-sepsis-campaign-international-guidelines-for-management-of-sepsis-and-septic-shock-2026",
+        "excerpt": "For adults with possible sepsis without shock, we “suggest” a time-limited course of rapid investigation and if concern for infection persists, the administration of antimicrobial therapy within 3 hours from the time when sepsis was first suspected."
+      },
+      {
+        "label": "SSC 2026 fluids",
+        "citation": "Society of Critical Care Medicine / ESICM. Surviving Sepsis Campaign: International Guidelines for Management of Sepsis and Septic Shock 2026. Initial fluid resuscitation. Accessed 1 November 2026.",
+        "url": "https://sccm.org/clinical-resources/guidelines/guidelines/surviving-sepsis-campaign-international-guidelines-for-management-of-sepsis-and-septic-shock-2026",
+        "excerpt": "For adults with sepsis-induced hypoperfusion or septic shock, we “suggest” administering at least 30 mL/kg of IV crystalloid in the first 3 hr."
+      },
+      {
+        "label": "SSC 2026 MAP",
+        "citation": "Society of Critical Care Medicine / ESICM. Surviving Sepsis Campaign: International Guidelines for Management of Sepsis and Septic Shock 2026. Mean arterial pressure. Accessed 1 November 2026.",
+        "url": "https://sccm.org/clinical-resources/guidelines/guidelines/surviving-sepsis-campaign-international-guidelines-for-management-of-sepsis-and-septic-shock-2026",
+        "excerpt": "For adults with septic shock 65 years old or older, we “suggest” an initial MAP range of 60-65 mm Hg over higher ranges."
+      },
+      {
+        "label": "SSC 2026 albumin",
+        "citation": "Society of Critical Care Medicine / ESICM. Surviving Sepsis Campaign: International Guidelines for Management of Sepsis and Septic Shock 2026. Fluid type. Accessed 1 November 2026.",
+        "url": "https://sccm.org/clinical-resources/guidelines/guidelines/surviving-sepsis-campaign-international-guidelines-for-management-of-sepsis-and-septic-shock-2026",
+        "excerpt": "For adults with sepsis or septic shock, we “suggest” using crystalloids alone over crystalloids with supplemental albumin for fluid resuscitation."
+      },
+      {
+        "label": "SSC 2026 source control",
+        "citation": "Society of Critical Care Medicine / ESICM. Surviving Sepsis Campaign: International Guidelines for Management of Sepsis and Septic Shock 2026. Source control. Accessed 1 November 2026.",
+        "url": "https://sccm.org/clinical-resources/guidelines/guidelines/surviving-sepsis-campaign-international-guidelines-for-management-of-sepsis-and-septic-shock-2026",
+        "excerpt": "For adults with sepsis or septic shock and a specific anatomical diagnosis or source of infection that requires source control, we “suggest” early source control over late source control, ideally within 6 hr of diagnosis of sepsis or septic shock requiring source control."
+      },
+      {
+        "label": "SSC 2026 qSOFA",
+        "citation": "Society of Critical Care Medicine / ESICM. Surviving Sepsis Campaign: International Guidelines for Management of Sepsis and Septic Shock 2026. Screening. Accessed 1 November 2026.",
+        "url": "https://sccm.org/clinical-resources/guidelines/guidelines/surviving-sepsis-campaign-international-guidelines-for-management-of-sepsis-and-septic-shock-2026",
+        "reviewNote": "Scoped recommendation and remarks, not individual treatment clearance. No universal peripheral-duration or albumin-volume threshold."
+      },
+      {
+        "label": "SSC 2026 peripheral vasopressors",
+        "citation": "Society of Critical Care Medicine / ESICM. Surviving Sepsis Campaign: International Guidelines for Management of Sepsis and Septic Shock 2026. Peripheral vasopressor initiation. Accessed 1 November 2026.",
+        "url": "https://sccm.org/clinical-resources/guidelines/guidelines/surviving-sepsis-campaign-international-guidelines-for-management-of-sepsis-and-septic-shock-2026",
+        "reviewNote": "Scoped recommendation and remarks, not individual treatment clearance. No universal peripheral-duration or albumin-volume threshold."
+      }
+    ],
+    "airway-management": [
+      {
+        "label": "IRIS 2019",
+        "citation": "Birenbaum A, Hajage D, Roche S, et al. IRIS randomized clinical trial. JAMA Surg. 2019;154:9–17. Published online 2018. doi:10.1001/jamasurg.2018.3577.",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/30347104/",
+        "reviewNote": "Aspiration: cricoid 10/1735; sham 9/1736. Sham non-inferiority not demonstrated; no equivalence conclusion."
+      }
+    ],
+    "solutions-concentration": [
+      {
+        "label": "Society for Endocrinology Hyponatraemia 2016",
+        "citation": "Ball S, Barth J, Levy M. Society for Endocrinology Endocrine Emergency Guidance: Emergency management of severe symptomatic hyponatraemia in adult patients. Endocr Connect. 2016;5:G4–G6.",
+        "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5314809/",
+        "excerpt": "Patients with severe symptoms require immediate treatment with hypertonic saline, irrespective of the cause of the hyponatraemia."
+      }
+    ],
+    "transfusion-coagulation": [
+      {
+        "label": "MHRA TACO 2024",
+        "citation": "Medicines and Healthcare products Regulatory Agency. National Patient Safety Alert: Reducing risks for transfusion-associated circulatory overload. NatPSA/2024/004/MHRA. 4 April 2024.",
+        "url": "https://www.gov.uk/drug-device-alerts/national-patient-safety-alert-reducing-risks-for-transfusion-associated-circulatory-overload-natpsa-slash-2024-slash-004-slash-mhra",
+        "reviewNote": "Surveillance onset during or up to 12 hours after transfusion; respiratory compromise/pulmonary oedema and supporting overload features."
+      },
+      {
+        "label": "SHOT TACO 2025",
+        "citation": "Serious Hazards of Transfusion. Chapter 21a: Transfusion-Associated Circulatory Overload (TACO). Annual SHOT Report 2025.",
+        "url": "https://www.shotuk.org/chapter-21a-transfusion-associated-circulatory-overload-taco-2025-n=214/",
+        "reviewNote": "User source-confirmed reporting window up to 24 h; live chapter re-fetch returned 403. Distinct from the 12-h surveillance definition; no new excerpt invented."
+      },
+      {
+        "label": "FIB-PPH 2015",
+        "citation": "Wikkelsø AJ, Edwards HM, Afshari A, et al. Pre-emptive treatment with fibrinogen concentrate for postpartum haemorrhage: randomized controlled trial. Br J Anaesth. 2015;114:623–633. doi:10.1093/bja/aeu444.",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/25586727/",
+        "reviewNote": "Empiric 2 g in largely normofibrinogenaemic PPH; does not establish ineffectiveness in confirmed hypofibrinogenaemia."
+      }
+    ],
+    "paediatric-icu": [
+      {
+        "label": "NICE NG18 potassium",
+        "citation": "NICE. Diabetes in children and young people (NG18). Recommendations 1.4.29–1.4.31, 2020 amendments. Accessed 1 November 2026.",
+        "url": "https://www.nice.org.uk/guidance/ng18/chapter/Recommendations",
+        "excerpt": "Include 40 mmol/litre (or 20 mmol/500 ml) potassium chloride in all fluids (except the initial intravenous boluses) given to children and young people with DKA, unless they have anuria or their potassium level is above the normal range.",
+        "reviewNote": "NG18 1.4.30: with initially raised potassium, add only if potassium <5.5 mmol/L or history of passing urine. This exact criterion differs from the supplied normal-range shorthand."
+      },
+      {
+        "label": "BSPED DKA current resource",
+        "citation": "BSPED. DKA guidelines for children and young people. Current resource page (2021 guideline with subsequent updates). Accessed 1 November 2026.",
+        "url": "https://www.bsped.org.uk/clinical-resources/bsped-dka-guidelines/",
+        "reviewNote": "Use alongside named NICE NG18 algorithm; do not silently re-date historical BSPED record."
+      },
+      {
+        "label": "BJA Educ TEF 2025",
+        "citation": "Canchi-Murali N, Stendall C, Arul GS. Perioperative management of tracheo-oesophageal fistula and oesophageal atresia. BJA Educ. 2025;25:226–233. doi:10.1016/j.bjae.2025.02.004.",
+        "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12146005/",
+        "excerpt": "For a distal tracheal, carinal or bronchial fistulae the tracheal tube tip will need to be placed distal to the fistula to prevent gastric inflation.",
+        "reviewNote": "Anatomy-dependent review; carinal/bronchial fistulae may require endobronchial ventilation or occlusion."
+      }
+    ],
+    "cardiac-arrest-post-resus": [
+      {
+        "label": "RCUK PRC Algorithm March 2026",
+        "citation": "Resuscitation Council UK. Adult post-resuscitation care algorithm, Guidelines 2025, updated March 2026.",
+        "url": "https://www.resus.org.uk/sites/default/files/2026-03/RCUK%20G2025%20ADULT%20PRC%20March%20V3.pdf",
+        "excerpt": "Prevent fever for at least 72 h",
+        "reviewNote": "Algorithm unconscious-patient branch; narrative 2025 guideline gives 36–72 h. Not every awake survivor."
+      },
+      {
+        "label": "RCUK PRC 2025 SSEP",
+        "citation": "Resuscitation Council UK. Post-resuscitation care guidelines 2025. Neuroprognostication: neurophysiology.",
+        "url": "https://www.resus.org.uk/professional-library/2025-resuscitation-guidelines/post-resuscitation-care-guidelines",
+        "excerpt": "Always consider using a neuromuscular blocking drug when performing SSEP."
+      }
+    ],
+    "arrhythmias-ecg-icu": [
+      {
+        "label": "RCUK PRC Algorithm March 2026",
+        "citation": "Resuscitation Council UK. Adult post-resuscitation care algorithm, Guidelines 2025, updated March 2026.",
+        "url": "https://www.resus.org.uk/sites/default/files/2026-03/RCUK%20G2025%20ADULT%20PRC%20March%20V3.pdf",
+        "excerpt": "Prevent fever for at least 72 h",
+        "reviewNote": "Algorithm unconscious-patient branch; narrative 2025 guideline gives 36–72 h. Not every awake survivor."
+      }
+    ],
+    "prognostication-ethics-icu": [
+      {
+        "label": "RCUK PRC Algorithm March 2026",
+        "citation": "Resuscitation Council UK. Adult post-resuscitation care algorithm, Guidelines 2025, updated March 2026.",
+        "url": "https://www.resus.org.uk/sites/default/files/2026-03/RCUK%20G2025%20ADULT%20PRC%20March%20V3.pdf",
+        "excerpt": "Prevent fever for at least 72 h",
+        "reviewNote": "Algorithm unconscious-patient branch; narrative 2025 guideline gives 36–72 h. Not every awake survivor."
+      }
+    ],
+    "icu-eclampsia": [
+      {
+        "label": "NICE NG133 1.8.8",
+        "citation": "NICE. Hypertension in pregnancy (NG133). Recommendation 1.8.8 [2010], retained in current guidance.",
+        "url": "https://www.nice.org.uk/guidance/ng133/chapter/recommendations",
+        "excerpt": "Consider using up to 500 ml crystalloid fluid before or at the same time as the first dose of intravenous hydralazine in the antenatal period."
+      }
+    ]
+  }
+}
