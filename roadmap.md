@@ -1,5 +1,9 @@
 # Admin metrics audit fixes
 
+## CL91 / CL92 focused source-copy follow-up
+- [ ] Reconcile reviewed current post-arrest and neuro-ICU claims, shared diagrams and direct quiz duplicates with scoped sources.
+- [ ] Verify actual rendered cases/panels, focused tests and local search copies; document exact guards/results and limitations. No backend/database/audio/publication.
+
 ## S2 narrow UI and relationship schematic follow-up
 - [x] Repair SCI074 labels, SCI075 cervical clinical panel and SCI041 phrenic qualification.
 - [x] Add four limited relationship schematics with working selection/toggle states; keep SCI052 procedural redraw outstanding.
