@@ -19,6 +19,7 @@
  */
 import { readFileSync, writeFileSync, statSync, readdirSync } from "node:fs";
 import { join, relative, resolve } from "node:path";
+import { fileURLToPath } from "node:url";
 import { Linter } from "eslint";
 import tseslint from "typescript-eslint";
 import validExamTag from "../eslint-rules/valid-exam-tag.js";
@@ -28,7 +29,7 @@ const args = process.argv.slice(2);
 const FIX = args.includes("--fix");
 const positional = args.filter((a) => !a.startsWith("--"));
 
-const ROOT = resolve(new URL("..", import.meta.url).pathname);
+const ROOT = resolve(fileURLToPath(new URL("..", import.meta.url)));
 const TARGET = resolve(positional[0] ?? join(ROOT, "src"));
 
 const EXTENSIONS = new Set([".ts", ".tsx"]);
@@ -98,7 +99,7 @@ for (const file of files) {
     // Iteratively apply autofixes until stable, then write back if changed.
     const result = linter.verifyAndFix(code, config, { filename: file });
     const remaining = result.messages.filter(
-      (m) => m.ruleId === "lovable-local/valid-exam-tag",
+      (m) => m.severity > 0,
     );
 
     if (result.fixed && result.output !== code) {
@@ -119,7 +120,7 @@ for (const file of files) {
   } else {
     const messages = linter
       .verify(code, config, { filename: file })
-      .filter((m) => m.ruleId === "lovable-local/valid-exam-tag");
+      .filter((m) => m.severity > 0);
     if (messages.length > 0) {
       violationsByFile.push({ file, messages });
       totalViolations += messages.length;
@@ -144,20 +145,20 @@ if (FIX && totalFixed > 0) {
 
 if (totalViolations === 0) {
   console.log(
-    `${GREEN}✓${RESET} No${FIX ? " remaining" : ""} invalid ExamTag strings in ${DIM}${targetLabel}${RESET} (${files.length} files scanned).`,
+    `${GREEN}✓${RESET} No${FIX ? " remaining" : ""} exam-tag violations or checker errors in ${DIM}${targetLabel}${RESET} (${files.length} files scanned).`,
   );
   process.exit(0);
 }
 
 console.log(
-  `${RED}✗${RESET} ${FIX ? "Could not auto-fix " : "Found "}${BOLD}${totalViolations}${RESET} invalid ExamTag string${totalViolations === 1 ? "" : "s"} across ${violationsByFile.length} file${violationsByFile.length === 1 ? "" : "s"}:\n`,
+    `${RED}✗${RESET} Found ${BOLD}${totalViolations}${RESET} exam-tag violations / checker errors across ${violationsByFile.length} files:\n`,
 );
 
 for (const { file, messages } of violationsByFile) {
   console.log(`${BOLD}${relative(ROOT, file)}${RESET}`);
   for (const m of messages) {
     console.log(
-      `  ${DIM}${m.line}:${m.column}${RESET}  ${RED}error${RESET}  ${m.message}`,
+      `  ${DIM}${m.line ?? 0}:${m.column ?? 0}${RESET}  ${RED}${m.ruleId === "lovable-local/valid-exam-tag" ? "invalid-tag" : "checker-error"}${RESET}  ${m.message}`,
     );
   }
   console.log();

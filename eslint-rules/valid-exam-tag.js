@@ -43,14 +43,18 @@ function levenshtein(a, b) {
 function closestTag(value) {
   let best = null;
   let bestDist = Infinity;
+  let unique = true;
   for (const tag of VALID_TAGS) {
     const d = levenshtein(value.toLowerCase(), tag);
     if (d < bestDist) {
       bestDist = d;
       best = tag;
+      unique = true;
+    } else if (d === bestDist) {
+      unique = false;
     }
   }
-  return { tag: best, distance: bestDist };
+  return { tag: best, distance: bestDist, unique };
 }
 
 function isStringLiteral(node) {
@@ -100,6 +104,8 @@ const rule = {
     schema: [],
     messages: {
       invalidTag:
+        "'{{value}}' is not a valid ExamTag. Valid tags: {{valid}}.",
+      closeTag:
         "'{{value}}' is not a valid ExamTag. Did you mean '{{suggestion}}'? Valid tags: {{valid}}.",
     },
   },
@@ -108,10 +114,9 @@ const rule = {
       Literal(node) {
         if (!isStringLiteral(node)) return;
         const value = node.value;
-        if (!value || value.length > 12) return;
         if (VALID_TAGS.includes(value)) return;
 
-        const { tag: suggestion, distance } = closestTag(value);
+        const { tag: suggestion, distance, unique } = closestTag(value);
         const key = contextKey(node);
         const inExamContext = key && EXAM_HINT_RE.test(key);
 
@@ -123,21 +128,21 @@ const rule = {
 
         // Within an exam context, only suggest a fix when there's a clearly
         // close match (distance ≤ 2). Otherwise just report invalid.
-        const showSuggestion = distance <= 2;
+        const showSuggestion = unique && distance <= 2;
 
         context.report({
           node,
-          messageId: "invalidTag",
+          messageId: showSuggestion ? "closeTag" : "invalidTag",
           data: {
             value,
             suggestion,
             valid: VALID_TAGS.join(", "),
           },
-          fix(fixer) {
+          ...(showSuggestion ? { fix(fixer) {
             const raw = node.raw ?? `"${value}"`;
             const quote = raw[0] === "'" ? "'" : '"';
             return fixer.replaceText(node, `${quote}${suggestion}${quote}`);
-          },
+          } } : {}),
         });
       },
     };

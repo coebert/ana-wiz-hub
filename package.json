@@ -130,7 +130,6 @@
     "@types/react-dom": "^18.3.7",
     "@types/react-simple-maps": "^3.0.6",
     "@vitejs/plugin-react-swc": "^3.11.0",
-    "ajv": "^6.12.6",
     "autoprefixer": "^10.4.21",
     "dotenv": "^17.4.2",
     "draco3dgltf": "^1.5.7",
@@ -165,7 +164,6 @@
     "minimatch": "^10.0.3",
     "glob": "^11.0.3",
     "serialize-javascript": "^7.0.6",
-    "ajv": "^8.17.1",
     "brace-expansion": "^5.0.5",
     "@babel/plugin-transform-modules-systemjs": "^7.26.0"
   }
