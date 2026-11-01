@@ -1,4 +1,4 @@
-/** Text-only anatomy: former mixed axial/craniocaudal artwork and all needle geometry withdrawn pending review. */
+/** Limited axial boundary schematic; former mixed-plane artwork and needle geometry remain withdrawn. */
 import { ParavertebralRelationships, pvsHighlights } from "./RelationshipSchematics";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
@@ -170,25 +170,39 @@ const ParavertebralSpaceDiagram = () => {
   const [selected, setSelected] = useState<RegionKey>("pvs-contents");
   const info = regions[selected];
   const [showLabels, setShowLabels] = useState(true);
+  const [showBoundaries, setShowBoundaries] = useState(true);
 
   return (
     <DiagramFigure
       id="paravertebral-space-diagram"
       title="Paravertebral space"
-      description="Paravertebral space: labelled teaching figure showing the structures, relationships and key values FRCA and FFICM candidates need to recognise and explain for this topic."
+      description="Conceptual thoracic paravertebral axial boundary schematic: medial body/disc/foramen, posterior superior costotransverse ligament and anterolateral parietal pleura. Not to scale; no procedural route or complete anatomical section."
     >
                   <div className="my-6 space-y-4">
         <div className="bg-muted/30 rounded-xl border border-border p-4">
           <DiagramToggleBar
-            title="Thoracic Paravertebral Space — Spatial Relationships"
+            title="Thoracic paravertebral boundary schematic"
             subtitle="Abstract axial boundaries; procedural stages are not depicted."
-            toggles={[{ label: "Labels", active: showLabels, onChange: () => setShowLabels(v => !v) }]}
+            toggles={[]}
           />
+          <div className="flex flex-wrap gap-2 mb-3">
+            <Button variant="outline" size="sm" aria-pressed={showBoundaries} onClick={() => setShowBoundaries(v => !v)}>Boundaries</Button>
+            <Button variant="outline" size="sm" aria-pressed={showLabels} onClick={() => setShowLabels(v => !v)}>Labels</Button>
+          </div>
   
         <div className="flex flex-col gap-4 items-start">
           <div className="w-full min-w-0 border-l-4 border-anatomy pl-4">
             <h3 className="text-sm font-semibold text-foreground">Thoracic paravertebral space — abstract axial boundary map</h3>
-            <ParavertebralRelationships selected={selected} onSelect={key => setSelected(key as RegionKey)} labels={showLabels} />
+            <div className="w-full max-w-3xl mx-auto">
+              <ParavertebralRelationships selected={selected} onSelect={key => setSelected(key as RegionKey)} labels={showLabels} boundaries={showBoundaries} />
+            </div>
+            <div className="grid gap-2 sm:grid-cols-2 my-3">
+              {(["pvs-contents", "vertebral-body", "disc-foramen", "superior-costotransverse", "parietal-pleura"] as RegionKey[]).map(key => (
+                <Button key={key} variant="outline" aria-pressed={selected === key} className="h-auto min-h-11 whitespace-normal text-left justify-start" onClick={() => setSelected(key)}>
+                  {key === "pvs-contents" ? "Compartment" : key === "vertebral-body" ? "Medial — body / disc" : key === "disc-foramen" ? "Medial — foramen" : key === "superior-costotransverse" ? "Posterior — superior costotransverse ligament" : "Anterolateral — parietal pleura"}
+                </Button>
+              ))}
+            </div>
             <p className="text-sm text-muted-foreground">The triangle represents a compartment, not a needle target. Superior and inferior continuity is out of plane. No needle route or patient-specific access is shown.</p>
             <InlineRef topicId="thoracic-anatomy" refLabel="WFSA ATOTW 376 boundaries" />
             <p className="text-sm text-muted-foreground mt-2">{PARAVERTEBRAL_SPATIAL}</p>
@@ -197,7 +211,7 @@ const ParavertebralSpaceDiagram = () => {
           </div>
           <div className="w-full min-w-0">
             <div className="p-4 rounded-lg border border-border animate-fade-in" key={selected}>
-              <p className="font-bold text-sm" style={{ color: info.color }}>{info.label}</p>
+              <p className="font-bold text-sm text-foreground">{info.label}</p>
               <p className="text-sm text-muted-foreground mt-1 leading-relaxed">{info.detail}</p>
               {!pvsHighlights[selected] && <p className="text-sm text-muted-foreground">Text-only detail: this structure is not illustrated in the abstract boundary map.</p>}
               <p className="text-xs mt-2 p-2 rounded bg-secondary/50 text-foreground leading-relaxed">
