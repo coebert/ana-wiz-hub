@@ -2,10 +2,9 @@ import { MechanismCascadeDiagram, CascadeStep, CascadeSource } from "@/component
 import { DiagramFigure } from "../_shared/DiagramFigure";
 
 const BJA_AP: CascadeSource = {
-  label: "BJA Educ 2018",
-  citation:
-    "Bezmarević M et al. Anaesthetic and intensive care management of acute pancreatitis. BJA Education. 2018;18(8):241–48.",
-  url: "https://doi.org/10.1016/j.bjae.2018.05.001",
+  label: "Cosen-Binker 2007",
+  citation: "Cosen-Binker LI, Gaisano HY. Recent insights into the cellular mechanisms of acute pancreatitis. Can J Gastroenterol. 2007;21(1):19–24.",
+  url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC2656626/",
 };
 
 const ATLANTA: CascadeSource = {
@@ -16,10 +15,15 @@ const ATLANTA: CascadeSource = {
 };
 
 const BSG: CascadeSource = {
-  label: "BSG 2024",
-  citation:
-    "British Society of Gastroenterology UK guidelines for the management of acute pancreatitis. Gut. 2024.",
-  url: "https://www.bsg.org.uk/clinical-resource/uk-guidelines-for-the-management-of-acute-pancreatitis/",
+  label: "WSES 2019",
+  citation: "Leppäniemi A et al. 2019 WSES guidelines for the management of severe acute pancreatitis. World J Emerg Surg. 2019;14:27.",
+  url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC6567462/",
+};
+
+const NECROSIS: CascadeSource = {
+  label: "AGA necrosis 2020",
+  citation: "Baron TH, DiMaio CJ, Wang AY, Morgan KA. Management of Pancreatic Necrosis. Gastroenterology. 2020;158:67–75.",
+  url: "https://doi.org/10.1053/j.gastro.2019.07.064",
 };
 
 const TRYPSIN: CascadeSource = {
@@ -49,7 +53,7 @@ const steps: CascadeStep[] = [
     detail: "Gallstone, alcohol, ERCP",
     title: "Initial insult",
     body:
-      "Gallstone obstruction at the ampulla, ethanol (direct toxicity + sphincter spasm), hypertriglyceridaemia, post-ERCP, drugs (azathioprine, valproate) or trauma. The shared final pathway is intra-acinar activation of digestive enzymes that should only be activated in the duodenum.",
+      "Gallstone obstruction at the ampulla, ethanol (direct toxicity + sphincter spasm), hypertriglyceridaemia, post-ERCP, drugs (azathioprine, valproate) or trauma. Premature enzyme activation is one initiating mechanism; inflammatory, oxidative and microcirculatory injury also contribute.",
     sources: [BJA_AP, BSG],
   },
   {
@@ -74,7 +78,7 @@ const steps: CascadeStep[] = [
     title: "Acute interstitial oedema",
     body:
       "Damaged acinar cells release IL-1, IL-6, IL-8, TNF-α and platelet-activating factor. Neutrophils infiltrate, capillary leak produces interstitial oedema. Most cases stop here — mild interstitial oedematous pancreatitis (80% of cases, mortality < 1%).",
-    sources: [ATLANTA],
+    sources: [ATLANTA, BJA_AP],
   },
   {
     node: "SIRS",
@@ -89,8 +93,8 @@ const steps: CascadeStep[] = [
     detail: "Walled-off (4+ wks)",
     title: "Necrotising pancreatitis",
     body:
-      "In ~ 20% of cases, microcirculatory failure causes parenchymal necrosis (CT shows non-enhancing pancreas). Necrosis evolves over 4 weeks into walled-off necrosis. Sterile necrosis is managed conservatively; infected necrosis (gas on CT, positive FNA) needs step-up drainage / endoscopic necrosectomy.",
-    sources: [STEP_UP, ATLANTA],
+      "In ~ 20% of cases, microcirculatory failure causes parenchymal necrosis (CT shows non-enhancing pancreas). Collections may encapsulate after about 4 weeks; timing alone does not prove a wall. Treat proven or strongly suspected infected necrosis without awaiting FNA; gas can also reflect fistula/intervention. Urgent source-control assessment: deterioration may need drainage within 2 weeks, whereas debridement is optimally delayed about 4 weeks when feasible.",
+    sources: [STEP_UP, ATLANTA, NECROSIS],
   },
   {
     node: "Multi-organ failure",
