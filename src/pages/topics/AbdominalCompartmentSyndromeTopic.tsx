@@ -36,7 +36,7 @@ const workedExamples: WorkedExample[] = [
     ),
     working: (
       <>
-        Sustained IAP > 20 mmHg with new organ dysfunction (oliguric AKI, refractory shock, ventilatory failure)
+        Sustained IAP &gt; 20 mmHg with new organ dysfunction (oliguric AKI, refractory shock, ventilatory failure)
         = ACS (WSACS 2013). This is primary ACS from the intra-abdominal pathology and aggressive resuscitation.
         This is already overt ACS: obtain urgent surgical assessment and decompression planning while appropriate temporising measures are started; do not wait a prescribed number of hours.
       </>
@@ -45,7 +45,7 @@ const workedExamples: WorkedExample[] = [
       <>
         Deepen sedation, give a trial of NMB, NG decompression and rectal tube, stop maintenance fluid, give 20 % HAS
         + furosemide or RRT if a negative balance is needed (WSACS 2013 made no recommendation on these, so this is pragmatic practice), review head-of-bed angle. Reassess rapidly with the surgical team. Sustained IAP
-        > 20 mmHg with new organ failure already meets ACS; WSACS recommends <strong>decompressive laparotomy</strong> and leave open abdomen with
+        &gt; 20 mmHg with new organ failure already meets ACS; WSACS recommends <strong>decompressive laparotomy</strong> and leave open abdomen with
         a negative-pressure temporary closure (e.g. ABThera).
       </>
     ),
@@ -93,7 +93,7 @@ const workedExamples: WorkedExample[] = [
     answer: (
       <>
         Repeat the measurement supine, at end-expiration, with abdominal muscles relaxed, transducer at the mid-axillary line,
-        ≤ 25 mL saline instilled. If sustained ≥ 12 mmHg → IAH; > 20 mmHg + new organ failure → ACS. Trend rather
+        ≤ 25 mL saline instilled. If sustained ≥ 12 mmHg → IAH; &gt; 20 mmHg + new organ failure → ACS. Trend rather
         than single values, using a local protocol in at-risk patients (WSACS recommends protocolised monitoring).
       </>
     ),
