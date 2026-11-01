@@ -522,7 +522,7 @@ const BrachialPlexusDiagram = () => {
               </div>
               <div>
                 <p className="font-semibold text-destructive mb-0.5">Risks</p>
-                <p className="text-muted-foreground">{activeBlock.risks}{activeBlock.name.includes("Interscalene") && <InlineRef topicId="brachial-plexus" refLabel="Riazi 2008" />}</p>
+                <p className="text-muted-foreground">{activeBlock.risks}{activeBlock.id === "interscalene" && <InlineRef topicId="brachial-plexus" refLabel="Riazi 2008" />}</p>
               </div>
             </div>
           </div>

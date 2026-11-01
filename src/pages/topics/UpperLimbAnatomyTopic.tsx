@@ -1,4 +1,5 @@
 import { INTERSCALENE_PHRENIC, ALLEN_LIMITATIONS } from "@/lib/anatomy-context-teaching";
+import { InlineRef } from "@/components/references/InlineRef";
 import { TopicTemplate } from "@/components/topic/TopicTemplate";
 import { TopicFaqs } from "@/components/topic/TopicFaqs";
 
