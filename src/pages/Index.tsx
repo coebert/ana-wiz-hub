@@ -13,6 +13,7 @@ import { Button } from "@/components/ui/button";
 import { SiteFooter } from "@/components/layout/SiteFooter";
 import { PageContainer } from "@/components/layout/PageContainer";
 import { PageSection } from "@/components/layout/PageSection";
+import { isNativeApp } from "@/lib/native-platform";
 
 
 /**
@@ -47,6 +48,7 @@ const sections: {
 const SITE_URL = "https://anaesthesiacore.app";
 
 const Index = () => {
+  const native = isNativeApp();
   const { getSectionProgress, getOverallProgress } = useProgress();
   const { matchesFilter } = useExamFilter();
   const overall = getOverallProgress();
@@ -56,7 +58,7 @@ const Index = () => {
   const pageTitle = isRevise
     ? "Revise FRCA & FFICM — AnaesthesiaCore"
     : "AnaesthesiaCore – FRCA & FFICM Revision";
-  const pageDescription = isRevise
+  const pageDescription = native ? 'AnaesthesiaCore: source-linked notes, diagrams and quizzes for FRCA Primary, Final and FFICM.' : isRevise
     ? "Revise FRCA Primary, Final and FFICM topics with notes, diagrams, quizzes and viva practice mapped to the curriculum."
     : "FRCA Primary, Final and FFICM revision: structured notes, diagrams, quizzes, AI podcasts and an AI viva examiner.";
 
@@ -81,13 +83,13 @@ const Index = () => {
         <meta name="twitter:description" content={pageDescription} />
       </Helmet>
 
-      <div className="container mx-auto px-4 pt-3">
+      {!native && <div className="container mx-auto px-4 pt-3">
         <DonationNote className="text-xs" />
-      </div>
+      </div>}
 
       {/* Hero — split editorial layout */}
       <section className="relative border-b border-border bg-surface">
-        <Link
+        {!native && <Link
           to="/"
           aria-label="Back to home page"
           className="absolute z-20 left-2 top-2 md:left-4 md:top-4 inline-flex items-center gap-1.5 h-9 px-2.5 rounded-md text-xs text-muted-foreground hover:text-foreground hover:bg-muted focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring transition-colors md:hidden"
@@ -98,7 +100,7 @@ const Index = () => {
         >
           <ArrowLeft className="h-4 w-4" aria-hidden />
           <span>Home</span>
-        </Link>
+        </Link>}
 
         <PageContainer className="py-10 md:py-16">
           <div className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_20rem] lg:gap-12 items-start">
@@ -109,11 +111,10 @@ const Index = () => {
                 FRCA Primary · FRCA Final · FFICM
               </p>
               <h1 className="display text-foreground">
-                Curriculum Revision Hub — FRCA &amp; FFICM
+                {native ? 'AnaesthesiaCore' : 'Curriculum Revision Hub — FRCA & FFICM'}
               </h1>
               <p className="lead mt-4 text-foreground/75">
-                A structured reference for anaesthesia and intensive care exams — dense notes,
-                interactive diagrams, quizzes and viva practice, mapped to the RCoA and FICM curricula.
+                {native ? 'Source-linked notes, interactive diagrams and quizzes for FRCA Primary, Final and FFICM.' : 'A structured reference for anaesthesia and intensive care exams — dense notes, interactive diagrams, quizzes and viva practice, mapped to the RCoA and FICM curricula.'}
               </p>
               <div className="mt-6 flex flex-wrap gap-3">
                 <Button asChild variant="cta" size="lg">
@@ -122,12 +123,12 @@ const Index = () => {
                     <ArrowRight className="h-4 w-4" />
                   </Link>
                 </Button>
-                <Button asChild variant="outline" size="lg">
+                {!native && <Button asChild variant="outline" size="lg">
                   <Link to="/viva">
                     <Mic className="h-4 w-4" />
                     Take a viva
                   </Link>
-                </Button>
+                </Button>}
               </div>
             </div>
 
@@ -247,7 +248,7 @@ const Index = () => {
         <RecentExpansions />
       </PageSection>
 
-      <SupportSection />
+      {!native && <SupportSection />}
 
       <SiteFooter />
 
