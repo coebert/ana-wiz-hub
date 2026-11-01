@@ -57,7 +57,7 @@ const BrachialPlexusUltrasoundDiagram = () => {
         <div className="bg-muted/30 rounded-xl border border-border p-4">
           <DiagramToggleBar
             title="Ultrasound anatomy — brachial plexus blocks"
-            subtitle="Select a block level to see the sonographic appearance and key landmarks"
+            subtitle="Block-level anatomy and landmarks"
             toggles={[]}
           />
   

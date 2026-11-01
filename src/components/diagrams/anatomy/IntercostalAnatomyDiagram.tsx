@@ -46,7 +46,7 @@ const IntercostalAnatomyDiagram = () => {
               <div className="my-6 space-y-4">
         <div className="bg-muted/30 rounded-xl border border-border p-4">
           <DiagramToggleBar
-            title="Intercostal space — cross-section"
+            title="Intercostal space — spatial relationships"
             subtitle="Tap any layer to see its anatomy and clinical relevance for chest procedures"
             toggles={[]}
           />

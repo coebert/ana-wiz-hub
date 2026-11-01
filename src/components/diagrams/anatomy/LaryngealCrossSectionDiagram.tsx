@@ -181,7 +181,7 @@ const LaryngealCrossSectionDiagram = () => {
   return (
     <div className="border border-border rounded-lg p-4 mb-6">
       <DiagramToggleBar
-        title="Laryngeal Anatomy — Coronal Cross-Section"
+        title="Laryngeal Anatomy"
         subtitle="Tap any structure to see its anatomy and anaesthetic relevance"
         toggles={[
           { label: "Sutures", active: showSutures, onChange: () => setShowSutures(v => !v) },
