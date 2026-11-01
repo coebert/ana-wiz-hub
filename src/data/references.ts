@@ -407,6 +407,7 @@ export const topicReferences: Record<string, Reference[]> = {
     { label: "Physiol Meas 2023 (Skin pigmentation)", citation: "Okunlola OE, Lipnick MS, Batchelder PB, et al. A review of the effect of skin pigmentation on pulse oximeter accuracy. Physiol Meas. 2023;44(5).", url: "https://doi.org/10.1088/1361-6579/acd51a" },
   ],
   "clinical-measurement": [
+    { label: "Saugel 2020 Arterial Measurement", citation: "Saugel B, et al. How to measure blood pressure using an arterial catheter: a systematic 5-step approach. Crit Care. 2020;24:172.", url: "https://doi.org/10.1186/s13054-020-02859-w" },
     { label: "Cross & Plunkett Ch.16", citation: "Cross ME, Plunkett EVE. Physics, Pharmacology and Physiology for Anaesthetists. 2nd ed. Chapter 16: Clinical Measurement." },
     { label: "Middleton Ch.18", citation: "Middleton B, Phillips J, Thomas R. Physics in Anaesthesia. 2nd ed. Chapter 18: Clinical Measurement." },
     { label: "BJA Educ 2005", citation: "Magee P. Arterial waveform analysis. BJA Education. 2005;5(4):132-135.", url: "https://doi.org/10.1093/bjaceaccp/mki036" },
@@ -433,6 +434,7 @@ export const topicReferences: Record<string, Reference[]> = {
     { label: "Paal 2022 Accidental Hypothermia", citation: "Paal P, Pasquier M, Darocha T, et al. Accidental hypothermia: 2021 update. Int J Environ Res Public Health. 2022;19(1):501.", url: "https://doi.org/10.3390/ijerph19010501" },
   ],
   "humidity-gas-sampling": [
+    { label: "Masimo Mainstream Multigas", citation: "Masimo. Infrared spectrometry white paper, PLM-14382A. Mainstream IRMA AX+ multigas versus CO₂-only analysers; device-specific capabilities.", url: "https://www.masimo.com/siteassets/us/documents/pdf/plm-14382a-whitepaper-masimo-infrared-spectrometry-global.pdf" },
     { label: "Al-Shaikh & Stacey Ch.8", citation: "Al-Shaikh B, Stacey S. Essentials of Anaesthetic Equipment. 5th ed. Chapter 8: Humidification." },
     { label: "Cross & Plunkett Ch.9", citation: "Cross ME, Plunkett EVE. Physics, Pharmacology and Physiology for Anaesthetists. 2nd ed. Chapter 9: Humidity and Gas Sampling." },
     { label: "BJA Educ 2007", citation: "Wilkes AR. Humidification: its importance and delivery. BJA Education. 2006;6(6):259-262.", url: "https://doi.org/10.1093/bjaceaccp/mkl053" },
@@ -473,6 +475,8 @@ export const topicReferences: Record<string, Reference[]> = {
     { label: "Massey 2016 Microcirculation", citation: "Massey MJ, Shapiro NI. A guide to human in vivo microcirculatory flow image analysis. Crit Care. 2016;20:35.", url: "https://doi.org/10.1186/s13054-016-1213-9" },
   ],
   "mri-physics": [
+    { label: "UMich MRI Frequency", citation: "University of Michigan SOCR. BPAD1 Chapter 4: Magnetic resonance imaging. Angular and cyclic Larmor frequency conventions.", url: "https://socr.umich.edu/BPAD1/BPAD1_notes/BPAD1_Chap04_MRI.html" },
+    { label: "T2 Fat Fast Spin Echo 1992", citation: "Why does fat have high signal intensity in fast spin-echo imaging? Radiology. 1992. PubMed PMID 1392246.", url: "https://pubmed.ncbi.nlm.nih.gov/1392246/", excerpt: "Fat, however, has been observed to have anomalously high signal intensity on FSE images." },
     { label: "BJA Educ 2019", citation: "Reddy U, Chowdhury T, Bhatt H. MRI for the anaesthetist. BJA Education. 2019;19(8):235-241.", url: "https://doi.org/10.1016/j.bjae.2019.04.004" },
     { label: "Assoc Anaesth 2024 (MRI)", citation: "Wilson SR, Shinde S, Appleby I, et al. Guidelines for the safe provision of anaesthesia in magnetic resonance units 2024. Association of Anaesthetists. Anaesthesia. 2024.", url: "https://anaesthetists.org/Home/Resources-publications/Guidelines/Safe-provision-of-anaesthesia-in-magnetic-resonance-units-2024" },
     { label: "RCR GBCA", citation: "The Royal College of Radiologists. Gadolinium-based contrast agent (GBCA) guidance. London: RCR. (Risk-stratifies GBCAs; macrocyclic 'Group II' agents carry a very low NSF risk and may be used with caution in renal impairment.)", url: "https://www.rcr.ac.uk/publication/gadolinium-based-contrast-agent-gbca-guidance" },
@@ -1075,6 +1079,9 @@ export const topicReferences: Record<string, Reference[]> = {
     { label: "BJA Educ Liver Physiology 2016", citation: "Koea J. The liver: physiology and pathology. BJA Education. 2016;16(10):337-340.", url: "https://doi.org/10.1093/bjaed/mkw011" },
   ],
   "starling-forces": [
+    { label: "Starling Extension 2020", citation: "Michel CC, Woodcock TE, Curry FE. Understanding and extending the Starling principle. Acta Anaesthesiol Scand. 2020. doi:10.1111/aas.13603.", url: "https://onlinelibrary.wiley.com/doi/10.1111/aas.13603" },
+    { label: "Jacob ANP Hearts 2013", citation: "Jacob M, et al. Natriuretic peptides and endothelial glycocalyx effects in isolated perfused guinea-pig hearts. PubMed PMID 23563917. Experimental model, not a clinical bolus rule.", url: "https://pubmed.ncbi.nlm.nih.gov/23563917/" },
+    { label: "Chappell Volume Loading 2014", citation: "Chappell D, et al. Hypervolemia increases release of atrial natriuretic peptide and shedding of the endothelial glycocalyx. Crit Care. 2014;18:538. Small preoperative HES volume-loading study.", url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC4201669/" },
     { label: "BJA Educ Fluid Balance 2017", citation: "Tatara T. Physiology of fluid balance and volume kinetics. BJA Education. 2017;17(11):353-358. Revised Starling principle: filtration occurs along the whole capillary length with return via lymphatics rather than venular reabsorption.", url: "https://www.bjaed.org/article/S2058-5349(17)30095-2/fulltext" },
     { label: "Levick & Michel 2010", citation: "Levick JR, Michel CC. Microvascular fluid exchange and the revised Starling principle. Cardiovasc Res. 2010;87(2):198-210. Total safety factor against oedema ≈ 17 mmHg from rising interstitial pressure, lymphatic recruitment and falling subglycocalyx oncotic pressure.", url: "https://doi.org/10.1093/cvr/cvq062" },
     { label: "Woodcock & Woodcock 2012", citation: "Woodcock TE, Woodcock TM. Revised Starling equation and the glycocalyx model of transvascular fluid exchange. Br J Anaesth. 2012;108(3):384-394. Glycocalyx thickness 0.5–1 µm in capillaries, up to 4 µm in larger arteries.", url: "https://doi.org/10.1093/bja/aer515" },
