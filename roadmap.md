@@ -1,5 +1,10 @@
 # Admin metrics audit fixes
 
+## Clinical C3 — 1 November 2026
+- [ ] Reconcile current CL-01/17/19/20/21/22/23/24/28/29/30/31/32/33/34/54/85 and ROOT-19 locators, primary sources and matching static copies.
+- [ ] Inspect scoped saved claims; any changes require ID/exact-before guards and readback; preserve withheld audio.
+- [ ] Refresh affected generated search/FAQ copies, run focused clinical/citation checks and inspect learner pathways; record exact outcomes and residuals without publication.
+
 ## Clinical audit batch 4 — 30 October 2026
 - [ ] Hold exact ROOT-01/02/05 faulty podcast rows, preserve originals, explain hold and link current sources; only release with corrected script and matching audio.
 - [ ] Apply CL-11–18 and static GBS/MIP/DNC corrections including matching quizzes/FAQs/cases.
