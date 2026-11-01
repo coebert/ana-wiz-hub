@@ -39,7 +39,7 @@ describe("SCI048 source-defined ketamine graph",()=>{
     expect(centre).toBe(record.stereocentre);
     const cl=record.atoms.find(a=>a.element==='Cl');if(!cl)throw new Error('Missing chlorine');
     expect(neighbour(cl.id)).toHaveLength(1);expect(neighbour(cl.id)).not.toContain(centre);
-    const aryl=neighbour(centre).find(id=>record.bonds.some(b=>b.order===2&&(b.fromAtom===id||b.toAtom===id)) && id!==8);
+    const aryl=neighbour(centre).find(id=>record.bonds.some(b=>b.order===2&&(b.fromAtom===id||b.toAtom===id)) && !neighbour(id).some(n=>element(n)==='O'));
     expect(aryl).toBeDefined();if(aryl===undefined)return;
     expect(neighbour(aryl)).toContain(neighbour(cl.id)[0]); // ortho, not direct stereocentre–Cl
     // Two closed six-membered rings, one carbonyl-bearing and one alternating phenyl.
