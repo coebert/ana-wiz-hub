@@ -1,5 +1,10 @@
 # Admin metrics audit fixes
 
+## Lookup presentation and exact principle debt — 1 November 2026
+- [ ] Hide calculation controls for lookup-only selection, preserve notes/links and verify switching actual page states.
+- [ ] Use executed labels and retire only independently reviewed adrenal snapshot line; retain other historical debt.
+- [ ] Combined focused/governance/required-citations, desktop/mobile and one final full-suite verification; report warnings and manual-validation limitation.
+
 ## D30 medicine reference access — 1 November 2026
 - [x] Exposed references on both medicine views; safe URLs, provenance preservation, accurate search-tool labels and desktop/mobile keyboard access checked.
 - [x] Independently opened source candidates;56scoped appends with exact guards/readback,2coordinated root records preserved; per-record evidence/counts and exact-before differences in docs/d30/. Not66completed or208certified.
