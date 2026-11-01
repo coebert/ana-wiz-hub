@@ -2,6 +2,7 @@ import { useState, useMemo } from "react";
 import { DiagramFigure } from "../_shared/DiagramFigure";
 import { Button } from "@/components/ui/button";
 import { boundedDecimal as parseNum, osmolarSolute, osmolarUnitMaximum, osmolarGapRaised } from "@/lib/science-input";
+import { InlineRef } from "@/components/references/InlineRef";
 import { RotateCcw } from "lucide-react";
 
 /**
@@ -167,7 +168,7 @@ const OsmolarGapCalculator = () => {
         </div>
 
         {!result && <p role="status" className="text-sm text-destructive">Enter valid values within the displayed ranges; no result is calculated from invalid inputs.</p>}
-        <p className="text-xs text-muted-foreground mb-3">Entry ceilings are arithmetic safeguards, not physiological reference intervals; glucose and urea are validated in mmol/L before unit display. A unit change converts valid entries and clears invalid entries. Teaching estimate: ethanol uses mg/dL ÷ 4.6 (ideal molar contribution). Empirical laboratory formulas and reference intervals differ. AG comparisons use an illustrative Na-only threshold, not a universal range.</p>
+        <p className="text-xs text-muted-foreground mb-3">Entry ceilings are arithmetic safeguards, not physiological reference intervals; glucose and urea are validated in mmol/L before unit display. A unit change converts valid entries and clears invalid entries. Teaching estimate: ethanol uses mg/dL ÷ 4.6 (ideal molar contribution). Empirical laboratory formulas and reference intervals differ. AG comparisons use an illustrative Na-only threshold, not a universal range.<InlineRef topicId="acid-base" refLabel="JBDS Front Door 2023 osmolality" /></p>
         {result && (
           <>
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 mb-3 text-xs">

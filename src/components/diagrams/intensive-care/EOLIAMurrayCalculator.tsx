@@ -114,7 +114,7 @@ const EOLIAMurrayCalculator = () => {
             <li>PaO₂/FiO₂ &lt;50 mmHg for &gt;3 h, OR &lt;80 mmHg for &gt;6 h.</li>
             <li>OR pH &lt;7.25 with PaCO₂ ≥60 mmHg for &gt;6 h, respiratory rate increased to 35/min, with ventilator settings adjusted to maintain plateau pressure ≤32 cmH₂O.</li>
             <li>Despite trial-defined optimisation: FiO₂ ≥0.80, tidal volume 6 mL/kg predicted body weight and PEEP ≥10 cmH₂O. Prone positioning and neuromuscular blockade were encouraged before randomisation, not a mandatory waiting period for a centre discussion.</li>
-            <li>Other inclusion/exclusion criteria applied, including exclusion for mechanical ventilation ≥7 days. Murray score was not a fourth EOLIA criterion.<InlineRef topicId="ards" refLabel="EOLIA 2018" /></li>
+            <li>Other inclusion/exclusion criteria applied, including exclusion for mechanical ventilation ≥7 days. Murray score was not a fourth EOLIA criterion.<InlineRef topicId="ards" refLabel="EOLIA 2018" /><InlineRef topicId="ards" refLabel="EOLIA 2018 methods" /></li>
           </ul>
         </section>
         {/* Trend mini-chart */}

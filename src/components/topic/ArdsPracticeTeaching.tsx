@@ -58,7 +58,7 @@ export function ArdsPracticeTeaching() {
     <h3 className="text-lg font-semibold text-foreground">Bedside checklist: the first 24 hours</h3>
     <ol className="list-decimal pl-5 space-y-1">
       <li>Measure height. Calculate PBW and start at 6 mL/kg PBW, never actual weight.<R label="ESICM ARDS 2023 tidal volume" /></li>
-      <li>Do inspiratory and expiratory holds. Keep plateau pressure ≤30 cmH₂O and track driving pressure (plateau minus PEEP).</li>
+      <li>Do inspiratory and expiratory holds. Keep plateau pressure ≤30 cmH₂O and track static driving pressure (plateau minus total PEEP, including intrinsic PEEP, assessed passively).</li>
       <li>Set PEEP using a PEEP/FiO₂ table or an individual assessment; avoid prolonged recruitment manoeuvres.<R label="ATS ARDS 2024 PEEP" /></li>
       <li>Accept SpO₂ 88–95% and permissive hypercapnia if pH tolerates it.</li>
       <li>After stabilisation, if P/F is still &lt;150, prone for at least 16 h; PROSEVA cut 28-day mortality from 32.8% to 16.0%.<R label="ESICM ARDS 2023 prone" /><R label="PROSEVA 2013 mortality" /></li>

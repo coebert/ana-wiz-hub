@@ -3453,6 +3453,15 @@ for (const id of ["ards", "ecmo"]) {
   if (primary && !topicReferences[id].some(r => r.label === primary.label)) topicReferences[id].push({ ...primary, excerpt: undefined, reviewNote: "Full trial methods define durations and ventilator conditions; not instantaneous patient candidacy." });
 }
 const scienceS1Amato = Object.values(topicReferences).flat().find(r => r.label === "Amato 2015 driving pressure");
-if (scienceS1Amato && !topicReferences["ards"].some(r => r.label === scienceS1Amato.label)) topicReferences["ards"].push(scienceS1Amato);
+for (const id of ["ards", "lung-mechanics", "mechanical-ventilation"]) if (scienceS1Amato && !topicReferences[id].some(r => r.label === scienceS1Amato.label)) topicReferences[id].push(scienceS1Amato);
 const scienceS1Map = topicReferences["sepsis"].find(r => r.label === "SSC 2026 MAP");
 if (scienceS1Map && !topicReferences["circulatory-failure"].some(r => r.label === scienceS1Map.label)) topicReferences["circulatory-failure"].push(scienceS1Map);
+
+// Exact EOLIA methods are a scoped quotation, not an excerpt invented from the authored correction.
+const scienceS1EoliaMethods: Reference = {
+  label: "EOLIA 2018 methods", citation: "Combes A, et al. Extracorporeal Membrane Oxygenation for Severe Acute Respiratory Distress Syndrome. N Engl J Med. 2018;378:1965–1975. Methods, p1966.", url: "https://doi.org/10.1056/NEJMoa1800385",
+  excerpt: "with the respiratory rate increased to 35 breaths per minute and mechanical-ventilation settings adjusted to keep a plateau pressure of ≤32 cm of water) despite ventilator optimization (defined as a fraction of inspired oxygen [FIO2] of ≥0.80, a tidal volume of 6 ml per kilogram of predicted body weight, and a positive end-expiratory pressure [PEEP] of ≥10 cm of water).",
+  reviewNote: "Quotation transcribed from the full primary PDF methods; the preceding clause specifies pH<7.25, PaCO₂≥60 and >6h. Not an automatic eligibility engine."
+};
+for (const id of ["ards", "ecmo"]) topicReferences[id].push(scienceS1EoliaMethods);
+topicReferences["acid-base"].push({ label: "JBDS Front Door 2023 osmolality", citation: "Joint British Diabetes Societies for Inpatient Care. Diabetes at the Front Door. Revised June 2023. Hyperglycaemia assessment, p10.", url: "https://www.diabetes.org.uk/sites/default/files/2023-06/JBDS%2016%20Diabetes%20at%20the%20Front%20Door%20Guideline%20qr%20code.pdf", excerpt: "the plasma osmolality should be calculated using this equation: 2 x serum sodium + serum glucose + serum urea (all in mmol/L).", reviewNote: "Supports canonical mmol/L arithmetic and inclusion of hyperglycaemia, not a universal diagnostic osmolar-gap range or the calculator's entry ceilings." });
