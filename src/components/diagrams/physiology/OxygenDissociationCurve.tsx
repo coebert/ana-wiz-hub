@@ -67,7 +67,7 @@ export const OxygenDissociationCurve = ({ showShifts = false }: CurveProps) => {
 
   // SVG dimensions
   const svgW = 460, svgH = 340;
-  const padL = 55, padB = 44, padR = 50, padT = 15;
+  const padL = 55, padB = 62, padR = 50, padT = 15;
   const plotW = svgW - padL - padR;
   const plotH = svgH - padT - padB;
 
@@ -208,7 +208,7 @@ export const OxygenDissociationCurve = ({ showShifts = false }: CurveProps) => {
               </text>
             );
           })}
-          <text x={svgW / 2} y={svgH - padB + 14} textAnchor="middle" fontSize="10" fill="hsl(var(--muted-foreground))" fontWeight="600">PaO₂ (mmHg)</text>
+          <text x={svgW / 2} y={svgH - padB + 39} textAnchor="middle" fontSize="10" fill="hsl(var(--muted-foreground))" fontWeight="600">PaO₂ (mmHg)</text>
           <text x={svgW / 2} y={svgH - 2} textAnchor="middle" fontSize="8" fill="hsl(var(--muted-foreground))" opacity="0.6">PaO₂ (kPa)</text>
           <text x={12} y={padT + plotH / 2} textAnchor="middle" fontSize="10" fill="hsl(var(--muted-foreground))" fontWeight="600"
             transform={`rotate(-90, 12, ${padT + plotH / 2})`}>
@@ -364,7 +364,7 @@ export const OxygenDissociationCurve = ({ showShifts = false }: CurveProps) => {
             </text>
           );
         })}
-        <text x={(padL + svgW - padR) / 2} y={svgH - padB + 14} textAnchor="middle" fontSize="10" fill="hsl(var(--muted-foreground))" fontWeight="600">PaO₂ (mmHg)</text>
+        <text x={(padL + svgW - padR) / 2} y={svgH - padB + 39} textAnchor="middle" fontSize="10" fill="hsl(var(--muted-foreground))" fontWeight="600">PaO₂ (mmHg)</text>
         <text x={(padL + svgW - padR) / 2} y={svgH - 2} textAnchor="middle" fontSize="8" fill="hsl(var(--muted-foreground))" opacity="0.6">PaO₂ (kPa)</text>
         <text x={12} y={padT + plotH / 2} textAnchor="middle" fontSize="10" fill="hsl(var(--muted-foreground))" fontWeight="600"
           transform={`rotate(-90, 12, ${padT + plotH / 2})`}>

@@ -105,8 +105,8 @@ export const UrineConcentrationSimulator = () => {
   
         <div className="grid grid-cols-1 lg:grid-cols-5 gap-4">
           {/* Plot */}
-          <div className="lg:col-span-3 rounded-lg border border-border bg-card p-3 overflow-x-auto">
-            <svg viewBox={`0 0 ${W} ${H}`} className="w-full min-w-[520px]" role="img" aria-label="Tubular fluid osmolality">
+          <div className="lg:col-span-3 rounded-lg border border-border bg-card p-3 overflow-x-auto self-start">
+            <svg viewBox={`0 0 ${W} ${H}`} className="w-full h-auto" role="img" aria-label="Tubular fluid osmolality">
               {/* Y axis grid + labels */}
               {[0, 300, 600, 900, 1200].map((osm) => (
                 <g key={osm}>
