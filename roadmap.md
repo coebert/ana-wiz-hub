@@ -1,9 +1,10 @@
 # Admin metrics audit fixes
 
 ## CL53/ROOT02 paediatric and proposed CL86 donation residuals — 1 November 2026
-- [ ] Reconcile current repeated paediatric DNC claims with the 2025 Appendix 2 summary; retain full preconditions and corrected death timing/apnoea thresholds.
-- [ ] Retire active superseded citation support and align dated donor proportions, conditional fWIT arithmetic and protocol-scoped NRP/organ discussion with opened primary sources.
-- [ ] Run combined focused citation/quiz/source checks and desktop/mobile topic/popover verification; record exact results and validation limitations. No database/backend/audio/publication work or whole-topic certification.
+- [x] Reconciled current repeated paediatric DNC claims with the 2025 Appendix 2 summary; retained full preconditions and corrected death timing/apnoea thresholds.
+- [x] Retired active superseded citation support; aligned dated donor proportions, conditional fWIT arithmetic and protocol-scoped NRP/organ discussion with opened primary sources.
+- [x] Combined focused checks40pass/1stale required-citation failure; four actual topic/viewport browser cases passed with source popovers/FAQ/example checked. Evidence: docs/paediatric-dnc-dcd-residuals-2026-11-01.md. No database/backend/audio/publication or certification.
+- [ ] Separate root reconciliation of required-citation finding79f406f2-1a0b-4393-83f0-da35bcbb6487 still demanding AoMRC2008; no stale baseline/database rewrite authorised. Publisher summary PDF403 and explicit manual build/typecheck prohibited; official BTS full guideline and automatic preview build checked instead.
 
 ## Lookup presentation and exact principle debt — 1 November 2026
 - [ ] Hide calculation controls for lookup-only selection, preserve notes/links and verify switching actual page states.

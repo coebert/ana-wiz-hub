@@ -14,6 +14,8 @@ import { InlineRef } from "@/components/references/InlineRef";
 import { TopicTableOfContents } from "@/components/layout/TopicTableOfContents";
 import { paediatricEmergenciesQuestions } from "@/data/quizzes";
 
+export const PAEDIATRIC_DNC_2025_SUMMARY = "UK AoMRC 2025/RCPCH: DNC is not established below 37 weeks corrected gestation. From 37 weeks to under 2 years corrected age, wait at least 24 hours after the last observed brainstem reflex or spontaneous breath and allow at least 24 hours between test sets. Ancillary investigations are not recommended to establish DNC in this age group. Apply the complete 2025 Code with paediatric specialist expertise.";
+
 const tocItems = [
   { id: "wetflag", label: "WETFLAG & Age-Specific Vital Signs", group: "Foundations" },
   { id: "physiology", label: "Age-Specific Physiology", group: "Foundations" },
@@ -267,7 +269,7 @@ const PaediatricIcuTopic = () => {
         { text: "Propofol is contraindicated by its product licence for ICU sedation at or below 16 years — use it for induction and short procedures only, never as a PICU sedation infusion", cites: ["MHRA Propofol"] },
         { text: "Isotonic maintenance fluids only — hypotonic fluids can cause fatal hyponatraemia in children", cites: ["NICE NG29"] },
         { text: "Paediatric cardiac arrest is usually respiratory in origin — 5 rescue breaths first, defibrillation 4 J/kg", cites: ["Resuscitation Council UK 2021"] },
-        { text: "Death by neurological criteria can be diagnosed from 37 weeks corrected gestation; between term and 2 months it is possible but requires the separate RCPCH infant criteria and longer observation — it is not an absolute bar", cites: ["RCPCH DNC Infants 2015"] },
+        { text: PAEDIATRIC_DNC_2025_SUMMARY, cites: ["AoMRC 2025 Paediatric DNC"] },
         { text: "FEAST trial: fluid boluses increased mortality in resource-limited settings — does NOT change UK practice", cites: ["RCPCH 2019"] },
         { text: "Maintenance 4-2-1 (100/50/20 mL/kg/day) but restrict to 50–70% in ventilated or brain-injured children — cumulative positive balance >10% body weight tracks with mortality", cites: ["NICE NG29"] },
         { text: "Neonates need larger mg/kg loading doses (TBW 75–80%, ECF 40–45%) yet lower maintenance doses — immature glucuronidation, low protein binding and GFR 20–30% of adult", cites: ["BJA Educ 2010"] },
@@ -325,13 +327,13 @@ const PaediatricIcuTopic = () => {
         {
           question: "Which statement about brainstem death testing in children is correct?",
           options: [
-            "It can be performed in any infant once apnoea is documented",
-            "It is not applicable below 37 weeks corrected gestational age, and additional caution is required under 2 months",
-            "It requires EEG confirmation in all children",
-            "The same hypothermia thresholds as adults apply without modification",
+            "Testing below 37 weeks corrected gestation is permitted because EEG is flat",
+            "From 37 weeks corrected gestation, with additional minimum 24-hour safeguards below 2 years corrected age",
+            "Routine EEG confirmation is required in all children",
+            "Ancillary imaging can replace clinical tests under 2 years corrected age",
           ],
           correctIndex: 1,
-          explanation: "AoMRC: BSD testing not applicable <37 weeks corrected gestational age. Between term and 2 months, ancillary testing often required.",
+          explanation: PAEDIATRIC_DNC_2025_SUMMARY,
         },
         {
           question: "Following a febrile seizure, a child becomes drowsy with new focal neurology. Glucose is 2.1 mmol/L. What is the immediate management?",
@@ -348,7 +350,7 @@ const PaediatricIcuTopic = () => {
       sectionSources={{
         objectives: ["RCPCH 2019", "Resuscitation Council UK 2021", "APLS 2021", "BJA Educ 2010"],
         workedExamples: ["Resuscitation Council UK 2021", "APLS 2021", "NICE NG29", "FEAST 2011"],
-        keyPoints: ["RCPCH 2019", "FEAST 2011", "NICE NG29", "Resuscitation Council UK 2021", "APLS 2021", "BJA Educ 2010"],
+        keyPoints: ["RCPCH 2019", "FEAST 2011", "NICE NG29", "Resuscitation Council UK 2021", "APLS 2021", "BJA Educ 2010", "AoMRC 2025 Paediatric DNC"],
       }}
       sectionExamMapping={{
         objectives: { exams: [Exam.FFICM, Exam.EDIC], curriculumCodes: ["FFICM 4.6", "EDIC 5.6"] },
@@ -1776,7 +1778,7 @@ const PaediatricIcuTopic = () => {
           <ExamSection id="ethics" exams={[Exam.FFICM, Exam.EDIC]} className="scroll-mt-24">
             <CollapsibleSubsection title="Safeguarding, Ethics & End-of-Life">
             <p className="text-muted-foreground text-sm">
-              All PICU staff need Level 3 safeguarding training; the recognition features and the practical safeguarding response are set out in <a href="#section-nai" className="text-icu underline underline-offset-4">Non-Accidental Injury</a> <InlineRef topicId="paediatric-icu" refLabel="NICE NG76" />. Best-interests framework — parents central to decision-making but cannot demand futile or burdensome treatment <InlineRef topicId="paediatric-icu" refLabel="RCPCH Framework 2015" />. Death by neurological criteria can be diagnosed from 37 weeks corrected gestation, with separate RCPCH criteria for infants under 2 months, and requires two doctors performing two sets of tests <InlineRef topicId="paediatric-icu" refLabel="RCPCH DNC Infants 2015" />. Family-centred care: open visiting, parental presence, play specialists, bereavement support — and staffing, retrieval and escalation standards follow the PCCS quality standards <InlineRef topicId="paediatric-icu" refLabel="PCCS Standards 2021" />.
+              All PICU staff need Level 3 safeguarding training; the recognition features and the practical safeguarding response are set out in <a href="#section-nai" className="text-icu underline underline-offset-4">Non-Accidental Injury</a> <InlineRef topicId="paediatric-icu" refLabel="NICE NG76" />. Best-interests framework — parents central to decision-making but cannot demand futile or burdensome treatment <InlineRef topicId="paediatric-icu" refLabel="RCPCH Framework 2015" />. {PAEDIATRIC_DNC_2025_SUMMARY} Two doctors perform two complete sets of tests; this summary does not replace full eligibility, rewarming and drug-confounder observation requirements <InlineRef topicId="paediatric-icu" refLabel="AoMRC 2025 Paediatric DNC" />. Family-centred care: open visiting, parental presence, play specialists, bereavement support — and staffing, retrieval and escalation standards follow the PCCS quality standards <InlineRef topicId="paediatric-icu" refLabel="PCCS Standards 2021" />.
             </p>
             <div className="grid gap-4 md:grid-cols-2 mt-4">
               <div className="bg-card border border-border rounded-lg p-4">
@@ -1793,7 +1795,7 @@ const PaediatricIcuTopic = () => {
                 <ul className="list-disc list-inside space-y-1 text-sm text-muted-foreground">
                   <li>Donation should be considered a <strong>routine part of end-of-life care</strong>. Refer every potential donor to the specialist nurse for organ donation <em>before</em> discussing donation with the family and before withdrawal is planned; the trigger is the decision to test for death by neurological criteria or the decision to withdraw life-sustaining treatment.</li>
                   <li><strong>Deemed consent (opt-out) legislation does not apply to those under 18</strong> in England, Wales and Scotland, so parental (or the young person&rsquo;s recorded) consent is required; check the Organ Donor Register and honour a recorded decision.</li>
-                  <li><strong>Donation after brainstem death</strong> requires two doctors performing two sets of tests with the RCPCH criteria, from 37 weeks corrected gestation, with the infant criteria and greater caution below 2 months. Donor optimisation continues after diagnosis — lung-protective ventilation, vasopressin/noradrenaline, hormone replacement (levothyroxine, methylprednisolone), desmopressin for diabetes insipidus, glycaemic and electrolyte control and temperature management.</li>
+                  <li><strong>Donation after brainstem death</strong>: {PAEDIATRIC_DNC_2025_SUMMARY} Two doctors perform two complete sets of tests under the full Code <InlineRef topicId="paediatric-icu" refLabel="AoMRC 2025 Paediatric DNC" />. Donor optimisation continues after diagnosis — lung-protective ventilation, vasopressin/noradrenaline, hormone replacement (levothyroxine, methylprednisolone), desmopressin for diabetes insipidus, glycaemic and electrolyte control and temperature management.</li>
                   <li><strong>Donation after circulatory death</strong> follows a planned withdrawal, with a 5 minute period of continuous absent circulation before the diagnosis of death and defined ischaemic time limits; withdrawal must not be altered for donation purposes, and the family need to understand that donation may not proceed.</li>
                   <li>Neonatal donation is possible from term infants and tissue donation (heart valves, corneas) is possible in many more children; do not assume a child is unsuitable — that judgement belongs to the specialist nurse and retrieval team <InlineRef topicId="paediatric-icu" refLabel="NICE NG135" />.</li>
                 </ul>

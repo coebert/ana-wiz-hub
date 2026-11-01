@@ -66,6 +66,7 @@ export const InlineRef = ({
       <PopoverContent className="w-96 max-w-[92vw] text-xs leading-relaxed max-h-[70vh] overflow-y-auto" side="top">
         <p className="font-semibold text-foreground mb-1">{ref.label}</p>
         <p className="text-muted-foreground mb-2">{ref.citation}</p>
+        {ref.reviewNote && <p className="text-muted-foreground mb-2">{ref.reviewNote}</p>}
         {ref.excerpt && (
           <blockquote
             className="mb-2 border-l-2 border-perioperative/60 bg-muted/40 pl-2.5 pr-2 py-1.5 italic text-foreground/80 rounded-r"

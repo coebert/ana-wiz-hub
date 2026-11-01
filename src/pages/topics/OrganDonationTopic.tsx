@@ -12,10 +12,14 @@ import { BrainstemDeathCascadeDiagram } from "@/components/diagrams/intensive-ca
 import { OrganDonationPathwayDiagram } from "@/components/diagrams/intensive-care/OrganDonationPathwayDiagram";
 import { InlineRef } from "@/components/references/InlineRef";
 
+export const DCD_FWIT_DEFINITION = "BTS DCD 2023: functional warm ischaemia time (fWIT) runs from a sustained (at least 2-minute) fall in SBP below 50 mmHg to the start of cold in-situ perfusion or normothermic regional perfusion (NRP). It is not time since withdrawal, a single low BP reading, or time since arrest.";
+export const DCD_ACCEPTANCE_SCOPE = "Organ acceptance and stand-down depend on the actual organ, retrieval/preservation method and current retrieval-team protocol; timing arithmetic alone cannot declare an organ viable or nonviable. With NRP, a long withdrawal phase alone is not an automatic liver exclusion.";
+export const DCD_NRP_OUTCOMES = "NRP is associated with improved organ utilisation and outcomes in observational evidence; the magnitude varies by organ, donor selection and comparator. There is no universal absolute kidney delayed-graft-function reduction.";
+
 const organDonationFaqs: Array<[string, string]> = [
   ["What are the UK criteria for brainstem death testing?", "Coma of known irreversible cause, exclusion of confounders (drugs, core temperature <36 °C, metabolic/endocrine disturbance), absent brainstem reflexes (pupillary, corneal, vestibulo-ocular, motor response in the cranial nerve distribution, gag and cough) and an apnoea test from a starting PaCO₂ ≥5.3 kPa to an end PaCO₂ ≥8.0 kPa, a rise ≥2.7 kPa and pH <7.30 after at least 5 minutes (AoMRC 2025)."],
   ["What physiological derangements occur after brainstem death?", "Catecholamine storm followed by vasodilation, diabetes insipidus (DDAVP/vasopressin), hypothermia, coagulopathy and pituitary failure; manage with the 'rule of 100s' — SBP >100, urine output ~100 mL/h, PaO₂ >100, Hb >100 g/L."],
-  ["How does DCD differ from DBD for donation?", "DCD (Maastricht III) occurs after planned withdrawal with death by circulatory criteria and a 5-minute 'no-touch' period; warm ischaemic time limits organ viability (typically <30 min for liver, <2 h for kidney) and outcomes are slightly inferior for some grafts but improve donor numbers."],
+  ["How does DCD differ from DBD for donation?", "DCD (Maastricht III) follows planned withdrawal; confirm death only after the full continuous 5-minute assessment and required examination, when all circulatory criteria are satisfied (AoMRC 2025). BTS DCD 2023 defines fWIT from a sustained (at least 2-minute) fall in SBP below 50 mmHg to cold in-situ perfusion or NRP, not from withdrawal or arrest. Organ acceptance and stand-down depend on the actual organ, preservation method and current retrieval-team protocol; arithmetic alone cannot establish viability. With NRP, a long withdrawal phase alone is not an automatic liver exclusion."],
 ];
 
 const objectives = [
@@ -60,29 +64,24 @@ const workedExamples: WorkedExample[] = [
     scenario: (
       <>
         A patient with catastrophic brain injury but who does not fulfil BSD criteria is to undergo
-        WLST as Maastricht III DCD donation. SBP drops to 45 mmHg at 12 min after extubation;
+        WLST as Maastricht III DCD donation. Suppose a sustained (at least 2-minute) SBP fall below 50 mmHg begins at 12 min after extubation;
         cardiac arrest at 28 min. What are the time markers and the implications?
       </>
     ),
     working: (
       <>
-        <strong>Functional warm ischaemia time (fWIT)</strong> begins when SBP &lt; 50 mmHg. After
-        cardiac arrest there is a mandatory <strong>5-minute hands-off observation</strong>;
-        recorded time of death is when all circulatory criteria are satisfied, <strong>after the continuous 5-minute assessment and required examination</strong>. It is not backdated to the start of observation. Cold
-        perfusion should start within ~10 min of
-        death; the standdown threshold (after which donation does not proceed) is typically 2–3 h
-        from withdrawal — beyond this WIT is too prolonged for viable retrieval.
+        {DCD_FWIT_DEFINITION} After cardiac arrest there is a mandatory <strong>5-minute hands-off observation</strong>;
+        recorded time of death is when all circulatory criteria are satisfied, <strong>after the continuous 5-minute assessment and required examination</strong>. It is not backdated to the start of observation. Confirming death at 33 min assumes all criteria are then satisfied. There is no universal 10-minute post-death perfusion deadline or withdrawal stand-down limit.
       </>
     ),
     answer: (
       <>
-        fWIT starts at 12 min, death confirmed 33 min after extubation, target cold perfusion by
-        ~43 min. Total fWIT for liver should be &lt;20 min, kidneys &lt;30 min — so this is borderline
-        for liver. Discuss with retrieval team; abdominal NRP can salvage borderline organs by
-        restoring oxygenated perfusion in situ.
+        If the sustained-low-BP interval begins at 12 min and cold in-situ perfusion or NRP actually starts at 43 min,{" "}
+        <strong>fWIT = 43 − 12 = 31 min</strong>. Perfusion at 43 min is an explicit assumption, not a recommended deadline.
+        {DCD_ACCEPTANCE_SCOPE} Discuss with the retrieval team.
       </>
     ),
-    cites: ["NICE CG135"],
+    cites: ["AoMRC 2025", "BTS DCD 2023", "NICE CG135"],
   },
 ];
 
@@ -97,13 +96,13 @@ const OrganDonationTopic = () => {
       objectives={objectives}
       workedExamples={workedExamples}
       keyPoints={[
-        { text: "DCD now accounts for ~60% of deceased organ donations in the UK — Category III (controlled) is most common", cites: ["AoMRC 2008"] },
+        { text: "NHSBT reports 55% DCD / 45% DBD of UK deceased organ donors, 2025–26 (792 DCD donors); this excludes living donors and is not a transplant proportion", cites: ["NHSBT DCD activity 2025–26"] },
         { text: "Maastricht classification: 5 categories — only Category III (awaiting cardiac arrest after WLST) is routinely used in UK", cites: ["BJA Educ 2016"] },
         { text: "5-minute mandatory standoff after circulatory arrest before death can be confirmed", cites: ["NICE CG135"] },
-        { text: "Functional warm ischaemia time starts when SBP < 50 mmHg — target < 30 min for kidneys, < 20 min for liver", cites: ["AoMRC 2008"] },
+        { text: `${DCD_FWIT_DEFINITION} ${DCD_ACCEPTANCE_SCOPE}`, cites: ["BTS DCD 2023"] },
         { text: "Abdominal NRP: femoral cannulation + ECMO circuit with arch vessel exclusion — no cerebral reperfusion", cites: ["BJA Educ 2016"] },
         { text: "TA-NRP enables DCD heart transplantation — outcomes approaching DBD levels at 1 year", cites: ["NICE CG135"] },
-        { text: "NRP reduces DCD liver discard and ischaemic cholangiopathy; reduces kidney DGF from ~50% to ~20%", cites: ["AoMRC 2008"] },
+        { text: DCD_NRP_OUTCOMES, cites: ["BTS DCD 2023"] },
         { text: "Ethical framework: permanence vs irreversibility, dead donor rule, cerebral exclusion as safeguard", cites: ["BJA Educ 2016"] },
         { text: "AoMRC (2021) endorses NRP as ethically acceptable provided arch vessels are excluded before perfusion", cites: ["NICE CG135"] },
         { text: "Time of death: DNC ordinarily at completion of the second test set, or later when required ancillary evidence completes confirmation; DCD after the full 5-minute assessment and required examination, once all criteria are met (AoMRC 2025)", cites: ["AoMRC 2025", "AoMRC DNC Code of Practice (PDF)"] },
@@ -112,9 +111,9 @@ const OrganDonationTopic = () => {
       topicTitle="Organ Donation"
       quizQuestions={organDonationQuestions}
       sectionSources={{
-        objectives: ["AoMRC 2008", "NICE CG135", "BJA Educ 2016"],
-        workedExamples: ["AoMRC 2008", "BJA Educ 2016", "NICE CG135"],
-        keyPoints: ["AoMRC 2008", "NICE CG135", "BJA Educ 2016"],
+        objectives: ["AoMRC 2025", "BTS DCD 2023", "NICE CG135", "BJA Educ 2016"],
+        workedExamples: ["AoMRC 2025", "BTS DCD 2023", "BJA Educ 2016", "NICE CG135"],
+        keyPoints: ["AoMRC 2025", "NHSBT DCD activity 2025–26", "BTS DCD 2023", "NICE CG135", "BJA Educ 2016"],
       }}
       sectionExamMapping={{
         objectives: { exams: [Exam.FFICM, Exam.EDIC], curriculumCodes: ["FFICM 5.5", "EDIC 7.1"] },
@@ -136,11 +135,11 @@ const OrganDonationTopic = () => {
             <div className="grid sm:grid-cols-2 gap-3">
               <div className="p-4 rounded-lg border border-border">
                 <p className="font-semibold text-foreground text-sm">DBD</p>
-                <p className="text-sm text-muted-foreground mt-1">Brainstem death confirmed by 2 sets of tests. Time of death is ordinarily completion of the second set, once all required criteria are satisfied; required ancillary evidence may delay confirmation. Better graft outcomes (less warm ischaemia). ~40% of UK deceased donors.</p>
+                <p className="text-sm text-muted-foreground mt-1">Brainstem death confirmed by 2 sets of tests. Time of death is ordinarily completion of the second set, once all required criteria are satisfied; required ancillary evidence may delay confirmation. Better graft outcomes (less warm ischaemia). 45% of UK deceased organ donors, 2025–26 (complement of NHSBT’s 55% DCD share).<InlineRef topicId="organ-donation" refLabel="NHSBT DCD activity 2025–26" /></p>
               </div>
               <div className="p-4 rounded-lg border border-border">
                 <p className="font-semibold text-foreground text-sm">DCD</p>
-                <p className="text-sm text-muted-foreground mt-1">WLST → circulatory arrest → 5-min standoff → death confirmed → retrieval. Now ~60% of UK donations. Maastricht Cat III most common.</p>
+                <p className="text-sm text-muted-foreground mt-1">WLST → circulatory arrest → 5-min standoff → death confirmed → retrieval. 55% of UK deceased organ donors, 2025–26. Maastricht Cat III most common.<InlineRef topicId="organ-donation" refLabel="NHSBT DCD activity 2025–26" /></p>
               </div>
             </div>
             </CollapsibleSubsection>
@@ -383,13 +382,13 @@ const OrganDonationTopic = () => {
               {[
                 { step: "1. Decision that BSD criteria are not met", detail: "Catastrophic injury with treatment futile, but the brainstem is not dead — so death must be confirmed by circulatory criteria. The patient is alive until then; comfort, not organ protection, governs the prescription." },
                 { step: "2. Pre-mortem drug rule", detail: "Only drugs that benefit the patient (analgesia, sedation, secretions control) are given, titrated to distress and never to shorten life. Pre-mortem heparin is an authorised 'pre-mortem intervention' only where specifically agreed case-by-case with the SN-OD and treating team — it is not routine UK practice and is never prescribed unilaterally." },
-                { step: "3. Withdrawal (extubation) — clock starts", detail: "WLST, usually in theatre or ICU. Functional warm ischaemic time begins when SBP falls below 50 mmHg. No organ-directed drug is given during this window." },
+                { step: "3. Withdrawal (extubation) — clock starts", detail: `WLST, usually in theatre or ICU. ${DCD_FWIT_DEFINITION} No organ-directed drug is given during this window.` },
                 { step: "4. Cardiac arrest → 5-minute hands-off observation", detail: "Observe continuously for 5 minutes after circulatory arrest and apnoea, then complete the required examination. Confirm and record death when all criteria are satisfied, not at the start of observation. Restart the assessment if spontaneous circulatory, respiratory or neurological function returns." },
-                { step: "5. Post-mortem — retrieval sequence", detail: "Only now may organ-directed drugs be given: heparin and vasodilators in the perfusate, cannulation for cold perfusion within ~10 minutes, or abdominal/thoraco-abdominal NRP with arch-vessel exclusion to prevent cerebral reperfusion. Stand-down if death has not occurred within the agreed window (typically 2–3 h from withdrawal) — warm ischaemia too long for viable retrieval." },
+                { step: "5. Post-mortem — retrieval sequence", detail: "Only now may organ-directed drugs be given: heparin and vasodilators in the perfusate, cold in-situ perfusion or abdominal/thoraco-abdominal NRP with cerebral exclusion. Acceptance and stand-down follow the organ-specific retrieval/preservation method and current team protocol; no universal post-death deadline or withdrawal-duration cutoff establishes viability." },
               ].map((s) => (
                 <div key={s.step} className="flex flex-col sm:flex-row gap-1 sm:gap-3 p-3 rounded border border-border">
                   <span className="font-bold text-primary text-sm sm:whitespace-nowrap sm:w-64 sm:shrink-0">{s.step}</span>
-                  <span className="text-sm text-muted-foreground leading-relaxed">{s.detail}</span>
+                  <span className="text-sm text-muted-foreground leading-relaxed">{s.detail}<InlineRef topicId="organ-donation" refLabel={s.step.startsWith("4.") ? "AoMRC 2025" : "BTS DCD 2023"} /></span>
                 </div>
               ))}
             </div>
@@ -421,7 +420,7 @@ const OrganDonationTopic = () => {
           <ExamSection id="dcd" exams={[Exam.FFICM, Exam.EDIC]} className="scroll-mt-24">
             <CollapsibleSubsection title="DCD — Pathway & Maastricht Classification">
             <p className="text-muted-foreground leading-relaxed mb-3">
-              DCD ~60% of UK deceased donations. Functional WIT begins when SBP &lt;50 mmHg. Mandatory 5-min hands-off period after asystole; the <strong>recorded time of death follows the full assessment and required examination</strong>, when the clinician is satisfied that all circulatory criteria are met. Do not backdate it to the start of observation. Retrieval may only begin once the full 5 minutes have elapsed and death has been confirmed <InlineRef topicId="organ-donation" refLabel="AoMRC DNC Code of Practice (PDF)" />.
+              NHSBT reports 55% DCD / 45% DBD of UK deceased organ donors, 2025–26 <InlineRef topicId="organ-donation" refLabel="NHSBT DCD activity 2025–26" />. {DCD_FWIT_DEFINITION} {DCD_ACCEPTANCE_SCOPE} <InlineRef topicId="organ-donation" refLabel="BTS DCD 2023" />. Mandatory 5-min hands-off period after asystole; the <strong>recorded time of death follows the full assessment and required examination</strong>, when the clinician is satisfied that all circulatory criteria are met. Do not backdate it to the start of observation. Retrieval may only begin once the full 5 minutes have elapsed and death has been confirmed <InlineRef topicId="organ-donation" refLabel="AoMRC DNC Code of Practice (PDF)" />.
             </p>
             <div className="space-y-2 mb-4">
               {[
@@ -439,13 +438,13 @@ const OrganDonationTopic = () => {
             </div>
             <div className="grid sm:grid-cols-3 gap-3 mb-4">
               {[
-                { l: "fWIT start", v: "SBP < 50 mmHg" },
-                { l: "fWIT end", v: "Cold perfusion starts" },
-                { l: "Target", v: "<30 min kidney, <20 min liver" },
+                { l: "fWIT start", v: "Sustained (at least 2 min) SBP <50 mmHg" },
+                { l: "fWIT end", v: "Cold in-situ perfusion or NRP starts" },
+                { l: "Acceptance / stand-down", v: "Organ, preservation method and current team protocol — no automatic viability verdict" },
               ].map((w) => (
                 <div key={w.l} className="p-3 rounded-lg bg-secondary/30 border border-border text-center">
                   <p className="text-xs text-muted-foreground">{w.l}</p>
-                  <p className="font-semibold text-foreground text-sm mt-1">{w.v}</p>
+                  <p className="font-semibold text-foreground text-sm mt-1">{w.v}<InlineRef topicId="organ-donation" refLabel="BTS DCD 2023" /></p>
                 </div>
               ))}
             </div>
@@ -495,7 +494,7 @@ const OrganDonationTopic = () => {
                 { step: "Comfort measures first", detail: "Analgesia and sedation are titrated to distress exactly as for any dying patient; they are never escalated to hasten death. Family remain present for as long as they wish — the practical choreography (family step out just before transfer, or remain in the anaesthetic room) is agreed in advance." },
                 { step: "Withdrawal (extubation)", detail: "Tracheal extubation and discontinuation of vasoactive support; the withdrawal-to-arrest interval is documented minute-by-minute by the SN-OD. Most deaths occur within 1–2 hours of withdrawal." },
                 { step: "5-minute hands-off observation", detail: "After asystole (loss of arterial pulsatility), nothing is touched for 5 minutes. After the observation period, complete the required examination and record death only when all circulatory criteria are met. The time is not backdated to the start. Autoresuscitation after 5 minutes of observed absent circulation has not been reported in controlled DCD." },
-                { step: "Death confirmed → rapid transfer", detail: "The retrieval team (who have stayed out of the room until now) take over. Cold perfusion or NRP cannulation should begin within ~10 minutes of confirmed death. If death has not occurred within the agreed stand-down window (commonly 2–3 hours, organ-specific), the donor is returned to the ward/ICU for continuing end-of-life care and donation does not proceed." },
+                { step: "Death confirmed → rapid transfer", detail: "The retrieval team (who have stayed out of the room until now) take over. Cold in-situ perfusion or NRP begins according to the retrieval/preservation pathway, without a universal 10-minute deadline. Stand-down decisions are agreed with the SN-OD and retrieval team for the actual organ and method; ongoing end-of-life care is never compromised to pursue donation." },
               ].map((s) => (
                 <div key={s.step} className="flex flex-col sm:flex-row gap-1 sm:gap-3 p-3 rounded border border-border">
                   <span className="font-bold text-primary text-sm sm:whitespace-nowrap sm:w-64 sm:shrink-0">{s.step}</span>
@@ -506,23 +505,20 @@ const OrganDonationTopic = () => {
 
             <h3 className="text-base font-semibold text-foreground mb-2">Timings after withdrawal that decide which organs can be used</h3>
             <p className="text-sm text-muted-foreground leading-relaxed mb-3">
-              Warm ischaemia is the enemy in DCD. Two intervals matter: the <strong>functional warm ischaemic time
-              (fWIT)</strong> — from sustained SBP &lt;50 mmHg (or SpO₂ &lt;70%) to the start of cold perfusion — and the
-              <strong>withdrawal-to-death interval</strong>, which predicts how much hypoxic-hypotensive injury the graft
-              has already suffered. Typical UK acceptance limits <InlineRef topicId="organ-donation" refLabel="BJA Donor Management 2012" />:
+              {DCD_FWIT_DEFINITION} <InlineRef topicId="organ-donation" refLabel="BTS DCD 2023" /> The withdrawal-to-perfusion and arrest-to-perfusion intervals are separate measurements, not substitutes for fWIT. {DCD_ACCEPTANCE_SCOPE}
             </p>
             <div className="space-y-2 mb-4">
               {[
-                { organ: "Liver", timing: "Most ischaemia-sensitive abdominal organ: fWIT <20–30 min (aNRP extends this); withdrawal-to-arrest ideally <30 min. Longer agonal phases predict ischaemic cholangiopathy and primary non-function." },
-                { organ: "Pancreas", timing: "Similar tolerance to liver: fWIT <30 min; prolonged hypotension or hypoxia before arrest is a common reason to decline." },
-                { organ: "Kidney", timing: "Most tolerant: fWIT up to ~60–120 min (commonly cited practical limit <30–60 min to first cold flush). This is why kidneys are retrieved even when the liver has been stood down — delayed graft function is frequent but usually recovers." },
-                { organ: "Lung", timing: "Tolerant of ~60 min warm ischaemia because alveolar oxygen persists after circulatory arrest; retrieval teams reinflate the lungs before cold perfusion. Usable after standoff intervals that preclude liver." },
-                { organ: "Heart", timing: "Only possible with TA-NRP or direct procurement/ex-situ perfusion; total warm ischaemia must be minutes, not hours — heart teams attend the withdrawal and assess the agonal phase in real time." },
-                { organ: "Stand-down rule", timing: "If arrest has not occurred within the agreed window (typically 2–3 h from withdrawal; some programmes 1–2 h for liver/pancreas), donation is abandoned and end-of-life care continues — prolonging the wait to chase organs is never acceptable." },
+                { organ: "Liver", timing: "Sensitive to ischaemic injury; assess fWIT alongside donor features and the actual preservation method. BTS states withdrawal duration alone is not a contraindication when the liver is recovered using NRP; retrieval-team assessment remains essential." },
+                { organ: "Pancreas", timing: "Hypotension, hypoxia, thrombosis risk and preservation method matter. Follow the pancreas team’s current acceptance/stand-down protocol, distinguishing NRP from cold retrieval rather than applying a universal cutoff." },
+                { organ: "Kidney", timing: "Delayed graft function is an important DCD outcome; donor selection, fWIT and preservation method all matter. Kidney acceptance cannot be determined by a universal 30-minute or 2-hour clock rule." },
+                { organ: "Lung", timing: "Residual alveolar oxygen, ventilation, functional assessment and preservation method affect suitability. Lung-team protocol, not a universal warm-ischaemia tolerance, governs acceptance." },
+                { organ: "Heart", timing: "TA-NRP or direct procurement with ex-situ perfusion are distinct pathways. Heart-team protocol and functional assessment govern acceptance; timing alone is not a viability verdict." },
+                { organ: "Stand-down rule", timing: "Agree organ- and method-specific criteria with the SN-OD and retrieval teams before withdrawal. A long withdrawal phase alone is not an automatic liver exclusion with NRP. Continue dignified end-of-life care regardless of donation feasibility." },
               ].map((o) => (
                 <div key={o.organ} className="flex flex-col sm:flex-row gap-1 sm:gap-3 p-3 rounded border border-border">
                   <span className="font-bold text-primary text-sm sm:whitespace-nowrap sm:w-40 sm:shrink-0">{o.organ}</span>
-                  <span className="text-sm text-muted-foreground leading-relaxed">{o.timing}</span>
+                  <span className="text-sm text-muted-foreground leading-relaxed">{o.timing}<InlineRef topicId="organ-donation" refLabel="BTS DCD 2023" /></span>
                 </div>
               ))}
             </div>
@@ -547,20 +543,20 @@ const OrganDonationTopic = () => {
               {[
                 { change: "Restores warm perfusion in situ", detail: "After death is confirmed, femoral cannulae (or open aortic/venous cannulation) connect to an ECMO-type circuit; arch vessels are clamped or balloon-occluded first so no cerebral reperfusion is possible. Abdominal NRP perfuses liver/kidneys/pancreas; TA-NRP adds the thorax and makes DCD heart retrieval possible." },
                 { change: "Rescued organs that used to be declined", detail: "Livers with fWIT at the upper end of acceptability — previously discarded — are now retrieved and function, because warm oxygenated reperfusion allows real-time viability assessment (lactate clearance, bile production, perfusion flows) rather than a guess from the clock. DCD liver utilisation and 1-year graft survival have risen accordingly, and ischaemic cholangiopathy rates have fallen toward DBD levels." },
-                { change: "Kidney outcomes improved", detail: "Delayed graft function after DCD kidney transplant falls from roughly half to roughly a fifth of recipients with aNRP, shortening hospital stay and dialysis dependence." },
+                { change: "Kidney outcomes improved", detail: "Observational studies associate NRP with improved kidney outcomes, but donor selection and comparator affect the magnitude; there is no universal absolute delayed-graft-function reduction." },
                 { change: "Enabled DCD hearts", detail: "TA-NRP with direct procurement perfusion has created an entirely new DCD heart programme in the UK, with early outcomes comparable to DBD hearts — the single biggest expansion of the heart donor pool in decades." },
                 { change: "Changed the choreography of withdrawal", detail: "Retrieval teams now cannulate and prepare the circuit before or immediately after withdrawal (per local protocol and authorisation), heart teams attend the agonal phase, and withdrawal is almost always sited in or beside theatre. The 5-minute standoff and cerebral exclusion before circuit start are the non-negotiable safeguards that keep the practice lawful and publicly trusted." },
               ].map((c) => (
                 <div key={c.change} className="p-3 rounded border border-border">
                   <p className="font-semibold text-foreground text-sm">{c.change}</p>
-                  <p className="text-sm text-muted-foreground mt-1 leading-relaxed">{c.detail}</p>
+                  <p className="text-sm text-muted-foreground mt-1 leading-relaxed">{c.detail}<InlineRef topicId="organ-donation" refLabel="BTS DCD 2023" /></p>
                 </div>
               ))}
             </div>
             <p className="text-xs text-muted-foreground italic mt-2">
               Exam framing: structure the answer as pre-withdrawal (location, roles, comfort prescription, stand-down
               time) → withdrawal (minute-by-minute SN-OD record, comfort only) → the 5-minute standoff (legal death at
-              its start) → organ-specific warm-ischaemia limits → post-mortem procedures (reintubation for lung
+              completion once all criteria are satisfied) → organ- and method-specific assessment → post-mortem procedures (reintubation for lung
               recruitment, cannulation, NRP) → stand-down if the window is missed. State explicitly that nothing
               organ-directed happens before death in DCD, whereas in DBD all support continues to cross-clamp
               <InlineRef topicId="organ-donation" refLabel="NICE CG135" />{" "}
