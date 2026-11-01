@@ -3486,10 +3486,13 @@ topicReferences["paediatric-icu"].push(
  {label:"NHS GGC Neonatal transfusion",citation:"NHS Greater Glasgow and Clyde. Neonatal transfusion guideline. Component specification and irradiation indications.",url:"https://www.clinicalguidelines.scot.nhs.uk/ggc-paediatric-guidelines/ggc-paediatric-guidelines/neonatology/neonatal-transfusion-guideline/"}
 );
 topicReferences["operative-steps"].push(
- {label:"Sleeve bougie technique 2020",citation:"Sleeve gastrectomy operative-technique paper. Surg Endosc/Laparoendosc Adv Surg Tech. doi:10.1089/lap.2019.0452.",url:"https://journals.sagepub.com/doi/10.1089/lap.2019.0452",reviewNote:"Supplied primary locator; main lateral-to-bougie teaching directly checked in the existing BJA Education 2022 review."},
+ {label:"Sleeve bougie technique 2020",citation:"Palermo M, Serra E. Laparoscopic Sleeve Gastrectomy: How Do I Do It. J Laparoendosc Adv Surg Tech A. 2020;30(1):2–5. doi:10.1089/lap.2019.0452.",url:"https://journals.sagepub.com/doi/10.1089/lap.2019.0452",reviewNote:"Supplied primary locator; main lateral-to-bougie teaching directly checked in the existing BJA Education 2022 review."},
  {label:"Bougie complication 2016",citation:"Bougie-related complication report. PMID 27523729.",url:"https://pubmed.ncbi.nlm.nih.gov/27523729/"},
  {label:"PRESCRIPT 2020",citation:"Buitenwerf E, et al. Efficacy of alpha-blockers on hemodynamic control during pheochromocytoma resection: a randomized controlled trial. J Clin Endocrinol Metab. 2020. PMID31714582.",url:"https://pubmed.ncbi.nlm.nih.gov/31714582/"},
  {label:"Alpha blockade comparison 2022",citation:"Comparative alpha-blockade preparation study. PMID35809774. 2022.",url:"https://pubmed.ncbi.nlm.nih.gov/35809774/",reviewNote:"Initial randomisation was halted following crossover; historical controls added. Not a clean completed randomized comparison or evidence of omission safety."},
  {label:"RCoA sustained CO2 PUMA",citation:"Royal College of Anaesthetists. Sustained exhaled CO2: endorsement of PUMA guidance.",url:"https://www.rcoa.ac.uk/safety-standards-quality/patient-safety/sustained-exhaled-co2"},
  {label:"Liver tilt pressures 2011",citation:"Physiological study of CVP, hepatic and portal pressures during liver resection and tilt. PMID22092208. 2011.",url:"https://pubmed.ncbi.nlm.nih.gov/22092208/"}
 );
+
+// Share current NICE records across standalone and parent endocrine teaching without quotation drift.
+for (const reference of topicReferences["adrenal-crisis"].filter(r => r.label.startsWith("NICE NG243 2024"))) if (!topicReferences["icu-endocrine-emergencies"].some(r => r.label === reference.label)) topicReferences["icu-endocrine-emergencies"].push(reference);

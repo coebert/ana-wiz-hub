@@ -137,7 +137,7 @@ const workedExamples: WorkedExample[] = [
         <li>Vasopressor-resistant shock + hyponatraemia and hypoglycaemia in a chronic steroid user; high K⁺ also needs investigation for AKI or another cause → adrenal crisis until proven otherwise.</li>
         <li>Take paired random cortisol + ACTH if possible — but <strong>do not delay treatment</strong>.</li>
         <li><strong>Hydrocortisone 100 mg IV stat</strong>, then 200 mg/24 h (50 mg q6h or infusion).</li>
-        <li><strong>1 L isotonic saline within the first hour</strong>, then further IV fluid as required with monitoring for overload; treat hypoglycaemia using the local emergency protocol.</li>
+        <li><strong>NICE NG243 (2024, age ≥16): 1 L 0.9% saline over 30 minutes</strong>, frequent BP/HR/electrolyte/glucose checks and haemodynamic-guided further fluid with overload monitoring; treat hypoglycaemia using the local emergency protocol.</li>
         <li>Treat trigger (surgical stress + chronic HPA suppression). Taper with recovery under endocrine advice. In primary adrenal insufficiency, start fludrocortisone (100 micrograms daily) once hydrocortisone falls below 50 mg/24 h; it is not routinely needed in steroid-induced secondary insufficiency.</li>
         <li>Sick-day rules going forward: follow individual sick-day replacement advice; IV cover for any major surgery / vomiting.</li>
       </ul>
@@ -146,7 +146,7 @@ const workedExamples: WorkedExample[] = [
       <>
         Adrenal crisis from chronic steroid HPA suppression. Hydrocortisone
         100 mg IV stat, then 200 mg/24 h by infusion (or 50 mg every 6 h), with
-        1 L isotonic saline in the first hour and correction of hypoglycaemia.
+        NICE NG243 (2024) 1 L 0.9% saline over 30 minutes, frequent monitoring and response-guided further fluid, and correction of hypoglycaemia.
         Fludrocortisone is only started in primary insufficiency, once
         hydrocortisone falls below 50 mg/24 h.
       </>
@@ -439,7 +439,7 @@ const IcuEndocrineEmergenciesTopic = () => {
               "DKA: fluids first (1 L 0.9% saline over 1 h), then fixed-rate insulin 0.1 U/kg/h, replace K⁺ once <5.5, continue long-acting insulin.",
               "HHS: slower correction than DKA; high VTE risk — prophylactic anticoagulation; watch for cerebral oedema.",
               "Thyroid storm: propranolol, propylthiouracil, iodine (after PTU), hydrocortisone, supportive cooling — treat trigger.",
-              "Addisonian crisis: hydrocortisone 100 mg IV/IM stat then 200 mg/24 h (SfE 2016), 1 L isotonic saline in the first hour, treat hypoglycaemia; do not delay for cortisol assay.",
+              "Addisonian crisis: hydrocortisone 100 mg IV/IM stat then 200 mg/24 h (SfE 2016), NICE NG243 (2024) 1 L 0.9% saline over 30 minutes with frequent monitoring/individual further fluid, treat hypoglycaemia; do not delay for cortisol assay.",
               "Phaeochromocytoma crisis: α-block first (phenoxybenzamine/phentolamine) before β-block — avoid β-blocker alone (unopposed α causes worsening hypertension).",
             ]}
           />

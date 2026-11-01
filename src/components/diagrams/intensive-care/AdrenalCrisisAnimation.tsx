@@ -1,4 +1,5 @@
 import { AnimatedMechanism, AnimatedMechanismStep } from "@/components/diagrams/shared/AnimatedMechanism";
+import { InlineRef } from "@/components/references/InlineRef";
 import { DiagramFigure } from "../_shared/DiagramFigure";
 
 /**
@@ -62,12 +63,12 @@ const STEPS: AnimatedMechanismStep[] = [
         <strong>Hydrocortisone 100 mg IV stat</strong>, then 200 mg/24 h
         (50 mg q6h or infusion) — high dose has full mineralocorticoid effect,
         so fludrocortisone not required acutely. <strong>1 L 0.9% NaCl over
-        1 h</strong>, glucose if hypoglycaemic, treat trigger
+        30 minutes</strong> (NICE NG243 2024, age ≥16), frequent BP/HR/electrolyte/glucose monitoring and further fluid guided by response; glucose if hypoglycaemic, treat trigger
         (broad-spectrum antibiotics if septic). Mineralocorticoid (fludrocortisone)
         added below 50 mg/day hydrocortisone in primary adrenal insufficiency only; not routinely in secondary insufficiency.
       </>
     ),
-    callout: <>Surgical / sick-day rules: follow the individual replacement plan; if NBM/vomiting → IV hydrocortisone 100 mg + 200 mg/24 h until eating.</>,
+    callout: <>Surgical / sick-day rules: follow the individual replacement plan; if NBM/vomiting → IV hydrocortisone 100 mg + 200 mg/24 h until stable and able to absorb oral dosing, then oral stress replacement until illness resolves. NICE oral minimums are 40 mg hydrocortisone or 10 mg prednisolone daily; prednisolone ≥10 mg needs no extra dose.<InlineRef topicId="icu-endocrine-emergencies" refLabel="NICE NG243 2024 recovery" /><InlineRef topicId="icu-endocrine-emergencies" refLabel="NICE NG243 2024 sick day" /></>,
   },
 ];
 
