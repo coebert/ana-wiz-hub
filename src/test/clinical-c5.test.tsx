@@ -6,6 +6,8 @@ import { WATERFALL_OUTCOMES, glasgowPrediction, PANCREATITIS_FLUIDS, PANCREATITI
 import Waterfall from "@/components/diagrams/intensive-care/WaterfallFluidDiagram";
 import Glasgow from "@/components/diagrams/intensive-care/GlasgowImrieScoreDiagram";
 import CT from "@/components/diagrams/intensive-care/SeverePancreatitisCTDiagram";
+import Timeline from "@/components/diagrams/intensive-care/PancreatitisEvolutionTimeline";
+import Cascade from "@/components/diagrams/intensive-care/PancreatitisAutodigestionDiagram";
 import { acutePancreatitisQuestions } from "@/data/quizzes";
 import { topicReferences } from "@/data/references";
 import { extractFaqsByPath } from "../../scripts/extract-faqs";
@@ -39,6 +41,8 @@ describe("C5 pancreatitis clinical regressions", () => {
     expect(PANCREATITIS_NUTRITION).toContain("not TPN");
     expect(PANCREATITIS_NUTRITION).toContain("initial 48-hour fast");
     expect(PANCREATITIS_NUTRITION).toContain("vomiting, ileus or obstruction");
+    expect(PANCREATITIS_NUTRITION).toContain("withholding intravenous fat emulsion when TG ≥400 mg/dL");
+    expect(PANCREATITIS_NUTRITION).toContain("PN when enteral fails or is contraindicated");
     expect(acutePancreatitisQuestions[5].explanation).toBe(PANCREATITIS_NUTRITION);
   });
   it("CL71 treats suspicion and separates early drainage from delayed debridement", () => {
@@ -99,5 +103,33 @@ describe("C5 pancreatitis clinical regressions", () => {
     expect(faq[1][1]).toContain("initial 48-hour fast");
     expect(faq[1][1]).toContain("not TPN");
     expect(faq[2][1]).toBe(PANCREATITIS_INFECTION);
+    expect(faq[1][1]).toBe(PANCREATITIS_NUTRITION);
+  });
+  it("CL71/73 timeline clicked early nodes do not delay essential imaging or drainage", () => {
+    show(<Timeline />);
+    fireEvent.click(screen.getByRole("button", { name: "Next step" }));
+    expect(screen.getByText(/do not delay essential emergency imaging solely for renal impairment/)).toBeInTheDocument();
+    fireEvent.click(screen.getByRole("button", { name: "Next step" }));
+    expect(screen.getByText(/Do not delay necessary source control to reach 4 weeks/)).toBeInTheDocument();
+  });
+  it("CL72 clicked cascade retains true severity and early source control with corrected sources", () => {
+    show(<Cascade />);
+    fireEvent.click(screen.getByRole("tab", { name: /Step 5 of 7: SIRS/ }));
+    expect(screen.getByText(/severe acute pancreatitis requires persistent organ failure >48 hours/)).toBeInTheDocument();
+    fireEvent.click(screen.getByRole("tab", { name: /Step 6 of 7: Pancreatic necrosis/ }));
+    expect(screen.getByText(/deterioration may need drainage within 2 weeks/)).toBeInTheDocument();
+    expect(page()).toContain("PANTER supports percutaneous-drainage-first surgical step-up");
+    expect(acutePancreatitisQuestions[3].options[1]).toContain("may be needed before 4 weeks");
+  });
+  it("corrected clinical claims survive generated search and audit extraction", () => {
+    const search = JSON.parse(readFileSync("src/data/searchIndex.generated.json", "utf8"));
+    const audit = JSON.parse(readFileSync("data-build/audit-corpus.json", "utf8"));
+    const searchTopic = search.topics.find((t: {id: string}) => t.id === "acute-pancreatitis");
+    const auditTopic = audit.entries.find((t: {topic_id: string}) => t.topic_id === "acute-pancreatitis");
+    expect(searchTopic).toBeDefined(); expect(auditTopic).toBeDefined();
+    for (const claim of ["IAP2025 recommends insulin", "3 ±1", "initial 48-hour fast", "≥400 mg/dL"]) {
+      expect(JSON.stringify(searchTopic)).toContain(claim);
+      expect(JSON.stringify(auditTopic)).toContain(claim);
+    }
   });
 });
