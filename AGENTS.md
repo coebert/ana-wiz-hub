@@ -48,3 +48,4 @@
 - Hosted support destinations and outbound source labels live in donation.ts; policy extensions must guard the exact previously approved predicate and preserve roles/time limits because clicks are not payments.
 - Pancreatitis clinical strings and trial outcomes are shared through PancreatitisTeaching so topic/quiz/diagram wording remains aligned and existing Teaching-module extraction retains generated coverage; FAQ literals are checked for equality to shared facts.
 - Respiratory rescue facts share BronchospasticRescueTeaching across the chapter, quiz and device figure; source-scoped agent/indication and trial-population distinctions prevent dosing or outcome extrapolation.
+- Withdrawn anatomy figures retain their selectable source-led teaching and stable component identities; AnatomySpatialTeaching supplies spatial replacements without procedural geometry until reviewed redraws are available.
