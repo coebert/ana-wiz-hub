@@ -1466,7 +1466,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the full FAQ co
   ],
   "/intensive-care/bronchospastic-failure": [
     {
-      "a": "High-flow O₂, back-to-back salbutamol/ipratropium nebs, IV hydrocortisone 100 mg, IV magnesium 2 g over 20 min; escalate to IV salbutamol or aminophylline; intubate for exhaustion, silent chest or PaCO₂ rising despite treatment (BTS 2019).",
+      "a": "Correct life-threatening hypoxia immediately with 100% oxygen, then titrate to SpO₂ 94–98% after stabilisation (UK BTS/SIGN). Back-to-back salbutamol/ipratropium nebs, IV hydrocortisone 100 mg, IV magnesium 2 g over 20 min; specialist escalation to IV salbutamol or aminophylline; intubate for exhaustion, silent chest or PaCO₂ rising despite treatment.",
       "q": "How is severe acute asthma treated in ICU?",
     },
     {
@@ -6429,7 +6429,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the synthesised
         "@type": "Question",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "High-flow O₂, back-to-back salbutamol/ipratropium nebs, IV hydrocortisone 100 mg, IV magnesium 2 g over 20 min; escalate to IV salbutamol or aminophylline; intubate for exhaustion, silent chest or PaCO₂ rising despite treatment (BTS 2019).",
+          "text": "Correct life-threatening hypoxia immediately with 100% oxygen, then titrate to SpO₂ 94–98% after stabilisation (UK BTS/SIGN). Back-to-back salbutamol/ipratropium nebs, IV hydrocortisone 100 mg, IV magnesium 2 g over 20 min; specialist escalation to IV salbutamol or aminophylline; intubate for exhaustion, silent chest or PaCO₂ rising despite treatment.",
         },
         "name": "How is severe acute asthma treated in ICU?",
       },
