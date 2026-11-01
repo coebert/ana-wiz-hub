@@ -1,3 +1,5 @@
+import { POST_ARREST_ENTRY, POST_ARREST_NSE, POST_ARREST_SSEP, POST_ARREST_PROGNOSIS } from "@/components/topic/PostArrestReviewedFacts";
+import { InlineRef } from "@/components/references/InlineRef";
 import { useState } from "react";
 import { withAlpha } from "@/lib/color-utils";
 import { DiagramFigure, svgNodeProps } from "../_shared/DiagramFigure";
@@ -23,7 +25,7 @@ const modalities: ModalityInfo[] = [
     shortName: "Clinical",
     timing: "≥72 h post-ROSC",
     poorPrognosticSign: "Bilateral absent pupillary & corneal reflexes",
-    detail: "Pupillary light reflex and corneal reflex assessed at ≥72 h (or after rewarming). Quantitative pupillometry (NPi <2) more reliable than standard assessment. Myoclonus status within 72 h is a poor sign but NOT status epilepticus alone. GCS Motor 1–2 at 72 h is the entry criterion for formal prognostication.",
+    detail: "Pupillary light reflex and corneal reflex assessed at ≥72 h (or after rewarming). Quantitative pupillometry (NPi <2) more reliable than standard assessment. Myoclonus status within 72 h is a poor sign but NOT status epilepticus alone. GCS motor < 6 at ≥ 72 h is the current consideration criterion, not a predictor by itself.",
     color: "hsl(0, 75%, 55%)",
     icon: "👁️",
     startH: 72, endH: 120, peakH: 72,
@@ -43,7 +45,7 @@ const modalities: ModalityInfo[] = [
     shortName: "SSEP",
     timing: "≥24 h post-ROSC",
     poorPrognosticSign: "Bilateral absent N20 cortical responses",
-    detail: "Median nerve SSEPs — bilateral absence of N20 is one of the most robust predictors (FPR <1% in most studies). Should be performed by experienced neurophysiologist. Not affected by sedation at clinical doses. Peripheral N13/N14 must be present to confirm technical adequacy. Can be performed during TTM.",
+    detail: POST_ARREST_SSEP,
     color: "hsl(210, 75%, 55%)",
     icon: "⚡",
     startH: 24, endH: 120, peakH: 48,
@@ -61,9 +63,9 @@ const modalities: ModalityInfo[] = [
   {
     name: "Biomarkers",
     shortName: "NSE",
-    timing: "24–72 h post-ROSC",
-    poorPrognosticSign: "NSE >60 μg/L at 48–72 h",
-    detail: "Neuron-specific enolase (NSE): >60 μg/L at 48–72 h strongly associated with poor outcome (ERC/ESICM 2021). Must check for haemolysis (falsely elevated). S100B is less well validated. Serial NSE measurements (rising trend) more informative than single values. No single biomarker threshold is 100% specific — always combine with other modalities.",
+    timing: "48 h and/or 72 h post-ROSC",
+    poorPrognosticSign: "NSE > 60 µg/L at 48 h and/or 72 h",
+    detail: POST_ARREST_NSE,
     color: "hsl(35, 85%, 50%)",
     icon: "🧪",
     startH: 24, endH: 72, peakH: 48,
@@ -75,7 +77,7 @@ const timelineSteps = [
     id: "pre72" as TimePoint,
     label: "0–72 h",
     title: "Stabilisation & Targeted Temperature Management",
-    content: "ROSC achieved → ICU admission → TTM (32–36°C for ≥24 h, then controlled rewarming ≤0.5°C/h). Avoid hyperthermia. Minimise/stop sedation for assessment. Treat seizures. Maintain normoxia, normocapnia, normoglycaemia. Do NOT make prognostic decisions during this phase. Allow ≥72 h from ROSC (or ≥72 h from completion of rewarming if TTM used) before formal prognostication.",
+    content: "Use current RCUK 2025 stabilisation and active fever prevention targeting ≤ 37.5 °C in comatose patients for at least 72 h (March 2026 algorithm). Maintain reliable oxygenation and normocapnia, treat seizures and assess confounders. No routine hypothermic target. Formal prognostication at ≥ 72 h after ROSC requires exclusion of confounders; cooling and delayed drug clearance may require longer assessment.",
     highlight: "Do NOT prognosticate during this period",
     color: "hsl(210, 75%, 55%)",
   },
@@ -83,15 +85,15 @@ const timelineSteps = [
     id: "72h" as TimePoint,
     label: "≥72 h",
     title: "Clinical Assessment — Entry Criterion",
-    content: "At ≥72 h post-ROSC (or after rewarming): GCS Motor score 1–2 (no motor response or extension only) → proceed to multimodal prognostication. If GCS-M ≥3, patient may be recovering — continue observation and serial assessment. Ensure no residual sedation confounders (check drug levels if needed). Quantitative pupillometry (NPi) if available.",
-    highlight: "GCS Motor 1–2 → triggers formal prognostication",
+    content: POST_ARREST_ENTRY,
+    highlight: "GCS motor < 6 → consider multimodal assessment",
     color: "hsl(45, 85%, 50%)",
   },
   {
     id: "modalities" as TimePoint,
     label: "Multimodal",
     title: "Apply ≥2 Independent Modalities",
-    content: "Use at least 2 concordant modalities from different categories to predict poor outcome. No single test is sufficient alone. Each modality must independently suggest poor prognosis. The more concordant results, the more confident the prediction. Consider confounders for each test (sedation, hypothermia, metabolic state, organ failure).",
+    content: POST_ARREST_PROGNOSIS,
     highlight: "≥2 concordant poor prognostic signs required",
     color: "hsl(0, 75%, 55%)",
   },
@@ -99,7 +101,7 @@ const timelineSteps = [
     id: "decision" as TimePoint,
     label: "Decision",
     title: "Outcome Determination",
-    content: "If ≥2 modalities concordantly predict poor outcome → likely poor neurological outcome (CPC 3–5). Discuss with family, multidisciplinary team. If results are discordant or uncertain → continue observation, repeat testing, wait. Avoid self-fulfilling prophecy — never withdraw life-sustaining treatment based on a single early predictor.",
+    content: POST_ARREST_PROGNOSIS + " This is not DNC testing. Continue assessment when findings are uncertain or discordant.",
     highlight: "Concordant → poor outcome likely | Discordant → wait & reassess",
     color: "hsl(160, 55%, 45%)",
   },
@@ -108,7 +110,7 @@ const timelineSteps = [
 const PostCardiacArrestProgDiagram = () => {
   const [activeStep, setActiveStep] = useState<TimePoint>("pre72");
   const [activeModality, setActiveModality] = useState<number | null>(null);
-  const currentStep = timelineSteps.find((s) => s.id === activeStep)!;
+  const currentStep = timelineSteps.find((s) => s.id === activeStep) ?? timelineSteps[0];
 
   return (
     <DiagramFigure
@@ -118,7 +120,7 @@ const PostCardiacArrestProgDiagram = () => {
     >
               <div className="rounded-xl border border-border bg-card p-4 sm:p-6 mb-8">
         <h3 className="text-lg font-serif font-bold text-foreground mb-1">
-          ERC/ESICM 2021 — Post-Cardiac Arrest Prognostication Algorithm
+          RCUK 2025 — Post-Cardiac Arrest Multimodal Assessment
         </h3>
         <p className="text-xs text-muted-foreground mb-5">
           Click each timeline stage, then explore the individual modalities used in multimodal assessment
@@ -230,7 +232,7 @@ const PostCardiacArrestProgDiagram = () => {
               {(() => {
                 const y = 28;
                 const x1 = 80;
-                const x2 = 80 + (48 / 120) * 500;
+                const x2 = 80 + (72 / 120) * 500;
                 return (
                   <g {...svgNodeProps("Phase 1/6: Temperature control (target T ≤ 37.5°C), 0–72 h")}>
                     <rect x={x1} y={y} width={x2 - x1} height="14" rx="3" fill="hsl(210, 75%, 55%)" opacity="0.15" stroke="hsl(210, 75%, 55%)" strokeWidth="0.5" />
@@ -328,7 +330,7 @@ const PostCardiacArrestProgDiagram = () => {
           <p className="text-xs text-muted-foreground">
             <span className="font-semibold text-foreground">Self-fulfilling prophecy warning: </span>
             If treatment is withdrawn based on an early poor prediction, the patient dies — apparently confirming the prediction. 
-            The 2021 guidelines mandate multimodal assessment at ≥72 h with ≥2 concordant modalities to minimise this risk. 
+            {POST_ARREST_ENTRY} {POST_ARREST_PROGNOSIS}<InlineRef topicId="cardiac-arrest-post-resus" refLabel="RCUK PRC 2025" /><InlineRef topicId="cardiac-arrest-post-resus" refLabel="RCUK PRC Algorithm March 2026" /> 
             <span className="font-semibold"> When in doubt — wait and reassess.</span>
           </p>
         </div>

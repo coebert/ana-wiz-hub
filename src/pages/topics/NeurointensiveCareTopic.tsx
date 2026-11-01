@@ -1,3 +1,4 @@
+import { SCI_DENERVATION_RISK, SCI_MAP_2024, CMD_INTERPRETATION, CMD_REASSESSMENT, CMD_GLUCOSE, MG_CRISIS_ASSESSMENT } from "@/components/topic/NeuroIcuReviewedFacts";
 import { lazy, Suspense } from "react";
 import { TopicTemplate } from "@/components/topic/TopicTemplate";
 import { TopicFaqs } from "@/components/topic/TopicFaqs";
@@ -55,7 +56,7 @@ const objectives = [
   "Manage SAH complications: rebleeding, vasospasm (nimodipine), hydrocephalus, and associated sodium disturbance.",
   "Differentiate SIADH, cerebral salt wasting and diabetes insipidus using volume status, urine Na/osmolality and the diagnostic flowchart, and treat each appropriately.",
   "Perform UK brainstem death testing — confounder exclusion, two doctors, two sets, apnoea test end-PaCO₂ ≥8.0 kPa, rise ≥2.7 kPa, pH <7.30 (AoMRC 2025); time of death at completion of the second set.",
-  "Manage acute SCI: MAP targets (AO Spine 2024 75–80 lower limit), neurogenic vs spinal shock, autonomic dysreflexia, suxamethonium safety window, plus respiratory, bowel and bladder care.",
+  "Manage acute SCI: MAP targets (AO Spine 2024 weak augmentation recommendation), neurogenic vs spinal shock, autonomic dysreflexia, suxamethonium denervation risk, plus respiratory, bowel and bladder care.",
   "Interpret ICP, EVD, PbtO₂ and microdialysis (LPR, glucose, glycerol) to guide tier-based therapy and multimodal neuromonitoring.",
   "Recognise and manage autoimmune encephalitis (antibody classes, first- and second-line immunotherapy) and GBS respiratory failure (20/30/40 rule).",
   "Manage myasthenic crisis: identify triggers, distinguish myasthenic from cholinergic crisis, and escalate immunotherapy and ventilatory support.",
@@ -134,19 +135,15 @@ const workedExamples: WorkedExample[] = [
     ),
     working: (
       <>
-        Upregulation of extra-junctional ACh receptors begins ~24–48 h post-denervation injury,
-        peaks 7–10 days, persists ~6–12 months (some sources quote &gt;12 m). Suxamethonium can
-        cause massive K⁺ efflux → cardiac arrest.
+        {SCI_DENERVATION_RISK}
       </>
     ),
     answer: (
       <>
-        <strong>Avoid suxamethonium between 48 h and ~12 months post-SCI</strong>. Use rocuronium
-        1.2 mg/kg for RSI (reversible with sugammadex 16 mg/kg). The same caveat applies to burns,
-        prolonged immobility, and denervation injuries.
+        <strong>Avoid suxamethonium in this patient with established SCI and denervation risk.</strong> Use an appropriate alternative and a complete airway plan. Burns, immobility and other denervating conditions have distinct onset and recovery patterns. Sugammadex availability does not guarantee restoration of oxygenation in a failed airway.
       </>
     ),
-   cites: ["BJA Educ 2014"],
+   cites: ["Suxamethonium SmPC denervation"],
   },
   {
     title: "Cerebral microdialysis interpretation",
@@ -158,22 +155,15 @@ const workedExamples: WorkedExample[] = [
     ),
     working: (
       <>
-        LPR &gt;25 = metabolic crisis. <strong>Low pyruvate + high LPR + low glucose</strong> →
-        ischaemic pattern (substrate delivery failure). Rising glycerol = cell membrane
-        breakdown. Contrast: normal/high pyruvate with high LPR = mitochondrial dysfunction
-        (won't respond to ↑ CPP).
+        {CMD_INTERPRETATION}
       </>
     ),
     answer: (
       <>
-        <strong>Ischaemic crisis</strong> despite "adequate" CPP — push CPP towards 70 mmHg,
-        check for vasospasm (TCD/CT angio), exclude raised ICP / herniation, confirm Hb
-        &gt;90 g/L, ensure normoglycaemia. If LPR pattern were mitochondrial, raising CPP would
-        not help — consider reducing metabolic demand (deeper sedation, normothermia, treat
-        seizures).
+        {CMD_REASSESSMENT}
       </>
     ),
-   cites: ["BJA Educ 2018"],
+   cites: ["CMD Forum 2014", "CMD Delphi 2025"],
   },
 ];
 
@@ -193,15 +183,15 @@ const NeurointensiveCareTopic = () => {
         { text: "SAH vasospasm peaks day 7 — nimodipine is the only proven pharmacological intervention", cites: ["BTF 2017"] },
         { text: "Status epilepticus: benzodiazepine → levetiracetam/phenytoin/valproate → RSI + thiopentone/propofol", cites: ["BJA Educ 2018"] },
         { text: "Brainstem death: 2 sets of tests, 2 senior doctors, exclude confounders, apnoea test end-PaCO₂ ≥8.0 kPa, rise ≥2.7 kPa, pH <7.30; time of death = completion of second set (AoMRC 2025)", cites: ["AoMRC 2025"] },
-        { text: "SCI: MAP ≥75–80 mmHg (AO Spine 2024; older AANS/CNS 85–90) for 3–7 days; suxamethonium contraindicated 48h–12m post-injury (hyperkalaemia)", cites: ["BTF 2017"] },
+        { text: SCI_MAP_2024 + " " + SCI_DENERVATION_RISK, cites: ["AO Spine haemodynamics 2024", "Suxamethonium SmPC denervation"] },
         { text: "EVD is gold standard for ICP monitoring — only device that can drain CSF therapeutically", cites: ["BJA Educ 2018"] },
-        { text: "Cerebral microdialysis: LPR >25 = metabolic crisis. ↓ pyruvate = ischaemia; normal/↑ pyruvate = mitochondrial dysfunction (won't respond to ↑ CPP)", cites: ["BJA Educ 2014"] },
+        { text: CMD_INTERPRETATION, cites: ["CMD Forum 2014", "CMD Delphi 2025"] },
         { text: "Anti-NMDAR encephalitis: start immunotherapy empirically — do not wait for antibody results", cites: ["BTF 2017"] },
         { text: "GBS: 20/30/40 respiratory warning criteria — FVC <20 mL/kg, MIP less negative than −30 cmH₂O (absolute magnitude <30), MEP <40 cmH₂O; assess trajectory, bulbar function and clinical context, not automatic intubation", cites: ["GBS respiratory review"] },
         { text: "GBS: avoid suxamethonium because denervation increases life-threatening hyperkalaemia risk; steroids do NOT work; IVIg and PLEX are equivalent but do not combine", cites: ["GBS anaesthesia SNACC"] },
         { text: "GBS autonomic instability can cause sudden cardiac death — continuous ECG monitoring essential", cites: ["BTF 2017"] },
         { text: "Myasthenic crisis: trial NIV first if no bulbar weakness (avoids intubation in ~70%); intubate for FVC <15 mL/kg, NIF <−20, severe bulbar dysfunction or aspiration", cites: ["BJA Educ 2018"] },
-        { text: "Myasthenic vs cholinergic crisis: edrophonium test improves myasthenic, worsens cholinergic; cholinergic = SLUDGE + miosis + fasciculations — stop anticholinesterases, give atropine, support ventilation", cites: ["BJA Educ 2014"] },
+        { text: MG_CRISIS_ASSESSMENT, cites: ["MG consensus 2016"] },
         { text: "Myasthenic crisis treatment: IVIg 0.4 g/kg/d × 5 OR PLEX (5 exchanges, equivalent); add high-dose steroids AFTER immunotherapy started — risk of transient worsening at 5–10 days. Stop pyridostigmine if intubated", cites: ["BTF 2017"] },
         { text: "Devastating brain injury (FICM/ICS/RCEM/NHSBT consensus): give ≥72h of full active treatment before WLST decisions — exclude confounders, allow injury to declare, refer SN-OD early", cites: ["BJA Educ 2018"] },
       ]}
@@ -215,6 +205,7 @@ const NeurointensiveCareTopic = () => {
       }}
       sectionSources={{
         objectives: [
+          "AO Spine haemodynamics 2024", "Suxamethonium SmPC denervation", "CMD Forum 2014", "CMD Delphi 2025",
           "BJA Educ 2018",
           "BTF 2017",
           "BJA Educ 2014",
@@ -783,8 +774,7 @@ const NeurointensiveCareTopic = () => {
                 ascending cord oedema over the first 48–72 h can abolish diaphragmatic function; intubate
                 for VC &lt;15 ml/kg (or ~1 L in an adult), a falling VC trend, weak cough, rising PaCO₂,
                 exhaustion, or before transfer/prone positioning. Use manual in-line stabilisation with
-                videolaryngoscopy; suxamethonium is safe within the first 48 h but is contraindicated from
-                ~72 h to 9 months (denervation upregulation of acetylcholine receptors → hyperkalaemia).
+                videolaryngoscopy. {SCI_DENERVATION_RISK}<InlineRef topicId="neurointensive-care" refLabel="Suxamethonium SmPC denervation" />
               </p>
               <p className="text-sm text-muted-foreground mt-1">
                 <strong>Initial settings</strong> — lung-protective ventilation (V<sub>T</sub> 6–8 ml/kg
@@ -819,13 +809,13 @@ const NeurointensiveCareTopic = () => {
           <div className="space-y-2 mb-4">
             {[
               { phase: "Neurogenic shock (acute — hours to weeks)", detail: "Loss of sympathetic tone below injury level (T1–L2 sympathetic outflow). Unopposed vagal tone → bradycardia, hypotension, vasodilation, hypothermia. Distinct from hypovolaemic shock: warm peripheries, low HR. Treat with vasopressors (noradrenaline first-line), cautious fluid resuscitation (avoid overload), and atropine/glycopyrrolate for symptomatic bradycardia." },
-              { phase: "MAP target", detail: "AANS/CNS 2013 advised MAP 85–90 mmHg for the first 7 days, based on low-quality observational data. The 2024 AO Spine/Praxis guideline instead suggests a lower limit of 75–80 mmHg and an upper limit of 90–95 mmHg for 3–7 days. Follow local spinal-unit protocol; vasopressors are often needed for days." },
+              { phase: "MAP target", detail: "AANS/CNS 2013 advised MAP 85–90 mmHg for 7 days. AO Spine/Praxis 2024 weakly suggests a lower limit 75–80 mmHg and avoiding active augmentation above 90–95 mmHg for 3–7 days, based on very-low-certainty evidence. This upper limit does not mean lowering a naturally higher BP. Individualise with the spinal team." },
               { phase: "Autonomic dysreflexia (subacute/chronic — after spinal shock resolves)", detail: "Injuries above T6. Noxious stimulus below injury (full bladder, faecal impaction, pressure sore) → massive sympathetic discharge below lesion → severe hypertension, reflex bradycardia, pounding headache, flushing/sweating above level, pallor below. EMERGENCY: sit patient up, identify and remove stimulus (catheterise, disimpact), treat with GTN or nifedipine if persistent. Can cause seizures, ICH, death." },
               { phase: "VTE prophylaxis", detail: "SCI patients are at very high VTE risk. LMWH (enoxaparin) as soon as haemostasis allows + mechanical prophylaxis (IPC devices). Continue for 8–12 weeks post-injury. IVC filter if anticoagulation contraindicated." },
             ].map((item) => (
               <div key={item.phase} className="p-3 rounded-lg border border-border">
                 <p className="font-semibold text-foreground text-sm">{item.phase}</p>
-                <p className="text-sm text-muted-foreground mt-1">{item.detail}</p>
+                <p className="text-sm text-muted-foreground mt-1">{item.detail}{item.phase === "MAP target" && <InlineRef topicId="neurointensive-care" refLabel="AO Spine haemodynamics 2024" />}</p>
               </div>
             ))}
           </div>
@@ -889,7 +879,7 @@ const NeurointensiveCareTopic = () => {
             <div className="p-4 rounded-lg border border-border">
               <p className="font-semibold text-foreground text-sm">Suxamethonium Contraindication</p>
               <p className="text-sm text-muted-foreground mt-1">
-                Suxamethonium is <strong>CONTRAINDICATED from 48 hours to ~6–12 months post-SCI</strong> due to upregulation of extrajunctional acetylcholine receptors → life-threatening hyperkalaemia on depolarisation. Safe in the first 24–48 hours. Use rocuronium for RSI after this window.
+                {SCI_DENERVATION_RISK}<InlineRef topicId="neurointensive-care" refLabel="Suxamethonium SmPC denervation" />
               </p>
             </div>
             <div className="p-4 rounded-lg border border-border">
@@ -977,7 +967,7 @@ const NeurointensiveCareTopic = () => {
                 <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Glucose</td><td>1.7–2.5 (alarm &lt;0.8)</td><td>Substrate delivery; tracks systemic glucose with delay</td></tr>
                 <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Lactate</td><td>1–4</td><td>Anaerobic metabolism, mitochondrial dysfunction or hyperglycolysis</td></tr>
                 <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Pyruvate</td><td>70–150 µmol/L</td><td>Substrate flux through glycolysis</td></tr>
-                <tr className="border-b border-border"><td className="py-2 font-medium text-foreground"><strong>Lactate / Pyruvate Ratio (LPR)</strong></td><td><strong>&lt;25 (alarm &gt;25; severe &gt;40)</strong></td><td><strong>The single most useful marker — cellular redox state (NADH:NAD⁺); ↑ in ischaemia AND mitochondrial dysfunction</strong></td></tr>
+                <tr className="border-b border-border"><td className="py-2 font-medium text-foreground"><strong>Lactate / Pyruvate Ratio (LPR)</strong></td><td><strong>Contextual warning values: &gt;25 or &gt;40</strong></td><td><strong>Local redox signal; interpret with substrates, location, trends and other monitors, not a stand-alone mechanism</strong></td></tr>
                 <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Glutamate</td><td>&lt;10 µmol/L</td><td>Excitotoxicity — released from injured neurons; also reflects ischaemia</td></tr>
                 <tr><td className="py-2 font-medium text-foreground">Glycerol</td><td>&lt;100 µmol/L</td><td>Membrane phospholipid breakdown — structural cell damage</td></tr>
               </tbody>
@@ -990,14 +980,14 @@ const NeurointensiveCareTopic = () => {
           <h3 className="text-lg font-serif font-bold text-foreground mb-2">Interpreting the Patterns</h3>
           <div className="space-y-2 mb-4">
             {[
-              { pattern: "Ischaemia (Type 1 metabolic crisis)", detail: "↑ LPR (>25), ↓ pyruvate, ↓ tissue glucose, ↑ glutamate, ↑ glycerol. Caused by ↓ delivery — hypotension, ↑ ICP/↓ CPP, vasospasm in SAH, hypoxia. Action: optimise CPP, exclude vasospasm, increase oxygen delivery." },
-              { pattern: "Mitochondrial dysfunction (Type 2 metabolic crisis)", detail: "↑ LPR (>25) but pyruvate is NORMAL or HIGH and tissue glucose is preserved. Substrate is reaching the cell but cannot be used. Common after TBI — does not respond to ↑ CPP and indicates a poor prognosis. May respond to therapies aimed at restoring mitochondrial function (currently experimental)." },
-              { pattern: "Neuroglycopenia", detail: "Tissue glucose <0.8 mmol/L, often with rising LPR. Triggered by tight systemic glucose control (NICE-SUGAR-style targets ~4.5–6 mmol/L). CMD has reshaped TBI glucose targets — consensus now favours 6–10 mmol/L systemic glucose to keep brain glucose >0.8." },
+              { pattern: "Possible impaired substrate delivery", detail: "↑ LPR (>25), ↓ pyruvate, ↓ tissue glucose, ↑ glutamate, ↑ glycerol. Possible impaired delivery requires assessment of perfusion, ICP, oxygenation, catheter location and trends. The pattern alone does not identify its cause or justify a fixed CPP/transfusion intervention." },
+              { pattern: "Possible non-ischaemic metabolic disturbance", detail: "↑ LPR (>25) but pyruvate is NORMAL or HIGH and tissue glucose is preserved. This may suggest a non-ischaemic metabolic disturbance but does not prove mitochondrial failure, establish prognosis alone or guarantee nonresponse to perfusion changes. Investigate reversible causes and integrate multimodal trends; targeted mitochondrial therapies remain experimental." },
+              { pattern: "Neuroglycopenia", detail: "Tissue glucose <0.8 mmol/L, often with rising LPR. Triggered by tight systemic glucose control (NICE-SUGAR-style targets ~4.5–6 mmol/L). Interpret low local brain glucose with systemic glucose and other monitoring. Avoid hypoglycaemia and overly tight systemic control; no universal systemic target guarantees adequate glucose at the catheter." },
               { pattern: "Excitotoxicity / membrane breakdown", detail: "↑ Glutamate and ↑ glycerol with rising LPR. Marks evolving cellular injury. May precede CT changes by hours. Particularly relevant around contusions and after delayed ischaemic events in SAH." },
             ].map((p) => (
               <div key={p.pattern} className="p-3 rounded border border-border">
                 <p className="font-bold text-primary text-sm mb-1">{p.pattern}</p>
-                <p className="text-sm text-muted-foreground">{p.detail}</p>
+                <p className="text-sm text-muted-foreground">{p.detail}<InlineRef topicId="neurointensive-care" refLabel="CMD Forum 2014" /></p>
               </div>
             ))}
           </div>
@@ -1007,13 +997,13 @@ const NeurointensiveCareTopic = () => {
             <div className="p-4 rounded-lg border border-border">
               <p className="font-semibold text-foreground text-sm">Severe TBI</p>
               <p className="text-sm text-muted-foreground mt-1">
-                Detects neurochemical deterioration before ICP/CPP changes. Used to titrate CPP individually (some patients need higher CPP to normalise LPR), to set safe glucose targets, and to identify mitochondrial crisis (which will <em>not</em> respond to further haemodynamic escalation). Endorsed by the 2014 international consensus statement on multimodal monitoring (Le Roux et al, Neurocrit Care/ICM).
+                Detects neurochemical deterioration before ICP/CPP changes. {CMD_INTERPRETATION} {CMD_GLUCOSE}<InlineRef topicId="neurointensive-care" refLabel="CMD Forum 2014" /><InlineRef topicId="neurointensive-care" refLabel="CMD Delphi 2025" />
               </p>
             </div>
             <div className="p-4 rounded-lg border border-border">
               <p className="font-semibold text-foreground text-sm">Poor-grade SAH</p>
               <p className="text-sm text-muted-foreground mt-1">
-                Early warning for delayed cerebral ischaemia (DCI) — LPR and glutamate often rise hours before clinical deterioration or angiographic vasospasm becomes apparent in sedated patients in whom neurological examination is impossible. Triggers escalation: induced hypertension, angiography ± intra-arterial vasodilator/angioplasty.
+                Early warning for delayed cerebral ischaemia (DCI) — LPR and glutamate often rise hours before clinical deterioration or angiographic vasospasm becomes apparent in sedated patients in whom neurological examination is impossible. Prompts urgent multimodal assessment for DCI and other causes; haemodynamic augmentation or endovascular treatment requires the full clinical context and specialist decision.
               </p>
             </div>
             <div className="p-4 rounded-lg border border-border">
@@ -1033,7 +1023,7 @@ const NeurointensiveCareTopic = () => {
           <div className="p-4 rounded-lg bg-secondary/50 border border-primary/20">
             <p className="text-sm font-semibold text-foreground mb-1">💡 Exam Pearl</p>
             <p className="text-sm text-muted-foreground">
-              The <strong>Lactate:Pyruvate Ratio (LPR)</strong> is the single highest-yield CMD value. Threshold &gt;25 = metabolic crisis; &gt;40 = severe. Distinguish ischaemia (LPR ↑ <em>with</em> ↓ pyruvate) from mitochondrial dysfunction (LPR ↑ <em>with</em> normal/↑ pyruvate) — they look similar but have completely different management implications. CMD also drove the move <em>away</em> from tight glycaemic control in TBI after evidence of brain neuroglycopenia at systemic glucose 4.5–6 mmol/L (Vespa, Oddo).
+              <strong>LPR</strong> helps assess local metabolic stress. Thresholds such as 25 or 40 are contextual warning values, not stand-alone diagnoses. {CMD_INTERPRETATION} {CMD_GLUCOSE}<InlineRef topicId="neurointensive-care" refLabel="CMD Forum 2014" /><InlineRef topicId="neurointensive-care" refLabel="CMD Delphi 2025" />
             </p>
           </div>
           </CollapsibleSubsection>

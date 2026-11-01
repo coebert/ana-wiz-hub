@@ -8,6 +8,8 @@ const ERC_2021: CascadeSource = {
   url: "https://doi.org/10.1016/j.resuscitation.2021.02.012",
 };
 
+const RCUK_2025: CascadeSource = { label: "RCUK PRC 2025", citation: "Resuscitation Council UK. Post-resuscitation care guidelines 2025.", url: "https://www.resus.org.uk/professional-library/2025-resuscitation-guidelines/post-resuscitation-care-guidelines" };
+
 const TTM2: CascadeSource = {
   label: "TTM2 2021",
   citation:
@@ -48,8 +50,8 @@ const steps: CascadeStep[] = [
     node: "Brain injury",
     title: "Post-anoxic brain injury",
     body:
-      "Ischaemia-reperfusion of cerebral tissue triggers excitotoxicity (glutamate release), calcium influx, free-radical generation and delayed neuronal death over 24–72 h. Cerebral autoregulation is impaired, so MAP and PaCO₂ swings translate directly to CBF. This is the leading cause of death in OOHCA survivors. Targets: SpO₂ 94–98%, PaCO₂ 4.5–6.0 kPa, MAP ≥ 65 mmHg, normoglycaemia, TTM 32–36 °C × 24 h, seizure prophylaxis & EEG monitoring.",
-    sources: [ERC_2021, TTM2, BJA_PCAS],
+      "Ischaemia-reperfusion of cerebral tissue triggers excitotoxicity (glutamate release), calcium influx, free-radical generation and delayed neuronal death over 24–72 h. Cerebral autoregulation is impaired, so MAP and PaCO₂ swings translate directly to CBF. This is the leading cause of death in OOHCA survivors. Current targets after reliable measurement: SpO₂ 94–98%, PaCO₂ 4.7–6.0 kPa; individual perfusion support, standard ICU glucose care and active fever prevention ≤ 37.5 °C for comatose patients (March 2026 algorithm: at least 72 h). EEG and seizure treatment as indicated, not routine seizure prophylaxis.",
+    sources: [RCUK_2025, TTM2, BJA_PCAS],
   },
   {
     node: "Myocardial dysfunction",
@@ -69,7 +71,7 @@ const steps: CascadeStep[] = [
     node: "Persistent precipitant",
     title: "Underlying cause",
     body:
-      "The original insult continues to drive instability until treated: ACS (consider urgent coronary angiography in shockable rhythms or STEMI), PE (thrombolysis), tamponade, tension pneumothorax, hypovolaemia, hypoxia, hyper/hypokalaemia, hypothermia, toxins. The 4 H's and 4 T's must be systematically excluded. CT 'sudden death' protocol when cause unclear.",
+      "The original insult continues to drive instability until treated: ACS (prioritise immediate angiography for ST elevation or strong coronary-occlusion suspicion, including haemodynamic/electrical instability; the original shockable rhythm alone is insufficient), PE (thrombolysis), tamponade, tension pneumothorax, hypovolaemia, hypoxia, hyper/hypokalaemia, hypothermia, toxins. The 4 H's and 4 T's must be systematically excluded. CT 'sudden death' protocol when cause unclear.",
     sources: [FOUR_HT, ERC_2021],
   },
 ];

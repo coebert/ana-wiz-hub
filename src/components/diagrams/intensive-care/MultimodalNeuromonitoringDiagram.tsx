@@ -1,3 +1,5 @@
+import { CMD_INTERPRETATION } from "@/components/topic/NeuroIcuReviewedFacts";
+import { InlineRef } from "@/components/references/InlineRef";
 import { useState } from "react";
 import { DiagramFigure } from "../_shared/DiagramFigure";
 
@@ -162,9 +164,9 @@ const MODALITIES: Modality[] = [
     invasiveness: "Intracranial",
     spatialScore: 1,
     temporalScore: 2,
-    threshold: "LPR > 25 = metabolic crisis; tissue glucose < 0.8 mmol/L",
+    threshold: "LPR > 25 / > 40 and low tissue glucose are contextual metabolic warnings",
     strengths: [
-      "Only modality showing biochemistry — distinguishes ischaemia from mitochondrial dysfunction",
+      "Focal biochemical sampling may suggest mechanisms; it does not prove ischaemia or mitochondrial failure",
       "Reshaped post-TBI glucose targets (away from tight control)",
       "Detects DCI in SAH hours before clinical deterioration",
       "Endorsed by 2014 international multimodal monitoring consensus",
@@ -483,7 +485,7 @@ const MultimodalNeuromonitoringDiagram = () => {
         {/* Bottom synthesis */}
         <div className="mt-3 p-2.5 rounded bg-secondary/40 border border-border">
           <p className="text-[11px] text-muted-foreground leading-relaxed">
-            <strong className="text-foreground">2014 international consensus (Le Roux et al, Neurocrit Care):</strong> multimodal monitoring is recommended for severe TBI / poor-grade SAH. Typical bundle = ICP + CPP (always) + PbtO₂ ± CMD via a triple-lumen bolt, ± NIRS for trends. Each modality answers a different question — pressure, flow surrogate, oxygenation, biochemistry. Use them <em>together</em>: a normal ICP doesn't exclude focal ischaemia; a high LPR with normal pyruvate won't respond to ↑ CPP; NIRS is best as a trend monitor; SjvO₂ now largely replaced by PbtO₂ + NIRS.
+            <strong className="text-foreground">2014 international consensus (Le Roux et al, Neurocrit Care):</strong> multimodal monitoring is recommended for severe TBI / poor-grade SAH. Typical bundle = ICP + CPP (always) + PbtO₂ ± CMD via a triple-lumen bolt, ± NIRS for trends. Each modality answers a different question — pressure, flow surrogate, oxygenation, biochemistry. Use them <em>together</em>: a normal ICP doesn't exclude focal ischaemia; a high LPR with preserved pyruvate does not predict perfusion nonresponse; NIRS is best as a trend monitor; SjvO₂ now largely replaced by PbtO₂ + NIRS. {CMD_INTERPRETATION}<InlineRef topicId="neurointensive-care" refLabel="CMD Forum 2014" /><InlineRef topicId="neurointensive-care" refLabel="CMD Delphi 2025" />
           </p>
         </div>
       </div>
