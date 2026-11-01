@@ -47,3 +47,4 @@
 - C4 ACLF classification descriptions are shared between the chapter and figure so single-brain-failure exceptions and renal/mild-HE alternatives cannot drift; current NICE adrenal records are reused across parent and standalone teaching.
 - Hosted support destinations and outbound source labels live in donation.ts; policy extensions must guard the exact previously approved predicate and preserve roles/time limits because clicks are not payments.
 - Pancreatitis clinical strings and trial outcomes are shared through PancreatitisTeaching so topic/quiz/diagram wording remains aligned and existing Teaching-module extraction retains generated coverage; FAQ literals are checked for equality to shared facts.
+- Respiratory rescue facts share BronchospasticRescueTeaching across the chapter, quiz and device figure; source-scoped agent/indication and trial-population distinctions prevent dosing or outcome extrapolation.
