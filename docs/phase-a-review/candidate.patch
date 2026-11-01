@@ -1,0 +1,427 @@
+--- a/src/components/viva/DemoVivaInteractive.tsx
++++ b/src/components/viva/DemoVivaInteractive.tsx
+@@ -1,3 +1,4 @@
++import { invokeViva, SOURCE_UNAVAILABLE } from "@/lib/sourceUnavailable";
+ import { useCallback, useEffect, useRef, useState } from "react";
+ import {
+   ArrowRight,
+@@ -182,7 +183,7 @@
+     }
+     setAnnotating(true);
+     try {
+-      const { data, error } = await supabase.functions.invoke("viva", {
++      const { data, error } = await invokeViva({
+         body: {
+           mode: "annotate",
+           topicTitle,
+@@ -619,7 +620,7 @@
+         const segments = segmentsRef.current.length > 0
+           ? segmentsRef.current.slice()
+           : undefined;
+-        const { data, error: invokeError } = await supabase.functions.invoke("viva", {
++        const { data, error: invokeError } = await invokeViva({
+           body: {
+             mode: "feedback",
+             topicTitle,
+--- a/src/components/viva/VivaSession.tsx
++++ b/src/components/viva/VivaSession.tsx
+@@ -1,3 +1,4 @@
++import { invokeViva, SOURCE_UNAVAILABLE } from "@/lib/sourceUnavailable";
+ import { useCallback, useEffect, useRef, useState } from "react";
+ import { Mic, MicOff, Volume2, RotateCcw, Loader2, AlertCircle, Target, Sparkles, ChevronDown, ChevronUp } from "lucide-react";
+ import { supabase } from "@/integrations/supabase/client";
+@@ -305,7 +306,7 @@
+     ): Promise<string | null> => {
+       const avoid = avoidRepeats ? loadAsked(topicId, exam) : [];
+       try {
+-        const { data, error } = await supabase.functions.invoke("viva", {
++        const { data, error } = await invokeViva({
+           body: {
+             mode: "question",
+             topicId,
+@@ -360,7 +361,7 @@
+     setQuestion("");
+     const q = await requestQuestion(difficulty);
+     if (!q) {
+-      setErrorMsg("Could not load a question.");
++      setErrorMsg(SOURCE_UNAVAILABLE);
+       setPhase("error");
+       return;
+     }
+@@ -383,7 +384,7 @@
+     setModelAnswerLoading(true);
+     setModelAnswerOpen(true);
+     try {
+-      const { data, error } = await supabase.functions.invoke("viva", {
++      const { data, error } = await invokeViva({
+         body: {
+           mode: "model-answer",
+           topicTitle,
+@@ -469,7 +470,7 @@
+ 
+     const q = await requestQuestion(difficulty, weak);
+     if (!q) {
+-      setErrorMsg("Could not load a question.");
++      setErrorMsg(SOURCE_UNAVAILABLE);
+       setPhase("error");
+       return;
+     }
+@@ -575,7 +576,7 @@
+ 
+     const segments = segmentsRef.current.slice();
+ 
+-    const { data, error } = await supabase.functions.invoke("viva", {
++    const { data, error } = await invokeViva({
+       body: {
+         mode: "feedback",
+         topicTitle,
+--- a/src/pages/AskAi.tsx
++++ b/src/pages/AskAi.tsx
+@@ -1,3 +1,4 @@
++import { SOURCE_UNAVAILABLE, sourceAwareFetch } from "@/lib/sourceUnavailable";
+ import React, { Fragment, useEffect, useMemo, useRef, useState } from "react";
+ import { Helmet } from "react-helmet-async";
+ import { useChat } from "@ai-sdk/react";
+@@ -102,37 +103,9 @@
+   };
+ }
+ 
+-async function fetchLibrary(): Promise<QAEntry[]> {
+-  // The shared Q&A library is world-readable via RLS; the publishable anon
+-  // key in the default client is enough.
+-  const { data, error } = await supabase
+-    .from("ask_qa_library")
+-    .select("id, question, normalized, answer, ask_count, updated_at")
+-    .order("updated_at", { ascending: false })
+-    .limit(500);
+-  if (error) {
+-    console.error("[AskAi] failed to load Q&A library", error);
+-    return [];
+-  }
+-  return ((data ?? []) as RawLibraryRow[]).map(rowToEntry);
+-}
+-
+-function findCachedMatch(question: string, cache: QAEntry[]): QAEntry | null {
+-  const norm = normalize(question);
+-  if (!norm) return null;
+-  const exact = cache.find((e) => e.normalized === norm);
+-  if (exact) return exact;
+-  const toks = tokenize(question);
+-  if (toks.length < 2) return null;
+-  let best: { entry: QAEntry; score: number } | null = null;
+-  for (const entry of cache) {
+-    const score = jaccard(toks, entry.tokens);
+-    if (score >= 0.8 && (!best || score > best.score)) {
+-      best = { entry, score };
+-    }
+-  }
+-  return best?.entry ?? null;
+-}
++// Retain legacy rows server-side for audit, never return them to the chat.
++async function fetchLibrary(): Promise<QAEntry[]> { return []; }
++function findCachedMatch(_question: string, _cache: QAEntry[]): QAEntry | null { return null; }
+ 
+ function loadInitialMessages(): UIMessage[] {
+   if (typeof window === "undefined") return [];
+@@ -180,6 +153,7 @@
+     () =>
+       new DefaultChatTransport({
+         api: ENDPOINT,
++        fetch: sourceAwareFetch,
+         // Ask AI requires sign-in: send the user's session token.
+         headers: async () => {
+           const { data } = await supabase.auth.getSession();
+@@ -231,47 +205,7 @@
+     });
+   };
+ 
+-  // Load the shared Q&A library on mount, and stream incremental updates
+-  // from postgres_changes so other users' new questions appear in real time
+-  // without a full refetch (which would otherwise reshuffle the user's
+-  // current pagination window).
+-  useEffect(() => {
+-    let cancelled = false;
+-    void fetchLibrary().then((rows) => { if (!cancelled) setQaCache(rows); });
+-    const channel = supabase
+-      .channel("ask_qa_library_changes")
+-      .on(
+-        "postgres_changes",
+-        { event: "INSERT", schema: "public", table: "ask_qa_library" },
+-        (payload) => {
+-          const row = payload.new as RawLibraryRow | null;
+-          if (row) mergeRows([rowToEntry(row)]);
+-        },
+-      )
+-      .on(
+-        "postgres_changes",
+-        { event: "UPDATE", schema: "public", table: "ask_qa_library" },
+-        (payload) => {
+-          const row = payload.new as RawLibraryRow | null;
+-          if (row) mergeRows([rowToEntry(row)]);
+-        },
+-      )
+-      .on(
+-        "postgres_changes",
+-        { event: "DELETE", schema: "public", table: "ask_qa_library" },
+-        (payload) => {
+-          const old = payload.old as { id?: string } | null;
+-          if (!old?.id) return;
+-          setQaCache((prev) => prev.filter((e) => e.id !== old.id));
+-        },
+-      )
+-      .subscribe();
+-    return () => {
+-      cancelled = true;
+-      void supabase.removeChannel(channel);
+-    };
+-  }, []);
+-
++  // No legacy public-library realtime subscription.
+   // After a streamed answer completes, refetch the library so the newly
+   // saved row (written by `kb-chat`'s onFinish hook) is visible immediately
+   // — realtime should also deliver it, but this is a guaranteed fallback.
+@@ -306,26 +240,6 @@
+     if (!trimmed || isBusy) return;
+     setInput("");
+ 
+-    // 1. Check the local Q&A cache first. If we've answered this (or a very
+-    //    similar) question before, surface the prior answer instead of
+-    //    spending another model call.
+-    const cached = findCachedMatch(trimmed, qaCache);
+-    if (cached) {
+-      const now = Date.now();
+-      const userMsg: UIMessage = {
+-        id: `cached-user-${now}`,
+-        role: "user",
+-        parts: [{ type: "text", text: trimmed }],
+-      };
+-      const assistantMsg: UIMessage = {
+-        id: `cached-assistant-${now}`,
+-        role: "assistant",
+-        parts: [{ type: "text", text: buildCachedReply(cached) }],
+-      };
+-      setMessages([...messages, userMsg, assistantMsg]);
+-      return;
+-    }
+-
+     pendingQuestionRef.current = trimmed;
+     await sendMessage({ text: trimmed });
+   };
+@@ -340,20 +254,7 @@
+ 
+   // Inject a saved Q&A pair into the live conversation so the user can keep
+   // following up. No model call is made.
+-  const reopen = (entry: QAEntry) => {
+-    const now = Date.now();
+-    const userMsg: UIMessage = {
+-      id: `history-user-${now}`,
+-      role: "user",
+-      parts: [{ type: "text", text: entry.question }],
+-    };
+-    const assistantMsg: UIMessage = {
+-      id: `history-assistant-${now}`,
+-      role: "assistant",
+-      parts: [{ type: "text", text: entry.answer }],
+-    };
+-    setMessages([...messages, userMsg, assistantMsg]);
+-  };
++  const reopen = (_entry: QAEntry) => { /* Legacy shared answers are paused. */ };
+ 
+ 
+   const onSubmit = (e: React.FormEvent) => {
+@@ -386,13 +287,14 @@
+         <meta name="robots" content="noindex" />
+       </Helmet>
+ 
++      <p role="status" className="mb-4 text-sm text-muted-foreground">{SOURCE_UNAVAILABLE} Previous AI-generated messages below are historical, not a verified current source.</p>
+       <div className="flex flex-col h-[min(75vh,900px)] rounded-xl border border-border bg-card">
+         {/* Toolbar */}
+         <div className="flex items-center justify-between gap-2 border-b border-border px-3 sm:px-4 py-2">
+           <div className="text-xs text-muted-foreground">
+             {qaCache.length > 0
+               ? `${qaCache.length} question${qaCache.length === 1 ? "" : "s"} in the shared library`
+-              : "Shared library is empty — be the first to ask"}
++              : "Shared answers are paused for a source review"}
+           </div>
+           <HistoryPanel entries={qaCache} onReopen={reopen} />
+         </div>
+--- a/src/pages/VivaQuestionLibrary.tsx
++++ b/src/pages/VivaQuestionLibrary.tsx
+@@ -1,3 +1,4 @@
++import { SOURCE_UNAVAILABLE } from "@/lib/sourceUnavailable";
+ import { useEffect, useMemo, useRef, useState } from "react";
+ import { PageSection } from "@/components/layout/PageSection";
+ import { Link } from "react-router-dom";
+@@ -299,29 +300,7 @@
+   }, [playbackRate]);
+ 
+ 
+-  useEffect(() => {
+-    const load = async () => {
+-      setLoading(true);
+-      const { data, error } = await supabase
+-        .from("viva_model_answers")
+-        .select("id, exam, question, topic_title, model_answer, high_yield_points, pitfalls, created_at")
+-        .order("created_at", { ascending: false })
+-        .limit(500);
+-      if (error) {
+-        toast.error("Could not load question library");
+-      } else {
+-        setRows(
+-          (data ?? []).map((r) => ({
+-            ...r,
+-            high_yield_points: Array.isArray(r.high_yield_points) ? (r.high_yield_points as string[]) : [],
+-            pitfalls: Array.isArray(r.pitfalls) ? (r.pitfalls as string[]) : [],
+-          })),
+-        );
+-      }
+-      setLoading(false);
+-    };
+-    load();
+-  }, []);
++  useEffect(() => { setRows([]); setLoading(false); }, []);
+ 
+   // Pre-classify each row once so filter, badges and stream queue all agree.
+   const rowDifficulty = useMemo(() => {
+@@ -636,6 +615,7 @@
+ 
+   return (
+     <div className="min-h-screen bg-background">
++      <p role="status" className="mx-auto max-w-5xl p-6 text-sm">{SOURCE_UNAVAILABLE} The shared answer library is temporarily paused.</p>
+       <Helmet>
+         <title>Viva Question Library – AnaesthesiaCore</title>
+         <meta
+--- a/src/pages/VoiceViva.tsx
++++ b/src/pages/VoiceViva.tsx
+@@ -1,3 +1,4 @@
++import { SOURCE_UNAVAILABLE } from "@/lib/sourceUnavailable";
+ import { useEffect, useRef, useState } from "react";
+ import { PageSection } from "@/components/layout/PageSection";
+ import { Helmet } from "react-helmet-async";
+@@ -234,6 +235,10 @@
+   }
+ 
+   async function start() {
++    setError({ title: "Source review in progress", message: SOURCE_UNAVAILABLE, recoverable: false, kind: "server" });
++    setPhase("error");
++    return;
++
+     setError(null);
+     setTranscript([]);
+     partialRef.current.clear();
+--- a/supabase/functions/kb-chat/index.ts
++++ b/supabase/functions/kb-chat/index.ts
+@@ -1,3 +1,4 @@
++import { sourceUnavailable } from "../_shared/source-unavailable.ts";
+ import { getAuthedUserId, isAdminUser } from "../_shared/require-user.ts";
+ /**
+  * Ask AI chat endpoint. Receives an AI SDK UIMessage[] history, embeds the
+@@ -99,6 +100,9 @@
+     });
+   }
+ 
++  // Stop before clinical generation/cache/provider work. Authentication remains first.
++  return sourceUnavailable(corsHeaders);
++
+   const lovableKey = Deno.env.get("LOVABLE_API_KEY");
+   const supabaseUrl = Deno.env.get("SUPABASE_URL");
+   const serviceKey = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY");
+--- a/supabase/functions/process-podcast-rerecord/index.ts
++++ b/supabase/functions/process-podcast-rerecord/index.ts
+@@ -80,11 +80,15 @@
+ async function settleItem(item: QueueItem): Promise<"done" | "waiting" | "retry" | "failed"> {
+   const { data: episode } = await admin
+     .from("podcasts")
+-    .select("status, regenerating, audio_path, error_message, updated_at")
++    .select("status, regenerating, audio_path, error_message, updated_at, audit_hold, audit_hold_reason")
+     .eq("topic_id", item.topic_id)
+     .eq("voice", item.voice)
+     .maybeSingle();
+ 
++  if (episode?.audit_hold === true) {
++    await admin.from("podcast_rerecord_items").update({ status: "failed", completed_at: new Date().toISOString(), error_message: episode.audit_hold_reason ?? "Clinical audit hold: replacement review is required." }).eq("id", item.id).eq("status", "running");
++    return "failed";
++  }
+   const episodeUpdatedAt = episode?.updated_at ? Date.parse(episode.updated_at) : 0;
+   const itemStartedAt = item.started_at ? Date.parse(item.started_at) : Date.now();
+   if (
+--- a/supabase/functions/viva-voice-token/index.ts
++++ b/supabase/functions/viva-voice-token/index.ts
+@@ -1,3 +1,4 @@
++import { sourceUnavailable } from "../_shared/source-unavailable.ts";
+ // Mints a short-lived OpenAI Realtime client secret (ephemeral key) for the
+ // voice viva. The OpenAI API key never leaves the edge function; the browser
+ // only sees an ek_... token, valid ~60 s.
+@@ -100,6 +101,9 @@
+       });
+     }
+ 
++  // Stop before clinical generation/cache/provider work. Authentication remains first.
++  return sourceUnavailable(corsHeaders);
++
+     const apiKey = Deno.env.get("OPENAI_API_KEY");
+     if (!apiKey) {
+       return new Response(JSON.stringify({ error: "OPENAI_API_KEY not configured" }), {
+--- a/supabase/functions/viva/index.ts
++++ b/supabase/functions/viva/index.ts
+@@ -1,3 +1,4 @@
++import { sourceUnavailable } from "../_shared/source-unavailable.ts";
+ import { getAuthedUserId, isAdminUser } from "../_shared/require-user.ts";
+ // Viva-style oral exam edge function.
+ //
+@@ -815,6 +816,9 @@
+     });
+   }
+ 
++  // Stop before clinical generation/cache/provider work. Authentication remains first.
++  return sourceUnavailable(corsHeaders);
++
+   const validExams: Exam[] = ["primary", "final", "fficm"];
+ 
+   try {
+--- /dev/null
++++ b/supabase/functions/_shared/source-unavailable.ts
+@@ -0,0 +1,7 @@
++/** Containment only: no clinical generation until the versioned source pipeline is ready. */
++export const SOURCE_UNAVAILABLE = "Current source material is not yet available for reliable AI answers or clinical scoring. Please read the relevant topic and original guidance. Your saved history has been kept.";
++export function sourceUnavailable(headers: HeadersInit = {}): Response {
++  return new Response(JSON.stringify({ status: "source_unavailable", code: "SOURCE_UNAVAILABLE", error: SOURCE_UNAVAILABLE, clinicalScore: null }), {
++    status: 503, headers: { ...Object.fromEntries(new Headers(headers)), "Content-Type": "application/json", "Cache-Control": "no-store" },
++  });
++}
+--- /dev/null
++++ b/src/lib/sourceUnavailable.ts
+@@ -0,0 +1,19 @@
++import { supabase } from "@/integrations/supabase/client";
++export const SOURCE_UNAVAILABLE = "Current source material is not yet available for reliable AI answers or clinical scoring. Please read the relevant topic and original guidance. Your saved history has been kept.";
++/** A typed non-stream response is converted to the UI's normal error state. No SSE is fabricated. */
++export const sourceAwareFetch: typeof fetch = async (input, init) => {
++  const response = await fetch(input, init);
++  if (response.headers.get("Content-Type")?.includes("application/json")) {
++    const body = await response.clone().json().catch(() => null);
++    if (body?.code === "SOURCE_UNAVAILABLE") throw new Error(SOURCE_UNAVAILABLE);
++  }
++  return response;
++};
++export async function invokeViva(options: Parameters<typeof supabase.functions.invoke>[1]) {
++  const result = await supabase.functions.invoke("viva", options);
++  if (result.error?.context instanceof Response) {
++    const body = await result.error.context.clone().json().catch(() => null);
++    if (body?.code === "SOURCE_UNAVAILABLE") return { ...result, data: null, error: new Error(SOURCE_UNAVAILABLE) };
++  }
++  return result;
++}
+--- /dev/null
++++ b/supabase/migrations/202611010001_contain_legacy_ai_library.sql
+@@ -0,0 +1,11 @@
++-- REVIEW ONLY. No rows are modified or removed. Run in a transaction after approval.
++BEGIN;
++CREATE POLICY grounding_pause_ask_library ON public.ask_qa_library
++  AS RESTRICTIVE FOR SELECT TO anon, authenticated USING (false);
++CREATE POLICY grounding_pause_viva_library ON public.viva_model_answers
++  AS RESTRICTIVE FOR SELECT TO anon, authenticated USING (false);
++COMMIT;
++-- Service-role audit reads remain possible. Browser admin counts of these libraries temporarily become zero.
++-- ROLLBACK (restores legacy public access; unsafe unless another current-source gate replaces it):
++-- DROP POLICY grounding_pause_ask_library ON public.ask_qa_library;
++-- DROP POLICY grounding_pause_viva_library ON public.viva_model_answers;

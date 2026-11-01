@@ -1,0 +1,11 @@
+{
+  "src/components/viva/DemoVivaInteractive.tsx": "71741e79ef47acdf05f19277293a2f09eadd8952b3ac03cf1a45c802ceb7bab5",
+  "src/components/viva/VivaSession.tsx": "794e100c806839ea35d5db81120398e5535c1a8169e5e968491f59e8fc198bff",
+  "src/pages/AskAi.tsx": "32569e1d7995d2caf54869ae6eccfe6b2687c4b0981d30ad6c58d66d8e4296fc",
+  "src/pages/VivaQuestionLibrary.tsx": "deb170a4ceb40009295fbc037fbb406a6f9417c839c1af1fc3e258f9a042ee12",
+  "src/pages/VoiceViva.tsx": "b19dd6a37e24ab6ebcbc79e31830f6ae75b22045b18e57456dc7425854f5ea24",
+  "supabase/functions/kb-chat/index.ts": "c6b24d332aaf0d8749652edaaf94f971d1d6d7a558946dd85cf0b0608c01dbac",
+  "supabase/functions/process-podcast-rerecord/index.ts": "77cf601a7680ea189cfc3705d81a1c5a75be7af9fc70e9195ddfed94c710a657",
+  "supabase/functions/viva-voice-token/index.ts": "732229641bc6c53475205b4cab31bf6a63c6c31aef5ceb80f8e1dadaa88e0467",
+  "supabase/functions/viva/index.ts": "4c76611e67fe9f35588636e821170d2d8f7b84ace6398254c17b3facc47be3f1"
+}

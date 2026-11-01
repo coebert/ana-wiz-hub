@@ -1,0 +1,106 @@
+TAP version 13
+# Subtest: kb-chat: authenticated request is typed unavailable, zero clinical/provider/cache calls
+ok 1 - kb-chat: authenticated request is typed unavailable, zero clinical/provider/cache calls
+  ---
+  duration_ms: 101.52195
+  type: 'test'
+  ...
+# Subtest: kb-chat: unauthenticated request still denied before feature response
+ok 2 - kb-chat: unauthenticated request still denied before feature response
+  ---
+  duration_ms: 20.868762
+  type: 'test'
+  ...
+# Subtest: viva: authenticated request is typed unavailable, zero clinical/provider/cache calls
+ok 3 - viva: authenticated request is typed unavailable, zero clinical/provider/cache calls
+  ---
+  duration_ms: 36.078425
+  type: 'test'
+  ...
+# Subtest: viva: unauthenticated request still denied before feature response
+ok 4 - viva: unauthenticated request still denied before feature response
+  ---
+  duration_ms: 29.217923
+  type: 'test'
+  ...
+# Subtest: viva-voice-token: authenticated request is typed unavailable, zero clinical/provider/cache calls
+ok 5 - viva-voice-token: authenticated request is typed unavailable, zero clinical/provider/cache calls
+  ---
+  duration_ms: 12.569381
+  type: 'test'
+  ...
+# Subtest: viva-voice-token: unauthenticated request still denied before feature response
+ok 6 - viva-voice-token: unauthenticated request still denied before feature response
+  ---
+  duration_ms: 12.482253
+  type: 'test'
+  ...
+# Subtest: viva question cannot reach legacy cache, waiter, generation or grade
+ok 7 - viva question cannot reach legacy cache, waiter, generation or grade
+  ---
+  duration_ms: 19.621332
+  type: 'test'
+  ...
+# Subtest: viva feedback cannot reach legacy cache, waiter, generation or grade
+ok 8 - viva feedback cannot reach legacy cache, waiter, generation or grade
+  ---
+  duration_ms: 19.881818
+  type: 'test'
+  ...
+# Subtest: viva annotate cannot reach legacy cache, waiter, generation or grade
+ok 9 - viva annotate cannot reach legacy cache, waiter, generation or grade
+  ---
+  duration_ms: 18.741669
+  type: 'test'
+  ...
+# Subtest: viva model-answer cannot reach legacy cache, waiter, generation or grade
+ok 10 - viva model-answer cannot reach legacy cache, waiter, generation or grade
+  ---
+  duration_ms: 26.120986
+  type: 'test'
+  ...
+# Subtest: bad JSON and methods keep original validation; CORS works
+ok 11 - bad JSON and methods keep original validation; CORS works
+  ---
+  duration_ms: 28.113788
+  type: 'test'
+  ...
+# Subtest: Ask exact/fuzzy library and fetch gates return empty without any network
+ok 12 - Ask exact/fuzzy library and fetch gates return empty without any network
+  ---
+  duration_ms: 19.703765
+  type: 'test'
+  ...
+# Subtest: typed unavailable is shown as understandable UI error; genuine stream responses pass through
+ok 13 - typed unavailable is shown as understandable UI error; genuine stream responses pass through
+  ---
+  duration_ms: 4.778496
+  type: 'test'
+  ...
+# Subtest: held podcast cannot count as background success; only job item is failed, original is untouched
+ok 14 - held podcast cannot count as background success; only job item is failed, original is untouched
+  ---
+  duration_ms: 6.942912
+  type: 'test'
+  ...
+# Subtest: all touched TS/TSX files parse
+ok 15 - all touched TS/TSX files parse
+  ---
+  duration_ms: 185.803019
+  type: 'test'
+  ...
+# Subtest: draft containment policies are restrictive, additive, and do not delete history
+ok 16 - draft containment policies are restrictive, additive, and do not delete history
+  ---
+  duration_ms: 0.316195
+  type: 'test'
+  ...
+1..16
+# tests 16
+# suites 0
+# pass 16
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 759.979142
