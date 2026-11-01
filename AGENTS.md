@@ -50,3 +50,4 @@
 - Pancreatitis clinical strings and trial outcomes are shared through PancreatitisTeaching so topic/quiz/diagram wording remains aligned and existing Teaching-module extraction retains generated coverage; FAQ literals are checked for equality to shared facts.
 - Respiratory rescue facts share BronchospasticRescueTeaching across the chapter, quiz and device figure; source-scoped agent/indication and trial-population distinctions prevent dosing or outcome extrapolation.
 - Withdrawn anatomy figures retain their selectable source-led teaching and stable component identities; AnatomySpatialTeaching supplies spatial replacements without procedural geometry until reviewed redraws are available.
+- Medicine source displays normalize untrusted JSON and group identical URLs without dropping claim provenance; source repairs use ID, slug and exact JSON guards to preserve concurrent clinical work.

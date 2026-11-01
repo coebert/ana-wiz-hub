@@ -11,6 +11,10 @@ export interface DrugSource {
   url: string;
   accessed?: string;
   revision?: string;
+  section?: string;
+  sections?: string[];
+  scope?: string;
+  reviewNote?: string;
 }
 
 export interface TdmTarget {
