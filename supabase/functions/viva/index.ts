@@ -1,3 +1,25 @@
+/** Containment only: no clinical generation until the versioned source pipeline is ready. */
+const SOURCE_UNAVAILABLE =
+  "Current source material is not yet available for reliable AI answers or clinical scoring. Please read the relevant topic and original guidance. Your saved history has been kept.";
+function sourceUnavailable(headers: HeadersInit = {}): Response {
+  return new Response(
+    JSON.stringify({
+      status: "source_unavailable",
+      code: "SOURCE_UNAVAILABLE",
+      error: SOURCE_UNAVAILABLE,
+      clinicalScore: null,
+    }),
+    {
+      status: 503,
+      headers: {
+        ...Object.fromEntries(new Headers(headers)),
+        "Content-Type": "application/json",
+        "Cache-Control": "no-store",
+      },
+    },
+  );
+}
+
 import { getAuthedUserId, isAdminUser } from "../_shared/require-user.ts";
 // Viva-style oral exam edge function.
 //
@@ -147,10 +169,10 @@ async function callAI(body: Record<string, unknown>): Promise<Response> {
 
 function aiErrorResponse(status: number): Response | null {
   if (status === 429) {
-    return new Response(
-      JSON.stringify({ error: "Rate limit reached, please wait a moment and try again." }),
-      { status: 429, headers: { ...corsHeaders, "Content-Type": "application/json" } },
-    );
+    return new Response(JSON.stringify({ error: "Rate limit reached, please wait a moment and try again." }), {
+      status: 429,
+      headers: { ...corsHeaders, "Content-Type": "application/json" },
+    });
   }
   if (status === 402) {
     return new Response(
@@ -167,16 +189,25 @@ async function handleQuestion(b: QuestionBody): Promise<Response> {
   const difficulty: Difficulty = b.difficulty ?? "standard";
   const difficultyGuide: Record<Difficulty, string> = {
     easy: "Pitch this at the EASIER end of the named exam — a warm-up opener testing core definitions / first principles. Still exam-appropriate, but more accessible.",
-    standard: "Pitch at the typical mid-range standard for this exam — what an average candidate would expect on the day.",
+    standard:
+      "Pitch at the typical mid-range standard for this exam — what an average candidate would expect on the day.",
     hard: "Pitch at the HARDER end of the exam — a discriminating question requiring integration, less common scenarios, or deeper application. Still fair, not unfair.",
   };
-  const avoidBlock = b.avoid && b.avoid.length > 0
-    ? `\n\nAVOID repeating or paraphrasing any of these previously-asked questions:\n${b.avoid.slice(0, 12).map((q, i) => `${i + 1}. ${q}`).join("\n")}\nWrite a genuinely DIFFERENT question — different angle, sub-topic, or framing.`
-    : "";
+  const avoidBlock =
+    b.avoid && b.avoid.length > 0
+      ? `\n\nAVOID repeating or paraphrasing any of these previously-asked questions:\n${b.avoid
+          .slice(0, 12)
+          .map((q, i) => `${i + 1}. ${q}`)
+          .join("\n")}\nWrite a genuinely DIFFERENT question — different angle, sub-topic, or framing.`
+      : "";
 
-  const emphasiseBlock = b.emphasise && b.emphasise.length > 0
-    ? `\n\nEMPHASIS — the candidate scored poorly on these rubric areas last time. Pick a question that genuinely PROBES these areas (not just mentions them):\n${b.emphasise.slice(0, 5).map((c, i) => `${i + 1}. ${c}`).join("\n")}`
-    : "";
+  const emphasiseBlock =
+    b.emphasise && b.emphasise.length > 0
+      ? `\n\nEMPHASIS — the candidate scored poorly on these rubric areas last time. Pick a question that genuinely PROBES these areas (not just mentions them):\n${b.emphasise
+          .slice(0, 5)
+          .map((c, i) => `${i + 1}. ${c}`)
+          .join("\n")}`
+      : "";
 
   const userPrompt = `Topic: "${b.topicTitle}"${b.topicDescription ? ` — ${b.topicDescription}` : ""}.
 Exam standard: ${examLabel[b.exam]}.
@@ -248,16 +279,15 @@ Return JSON only via the tool call.`;
 
 async function handleFeedback(b: FeedbackBody): Promise<Response> {
   const rubric = RUBRIC[b.exam];
-  const rubricList = rubric
-    .map((r, i) => `${i + 1}. ${r.criterion} (max ${r.max})`)
-    .join("\n");
+  const rubricList = rubric.map((r, i) => `${i + 1}. ${r.criterion} (max ${r.max})`).join("\n");
 
-  const segmentsBlock = b.segments && b.segments.length > 0
-    ? `\n\nApproximate spoken timeline (seconds from start of answer → text). Use these EXACT snippets when quoting:\n${b.segments
-        .slice(0, 60)
-        .map((s) => `[${Math.max(0, Math.round(s.tStart))}s] ${s.text}`)
-        .join("\n")}`
-    : "";
+  const segmentsBlock =
+    b.segments && b.segments.length > 0
+      ? `\n\nApproximate spoken timeline (seconds from start of answer → text). Use these EXACT snippets when quoting:\n${b.segments
+          .slice(0, 60)
+          .map((s) => `[${Math.max(0, Math.round(s.tStart))}s] ${s.text}`)
+          .join("\n")}`
+      : "";
 
   const userPrompt = `Topic: "${b.topicTitle}". Exam standard: ${examLabel[b.exam]}.
 
@@ -411,7 +441,17 @@ Return JSON via the tool call only.`;
                 },
               },
             },
-            required: ["score", "verdict", "confidence", "answerSummary", "coreFeedback", "gaps", "modelAnswer", "nextStep", "rubricBreakdown"],
+            required: [
+              "score",
+              "verdict",
+              "confidence",
+              "answerSummary",
+              "coreFeedback",
+              "gaps",
+              "modelAnswer",
+              "nextStep",
+              "rubricBreakdown",
+            ],
             additionalProperties: false,
           },
         },
@@ -540,11 +580,7 @@ const LOCK_POLL_MS = 500;
 /** Stale lock rows older than this are ignored (previous worker crashed). */
 const LOCK_STALE_MS = 60_000;
 
-async function readCachedAnswer(
-  supa: ReturnType<typeof getServiceClient>,
-  exam: string,
-  questionHash: string,
-) {
+async function readCachedAnswer(supa: ReturnType<typeof getServiceClient>, exam: string, questionHash: string) {
   if (!supa) return null;
   const { data, error } = await supa
     .from("viva_model_answers")
@@ -619,11 +655,7 @@ async function tryClaimLock(
   return false;
 }
 
-async function releaseLock(
-  supa: NonNullable<ReturnType<typeof getServiceClient>>,
-  exam: string,
-  questionHash: string,
-) {
+async function releaseLock(supa: NonNullable<ReturnType<typeof getServiceClient>>, exam: string, questionHash: string) {
   const { error } = await supa
     .from("viva_model_answer_locks")
     .delete()
@@ -751,20 +783,18 @@ Return JSON via the tool call only.`;
     // Persist before releasing the lock so any waiter that polls right after
     // release immediately sees the cached row.
     if (supa && typeof parsed.modelAnswer === "string" && parsed.modelAnswer.length > 0) {
-      const { error: cacheWriteErr } = await supa
-        .from("viva_model_answers")
-        .upsert(
-          {
-            exam: b.exam,
-            question: b.question,
-            question_hash: questionHash,
-            topic_title: b.topicTitle,
-            model_answer: parsed.modelAnswer as string,
-            high_yield_points: Array.isArray(parsed.highYieldPoints) ? parsed.highYieldPoints : [],
-            pitfalls: Array.isArray(parsed.pitfalls) ? parsed.pitfalls : [],
-          },
-          { onConflict: "exam,question_hash" },
-        );
+      const { error: cacheWriteErr } = await supa.from("viva_model_answers").upsert(
+        {
+          exam: b.exam,
+          question: b.question,
+          question_hash: questionHash,
+          topic_title: b.topicTitle,
+          model_answer: parsed.modelAnswer as string,
+          high_yield_points: Array.isArray(parsed.highYieldPoints) ? parsed.highYieldPoints : [],
+          pitfalls: Array.isArray(parsed.pitfalls) ? parsed.pitfalls : [],
+        },
+        { onConflict: "exam,question_hash" },
+      );
       if (cacheWriteErr) {
         console.error("[viva] model-answer cache write failed", cacheWriteErr.message);
       }
@@ -814,6 +844,9 @@ Deno.serve(async (req) => {
       headers: { ...corsHeaders, "Content-Type": "application/json" },
     });
   }
+
+  // Stop before clinical generation/cache/provider work. Authentication remains first.
+  return sourceUnavailable(corsHeaders);
 
   const validExams: Exam[] = ["primary", "final", "fficm"];
 
@@ -892,9 +925,9 @@ Deno.serve(async (req) => {
     });
   } catch (e) {
     console.error("viva fn error:", e);
-    return new Response(
-      JSON.stringify({ error: "Internal server error" }),
-      { status: 500, headers: { ...corsHeaders, "Content-Type": "application/json" } },
-    );
+    return new Response(JSON.stringify({ error: "Internal server error" }), {
+      status: 500,
+      headers: { ...corsHeaders, "Content-Type": "application/json" },
+    });
   }
 });
