@@ -1,3 +1,5 @@
+import { INTERSCALENE_PHRENIC } from "@/lib/anatomy-context-teaching";
+import { InlineRef } from "@/components/references/InlineRef";
 import { useState } from "react";
 import { DiagramToggleBar } from "@/components/diagrams/shared/DiagramToggleBar";
 import { PlexusDetailPanel, ROOT_COLORS } from "@/components/diagrams/shared/plexusShared";
@@ -17,7 +19,7 @@ interface PlexusElement {
 }
 
 const levelInfo: Record<LevelKey, { label: string; y: number; blockApproach: string }> = {
-  roots: { label: "Roots (C5–T1)", y: 60, blockApproach: "Interscalene block — needle between anterior & middle scalene at C6 (Chassaignac's tubercle). US: roots appear as 'traffic light' hypoechoic circles between scalenes. 100% ipsilateral phrenic palsy." },
+  roots: { label: "Roots (C5–T1)", y: 60, blockApproach: "Interscalene block — needle between anterior & middle scalene at C6 (Chassaignac's tubercle). US: roots appear as 'traffic light' hypoechoic circles between scalenes. " + INTERSCALENE_PHRENIC },
   trunks: { label: "Trunks", y: 140, blockApproach: "Supraclavicular block — trunks/divisions clustered as 'bunch of grapes' lateral and superior to subclavian artery. Most compact point → most complete arm block. Pneumothorax risk <1% with US." },
   divisions: { label: "Divisions", y: 215, blockApproach: "Behind the clavicle. Anterior divisions → flexor compartments. Posterior divisions → extensor compartments. Not typically targeted for block." },
   cords: { label: "Cords", y: 290, blockApproach: "Infraclavicular block — cords surround 2nd part axillary artery deep to pectoralis major/minor. US: artery at 6 o'clock to clavicle. Good catheter site (away from neck)." },
@@ -90,7 +92,7 @@ const blockSites: BlockSite[] = [
     usLandmarks: "Linear probe on lateral neck at C6. Roots as hypoechoic circles ('traffic lights') between anterior and middle scalene muscles.",
     needleDirection: "In-plane, lateral to medial (or posterior to anterior). Deposit LA around C5–C6 roots.",
     volume: "15–20 ml",
-    risks: "Phrenic nerve palsy (100%) — avoid bilateral/respiratory disease. Horner's syndrome, recurrent laryngeal nerve palsy, vertebral artery injection. Epidural/intrathecal spread if too medial.",
+    risks: INTERSCALENE_PHRENIC + " Avoid bilateral interscalene blocks. Horner's syndrome, recurrent laryngeal nerve palsy, vertebral artery injection. Epidural/intrathecal spread if too medial.",
     indication: "Shoulder arthroscopy/arthroplasty, proximal humerus fracture, clavicle surgery",
   },
   {
@@ -520,7 +522,7 @@ const BrachialPlexusDiagram = () => {
               </div>
               <div>
                 <p className="font-semibold text-destructive mb-0.5">Risks</p>
-                <p className="text-muted-foreground">{activeBlock.risks}</p>
+                <p className="text-muted-foreground">{activeBlock.risks}{activeBlock.name.includes("Interscalene") && <InlineRef topicId="brachial-plexus" refLabel="Riazi 2008" />}</p>
               </div>
             </div>
           </div>

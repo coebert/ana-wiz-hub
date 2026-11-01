@@ -1,3 +1,4 @@
+import { INTERSCALENE_PHRENIC } from "@/lib/anatomy-context-teaching";
 import { Helmet } from "react-helmet-async";
 import { TopicTemplate } from "@/components/topic/TopicTemplate";
 import { CollapsibleSubsection } from "@/components/topic/CollapsibleSubsection";
@@ -310,7 +311,7 @@ const PainMedicineTopic = () => {
                 <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Breast</td><td>Pectoral (PECS I/II) or serratus plane block</td><td>Reduces PONV and persistent post-surgical pain risk; useful in patients where opioid is poorly tolerated</td></tr>
                 <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Hip fracture / hip surgery</td><td>Fascia iliaca or femoral nerve block, ± PENG block</td><td>Give in the emergency department for hip fracture — reduces opioid, delirium and time to mobilisation</td></tr>
                 <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Knee arthroplasty</td><td>Adductor canal block + local infiltration analgesia</td><td>Preserves quadriceps power and permits same-day mobilisation, unlike femoral block</td></tr>
-                <tr><td className="py-2 font-medium text-foreground">Shoulder / upper limb</td><td>Interscalene (shoulder), supraclavicular or axillary brachial plexus</td><td>Interscalene causes near-universal ipsilateral phrenic palsy — avoid in severe respiratory disease; consider a low-volume or suprascapular/axillary nerve alternative</td></tr>
+                <tr><td className="py-2 font-medium text-foreground">Shoulder / upper limb</td><td>Interscalene (shoulder), supraclavicular or axillary brachial plexus</td><td>{INTERSCALENE_PHRENIC} <InlineRef topicId="pain-medicine" refLabel="Riazi 2008" />; consider individually assessed alternatives</td></tr>
               </tbody>
             </table>
           </div>

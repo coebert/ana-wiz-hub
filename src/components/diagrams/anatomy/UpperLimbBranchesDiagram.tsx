@@ -1,3 +1,5 @@
+import { INTERSCALENE_PHRENIC } from "@/lib/anatomy-context-teaching";
+import { InlineRef } from "@/components/references/InlineRef";
 import { useState } from "react";
 import { DiagramToggleBar } from "@/components/diagrams/shared/DiagramToggleBar";
 import { PlexusCard, PlexusChipRow, PlexusDetailPanel, ROOT_COLORS } from "@/components/diagrams/shared/plexusShared";
@@ -142,7 +144,7 @@ const BLOCKS: Record<BlockKey, BlockData> = {
     covers: ["axillary", "musculocutaneous", "median", "radial"],
     misses: ["ulnar", "intercostobrachial"],
     technique: "Needle between anterior and middle scalene at C6 (Chassaignac's tubercle). 15–20 ml LA.",
-    pearls: "Best block for shoulder surgery. ~100% ipsilateral phrenic palsy — avoid in respiratory compromise. Spares ulnar territory.",
+    pearls: INTERSCALENE_PHRENIC + " Spares ulnar territory.",
   },
   supraclavicular: {
     label: "Supraclavicular",
@@ -337,6 +339,7 @@ const UpperLimbBranchesDiagram = () => {
       description="Anchor [x,y, anchor] for the inline nerve name on the anterior view."
     >
                   <PlexusCard>
+        {mode === "blocks" && selectedBlock === "interscalene" && <p className="text-xs text-muted-foreground"><InlineRef topicId="brachial-plexus" refLabel="Riazi 2008" /></p>}
         <DiagramToggleBar
           title="Upper-limb nerve branches & block coverage"
           subtitle={mode === "branches"

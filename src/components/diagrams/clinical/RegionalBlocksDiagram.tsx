@@ -1,3 +1,5 @@
+import { INTERSCALENE_PHRENIC } from "@/lib/anatomy-context-teaching";
+import { InlineRef } from "@/components/references/InlineRef";
 import { useState } from "react";
 import { DiagramFigure } from "../_shared/DiagramFigure";
 
@@ -31,8 +33,8 @@ const blocks: BlockData[] = [
     structures: ["C5, C6, C7 nerve roots (hypoechoic circles)", "Anterior scalene muscle", "Middle scalene muscle", "Carotid artery (medial)", "Internal jugular vein", "Vertebral artery (deep)"],
     sonoAnatomy: "Nerve roots appear as hypoechoic round/oval structures ('traffic light sign') between the anterior and middle scalene muscles. The sternocleidomastoid overlies the field.",
     laVolume: "15–20 ml (0.375–0.5% ropivacaine/levobupivacaine)",
-    tips: ["Scan caudad from C5 to identify roots clearly", "Confirm with nerve stimulator if needed", "Reduce volume to 5–10 ml to reduce phrenic palsy risk"],
-    pitfalls: ["100% ipsilateral phrenic nerve palsy — avoid bilateral/contralateral lung pathology", "Horner's syndrome", "Recurrent laryngeal nerve block", "Vertebral artery injection (catastrophic)"],
+    tips: ["Scan caudad from C5 to identify roots clearly", "Confirm with nerve stimulator if needed", "Reduced-volume techniques may reduce but do not eliminate hemidiaphragmatic paresis; assess respiratory reserve"],
+    pitfalls: [INTERSCALENE_PHRENIC + " Avoid bilateral interscalene blocks.", "Horner's syndrome", "Recurrent laryngeal nerve block", "Vertebral artery injection (catastrophic)"],
     svgContent: (
       <svg viewBox="0 0 300 200" className="w-full h-auto">
         <rect x="0" y="0" width="300" height="200" fill="hsl(var(--muted))" rx="8" stroke="hsl(var(--border))" strokeWidth="0.75" />
@@ -715,6 +717,7 @@ const RegionalBlocksDiagram = () => {
             <div className="p-3 rounded-lg border border-destructive/30 bg-destructive/5">
               <h4 className="font-semibold text-destructive text-xs mb-2">⚠️ Pitfalls</h4>
               <ul className="space-y-1">
+                {block.id === "interscalene" && <InlineRef topicId="brachial-plexus" refLabel="Riazi 2008" />}
                 {block.pitfalls.map((p, i) => (
                   <li key={i} className="text-xs text-muted-foreground">• {p}</li>
                 ))}
