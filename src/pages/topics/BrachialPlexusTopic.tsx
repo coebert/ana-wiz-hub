@@ -39,7 +39,7 @@ const workedExamples: WorkedExample[] = [
           <li><strong>Check the contraindications.</strong> {INTERSCALENE_PHRENIC}<Cite topicId="brachial-plexus" labels={["Urmey 1991"]} />. In severe COPD this may be unsafe.</li>
           <li><strong>Consider alternatives.</strong>
             <ul className="list-disc list-inside ml-5">
-              <li>Low-volume (5–10 mL) ultrasound-guided interscalene reduces phrenic spread<Cite topicId="brachial-plexus" labels={["Riazi 2008", "Renes 2009"]} />.</li>
+              <li>Low-volume (5–10 mL) ultrasound-guided interscalene may reduce but does not eliminate hemidiaphragmatic paresis<Cite topicId="brachial-plexus" labels={["Riazi 2008", "Renes 2009"]} />.</li>
               <li>Combined suprascapular + axillary nerve block ('shoulder block') — phrenic-sparing, covers most of the joint.</li>
               <li>Costoclavicular / supraclavicular approach — high diaphragmatic palsy rate, not better.</li>
               <li>GA + intra-articular LA + multimodal as fallback.</li>

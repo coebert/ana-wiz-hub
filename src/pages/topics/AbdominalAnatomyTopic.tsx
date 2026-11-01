@@ -216,6 +216,7 @@ const AbdominalAnatomyTopic = () => {
             </CollapsibleSubsection>
           </ExamSection>
           <TopicFaqs faqs={abdominalAnatomyFaqs} />
+          <p className="text-xs text-muted-foreground"><InlineRef topicId="abdominal-anatomy" refLabel="NICE NG39 trauma imaging" /></p>
         </>
       }
       workedExamples={[

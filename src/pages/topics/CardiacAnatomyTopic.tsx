@@ -279,6 +279,7 @@ const CardiacAnatomyTopic = () => {
             </CollapsibleSubsection>
           </ExamSection>
           <TopicFaqs faqs={cardiacAnatomyFaqs} />
+          <p className="text-xs text-muted-foreground"><InlineRef topicId="cardiac-anatomy" refLabel="Vikse nodal artery 2016" /><InlineRef topicId="cardiac-anatomy" refLabel="Vikse figure correction 2016" /></p>
         </>
       }
       workedExamples={[

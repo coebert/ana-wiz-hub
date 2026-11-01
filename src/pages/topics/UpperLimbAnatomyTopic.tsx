@@ -364,6 +364,7 @@ const UpperLimbAnatomyTopic = () => {
         </section>
       </ExamSection>
       <TopicFaqs faqs={upperLimbAnatomyFaqs} />
+          <p className="text-xs text-muted-foreground"><InlineRef topicId="upper-limb-anatomy" refLabel="ESA vascular access 2020" /><InlineRef topicId="upper-limb-anatomy" refLabel="Allen systematic review 2017" /></p>
       </>
       }
     />

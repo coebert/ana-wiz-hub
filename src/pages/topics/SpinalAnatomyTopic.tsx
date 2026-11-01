@@ -220,6 +220,7 @@ const SpinalAnatomyTopic = () => {
         </section>
       </ExamSection>
       <TopicFaqs faqs={spinalAnatomyFaqs} />
+          <p className="text-xs text-muted-foreground"><InlineRef topicId="spinal-anatomy" refLabel="Intercristal landmark variation" /><InlineRef topicId="spinal-anatomy" refLabel="Palpated versus imaged crests 2017" /></p>
       </>
       }
     />
