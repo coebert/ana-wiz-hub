@@ -43,3 +43,4 @@
 - Citation checks share executed reference pools and conservative same-module immutable topic-ID AST resolution; regex approximations cannot preserve imported/merged provenance.
 - Exact legacy topic aliases are recorded in topicRedirects and positively tested; canonical teaching destinations retain synthesis/schema requirements.
 - Diagram provenance uses an unchanged historical baseline plus an explicit residual report; newly exposed source gaps and unknown labels cannot be silently accepted.
+- Science illustration and calculator arithmetic lives in pure, tested helpers with canonical units and strict full-string parsing; model labels distinguish illustrative profiles and historical trial context from patient prediction or eligibility.

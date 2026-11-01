@@ -19,15 +19,15 @@ export function BloodGasCalculator() {
 
   const pH = num(v.pH), pco2 = num(v.pco2), po2 = num(v.po2), na = num(v.na), cl = num(v.cl), k = num(v.k), fio2 = num(v.fio2);
   const phOk = pH !== null && pH >= 6.5 && pH <= 8.0;
-  const pco2Ok = pco2 !== null && pco2 > 0 && pco2 <= (unit === "kPa" ? 30 : 225);
+  const pco2Ok = pco2 !== null && pco2 > 0 && pco2 <= (unit === "kPa" ? 30 : 30 * KPA_TO_MMHG);
   const pco2mmHg = pco2Ok && pco2 !== null ? pco2 * (unit === "kPa" ? KPA_TO_MMHG : 1) : null;
 
-  const h = phOk && pH !== null ? Math.pow(10, 9 - pH) : null;
-  const hco3 = phOk && pH !== null && pco2mmHg !== null ? 2.46e-8 * pco2mmHg / Math.pow(10, -pH) : null;
-  const sbe = hco3 !== null && pH !== null ? 0.9287 * (hco3 - 24.4 + 14.83 * (pH - 7.4)) : null;
+  const h = phOk && pH !== null ? finiteResult(Math.pow(10, 9 - pH)) : null;
+  const hco3 = phOk && pH !== null && pco2mmHg !== null ? finiteResult(2.46e-8 * pco2mmHg / Math.pow(10, -pH)) : null;
+  const sbe = hco3 !== null && pH !== null ? finiteResult(0.9287 * (hco3 - 24.4 + 14.83 * (pH - 7.4))) : null;
   const ag = hco3 !== null && na !== null && cl !== null && na > 0 && cl > 0 ? finiteResult(na - cl - hco3) : null;
   const agK = ag !== null && k !== null && k >= 0 ? finiteResult(ag + k) : null;
-  const po2kPa = po2 !== null && po2 > 0 ? (unit === "kPa" ? po2 : po2 / KPA_TO_MMHG) : null;
+  const po2kPa = po2 !== null && po2 > 0 ? finiteResult(unit === "kPa" ? po2 : po2 / KPA_TO_MMHG) : null;
   const pf = po2kPa !== null && fio2 !== null && fio2 >= 0.21 && fio2 <= 1 ? finiteResult(po2kPa / fio2) : null;
 
   const field = (id: keyof typeof v, label: string) => (
@@ -67,6 +67,8 @@ export function BloodGasCalculator() {
       {!phOk && <p className="text-sm text-destructive">Enter a pH between 6.5 and 8.0.</p>}
       {phOk && !pco2Ok && <p className="text-sm text-destructive">Enter a positive pCO₂ in {unit}.</p>}
       {Object.entries(v).some(([, value]) => value.trim() !== "" && num(value) === null) && <p role="status" className="text-sm text-destructive">Use complete decimal numbers with a dot, not commas or partial entries.</p>}
+      {v.fio2.trim() !== "" && (fio2 === null || fio2 < 0.21 || fio2 > 1) && <p className="text-sm text-destructive">FiO₂ must be a complete decimal from 0.21 to 1.</p>}
+      {v.po2.trim() !== "" && (po2 === null || po2 <= 0) && <p className="text-sm text-destructive">PaO₂ must be a complete positive decimal.</p>}
       {po2kPa !== null && fio2 !== null && fio2 >= 0.21 && fio2 <= 1 && pf === null && <p role="status" className="text-sm text-destructive">Derived ratio is outside the finite calculation range.</p>}
       <div className="grid grid-cols-2 gap-3 sm:grid-cols-3">
         {out("H⁺", h, "nmol/L", 0)}

@@ -1,5 +1,7 @@
 import { useState } from "react";
 import { toxinConcentration } from "@/lib/science-input";
+
+const displayConcentration = (n: number, places: number) => n > 0 && n < Math.pow(10, -places) ? n.toExponential(3) : n.toFixed(places);
 import { DiagramFigure } from "../_shared/DiagramFigure";
 import { Button } from "@/components/ui/button";
 import { InlineRef } from "@/components/references/InlineRef";
@@ -37,7 +39,7 @@ const ToxicAlcoholSalicylateCalculator = () => {
         <label className="text-sm text-foreground">{item.label} concentration<input type="text" inputMode="decimal" value={value} onChange={e => setValue(e.target.value)} className="block w-full mt-1 border border-input rounded p-2 bg-background" /></label>
         <label className="text-sm text-foreground">Concentration unit<select value={unit} onChange={e => (() => { const next = e.target.value; setValue(conversion ? String(next === "mg/L" ? conversion.mgL : next === "mmol/L" ? conversion.mmolL : conversion.mgDl) : ""); setUnit(next); })()} className="block w-full mt-1 border border-input rounded p-2 bg-background"><option>mg/dL</option><option>mg/L</option><option>mmol/L</option></select></label>
       </div>
-      <p className="text-sm font-mono text-primary min-h-10" role="status">{conversion ? `${Number(conversion.mgDl.toPrecision(6))} mg/dL = ${Number(conversion.mgL.toPrecision(6))} mg/L = ${Number(conversion.mmolL.toPrecision(6))} mmol/L` : "Enter a complete non-negative decimal concentration; input and converted values must be finite."}</p>
+      <p className="text-sm font-mono text-primary min-h-10" role="status">{conversion ? `${displayConcentration(conversion.mgDl, 1)} mg/dL = ${displayConcentration(conversion.mgL, 1)} mg/L = ${displayConcentration(conversion.mmolL, 2)} mmol/L` : "Enter a complete non-negative decimal concentration; input and converted values must be finite."}</p>
       <p className="text-sm text-muted-foreground">Conversion is arithmetic, not a safe/unsafe classification. Salicylate uses the salicylate molecular mass (138.12), not aspirin's molecular mass (180).</p>
       <ul className="list-disc pl-5 text-sm text-muted-foreground space-y-3">{item.criteria.map(c => <li key={c}>{c}</li>)}</ul>
       <p className="text-sm text-foreground">Suspected poisoning needs urgent NPIS/TOXBASE and renal/critical-care advice; do not wait for a concentration or a gap to become abnormal.<InlineRef topicId="acid-base" refLabel={item.ref} /></p>
