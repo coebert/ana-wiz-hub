@@ -95,7 +95,7 @@ const HumidityGasSamplingTopic = () => {
         { text: "Paramagnetic O₂ analyser exploits O₂'s two unpaired electrons (only O₂ and NO are paramagnetic among medical gases) — fast, accurate, no consumable", cites: ["Cross & Plunkett Ch.9"] },
         { text: "Infrared absorption measures CO₂ (4.26 µm), N₂O (4.5 µm) and all modern volatiles (8–13 µm fingerprint region) — only molecules with a changing dipole moment absorb IR (so O₂, N₂, Ar are invisible)", cites: ["Al-Shaikh & Stacey Ch.8"] },
         { text: "Collision broadening: N₂O broadens CO₂'s IR absorption peak → falsely high CO₂ reading unless the analyser compensates", cites: ["BJA Educ 2007"] },
-        { text: "Most mainstream capnographs measure CO₂, but mainstream multigas analysers exist. Sampling configuration is distinct from device-dependent detectable gases; compare response, dead space and aspiration loss", cites: ["Cross & Plunkett Ch.9"] },
+        { text: "Most mainstream capnographs measure CO₂, but mainstream multigas analysers exist. Sampling configuration is distinct from device-dependent detectable gases; compare response, dead space and aspiration loss", cites: ["Masimo Mainstream Multigas"] },
         { text: "Modern HMEFs typically return 30–38 mg/L humidity on inspiration (passive, depending on device and minute ventilation) but add dead space; heated humidifiers can achieve the 44 mg/L alveolar target at the cost of condensation, circuit complexity and infection risk", cites: ["BJA Educ Humidification 2018", "Al-Shaikh & Stacey Ch.8"] },
       ]}
       coreConcepts={
@@ -476,7 +476,7 @@ const HumidityGasSamplingTopic = () => {
                     <tr className="border-t border-border">
                       <td className="p-2 font-medium text-foreground">Gases measured</td>
                       <td className="p-2">Commonly CO₂; mainstream multigas devices also exist</td>
-                      <td className="p-2">CO₂, N₂O, O₂ and all volatile agents — multi-gas analysis</td>
+                      <td className="p-2">CO₂ or multigas, depending on device; verify its specified gases</td>
                     </tr>
                     <tr className="border-t border-border">
                       <td className="p-2 font-medium text-foreground">Weight at the airway</td>

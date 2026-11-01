@@ -23,7 +23,7 @@ const starlingForcesFaqs: Array<[string, string]> = [
   ],
   [
     "Why does hypoalbuminaemia cause oedema less than predicted by classical Starling?",
-    "Compensatory mechanisms: increased lymphatic drainage, dilution of interstitial protein (reducing πi), and the glycocalyx-protected subglycocalyx space maintains a large oncotic gradient even at low plasma albumin. Oedema only becomes clinically apparent when these are overwhelmed (albumin typically <20 g/L plus increased capillary pressure or permeability)."
+    "Compensatory mechanisms: increased lymphatic drainage, dilution of interstitial protein (reducing πi), while flow-dependent subglycocalyx protein concentration modifies the effective oncotic gradient. Oedema depends on filtration, lymphatic capacity and tissue context; there is no universal albumin threshold."
   ]
 ];
 
