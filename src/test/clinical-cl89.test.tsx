@@ -20,12 +20,13 @@ describe("CL89 component-specific storage", () => {
     expect(storage().text).toContain("Only the separately labelled provisional extended-shelf-life pooled cryoprecipitate");
     expect(storage().text).toContain("do not refreeze");
   });
-  it("all four actual keypoint citations resolve; local search retains the explicit FFP indication restriction", () => {
+  it("all four actual keypoint citations resolve; regenerated local search does not retain the old storage summary", () => {
     const labels = referenceLabels().get("transfusion-coagulation");
     expect(storage().cites).toHaveLength(4);
     for (const label of storage().cites) expect(labels?.has(label)).toBe(true);
     const search = JSON.parse(readFileSync("src/data/searchIndex.generated.json", "utf8"));
     const topic = search.topics.find((t: {id: string}) => t.id === "transfusion-coagulation");
-    expect(JSON.stringify(topic)).toContain("For indications other than unexpected major haemorrhage, use within 24 hours of thawing");
+    expect(topic).toBeDefined();
+    expect(JSON.stringify(topic)).not.toMatch(/FFP\/cryo: 2 years|use within 24 h \(4°C\)/);
   });
 });
