@@ -3,8 +3,8 @@ import { TopicFaqs } from "@/components/topic/TopicFaqs";
 
 const lowerLimbAnatomyFaqs: Array<[string, string]> = [
   ["At the inguinal level, what is the order of structures from lateral to medial?", "NAVeL: femoral Nerve — femoral Artery — femoral Vein — empty space — Lymphatics (within femoral canal). The artery lies at the mid-inguinal point (midway between ASIS and pubic symphysis); the nerve sits ~1 cm lateral, separated from the artery by the iliopectineal arch — relevant for femoral nerve block needle placement."],
-  ["What does a femoral nerve block cover, and what does it miss?", "It covers the anterior thigh (skin and quadriceps), medial leg (saphenous nerve below the knee) and periosteum of the femur — sufficient for analgesia after femoral neck or shaft fracture and for knee surgery in combination with a sciatic block. It misses the posterior thigh (sciatic), hip joint (obturator + sciatic + femoral all contribute), and lateral thigh (lateral cutaneous nerve of thigh)."],
-  ["Where does the sciatic nerve divide and why does that matter for popliteal block?", "The sciatic typically divides into tibial and common peroneal branches in the popliteal fossa, ~7 cm proximal to the popliteal crease. Ultrasound-guided popliteal block targets the nerve just proximal to the bifurcation so one injection captures both branches — block below the bifurcation may spare one division and leave the lateral foot (peroneal) or sole (tibial) unblocked."],
+  ["What does a femoral nerve block cover, and what does it miss?", "It covers the anterior thigh (skin and quadriceps), medial leg (saphenous nerve below the knee) and periosteum of the femur — sufficient for analgesia after femoral neck or shaft fracture and for knee surgery in combination with a sciatic block. It misses the posterior-thigh skin (principally posterior femoral cutaneous nerve, S1–S3; distinct from sciatic motor supply to posterior-thigh muscles), hip joint (obturator + sciatic + femoral all contribute), and lateral thigh (lateral cutaneous nerve of thigh)."],
+  ["Where does the sciatic nerve divide and why does that matter for popliteal block?", "The sciatic typically divides into tibial and common peroneal branches in the popliteal fossa, ~7 cm proximal to the popliteal crease. Ultrasound-guided popliteal block targets the nerve just proximal to the bifurcation so one injection captures both branches — block below the bifurcation may spare one division and leave one division unblocked. The lateral border of the foot is sural territory, with variable tibial/common fibular contributions; most dorsum is superficial fibular/peroneal and the first web space deep fibular. An isolated peroneal block cannot be assumed to cover the lateral border."],
 ];
 import { WorkedExample } from "@/components/topic/WorkedExamples";
 import { CollapsibleSubsection } from "@/components/topic/CollapsibleSubsection";
@@ -91,7 +91,7 @@ const LowerLimbAnatomyTopic = () => {
         { text: "Sciatic nerve (L4-S3): largest nerve. Two components — tibial (plantarflexion) and common peroneal (dorsiflexion)", cites: ["Ellis Ch.7"] },
         { text: "Common peroneal nerve wraps around fibular neck — vulnerable to compression → foot drop", cites: ["BJA Educ 2016"] },
         { text: "Femoral artery palpated at the mid-inguinal point; profunda femoris is the main supply to thigh musculature", cites: ["NYSORA Lower Limb"] },
-        { text: "Displaced intracapsular #NOF disrupts the MCFA → AVN of femoral head → hemiarthroplasty required", cites: ["Ellis Ch.7"] },
+        { text: "Displaced intracapsular hip fracture can damage MCFA retinacular supply, increasing AVN/nonunion risk. NICE CG124 offers replacement arthroplasty (total hip or hemiarthroplasty); choice requires orthopaedic assessment and patient criteria", cites: ["NICE CG124 hip fracture"] },
         { text: "Great saphenous vein: medial limb, drains at SFJ in groin. Cutdown landmark: 1 cm anterior + superior to medial malleolus", cites: ["BJA Educ 2016"] },
         { text: "May-Thurner syndrome: left CIV compression → higher incidence of left-sided DVT", cites: ["NYSORA Lower Limb"] },
         { text: "Adductor canal block: motor-sparing alternative to femoral nerve block for knee surgery", cites: ["Ellis Ch.7"] },
@@ -192,6 +192,7 @@ const LowerLimbAnatomyTopic = () => {
               The arterial supply follows a continuous chain: external iliac → femoral → popliteal → anterior tibial, posterior tibial, and peroneal arteries. The profunda femoris is the main supply to the thigh musculature. Peripheral pulse assessment (femoral, popliteal, posterior tibial, dorsalis pedis) is a fundamental clinical skill.
             </p>
             <LowerLimbArteriesDiagram />
+            <p className="text-sm text-muted-foreground">Displacement of an intracapsular hip fracture can damage retinacular branches of the medial circumflex femoral artery and increases AVN/nonunion risk. NICE offers replacement arthroplasty, total hip replacement or hemiarthroplasty. Consider total replacement when the person previously walked independently outdoors with no more than a stick, has no condition making it unsuitable, and is expected to remain independent in activities of daily living beyond two years; the choice requires orthopaedic assessment. <InlineRef topicId="lower-limb-anatomy" refLabel="NICE CG124 hip fracture" /></p>
             <div className="grid sm:grid-cols-2 gap-3 mt-4">
               <div className="p-4 rounded-lg border border-border">
                 <p className="font-semibold text-foreground text-sm">Peripheral Pulse Assessment</p>
@@ -224,6 +225,7 @@ const LowerLimbAnatomyTopic = () => {
             </CollapsibleSubsection>
           </ExamSection>
           <TopicFaqs faqs={lowerLimbAnatomyFaqs} />
+          <p className="text-xs text-muted-foreground"><InlineRef topicId="lower-limb-anatomy" refLabel="Reviewed cutaneous territories" /><InlineRef topicId="lower-limb-anatomy" refLabel="Sural territory" /><InlineRef topicId="lower-limb-anatomy" refLabel="Superficial fibular territory" /><InlineRef topicId="lower-limb-anatomy" refLabel="Deep fibular territory" /><InlineRef topicId="lower-limb-anatomy" refLabel="NICE CG124 hip fracture" /></p>
         </>
       }
     />

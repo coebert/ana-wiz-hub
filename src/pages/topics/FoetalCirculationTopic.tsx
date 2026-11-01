@@ -13,7 +13,7 @@ import { FoetalTransitionTeaching } from "../../components/topic/FoetalTransitio
 const foetalCirculationFaqs: Array<[string, string]> = [
   [
     "Describe the three fetal shunts and what they become postnatally.",
-    "Ductus venosus — bypasses liver from umbilical vein to IVC; becomes ligamentum venosum. Foramen ovale — bypasses pulmonary circulation, RA → LA; becomes fossa ovalis (patent in 25 % of adults). Ductus arteriosus — bypasses lungs, pulmonary artery → aorta; becomes ligamentum arteriosum. All three shunt blood away from the non-functioning fetal lungs toward systemic circulation."
+    "Ductus venosus — bypasses part of the liver from umbilical vein to IVC; becomes ligamentum venosum. Foramen ovale — bypasses pulmonary circulation, RA → LA; becomes fossa ovalis (patent in 25 % of adults). Ductus arteriosus — bypasses lungs, pulmonary artery → aorta; becomes ligamentum arteriosum. The ductus venosus shunts umbilical venous blood past part of the liver into the IVC; the foramen ovale and ductus arteriosus divert blood away from fetal pulmonary circulation."
   ],
   [
     "What triggers closure of the ductus arteriosus and how is it managed if it fails?",
@@ -121,7 +121,7 @@ const FoetalCirculationTopic = () => {
         keyPoints: ["Power & Kam Ch.18", "Ganong Ch.33", "BJA Educ 2015"],
       }}
       keyPoints={[
-        { text: "Three foetal shunts: ductus venosus, foramen ovale, ductus arteriosus — all bypass the lungs.", cites: ["Ganong Ch.33"] },
+        { text: "Ductus venosus bypasses part of the liver; foramen ovale and ductus arteriosus divert blood away from fetal pulmonary circulation.", cites: ["Ganong Ch.33"] },
         { text: "HbF has higher O₂ affinity (P₅₀ 2.7 kPa) — left-shifted ODC aids placental O₂ uptake.", cites: ["Power & Kam Ch.18"] },
         { text: "Double Bohr effect: maternal curve shifts right while foetal curve shifts left simultaneously, enhancing transfer.", cites: ["BJA Educ 2015"] },
         { text: "First breath ↓ PVR dramatically; cord clamping ↑ SVR → parallel becomes series circulation.", cites: ["Ganong Ch.33"] },
@@ -133,8 +133,8 @@ const FoetalCirculationTopic = () => {
           <ExamSection id="overview" exams={[Exam.PRIMARY, Exam.FINAL]} curriculumCodes={["PA_BK_01"]}>
             <CollapsibleSubsection title="Overview" defaultOpen>
             <p className="text-muted-foreground leading-relaxed">
-              The foetal circulation is uniquely designed to bypass the non-functioning lungs, directing oxygenated
-              blood from the placenta to the systemic circulation via three key shunts. Understanding these pathways and
+              The ductus venosus directs umbilical venous blood past part of the liver into the IVC; the foramen ovale
+              and ductus arteriosus divert blood away from fetal pulmonary circulation. Understanding these pathways and
               their closure at birth is essential for managing neonatal physiology and congenital heart disease.
             </p>
             </CollapsibleSubsection>
@@ -351,6 +351,7 @@ const FoetalCirculationTopic = () => {
             ]}
           />
           <TopicFaqs faqs={foetalCirculationFaqs} />
+          <p className="text-xs text-muted-foreground"><InlineRef topicId="foetal-circulation" refLabel="Fetal shunts review 2024" /><InlineRef topicId="foetal-circulation" refLabel="Fetal bypass routes" /></p>
 
         </>
       }

@@ -1,10 +1,11 @@
+import { INTERSCALENE_PHRENIC } from "@/lib/anatomy-context-teaching";
 import { TopicTemplate } from "@/components/topic/TopicTemplate";
 import { TopicFaqs } from "@/components/topic/TopicFaqs";
 
 const brachialPlexusFaqs: Array<[string, string]> = [
   ["What are the five sections of the brachial plexus from medial to lateral?", "Roots (C5–T1, between scalenus anterior and medius) → trunks (upper C5–6, middle C7, lower C8–T1, at the first rib) → divisions (anterior and posterior, behind the clavicle) → cords (lateral, medial, posterior, named relative to the axillary artery) → terminal branches (musculocutaneous, axillary, radial, median, ulnar). Mnemonic: \"Real Texans Drink Cold Beer\"."],
   ["Which block reliably anaesthetises C8/T1 dermatomes for hand surgery?", "Infraclavicular and axillary blocks reliably cover C8/T1 because they target cords or terminal branches. Interscalene block characteristically misses C8/T1 (ulnar sparing) because the lower trunk lies deep at the scalene level — making it unsuitable as a sole technique for hand surgery, though ideal for shoulder."],
-  ["What is the risk profile of an interscalene block?", "~100% incidence of ipsilateral phrenic nerve palsy (avoid in severe respiratory disease), recurrent laryngeal nerve block (hoarseness), Horner's syndrome (cervical sympathetic involvement), and rare but catastrophic intra-arterial (vertebral artery) injection causing immediate seizures. Pneumothorax risk is low compared with supraclavicular block."],
+  ["What is the risk profile of an interscalene block?", "Substantial ipsilateral hemidiaphragmatic paresis risk, approaching 100% with traditional/high-volume approaches but varying with technique and volume; low-volume approaches do not eliminate risk. Assess respiratory reserve and appropriate monitoring, especially with limited pulmonary reserve or bilateral blocks. Other risks include, recurrent laryngeal nerve block (hoarseness), Horner's syndrome (cervical sympathetic involvement), and rare but catastrophic intra-arterial (vertebral artery) injection causing immediate seizures. Pneumothorax risk is low compared with supraclavicular block."],
 ];
 import { CollapsibleSubsection } from "@/components/topic/CollapsibleSubsection";
 import { ExamSection } from "@/components/exam/ExamSection";
@@ -35,10 +36,10 @@ const workedExamples: WorkedExample[] = [
         <p className="font-semibold text-foreground">Step-by-step reasoning</p>
         <ol className="list-decimal list-inside space-y-1">
           <li><strong>Match anatomy to surgery.</strong> Shoulder skin and capsule = C5–C6 (suprascapular and axillary nerves). Standard answer = interscalene block.</li>
-          <li><strong>Check the contraindications.</strong> Interscalene causes 100% ipsilateral phrenic palsy → ~25% drop in FEV₁<Cite topicId="brachial-plexus" labels={["Urmey 1991"]} />. In severe COPD this may be unsafe.</li>
+          <li><strong>Check the contraindications.</strong> {INTERSCALENE_PHRENIC}<Cite topicId="brachial-plexus" labels={["Urmey 1991"]} />. In severe COPD this may be unsafe.</li>
           <li><strong>Consider alternatives.</strong>
             <ul className="list-disc list-inside ml-5">
-              <li>Low-volume (5–10 mL) ultrasound-guided interscalene reduces phrenic spread<Cite topicId="brachial-plexus" labels={["Riazi 2008", "Renes 2009"]} />.</li>
+              <li>Low-volume (5–10 mL) ultrasound-guided interscalene may reduce but does not eliminate hemidiaphragmatic paresis<Cite topicId="brachial-plexus" labels={["Riazi 2008", "Renes 2009"]} />.</li>
               <li>Combined suprascapular + axillary nerve block ('shoulder block') — phrenic-sparing, covers most of the joint.</li>
               <li>Costoclavicular / supraclavicular approach — high diaphragmatic palsy rate, not better.</li>
               <li>GA + intra-articular LA + multimodal as fallback.</li>
@@ -139,7 +140,7 @@ const BrachialPlexusTopic = () => {
         { text: "Brachial plexus arises from ventral rami C5–T1: Roots → Trunks → Divisions → Cords → Branches ('Robert Taylor Drinks Cold Beer')", cites: ["Miller Ch.46", "Ellis & Feldman Ch.8"] },
         { text: "Trunks: Superior (C5,6), Middle (C7), Inferior (C8,T1); suprascapular nerve leaves the superior trunk before the divisions form", cites: ["Ellis & Feldman Ch.8"] },
         { text: "Cords are named by their relation to the 2nd part of the axillary artery (lateral, posterior, medial) and split into the five terminal branches", cites: ["Miller Ch.46"] },
-        { text: "Interscalene block (roots/trunks, C5–C7) — shoulder surgery; spares C8/T1 (ulnar) and causes ~100% ipsilateral phrenic nerve palsy", cites: ["BJA Educ 2014", "Ellis & Feldman Ch.8", "Urmey 1991"] },
+        { text: INTERSCALENE_PHRENIC, cites: ["BJA Educ 2014", "Ellis & Feldman Ch.8", "Urmey 1991"] },
         { text: "Supraclavicular block (trunks/divisions) — trunks most compact ('grapes on a stalk' above subclavian artery); best for complete arm anaesthesia below the shoulder, watch for pneumothorax", cites: ["BJA Educ 2014"] },
         { text: "Infraclavicular block (cords) — deep to pectoralis around 2nd part of axillary artery; reliable single-injection block and the preferred site for catheters", cites: ["Miller Ch.46"] },
         { text: "Axillary block (terminal branches around 3rd part of axillary artery) — safest approach (no pneumothorax, no phrenic risk); ideal for forearm/hand surgery", cites: ["Ellis & Feldman Ch.8", "Miller Ch.46"] },
@@ -191,7 +192,7 @@ const BrachialPlexusTopic = () => {
             <div className="grid sm:grid-cols-2 gap-3">
               <div className="p-4 rounded-lg border border-border">
                 <p className="font-semibold text-foreground text-sm">Interscalene (Roots/Trunks)</p>
-                <p className="text-sm text-muted-foreground mt-1">Between anterior and middle scalene at C6 level. Targets C5–C7 (superior/middle trunks). Misses C8/T1 (ulnar sparing). Phrenic nerve palsy 100%<Cite topicId="brachial-plexus" labels={["Urmey 1991"]} />. Contralateral hand ventilation check essential.<Cite topicId="brachial-plexus" labels={["BJA Educ 2014", "Miller Ch.46"]} /></p>
+                <p className="text-sm text-muted-foreground mt-1">Between anterior and middle scalene at C6 level. Targets C5–C7 (superior/middle trunks). Misses C8/T1 (ulnar sparing). {INTERSCALENE_PHRENIC}<Cite topicId="brachial-plexus" labels={["Riazi 2008"]} />.<Cite topicId="brachial-plexus" labels={["BJA Educ 2014", "Miller Ch.46"]} /></p>
               </div>
               <div className="p-4 rounded-lg border border-border">
                 <p className="font-semibold text-foreground text-sm">Supraclavicular (Trunks/Divisions)</p>

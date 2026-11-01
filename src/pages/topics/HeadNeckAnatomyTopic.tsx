@@ -256,7 +256,7 @@ const HeadNeckAnatomyTopic = () => {
               </div>
               <div className="p-4 rounded-lg border border-border">
                 <p className="font-semibold text-foreground text-sm">Complications of deep block</p>
-                <p className="text-sm text-muted-foreground mt-1">Phrenic nerve palsy (near-universal with deep block — avoid bilateral blocks and use with caution in respiratory disease), recurrent laryngeal nerve palsy with hoarseness, Horner's syndrome from cervical sympathetic spread, vertebral artery or carotid puncture and rapid local anaesthetic systemic toxicity or seizure, intrathecal or epidural injection via a dural cuff, and accessory nerve injury. Aspirate frequently, inject incrementally, and monitor for LAST.</p>
+                <p className="text-sm text-muted-foreground mt-1">Phrenic nerve palsy (deep cervical blocks produced greater diaphragm dysfunction than shallower approaches in studied techniques; incidence is not near-universal across all techniques. Avoid bilateral deep blocks, assess respiratory reserve and monitor appropriately), recurrent laryngeal nerve palsy with hoarseness, Horner's syndrome from cervical sympathetic spread, vertebral artery or carotid puncture and rapid local anaesthetic systemic toxicity or seizure, intrathecal or epidural injection via a dural cuff, and accessory nerve injury. Aspirate frequently, inject incrementally, and monitor for LAST. <InlineRef topicId="head-neck-anatomy" refLabel="Opperer cervical depth 2022" /></p>
               </div>
             </div>
             <CervicalPlexusDiagram />
@@ -474,7 +474,7 @@ const HeadNeckAnatomyTopic = () => {
               </div>
               <div className="p-4 rounded-lg border border-border">
                 <p className="font-semibold text-foreground text-sm">Prevertebral fascia</p>
-                <p className="text-sm text-muted-foreground mt-1">Covers the prevertebral and scalene muscles and the cervical sympathetic chain, extending from the skull base to T3 and laterally as the axillary sheath around the brachial plexus. Injection deep to it produces deep cervical plexus block with a high incidence of phrenic palsy; injection superficial to it (intermediate block) is safer.</p>
+                <p className="text-sm text-muted-foreground mt-1">Covers the prevertebral and scalene muscles and the cervical sympathetic chain, extending from the skull base to T3 and laterally as the axillary sheath around the brachial plexus. Injection deep to it produces deep cervical plexus block, with more diaphragm dysfunction than shallower approaches in studied techniques; shallower approaches do not guarantee absence of phrenic involvement. <InlineRef topicId="head-neck-anatomy" refLabel="Opperer cervical depth 2022" /></p>
               </div>
               <div className="p-4 rounded-lg border border-border">
                 <p className="font-semibold text-foreground text-sm">Carotid sheath</p>

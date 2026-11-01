@@ -60,3 +60,5 @@
 - Chemistry ester/name teaching shares small production constants; ketamine illustrations preserve PubChem heavy-atom connection records and source-directed stereobonds with independently checked configurations, rather than assuming a stereocentre array position.
 
 - Physics/fluid duplicates share scoped model constants and unit-labelled Larmor arithmetic; ultrasound/VQ corrected pages remain separate from quiz-only repair to prevent regression or treatment clearance.
+
+- Anatomy risk/perfusion duplicates reuse scoped anatomy-context-teaching constants; keep FAQ answers literal and test extraction equality so rendered teaching and generated FAQs cannot lose safety qualifications.

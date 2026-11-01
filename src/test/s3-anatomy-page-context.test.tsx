@@ -1,0 +1,11 @@
+import { afterEach, expect, it, vi } from 'vitest';
+import { cleanup, render } from '@testing-library/react';
+import { MemoryRouter } from 'react-router-dom';
+import { HelmetProvider } from 'react-helmet-async';
+vi.mock('@/components/topic/TopicTemplate',()=>({TopicTemplate:(p:any)=><>{p.keyPoints?.map((k:any,i:number)=><p key={i}>{k.text}</p>)}{p.coreConcepts}</>}));
+import Spine from '@/pages/topics/SpinalAnatomyTopic';
+import Lower from '@/pages/topics/LowerLimbAnatomyTopic';
+afterEach(cleanup);
+const mount=(C:React.ComponentType)=>render(<HelmetProvider><MemoryRouter><C/></MemoryRouter></HelmetProvider>);
+it('SCI019 supine gravitational slope includes variation, not fixed block-height prediction',()=>{const {container}=mount(Spine);expect(container).toHaveTextContent('lumbar lordosis forms a relative high point approximately L3–L4');expect(container).toHaveTextContent('thoracic kyphosis forms a dependent trough');expect(container).toHaveTextContent('T7–T9 rather than conventional T5–6');expect(container).toHaveTextContent('Neither a fixed lowest thoracic level nor final block height is reliably predicted');});
+it('SCI043 displacement risk does not mandate hemiarthroplasty; NICE selection retained',()=>{const {container}=mount(Lower);expect(container).toHaveTextContent('increases AVN/nonunion risk');expect(container).toHaveTextContent('total hip replacement or hemiarthroplasty');expect(container).toHaveTextContent('independently outdoors with no more than a stick');expect(container).toHaveTextContent('beyond two years');expect(container).toHaveTextContent('orthopaedic assessment');});
