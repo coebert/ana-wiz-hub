@@ -27,8 +27,10 @@
       "append": [
         {
           "url": "https://www.medicines.org.uk/emc/product/866/smpc",
-          "title": "Betaloc 1 mg/ml Solution for Injection \u2014 Summary of Product Characteristics",
-          "publisher": "electronic Medicines Compendium (emc), Datapharm",
+          "scope": "Metoprolol tartrate 1 mg/mL, 5 mg/5 mL; IV injection, paediatric efficacy/safety not established.",
+          "title": "Betaloc 1 mg/ml Solution for Injection \u2014 UK SmPC",
+          "accessed": "2026-11-01",
+          "revision": "02/2024",
           "sections": [
             "1",
             "2",
@@ -37,10 +39,8 @@
             "4.2",
             "10"
           ],
-          "accessed": "2026-11-01",
-          "scope": "Metoprolol tartrate 1 mg/mL (5 mg/5 mL), IV injection; paediatric efficacy/safety not established.",
-          "reviewNote": "Selected formulation, route and population only. Other presentations, storage and treatment doses are not verified; no current stock availability certification.",
-          "revision": "02/2024"
+          "publisher": "electronic Medicines Compendium (emc), Datapharm",
+          "reviewNote": "Selected formulation, route and population only. Other presentations, storage and treatment doses are not verified; no current stock availability certification."
         }
       ]
     },
@@ -70,8 +70,10 @@
       "append": [
         {
           "url": "https://www.medicines.org.uk/emc/product/1642/smpc",
-          "title": "Cytotec 200mcg Tablets \u2014 Summary of Product Characteristics",
-          "publisher": "electronic Medicines Compendium (emc), Datapharm",
+          "scope": "200 microgram oral tablets; adult peptic-ulcer indications, not obstetric/vaginal use.",
+          "title": "Cytotec 200mcg Tablets \u2014 UK SmPC",
+          "accessed": "2026-11-01",
+          "revision": "10/2020",
           "sections": [
             "1",
             "2",
@@ -80,10 +82,8 @@
             "4.2",
             "10"
           ],
-          "accessed": "2026-11-01",
-          "scope": "Cytotec 200 microgram oral tablets, adult peptic-ulcer indications; not obstetric/vaginal use.",
-          "reviewNote": "Selected formulation, route and population only. Other presentations, storage and treatment doses are not verified; no current stock availability certification.",
-          "revision": "10/2020"
+          "publisher": "electronic Medicines Compendium (emc), Datapharm",
+          "reviewNote": "Selected formulation, route and population only. Other presentations, storage and treatment doses are not verified; no current stock availability certification."
         }
       ]
     },
@@ -113,8 +113,10 @@
       "append": [
         {
           "url": "https://www.medicines.org.uk/emc/product/12140/smpc",
-          "title": "Nicardipine 1 mg/ml solution for infusion \u2014 Summary of Product Characteristics",
-          "publisher": "electronic Medicines Compendium (emc), Datapharm",
+          "scope": "1 mg/mL, 10 mg/10 mL nicardipine hydrochloride; continuous IV infusion only, restricted paediatric contexts.",
+          "title": "Nicardipine 1 mg/ml solution for infusion \u2014 UK SmPC",
+          "accessed": "2026-11-01",
+          "revision": "09/2025",
           "sections": [
             "1",
             "2",
@@ -123,10 +125,8 @@
             "4.2",
             "10"
           ],
-          "accessed": "2026-11-01",
-          "scope": "Nicardipine hydrochloride 1 mg/mL (10 mg/10 mL), continuous IV infusion only; restricted paediatric contexts.",
-          "reviewNote": "Selected formulation, route and population only. Other presentations, storage and treatment doses are not verified; no current stock availability certification.",
-          "revision": "09/2025"
+          "publisher": "electronic Medicines Compendium (emc), Datapharm",
+          "reviewNote": "Selected formulation, route and population only. Other presentations, storage and treatment doses are not verified; no current stock availability certification."
         }
       ]
     },
@@ -156,8 +156,10 @@
       "append": [
         {
           "url": "https://www.medicines.org.uk/emc/product/13131/smpc",
-          "title": "0.9% SODIUM CHLORIDE INTRAVENOUS INFUSION SOLUTION \u2014 Summary of Product Characteristics",
-          "publisher": "electronic Medicines Compendium (emc), Datapharm",
+          "scope": "9 g/L sodium chloride IV infusion bags; age-dependent fluid replacement, not injection vials or all physicochemical values.",
+          "title": "0.9% Sodium Chloride Intravenous Infusion Solution \u2014 UK SmPC",
+          "accessed": "2026-11-01",
+          "revision": "05/2024",
           "sections": [
             "1",
             "2",
@@ -166,10 +168,8 @@
             "4.2",
             "10"
           ],
-          "accessed": "2026-11-01",
-          "scope": "Sodium chloride 9 g/L IV infusion bags; age-dependent fluid-replacement contexts.",
-          "reviewNote": "Selected formulation, route and population only. Other presentations, storage and treatment doses are not verified; no current stock availability certification.",
-          "revision": "05/2024"
+          "publisher": "electronic Medicines Compendium (emc), Datapharm",
+          "reviewNote": "Selected formulation, route and population only. Other presentations, storage and treatment doses are not verified; no current stock availability certification."
         }
       ]
     },
@@ -199,8 +199,10 @@
       "append": [
         {
           "url": "https://www.medicines.org.uk/emc/product/373/smpc",
-          "title": "Octreotide 100 micrograms/1ml Solution for Injection \u2014 Summary of Product Characteristics",
-          "publisher": "electronic Medicines Compendium (emc), Datapharm",
+          "scope": "100 micrograms/mL octreotide as acetate; SC injection/diluted IV infusion, limited paediatric experience.",
+          "title": "Octreotide 100 micrograms/1ml Solution for Injection \u2014 UK SmPC",
+          "accessed": "2026-11-01",
+          "revision": "06/2024",
           "sections": [
             "1",
             "2",
@@ -209,10 +211,8 @@
             "4.2",
             "10"
           ],
-          "accessed": "2026-11-01",
-          "scope": "Octreotide 100 micrograms/mL as acetate, SC injection or diluted IV infusion; limited paediatric experience.",
-          "reviewNote": "Selected formulation, route and population only. Other presentations, storage and treatment doses are not verified; no current stock availability certification.",
-          "revision": "06/2024"
+          "publisher": "electronic Medicines Compendium (emc), Datapharm",
+          "reviewNote": "Selected formulation, route and population only. Other presentations, storage and treatment doses are not verified; no current stock availability certification."
         }
       ]
     },
@@ -242,8 +242,10 @@
       "append": [
         {
           "url": "https://www.medicines.org.uk/emc/product/6469/smpc",
-          "title": "Ondansetron 2 mg/ml Solution for Injection \u2014 Summary of Product Characteristics",
-          "publisher": "electronic Medicines Compendium (emc), Datapharm",
+          "scope": "2 mg/mL, 4 mg/2 mL and 8 mg/4 mL; IV only; CINV >=6 months/PONV >=1 month indication-specific.",
+          "title": "Ondansetron 2 mg/ml Solution for Injection \u2014 UK SmPC",
+          "accessed": "2026-11-01",
+          "revision": "24/10/2022",
           "sections": [
             "1",
             "2",
@@ -252,10 +254,8 @@
             "4.2",
             "10"
           ],
-          "accessed": "2026-11-01",
-          "scope": "Ondansetron 2 mg/mL, 4 mg/2 mL and 8 mg/4 mL; IV only; indication-specific CINV >=6 months/PONV >=1 month.",
-          "reviewNote": "Selected formulation, route and population only. Other presentations, storage and treatment doses are not verified; no current stock availability certification.",
-          "revision": "24/10/2022"
+          "publisher": "electronic Medicines Compendium (emc), Datapharm",
+          "reviewNote": "Selected formulation, route and population only. Other presentations, storage and treatment doses are not verified; no current stock availability certification."
         }
       ]
     },
@@ -285,8 +285,10 @@
       "append": [
         {
           "url": "https://www.medicines.org.uk/emc/product/1971/smpc",
-          "title": "Oxytocin 10 IU/ml Concentrate for Solution for Infusion \u2014 Summary of Product Characteristics",
-          "publisher": "electronic Medicines Compendium (emc), Datapharm",
+          "scope": "10 IU/mL concentrate for IV infusion, obstetric scope; not all injection products or storage statements.",
+          "title": "Oxytocin 10 IU/ml Concentrate for Solution for Infusion \u2014 UK SmPC",
+          "accessed": "2026-11-01",
+          "revision": "18/11/2020",
           "sections": [
             "1",
             "2",
@@ -295,10 +297,8 @@
             "4.2",
             "10"
           ],
-          "accessed": "2026-11-01",
-          "scope": "Oxytocin 10 IU/mL concentrate for IV infusion, obstetric indications; not all injection products.",
-          "reviewNote": "Selected formulation, route and population only. Other presentations, storage and treatment doses are not verified; no current stock availability certification.",
-          "revision": "18/11/2020"
+          "publisher": "electronic Medicines Compendium (emc), Datapharm",
+          "reviewNote": "Selected formulation, route and population only. Other presentations, storage and treatment doses are not verified; no current stock availability certification."
         }
       ]
     },
@@ -328,8 +328,10 @@
       "append": [
         {
           "url": "https://www.medicines.org.uk/emc/product/3607/smpc",
-          "title": "Phenobarbital Sodium 200mg/ml Injection \u2014 Summary of Product Characteristics",
-          "publisher": "electronic Medicines Compendium (emc), Datapharm",
+          "scope": "200 mg/mL phenobarbital sodium injection; adult IM/SC/IV, paediatric IM instructions only.",
+          "title": "Phenobarbital Sodium 200mg/ml Injection \u2014 UK SmPC",
+          "accessed": "2026-11-01",
+          "revision": "30/10/2024",
           "sections": [
             "1",
             "2",
@@ -338,10 +340,8 @@
             "4.2",
             "10"
           ],
-          "accessed": "2026-11-01",
-          "scope": "Phenobarbital sodium 200 mg/mL injection; adult IM/SC/IV, paediatric IM instructions only.",
-          "reviewNote": "Selected formulation, route and population only. Other presentations, storage and treatment doses are not verified; no current stock availability certification.",
-          "revision": "30/10/2024"
+          "publisher": "electronic Medicines Compendium (emc), Datapharm",
+          "reviewNote": "Selected formulation, route and population only. Other presentations, storage and treatment doses are not verified; no current stock availability certification."
         }
       ]
     },
@@ -371,8 +371,10 @@
       "append": [
         {
           "url": "https://www.medicines.org.uk/emc/product/3794/smpc",
-          "title": "Phenytoin Hospira 50 mg/ml Injection BP \u2014 Summary of Product Characteristics",
-          "publisher": "electronic Medicines Compendium (emc), Datapharm",
+          "scope": "50 mg/mL phenytoin sodium, 250 mg/5 mL ampoule, IV; restricted IM contexts, neonates addressed.",
+          "title": "Phenytoin Hospira 50 mg/ml Injection BP \u2014 UK SmPC",
+          "accessed": "2026-11-01",
+          "revision": "07/2026",
           "sections": [
             "1",
             "2",
@@ -381,10 +383,8 @@
             "4.2",
             "10"
           ],
-          "accessed": "2026-11-01",
-          "scope": "Phenytoin sodium 50 mg/mL, 250 mg/5 mL ampoule, IV; indication-specific restricted IM contexts, neonates addressed.",
-          "reviewNote": "Selected formulation, route and population only. Other presentations, storage and treatment doses are not verified; no current stock availability certification.",
-          "revision": "07/2026"
+          "publisher": "electronic Medicines Compendium (emc), Datapharm",
+          "reviewNote": "Selected formulation, route and population only. Other presentations, storage and treatment doses are not verified; no current stock availability certification."
         }
       ]
     },
@@ -414,8 +414,10 @@
       "append": [
         {
           "url": "https://www.medicines.org.uk/emc/product/1795/smpc",
-          "title": "Plasma-Lyte 148 (pH 7.4) solution for infusion \u2014 Summary of Product Characteristics",
-          "publisher": "electronic Medicines Compendium (emc), Datapharm",
+          "scope": "Electrolyte IV infusion; adult/adolescent >=12, limited paediatric evidence. Label osmolarity 295 mOsm/L, pH 6.5-8.0; generic osmolality/pH text needs root review.",
+          "title": "Plasma-Lyte 148 (pH 7.4) solution for infusion \u2014 UK SmPC",
+          "accessed": "2026-11-01",
+          "revision": "July 2023",
           "sections": [
             "1",
             "2",
@@ -424,10 +426,8 @@
             "4.2",
             "10"
           ],
-          "accessed": "2026-11-01",
-          "scope": "Plasma-Lyte 148 electrolyte IV infusion, adult/adolescent >=12 and limited paediatric evidence.",
-          "reviewNote": "Selected formulation, route and population only. Other presentations, storage and treatment doses are not verified; no current stock availability certification.",
-          "revision": "July 2023"
+          "publisher": "electronic Medicines Compendium (emc), Datapharm",
+          "reviewNote": "Selected formulation, route and population only. Other presentations, storage and treatment doses are not verified; no current stock availability certification."
         }
       ]
     },
@@ -457,8 +457,10 @@
       "append": [
         {
           "url": "https://www.medicines.org.uk/emc/product/3435/smpc",
-          "title": "Noxafil 300 mg concentrate for solution for infusion \u2014 Summary of Product Characteristics",
-          "publisher": "electronic Medicines Compendium (emc), Datapharm",
+          "scope": "300 mg/vial, 18 mg/mL IV concentrate, not bolus; specified indications adults/children >=2; not oral formulations.",
+          "title": "Noxafil 300 mg concentrate for solution for infusion \u2014 UK SmPC",
+          "accessed": "2026-11-01",
+          "revision": "16 July 2026",
           "sections": [
             "1",
             "2",
@@ -467,10 +469,8 @@
             "4.2",
             "10"
           ],
-          "accessed": "2026-11-01",
-          "scope": "Noxafil 300 mg/vial, 18 mg/mL IV concentrate; not bolus; specified indications adults/children >=2.",
-          "reviewNote": "Selected formulation, route and population only. Other presentations, storage and treatment doses are not verified; no current stock availability certification.",
-          "revision": "16 July 2026"
+          "publisher": "electronic Medicines Compendium (emc), Datapharm",
+          "reviewNote": "Selected formulation, route and population only. Other presentations, storage and treatment doses are not verified; no current stock availability certification."
         }
       ]
     },
@@ -500,8 +500,10 @@
       "append": [
         {
           "url": "https://www.medicines.org.uk/emc/product/10302/smpc",
-          "title": "Lyrica 75 mg hard capsules \u2014 Summary of Product Characteristics",
-          "publisher": "electronic Medicines Compendium (emc), Datapharm",
+          "scope": "75 mg hard capsules oral; adult indications, under-18 efficacy/safety not established.",
+          "title": "Lyrica 75 mg hard capsules \u2014 UK SmPC",
+          "accessed": "2026-11-01",
+          "revision": "02/2026",
           "sections": [
             "1",
             "2",
@@ -510,10 +512,8 @@
             "4.2",
             "10"
           ],
-          "accessed": "2026-11-01",
-          "scope": "Lyrica 75 mg hard capsules, oral, adult indications; under-18 efficacy/safety not established.",
-          "reviewNote": "Selected formulation, route and population only. Other presentations, storage and treatment doses are not verified; no current stock availability certification.",
-          "revision": "02/2026"
+          "publisher": "electronic Medicines Compendium (emc), Datapharm",
+          "reviewNote": "Selected formulation, route and population only. Other presentations, storage and treatment doses are not verified; no current stock availability certification."
         }
       ]
     },
@@ -543,8 +543,10 @@
       "append": [
         {
           "url": "https://www.medicines.org.uk/emc/product/101335/smpc",
-          "title": "Stemetil 12.5 mg/1 ml Solution for injection \u2014 Summary of Product Characteristics",
-          "publisher": "electronic Medicines Compendium (emc), Datapharm",
+          "scope": "12.5 mg/mL prochlorperazine mesilate, deep IM; adults, not children.",
+          "title": "Stemetil 12.5 mg/1 ml Solution for injection \u2014 UK SmPC",
+          "accessed": "2026-11-01",
+          "revision": "21/08/2025",
           "sections": [
             "1",
             "2",
@@ -553,10 +555,8 @@
             "4.2",
             "10"
           ],
-          "accessed": "2026-11-01",
-          "scope": "Stemetil 12.5 mg/mL mesilate, deep IM injection; adults, not children.",
-          "reviewNote": "Selected formulation, route and population only. Other presentations, storage and treatment doses are not verified; no current stock availability certification.",
-          "revision": "21/08/2025"
+          "publisher": "electronic Medicines Compendium (emc), Datapharm",
+          "reviewNote": "Selected formulation, route and population only. Other presentations, storage and treatment doses are not verified; no current stock availability certification."
         }
       ]
     },
@@ -586,8 +586,10 @@
       "append": [
         {
           "url": "https://www.medicines.org.uk/emc/product/2497/smpc",
-          "title": "Gavilast Heartburn and Indigestion 75mg Film-coated tablets \u2014 Summary of Product Characteristics",
-          "publisher": "electronic Medicines Compendium (emc), Datapharm",
+          "scope": "Historical 75 mg oral tablets, adults/children >=16; no active UK availability claim.",
+          "title": "Gavilast Heartburn and Indigestion 75mg Film-coated tablets \u2014 UK SmPC",
+          "accessed": "2026-11-01",
+          "revision": "18/05/2017",
           "sections": [
             "1",
             "2",
@@ -596,10 +598,8 @@
             "4.2",
             "10"
           ],
-          "accessed": "2026-11-01",
-          "scope": "Historical Gavilast 75 mg oral tablets; adults/children >=16; no current UK availability claim.",
-          "reviewNote": "Historical SmPC only, not evidence of an active UK product; current authorisation/marketing remains unresolved.",
-          "revision": "18/05/2017"
+          "publisher": "electronic Medicines Compendium (emc), Datapharm",
+          "reviewNote": "Historical SmPC only; not evidence of an active UK product. Current authorisation and marketing unresolved."
         }
       ]
     },
@@ -629,8 +629,10 @@
       "append": [
         {
           "url": "https://www.medicines.org.uk/emc/product/2192/smpc",
-          "title": "Ventolin Injection 500 micrograms \u2014 Summary of Product Characteristics",
-          "publisher": "electronic Medicines Compendium (emc), Datapharm",
+          "scope": "500 micrograms/mL, 1 mL ampoule; SC/IM/IV, severe bronchospasm adults/adolescents >=12; not inhaled/oral formulations.",
+          "title": "Ventolin Injection 500 micrograms \u2014 UK SmPC",
+          "accessed": "2026-11-01",
+          "revision": "10 April 2026",
           "sections": [
             "1",
             "2",
@@ -639,10 +641,8 @@
             "4.2",
             "10"
           ],
-          "accessed": "2026-11-01",
-          "scope": "Ventolin 500 micrograms/mL, 1 mL ampoule, SC/IM/IV; severe bronchospasm adults/adolescents >=12.",
-          "reviewNote": "Selected formulation, route and population only. Other presentations, storage and treatment doses are not verified; no current stock availability certification.",
-          "revision": "10 April 2026"
+          "publisher": "electronic Medicines Compendium (emc), Datapharm",
+          "reviewNote": "Selected formulation, route and population only. Other presentations, storage and treatment doses are not verified; no current stock availability certification."
         }
       ]
     },
@@ -672,8 +672,10 @@
       "append": [
         {
           "url": "https://www.medicines.org.uk/emc/product/10398/smpc",
-          "title": "Rapamune 1mg coated tablets \u2014 Summary of Product Characteristics",
-          "publisher": "electronic Medicines Compendium (emc), Datapharm",
+          "scope": "1 mg coated tablet oral; adult transplant/LAM indications, under-18 efficacy/safety not established.",
+          "title": "Rapamune 1mg coated tablets \u2014 UK SmPC",
+          "accessed": "2026-11-01",
+          "revision": "08/2024",
           "sections": [
             "1",
             "2",
@@ -682,10 +684,8 @@
             "4.2",
             "10"
           ],
-          "accessed": "2026-11-01",
-          "scope": "Rapamune 1 mg coated tablets, oral, adult transplant/LAM indications; under-18 efficacy/safety not established.",
-          "reviewNote": "Selected formulation, route and population only. Other presentations, storage and treatment doses are not verified; no current stock availability certification.",
-          "revision": "08/2024"
+          "publisher": "electronic Medicines Compendium (emc), Datapharm",
+          "reviewNote": "Selected formulation, route and population only. Other presentations, storage and treatment doses are not verified; no current stock availability certification."
         }
       ]
     },
@@ -715,8 +715,10 @@
       "append": [
         {
           "url": "https://www.medicines.org.uk/emc/product/7327/smpc",
-          "title": "Sodium Citrate 0.3M Oral Solution (Macarthys Lab Ltd - manufacturing site) \u2014 Summary of Product Characteristics",
-          "publisher": "electronic Medicines Compendium (emc), Datapharm",
+          "scope": "0.3 M oral solution, 2.647 g/30 mL; antacid before caesarean general anaesthesia.",
+          "title": "Sodium Citrate 0.3M Oral Solution \u2014 UK SmPC",
+          "accessed": "2026-11-01",
+          "revision": "11/02/2025",
           "sections": [
             "1",
             "2",
@@ -725,10 +727,8 @@
             "4.2",
             "10"
           ],
-          "accessed": "2026-11-01",
-          "scope": "Sodium citrate 0.3 M oral solution, 2.647 g/30 mL; antacid before caesarean general anaesthesia.",
-          "reviewNote": "Selected formulation, route and population only. Other presentations, storage and treatment doses are not verified; no current stock availability certification.",
-          "revision": "11/02/2025"
+          "publisher": "electronic Medicines Compendium (emc), Datapharm",
+          "reviewNote": "Selected formulation, route and population only. Other presentations, storage and treatment doses are not verified; no current stock availability certification."
         }
       ]
     },
@@ -758,8 +758,10 @@
       "append": [
         {
           "url": "https://www.medicines.org.uk/emc/product/7039/smpc",
-          "title": "Sotalol 40mg Tablets \u2014 Summary of Product Characteristics",
-          "publisher": "electronic Medicines Compendium (emc), Datapharm",
+          "scope": "40 mg sotalol hydrochloride tablets oral, specified arrhythmias; no relevant paediatric use; IV product not verified.",
+          "title": "Sotalol 40mg Tablets \u2014 UK SmPC",
+          "accessed": "2026-11-01",
+          "revision": "21/09/2022",
           "sections": [
             "1",
             "2",
@@ -768,10 +770,8 @@
             "4.2",
             "10"
           ],
-          "accessed": "2026-11-01",
-          "scope": "Sotalol hydrochloride 40 mg tablets, oral, specified arrhythmias; no relevant paediatric use stated.",
-          "reviewNote": "Selected formulation, route and population only. Other presentations, storage and treatment doses are not verified; no current stock availability certification.",
-          "revision": "21/09/2022"
+          "publisher": "electronic Medicines Compendium (emc), Datapharm",
+          "reviewNote": "Selected formulation, route and population only. Other presentations, storage and treatment doses are not verified; no current stock availability certification."
         }
       ]
     },
@@ -801,8 +801,10 @@
       "append": [
         {
           "url": "https://www.medicines.org.uk/emc/product/1619/smpc",
-          "title": "Aldactone 25 mg Film-Coated Tablets \u2014 Summary of Product Characteristics",
-          "publisher": "electronic Medicines Compendium (emc), Datapharm",
+          "scope": "25 mg tablets; children under paediatric specialist guidance; not unlicensed suspension.",
+          "title": "Aldactone 25 mg Film-Coated Tablets \u2014 UK SmPC",
+          "accessed": "2026-11-01",
+          "revision": "01/2026",
           "sections": [
             "1",
             "2",
@@ -811,10 +813,8 @@
             "4.2",
             "10"
           ],
-          "accessed": "2026-11-01",
-          "scope": "Aldactone 25 mg film-coated tablets; children only under paediatric specialist guidance.",
-          "reviewNote": "Selected formulation, route and population only. Other presentations, storage and treatment doses are not verified; no current stock availability certification.",
-          "revision": "01/2026"
+          "publisher": "electronic Medicines Compendium (emc), Datapharm",
+          "reviewNote": "Selected formulation, route and population only. Other presentations, storage and treatment doses are not verified; no current stock availability certification."
         }
       ]
     },
@@ -844,8 +844,10 @@
       "append": [
         {
           "url": "https://www.medicines.org.uk/emc/product/100850/smpc",
-          "title": "UNIPHYLLIN 200mg prolonged release tablets \u2014 Summary of Product Characteristics",
-          "publisher": "electronic Medicines Compendium (emc), Datapharm",
+          "scope": "200 mg prolonged-release tablets oral; adults/children >=6; not aminophylline injection or all forms.",
+          "title": "UNIPHYLLIN 200mg prolonged release tablets \u2014 UK SmPC",
+          "accessed": "2026-11-01",
+          "revision": "24/07/2026",
           "sections": [
             "1",
             "2",
@@ -854,10 +856,8 @@
             "4.2",
             "10"
           ],
-          "accessed": "2026-11-01",
-          "scope": "Uniphyllin 200 mg prolonged-release tablets, oral; adults/children >=6; not aminophylline injection.",
-          "reviewNote": "Selected formulation, route and population only. Other presentations, storage and treatment doses are not verified; no current stock availability certification.",
-          "revision": "24/07/2026"
+          "publisher": "electronic Medicines Compendium (emc), Datapharm",
+          "reviewNote": "Selected formulation, route and population only. Other presentations, storage and treatment doses are not verified; no current stock availability certification."
         }
       ]
     },
@@ -887,8 +887,10 @@
       "append": [
         {
           "url": "https://www.medicines.org.uk/emc/product/979/smpc",
-          "title": "Verapamil 2.5 mg/ml Solution for injection \u2014 Summary of Product Characteristics",
-          "publisher": "electronic Medicines Compendium (emc), Datapharm",
+          "scope": "2.5 mg/mL verapamil hydrochloride, slow IV; specified adult/paediatric contexts with ECG monitoring.",
+          "title": "Verapamil 2.5 mg/ml Solution for injection \u2014 UK SmPC",
+          "accessed": "2026-11-01",
+          "revision": "October 2025",
           "sections": [
             "1",
             "2",
@@ -897,10 +899,8 @@
             "4.2",
             "10"
           ],
-          "accessed": "2026-11-01",
-          "scope": "Verapamil hydrochloride 2.5 mg/mL injection, slow IV; indication-specific adults and paediatric groups, ECG monitoring.",
-          "reviewNote": "Selected formulation, route and population only. Other presentations, storage and treatment doses are not verified; no current stock availability certification.",
-          "revision": "October 2025"
+          "publisher": "electronic Medicines Compendium (emc), Datapharm",
+          "reviewNote": "Selected formulation, route and population only. Other presentations, storage and treatment doses are not verified; no current stock availability certification."
         }
       ]
     },
@@ -930,20 +930,19 @@
       "append": [
         {
           "url": "https://www.medicines.org.uk/emc/product/11891/smpc",
+          "scope": "100mg flecainide acetate oral tablets; under12not recommended; IV and50mg products not verified.",
           "title": "Flecainide acetate 100 mg tablets \u2014 product SPC",
-          "publisher": "electronic Medicines Compendium (emc), Datapharm",
+          "accessed": "2026-11-01",
+          "revision": "02/10/2026",
           "sections": [
             "1",
             "2",
             "3",
             "4.1",
-            "4.2",
-            "10"
+            "4.2"
           ],
-          "accessed": "2026-11-01",
-          "scope": "2\\. Qualitative and quantitative composition\n\nEach tablet contains flecainide acetate 100 mg.\n\nFor the full list of excipients, see section 6.1. Route: oral. Tablets only; does not verify IV flecainide. Under 12 not recommended.",
-          "reviewNote": "Selected formulation, route and population only. Other presentations, storage and treatment doses are not verified; no current stock availability certification.",
-          "revision": "02/10/2026"
+          "publisher": "electronic Medicines Compendium (emc), Datapharm",
+          "reviewNote": "Selected formulation, route and population only. Other presentations, storage and treatment doses are not verified; no current stock availability certification."
         }
       ]
     },
@@ -973,20 +972,19 @@
       "append": [
         {
           "url": "https://www.medicines.org.uk/emc/product/6300/smpc",
+          "scope": "100micrograms/mL,5mL/500micrograms and10mL/1mg ampoules; IV, paediatric conscious-sedation reversal>1year. Current vial wording not verified.",
           "title": "Flumazenil 100 micrograms/ml solution for injection/infusion \u2014 product SPC",
-          "publisher": "electronic Medicines Compendium (emc), Datapharm",
+          "accessed": "2026-11-01",
+          "revision": "02/09/2022",
           "sections": [
             "1",
             "2",
             "3",
             "4.1",
-            "4.2",
-            "10"
+            "4.2"
           ],
-          "accessed": "2026-11-01",
-          "scope": "2\\. Qualitative and quantitative composition\n\nEach ml contains 100 micrograms flumazenil.\n\n1 ampoule with 5 ml contains 500 micrograms flumazenil.\n\n1 ampoule with 10 ml contains 1000 micrograms flumazenil.\n\n**Excipient with known effect:**\n\nThis medicinal product contains approximately 3.7 mg sodium per ml of flumazenil solution for injection/infusion (see section 4.4).\n\nFor the full list ofexcipients, see section 6.1. Route: intravenous injection/infusion. Population limited to the licensed indications and age restrictions quoted in checkedEvidence; no general paediatric extrapolation.",
-          "reviewNote": "Selected formulation, route and population only. Other presentations, storage and treatment doses are not verified; no current stock availability certification.",
-          "revision": "02/09/2022"
+          "publisher": "electronic Medicines Compendium (emc), Datapharm",
+          "reviewNote": "Selected formulation, route and population only. Other presentations, storage and treatment doses are not verified; no current stock availability certification."
         }
       ]
     },
@@ -1016,20 +1014,19 @@
       "append": [
         {
           "url": "https://www.medicines.org.uk/emc/product/4123/smpc",
+          "scope": "400mg oral hard capsule; adult neuropathic pain, epilepsy adjunct>=6years/monotherapy>=12; other formulations not covered.",
           "title": "Gabapentin Milpharm 400 mg capsules, hard \u2014 product SPC",
-          "publisher": "electronic Medicines Compendium (emc), Datapharm",
+          "accessed": "2026-11-01",
+          "revision": "13/04/2026",
           "sections": [
             "1",
             "2",
             "3",
             "4.1",
-            "4.2",
-            "10"
+            "4.2"
           ],
-          "accessed": "2026-11-01",
-          "scope": "2\\. Qualitative and quantitative composition\n\nEach 400 mg hard capsule contains 400 mg gabapentin.\n\nFor the full list of excipients, see section 6.1 Route: oral. Adult neuropathic pain; epilepsy adjunct >=6 and monotherapy >=12.",
-          "reviewNote": "Selected formulation, route and population only. Other presentations, storage and treatment doses are not verified; no current stock availability certification.",
-          "revision": "13/04/2026"
+          "publisher": "electronic Medicines Compendium (emc), Datapharm",
+          "reviewNote": "Selected formulation, route and population only. Other presentations, storage and treatment doses are not verified; no current stock availability certification."
         }
       ]
     },
@@ -1059,20 +1056,19 @@
       "append": [
         {
           "url": "https://www.medicines.org.uk/emc/product/1289/smpc",
-          "title": "GlucaGen HypoKit 1 mg powder and solvent for solution for injection. \u2014 product SPC",
-          "publisher": "electronic Medicines Compendium (emc), Datapharm",
+          "scope": "1mg glucagon as hydrochloride with1mL solvent; SC/IM severe hypoglycaemia adults/children, IV/IM diagnostic use adults; not beta-blocker-overdose indication.",
+          "title": "GlucaGen HypoKit 1 mg powder and solvent for solution for injection \u2014 product SPC",
+          "accessed": "2026-11-01",
+          "revision": "11 January 2023",
           "sections": [
             "1",
             "2",
             "3",
             "4.1",
-            "4.2",
-            "10"
+            "4.2"
           ],
-          "accessed": "2026-11-01",
-          "scope": "2\\. Qualitative and quantitative composition\n\nActive substance: Human glucagon produced in _Saccharomyces cerevisiae_ by recombinant DNA technology.\n\nOne vial contains 1 mg glucagon as hydrochloride corresponding to 1 mg (1 IU) glucagon/ml after reconstitution.\n\nFor the full list of excipients, see section 6.1. Route: subcutaneous/intramuscular for severe hypoglycaemia; IV/IM diagnostic use. Severe hypoglycaemia adults/children; diagnostic GI use adults only. Does not verify beta-blocker overdose.",
-          "reviewNote": "Selected formulation, route and population only. Other presentations, storage and treatment doses are not verified; no current stock availability certification.",
-          "revision": "11 January 2023"
+          "publisher": "electronic Medicines Compendium (emc), Datapharm",
+          "reviewNote": "Selected formulation, route and population only. Other presentations, storage and treatment doses are not verified; no current stock availability certification."
         }
       ]
     },
@@ -1102,20 +1098,19 @@
       "append": [
         {
           "url": "https://www.medicines.org.uk/emc/product/6296/smpc",
+          "scope": "1mg/mL GTN IV infusion, adult indications; paediatric efficacy/safety not established; sublingual formulations excluded.",
           "title": "Glyceryl Trinitrate 1 mg/ml solution for infusion \u2014 product SPC",
-          "publisher": "electronic Medicines Compendium (emc), Datapharm",
+          "accessed": "2026-11-01",
+          "revision": "06/05/2021",
           "sections": [
             "1",
             "2",
             "3",
             "4.1",
-            "4.2",
-            "10"
+            "4.2"
           ],
-          "accessed": "2026-11-01",
-          "scope": "2\\. Qualitative and quantitative composition\n\n1 ml solution contains 1 mg glyceryl trinitrate.\n\nAmount of active substance per pack size:\n\n|     |     |     |\n| --- | --- | --- |\n| **Total Volume** | **Total GTN Content** | **Container** |\n| 5ml | 5mg | ampoule |\n| 10ml | 10mg | ampoule |\n| 25ml | 25mg | ampoule |\n| 50ml | 50mg | vial |\n\nFor the full list of excipients, see section 6.1. Route: intravenous infusion. Population limited to the licensed indications and age restrictions quoted in checkedEvidence; no general paediatric extrapolation.",
-          "reviewNote": "Selected formulation, route and population only. Other presentations, storage and treatment doses are not verified; no current stock availability certification.",
-          "revision": "06/05/2021"
+          "publisher": "electronic Medicines Compendium (emc), Datapharm",
+          "reviewNote": "Selected formulation, route and population only. Other presentations, storage and treatment doses are not verified; no current stock availability certification."
         }
       ]
     },
@@ -1145,20 +1140,19 @@
       "append": [
         {
           "url": "https://www.medicines.org.uk/emc/product/1812/smpc",
-          "title": "Hartmann's Solution for Infusion) \u2014 product SPC",
-          "publisher": "electronic Medicines Compendium (emc), Datapharm",
+          "scope": "Sodium chloride,potassium chloride,calcium chloride dihydrate,sodium lactate IV infusion bags; adults/children, limited paediatric evidence and neonatal/infant caution.",
+          "title": "Compound Sodium Lactate Solution for Infusion (Hartmann's) \u2014 product SPC",
+          "accessed": "2026-11-01",
+          "revision": "05/2024",
           "sections": [
             "1",
             "2",
             "3",
             "4.1",
-            "4.2",
-            "10"
+            "4.2"
           ],
-          "accessed": "2026-11-01",
-          "scope": "2\\. Qualitative and quantitative composition\n\n|     |     |\n| --- | --- |\n| Sodium Chloride: | 6.00 g/l |\n| Potassium Chloride: | 0.40 g/l |\n| Calcium Chloride dihydrate: | 0.27 g/l |\n| Sodium Lactate: | 3.20 g/l |\n\n|     |     |     |     |     |     |\n| --- | --- | --- | --- | --- | --- |\n|  | Na+ | K+ | Ca++ | Cl- | C3H5O3- (lactate) |\n| mmol/l | 131 | 5 | 2 | 111 | 29 |\n| mEq/l | 131 | 5 | 4 | 111 | 29 |\n\nFor the full list of excipients, see section 6.1 Route: intravenous infusion. Population limited to the licensed indications and age restrictions quoted in checkedEvidence; no general paediatric extrapolation.",
-          "reviewNote": "Selected formulation, route and population only. Other presentations, storage and treatment doses are not verified; no current stock availability certification.",
-          "revision": "05/2024"
+          "publisher": "electronic Medicines Compendium (emc), Datapharm",
+          "reviewNote": "Selected formulation, route and population only. Other presentations, storage and treatment doses are not verified; no current stock availability certification."
         }
       ]
     },
@@ -1188,20 +1182,19 @@
       "append": [
         {
           "url": "https://www.medicines.org.uk/emc/product/13541/smpc",
+          "scope": "400mg oral tablet; adults/adolescents, not under12; IV and neonatal-PDA products excluded.",
           "title": "Ibuprofen 400mg Tablets BP \u2014 product SPC",
-          "publisher": "electronic Medicines Compendium (emc), Datapharm",
+          "accessed": "2026-11-01",
+          "revision": "22/10/2024",
           "sections": [
             "1",
             "2",
             "3",
             "4.1",
-            "4.2",
-            "10"
+            "4.2"
           ],
-          "accessed": "2026-11-01",
-          "scope": "2\\. Qualitative and quantitative composition\n\nEach tablet contains Ibuprofen BP 400mg\n\nAlso contains lactose, sucrose and sunset yellow.\n\nFor excipients see section 6.1. Route: oral. Oral 400 mg tablet only, not neonatal PDA IV ibuprofen.",
-          "reviewNote": "Selected formulation, route and population only. Other presentations, storage and treatment doses are not verified; no current stock availability certification.",
-          "revision": "22/10/2024"
+          "publisher": "electronic Medicines Compendium (emc), Datapharm",
+          "reviewNote": "Selected formulation, route and population only. Other presentations, storage and treatment doses are not verified; no current stock availability certification."
         }
       ]
     },
@@ -1231,20 +1224,19 @@
       "append": [
         {
           "url": "https://www.medicines.org.uk/emc/product/8736/smpc",
+          "scope": "20micrograms/mL iloprost as trometamol nebuliser solution; adult primary pulmonary hypertension NYHAIII; no IV/paediatric coverage.",
           "title": "Ventavis 20 microgram/ml nebuliser solution \u2014 product SPC",
-          "publisher": "electronic Medicines Compendium (emc), Datapharm",
+          "accessed": "2026-11-01",
+          "revision": "01/2021",
           "sections": [
             "1",
             "2",
             "3",
             "4.1",
-            "4.2",
-            "10"
+            "4.2"
           ],
-          "accessed": "2026-11-01",
-          "scope": "2\\. Qualitative and quantitative composition\n\n**Ventavis 20 microgram/ml nebuliser solution**\n\n1 ml solution contains 20 microgram iloprost (as iloprost trometamol).\n\nEach ampoule with 1 ml solution contains 20 microgram iloprost.\n\n**Excipient with known effect:**\n\n\u2022 Ventavis 20 microgram/ml:\n\nEach ml contains 1.62 mg ethanol 96% (equivalent to 1.50 mg ethanol)\n\nFor the full list of excipients, see section 6.1. Route: inhalation by nebuliser. Adult primary pulmonary hypertension NYHA III; no IV iloprost or paediatric coverage.",
-          "reviewNote": "Selected formulation, route and population only. Other presentations, storage and treatment doses are not verified; no current stock availability certification.",
-          "revision": "01/2021"
+          "publisher": "electronic Medicines Compendium (emc), Datapharm",
+          "reviewNote": "Selected formulation, route and population only. Other presentations, storage and treatment doses are not verified; no current stock availability certification."
         }
       ]
     },
@@ -1274,18 +1266,17 @@
       "append": [
         {
           "url": "https://www.bocgases.co.uk/files/INOmax_800_ppm_SPC.pdf",
+          "scope": "800ppm nitric oxide in nitrogen,inhalation; newborns>=34weeks gestation with specified hypoxic respiratory failure/pulmonary hypertension; peri/post-cardiac-surgery pulmonary hypertension across ages.100/400ppm excluded.",
           "title": "INOmax 800 ppm mol/mol medicinal gas, compressed \u2014 product SPC",
-          "publisher": "BOC / INOmax product SPC",
+          "accessed": "2026-11-01",
           "sections": [
             "1",
             "2",
             "3",
             "4.1",
-            "4.2",
-            "10"
+            "4.2"
           ],
-          "accessed": "2026-11-01",
-          "scope": "## 2 QUALITATIVE AND QUANTITATIVE COMPOSITION\n\nNitric oxide (NO) 800 ppm mol/mol.\n\nA 2 litre gas cylinder filled at 155 bar absolute brings 307 litres of gas under pressure of 1 bar \nat 15 C.<sup>o</sup>\n\n$$\n1 5 ^ {\\circ} \\mathrm {C}\n$$\n\nA 10 litre gas cylinder filled at 155 bar absolute brings 1535 litres of gas under pressure of 1 \nbar at 15 C.<sup>o</sup>\n\n$$\n1 5 ^ {\\circ} \\mathrm {C}\n$$\n\nFor a full list of excipients, see section 6.1. Route: inhalation. Population limited to the licensed indications and age restrictions quoted in checkedEvidence; no general paediatric extrapolation.",
+          "publisher": "BOC / INOmax product SPC",
           "reviewNote": "Selected formulation, route and population only. Other presentations, storage and treatment doses are not verified; no current stock availability certification."
         }
       ]
@@ -1316,20 +1307,19 @@
       "append": [
         {
           "url": "https://www.medicines.org.uk/emc/product/3818/smpc",
-          "title": "Atrovent\u00ae UDVs\u00ae, 2 ml \u2014 product SPC",
-          "publisher": "electronic Medicines Compendium (emc), Datapharm",
+          "scope": "250micrograms/1mL and500micrograms/2mL ipratropium bromide nebuliser solution; adults/children,0-5years acute asthma only; pMDI excluded.",
+          "title": "Atrovent UDVs nebuliser solution \u2014 product SPC",
+          "accessed": "2026-11-01",
+          "revision": "14/10/2026",
           "sections": [
             "1",
             "2",
             "3",
             "4.1",
-            "4.2",
-            "10"
+            "4.2"
           ],
-          "accessed": "2026-11-01",
-          "scope": "2\\. Qualitative and quantitative composition\n\nEach single dose unit contains 0.025 % w/v ipratropium bromide i.e. 250 micrograms in 1 ml and 500 micrograms in 2 ml.\n\nFor excipients, see 6.1. Route: inhalation by nebuliser. Population limited to the licensed indications and age restrictions quoted in checkedEvidence; no general paediatric extrapolation.",
-          "reviewNote": "Selected formulation, route and population only. Other presentations, storage and treatment doses are not verified; no current stock availability certification.",
-          "revision": "14/10/2026"
+          "publisher": "electronic Medicines Compendium (emc), Datapharm",
+          "reviewNote": "Selected formulation, route and population only. Other presentations, storage and treatment doses are not verified; no current stock availability certification."
         }
       ]
     },
@@ -1359,20 +1349,19 @@
       "append": [
         {
           "url": "https://www.medicines.org.uk/emc/product/9165/smpc",
+          "scope": "5mg/mL labetalol hydrochloride IV; adult indications including severe pregnancy hypertension; paediatric efficacy/safety unestablished; exact20mL packaging/storage not verified.",
           "title": "Labetalol Hydrochloride 5mg/ml Solution for Injection \u2014 product SPC",
-          "publisher": "electronic Medicines Compendium (emc), Datapharm",
+          "accessed": "2026-11-01",
+          "revision": "02 June 2023",
           "sections": [
             "1",
             "2",
             "3",
             "4.1",
-            "4.2",
-            "10"
+            "4.2"
           ],
-          "accessed": "2026-11-01",
-          "scope": "2\\. Qualitative and quantitative composition\n\nLabetalol hydrochloride 5mg/ml Route: intravenous. Population limited to the licensed indications and age restrictions quoted in checkedEvidence; no general paediatric extrapolation.",
-          "reviewNote": "Selected formulation, route and population only. Other presentations, storage and treatment doses are not verified; no current stock availability certification.",
-          "revision": "02 June 2023"
+          "publisher": "electronic Medicines Compendium (emc), Datapharm",
+          "reviewNote": "Selected formulation, route and population only. Other presentations, storage and treatment doses are not verified; no current stock availability certification."
         }
       ]
     },
@@ -1402,20 +1391,19 @@
       "append": [
         {
           "url": "https://www.medicines.org.uk/emc/product/2296/smpc",
+          "scope": "100mg/mL,500mg/5mL IV concentrate; monotherapy>=16,adjunct partial seizures>=4,other specified adjunct>=12. Not status-epilepticus indication or oral-form verification.",
           "title": "Keppra 100 mg/ml concentrate for solution for infusion \u2014 product SPC",
-          "publisher": "electronic Medicines Compendium (emc), Datapharm",
+          "accessed": "2026-11-01",
+          "revision": "04/12/2025",
           "sections": [
             "1",
             "2",
             "3",
             "4.1",
-            "4.2",
-            "10"
+            "4.2"
           ],
-          "accessed": "2026-11-01",
-          "scope": "2\\. Qualitative and quantitative composition\n\nEach ml contains 100 mg of levetiracetam.\n\nEach 5 ml vial contains 500 mg of levetiracetam.\n\n**Excipient with known effect**:\n\nEach vial contains 19 mg of sodium.\n\nFor the full list of excipients, see section 6.1. Route: intravenous infusion after dilution. IV alternative when oral not feasible; does not establish status epilepticus indication. Mono >=16; adjunct partial seizures >=4; other specified adjunct indications >=12.",
-          "reviewNote": "Selected formulation, route and population only. Other presentations, storage and treatment doses are not verified; no current stock availability certification.",
-          "revision": "04/12/2025"
+          "publisher": "electronic Medicines Compendium (emc), Datapharm",
+          "reviewNote": "Selected formulation, route and population only. Other presentations, storage and treatment doses are not verified; no current stock availability certification."
         }
       ]
     },
@@ -1445,20 +1433,19 @@
       "append": [
         {
           "url": "https://www.medicines.org.uk/emc/product/2942/smpc",
+          "scope": "25microgram levothyroxine sodium anhydrous oral tablet,adult/paediatric hypothyroidism; under5approved oral solution preferred; liquids/injection/other strengths excluded.",
           "title": "Levothyroxine 25mcg tablets \u2014 product SPC",
-          "publisher": "electronic Medicines Compendium (emc), Datapharm",
+          "accessed": "2026-11-01",
+          "revision": "16/10/2026",
           "sections": [
             "1",
             "2",
             "3",
             "4.1",
-            "4.2",
-            "10"
+            "4.2"
           ],
-          "accessed": "2026-11-01",
-          "scope": "2\\. Qualitative and quantitative composition\n\nEach tablet contains 25 micrograms Levothyroxine sodium anhydrous.\n\n**Excipient with known effect**\n\nLactose 30.49mg per tablet\n\nFor the full list of excipients, see section 6.1. Route: oral. Population limited to the licensed indications and age restrictions quoted in checkedEvidence; no general paediatric extrapolation.",
-          "reviewNote": "Selected formulation, route and population only. Other presentations, storage and treatment doses are not verified; no current stock availability certification.",
-          "revision": "16/10/2026"
+          "publisher": "electronic Medicines Compendium (emc), Datapharm",
+          "reviewNote": "Selected formulation, route and population only. Other presentations, storage and treatment doses are not verified; no current stock availability certification."
         }
       ]
     },
@@ -1488,20 +1475,19 @@
       "append": [
         {
           "url": "https://www.medicines.org.uk/emc/product/15149/smpc",
-          "title": "1% w/v Lidocaine Injection BP. \u2014 product SPC",
-          "publisher": "electronic Medicines Compendium (emc), Datapharm",
+          "scope": "1%/10mg/mL lidocaine hydrochloride monohydrate injection; IV ventricular arrhythmia adults/adolescents/children>2,limited under2data;2% excluded.",
+          "title": "1% w/v Lidocaine Injection BP \u2014 product SPC",
+          "accessed": "2026-11-01",
+          "revision": "24/12/2025",
           "sections": [
             "1",
             "2",
             "3",
             "4.1",
-            "4.2",
-            "10"
+            "4.2"
           ],
-          "accessed": "2026-11-01",
-          "scope": "2\\. Qualitative and quantitative composition\n\nEach ml of the solution for injection contains 10 mg of Lidocaine hydrochloride monohydrate.\n\nAccordingly, the contents per ampoule are as follows:\n\n\u25cf One ampoule of 2 ml contains 20 mg of Lidocaine hydrochloride monohydrate\n\n\u25cf One ampoule of 5 ml contains 50 mg of Lidocaine hydrochloride monohydrate\n\n\u25cf One ampoule of 10 ml contains 100 mg of Lidocaine hydrochloride monohydrate\n\n\u25cf One ampoule of 20 ml contains 200 mg of Lidocaine hydrochloride monohydrate\n\n_Excipients with known effect:_\n\nEach ml of solution contains 2.83 mg equivalent to 0.123 mmol of sodium (as sodium chloride and sodium hydroxide)\n\nEach 2 ml ampoule contains 5.66 mg equivalent to 0.246 mmol of sodium (as sodium chloride and sodium hydroxide)\n\nEach 5 ml ampoule contains 14.15 mg equivalent to 0.615 mmol of sodium (as sodium chloride and sodium hydroxide)\n\nEach 10 ml ampoule contains 28.3 mg equivalent to 1.23 mmol of sodium (as sodium chloride and sodium hydroxide)\n\nEach 20 ml ampoule contains 56.6 mg equivalent to 2.46 mmol of sodium (as sodium chloride and sodium hydroxide)\n\nFor the full list of excipients, see section 6.1. Route: intravenous for ventricular arrhythmia (also local/regional anaesthesia). Label explicitly includes life-threatening ventricular tachycardia/tachyarrhythmia in adults, adolescents and children >2; limited data under 2.",
-          "reviewNote": "Selected formulation, route and population only. Other presentations, storage and treatment doses are not verified; no current stock availability certification.",
-          "revision": "24/12/2025"
+          "publisher": "electronic Medicines Compendium (emc), Datapharm",
+          "reviewNote": "Selected formulation, route and population only. Other presentations, storage and treatment doses are not verified; no current stock availability certification."
         }
       ]
     },
@@ -1531,20 +1517,19 @@
       "append": [
         {
           "url": "https://www.medicines.org.uk/emc/product/13162/smpc",
-          "title": "Priadel 200 mg prolonged-release tablets. \u2014 product SPC",
-          "publisher": "electronic Medicines Compendium (emc), Datapharm",
+          "scope": "200mg lithium carbonate prolonged-release oral tablets; children not recommended; other strengths/lithium citrate not interchangeable coverage.",
+          "title": "Priadel 200 mg prolonged-release tablets \u2014 product SPC",
+          "accessed": "2026-11-01",
+          "revision": "12/09/2024",
           "sections": [
             "1",
             "2",
             "3",
             "4.1",
-            "4.2",
-            "10"
+            "4.2"
           ],
-          "accessed": "2026-11-01",
-          "scope": "2\\. Qualitative and quantitative composition\n\nEach prolonged-release tablet contains 200 mg lithium carbonate.\n\nFor the full list of excipients, see section 6.1. Route: oral. Priadel prolonged-release lithium carbonate only; not interchangeable evidence for lithium citrate liquid.",
-          "reviewNote": "Selected formulation, route and population only. Other presentations, storage and treatment doses are not verified; no current stock availability certification.",
-          "revision": "12/09/2024"
+          "publisher": "electronic Medicines Compendium (emc), Datapharm",
+          "reviewNote": "Selected formulation, route and population only. Other presentations, storage and treatment doses are not verified; no current stock availability certification."
         }
       ]
     },
@@ -1574,20 +1559,19 @@
       "append": [
         {
           "url": "https://www.medicines.org.uk/emc/product/13170/smpc",
+          "scope": "500mg/mL magnesium sulfate heptahydrate,10mL/5g ampoule,approximately2mmol/mL and20mmol/10mL; adult/paediatric route-specific restrictions. Other strengths/packs and asthma indication not covered;20.5mmol wording requires root review.",
           "title": "Magnesium Sulfate 50% w/v Solution for Injection/Infusion \u2014 product SPC",
-          "publisher": "electronic Medicines Compendium (emc), Datapharm",
+          "accessed": "2026-11-01",
+          "revision": "26/07/2022",
           "sections": [
             "1",
             "2",
             "3",
             "4.1",
-            "4.2",
-            "10"
+            "4.2"
           ],
-          "accessed": "2026-11-01",
-          "scope": "2\\. Qualitative and quantitative composition\n\nMagnesium sulfate heptahydrate 50% w/v (2 mmol Mg2+ in 1 ml).\n\nEach 1 ml of solution contains 2 mmol Mg2+ (equivalent to 500 mg magnesium sulfate heptahydrate).\n\nEach 2 ml ampoule contains 4 mmol Mg2+ (equivalent to 1 g magnesium sulfate heptahydrate).\n\nEach 10 ml ampoule contains 20 mmol Mg2+ (equivalent to 5 g magnesium sulfate heptahydrate).\n\nThe concentrations of magnesium ions (Mg2+) in millimoles are given as approximate values.\n\nFor the full list of excipients, see section 6.1. Route: injection/infusion; IV concentrate requires dilution. Population limited to the licensed indications and age restrictions quoted in checkedEvidence; no general paediatric extrapolation.",
-          "reviewNote": "Selected formulation, route and population only. Other presentations, storage and treatment doses are not verified; no current stock availability certification.",
-          "revision": "26/07/2022"
+          "publisher": "electronic Medicines Compendium (emc), Datapharm",
+          "reviewNote": "Selected formulation, route and population only. Other presentations, storage and treatment doses are not verified; no current stock availability certification."
         }
       ]
     },
@@ -1617,20 +1601,19 @@
       "append": [
         {
           "url": "https://www.medicines.org.uk/emc/product/9945/smpc",
+          "scope": "2.5mg oral tablet,adult inflammatory arthritis/severe psoriasis; injections,oncology and10mg products excluded.",
           "title": "Methotrexate 2.5 mg Tablets \u2014 product SPC",
-          "publisher": "electronic Medicines Compendium (emc), Datapharm",
+          "accessed": "2026-11-01",
+          "revision": "30/09/2024",
           "sections": [
             "1",
             "2",
             "3",
             "4.1",
-            "4.2",
-            "10"
+            "4.2"
           ],
-          "accessed": "2026-11-01",
-          "scope": "2\\. Qualitative and quantitative composition\n\n**Methotrexate** **2.5 mg tablet**\n\nEach tablet contains methotrexate 2.5 mg.\n\n**Excipient with known effect**\n\nEach tablet contains 12.50 mg lactose (as lactose monohydrate).\n\nFor the full list of excipients, see section 6.1. Route: oral. Adult rheumatoid/psoriatic arthritis and severe psoriasis; this label does not cover oncology/injection.",
-          "reviewNote": "Selected formulation, route and population only. Other presentations, storage and treatment doses are not verified; no current stock availability certification.",
-          "revision": "30/09/2024"
+          "publisher": "electronic Medicines Compendium (emc), Datapharm",
+          "reviewNote": "Selected formulation, route and population only. Other presentations, storage and treatment doses are not verified; no current stock availability certification."
         }
       ]
     },
@@ -1660,20 +1643,19 @@
       "append": [
         {
           "url": "https://www.medicines.org.uk/emc/product/1550/smpc",
-          "title": "Methylprednisolone 40 mg Powder for Solution for Injection \u2014 product SPC",
-          "publisher": "electronic Medicines Compendium (emc), Datapharm",
+          "scope": "53mg methylprednisolone sodium succinate equivalent to40mg methylprednisolone/vial,IV/IM after reconstitution;adult/paediatric scope,other strengths and acetate excluded.",
+          "title": "Solu-Medrone 40 mg Powder for Solution for Injection \u2014 product SPC",
+          "accessed": "2026-11-01",
+          "revision": "09/2026",
           "sections": [
             "1",
             "2",
             "3",
             "4.1",
-            "4.2",
-            "10"
+            "4.2"
           ],
-          "accessed": "2026-11-01",
-          "scope": "2\\. Qualitative and quantitative composition\n\nMethylprednisolone sodium succinate 53.0 mg equivalent to 40 mg of methylprednisolone.\n\nFor the full list of excipients, see section 6.1. Route: intravenous/intramuscular after reconstitution. Population limited to the licensed indications and age restrictions quoted in checkedEvidence; no general paediatric extrapolation.",
-          "reviewNote": "Selected formulation, route and population only. Other presentations, storage and treatment doses are not verified; no current stock availability certification.",
-          "revision": "09/2026"
+          "publisher": "electronic Medicines Compendium (emc), Datapharm",
+          "reviewNote": "Selected formulation, route and population only. Other presentations, storage and treatment doses are not verified; no current stock availability certification."
         }
       ]
     },
@@ -1703,20 +1685,18 @@
       "append": [
         {
           "url": "https://www.medicines.org.uk/emc/product/13132/smpc",
+          "scope": "Glucose monohydrate equivalent to50g/L anhydrous glucose, IV infusion, age-dependent fluid replacement. Generic pH/osmolarity values not established.",
           "title": "5% Glucose Intravenous Infusion Solution \u2014 UK SmPC",
-          "publisher": "electronic Medicines Compendium (emc), Datapharm",
+          "accessed": "2026-11-01",
           "sections": [
             "1",
             "2",
             "3",
             "4.1",
-            "4.2",
-            "10"
+            "4.2"
           ],
-          "accessed": "2026-11-01",
-          "scope": "Glucose monohydrate equivalent to50g/L anhydrous glucose, IV infusion; adult fluid replacement and age-dependent response. Physicochemical values in the generic record are not established by this selected label.",
-          "reviewNote": "Selected formulation, route and population only. Other presentations, storage and treatment doses are not verified; no current stock availability certification.",
-          "revision": "03/04/2026"
+          "publisher": "electronic Medicines Compendium (emc), Datapharm",
+          "reviewNote": "Selected formulation, route and population only. Other presentations, storage and treatment doses are not verified; no current stock availability certification."
         }
       ]
     },
@@ -1746,20 +1726,18 @@
       "append": [
         {
           "url": "https://www.medicines.org.uk/emc/product/15330/smpc",
+          "scope": "Acetazolamide500mg/vial as sodium, IV/IM (IV preferred); adults and paediatric epilepsy. Oral forms not covered.",
           "title": "DIAMOX Sodium 500mg Powder for Solution for Injection \u2014 UK SmPC",
-          "publisher": "electronic Medicines Compendium (emc), Datapharm",
+          "accessed": "2026-11-01",
           "sections": [
             "1",
             "2",
             "3",
             "4.1",
-            "4.2",
-            "10"
+            "4.2"
           ],
-          "accessed": "2026-11-01",
-          "scope": "Acetazolamide as sodium500mg/vial powder, IV/IM (IV preferred); adults and paediatric epilepsy. Oral tablets/capsules not covered.",
-          "reviewNote": "Selected formulation, route and population only. Other presentations, storage and treatment doses are not verified; no current stock availability certification.",
-          "revision": "18/10/2024"
+          "publisher": "electronic Medicines Compendium (emc), Datapharm",
+          "reviewNote": "Selected formulation, route and population only. Other presentations, storage and treatment doses are not verified; no current stock availability certification."
         }
       ]
     },
@@ -1789,20 +1767,18 @@
       "append": [
         {
           "url": "https://www.medicines.org.uk/emc/product/6299/smpc",
+          "scope": "25mg/mL,250mg/10mL ampoule, slow IV injection/infusion; adults/children>=6months, below6months not recommended.",
           "title": "Aminophylline 25 mg/ml solution for injection/infusion \u2014 UK SmPC",
-          "publisher": "electronic Medicines Compendium (emc), Datapharm",
+          "accessed": "2026-11-01",
           "sections": [
             "1",
             "2",
             "3",
             "4.1",
-            "4.2",
-            "10"
+            "4.2"
           ],
-          "accessed": "2026-11-01",
-          "scope": "Aminophylline25mg/mL,250mg/10mL ampoule; slow IV injection/infusion, adults and children>=6months; below6months not recommended.",
-          "reviewNote": "Selected formulation, route and population only. Other presentations, storage and treatment doses are not verified; no current stock availability certification.",
-          "revision": "02/02/2026"
+          "publisher": "electronic Medicines Compendium (emc), Datapharm",
+          "reviewNote": "Selected formulation, route and population only. Other presentations, storage and treatment doses are not verified; no current stock availability certification."
         }
       ]
     },
@@ -1832,20 +1808,18 @@
       "append": [
         {
           "url": "https://www.medicines.org.uk/emc/product/3940/smpc",
+          "scope": "50mg/mL,150mg/3mL amiodarone hydrochloride, IV. Paediatric efficacy/safety unestablished; benzyl-alcohol product contraindicated in neonates. Oral tablets not covered.",
           "title": "Amiodarone Hydrochloride 50 mg/ml Concentrate for Solution for Injection/Infusion \u2014 UK SmPC",
-          "publisher": "electronic Medicines Compendium (emc), Datapharm",
+          "accessed": "2026-11-01",
           "sections": [
             "1",
             "2",
             "3",
             "4.1",
-            "4.2",
-            "10"
+            "4.2"
           ],
-          "accessed": "2026-11-01",
-          "scope": "Amiodarone hydrochloride50mg/mL,150mg/3mL concentrate, IV. Paediatric efficacy/safety unestablished; benzyl-alcohol product contraindicated in neonates. Oral tablets not covered.",
-          "reviewNote": "Selected formulation, route and population only. Other presentations, storage and treatment doses are not verified; no current stock availability certification.",
-          "revision": "22/07/2022"
+          "publisher": "electronic Medicines Compendium (emc), Datapharm",
+          "reviewNote": "Selected formulation, route and population only. Other presentations, storage and treatment doses are not verified; no current stock availability certification."
         }
       ]
     },
@@ -1875,20 +1849,18 @@
       "append": [
         {
           "url": "https://www.medicines.org.uk/emc/product/10849/smpc",
+          "scope": "10mg amitriptyline hydrochloride oral tablet; adult indications and restricted enuresis>=6years. Other strengths/solution not covered.",
           "title": "Amitriptyline 10 mg Film-Coated Tablets \u2014 UK SmPC",
-          "publisher": "electronic Medicines Compendium (emc), Datapharm",
+          "accessed": "2026-11-01",
           "sections": [
             "1",
             "2",
             "3",
             "4.1",
-            "4.2",
-            "10"
+            "4.2"
           ],
-          "accessed": "2026-11-01",
-          "scope": "Amitriptyline hydrochloride10mg film-coated tablet, oral; adult indications and restricted enuresis>=6years. Other strengths/solution not covered.",
-          "reviewNote": "Selected formulation, route and population only. Other presentations, storage and treatment doses are not verified; no current stock availability certification.",
-          "revision": "28/04/2026"
+          "publisher": "electronic Medicines Compendium (emc), Datapharm",
+          "reviewNote": "Selected formulation, route and population only. Other presentations, storage and treatment doses are not verified; no current stock availability certification."
         }
       ]
     },
@@ -1918,20 +1890,18 @@
       "append": [
         {
           "url": "https://www.medicines.org.uk/emc/product/11332/smpc",
+          "scope": "125mg oral capsule, chemotherapy nausea/vomiting adults/adolescents>=12; not fosaprepitant or perioperative40mg formulation.",
           "title": "Aprepitant 125 mg hard capsules \u2014 UK SmPC",
-          "publisher": "electronic Medicines Compendium (emc), Datapharm",
+          "accessed": "2026-11-01",
           "sections": [
             "1",
             "2",
             "3",
             "4.1",
-            "4.2",
-            "10"
+            "4.2"
           ],
-          "accessed": "2026-11-01",
-          "scope": "Aprepitant125mg hard capsule, oral; chemotherapy nausea/vomiting adults/adolescents>=12. Not fosaprepitant or perioperative40mg presentation.",
-          "reviewNote": "Selected formulation, route and population only. Other presentations, storage and treatment doses are not verified; no current stock availability certification.",
-          "revision": "27/07/2026"
+          "publisher": "electronic Medicines Compendium (emc), Datapharm",
+          "reviewNote": "Selected formulation, route and population only. Other presentations, storage and treatment doses are not verified; no current stock availability certification."
         }
       ]
     },
@@ -1961,20 +1931,18 @@
       "append": [
         {
           "url": "https://www.medicines.org.uk/emc/product/4098/smpc",
+          "scope": "20mg/mL caffeine citrate (10mg/mL caffeine base),1mL/3mL ampoules; IV infusion/oral, apnoea of prematurity in neonatal intensive care. Not bolus or10mg/mL citrate.",
           "title": "Peyona 20 mg/mL solution for infusion and oral solution \u2014 UK SmPC",
-          "publisher": "electronic Medicines Compendium (emc), Datapharm",
+          "accessed": "2026-11-01",
           "sections": [
             "1",
             "2",
             "3",
             "4.1",
-            "4.2",
-            "10"
+            "4.2"
           ],
-          "accessed": "2026-11-01",
-          "scope": "Peyona20mg/mL caffeine citrate (10mg/mL caffeine base),1mL/3mL ampoules; IV infusion or oral, apnoea of prematurity under neonatal intensive-care supervision. Not bolus injection or10mg/mL citrate product.",
-          "reviewNote": "Selected formulation, route and population only. Other presentations, storage and treatment doses are not verified; no current stock availability certification.",
-          "revision": "05/2024"
+          "publisher": "electronic Medicines Compendium (emc), Datapharm",
+          "reviewNote": "Selected formulation, route and population only. Other presentations, storage and treatment doses are not verified; no current stock availability certification."
         }
       ]
     },
@@ -2004,20 +1972,18 @@
       "append": [
         {
           "url": "https://www.medicines.org.uk/emc/product/3060/smpc",
+          "scope": "100mg/5mL oral suspension; adults and paediatric epilepsy from4weeks. Tablet formulations not covered.",
           "title": "Carbamazepine SUN 100 mg/5 ml Oral Suspension \u2014 UK SmPC",
-          "publisher": "electronic Medicines Compendium (emc), Datapharm",
+          "accessed": "2026-11-01",
           "sections": [
             "1",
             "2",
             "3",
             "4.1",
-            "4.2",
-            "10"
+            "4.2"
           ],
-          "accessed": "2026-11-01",
-          "scope": "Carbamazepine SUN100mg/5mL oral suspension; adults and paediatric epilepsy from4weeks. Other tablet formulations not covered.",
-          "reviewNote": "Selected formulation, route and population only. Other presentations, storage and treatment doses are not verified; no current stock availability certification.",
-          "revision": "20.05.2026"
+          "publisher": "electronic Medicines Compendium (emc), Datapharm",
+          "reviewNote": "Selected formulation, route and population only. Other presentations, storage and treatment doses are not verified; no current stock availability certification."
         }
       ]
     },
@@ -2047,20 +2013,18 @@
       "append": [
         {
           "url": "https://www.medicines.org.uk/emc/product/1084/smpc",
+          "scope": "Carboprost tromethamine equivalent to250micrograms/mL carboprost, deep IM; refractory postpartum uterine-atony haemorrhage; paediatric not applicable.",
           "title": "Hemabate Sterile Solution \u2014 UK SmPC",
-          "publisher": "electronic Medicines Compendium (emc), Datapharm",
+          "accessed": "2026-11-01",
           "sections": [
             "1",
             "2",
             "3",
             "4.1",
-            "4.2",
-            "10"
+            "4.2"
           ],
-          "accessed": "2026-11-01",
-          "scope": "Hemabate carboprost tromethamine equivalent to250micrograms/mL carboprost, IM; refractory postpartum uterine-atony haemorrhage. Paediatric not applicable. Storage not reviewed.",
-          "reviewNote": "Selected formulation, route and population only. Other presentations, storage and treatment doses are not verified; no current stock availability certification.",
-          "revision": "05/2022"
+          "publisher": "electronic Medicines Compendium (emc), Datapharm",
+          "reviewNote": "Selected formulation, route and population only. Other presentations, storage and treatment doses are not verified; no current stock availability certification."
         }
       ]
     },
@@ -2090,20 +2054,18 @@
       "append": [
         {
           "url": "https://www.medicines.org.uk/emc/product/1036/smpc",
-          "title": "SANDIMMUN\u00ae Concentrate for Solution for Infusion 50mg/ml. \u2014 UK SmPC",
-          "publisher": "electronic Medicines Compendium (emc), Datapharm",
+          "scope": "50mg/mL ciclosporin IV concentrate, transplant scope, studies include children>=1year; oral forms not covered.",
+          "title": "Sandimmun Concentrate for Solution for Infusion 50mg/ml \u2014 UK SmPC",
+          "accessed": "2026-11-01",
           "sections": [
             "1",
             "2",
             "3",
             "4.1",
-            "4.2",
-            "10"
+            "4.2"
           ],
-          "accessed": "2026-11-01",
-          "scope": "Sandimmun ciclosporin50mg/mL IV concentrate; transplant indications, studies include children>=1year. Oral forms not covered.",
-          "reviewNote": "Selected formulation, route and population only. Other presentations, storage and treatment doses are not verified; no current stock availability certification.",
-          "revision": "17 February 2026"
+          "publisher": "electronic Medicines Compendium (emc), Datapharm",
+          "reviewNote": "Selected formulation, route and population only. Other presentations, storage and treatment doses are not verified; no current stock availability certification."
         }
       ]
     },
@@ -2133,20 +2095,18 @@
       "append": [
         {
           "url": "https://www.medicines.org.uk/emc/product/100410/smpc",
+          "scope": "150micrograms/1mL clonidine hydrochloride, slow IV; adult hypertensive crises, under18not recommended; oral forms not covered.",
           "title": "Clonidine Macure 150 micrograms/ml Solution for Injection \u2014 UK SmPC",
-          "publisher": "electronic Medicines Compendium (emc), Datapharm",
+          "accessed": "2026-11-01",
           "sections": [
             "1",
             "2",
             "3",
             "4.1",
-            "4.2",
-            "10"
+            "4.2"
           ],
-          "accessed": "2026-11-01",
-          "scope": "Clonidine Macure hydrochloride150micrograms/1mL injection, slow IV; adult hypertensive crises, under18not recommended. Oral products not covered.",
-          "reviewNote": "Selected formulation, route and population only. Other presentations, storage and treatment doses are not verified; no current stock availability certification.",
-          "revision": "01/07/2024"
+          "publisher": "electronic Medicines Compendium (emc), Datapharm",
+          "reviewNote": "Selected formulation, route and population only. Other presentations, storage and treatment doses are not verified; no current stock availability certification."
         }
       ]
     },
@@ -2176,20 +2136,18 @@
       "append": [
         {
           "url": "https://www.medicines.org.uk/emc/product/100940/smpc",
-          "title": "Cyclizine lactate 50 mg/ ml solution for injection \u2014 UK SmPC",
-          "publisher": "electronic Medicines Compendium (emc), Datapharm",
+          "scope": "50mg/1mL cyclizine lactate injection, IM/IV; adults, not licensed children; hydrochloride tablets not covered.",
+          "title": "Cyclizine lactate 50 mg/ml solution for injection \u2014 UK SmPC",
+          "accessed": "2026-11-01",
           "sections": [
             "1",
             "2",
             "3",
             "4.1",
-            "4.2",
-            "10"
+            "4.2"
           ],
-          "accessed": "2026-11-01",
-          "scope": "Cyclizine lactate50mg/1mL injection, IM/IV; adults, not licensed in children. Hydrochloride tablets not covered.",
-          "reviewNote": "Selected formulation, route and population only. Other presentations, storage and treatment doses are not verified; no current stock availability certification.",
-          "revision": "24/09/2026"
+          "publisher": "electronic Medicines Compendium (emc), Datapharm",
+          "reviewNote": "Selected formulation, route and population only. Other presentations, storage and treatment doses are not verified; no current stock availability certification."
         }
       ]
     },
@@ -2219,20 +2177,18 @@
       "append": [
         {
           "url": "https://www.medicines.org.uk/emc/product/5447/smpc",
-          "title": "DDAVP\u00ae/Desmopressin Injection. \u2014 UK SmPC",
-          "publisher": "electronic Medicines Compendium (emc), Datapharm",
+          "scope": "4micrograms/mL desmopressin acetate equivalent to3.56micrograms/mL desmopressin, IV/IM/SC indication-specific adults/children/infants; oral forms not covered.",
+          "title": "DDAVP/Desmopressin Injection \u2014 UK SmPC",
+          "accessed": "2026-11-01",
           "sections": [
             "1",
             "2",
             "3",
             "4.1",
-            "4.2",
-            "10"
+            "4.2"
           ],
-          "accessed": "2026-11-01",
-          "scope": "DDAVP injection4micrograms/mL desmopressin acetate equivalent to3.56micrograms/mL desmopressin; IV/IM/SC indication-specific, adults/children/infants. Oral forms not covered; strength basis distinct.",
-          "reviewNote": "Selected formulation, route and population only. Other presentations, storage and treatment doses are not verified; no current stock availability certification.",
-          "revision": "02 September 2026"
+          "publisher": "electronic Medicines Compendium (emc), Datapharm",
+          "reviewNote": "Selected formulation, route and population only. Other presentations, storage and treatment doses are not verified; no current stock availability certification."
         }
       ]
     },
@@ -2262,20 +2218,18 @@
       "append": [
         {
           "url": "https://www.medicines.org.uk/emc/product/1043/smpc",
-          "title": "Voltarol\u00ae Ampoules \u2014 UK SmPC",
-          "publisher": "electronic Medicines Compendium (emc), Datapharm",
+          "scope": "75mg/3mL diclofenac sodium, deep IM or diluted IV infusion, NOT IV bolus; adults, children not recommended; other forms not covered.",
+          "title": "Voltarol Ampoules \u2014 UK SmPC",
+          "accessed": "2026-11-01",
           "sections": [
             "1",
             "2",
             "3",
             "4.1",
-            "4.2",
-            "10"
+            "4.2"
           ],
-          "accessed": "2026-11-01",
-          "scope": "Voltarol diclofenac sodium75mg/3mL ampoule, deep IM or diluted IV infusion, NOT IV bolus; adults, children not recommended. Non-injectable forms not covered.",
-          "reviewNote": "Selected formulation, route and population only. Other presentations, storage and treatment doses are not verified; no current stock availability certification.",
-          "revision": "9 September 2025"
+          "publisher": "electronic Medicines Compendium (emc), Datapharm",
+          "reviewNote": "Selected formulation, route and population only. Other presentations, storage and treatment doses are not verified; no current stock availability certification."
         }
       ]
     },
@@ -2305,20 +2259,18 @@
       "append": [
         {
           "url": "https://www.medicines.org.uk/emc/product/12084/smpc",
+          "scope": "20mg/mL,100mg/5mL doxapram hydrochloride, IV only; adults/elderly, paediatric not recommended.",
           "title": "Doxapram hydrochloride 20 mg/ml Solution for injection \u2014 UK SmPC",
-          "publisher": "electronic Medicines Compendium (emc), Datapharm",
+          "accessed": "2026-11-01",
           "sections": [
             "1",
             "2",
             "3",
             "4.1",
-            "4.2",
-            "10"
+            "4.2"
           ],
-          "accessed": "2026-11-01",
-          "scope": "Doxapram hydrochloride20mg/mL,100mg/5mL solution, IV only; adults/elderly, paediatric not recommended. Container/appearance not fully reviewed.",
-          "reviewNote": "Selected formulation, route and population only. Other presentations, storage and treatment doses are not verified; no current stock availability certification.",
-          "revision": "07/09/2026"
+          "publisher": "electronic Medicines Compendium (emc), Datapharm",
+          "reviewNote": "Selected formulation, route and population only. Other presentations, storage and treatment doses are not verified; no current stock availability certification."
         }
       ]
     },
@@ -2348,20 +2300,18 @@
       "append": [
         {
           "url": "https://www.medicines.org.uk/emc/product/6265/smpc",
-          "title": "Ergometrine Injection BP 0.05% w/v. \u2014 UK SmPC",
-          "publisher": "electronic Medicines Compendium (emc), Datapharm",
+          "scope": "500micrograms/mL ergometrine maleate, IM preferred, slow IV only severe uterine-atony haemorrhage; adult obstetric scope, not Syntometrine product.",
+          "title": "Ergometrine Injection BP 0.05% w/v \u2014 UK SmPC",
+          "accessed": "2026-11-01",
           "sections": [
             "1",
             "2",
             "3",
             "4.1",
-            "4.2",
-            "10"
+            "4.2"
           ],
-          "accessed": "2026-11-01",
-          "scope": "Ergometrine maleate500micrograms/mL sterile injection, IM recommended; slow IV only severe uterine-atony haemorrhage. Adult obstetric scope, not Syntometrine product.",
-          "reviewNote": "Selected formulation, route and population only. Other presentations, storage and treatment doses are not verified; no current stock availability certification.",
-          "revision": "22/04/2026"
+          "publisher": "electronic Medicines Compendium (emc), Datapharm",
+          "reviewNote": "Selected formulation, route and population only. Other presentations, storage and treatment doses are not verified; no current stock availability certification."
         }
       ]
     },
@@ -2391,20 +2341,18 @@
       "append": [
         {
           "url": "https://www.medicines.org.uk/emc/product/3057/smpc",
+          "scope": "10mg/mL,100mg/10mL ready-to-use esmolol hydrochloride IV vial; adults, not indicated<=18years;250mg/mL concentrate not covered.",
           "title": "Esmolol hydrochloride 10 mg/ml solution for injection \u2014 UK SmPC",
-          "publisher": "electronic Medicines Compendium (emc), Datapharm",
+          "accessed": "2026-11-01",
           "sections": [
             "1",
             "2",
             "3",
             "4.1",
-            "4.2",
-            "10"
+            "4.2"
           ],
-          "accessed": "2026-11-01",
-          "scope": "Esmolol hydrochloride10mg/mL,100mg/10mL ready-to-use vial, IV; adult indications, not indicated<=18years.250mg/mL concentrate not covered.",
-          "reviewNote": "Selected formulation, route and population only. Other presentations, storage and treatment doses are not verified; no current stock availability certification.",
-          "revision": "20/08/2020"
+          "publisher": "electronic Medicines Compendium (emc), Datapharm",
+          "reviewNote": "Selected formulation, route and population only. Other presentations, storage and treatment doses are not verified; no current stock availability certification."
         }
       ]
     }
@@ -2417,8 +2365,10 @@
       "expectedNewCount": 4,
       "source": {
         "url": "https://www.medicines.org.uk/emc/product/866/smpc",
-        "title": "Betaloc 1 mg/ml Solution for Injection \u2014 Summary of Product Characteristics",
-        "publisher": "electronic Medicines Compendium (emc), Datapharm",
+        "scope": "Metoprolol tartrate 1 mg/mL, 5 mg/5 mL; IV injection, paediatric efficacy/safety not established.",
+        "title": "Betaloc 1 mg/ml Solution for Injection \u2014 UK SmPC",
+        "accessed": "2026-11-01",
+        "revision": "02/2024",
         "sections": [
           "1",
           "2",
@@ -2427,10 +2377,8 @@
           "4.2",
           "10"
         ],
-        "accessed": "2026-11-01",
-        "scope": "Metoprolol tartrate 1 mg/mL (5 mg/5 mL), IV injection; paediatric efficacy/safety not established.",
-        "reviewNote": "Selected formulation, route and population only. Other presentations, storage and treatment doses are not verified; no current stock availability certification.",
-        "revision": "02/2024"
+        "publisher": "electronic Medicines Compendium (emc), Datapharm",
+        "reviewNote": "Selected formulation, route and population only. Other presentations, storage and treatment doses are not verified; no current stock availability certification."
       },
       "checkedEvidence": {
         "method": "Exact primary SmPC URL opened with HTTP GET through available network access; full HTML read, not search snippets. Local snapshot: /tmp/d30/metoprolol.html",
@@ -2442,7 +2390,8 @@
           "10. Date of revision of the text": "02/2024"
         }
       },
-      "status": "scoped source appended candidate; not whole-monograph verification"
+      "status": "appended/readback confirmed; selected-product scope only",
+      "newCount": 4
     },
     {
       "slug": "misoprostol",
@@ -2451,8 +2400,10 @@
       "expectedNewCount": 4,
       "source": {
         "url": "https://www.medicines.org.uk/emc/product/1642/smpc",
-        "title": "Cytotec 200mcg Tablets \u2014 Summary of Product Characteristics",
-        "publisher": "electronic Medicines Compendium (emc), Datapharm",
+        "scope": "200 microgram oral tablets; adult peptic-ulcer indications, not obstetric/vaginal use.",
+        "title": "Cytotec 200mcg Tablets \u2014 UK SmPC",
+        "accessed": "2026-11-01",
+        "revision": "10/2020",
         "sections": [
           "1",
           "2",
@@ -2461,10 +2412,8 @@
           "4.2",
           "10"
         ],
-        "accessed": "2026-11-01",
-        "scope": "Cytotec 200 microgram oral tablets, adult peptic-ulcer indications; not obstetric/vaginal use.",
-        "reviewNote": "Selected formulation, route and population only. Other presentations, storage and treatment doses are not verified; no current stock availability certification.",
-        "revision": "10/2020"
+        "publisher": "electronic Medicines Compendium (emc), Datapharm",
+        "reviewNote": "Selected formulation, route and population only. Other presentations, storage and treatment doses are not verified; no current stock availability certification."
       },
       "checkedEvidence": {
         "method": "Exact primary SmPC URL opened with HTTP GET through available network access; full HTML read, not search snippets. Local snapshot: /tmp/d30/misoprostol.html",
@@ -2476,7 +2425,8 @@
           "10. Date of revision of the text": "10/2020 Ref.: CZ 7_0"
         }
       },
-      "status": "scoped source appended candidate; not whole-monograph verification"
+      "status": "appended/readback confirmed; selected-product scope only",
+      "newCount": 4
     },
     {
       "slug": "nicardipine",
@@ -2485,8 +2435,10 @@
       "expectedNewCount": 4,
       "source": {
         "url": "https://www.medicines.org.uk/emc/product/12140/smpc",
-        "title": "Nicardipine 1 mg/ml solution for infusion \u2014 Summary of Product Characteristics",
-        "publisher": "electronic Medicines Compendium (emc), Datapharm",
+        "scope": "1 mg/mL, 10 mg/10 mL nicardipine hydrochloride; continuous IV infusion only, restricted paediatric contexts.",
+        "title": "Nicardipine 1 mg/ml solution for infusion \u2014 UK SmPC",
+        "accessed": "2026-11-01",
+        "revision": "09/2025",
         "sections": [
           "1",
           "2",
@@ -2495,10 +2447,8 @@
           "4.2",
           "10"
         ],
-        "accessed": "2026-11-01",
-        "scope": "Nicardipine hydrochloride 1 mg/mL (10 mg/10 mL), continuous IV infusion only; restricted paediatric contexts.",
-        "reviewNote": "Selected formulation, route and population only. Other presentations, storage and treatment doses are not verified; no current stock availability certification.",
-        "revision": "09/2025"
+        "publisher": "electronic Medicines Compendium (emc), Datapharm",
+        "reviewNote": "Selected formulation, route and population only. Other presentations, storage and treatment doses are not verified; no current stock availability certification."
       },
       "checkedEvidence": {
         "method": "Exact primary SmPC URL opened with HTTP GET through available network access; full HTML read, not search snippets. Local snapshot: /tmp/d30/nicardipine.html",
@@ -2510,7 +2460,8 @@
           "10. Date of revision of the text": "09/2025"
         }
       },
-      "status": "scoped source appended candidate; not whole-monograph verification"
+      "status": "appended/readback confirmed; selected-product scope only",
+      "newCount": 4
     },
     {
       "slug": "normal-saline",
@@ -2519,8 +2470,10 @@
       "expectedNewCount": 4,
       "source": {
         "url": "https://www.medicines.org.uk/emc/product/13131/smpc",
-        "title": "0.9% SODIUM CHLORIDE INTRAVENOUS INFUSION SOLUTION \u2014 Summary of Product Characteristics",
-        "publisher": "electronic Medicines Compendium (emc), Datapharm",
+        "scope": "9 g/L sodium chloride IV infusion bags; age-dependent fluid replacement, not injection vials or all physicochemical values.",
+        "title": "0.9% Sodium Chloride Intravenous Infusion Solution \u2014 UK SmPC",
+        "accessed": "2026-11-01",
+        "revision": "05/2024",
         "sections": [
           "1",
           "2",
@@ -2529,10 +2482,8 @@
           "4.2",
           "10"
         ],
-        "accessed": "2026-11-01",
-        "scope": "Sodium chloride 9 g/L IV infusion bags; age-dependent fluid-replacement contexts.",
-        "reviewNote": "Selected formulation, route and population only. Other presentations, storage and treatment doses are not verified; no current stock availability certification.",
-        "revision": "05/2024"
+        "publisher": "electronic Medicines Compendium (emc), Datapharm",
+        "reviewNote": "Selected formulation, route and population only. Other presentations, storage and treatment doses are not verified; no current stock availability certification."
       },
       "checkedEvidence": {
         "method": "Exact primary SmPC URL opened with HTTP GET through available network access; full HTML read, not search snippets. Local snapshot: /tmp/d30/normal-saline.html",
@@ -2544,7 +2495,8 @@
           "10. Date of revision of the text": "05/2024"
         }
       },
-      "status": "scoped source appended candidate; not whole-monograph verification"
+      "status": "appended/readback confirmed; selected-product scope only",
+      "newCount": 4
     },
     {
       "slug": "octreotide",
@@ -2553,8 +2505,10 @@
       "expectedNewCount": 4,
       "source": {
         "url": "https://www.medicines.org.uk/emc/product/373/smpc",
-        "title": "Octreotide 100 micrograms/1ml Solution for Injection \u2014 Summary of Product Characteristics",
-        "publisher": "electronic Medicines Compendium (emc), Datapharm",
+        "scope": "100 micrograms/mL octreotide as acetate; SC injection/diluted IV infusion, limited paediatric experience.",
+        "title": "Octreotide 100 micrograms/1ml Solution for Injection \u2014 UK SmPC",
+        "accessed": "2026-11-01",
+        "revision": "06/2024",
         "sections": [
           "1",
           "2",
@@ -2563,10 +2517,8 @@
           "4.2",
           "10"
         ],
-        "accessed": "2026-11-01",
-        "scope": "Octreotide 100 micrograms/mL as acetate, SC injection or diluted IV infusion; limited paediatric experience.",
-        "reviewNote": "Selected formulation, route and population only. Other presentations, storage and treatment doses are not verified; no current stock availability certification.",
-        "revision": "06/2024"
+        "publisher": "electronic Medicines Compendium (emc), Datapharm",
+        "reviewNote": "Selected formulation, route and population only. Other presentations, storage and treatment doses are not verified; no current stock availability certification."
       },
       "checkedEvidence": {
         "method": "Exact primary SmPC URL opened with HTTP GET through available network access; full HTML read, not search snippets. Local snapshot: /tmp/d30/octreotide.html",
@@ -2578,7 +2530,8 @@
           "10. Date of revision of the text": "06/2024 Ref: gxOC 6_1"
         }
       },
-      "status": "scoped source appended candidate; not whole-monograph verification"
+      "status": "appended/readback confirmed; selected-product scope only",
+      "newCount": 4
     },
     {
       "slug": "ondansetron",
@@ -2587,8 +2540,10 @@
       "expectedNewCount": 4,
       "source": {
         "url": "https://www.medicines.org.uk/emc/product/6469/smpc",
-        "title": "Ondansetron 2 mg/ml Solution for Injection \u2014 Summary of Product Characteristics",
-        "publisher": "electronic Medicines Compendium (emc), Datapharm",
+        "scope": "2 mg/mL, 4 mg/2 mL and 8 mg/4 mL; IV only; CINV >=6 months/PONV >=1 month indication-specific.",
+        "title": "Ondansetron 2 mg/ml Solution for Injection \u2014 UK SmPC",
+        "accessed": "2026-11-01",
+        "revision": "24/10/2022",
         "sections": [
           "1",
           "2",
@@ -2597,10 +2552,8 @@
           "4.2",
           "10"
         ],
-        "accessed": "2026-11-01",
-        "scope": "Ondansetron 2 mg/mL, 4 mg/2 mL and 8 mg/4 mL; IV only; indication-specific CINV >=6 months/PONV >=1 month.",
-        "reviewNote": "Selected formulation, route and population only. Other presentations, storage and treatment doses are not verified; no current stock availability certification.",
-        "revision": "24/10/2022"
+        "publisher": "electronic Medicines Compendium (emc), Datapharm",
+        "reviewNote": "Selected formulation, route and population only. Other presentations, storage and treatment doses are not verified; no current stock availability certification."
       },
       "checkedEvidence": {
         "method": "Exact primary SmPC URL opened with HTTP GET through available network access; full HTML read, not search snippets. Local snapshot: /tmp/d30/ondansetron.html",
@@ -2612,7 +2565,8 @@
           "10. Date of revision of the text": "24/10/2022"
         }
       },
-      "status": "scoped source appended candidate; not whole-monograph verification"
+      "status": "appended/readback confirmed; selected-product scope only",
+      "newCount": 4
     },
     {
       "slug": "oxytocin",
@@ -2621,8 +2575,10 @@
       "expectedNewCount": 4,
       "source": {
         "url": "https://www.medicines.org.uk/emc/product/1971/smpc",
-        "title": "Oxytocin 10 IU/ml Concentrate for Solution for Infusion \u2014 Summary of Product Characteristics",
-        "publisher": "electronic Medicines Compendium (emc), Datapharm",
+        "scope": "10 IU/mL concentrate for IV infusion, obstetric scope; not all injection products or storage statements.",
+        "title": "Oxytocin 10 IU/ml Concentrate for Solution for Infusion \u2014 UK SmPC",
+        "accessed": "2026-11-01",
+        "revision": "18/11/2020",
         "sections": [
           "1",
           "2",
@@ -2631,10 +2587,8 @@
           "4.2",
           "10"
         ],
-        "accessed": "2026-11-01",
-        "scope": "Oxytocin 10 IU/mL concentrate for IV infusion, obstetric indications; not all injection products.",
-        "reviewNote": "Selected formulation, route and population only. Other presentations, storage and treatment doses are not verified; no current stock availability certification.",
-        "revision": "18/11/2020"
+        "publisher": "electronic Medicines Compendium (emc), Datapharm",
+        "reviewNote": "Selected formulation, route and population only. Other presentations, storage and treatment doses are not verified; no current stock availability certification."
       },
       "checkedEvidence": {
         "method": "Exact primary SmPC URL opened with HTTP GET through available network access; full HTML read, not search snippets. Local snapshot: /tmp/d30/oxytocin.html",
@@ -2646,7 +2600,8 @@
           "10. Date of revision of the text": "18/11/2020"
         }
       },
-      "status": "scoped source appended candidate; not whole-monograph verification"
+      "status": "appended/readback confirmed; selected-product scope only",
+      "newCount": 4
     },
     {
       "slug": "phenobarbital",
@@ -2655,8 +2610,10 @@
       "expectedNewCount": 4,
       "source": {
         "url": "https://www.medicines.org.uk/emc/product/3607/smpc",
-        "title": "Phenobarbital Sodium 200mg/ml Injection \u2014 Summary of Product Characteristics",
-        "publisher": "electronic Medicines Compendium (emc), Datapharm",
+        "scope": "200 mg/mL phenobarbital sodium injection; adult IM/SC/IV, paediatric IM instructions only.",
+        "title": "Phenobarbital Sodium 200mg/ml Injection \u2014 UK SmPC",
+        "accessed": "2026-11-01",
+        "revision": "30/10/2024",
         "sections": [
           "1",
           "2",
@@ -2665,10 +2622,8 @@
           "4.2",
           "10"
         ],
-        "accessed": "2026-11-01",
-        "scope": "Phenobarbital sodium 200 mg/mL injection; adult IM/SC/IV, paediatric IM instructions only.",
-        "reviewNote": "Selected formulation, route and population only. Other presentations, storage and treatment doses are not verified; no current stock availability certification.",
-        "revision": "30/10/2024"
+        "publisher": "electronic Medicines Compendium (emc), Datapharm",
+        "reviewNote": "Selected formulation, route and population only. Other presentations, storage and treatment doses are not verified; no current stock availability certification."
       },
       "checkedEvidence": {
         "method": "Exact primary SmPC URL opened with HTTP GET through available network access; full HTML read, not search snippets. Local snapshot: /tmp/d30/phenobarbital.html",
@@ -2680,7 +2635,8 @@
           "10. Date of revision of the text": "30/10/2024"
         }
       },
-      "status": "scoped source appended candidate; not whole-monograph verification"
+      "status": "appended/readback confirmed; selected-product scope only",
+      "newCount": 4
     },
     {
       "slug": "phenytoin",
@@ -2689,8 +2645,10 @@
       "expectedNewCount": 4,
       "source": {
         "url": "https://www.medicines.org.uk/emc/product/3794/smpc",
-        "title": "Phenytoin Hospira 50 mg/ml Injection BP \u2014 Summary of Product Characteristics",
-        "publisher": "electronic Medicines Compendium (emc), Datapharm",
+        "scope": "50 mg/mL phenytoin sodium, 250 mg/5 mL ampoule, IV; restricted IM contexts, neonates addressed.",
+        "title": "Phenytoin Hospira 50 mg/ml Injection BP \u2014 UK SmPC",
+        "accessed": "2026-11-01",
+        "revision": "07/2026",
         "sections": [
           "1",
           "2",
@@ -2699,10 +2657,8 @@
           "4.2",
           "10"
         ],
-        "accessed": "2026-11-01",
-        "scope": "Phenytoin sodium 50 mg/mL, 250 mg/5 mL ampoule, IV; indication-specific restricted IM contexts, neonates addressed.",
-        "reviewNote": "Selected formulation, route and population only. Other presentations, storage and treatment doses are not verified; no current stock availability certification.",
-        "revision": "07/2026"
+        "publisher": "electronic Medicines Compendium (emc), Datapharm",
+        "reviewNote": "Selected formulation, route and population only. Other presentations, storage and treatment doses are not verified; no current stock availability certification."
       },
       "checkedEvidence": {
         "method": "Exact primary SmPC URL opened with HTTP GET through available network access; full HTML read, not search snippets. Local snapshot: /tmp/d30/phenytoin.html",
@@ -2714,7 +2670,8 @@
           "10. Date of revision of the text": "07/2026 Ref: gxPH 16_1"
         }
       },
-      "status": "scoped source appended candidate; not whole-monograph verification"
+      "status": "appended/readback confirmed; selected-product scope only",
+      "newCount": 4
     },
     {
       "slug": "plasma-lyte",
@@ -2723,8 +2680,10 @@
       "expectedNewCount": 4,
       "source": {
         "url": "https://www.medicines.org.uk/emc/product/1795/smpc",
-        "title": "Plasma-Lyte 148 (pH 7.4) solution for infusion \u2014 Summary of Product Characteristics",
-        "publisher": "electronic Medicines Compendium (emc), Datapharm",
+        "scope": "Electrolyte IV infusion; adult/adolescent >=12, limited paediatric evidence. Label osmolarity 295 mOsm/L, pH 6.5-8.0; generic osmolality/pH text needs root review.",
+        "title": "Plasma-Lyte 148 (pH 7.4) solution for infusion \u2014 UK SmPC",
+        "accessed": "2026-11-01",
+        "revision": "July 2023",
         "sections": [
           "1",
           "2",
@@ -2733,10 +2692,8 @@
           "4.2",
           "10"
         ],
-        "accessed": "2026-11-01",
-        "scope": "Plasma-Lyte 148 electrolyte IV infusion, adult/adolescent >=12 and limited paediatric evidence.",
-        "reviewNote": "Selected formulation, route and population only. Other presentations, storage and treatment doses are not verified; no current stock availability certification.",
-        "revision": "July 2023"
+        "publisher": "electronic Medicines Compendium (emc), Datapharm",
+        "reviewNote": "Selected formulation, route and population only. Other presentations, storage and treatment doses are not verified; no current stock availability certification."
       },
       "checkedEvidence": {
         "method": "Exact primary SmPC URL opened with HTTP GET through available network access; full HTML read, not search snippets. Local snapshot: /tmp/d30/plasma-lyte.html",
@@ -2748,7 +2705,8 @@
           "10. Date of revision of the text": "July 2023"
         }
       },
-      "status": "scoped source appended candidate; not whole-monograph verification"
+      "status": "appended/readback confirmed; selected-product scope only",
+      "newCount": 4
     },
     {
       "slug": "posaconazole",
@@ -2757,8 +2715,10 @@
       "expectedNewCount": 4,
       "source": {
         "url": "https://www.medicines.org.uk/emc/product/3435/smpc",
-        "title": "Noxafil 300 mg concentrate for solution for infusion \u2014 Summary of Product Characteristics",
-        "publisher": "electronic Medicines Compendium (emc), Datapharm",
+        "scope": "300 mg/vial, 18 mg/mL IV concentrate, not bolus; specified indications adults/children >=2; not oral formulations.",
+        "title": "Noxafil 300 mg concentrate for solution for infusion \u2014 UK SmPC",
+        "accessed": "2026-11-01",
+        "revision": "16 July 2026",
         "sections": [
           "1",
           "2",
@@ -2767,10 +2727,8 @@
           "4.2",
           "10"
         ],
-        "accessed": "2026-11-01",
-        "scope": "Noxafil 300 mg/vial, 18 mg/mL IV concentrate; not bolus; specified indications adults/children >=2.",
-        "reviewNote": "Selected formulation, route and population only. Other presentations, storage and treatment doses are not verified; no current stock availability certification.",
-        "revision": "16 July 2026"
+        "publisher": "electronic Medicines Compendium (emc), Datapharm",
+        "reviewNote": "Selected formulation, route and population only. Other presentations, storage and treatment doses are not verified; no current stock availability certification."
       },
       "checkedEvidence": {
         "method": "Exact primary SmPC URL opened with HTTP GET through available network access; full HTML read, not search snippets. Local snapshot: /tmp/d30/posaconazole.html",
@@ -2782,7 +2740,8 @@
           "10. Date of revision of the text": "16 July 2026 \u00a9 2026 Merck & Co., Inc., Rahway, NJ, USA and its affiliates. All rights reserved. II/035"
         }
       },
-      "status": "scoped source appended candidate; not whole-monograph verification"
+      "status": "appended/readback confirmed; selected-product scope only",
+      "newCount": 4
     },
     {
       "slug": "pregabalin",
@@ -2791,8 +2750,10 @@
       "expectedNewCount": 4,
       "source": {
         "url": "https://www.medicines.org.uk/emc/product/10302/smpc",
-        "title": "Lyrica 75 mg hard capsules \u2014 Summary of Product Characteristics",
-        "publisher": "electronic Medicines Compendium (emc), Datapharm",
+        "scope": "75 mg hard capsules oral; adult indications, under-18 efficacy/safety not established.",
+        "title": "Lyrica 75 mg hard capsules \u2014 UK SmPC",
+        "accessed": "2026-11-01",
+        "revision": "02/2026",
         "sections": [
           "1",
           "2",
@@ -2801,10 +2762,8 @@
           "4.2",
           "10"
         ],
-        "accessed": "2026-11-01",
-        "scope": "Lyrica 75 mg hard capsules, oral, adult indications; under-18 efficacy/safety not established.",
-        "reviewNote": "Selected formulation, route and population only. Other presentations, storage and treatment doses are not verified; no current stock availability certification.",
-        "revision": "02/2026"
+        "publisher": "electronic Medicines Compendium (emc), Datapharm",
+        "reviewNote": "Selected formulation, route and population only. Other presentations, storage and treatment doses are not verified; no current stock availability certification."
       },
       "checkedEvidence": {
         "method": "Exact primary SmPC URL opened with HTTP GET through available network access; full HTML read, not search snippets. Local snapshot: /tmp/d30/pregabalin.html",
@@ -2816,7 +2775,8 @@
           "10. Date of revision of the text": "02/2026"
         }
       },
-      "status": "scoped source appended candidate; not whole-monograph verification"
+      "status": "appended/readback confirmed; selected-product scope only",
+      "newCount": 4
     },
     {
       "slug": "prochlorperazine",
@@ -2825,8 +2785,10 @@
       "expectedNewCount": 4,
       "source": {
         "url": "https://www.medicines.org.uk/emc/product/101335/smpc",
-        "title": "Stemetil 12.5 mg/1 ml Solution for injection \u2014 Summary of Product Characteristics",
-        "publisher": "electronic Medicines Compendium (emc), Datapharm",
+        "scope": "12.5 mg/mL prochlorperazine mesilate, deep IM; adults, not children.",
+        "title": "Stemetil 12.5 mg/1 ml Solution for injection \u2014 UK SmPC",
+        "accessed": "2026-11-01",
+        "revision": "21/08/2025",
         "sections": [
           "1",
           "2",
@@ -2835,10 +2797,8 @@
           "4.2",
           "10"
         ],
-        "accessed": "2026-11-01",
-        "scope": "Stemetil 12.5 mg/mL mesilate, deep IM injection; adults, not children.",
-        "reviewNote": "Selected formulation, route and population only. Other presentations, storage and treatment doses are not verified; no current stock availability certification.",
-        "revision": "21/08/2025"
+        "publisher": "electronic Medicines Compendium (emc), Datapharm",
+        "reviewNote": "Selected formulation, route and population only. Other presentations, storage and treatment doses are not verified; no current stock availability certification."
       },
       "checkedEvidence": {
         "method": "Exact primary SmPC URL opened with HTTP GET through available network access; full HTML read, not search snippets. Local snapshot: /tmp/d30/prochlorperazine.html",
@@ -2850,7 +2810,8 @@
           "10. Date of revision of the text": "21/08/2025 Legal Status POM"
         }
       },
-      "status": "scoped source appended candidate; not whole-monograph verification"
+      "status": "appended/readback confirmed; selected-product scope only",
+      "newCount": 4
     },
     {
       "slug": "ranitidine",
@@ -2859,8 +2820,10 @@
       "expectedNewCount": 4,
       "source": {
         "url": "https://www.medicines.org.uk/emc/product/2497/smpc",
-        "title": "Gavilast Heartburn and Indigestion 75mg Film-coated tablets \u2014 Summary of Product Characteristics",
-        "publisher": "electronic Medicines Compendium (emc), Datapharm",
+        "scope": "Historical 75 mg oral tablets, adults/children >=16; no active UK availability claim.",
+        "title": "Gavilast Heartburn and Indigestion 75mg Film-coated tablets \u2014 UK SmPC",
+        "accessed": "2026-11-01",
+        "revision": "18/05/2017",
         "sections": [
           "1",
           "2",
@@ -2869,10 +2832,8 @@
           "4.2",
           "10"
         ],
-        "accessed": "2026-11-01",
-        "scope": "Historical Gavilast 75 mg oral tablets; adults/children >=16; no current UK availability claim.",
-        "reviewNote": "Historical SmPC only, not evidence of an active UK product; current authorisation/marketing remains unresolved.",
-        "revision": "18/05/2017"
+        "publisher": "electronic Medicines Compendium (emc), Datapharm",
+        "reviewNote": "Historical SmPC only; not evidence of an active UK product. Current authorisation and marketing unresolved."
       },
       "checkedEvidence": {
         "method": "Exact primary SmPC URL opened with HTTP GET through available network access; full HTML read, not search snippets. Local snapshot: /tmp/d30/ranitidine.html",
@@ -2884,7 +2845,8 @@
           "10. Date of revision of the text": "18/05/2017"
         }
       },
-      "status": "scoped source appended candidate; not whole-monograph verification"
+      "status": "appended/readback confirmed; selected-product scope only",
+      "newCount": 4
     },
     {
       "slug": "salbutamol",
@@ -2893,8 +2855,10 @@
       "expectedNewCount": 4,
       "source": {
         "url": "https://www.medicines.org.uk/emc/product/2192/smpc",
-        "title": "Ventolin Injection 500 micrograms \u2014 Summary of Product Characteristics",
-        "publisher": "electronic Medicines Compendium (emc), Datapharm",
+        "scope": "500 micrograms/mL, 1 mL ampoule; SC/IM/IV, severe bronchospasm adults/adolescents >=12; not inhaled/oral formulations.",
+        "title": "Ventolin Injection 500 micrograms \u2014 UK SmPC",
+        "accessed": "2026-11-01",
+        "revision": "10 April 2026",
         "sections": [
           "1",
           "2",
@@ -2903,10 +2867,8 @@
           "4.2",
           "10"
         ],
-        "accessed": "2026-11-01",
-        "scope": "Ventolin 500 micrograms/mL, 1 mL ampoule, SC/IM/IV; severe bronchospasm adults/adolescents >=12.",
-        "reviewNote": "Selected formulation, route and population only. Other presentations, storage and treatment doses are not verified; no current stock availability certification.",
-        "revision": "10 April 2026"
+        "publisher": "electronic Medicines Compendium (emc), Datapharm",
+        "reviewNote": "Selected formulation, route and population only. Other presentations, storage and treatment doses are not verified; no current stock availability certification."
       },
       "checkedEvidence": {
         "method": "Exact primary SmPC URL opened with HTTP GET through available network access; full HTML read, not search snippets. Local snapshot: /tmp/d30/salbutamol.html",
@@ -2918,7 +2880,8 @@
           "10. Date of revision of the text": "10 April 2026"
         }
       },
-      "status": "scoped source appended candidate; not whole-monograph verification"
+      "status": "appended/readback confirmed; selected-product scope only",
+      "newCount": 4
     },
     {
       "slug": "sirolimus",
@@ -2927,8 +2890,10 @@
       "expectedNewCount": 4,
       "source": {
         "url": "https://www.medicines.org.uk/emc/product/10398/smpc",
-        "title": "Rapamune 1mg coated tablets \u2014 Summary of Product Characteristics",
-        "publisher": "electronic Medicines Compendium (emc), Datapharm",
+        "scope": "1 mg coated tablet oral; adult transplant/LAM indications, under-18 efficacy/safety not established.",
+        "title": "Rapamune 1mg coated tablets \u2014 UK SmPC",
+        "accessed": "2026-11-01",
+        "revision": "08/2024",
         "sections": [
           "1",
           "2",
@@ -2937,10 +2902,8 @@
           "4.2",
           "10"
         ],
-        "accessed": "2026-11-01",
-        "scope": "Rapamune 1 mg coated tablets, oral, adult transplant/LAM indications; under-18 efficacy/safety not established.",
-        "reviewNote": "Selected formulation, route and population only. Other presentations, storage and treatment doses are not verified; no current stock availability certification.",
-        "revision": "08/2024"
+        "publisher": "electronic Medicines Compendium (emc), Datapharm",
+        "reviewNote": "Selected formulation, route and population only. Other presentations, storage and treatment doses are not verified; no current stock availability certification."
       },
       "checkedEvidence": {
         "method": "Exact primary SmPC URL opened with HTTP GET through available network access; full HTML read, not search snippets. Local snapshot: /tmp/d30/sirolimus.html",
@@ -2952,7 +2915,8 @@
           "10. Date of revision of the text": "08/2024 Ref: RA 18_1"
         }
       },
-      "status": "scoped source appended candidate; not whole-monograph verification"
+      "status": "appended/readback confirmed; selected-product scope only",
+      "newCount": 4
     },
     {
       "slug": "sodium-citrate",
@@ -2961,8 +2925,10 @@
       "expectedNewCount": 4,
       "source": {
         "url": "https://www.medicines.org.uk/emc/product/7327/smpc",
-        "title": "Sodium Citrate 0.3M Oral Solution (Macarthys Lab Ltd - manufacturing site) \u2014 Summary of Product Characteristics",
-        "publisher": "electronic Medicines Compendium (emc), Datapharm",
+        "scope": "0.3 M oral solution, 2.647 g/30 mL; antacid before caesarean general anaesthesia.",
+        "title": "Sodium Citrate 0.3M Oral Solution \u2014 UK SmPC",
+        "accessed": "2026-11-01",
+        "revision": "11/02/2025",
         "sections": [
           "1",
           "2",
@@ -2971,10 +2937,8 @@
           "4.2",
           "10"
         ],
-        "accessed": "2026-11-01",
-        "scope": "Sodium citrate 0.3 M oral solution, 2.647 g/30 mL; antacid before caesarean general anaesthesia.",
-        "reviewNote": "Selected formulation, route and population only. Other presentations, storage and treatment doses are not verified; no current stock availability certification.",
-        "revision": "11/02/2025"
+        "publisher": "electronic Medicines Compendium (emc), Datapharm",
+        "reviewNote": "Selected formulation, route and population only. Other presentations, storage and treatment doses are not verified; no current stock availability certification."
       },
       "checkedEvidence": {
         "method": "Exact primary SmPC URL opened with HTTP GET through available network access; full HTML read, not search snippets. Local snapshot: /tmp/d30/sodium-citrate.html",
@@ -2986,7 +2950,8 @@
           "10. Date of revision of the text": "11/02/2025"
         }
       },
-      "status": "scoped source appended candidate; not whole-monograph verification"
+      "status": "appended/readback confirmed; selected-product scope only",
+      "newCount": 4
     },
     {
       "slug": "sotalol",
@@ -2995,8 +2960,10 @@
       "expectedNewCount": 4,
       "source": {
         "url": "https://www.medicines.org.uk/emc/product/7039/smpc",
-        "title": "Sotalol 40mg Tablets \u2014 Summary of Product Characteristics",
-        "publisher": "electronic Medicines Compendium (emc), Datapharm",
+        "scope": "40 mg sotalol hydrochloride tablets oral, specified arrhythmias; no relevant paediatric use; IV product not verified.",
+        "title": "Sotalol 40mg Tablets \u2014 UK SmPC",
+        "accessed": "2026-11-01",
+        "revision": "21/09/2022",
         "sections": [
           "1",
           "2",
@@ -3005,10 +2972,8 @@
           "4.2",
           "10"
         ],
-        "accessed": "2026-11-01",
-        "scope": "Sotalol hydrochloride 40 mg tablets, oral, specified arrhythmias; no relevant paediatric use stated.",
-        "reviewNote": "Selected formulation, route and population only. Other presentations, storage and treatment doses are not verified; no current stock availability certification.",
-        "revision": "21/09/2022"
+        "publisher": "electronic Medicines Compendium (emc), Datapharm",
+        "reviewNote": "Selected formulation, route and population only. Other presentations, storage and treatment doses are not verified; no current stock availability certification."
       },
       "checkedEvidence": {
         "method": "Exact primary SmPC URL opened with HTTP GET through available network access; full HTML read, not search snippets. Local snapshot: /tmp/d30/sotalol.html",
@@ -3020,7 +2985,8 @@
           "10. Date of revision of the text": "21/09/2022"
         }
       },
-      "status": "scoped source appended candidate; not whole-monograph verification"
+      "status": "appended/readback confirmed; selected-product scope only",
+      "newCount": 4
     },
     {
       "slug": "spironolactone",
@@ -3029,8 +2995,10 @@
       "expectedNewCount": 4,
       "source": {
         "url": "https://www.medicines.org.uk/emc/product/1619/smpc",
-        "title": "Aldactone 25 mg Film-Coated Tablets \u2014 Summary of Product Characteristics",
-        "publisher": "electronic Medicines Compendium (emc), Datapharm",
+        "scope": "25 mg tablets; children under paediatric specialist guidance; not unlicensed suspension.",
+        "title": "Aldactone 25 mg Film-Coated Tablets \u2014 UK SmPC",
+        "accessed": "2026-11-01",
+        "revision": "01/2026",
         "sections": [
           "1",
           "2",
@@ -3039,10 +3007,8 @@
           "4.2",
           "10"
         ],
-        "accessed": "2026-11-01",
-        "scope": "Aldactone 25 mg film-coated tablets; children only under paediatric specialist guidance.",
-        "reviewNote": "Selected formulation, route and population only. Other presentations, storage and treatment doses are not verified; no current stock availability certification.",
-        "revision": "01/2026"
+        "publisher": "electronic Medicines Compendium (emc), Datapharm",
+        "reviewNote": "Selected formulation, route and population only. Other presentations, storage and treatment doses are not verified; no current stock availability certification."
       },
       "checkedEvidence": {
         "method": "Exact primary SmPC URL opened with HTTP GET through available network access; full HTML read, not search snippets. Local snapshot: /tmp/d30/spironolactone.html",
@@ -3054,7 +3020,8 @@
           "10. Date of revision of the text": "01/2026 11. LEGAL STATUS POM Ref: AN 19_2"
         }
       },
-      "status": "scoped source appended candidate; not whole-monograph verification"
+      "status": "appended/readback confirmed; selected-product scope only",
+      "newCount": 4
     },
     {
       "slug": "theophylline",
@@ -3063,8 +3030,10 @@
       "expectedNewCount": 4,
       "source": {
         "url": "https://www.medicines.org.uk/emc/product/100850/smpc",
-        "title": "UNIPHYLLIN 200mg prolonged release tablets \u2014 Summary of Product Characteristics",
-        "publisher": "electronic Medicines Compendium (emc), Datapharm",
+        "scope": "200 mg prolonged-release tablets oral; adults/children >=6; not aminophylline injection or all forms.",
+        "title": "UNIPHYLLIN 200mg prolonged release tablets \u2014 UK SmPC",
+        "accessed": "2026-11-01",
+        "revision": "24/07/2026",
         "sections": [
           "1",
           "2",
@@ -3073,10 +3042,8 @@
           "4.2",
           "10"
         ],
-        "accessed": "2026-11-01",
-        "scope": "Uniphyllin 200 mg prolonged-release tablets, oral; adults/children >=6; not aminophylline injection.",
-        "reviewNote": "Selected formulation, route and population only. Other presentations, storage and treatment doses are not verified; no current stock availability certification.",
-        "revision": "24/07/2026"
+        "publisher": "electronic Medicines Compendium (emc), Datapharm",
+        "reviewNote": "Selected formulation, route and population only. Other presentations, storage and treatment doses are not verified; no current stock availability certification."
       },
       "checkedEvidence": {
         "method": "Exact primary SmPC URL opened with HTTP GET through available network access; full HTML read, not search snippets. Local snapshot: /tmp/d30/theophylline.html",
@@ -3088,7 +3055,8 @@
           "10. Date of revision of the text": "24/07/2026"
         }
       },
-      "status": "scoped source appended candidate; not whole-monograph verification"
+      "status": "appended/readback confirmed; selected-product scope only",
+      "newCount": 4
     },
     {
       "slug": "verapamil",
@@ -3097,8 +3065,10 @@
       "expectedNewCount": 4,
       "source": {
         "url": "https://www.medicines.org.uk/emc/product/979/smpc",
-        "title": "Verapamil 2.5 mg/ml Solution for injection \u2014 Summary of Product Characteristics",
-        "publisher": "electronic Medicines Compendium (emc), Datapharm",
+        "scope": "2.5 mg/mL verapamil hydrochloride, slow IV; specified adult/paediatric contexts with ECG monitoring.",
+        "title": "Verapamil 2.5 mg/ml Solution for injection \u2014 UK SmPC",
+        "accessed": "2026-11-01",
+        "revision": "October 2025",
         "sections": [
           "1",
           "2",
@@ -3107,10 +3077,8 @@
           "4.2",
           "10"
         ],
-        "accessed": "2026-11-01",
-        "scope": "Verapamil hydrochloride 2.5 mg/mL injection, slow IV; indication-specific adults and paediatric groups, ECG monitoring.",
-        "reviewNote": "Selected formulation, route and population only. Other presentations, storage and treatment doses are not verified; no current stock availability certification.",
-        "revision": "October 2025"
+        "publisher": "electronic Medicines Compendium (emc), Datapharm",
+        "reviewNote": "Selected formulation, route and population only. Other presentations, storage and treatment doses are not verified; no current stock availability certification."
       },
       "checkedEvidence": {
         "method": "Exact primary SmPC URL opened with HTTP GET through available network access; full HTML read, not search snippets. Local snapshot: /tmp/d30/verapamil.html",
@@ -3122,7 +3090,8 @@
           "10. Date of revision of the text": "October 2025"
         }
       },
-      "status": "scoped source appended candidate; not whole-monograph verification"
+      "status": "appended/readback confirmed; selected-product scope only",
+      "newCount": 4
     },
     {
       "slug": "flecainide",
@@ -3131,20 +3100,19 @@
       "expectedNewCount": 4,
       "source": {
         "url": "https://www.medicines.org.uk/emc/product/11891/smpc",
+        "scope": "100mg flecainide acetate oral tablets; under12not recommended; IV and50mg products not verified.",
         "title": "Flecainide acetate 100 mg tablets \u2014 product SPC",
-        "publisher": "electronic Medicines Compendium (emc), Datapharm",
+        "accessed": "2026-11-01",
+        "revision": "02/10/2026",
         "sections": [
           "1",
           "2",
           "3",
           "4.1",
-          "4.2",
-          "10"
+          "4.2"
         ],
-        "accessed": "2026-11-01",
-        "scope": "2\\. Qualitative and quantitative composition\n\nEach tablet contains flecainide acetate 100 mg.\n\nFor the full list of excipients, see section 6.1. Route: oral. Tablets only; does not verify IV flecainide. Under 12 not recommended.",
-        "reviewNote": "Selected formulation, route and population only. Other presentations, storage and treatment doses are not verified; no current stock availability certification.",
-        "revision": "02/10/2026"
+        "publisher": "electronic Medicines Compendium (emc), Datapharm",
+        "reviewNote": "Selected formulation, route and population only. Other presentations, storage and treatment doses are not verified; no current stock availability certification."
       },
       "checkedEvidence": {
         "composition": {
@@ -3174,7 +3142,8 @@
           ]
         }
       },
-      "status": "scoped source appended candidate; not whole-monograph verification"
+      "status": "appended/readback confirmed; selected-product scope only",
+      "newCount": 4
     },
     {
       "slug": "flumazenil",
@@ -3183,20 +3152,19 @@
       "expectedNewCount": 4,
       "source": {
         "url": "https://www.medicines.org.uk/emc/product/6300/smpc",
+        "scope": "100micrograms/mL,5mL/500micrograms and10mL/1mg ampoules; IV, paediatric conscious-sedation reversal>1year. Current vial wording not verified.",
         "title": "Flumazenil 100 micrograms/ml solution for injection/infusion \u2014 product SPC",
-        "publisher": "electronic Medicines Compendium (emc), Datapharm",
+        "accessed": "2026-11-01",
+        "revision": "02/09/2022",
         "sections": [
           "1",
           "2",
           "3",
           "4.1",
-          "4.2",
-          "10"
+          "4.2"
         ],
-        "accessed": "2026-11-01",
-        "scope": "2\\. Qualitative and quantitative composition\n\nEach ml contains 100 micrograms flumazenil.\n\n1 ampoule with 5 ml contains 500 micrograms flumazenil.\n\n1 ampoule with 10 ml contains 1000 micrograms flumazenil.\n\n**Excipient with known effect:**\n\nThis medicinal product contains approximately 3.7 mg sodium per ml of flumazenil solution for injection/infusion (see section 4.4).\n\nFor the full list ofexcipients, see section 6.1. Route: intravenous injection/infusion. Population limited to the licensed indications and age restrictions quoted in checkedEvidence; no general paediatric extrapolation.",
-        "reviewNote": "Selected formulation, route and population only. Other presentations, storage and treatment doses are not verified; no current stock availability certification.",
-        "revision": "02/09/2022"
+        "publisher": "electronic Medicines Compendium (emc), Datapharm",
+        "reviewNote": "Selected formulation, route and population only. Other presentations, storage and treatment doses are not verified; no current stock availability certification."
       },
       "checkedEvidence": {
         "composition": {
@@ -3229,7 +3197,8 @@
           ]
         }
       },
-      "status": "scoped source appended candidate; not whole-monograph verification"
+      "status": "appended/readback confirmed; selected-product scope only",
+      "newCount": 4
     },
     {
       "slug": "gabapentin",
@@ -3238,20 +3207,19 @@
       "expectedNewCount": 4,
       "source": {
         "url": "https://www.medicines.org.uk/emc/product/4123/smpc",
+        "scope": "400mg oral hard capsule; adult neuropathic pain, epilepsy adjunct>=6years/monotherapy>=12; other formulations not covered.",
         "title": "Gabapentin Milpharm 400 mg capsules, hard \u2014 product SPC",
-        "publisher": "electronic Medicines Compendium (emc), Datapharm",
+        "accessed": "2026-11-01",
+        "revision": "13/04/2026",
         "sections": [
           "1",
           "2",
           "3",
           "4.1",
-          "4.2",
-          "10"
+          "4.2"
         ],
-        "accessed": "2026-11-01",
-        "scope": "2\\. Qualitative and quantitative composition\n\nEach 400 mg hard capsule contains 400 mg gabapentin.\n\nFor the full list of excipients, see section 6.1 Route: oral. Adult neuropathic pain; epilepsy adjunct >=6 and monotherapy >=12.",
-        "reviewNote": "Selected formulation, route and population only. Other presentations, storage and treatment doses are not verified; no current stock availability certification.",
-        "revision": "13/04/2026"
+        "publisher": "electronic Medicines Compendium (emc), Datapharm",
+        "reviewNote": "Selected formulation, route and population only. Other presentations, storage and treatment doses are not verified; no current stock availability certification."
       },
       "checkedEvidence": {
         "composition": {
@@ -3284,7 +3252,8 @@
           ]
         }
       },
-      "status": "scoped source appended candidate; not whole-monograph verification"
+      "status": "appended/readback confirmed; selected-product scope only",
+      "newCount": 4
     },
     {
       "slug": "glucagon",
@@ -3293,20 +3262,19 @@
       "expectedNewCount": 4,
       "source": {
         "url": "https://www.medicines.org.uk/emc/product/1289/smpc",
-        "title": "GlucaGen HypoKit 1 mg powder and solvent for solution for injection. \u2014 product SPC",
-        "publisher": "electronic Medicines Compendium (emc), Datapharm",
+        "scope": "1mg glucagon as hydrochloride with1mL solvent; SC/IM severe hypoglycaemia adults/children, IV/IM diagnostic use adults; not beta-blocker-overdose indication.",
+        "title": "GlucaGen HypoKit 1 mg powder and solvent for solution for injection \u2014 product SPC",
+        "accessed": "2026-11-01",
+        "revision": "11 January 2023",
         "sections": [
           "1",
           "2",
           "3",
           "4.1",
-          "4.2",
-          "10"
+          "4.2"
         ],
-        "accessed": "2026-11-01",
-        "scope": "2\\. Qualitative and quantitative composition\n\nActive substance: Human glucagon produced in _Saccharomyces cerevisiae_ by recombinant DNA technology.\n\nOne vial contains 1 mg glucagon as hydrochloride corresponding to 1 mg (1 IU) glucagon/ml after reconstitution.\n\nFor the full list of excipients, see section 6.1. Route: subcutaneous/intramuscular for severe hypoglycaemia; IV/IM diagnostic use. Severe hypoglycaemia adults/children; diagnostic GI use adults only. Does not verify beta-blocker overdose.",
-        "reviewNote": "Selected formulation, route and population only. Other presentations, storage and treatment doses are not verified; no current stock availability certification.",
-        "revision": "11 January 2023"
+        "publisher": "electronic Medicines Compendium (emc), Datapharm",
+        "reviewNote": "Selected formulation, route and population only. Other presentations, storage and treatment doses are not verified; no current stock availability certification."
       },
       "checkedEvidence": {
         "composition": {
@@ -3337,7 +3305,8 @@
           ]
         }
       },
-      "status": "scoped source appended candidate; not whole-monograph verification"
+      "status": "appended/readback confirmed; selected-product scope only",
+      "newCount": 4
     },
     {
       "slug": "glyceryl-trinitrate",
@@ -3346,20 +3315,19 @@
       "expectedNewCount": 4,
       "source": {
         "url": "https://www.medicines.org.uk/emc/product/6296/smpc",
+        "scope": "1mg/mL GTN IV infusion, adult indications; paediatric efficacy/safety not established; sublingual formulations excluded.",
         "title": "Glyceryl Trinitrate 1 mg/ml solution for infusion \u2014 product SPC",
-        "publisher": "electronic Medicines Compendium (emc), Datapharm",
+        "accessed": "2026-11-01",
+        "revision": "06/05/2021",
         "sections": [
           "1",
           "2",
           "3",
           "4.1",
-          "4.2",
-          "10"
+          "4.2"
         ],
-        "accessed": "2026-11-01",
-        "scope": "2\\. Qualitative and quantitative composition\n\n1 ml solution contains 1 mg glyceryl trinitrate.\n\nAmount of active substance per pack size:\n\n|     |     |     |\n| --- | --- | --- |\n| **Total Volume** | **Total GTN Content** | **Container** |\n| 5ml | 5mg | ampoule |\n| 10ml | 10mg | ampoule |\n| 25ml | 25mg | ampoule |\n| 50ml | 50mg | vial |\n\nFor the full list of excipients, see section 6.1. Route: intravenous infusion. Population limited to the licensed indications and age restrictions quoted in checkedEvidence; no general paediatric extrapolation.",
-        "reviewNote": "Selected formulation, route and population only. Other presentations, storage and treatment doses are not verified; no current stock availability certification.",
-        "revision": "06/05/2021"
+        "publisher": "electronic Medicines Compendium (emc), Datapharm",
+        "reviewNote": "Selected formulation, route and population only. Other presentations, storage and treatment doses are not verified; no current stock availability certification."
       },
       "checkedEvidence": {
         "composition": {
@@ -3392,7 +3360,8 @@
           ]
         }
       },
-      "status": "scoped source appended candidate; not whole-monograph verification"
+      "status": "appended/readback confirmed; selected-product scope only",
+      "newCount": 4
     },
     {
       "slug": "hartmanns",
@@ -3401,20 +3370,19 @@
       "expectedNewCount": 4,
       "source": {
         "url": "https://www.medicines.org.uk/emc/product/1812/smpc",
-        "title": "Hartmann's Solution for Infusion) \u2014 product SPC",
-        "publisher": "electronic Medicines Compendium (emc), Datapharm",
+        "scope": "Sodium chloride,potassium chloride,calcium chloride dihydrate,sodium lactate IV infusion bags; adults/children, limited paediatric evidence and neonatal/infant caution.",
+        "title": "Compound Sodium Lactate Solution for Infusion (Hartmann's) \u2014 product SPC",
+        "accessed": "2026-11-01",
+        "revision": "05/2024",
         "sections": [
           "1",
           "2",
           "3",
           "4.1",
-          "4.2",
-          "10"
+          "4.2"
         ],
-        "accessed": "2026-11-01",
-        "scope": "2\\. Qualitative and quantitative composition\n\n|     |     |\n| --- | --- |\n| Sodium Chloride: | 6.00 g/l |\n| Potassium Chloride: | 0.40 g/l |\n| Calcium Chloride dihydrate: | 0.27 g/l |\n| Sodium Lactate: | 3.20 g/l |\n\n|     |     |     |     |     |     |\n| --- | --- | --- | --- | --- | --- |\n|  | Na+ | K+ | Ca++ | Cl- | C3H5O3- (lactate) |\n| mmol/l | 131 | 5 | 2 | 111 | 29 |\n| mEq/l | 131 | 5 | 4 | 111 | 29 |\n\nFor the full list of excipients, see section 6.1 Route: intravenous infusion. Population limited to the licensed indications and age restrictions quoted in checkedEvidence; no general paediatric extrapolation.",
-        "reviewNote": "Selected formulation, route and population only. Other presentations, storage and treatment doses are not verified; no current stock availability certification.",
-        "revision": "05/2024"
+        "publisher": "electronic Medicines Compendium (emc), Datapharm",
+        "reviewNote": "Selected formulation, route and population only. Other presentations, storage and treatment doses are not verified; no current stock availability certification."
       },
       "checkedEvidence": {
         "composition": {
@@ -3448,7 +3416,8 @@
           ]
         }
       },
-      "status": "scoped source appended candidate; not whole-monograph verification"
+      "status": "appended/readback confirmed; selected-product scope only",
+      "newCount": 4
     },
     {
       "slug": "ibuprofen",
@@ -3457,20 +3426,19 @@
       "expectedNewCount": 4,
       "source": {
         "url": "https://www.medicines.org.uk/emc/product/13541/smpc",
+        "scope": "400mg oral tablet; adults/adolescents, not under12; IV and neonatal-PDA products excluded.",
         "title": "Ibuprofen 400mg Tablets BP \u2014 product SPC",
-        "publisher": "electronic Medicines Compendium (emc), Datapharm",
+        "accessed": "2026-11-01",
+        "revision": "22/10/2024",
         "sections": [
           "1",
           "2",
           "3",
           "4.1",
-          "4.2",
-          "10"
+          "4.2"
         ],
-        "accessed": "2026-11-01",
-        "scope": "2\\. Qualitative and quantitative composition\n\nEach tablet contains Ibuprofen BP 400mg\n\nAlso contains lactose, sucrose and sunset yellow.\n\nFor excipients see section 6.1. Route: oral. Oral 400 mg tablet only, not neonatal PDA IV ibuprofen.",
-        "reviewNote": "Selected formulation, route and population only. Other presentations, storage and treatment doses are not verified; no current stock availability certification.",
-        "revision": "22/10/2024"
+        "publisher": "electronic Medicines Compendium (emc), Datapharm",
+        "reviewNote": "Selected formulation, route and population only. Other presentations, storage and treatment doses are not verified; no current stock availability certification."
       },
       "checkedEvidence": {
         "composition": {
@@ -3498,7 +3466,8 @@
           "quotes": []
         }
       },
-      "status": "scoped source appended candidate; not whole-monograph verification"
+      "status": "appended/readback confirmed; selected-product scope only",
+      "newCount": 4
     },
     {
       "slug": "iloprost",
@@ -3507,20 +3476,19 @@
       "expectedNewCount": 4,
       "source": {
         "url": "https://www.medicines.org.uk/emc/product/8736/smpc",
+        "scope": "20micrograms/mL iloprost as trometamol nebuliser solution; adult primary pulmonary hypertension NYHAIII; no IV/paediatric coverage.",
         "title": "Ventavis 20 microgram/ml nebuliser solution \u2014 product SPC",
-        "publisher": "electronic Medicines Compendium (emc), Datapharm",
+        "accessed": "2026-11-01",
+        "revision": "01/2021",
         "sections": [
           "1",
           "2",
           "3",
           "4.1",
-          "4.2",
-          "10"
+          "4.2"
         ],
-        "accessed": "2026-11-01",
-        "scope": "2\\. Qualitative and quantitative composition\n\n**Ventavis 20 microgram/ml nebuliser solution**\n\n1 ml solution contains 20 microgram iloprost (as iloprost trometamol).\n\nEach ampoule with 1 ml solution contains 20 microgram iloprost.\n\n**Excipient with known effect:**\n\n\u2022 Ventavis 20 microgram/ml:\n\nEach ml contains 1.62 mg ethanol 96% (equivalent to 1.50 mg ethanol)\n\nFor the full list of excipients, see section 6.1. Route: inhalation by nebuliser. Adult primary pulmonary hypertension NYHA III; no IV iloprost or paediatric coverage.",
-        "reviewNote": "Selected formulation, route and population only. Other presentations, storage and treatment doses are not verified; no current stock availability certification.",
-        "revision": "01/2021"
+        "publisher": "electronic Medicines Compendium (emc), Datapharm",
+        "reviewNote": "Selected formulation, route and population only. Other presentations, storage and treatment doses are not verified; no current stock availability certification."
       },
       "checkedEvidence": {
         "composition": {
@@ -3558,7 +3526,8 @@
           ]
         }
       },
-      "status": "scoped source appended candidate; not whole-monograph verification"
+      "status": "appended/readback confirmed; selected-product scope only",
+      "newCount": 4
     },
     {
       "slug": "inhaled-nitric-oxide",
@@ -3567,18 +3536,17 @@
       "expectedNewCount": 4,
       "source": {
         "url": "https://www.bocgases.co.uk/files/INOmax_800_ppm_SPC.pdf",
+        "scope": "800ppm nitric oxide in nitrogen,inhalation; newborns>=34weeks gestation with specified hypoxic respiratory failure/pulmonary hypertension; peri/post-cardiac-surgery pulmonary hypertension across ages.100/400ppm excluded.",
         "title": "INOmax 800 ppm mol/mol medicinal gas, compressed \u2014 product SPC",
-        "publisher": "BOC / INOmax product SPC",
+        "accessed": "2026-11-01",
         "sections": [
           "1",
           "2",
           "3",
           "4.1",
-          "4.2",
-          "10"
+          "4.2"
         ],
-        "accessed": "2026-11-01",
-        "scope": "## 2 QUALITATIVE AND QUANTITATIVE COMPOSITION\n\nNitric oxide (NO) 800 ppm mol/mol.\n\nA 2 litre gas cylinder filled at 155 bar absolute brings 307 litres of gas under pressure of 1 bar \nat 15 C.<sup>o</sup>\n\n$$\n1 5 ^ {\\circ} \\mathrm {C}\n$$\n\nA 10 litre gas cylinder filled at 155 bar absolute brings 1535 litres of gas under pressure of 1 \nbar at 15 C.<sup>o</sup>\n\n$$\n1 5 ^ {\\circ} \\mathrm {C}\n$$\n\nFor a full list of excipients, see section 6.1. Route: inhalation. Population limited to the licensed indications and age restrictions quoted in checkedEvidence; no general paediatric extrapolation.",
+        "publisher": "BOC / INOmax product SPC",
         "reviewNote": "Selected formulation, route and population only. Other presentations, storage and treatment doses are not verified; no current stock availability certification."
       },
       "checkedEvidence": {
@@ -3613,7 +3581,8 @@
           "quotes": []
         }
       },
-      "status": "scoped source appended candidate; not whole-monograph verification"
+      "status": "appended/readback confirmed; selected-product scope only",
+      "newCount": 4
     },
     {
       "slug": "ipratropium",
@@ -3622,20 +3591,19 @@
       "expectedNewCount": 4,
       "source": {
         "url": "https://www.medicines.org.uk/emc/product/3818/smpc",
-        "title": "Atrovent\u00ae UDVs\u00ae, 2 ml \u2014 product SPC",
-        "publisher": "electronic Medicines Compendium (emc), Datapharm",
+        "scope": "250micrograms/1mL and500micrograms/2mL ipratropium bromide nebuliser solution; adults/children,0-5years acute asthma only; pMDI excluded.",
+        "title": "Atrovent UDVs nebuliser solution \u2014 product SPC",
+        "accessed": "2026-11-01",
+        "revision": "14/10/2026",
         "sections": [
           "1",
           "2",
           "3",
           "4.1",
-          "4.2",
-          "10"
+          "4.2"
         ],
-        "accessed": "2026-11-01",
-        "scope": "2\\. Qualitative and quantitative composition\n\nEach single dose unit contains 0.025 % w/v ipratropium bromide i.e. 250 micrograms in 1 ml and 500 micrograms in 2 ml.\n\nFor excipients, see 6.1. Route: inhalation by nebuliser. Population limited to the licensed indications and age restrictions quoted in checkedEvidence; no general paediatric extrapolation.",
-        "reviewNote": "Selected formulation, route and population only. Other presentations, storage and treatment doses are not verified; no current stock availability certification.",
-        "revision": "14/10/2026"
+        "publisher": "electronic Medicines Compendium (emc), Datapharm",
+        "reviewNote": "Selected formulation, route and population only. Other presentations, storage and treatment doses are not verified; no current stock availability certification."
       },
       "checkedEvidence": {
         "composition": {
@@ -3674,7 +3642,8 @@
           ]
         }
       },
-      "status": "scoped source appended candidate; not whole-monograph verification"
+      "status": "appended/readback confirmed; selected-product scope only",
+      "newCount": 4
     },
     {
       "slug": "labetalol",
@@ -3683,20 +3652,19 @@
       "expectedNewCount": 4,
       "source": {
         "url": "https://www.medicines.org.uk/emc/product/9165/smpc",
+        "scope": "5mg/mL labetalol hydrochloride IV; adult indications including severe pregnancy hypertension; paediatric efficacy/safety unestablished; exact20mL packaging/storage not verified.",
         "title": "Labetalol Hydrochloride 5mg/ml Solution for Injection \u2014 product SPC",
-        "publisher": "electronic Medicines Compendium (emc), Datapharm",
+        "accessed": "2026-11-01",
+        "revision": "02 June 2023",
         "sections": [
           "1",
           "2",
           "3",
           "4.1",
-          "4.2",
-          "10"
+          "4.2"
         ],
-        "accessed": "2026-11-01",
-        "scope": "2\\. Qualitative and quantitative composition\n\nLabetalol hydrochloride 5mg/ml Route: intravenous. Population limited to the licensed indications and age restrictions quoted in checkedEvidence; no general paediatric extrapolation.",
-        "reviewNote": "Selected formulation, route and population only. Other presentations, storage and treatment doses are not verified; no current stock availability certification.",
-        "revision": "02 June 2023"
+        "publisher": "electronic Medicines Compendium (emc), Datapharm",
+        "reviewNote": "Selected formulation, route and population only. Other presentations, storage and treatment doses are not verified; no current stock availability certification."
       },
       "checkedEvidence": {
         "composition": {
@@ -3725,7 +3693,8 @@
           ]
         }
       },
-      "status": "scoped source appended candidate; not whole-monograph verification"
+      "status": "appended/readback confirmed; selected-product scope only",
+      "newCount": 4
     },
     {
       "slug": "levetiracetam",
@@ -3734,20 +3703,19 @@
       "expectedNewCount": 4,
       "source": {
         "url": "https://www.medicines.org.uk/emc/product/2296/smpc",
+        "scope": "100mg/mL,500mg/5mL IV concentrate; monotherapy>=16,adjunct partial seizures>=4,other specified adjunct>=12. Not status-epilepticus indication or oral-form verification.",
         "title": "Keppra 100 mg/ml concentrate for solution for infusion \u2014 product SPC",
-        "publisher": "electronic Medicines Compendium (emc), Datapharm",
+        "accessed": "2026-11-01",
+        "revision": "04/12/2025",
         "sections": [
           "1",
           "2",
           "3",
           "4.1",
-          "4.2",
-          "10"
+          "4.2"
         ],
-        "accessed": "2026-11-01",
-        "scope": "2\\. Qualitative and quantitative composition\n\nEach ml contains 100 mg of levetiracetam.\n\nEach 5 ml vial contains 500 mg of levetiracetam.\n\n**Excipient with known effect**:\n\nEach vial contains 19 mg of sodium.\n\nFor the full list of excipients, see section 6.1. Route: intravenous infusion after dilution. IV alternative when oral not feasible; does not establish status epilepticus indication. Mono >=16; adjunct partial seizures >=4; other specified adjunct indications >=12.",
-        "reviewNote": "Selected formulation, route and population only. Other presentations, storage and treatment doses are not verified; no current stock availability certification.",
-        "revision": "04/12/2025"
+        "publisher": "electronic Medicines Compendium (emc), Datapharm",
+        "reviewNote": "Selected formulation, route and population only. Other presentations, storage and treatment doses are not verified; no current stock availability certification."
       },
       "checkedEvidence": {
         "composition": {
@@ -3792,7 +3760,8 @@
           ]
         }
       },
-      "status": "scoped source appended candidate; not whole-monograph verification"
+      "status": "appended/readback confirmed; selected-product scope only",
+      "newCount": 4
     },
     {
       "slug": "levothyroxine",
@@ -3801,20 +3770,19 @@
       "expectedNewCount": 4,
       "source": {
         "url": "https://www.medicines.org.uk/emc/product/2942/smpc",
+        "scope": "25microgram levothyroxine sodium anhydrous oral tablet,adult/paediatric hypothyroidism; under5approved oral solution preferred; liquids/injection/other strengths excluded.",
         "title": "Levothyroxine 25mcg tablets \u2014 product SPC",
-        "publisher": "electronic Medicines Compendium (emc), Datapharm",
+        "accessed": "2026-11-01",
+        "revision": "16/10/2026",
         "sections": [
           "1",
           "2",
           "3",
           "4.1",
-          "4.2",
-          "10"
+          "4.2"
         ],
-        "accessed": "2026-11-01",
-        "scope": "2\\. Qualitative and quantitative composition\n\nEach tablet contains 25 micrograms Levothyroxine sodium anhydrous.\n\n**Excipient with known effect**\n\nLactose 30.49mg per tablet\n\nFor the full list of excipients, see section 6.1. Route: oral. Population limited to the licensed indications and age restrictions quoted in checkedEvidence; no general paediatric extrapolation.",
-        "reviewNote": "Selected formulation, route and population only. Other presentations, storage and treatment doses are not verified; no current stock availability certification.",
-        "revision": "16/10/2026"
+        "publisher": "electronic Medicines Compendium (emc), Datapharm",
+        "reviewNote": "Selected formulation, route and population only. Other presentations, storage and treatment doses are not verified; no current stock availability certification."
       },
       "checkedEvidence": {
         "composition": {
@@ -3846,7 +3814,8 @@
           "quotes": []
         }
       },
-      "status": "scoped source appended candidate; not whole-monograph verification"
+      "status": "appended/readback confirmed; selected-product scope only",
+      "newCount": 4
     },
     {
       "slug": "lidocaine-iv",
@@ -3855,20 +3824,19 @@
       "expectedNewCount": 4,
       "source": {
         "url": "https://www.medicines.org.uk/emc/product/15149/smpc",
-        "title": "1% w/v Lidocaine Injection BP. \u2014 product SPC",
-        "publisher": "electronic Medicines Compendium (emc), Datapharm",
+        "scope": "1%/10mg/mL lidocaine hydrochloride monohydrate injection; IV ventricular arrhythmia adults/adolescents/children>2,limited under2data;2% excluded.",
+        "title": "1% w/v Lidocaine Injection BP \u2014 product SPC",
+        "accessed": "2026-11-01",
+        "revision": "24/12/2025",
         "sections": [
           "1",
           "2",
           "3",
           "4.1",
-          "4.2",
-          "10"
+          "4.2"
         ],
-        "accessed": "2026-11-01",
-        "scope": "2\\. Qualitative and quantitative composition\n\nEach ml of the solution for injection contains 10 mg of Lidocaine hydrochloride monohydrate.\n\nAccordingly, the contents per ampoule are as follows:\n\n\u25cf One ampoule of 2 ml contains 20 mg of Lidocaine hydrochloride monohydrate\n\n\u25cf One ampoule of 5 ml contains 50 mg of Lidocaine hydrochloride monohydrate\n\n\u25cf One ampoule of 10 ml contains 100 mg of Lidocaine hydrochloride monohydrate\n\n\u25cf One ampoule of 20 ml contains 200 mg of Lidocaine hydrochloride monohydrate\n\n_Excipients with known effect:_\n\nEach ml of solution contains 2.83 mg equivalent to 0.123 mmol of sodium (as sodium chloride and sodium hydroxide)\n\nEach 2 ml ampoule contains 5.66 mg equivalent to 0.246 mmol of sodium (as sodium chloride and sodium hydroxide)\n\nEach 5 ml ampoule contains 14.15 mg equivalent to 0.615 mmol of sodium (as sodium chloride and sodium hydroxide)\n\nEach 10 ml ampoule contains 28.3 mg equivalent to 1.23 mmol of sodium (as sodium chloride and sodium hydroxide)\n\nEach 20 ml ampoule contains 56.6 mg equivalent to 2.46 mmol of sodium (as sodium chloride and sodium hydroxide)\n\nFor the full list of excipients, see section 6.1. Route: intravenous for ventricular arrhythmia (also local/regional anaesthesia). Label explicitly includes life-threatening ventricular tachycardia/tachyarrhythmia in adults, adolescents and children >2; limited data under 2.",
-        "reviewNote": "Selected formulation, route and population only. Other presentations, storage and treatment doses are not verified; no current stock availability certification.",
-        "revision": "24/12/2025"
+        "publisher": "electronic Medicines Compendium (emc), Datapharm",
+        "reviewNote": "Selected formulation, route and population only. Other presentations, storage and treatment doses are not verified; no current stock availability certification."
       },
       "checkedEvidence": {
         "composition": {
@@ -3903,7 +3871,8 @@
           ]
         }
       },
-      "status": "scoped source appended candidate; not whole-monograph verification"
+      "status": "appended/readback confirmed; selected-product scope only",
+      "newCount": 4
     },
     {
       "slug": "lithium",
@@ -3912,20 +3881,19 @@
       "expectedNewCount": 4,
       "source": {
         "url": "https://www.medicines.org.uk/emc/product/13162/smpc",
-        "title": "Priadel 200 mg prolonged-release tablets. \u2014 product SPC",
-        "publisher": "electronic Medicines Compendium (emc), Datapharm",
+        "scope": "200mg lithium carbonate prolonged-release oral tablets; children not recommended; other strengths/lithium citrate not interchangeable coverage.",
+        "title": "Priadel 200 mg prolonged-release tablets \u2014 product SPC",
+        "accessed": "2026-11-01",
+        "revision": "12/09/2024",
         "sections": [
           "1",
           "2",
           "3",
           "4.1",
-          "4.2",
-          "10"
+          "4.2"
         ],
-        "accessed": "2026-11-01",
-        "scope": "2\\. Qualitative and quantitative composition\n\nEach prolonged-release tablet contains 200 mg lithium carbonate.\n\nFor the full list of excipients, see section 6.1. Route: oral. Priadel prolonged-release lithium carbonate only; not interchangeable evidence for lithium citrate liquid.",
-        "reviewNote": "Selected formulation, route and population only. Other presentations, storage and treatment doses are not verified; no current stock availability certification.",
-        "revision": "12/09/2024"
+        "publisher": "electronic Medicines Compendium (emc), Datapharm",
+        "reviewNote": "Selected formulation, route and population only. Other presentations, storage and treatment doses are not verified; no current stock availability certification."
       },
       "checkedEvidence": {
         "composition": {
@@ -3952,7 +3920,8 @@
           "quotes": []
         }
       },
-      "status": "scoped source appended candidate; not whole-monograph verification"
+      "status": "appended/readback confirmed; selected-product scope only",
+      "newCount": 4
     },
     {
       "slug": "magnesium-sulphate",
@@ -3961,20 +3930,19 @@
       "expectedNewCount": 4,
       "source": {
         "url": "https://www.medicines.org.uk/emc/product/13170/smpc",
+        "scope": "500mg/mL magnesium sulfate heptahydrate,10mL/5g ampoule,approximately2mmol/mL and20mmol/10mL; adult/paediatric route-specific restrictions. Other strengths/packs and asthma indication not covered;20.5mmol wording requires root review.",
         "title": "Magnesium Sulfate 50% w/v Solution for Injection/Infusion \u2014 product SPC",
-        "publisher": "electronic Medicines Compendium (emc), Datapharm",
+        "accessed": "2026-11-01",
+        "revision": "26/07/2022",
         "sections": [
           "1",
           "2",
           "3",
           "4.1",
-          "4.2",
-          "10"
+          "4.2"
         ],
-        "accessed": "2026-11-01",
-        "scope": "2\\. Qualitative and quantitative composition\n\nMagnesium sulfate heptahydrate 50% w/v (2 mmol Mg2+ in 1 ml).\n\nEach 1 ml of solution contains 2 mmol Mg2+ (equivalent to 500 mg magnesium sulfate heptahydrate).\n\nEach 2 ml ampoule contains 4 mmol Mg2+ (equivalent to 1 g magnesium sulfate heptahydrate).\n\nEach 10 ml ampoule contains 20 mmol Mg2+ (equivalent to 5 g magnesium sulfate heptahydrate).\n\nThe concentrations of magnesium ions (Mg2+) in millimoles are given as approximate values.\n\nFor the full list of excipients, see section 6.1. Route: injection/infusion; IV concentrate requires dilution. Population limited to the licensed indications and age restrictions quoted in checkedEvidence; no general paediatric extrapolation.",
-        "reviewNote": "Selected formulation, route and population only. Other presentations, storage and treatment doses are not verified; no current stock availability certification.",
-        "revision": "26/07/2022"
+        "publisher": "electronic Medicines Compendium (emc), Datapharm",
+        "reviewNote": "Selected formulation, route and population only. Other presentations, storage and treatment doses are not verified; no current stock availability certification."
       },
       "checkedEvidence": {
         "composition": {
@@ -4013,7 +3981,8 @@
           ]
         }
       },
-      "status": "scoped source appended candidate; not whole-monograph verification"
+      "status": "appended/readback confirmed; selected-product scope only",
+      "newCount": 4
     },
     {
       "slug": "methotrexate",
@@ -4022,20 +3991,19 @@
       "expectedNewCount": 4,
       "source": {
         "url": "https://www.medicines.org.uk/emc/product/9945/smpc",
+        "scope": "2.5mg oral tablet,adult inflammatory arthritis/severe psoriasis; injections,oncology and10mg products excluded.",
         "title": "Methotrexate 2.5 mg Tablets \u2014 product SPC",
-        "publisher": "electronic Medicines Compendium (emc), Datapharm",
+        "accessed": "2026-11-01",
+        "revision": "30/09/2024",
         "sections": [
           "1",
           "2",
           "3",
           "4.1",
-          "4.2",
-          "10"
+          "4.2"
         ],
-        "accessed": "2026-11-01",
-        "scope": "2\\. Qualitative and quantitative composition\n\n**Methotrexate** **2.5 mg tablet**\n\nEach tablet contains methotrexate 2.5 mg.\n\n**Excipient with known effect**\n\nEach tablet contains 12.50 mg lactose (as lactose monohydrate).\n\nFor the full list of excipients, see section 6.1. Route: oral. Adult rheumatoid/psoriatic arthritis and severe psoriasis; this label does not cover oncology/injection.",
-        "reviewNote": "Selected formulation, route and population only. Other presentations, storage and treatment doses are not verified; no current stock availability certification.",
-        "revision": "30/09/2024"
+        "publisher": "electronic Medicines Compendium (emc), Datapharm",
+        "reviewNote": "Selected formulation, route and population only. Other presentations, storage and treatment doses are not verified; no current stock availability certification."
       },
       "checkedEvidence": {
         "composition": {
@@ -4061,7 +4029,8 @@
           "quotes": []
         }
       },
-      "status": "scoped source appended candidate; not whole-monograph verification"
+      "status": "appended/readback confirmed; selected-product scope only",
+      "newCount": 4
     },
     {
       "slug": "methylprednisolone",
@@ -4070,20 +4039,19 @@
       "expectedNewCount": 4,
       "source": {
         "url": "https://www.medicines.org.uk/emc/product/1550/smpc",
-        "title": "Methylprednisolone 40 mg Powder for Solution for Injection \u2014 product SPC",
-        "publisher": "electronic Medicines Compendium (emc), Datapharm",
+        "scope": "53mg methylprednisolone sodium succinate equivalent to40mg methylprednisolone/vial,IV/IM after reconstitution;adult/paediatric scope,other strengths and acetate excluded.",
+        "title": "Solu-Medrone 40 mg Powder for Solution for Injection \u2014 product SPC",
+        "accessed": "2026-11-01",
+        "revision": "09/2026",
         "sections": [
           "1",
           "2",
           "3",
           "4.1",
-          "4.2",
-          "10"
+          "4.2"
         ],
-        "accessed": "2026-11-01",
-        "scope": "2\\. Qualitative and quantitative composition\n\nMethylprednisolone sodium succinate 53.0 mg equivalent to 40 mg of methylprednisolone.\n\nFor the full list of excipients, see section 6.1. Route: intravenous/intramuscular after reconstitution. Population limited to the licensed indications and age restrictions quoted in checkedEvidence; no general paediatric extrapolation.",
-        "reviewNote": "Selected formulation, route and population only. Other presentations, storage and treatment doses are not verified; no current stock availability certification.",
-        "revision": "09/2026"
+        "publisher": "electronic Medicines Compendium (emc), Datapharm",
+        "reviewNote": "Selected formulation, route and population only. Other presentations, storage and treatment doses are not verified; no current stock availability certification."
       },
       "checkedEvidence": {
         "composition": {
@@ -4113,7 +4081,8 @@
           ]
         }
       },
-      "status": "scoped source appended candidate; not whole-monograph verification"
+      "status": "appended/readback confirmed; selected-product scope only",
+      "newCount": 4
     },
     {
       "slug": "5-percent-glucose",
@@ -4122,20 +4091,18 @@
       "expectedNewCount": 4,
       "source": {
         "url": "https://www.medicines.org.uk/emc/product/13132/smpc",
+        "scope": "Glucose monohydrate equivalent to50g/L anhydrous glucose, IV infusion, age-dependent fluid replacement. Generic pH/osmolarity values not established.",
         "title": "5% Glucose Intravenous Infusion Solution \u2014 UK SmPC",
-        "publisher": "electronic Medicines Compendium (emc), Datapharm",
+        "accessed": "2026-11-01",
         "sections": [
           "1",
           "2",
           "3",
           "4.1",
-          "4.2",
-          "10"
+          "4.2"
         ],
-        "accessed": "2026-11-01",
-        "scope": "Glucose monohydrate equivalent to50g/L anhydrous glucose, IV infusion; adult fluid replacement and age-dependent response. Physicochemical values in the generic record are not established by this selected label.",
-        "reviewNote": "Selected formulation, route and population only. Other presentations, storage and treatment doses are not verified; no current stock availability certification.",
-        "revision": "03/04/2026"
+        "publisher": "electronic Medicines Compendium (emc), Datapharm",
+        "reviewNote": "Selected formulation, route and population only. Other presentations, storage and treatment doses are not verified; no current stock availability certification."
       },
       "checkedEvidence": [
         {
@@ -4187,7 +4154,8 @@
           "quote": "10\\. Date of revision of the text\n\n03/04/2026\n\nAguettant Ltd\n\n![Company image](https://www.medicines.org.uk/emc/images/logo/3265)\n\nAddress\n\nNo 1 Farleigh House, Flax Bourton, Old Weston Road, Bristol, BS48 1UR, UK"
         }
       ],
-      "status": "scoped source appended candidate; not whole-monograph verification"
+      "status": "appended/readback confirmed; selected-product scope only",
+      "newCount": 4
     },
     {
       "slug": "acetazolamide",
@@ -4196,20 +4164,18 @@
       "expectedNewCount": 4,
       "source": {
         "url": "https://www.medicines.org.uk/emc/product/15330/smpc",
+        "scope": "Acetazolamide500mg/vial as sodium, IV/IM (IV preferred); adults and paediatric epilepsy. Oral forms not covered.",
         "title": "DIAMOX Sodium 500mg Powder for Solution for Injection \u2014 UK SmPC",
-        "publisher": "electronic Medicines Compendium (emc), Datapharm",
+        "accessed": "2026-11-01",
         "sections": [
           "1",
           "2",
           "3",
           "4.1",
-          "4.2",
-          "10"
+          "4.2"
         ],
-        "accessed": "2026-11-01",
-        "scope": "Acetazolamide as sodium500mg/vial powder, IV/IM (IV preferred); adults and paediatric epilepsy. Oral tablets/capsules not covered.",
-        "reviewNote": "Selected formulation, route and population only. Other presentations, storage and treatment doses are not verified; no current stock availability certification.",
-        "revision": "18/10/2024"
+        "publisher": "electronic Medicines Compendium (emc), Datapharm",
+        "reviewNote": "Selected formulation, route and population only. Other presentations, storage and treatment doses are not verified; no current stock availability certification."
       },
       "checkedEvidence": [
         {
@@ -4261,7 +4227,8 @@
           "quote": "10\\. Date of revision of the text\n\n18/10/2024\n\nADVANZ Pharma\n\n![Company image](https://www.medicines.org.uk/emc/images/logo/2507)\n\nAddress\n\nDashwood House, 69 Old Broad Street, London, EC2M 1QS, UK"
         }
       ],
-      "status": "scoped source appended candidate; not whole-monograph verification"
+      "status": "appended/readback confirmed; selected-product scope only",
+      "newCount": 4
     },
     {
       "slug": "aminophylline",
@@ -4270,20 +4237,18 @@
       "expectedNewCount": 4,
       "source": {
         "url": "https://www.medicines.org.uk/emc/product/6299/smpc",
+        "scope": "25mg/mL,250mg/10mL ampoule, slow IV injection/infusion; adults/children>=6months, below6months not recommended.",
         "title": "Aminophylline 25 mg/ml solution for injection/infusion \u2014 UK SmPC",
-        "publisher": "electronic Medicines Compendium (emc), Datapharm",
+        "accessed": "2026-11-01",
         "sections": [
           "1",
           "2",
           "3",
           "4.1",
-          "4.2",
-          "10"
+          "4.2"
         ],
-        "accessed": "2026-11-01",
-        "scope": "Aminophylline25mg/mL,250mg/10mL ampoule; slow IV injection/infusion, adults and children>=6months; below6months not recommended.",
-        "reviewNote": "Selected formulation, route and population only. Other presentations, storage and treatment doses are not verified; no current stock availability certification.",
-        "revision": "02/02/2026"
+        "publisher": "electronic Medicines Compendium (emc), Datapharm",
+        "reviewNote": "Selected formulation, route and population only. Other presentations, storage and treatment doses are not verified; no current stock availability certification."
       },
       "checkedEvidence": [
         {
@@ -4335,7 +4300,8 @@
           "quote": "10\\. Date of revision of the text\n\n02/02/2026\n\nhameln pharma ltd\n\n![Company image](https://www.medicines.org.uk/emc/images/logo/2175)\n\nAddress\n\nNexus, Gloucester Business Park, Gloucester, GL3 4AG, UK"
         }
       ],
-      "status": "scoped source appended candidate; not whole-monograph verification"
+      "status": "appended/readback confirmed; selected-product scope only",
+      "newCount": 4
     },
     {
       "slug": "amiodarone",
@@ -4344,20 +4310,18 @@
       "expectedNewCount": 4,
       "source": {
         "url": "https://www.medicines.org.uk/emc/product/3940/smpc",
+        "scope": "50mg/mL,150mg/3mL amiodarone hydrochloride, IV. Paediatric efficacy/safety unestablished; benzyl-alcohol product contraindicated in neonates. Oral tablets not covered.",
         "title": "Amiodarone Hydrochloride 50 mg/ml Concentrate for Solution for Injection/Infusion \u2014 UK SmPC",
-        "publisher": "electronic Medicines Compendium (emc), Datapharm",
+        "accessed": "2026-11-01",
         "sections": [
           "1",
           "2",
           "3",
           "4.1",
-          "4.2",
-          "10"
+          "4.2"
         ],
-        "accessed": "2026-11-01",
-        "scope": "Amiodarone hydrochloride50mg/mL,150mg/3mL concentrate, IV. Paediatric efficacy/safety unestablished; benzyl-alcohol product contraindicated in neonates. Oral tablets not covered.",
-        "reviewNote": "Selected formulation, route and population only. Other presentations, storage and treatment doses are not verified; no current stock availability certification.",
-        "revision": "22/07/2022"
+        "publisher": "electronic Medicines Compendium (emc), Datapharm",
+        "reviewNote": "Selected formulation, route and population only. Other presentations, storage and treatment doses are not verified; no current stock availability certification."
       },
       "checkedEvidence": [
         {
@@ -4409,7 +4373,8 @@
           "quote": "10\\. Date of revision of the text\n\n22/07/2022\n\nhameln pharma ltd\n\n![Company image](https://www.medicines.org.uk/emc/images/logo/2175)\n\nAddress\n\nNexus, Gloucester Business Park, Gloucester, GL3 4AG, UK"
         }
       ],
-      "status": "scoped source appended candidate; not whole-monograph verification"
+      "status": "appended/readback confirmed; selected-product scope only",
+      "newCount": 4
     },
     {
       "slug": "amitriptyline",
@@ -4418,20 +4383,18 @@
       "expectedNewCount": 4,
       "source": {
         "url": "https://www.medicines.org.uk/emc/product/10849/smpc",
+        "scope": "10mg amitriptyline hydrochloride oral tablet; adult indications and restricted enuresis>=6years. Other strengths/solution not covered.",
         "title": "Amitriptyline 10 mg Film-Coated Tablets \u2014 UK SmPC",
-        "publisher": "electronic Medicines Compendium (emc), Datapharm",
+        "accessed": "2026-11-01",
         "sections": [
           "1",
           "2",
           "3",
           "4.1",
-          "4.2",
-          "10"
+          "4.2"
         ],
-        "accessed": "2026-11-01",
-        "scope": "Amitriptyline hydrochloride10mg film-coated tablet, oral; adult indications and restricted enuresis>=6years. Other strengths/solution not covered.",
-        "reviewNote": "Selected formulation, route and population only. Other presentations, storage and treatment doses are not verified; no current stock availability certification.",
-        "revision": "28/04/2026"
+        "publisher": "electronic Medicines Compendium (emc), Datapharm",
+        "reviewNote": "Selected formulation, route and population only. Other presentations, storage and treatment doses are not verified; no current stock availability certification."
       },
       "checkedEvidence": [
         {
@@ -4483,7 +4446,8 @@
           "quote": "10\\. Date of revision of the text\n\n28/04/2026\n\nBrown & Burk UK Ltd\n\n![Company image](https://www.medicines.org.uk/emc/images/logo/4017)\n\nAddress\n\nBrown & Burk UK Limited, Micro House, Bury Street, Ruislip, HA4 7TL, UK"
         }
       ],
-      "status": "scoped source appended candidate; not whole-monograph verification"
+      "status": "appended/readback confirmed; selected-product scope only",
+      "newCount": 4
     },
     {
       "slug": "aprepitant",
@@ -4492,20 +4456,18 @@
       "expectedNewCount": 4,
       "source": {
         "url": "https://www.medicines.org.uk/emc/product/11332/smpc",
+        "scope": "125mg oral capsule, chemotherapy nausea/vomiting adults/adolescents>=12; not fosaprepitant or perioperative40mg formulation.",
         "title": "Aprepitant 125 mg hard capsules \u2014 UK SmPC",
-        "publisher": "electronic Medicines Compendium (emc), Datapharm",
+        "accessed": "2026-11-01",
         "sections": [
           "1",
           "2",
           "3",
           "4.1",
-          "4.2",
-          "10"
+          "4.2"
         ],
-        "accessed": "2026-11-01",
-        "scope": "Aprepitant125mg hard capsule, oral; chemotherapy nausea/vomiting adults/adolescents>=12. Not fosaprepitant or perioperative40mg presentation.",
-        "reviewNote": "Selected formulation, route and population only. Other presentations, storage and treatment doses are not verified; no current stock availability certification.",
-        "revision": "27/07/2026"
+        "publisher": "electronic Medicines Compendium (emc), Datapharm",
+        "reviewNote": "Selected formulation, route and population only. Other presentations, storage and treatment doses are not verified; no current stock availability certification."
       },
       "checkedEvidence": [
         {
@@ -4557,7 +4519,8 @@
           "quote": "10\\. Date of revision of the text\n\n27/07/2026\n\nSandoz Limited\n\n![Company image](https://www.medicines.org.uk/emc/images/logo/2502)\n\nAddress\n\nMaxis 1, Western Road, Bracknell, RG12 1RF, UK"
         }
       ],
-      "status": "scoped source appended candidate; not whole-monograph verification"
+      "status": "appended/readback confirmed; selected-product scope only",
+      "newCount": 4
     },
     {
       "slug": "caffeine-citrate",
@@ -4566,26 +4529,25 @@
       "expectedNewCount": 4,
       "source": {
         "url": "https://www.medicines.org.uk/emc/product/4098/smpc",
+        "scope": "20mg/mL caffeine citrate (10mg/mL caffeine base),1mL/3mL ampoules; IV infusion/oral, apnoea of prematurity in neonatal intensive care. Not bolus or10mg/mL citrate.",
         "title": "Peyona 20 mg/mL solution for infusion and oral solution \u2014 UK SmPC",
-        "publisher": "electronic Medicines Compendium (emc), Datapharm",
+        "accessed": "2026-11-01",
         "sections": [
           "1",
           "2",
           "3",
           "4.1",
-          "4.2",
-          "10"
+          "4.2"
         ],
-        "accessed": "2026-11-01",
-        "scope": "Peyona20mg/mL caffeine citrate (10mg/mL caffeine base),1mL/3mL ampoules; IV infusion or oral, apnoea of prematurity under neonatal intensive-care supervision. Not bolus injection or10mg/mL citrate product.",
-        "reviewNote": "Selected formulation, route and population only. Other presentations, storage and treatment doses are not verified; no current stock availability certification.",
-        "revision": "05/2024"
+        "publisher": "electronic Medicines Compendium (emc), Datapharm",
+        "reviewNote": "Selected formulation, route and population only. Other presentations, storage and treatment doses are not verified; no current stock availability certification."
       },
       "checkedEvidence": {
         "opened": "/tmp/d30/g1/caffeine-citrate-alternative-2.md",
         "scope": "Peyona20mg/mL exact product; sections1,2,3,4.1,4.2 read by parent"
       },
-      "status": "scoped source appended candidate; not whole-monograph verification"
+      "status": "appended/readback confirmed; selected-product scope only",
+      "newCount": 4
     },
     {
       "slug": "carbamazepine",
@@ -4594,20 +4556,18 @@
       "expectedNewCount": 4,
       "source": {
         "url": "https://www.medicines.org.uk/emc/product/3060/smpc",
+        "scope": "100mg/5mL oral suspension; adults and paediatric epilepsy from4weeks. Tablet formulations not covered.",
         "title": "Carbamazepine SUN 100 mg/5 ml Oral Suspension \u2014 UK SmPC",
-        "publisher": "electronic Medicines Compendium (emc), Datapharm",
+        "accessed": "2026-11-01",
         "sections": [
           "1",
           "2",
           "3",
           "4.1",
-          "4.2",
-          "10"
+          "4.2"
         ],
-        "accessed": "2026-11-01",
-        "scope": "Carbamazepine SUN100mg/5mL oral suspension; adults and paediatric epilepsy from4weeks. Other tablet formulations not covered.",
-        "reviewNote": "Selected formulation, route and population only. Other presentations, storage and treatment doses are not verified; no current stock availability certification.",
-        "revision": "20.05.2026"
+        "publisher": "electronic Medicines Compendium (emc), Datapharm",
+        "reviewNote": "Selected formulation, route and population only. Other presentations, storage and treatment doses are not verified; no current stock availability certification."
       },
       "checkedEvidence": [
         {
@@ -4659,7 +4619,8 @@
           "quote": "10\\. Date of revision of the text\n\n20.05.2026\n\nRanbaxy (UK) Limited a Sun Pharmaceutical Company\n\n![Company image](https://www.medicines.org.uk/emc/images/logo/2272)\n\nAddress\n\n6-9 The Square, Stockley Park, Uxbridge, UB11 1FW, UK"
         }
       ],
-      "status": "scoped source appended candidate; not whole-monograph verification"
+      "status": "appended/readback confirmed; selected-product scope only",
+      "newCount": 4
     },
     {
       "slug": "carboprost",
@@ -4668,20 +4629,18 @@
       "expectedNewCount": 4,
       "source": {
         "url": "https://www.medicines.org.uk/emc/product/1084/smpc",
+        "scope": "Carboprost tromethamine equivalent to250micrograms/mL carboprost, deep IM; refractory postpartum uterine-atony haemorrhage; paediatric not applicable.",
         "title": "Hemabate Sterile Solution \u2014 UK SmPC",
-        "publisher": "electronic Medicines Compendium (emc), Datapharm",
+        "accessed": "2026-11-01",
         "sections": [
           "1",
           "2",
           "3",
           "4.1",
-          "4.2",
-          "10"
+          "4.2"
         ],
-        "accessed": "2026-11-01",
-        "scope": "Hemabate carboprost tromethamine equivalent to250micrograms/mL carboprost, IM; refractory postpartum uterine-atony haemorrhage. Paediatric not applicable. Storage not reviewed.",
-        "reviewNote": "Selected formulation, route and population only. Other presentations, storage and treatment doses are not verified; no current stock availability certification.",
-        "revision": "05/2022"
+        "publisher": "electronic Medicines Compendium (emc), Datapharm",
+        "reviewNote": "Selected formulation, route and population only. Other presentations, storage and treatment doses are not verified; no current stock availability certification."
       },
       "checkedEvidence": [
         {
@@ -4733,7 +4692,8 @@
           "quote": "10\\. Date of revision of the text\n\n05/2022\n\n**Legal category: POM**\n\nRef: HM 8\\_0\n\nPfizer Limited\n\n![Company image](https://www.medicines.org.uk/emc/images/logo/105)"
         }
       ],
-      "status": "scoped source appended candidate; not whole-monograph verification"
+      "status": "appended/readback confirmed; selected-product scope only",
+      "newCount": 4
     },
     {
       "slug": "ciclosporin",
@@ -4742,20 +4702,18 @@
       "expectedNewCount": 4,
       "source": {
         "url": "https://www.medicines.org.uk/emc/product/1036/smpc",
-        "title": "SANDIMMUN\u00ae Concentrate for Solution for Infusion 50mg/ml. \u2014 UK SmPC",
-        "publisher": "electronic Medicines Compendium (emc), Datapharm",
+        "scope": "50mg/mL ciclosporin IV concentrate, transplant scope, studies include children>=1year; oral forms not covered.",
+        "title": "Sandimmun Concentrate for Solution for Infusion 50mg/ml \u2014 UK SmPC",
+        "accessed": "2026-11-01",
         "sections": [
           "1",
           "2",
           "3",
           "4.1",
-          "4.2",
-          "10"
+          "4.2"
         ],
-        "accessed": "2026-11-01",
-        "scope": "Sandimmun ciclosporin50mg/mL IV concentrate; transplant indications, studies include children>=1year. Oral forms not covered.",
-        "reviewNote": "Selected formulation, route and population only. Other presentations, storage and treatment doses are not verified; no current stock availability certification.",
-        "revision": "17 February 2026"
+        "publisher": "electronic Medicines Compendium (emc), Datapharm",
+        "reviewNote": "Selected formulation, route and population only. Other presentations, storage and treatment doses are not verified; no current stock availability certification."
       },
       "checkedEvidence": [
         {
@@ -4807,7 +4765,8 @@
           "quote": "10\\. Date of revision of the text\n\n17 February 2026\n\n**LEGAL CATEGORY**\n\nPOM\n\nNovartis Pharmaceuticals UK Ltd\n\n![Company image](https://www.medicines.org.uk/emc/images/logo/93)"
         }
       ],
-      "status": "scoped source appended candidate; not whole-monograph verification"
+      "status": "appended/readback confirmed; selected-product scope only",
+      "newCount": 4
     },
     {
       "slug": "clonidine",
@@ -4816,20 +4775,18 @@
       "expectedNewCount": 4,
       "source": {
         "url": "https://www.medicines.org.uk/emc/product/100410/smpc",
+        "scope": "150micrograms/1mL clonidine hydrochloride, slow IV; adult hypertensive crises, under18not recommended; oral forms not covered.",
         "title": "Clonidine Macure 150 micrograms/ml Solution for Injection \u2014 UK SmPC",
-        "publisher": "electronic Medicines Compendium (emc), Datapharm",
+        "accessed": "2026-11-01",
         "sections": [
           "1",
           "2",
           "3",
           "4.1",
-          "4.2",
-          "10"
+          "4.2"
         ],
-        "accessed": "2026-11-01",
-        "scope": "Clonidine Macure hydrochloride150micrograms/1mL injection, slow IV; adult hypertensive crises, under18not recommended. Oral products not covered.",
-        "reviewNote": "Selected formulation, route and population only. Other presentations, storage and treatment doses are not verified; no current stock availability certification.",
-        "revision": "01/07/2024"
+        "publisher": "electronic Medicines Compendium (emc), Datapharm",
+        "reviewNote": "Selected formulation, route and population only. Other presentations, storage and treatment doses are not verified; no current stock availability certification."
       },
       "checkedEvidence": [
         {
@@ -4881,7 +4838,8 @@
           "quote": "10\\. Date of revision of the text\n\n01/07/2024\n\nMacure Pharma UK Ltd\n\n![Company image](https://www.medicines.org.uk/emc/images/logo/4173)\n\nAddress\n\n3 Waterhouse Square, 138 Holborn, London, EC1N 2SW, UK"
         }
       ],
-      "status": "scoped source appended candidate; not whole-monograph verification"
+      "status": "appended/readback confirmed; selected-product scope only",
+      "newCount": 4
     },
     {
       "slug": "cyclizine",
@@ -4890,20 +4848,18 @@
       "expectedNewCount": 4,
       "source": {
         "url": "https://www.medicines.org.uk/emc/product/100940/smpc",
-        "title": "Cyclizine lactate 50 mg/ ml solution for injection \u2014 UK SmPC",
-        "publisher": "electronic Medicines Compendium (emc), Datapharm",
+        "scope": "50mg/1mL cyclizine lactate injection, IM/IV; adults, not licensed children; hydrochloride tablets not covered.",
+        "title": "Cyclizine lactate 50 mg/ml solution for injection \u2014 UK SmPC",
+        "accessed": "2026-11-01",
         "sections": [
           "1",
           "2",
           "3",
           "4.1",
-          "4.2",
-          "10"
+          "4.2"
         ],
-        "accessed": "2026-11-01",
-        "scope": "Cyclizine lactate50mg/1mL injection, IM/IV; adults, not licensed in children. Hydrochloride tablets not covered.",
-        "reviewNote": "Selected formulation, route and population only. Other presentations, storage and treatment doses are not verified; no current stock availability certification.",
-        "revision": "24/09/2026"
+        "publisher": "electronic Medicines Compendium (emc), Datapharm",
+        "reviewNote": "Selected formulation, route and population only. Other presentations, storage and treatment doses are not verified; no current stock availability certification."
       },
       "checkedEvidence": [
         {
@@ -4955,7 +4911,8 @@
           "quote": "10\\. Date of revision of the text\n\n24/09/2026\n\nBrown & Burk UK Ltd\n\n![Company image](https://www.medicines.org.uk/emc/images/logo/4017)\n\nAddress\n\nBrown & Burk UK Limited, Micro House, Bury Street, Ruislip, HA4 7TL, UK"
         }
       ],
-      "status": "scoped source appended candidate; not whole-monograph verification"
+      "status": "appended/readback confirmed; selected-product scope only",
+      "newCount": 4
     },
     {
       "slug": "desmopressin",
@@ -4964,20 +4921,18 @@
       "expectedNewCount": 4,
       "source": {
         "url": "https://www.medicines.org.uk/emc/product/5447/smpc",
-        "title": "DDAVP\u00ae/Desmopressin Injection. \u2014 UK SmPC",
-        "publisher": "electronic Medicines Compendium (emc), Datapharm",
+        "scope": "4micrograms/mL desmopressin acetate equivalent to3.56micrograms/mL desmopressin, IV/IM/SC indication-specific adults/children/infants; oral forms not covered.",
+        "title": "DDAVP/Desmopressin Injection \u2014 UK SmPC",
+        "accessed": "2026-11-01",
         "sections": [
           "1",
           "2",
           "3",
           "4.1",
-          "4.2",
-          "10"
+          "4.2"
         ],
-        "accessed": "2026-11-01",
-        "scope": "DDAVP injection4micrograms/mL desmopressin acetate equivalent to3.56micrograms/mL desmopressin; IV/IM/SC indication-specific, adults/children/infants. Oral forms not covered; strength basis distinct.",
-        "reviewNote": "Selected formulation, route and population only. Other presentations, storage and treatment doses are not verified; no current stock availability certification.",
-        "revision": "02 September 2026"
+        "publisher": "electronic Medicines Compendium (emc), Datapharm",
+        "reviewNote": "Selected formulation, route and population only. Other presentations, storage and treatment doses are not verified; no current stock availability certification."
       },
       "checkedEvidence": [
         {
@@ -5029,7 +4984,8 @@
           "quote": "10\\. Date of revision of the text\n\n02 September 2026\n\nFerring Pharmaceuticals Ltd\n\n![Company image](https://www.medicines.org.uk/emc/images/logo/50)\n\nAddress\n\nDrayton Hall, Church Road, West Drayton, UB7 7PS, UK"
         }
       ],
-      "status": "scoped source appended candidate; not whole-monograph verification"
+      "status": "appended/readback confirmed; selected-product scope only",
+      "newCount": 4
     },
     {
       "slug": "diclofenac",
@@ -5038,20 +4994,18 @@
       "expectedNewCount": 4,
       "source": {
         "url": "https://www.medicines.org.uk/emc/product/1043/smpc",
-        "title": "Voltarol\u00ae Ampoules \u2014 UK SmPC",
-        "publisher": "electronic Medicines Compendium (emc), Datapharm",
+        "scope": "75mg/3mL diclofenac sodium, deep IM or diluted IV infusion, NOT IV bolus; adults, children not recommended; other forms not covered.",
+        "title": "Voltarol Ampoules \u2014 UK SmPC",
+        "accessed": "2026-11-01",
         "sections": [
           "1",
           "2",
           "3",
           "4.1",
-          "4.2",
-          "10"
+          "4.2"
         ],
-        "accessed": "2026-11-01",
-        "scope": "Voltarol diclofenac sodium75mg/3mL ampoule, deep IM or diluted IV infusion, NOT IV bolus; adults, children not recommended. Non-injectable forms not covered.",
-        "reviewNote": "Selected formulation, route and population only. Other presentations, storage and treatment doses are not verified; no current stock availability certification.",
-        "revision": "9 September 2025"
+        "publisher": "electronic Medicines Compendium (emc), Datapharm",
+        "reviewNote": "Selected formulation, route and population only. Other presentations, storage and treatment doses are not verified; no current stock availability certification."
       },
       "checkedEvidence": [
         {
@@ -5103,7 +5057,8 @@
           "quote": "10\\. Date of revision of the text\n\n9 September 2025\n\n**LEGAL CATEGORY**\n\nPOM\n\nNovartis Pharmaceuticals UK Ltd\n\n![Company image](https://www.medicines.org.uk/emc/images/logo/93)"
         }
       ],
-      "status": "scoped source appended candidate; not whole-monograph verification"
+      "status": "appended/readback confirmed; selected-product scope only",
+      "newCount": 4
     },
     {
       "slug": "doxapram",
@@ -5112,20 +5067,18 @@
       "expectedNewCount": 4,
       "source": {
         "url": "https://www.medicines.org.uk/emc/product/12084/smpc",
+        "scope": "20mg/mL,100mg/5mL doxapram hydrochloride, IV only; adults/elderly, paediatric not recommended.",
         "title": "Doxapram hydrochloride 20 mg/ml Solution for injection \u2014 UK SmPC",
-        "publisher": "electronic Medicines Compendium (emc), Datapharm",
+        "accessed": "2026-11-01",
         "sections": [
           "1",
           "2",
           "3",
           "4.1",
-          "4.2",
-          "10"
+          "4.2"
         ],
-        "accessed": "2026-11-01",
-        "scope": "Doxapram hydrochloride20mg/mL,100mg/5mL solution, IV only; adults/elderly, paediatric not recommended. Container/appearance not fully reviewed.",
-        "reviewNote": "Selected formulation, route and population only. Other presentations, storage and treatment doses are not verified; no current stock availability certification.",
-        "revision": "07/09/2026"
+        "publisher": "electronic Medicines Compendium (emc), Datapharm",
+        "reviewNote": "Selected formulation, route and population only. Other presentations, storage and treatment doses are not verified; no current stock availability certification."
       },
       "checkedEvidence": [
         {
@@ -5177,7 +5130,8 @@
           "quote": "10\\. Date of revision of the text\n\n07/09/2026\n\nSynchrony Pharma Ltd\n\n![Company image](https://www.medicines.org.uk/emc/images/logo/3967)\n\nAddress\n\n3 Bunhill Row, London, EC1Y 8YZ"
         }
       ],
-      "status": "scoped source appended candidate; not whole-monograph verification"
+      "status": "appended/readback confirmed; selected-product scope only",
+      "newCount": 4
     },
     {
       "slug": "ergometrine",
@@ -5186,20 +5140,18 @@
       "expectedNewCount": 4,
       "source": {
         "url": "https://www.medicines.org.uk/emc/product/6265/smpc",
-        "title": "Ergometrine Injection BP 0.05% w/v. \u2014 UK SmPC",
-        "publisher": "electronic Medicines Compendium (emc), Datapharm",
+        "scope": "500micrograms/mL ergometrine maleate, IM preferred, slow IV only severe uterine-atony haemorrhage; adult obstetric scope, not Syntometrine product.",
+        "title": "Ergometrine Injection BP 0.05% w/v \u2014 UK SmPC",
+        "accessed": "2026-11-01",
         "sections": [
           "1",
           "2",
           "3",
           "4.1",
-          "4.2",
-          "10"
+          "4.2"
         ],
-        "accessed": "2026-11-01",
-        "scope": "Ergometrine maleate500micrograms/mL sterile injection, IM recommended; slow IV only severe uterine-atony haemorrhage. Adult obstetric scope, not Syntometrine product.",
-        "reviewNote": "Selected formulation, route and population only. Other presentations, storage and treatment doses are not verified; no current stock availability certification.",
-        "revision": "22/04/2026"
+        "publisher": "electronic Medicines Compendium (emc), Datapharm",
+        "reviewNote": "Selected formulation, route and population only. Other presentations, storage and treatment doses are not verified; no current stock availability certification."
       },
       "checkedEvidence": [
         {
@@ -5251,7 +5203,8 @@
           "quote": "10\\. Date of revision of the text\n\n22/04/2026\n\nhameln pharma ltd\n\n![Company image](https://www.medicines.org.uk/emc/images/logo/2175)\n\nAddress\n\nNexus, Gloucester Business Park, Gloucester, GL3 4AG, UK"
         }
       ],
-      "status": "scoped source appended candidate; not whole-monograph verification"
+      "status": "appended/readback confirmed; selected-product scope only",
+      "newCount": 4
     },
     {
       "slug": "esmolol",
@@ -5260,20 +5213,18 @@
       "expectedNewCount": 4,
       "source": {
         "url": "https://www.medicines.org.uk/emc/product/3057/smpc",
+        "scope": "10mg/mL,100mg/10mL ready-to-use esmolol hydrochloride IV vial; adults, not indicated<=18years;250mg/mL concentrate not covered.",
         "title": "Esmolol hydrochloride 10 mg/ml solution for injection \u2014 UK SmPC",
-        "publisher": "electronic Medicines Compendium (emc), Datapharm",
+        "accessed": "2026-11-01",
         "sections": [
           "1",
           "2",
           "3",
           "4.1",
-          "4.2",
-          "10"
+          "4.2"
         ],
-        "accessed": "2026-11-01",
-        "scope": "Esmolol hydrochloride10mg/mL,100mg/10mL ready-to-use vial, IV; adult indications, not indicated<=18years.250mg/mL concentrate not covered.",
-        "reviewNote": "Selected formulation, route and population only. Other presentations, storage and treatment doses are not verified; no current stock availability certification.",
-        "revision": "20/08/2020"
+        "publisher": "electronic Medicines Compendium (emc), Datapharm",
+        "reviewNote": "Selected formulation, route and population only. Other presentations, storage and treatment doses are not verified; no current stock availability certification."
       },
       "checkedEvidence": [
         {
@@ -5325,7 +5276,8 @@
           "quote": "10\\. Date of revision of the text\n\n20/08/2020\n\nAOP Orphan Ltd\n\n![Company image](https://www.medicines.org.uk/emc/images/logo/3208)\n\nAddress\n\nHalkin (Mainframe), 24 Eversholt St., London, NW1 1DB, UK"
         }
       ],
-      "status": "scoped source appended candidate; not whole-monograph verification"
+      "status": "appended/readback confirmed; selected-product scope only",
+      "newCount": 4
     }
   ],
   "unresolved": [
@@ -5361,5 +5313,6 @@
       "slug": "droperidol",
       "reason": "Opened PANPHARMA matches generic concentration but not named Xomolix; no brand substitution."
     }
-  ]
+  ],
+  "readback": "All56 ID/slug matches; original3 sources exactly preserved; each now4. No guard misses."
 }
