@@ -6,6 +6,16 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Native only: preserve web layout and clear the iPhone home indicator. */
+html[data-native-app="true"] body {
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+  padding-left: env(safe-area-inset-left, 0px);
+  padding-right: env(safe-area-inset-right, 0px);
+}
+html[data-native-app="true"] header.sticky {
+  padding-top: env(safe-area-inset-top, 0px);
+}
+
 
 @layer base {
   :root {

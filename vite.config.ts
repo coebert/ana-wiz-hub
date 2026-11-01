@@ -15,6 +15,7 @@ const BUILD_ID =
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => ({
   base: "/",
+  ...(mode === 'native' ? { build: { outDir: 'dist/native' } } : {}),
   define: {
     __APP_VERSION__: JSON.stringify(BUILD_ID),
   },
@@ -31,13 +32,16 @@ export default defineConfig(({ mode }) => ({
     {
       name: "inject-app-version",
       transformIndexHtml(html: string) {
+        if (mode === 'native') {
+          html = html.replace(/<meta name="viewport"[^>]*>/, '<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />');
+        }
         return html.replace(
           /<\/head>/i,
           `    <meta name="app-version" content="${BUILD_ID}" />\n  </head>`,
         );
       },
     },
-    VitePWA({
+    mode !== 'native' && VitePWA({
       registerType: "autoUpdate",
       devOptions: {
         enabled: false,

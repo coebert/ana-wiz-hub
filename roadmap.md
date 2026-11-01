@@ -1,6 +1,7 @@
 # Admin metrics audit fixes
 
 ## Paid Apple App Store readiness
+- [ ] Implement isolated Capacitor iOS source project, native entry/safe areas and guarded release/preview commands; verify configuration tests and browser regression.
 - [x] Begin read-only assessment of existing learning value, safety residuals and Apple release requirements; preserve current work and holds.
 - [x] Rob chose native iOS delivery, a one-time paid download and all FRCA/FFICM learners; Apple handles the download purchase, not web checkout.
 - [x] Prepare a prioritised readiness plan covering clinical review, learner journeys, privacy, purchase compliance, device testing and submission gates.

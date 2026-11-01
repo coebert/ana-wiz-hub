@@ -5,18 +5,24 @@ import App from "./App.tsx";
 import "./index.css";
 import { startVersionCheck } from "./lib/version-check";
 import { startWebVitalsReporting } from "./lib/web-vitals-reporter";
+import { isNativeApp } from "./lib/native-platform";
 import {
   installStaleChunkRecovery,
   unregisterPreviewServiceWorker,
 } from "./lib/stale-chunk-recovery";
 
-unregisterPreviewServiceWorker();
-installStaleChunkRecovery();
-
-startVersionCheck();
+if (!isNativeApp()) {
+  unregisterPreviewServiceWorker();
+  installStaleChunkRecovery();
+  startVersionCheck();
+} else {
+  document.documentElement.dataset.nativeApp = 'true';
+}
 startWebVitalsReporting();
 
-createRoot(document.getElementById("root")!).render(
+const root = document.getElementById('root');
+if (!root) throw new Error('Application root is missing');
+createRoot(root).render(
   <HelmetProvider>
     <ThemeProvider attribute="class" defaultTheme="light" enableSystem disableTransitionOnChange>
       <App />
