@@ -1,4 +1,6 @@
 import { useState } from "react";
+import { Button } from "@/components/ui/button";
+import { strictDecimal as num, finiteResult } from "@/lib/science-input";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { makeQuote } from "@/components/topic/EndocrinePageShared";
@@ -10,28 +12,23 @@ import { makeQuote } from "@/components/topic/EndocrinePageShared";
 const Q = makeQuote("acids-bases-buffers");
 const KPA_TO_MMHG = 7.50062;
 
-const num = (v: string) => {
-  const n = parseFloat(v);
-  return Number.isFinite(n) ? n : null;
-};
-
 export function BloodGasCalculator() {
   const [unit, setUnit] = useState<"kPa" | "mmHg">("kPa");
   const [v, setV] = useState({ pH: "7.40", pco2: "5.3", po2: "12.0", na: "", cl: "", k: "", fio2: "" });
-  const set = (k: keyof typeof v) => (e: React.ChangeEvent<HTMLInputElement>) => setV({ ...v, [k]: e.target.value.slice(0, 8) });
+  const set = (k: keyof typeof v) => (e: React.ChangeEvent<HTMLInputElement>) => setV({ ...v, [k]: e.target.value });
 
   const pH = num(v.pH), pco2 = num(v.pco2), po2 = num(v.po2), na = num(v.na), cl = num(v.cl), k = num(v.k), fio2 = num(v.fio2);
   const phOk = pH !== null && pH >= 6.5 && pH <= 8.0;
   const pco2Ok = pco2 !== null && pco2 > 0 && pco2 <= (unit === "kPa" ? 30 : 225);
-  const pco2mmHg = pco2Ok ? pco2! * (unit === "kPa" ? KPA_TO_MMHG : 1) : null;
+  const pco2mmHg = pco2Ok && pco2 !== null ? pco2 * (unit === "kPa" ? KPA_TO_MMHG : 1) : null;
 
-  const h = phOk ? Math.pow(10, 9 - pH!) : null;
-  const hco3 = phOk && pco2mmHg !== null ? 2.46e-8 * pco2mmHg / Math.pow(10, -pH!) : null;
-  const sbe = hco3 !== null ? 0.9287 * (hco3 - 24.4 + 14.83 * (pH! - 7.4)) : null;
-  const ag = hco3 !== null && na !== null && cl !== null && na > 0 && cl > 0 ? na - cl - hco3 : null;
-  const agK = ag !== null && k !== null && k >= 0 ? ag + k : null;
+  const h = phOk && pH !== null ? Math.pow(10, 9 - pH) : null;
+  const hco3 = phOk && pH !== null && pco2mmHg !== null ? 2.46e-8 * pco2mmHg / Math.pow(10, -pH) : null;
+  const sbe = hco3 !== null && pH !== null ? 0.9287 * (hco3 - 24.4 + 14.83 * (pH - 7.4)) : null;
+  const ag = hco3 !== null && na !== null && cl !== null && na > 0 && cl > 0 ? finiteResult(na - cl - hco3) : null;
+  const agK = ag !== null && k !== null && k >= 0 ? finiteResult(ag + k) : null;
   const po2kPa = po2 !== null && po2 > 0 ? (unit === "kPa" ? po2 : po2 / KPA_TO_MMHG) : null;
-  const pf = po2kPa !== null && fio2 !== null && fio2 >= 0.21 && fio2 <= 1 ? po2kPa / fio2 : null;
+  const pf = po2kPa !== null && fio2 !== null && fio2 >= 0.21 && fio2 <= 1 ? finiteResult(po2kPa / fio2) : null;
 
   const field = (id: keyof typeof v, label: string) => (
     <div className="space-y-1">
@@ -42,7 +39,7 @@ export function BloodGasCalculator() {
   const out = (label: string, value: number | null, units: string, dp = 1) => (
     <div className="rounded-md border border-border bg-muted/40 p-3">
       <div className="text-xs text-muted-foreground">{label}</div>
-      <div className="text-lg font-semibold text-foreground" aria-live="polite">{value === null ? "—" : `${value.toFixed(dp)} ${units}`}</div>
+      <div className="text-lg font-semibold text-foreground" aria-live="polite">{value === null || !Number.isFinite(value) ? "—" : `${value.toFixed(dp)} ${units}`}</div>
     </div>
   );
 
@@ -54,8 +51,8 @@ export function BloodGasCalculator() {
       </p>
       <div className="flex gap-2" role="radiogroup" aria-label="Gas pressure units">
         {(["kPa", "mmHg"] as const).map((u) => (
-          <button key={u} type="button" role="radio" aria-checked={unit === u} onClick={() => setUnit(u)}
-            className={`rounded-md border px-3 py-1 text-sm ${unit === u ? "border-primary bg-primary text-primary-foreground" : "border-border text-foreground"}`}>{u}</button>
+          <Button variant="outline" key={u} type="button" role="radio" aria-checked={unit === u} onClick={() => { if (u === unit) return; const factor = u === "mmHg" ? KPA_TO_MMHG : 1 / KPA_TO_MMHG; setV(previous => ({ ...previous, pco2: num(previous.pco2) === null ? "" : String(Number(previous.pco2) * factor), po2: num(previous.po2) === null ? "" : String(Number(previous.po2) * factor) })); setUnit(u); }}
+            className={`rounded-md border px-3 py-1 text-sm ${unit === u ? "border-primary bg-primary text-primary-foreground" : "border-border text-foreground"}`}>{u}</Button>
         ))}
       </div>
       <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
@@ -69,6 +66,8 @@ export function BloodGasCalculator() {
       </div>
       {!phOk && <p className="text-sm text-destructive">Enter a pH between 6.5 and 8.0.</p>}
       {phOk && !pco2Ok && <p className="text-sm text-destructive">Enter a positive pCO₂ in {unit}.</p>}
+      {Object.entries(v).some(([, value]) => value.trim() !== "" && num(value) === null) && <p role="status" className="text-sm text-destructive">Use complete decimal numbers with a dot, not commas or partial entries.</p>}
+      {po2kPa !== null && fio2 !== null && fio2 >= 0.21 && fio2 <= 1 && pf === null && <p role="status" className="text-sm text-destructive">Derived ratio is outside the finite calculation range.</p>}
       <div className="grid grid-cols-2 gap-3 sm:grid-cols-3">
         {out("H⁺", h, "nmol/L", 0)}
         {out("Bicarbonate (calculated)", hco3, "mmol/L")}
