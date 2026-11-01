@@ -51,3 +51,4 @@
 - Respiratory rescue facts share BronchospasticRescueTeaching across the chapter, quiz and device figure; source-scoped agent/indication and trial-population distinctions prevent dosing or outcome extrapolation.
 - Withdrawn anatomy figures retain their selectable source-led teaching and stable component identities; AnatomySpatialTeaching supplies spatial replacements without procedural geometry until reviewed redraws are available.
 - Medicine source displays normalize untrusted JSON and group identical URLs without dropping claim provenance; source repairs use ID, slug and exact JSON guards to preserve concurrent clinical work.
+- Repeated paediatric DNC and donation fWIT teaching uses local source-labelled summaries; reference popovers and section lists expose review notes so historical/protocol limitations remain visible.

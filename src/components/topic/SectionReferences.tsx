@@ -92,6 +92,7 @@ export const SectionReferences = ({
                   ) : (
                     <span>{ref.citation}</span>
                   )}
+                  {ref.reviewNote && <p className="mt-1 text-muted-foreground">{ref.reviewNote}</p>}
                   {(ref.pmid || ref.url) && (
                     <span className="inline-flex items-center gap-1 ml-1.5 align-middle">
                       {ref.pmid && (
