@@ -1,0 +1,20 @@
+{
+  "numPassedTests": 2834,
+  "numFailedTests": 1,
+  "numPendingTests": 25,
+  "numTotalTests": 2860,
+  "files": {
+    "total": 123,
+    "passed": 122,
+    "failed": 1
+  },
+  "failures": [
+    {
+      "file": "src/test/diagram-source-citations.test.ts",
+      "test": "Diagram source-citation contract new diagram-source gaps fail against reviewed historical debt",
+      "details": [
+        "AssertionError: expected [ { \u2026(3) } ] to deeply equal []\n    at /dev-server/src/test/diagram-source-citations.test.ts:19:21\n    at file:///persist/node_modules/@vitest/runner/dist/chunk-hooks.js:155:11\n    at file:///persist/node_modules/@vitest/runner/dist/chunk-hooks.js:752:26\n    at file:///persist/node_modules/@vitest/runner/dist/chunk-hooks.js:1897:20\n    at new Promise (<anonymous>)\n    at runWithTimeout (file:///persist/node_modules/@vitest/runner/dist/chunk-hooks.js:1863:10)\n    at runTest (file:///persist/node_modules/@vitest/runner/dist/chunk-hooks.js:1574:12)\n    at runSuite (file:///persist/node_modules/@vitest/runner/dist/chunk-hooks.js:1729:8)\n    at runSuite (file:///persist/node_modules/@vitest/runner/dist/chunk-hooks.js:1729:8)\n    at runFiles (file:///persist/node_modules/@vitest/runner/dist/chunk-hooks.js:1787:3)"
+      ]
+    }
+  ]
+}
