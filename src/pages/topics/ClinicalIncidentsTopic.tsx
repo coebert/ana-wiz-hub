@@ -389,28 +389,20 @@ const ClinicalIncidentsTopic = () => {
           <ExamSection id="section-cico" className="scroll-mt-24" exams={[Exam.FINAL, Exam.FFICM]} curriculumCodes={["RCoA Final — Clinical Anaesthesia"]}>
             <CollapsibleSubsection title="Cannot Intubate, Cannot Oxygenate (CICO)">
             <p className="text-muted-foreground leading-relaxed mb-3">
-              CICO is defined as failed tracheal intubation <strong>plus</strong> failure to oxygenate — e.g. SpO₂ &lt; 90% on FiO₂ 1.0 despite optimised face-mask ventilation and at least one attempt with a supraglottic airway device. It is a "can't breathe" surgical airway emergency and demands immediate front-of-neck access (FONA) rather than repeated intubation attempts <InlineRef topicId="clinical-incidents" refLabel="DAS 2015 (CICO)" />.
+              CICO means failed tracheal intubation with failure to oxygenate using a supraglottic airway and optimised facemask ventilation. Declare CICO and proceed immediately to emergency front-of-neck access; do not wait for a numerical oxygen-saturation threshold <InlineRef topicId="clinical-incidents" refLabel="DAS 2025" />.
             </p>
             <div className="rounded-xl border border-border bg-card p-5 space-y-2 mb-3">
-              <p className="font-semibold text-foreground text-sm">The DAS 2015 four-plan algorithm — how you arrive at CICO</p>
-              <p className="text-xs text-muted-foreground">CICO is the end-point of a structured, time-limited escalation. The value of the algorithm is that each plan has a declared failure point, so the team stops repeating a failing manoeuvre and moves on <InlineRef topicId="clinical-incidents" refLabel="DAS 2015 (CICO)" />.</p>
-              <ul className="list-disc list-inside space-y-1 text-sm text-muted-foreground">
-                <li><strong>Plan A — facemask ventilation and tracheal intubation.</strong> Optimise first-pass conditions: pre-oxygenation to end-tidal O₂ ≥ 0.85 (nasal high-flow or apnoeic oxygenation), ramped/sniffing position, adequate neuromuscular blockade, best laryngoscope (videolaryngoscopy early), external laryngeal manipulation and a bougie. A <strong>maximum of three attempts, plus one further attempt only by a more experienced colleague (3 + 1)</strong>. Each attempt must change something. Then <strong>declare "failed intubation" out loud</strong> and call for help.</li>
-                <li><strong>Plan B — maintain oxygenation via a supraglottic airway.</strong> Insert a second-generation SGA, <strong>maximum three attempts</strong>, changing size or device between attempts. The goal is oxygenation, not intubation. If successful, <strong>stop and think</strong>: wake the patient, proceed with the SGA, intubate through the SGA with a flexible scope, or perform a tracheostomy — a considered decision, not reflex continuation.</li>
-                <li><strong>Plan C — final attempt at facemask ventilation.</strong> Two-person technique, oral and nasal airways, full muscle relaxation (give suxamethonium or rocuronium if any doubt — laryngospasm and inadequate relaxation are reversible causes). If this restores oxygenation, wake the patient. If it fails, <strong>declare "CICO"</strong>.</li>
-                <li><strong>Plan D — emergency front-of-neck access (eFONA).</strong> The scalpel–bougie–tube cricothyroidotomy below is the UK standard technique; needle techniques have a high failure rate and are not recommended as the primary adult approach.</li>
-              </ul>
-              <p className="text-xs text-muted-foreground">Throughout: give 100% oxygen, keep attempt counts out loud, use a cognitive aid, and appoint someone to prepare the FONA set once Plan B is entered — preparation in parallel is what shortens the time to a surgical airway.</p>
+              <p className="font-semibold text-foreground text-sm">DAS 2025 non-obstetric adult pathway</p>
+              <p className="text-sm text-muted-foreground">Plan A: tracheal intubation. Plan B: supraglottic airway. Plan C: facemask ventilation. Plan D: emergency front-of-neck access. Optimise oxygenation throughout, change an unsuccessful approach, and declare failure promptly; attempt limits are ceilings, not targets. Use the current cognitive aid and the separate obstetric/paediatric pathways for those populations <InlineRef topicId="clinical-incidents" refLabel="DAS 2025" />.</p>
             </div>
 
             <div className="rounded-xl border border-border bg-card p-5 space-y-2">
               <p className="font-semibold text-foreground text-sm">Sequence of actions</p>
               <ol className="list-decimal list-inside space-y-1 text-sm text-muted-foreground">
-                <li><strong>Declare "CICO" out loud</strong> and call for help — second anaesthetist and ENT/surgical colleague to attend immediately.</li>
-                <li><strong>Position</strong> the neck extended (unless contraindicated) to optimise access to the cricothyroid membrane.</li>
-                <li>Make one <strong>final attempt</strong> at oxygenation (optimised SGA or facemask with two-person technique, airway adjuncts) only while FONA equipment is being opened and prepared in parallel — do not delay FONA waiting for this to succeed.</li>
-                <li><strong>Scalpel–bougie–tube technique</strong>: palpate or use the laryngeal handshake to identify the cricothyroid membrane; make a transverse stab incision through skin and membrane; rotate the scalpel blade 90° caudally to open the tract; pass a bougie through the incision, angled caudally, into the trachea; railroad a size 6.0 cuffed tracheal tube over the bougie; inflate the cuff; ventilate; confirm placement with capnography and bilateral chest movement.</li>
-                <li>If the cricothyroid membrane is <strong>impalpable</strong> (e.g. obesity, distorted anatomy), make a vertical skin incision first, then use blunt finger dissection down to the trachea before proceeding with the scalpel–bougie–tube technique.</li>
+                <li>Declare CICO, call for help and proceed to eFONA without further airway attempts delaying access.</li>
+                <li>Use the trained DAS 2025 scalpel–bougie–tube technique and cognitive aid. Extend the neck when appropriate.</li>
+                <li>If cricothyroid-membrane anatomy was not explicitly assessed or is uncertain, default to a midline vertical skin incision to expose and identify it. A transverse approach is appropriate only when the membrane is confidently identified or previously marked.</li>
+                <li>Open the membrane, introduce the bougie and railroad a 6.0 cuffed tube; confirm ventilation with waveform capnography <InlineRef topicId="clinical-incidents" refLabel="DAS 2025" />.</li>
               </ol>
             </div>
             <div className="mt-3 p-4 rounded-lg bg-destructive/5 border border-destructive/20">
