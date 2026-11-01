@@ -22,13 +22,13 @@ export default function AdrenalCrisisTopic() {
     keyPoints={[
       { text: "Never delay hydrocortisone for diagnostic tests", cites: ["SfE crisis immediate treatment 2016"] },
       { text: "Hydrocortisone 100 mg IV/IM immediately, then 200 mg per 24 h by infusion or 50 mg every 6 h", cites: ["SfE crisis hydrocortisone 2016"] },
-      { text: "1 litre isotonic saline in the first hour, usually 4–6 L in 24 h", cites: ["SfE crisis fluids 2016"] },
+      { text: "NICE NG243 (2024), age ≥16: 1 litre 0.9% saline over 30 minutes, frequent monitoring and further fluid guided by haemodynamics/electrolytes, not a fixed 24-hour volume", cites: ["NICE NG243 2024 fluids"] },
       { text: "Steroids at ≥5 mg prednisolone equivalent for more than 4 weeks suppress the pituitary–adrenal axis", cites: ["SfE secondary insufficiency 2016"] },
       { text: "Missed sick-day rules are a leading cause of crisis", cites: ["SfE crisis sick day 2016"] },
     ]}
     quizQuestions={quiz}
     coreConcepts={<div className="space-y-8">
-      <p className="text-muted-foreground leading-relaxed">These lessons adopt the Society for Endocrinology 2016 adrenal crisis guidance, and contrast it with the Surviving Sepsis Campaign 2021 steroid recommendations. Quotations are the sources' own wording; surrounding explanation is teaching synthesis, not patient-specific prescription. Return to <Link to="/intensive-care/icu-endocrine-emergencies" className="text-primary underline">Endocrine Emergencies</Link> for the other endocrine emergencies.</p>
+      <p className="text-muted-foreground leading-relaxed">These lessons use NICE NG243 (2024) adult guidance alongside accurately dated Society for Endocrinology 2016 quotations. Essential adrenal hormone replacement is distinct from septic-shock adjunct therapy; historical SSC 2021 quotations are retained, with current SSC 2026 teaching on the sepsis page. Quotations are the sources' own wording; surrounding explanation is teaching synthesis, not patient-specific prescription. Return to <Link to="/intensive-care/icu-endocrine-emergencies" className="text-primary underline">Endocrine Emergencies</Link> for the other endocrine emergencies.</p>
       <ExamSection id="crisis-recognition" exams={exams}><CollapsibleSubsection title="Recognition and who is at risk" defaultOpen><AdrenalCrisisRecognitionTeaching /></CollapsibleSubsection></ExamSection>
       <ExamSection id="crisis-treatment" exams={exams}><CollapsibleSubsection title="Immediate treatment: hydrocortisone and fluids"><AdrenalCrisisTreatmentTeaching /></CollapsibleSubsection></ExamSection>
       <ExamSection id="crisis-recovery" exams={exams}><CollapsibleSubsection title="Recovery, fludrocortisone and preventing the next crisis"><AdrenalCrisisRecoveryTeaching /></CollapsibleSubsection></ExamSection>

@@ -49,7 +49,7 @@ const steps: CascadeStep[] = [
     detail: "Massive parenchymal loss",
     title: "Loss of metabolic capacity",
     body:
-      "Acute liver failure (paracetamol, viral, ischaemic, autoimmune) destroys hepatocytes. Functional hepatic mass falls below the threshold needed for urea synthesis, gluconeogenesis and detoxification. Onset of encephalopathy within 8 weeks of jaundice (in a previously healthy liver) defines ALF.",
+      "Acute liver failure (paracetamol, viral, ischaemic, autoimmune) destroys hepatocytes. Functional hepatic mass falls below the threshold needed for urea synthesis, gluconeogenesis and detoxification. ALF is acute liver injury with coagulopathy and encephalopathy without underlying chronic liver disease. The named O'Grady/EASL jaundice-to-HE framework is hyperacute ≤7 days, acute 8–28 days, subacute 5–12 weeks; 8 weeks is a historical definition, not universal.",
     sources: [BJA_ALF, EASL],
   },
   {
@@ -70,10 +70,10 @@ const steps: CascadeStep[] = [
   },
   {
     node: "Astrocyte glutamine",
-    detail: "Osmotic load ↑",
-    title: "Osmotic swelling",
+    detail: "Osmotic / mitochondrial hypotheses",
+    title: "Glutamine accumulation: osmotic and mitochondrial effects",
     body:
-      "Glutamine accumulates inside astrocytes — an osmotically active solute that draws water in (the 'Trojan-horse' hypothesis). Astrocytes swell (Alzheimer type-II change). Mitochondrial permeability transition adds oxidative stress, depleting ATP and impairing the Na⁺/K⁺ ATPase.",
+      "Glutamine accumulation may contribute an osmotic load and astrocyte swelling. Separately, the proposed mitochondrial 'Trojan-horse' mechanism carries ammonia as glutamine into mitochondria; glutaminase releases ammonia, contributing to oxidative/nitrosative stress and permeability transition. These are contributory hypotheses, not a complete proven causal pathway. Alzheimer type-II equivalence is not established by this schematic.",
     sources: [TROJAN_HORSE],
   },
   {
@@ -89,7 +89,7 @@ const steps: CascadeStep[] = [
     detail: "Plateau waves",
     title: "Intracranial hypertension",
     body:
-      "Sustained ICP > 20 mmHg compromises CPP (CPP = MAP − ICP). Plateau waves (Lundberg A) signal exhausted compliance. Clinical features: hypertension, bradycardia, abnormal pupils, posturing. Treat with osmotherapy (3% saline, mannitol), hyperventilation to PaCO₂ 4–4.5 kPa, sedation, head-up 30°.",
+      "Sustained ICP > 20 mmHg compromises CPP (CPP = MAP − ICP). Plateau waves (Lundberg A) signal exhausted compliance. Clinical features: hypertension, bradycardia, abnormal pupils, posturing. Treat raised ICP with appropriate sedation, head-up positioning and specialist osmotherapy. Avoid routine prophylactic forced hyperventilation; a short rescue period may be used for refractory life-threatening intracranial hypertension or impending herniation while definitive treatment is arranged.",
     sources: [AASLD, BJA_ALF],
   },
   {
@@ -97,7 +97,7 @@ const steps: CascadeStep[] = [
     detail: "Uncal / tonsillar",
     title: "Brainstem compression",
     body:
-      "Without rapid intervention (and ultimately liver transplantation) brainstem compression follows — uncal herniation through the tentorium or tonsillar herniation through foramen magnum. King's College Criteria identify patients needing super-urgent transplant listing before this point.",
+      "Uncontrolled intracranial hypertension can cause uncal or tonsillar herniation. Early liver-centre discussion is essential; transplantation may be lifesaving when indicated, but some patients recover with their native liver. King's criteria inform specialist prognosis/listing assessment and must not delay referral.",
     sources: [KINGS, EASL],
   },
 ];
@@ -110,7 +110,7 @@ export const ALFCerebralOedemaDiagram = () => (
     >
             <MechanismCascadeDiagram
       title="Acute Liver Failure — Ammonia to Cerebral Oedema"
-      subtitle="The pathway from hepatic necrosis to herniation."
+      subtitle="Contributory mechanisms and complications; not an inevitable sequence or a complete proven pathway."
       accent="icu"
       steps={steps}
     />

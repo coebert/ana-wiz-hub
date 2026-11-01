@@ -1342,7 +1342,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the full FAQ co
   ],
   "/intensive-care/acute-liver-failure": [
     {
-      "a": "Arterial pH <7.30 after resuscitation, OR all three of: PT >100 s (INR >6.5), creatinine >300 µmol/L, and grade III/IV encephalopathy.",
+      "a": "Arterial pH <7.30 after resuscitation, OR all three of: PT >100 s (INR >6.5), creatinine >300 µmol/L, and grade III/IV encephalopathy. These inform prognosis and specialist listing assessment, not automatic eligibility. Discuss acute liver injury/ALF with a liver unit early; do not wait for criteria.",
       "q": "What are the King's College criteria for liver transplantation in paracetamol-induced ALF?",
     },
     {
@@ -6169,7 +6169,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the synthesised
         "@type": "Question",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Arterial pH <7.30 after resuscitation, OR all three of: PT >100 s (INR >6.5), creatinine >300 µmol/L, and grade III/IV encephalopathy.",
+          "text": "Arterial pH <7.30 after resuscitation, OR all three of: PT >100 s (INR >6.5), creatinine >300 µmol/L, and grade III/IV encephalopathy. These inform prognosis and specialist listing assessment, not automatic eligibility. Discuss acute liver injury/ALF with a liver unit early; do not wait for criteria.",
         },
         "name": "What are the King's College criteria for liver transplantation in paracetamol-induced ALF?",
       },

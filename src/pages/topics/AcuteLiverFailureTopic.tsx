@@ -1,3 +1,4 @@
+import { ACLF_CLASSIFICATION } from "@/lib/c4-clinical-rules";
 import { Exam } from "@/data/curriculum";
 import { ExamSection } from "@/components/exam/ExamSection";
 import { TopicTemplate } from "@/components/topic/TopicTemplate";
@@ -11,7 +12,7 @@ import { CollapsibleSubsection } from "@/components/topic/CollapsibleSubsection"
 import { InlineRef } from "@/components/references/InlineRef";
 
 const acuteLiverFailureFaqs: Array<[string, string]> = [
-  ["What are the King's College criteria for liver transplantation in paracetamol-induced ALF?", "Arterial pH <7.30 after resuscitation, OR all three of: PT >100 s (INR >6.5), creatinine >300 µmol/L, and grade III/IV encephalopathy."],
+  ["What are the King's College criteria for liver transplantation in paracetamol-induced ALF?", "Arterial pH <7.30 after resuscitation, OR all three of: PT >100 s (INR >6.5), creatinine >300 µmol/L, and grade III/IV encephalopathy. These inform prognosis and specialist listing assessment, not automatic eligibility. Discuss acute liver injury/ALF with a liver unit early; do not wait for criteria."],
   ["How is raised intracranial pressure managed in acute liver failure?", "Aim for serum sodium 145–155 mmol/L with hypertonic saline, head-up 30°, mannitol or hypertonic saline boluses for surges, mild hypothermia (35–36 °C) if refractory, and avoid hypotonic fluids and hypercapnia."],
   ["When is N-acetylcysteine indicated in non-paracetamol ALF?", "Lee et al. (2009) studied a 72-hour NAC infusion in adults with non-paracetamol ALF. Overall survival was not significantly improved; transplant-free survival benefit was concentrated in grade I–II encephalopathy. Discuss use and duration with a liver centre; the trial does not establish a completed 21-hour paracetamol course as the non-paracetamol regimen."],
 ];
@@ -19,9 +20,9 @@ const acuteLiverFailureFaqs: Array<[string, string]> = [
 const objectives = [
   "Define and classify ALF (hyperacute/acute/subacute) and identify common UK aetiologies.",
   "Deliver organ-system-based ICU management of ALF, including ICP control in grade III/IV encephalopathy.",
-  "Apply King's College Criteria to identify patients requiring emergency liver transplant assessment.",
+  "Recognise ALF requiring early liver-unit assessment before listing criteria; use King's College Criteria to inform prognosis and specialist listing discussion.",
   "Define ACLF using EASL-CLIF, grade by organ failures, and prognosticate using day 3–7 trajectory.",
-  "Diagnose and manage HRS-AKI using ICA 2015 criteria, terlipressin + albumin, and noradrenaline alternatives.",
+  "Diagnose HRS-AKI using ADQI–ICA 2024 criteria; use individually titrated vasoconstrictor treatment with volume-guided albumin and specialist alternatives.",
   "Use Child-Pugh, MELD/UKELD, Maddrey DF and Lille scores to risk-stratify and guide steroid therapy.",
 ];
 
@@ -37,7 +38,7 @@ const workedExamples: WorkedExample[] = [
     ),
     working: (
       <>
-        King's paracetamol criteria — list if{" "}
+        King's paracetamol criteria indicate poor prognosis and immediate transplant-centre assessment, not automatic listing, if{" "}
         <strong>pH &lt;7.3 after resuscitation</strong> (single most powerful predictor) OR all
         three: INR &gt;6.5, creatinine &gt;300 µmol/L, grade III/IV encephalopathy. This patient
         meets the pH criterion AND the triple criteria.
@@ -45,8 +46,7 @@ const workedExamples: WorkedExample[] = [
     ),
     answer: (
       <>
-        <strong>Refer immediately to transplant centre.</strong> Without transplant, mortality
-        approaches 90%. Continue NAC, manage cerebral oedema (head-up 30°, target Na 145–155,
+        <strong>Refer immediately to transplant centre.</strong> Do not wait for listing criteria before liver-unit referral; some patients recover with their native liver, and listing is a specialist decision. Continue NAC, manage cerebral oedema (head-up 30°, target Na 145–155,
         consider ICP monitoring, hypertonic saline for surges), CRRT for renal failure (also
         controls ammonia and avoids ICP swings of IHD).
       </>
@@ -57,26 +57,21 @@ const workedExamples: WorkedExample[] = [
     title: "HRS-AKI diagnosis and treatment",
     scenario: (
       <>
-        Patient with alcoholic cirrhosis admitted with SBP. Creatinine rises from 95 → 220 µmol/L
-        over 5 days despite antibiotics. Urine Na 12 mEq/L, no proteinuria, USS normal. Diuretics
-        stopped. After 48 h of 20% albumin 1 g/kg → no improvement. Diagnosis and next step?
+        Patient with alcohol-related cirrhosis and ascites admitted with SBP. Creatinine rises from 95 → 220 µmol/L over 5 days despite antibiotics. Assess volume status: resuscitate appropriately only if depleted; AKI persists without improvement at 24 h after clinically indicated adequate resuscitation. Review urine sediment, renal imaging, medicines and competing primary causes. Does this meet HRS-AKI criteria?
       </>
     ),
     working: (
       <>
-        AKI criteria met (≥50% rise from baseline). Urine Na &lt;20 + low FENa + bland urine + no
-        obstruction → functional AKI. Failure to respond to albumin volume expansion confirms{" "}
-        <strong>HRS-AKI</strong> (ICA 2015). Common precipitant: SBP.
+        AKI criteria are met (≥50% creatinine rise within 7 days). HRS-AKI requires cirrhosis with ascites, qualifying creatinine and/or urine-output change, no improvement within 24 h after adequate resuscitation when indicated, and no strong alternative primary cause. Low urine sodium/FENa or a bland urine alone cannot confirm HRS; structural injury, proteinuria or CKD may coexist. No routine 48 h albumin challenge is required.<InlineRef topicId="acute-liver-failure" refLabel="ADQI–ICA HRS 2024" />
       </>
     ),
     answer: (
       <>
         Start <strong>terlipressin using one complete HRS protocol</strong>, with the dose expressed explicitly as acetate or free base, plus albumin adjusted to volume status. The EMA continuous-infusion option starts at 2 mg terlipressin acetate/24 h and is titrated to a maximum of 12 mg/24 h. CONFIRM instead studied intermittent acetate boluses starting at 1 mg every 6 h, with protocol-based escalation; it did not establish the safety benefit of continuous infusion. Follow response/adverse-effect stopping criteria and a maximum 14-day course<InlineRef topicId="acute-liver-failure" refLabel="EMA Terlipressin 2022" /><InlineRef topicId="acute-liver-failure" refLabel="CONFIRM 2021" />.
-        If contraindicated (IHD, PVD): noradrenaline to ↑ MAP by 10 mmHg + albumin. Non-responder
-        by day 4 → CRRT bridge to transplant assessment.
+        If terlipressin cannot be used, consider specialist noradrenaline treatment with individually adjusted albumin. RRT is assessed from complications, volume status, trajectory, goals and transplant plan; day 4 alone is not an indication.<InlineRef topicId="acute-liver-failure" refLabel="ADQI–ICA RRT 2024" />
       </>
     ),
-   cites: ["King's Criteria"],
+   cites: ["ADQI–ICA HRS 2024", "ADQI–ICA RRT 2024", "EMA Terlipressin 2022", "CONFIRM 2021"],
   },
   {
     title: "Maddrey DF and the Lille decision",
@@ -123,8 +118,8 @@ const AcuteLiverFailureTopic = () => {
         { text: "Do NOT correct INR unless bleeding — it is a prognostic marker (King's criteria)", cites: ["King's Criteria"] },
         { text: "Cerebral oedema is the leading cause of death in ALF — manage ICP aggressively in grade III/IV encephalopathy", cites: ["BJA Educ 2017"] },
         { text: "King's criteria (paracetamol): pH <7.3 is the strongest single predictor for transplant need", cites: ["BJA Educ 2019"] },
-        { text: "ACLF is graded by number of organ failures (CLIF-C) — grade 3 has ~75% 28-day mortality", cites: ["King's Criteria"] },
-        { text: "Trajectory at day 3–7 is more prognostically important than admission ACLF grade", cites: ["BJA Educ 2017"] },
+        { text: "EASL–CLIF ACLF classification includes specified single-organ failure/renal dysfunction/HE combinations, not organ count alone; grade 3 alone does not establish futility", cites: ["EASL ACLF 2023"] },
+        { text: "Reassess ACLF after 3–7 days of full organ support using trajectory, persistent failures and transplant candidacy; grade alone is not futility", cites: ["EASL ACLF 2023"] },
         { text: "HRS-AKI: protocol-titrated terlipressin with explicit acetate/free-base units plus volume-guided albumin; noradrenaline when terlipressin cannot be used", cites: ["BJA Educ 2019"] },
         { text: "Alcoholic hepatitis: Maddrey DF ≥32 → prednisolone; Lille >0.45 at day 7 → stop steroids (non-responder)", cites: ["King's Criteria"] },
         { text: "Do NOT restrict protein in hepatic encephalopathy — target 1.2–1.5 g/kg/day", cites: ["BJA Educ 2017"] },
@@ -141,14 +136,14 @@ const AcuteLiverFailureTopic = () => {
         objectives: [
           "BJA Educ 2017",
           "King's Criteria",
-          "BJA Educ 2019",
+          "BJA Educ 2019", "EASL ACLF 2023", "ADQI–ICA HRS 2024",
         ],
         keyPoints: [
           "BJA Educ 2017",
           "King's Criteria",
-          "BJA Educ 2019",
+          "BJA Educ 2019", "EASL ACLF 2023", "ADQI–ICA HRS 2024",
         ],
-        workedExamples: ["BJA Educ 2017", "King's Criteria", "BJA Educ 2019"],
+        workedExamples: ["BJA Educ 2017", "King's Criteria", "BJA Educ 2019", "ADQI–ICA HRS 2024", "ADQI–ICA RRT 2024"],
       }}
       coreConcepts={
     <>
@@ -157,7 +152,7 @@ const AcuteLiverFailureTopic = () => {
         <div>
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Definition & Aetiology</h2>
           <p className="text-muted-foreground leading-relaxed mb-3">
-            Acute liver failure (ALF): severe liver injury with coagulopathy (INR ≥1.5) and encephalopathy in a patient without pre-existing liver disease. Classified by jaundice-to-encephalopathy interval: hyperacute ({'<'}7 days), acute (7–28 days), subacute (28 days–6 months).
+            Acute liver failure (ALF): acute liver injury with coagulopathy (INR ≥1.5) and encephalopathy in a patient without underlying chronic liver disease. The named O'Grady/EASL jaundice-to-encephalopathy framework is hyperacute (≤7 days), acute (8–28 days), subacute (5–12 weeks); an 8-week definition is historical, not universal. Discuss significant acute liver injury or ALF with a liver unit early, before King's listing criteria are met.<InlineRef topicId="acute-liver-failure" refLabel="EASL ALF 2017" /><InlineRef topicId="acute-liver-failure" refLabel="NHS GGC ALF referral" />
           </p>
           <div className="grid sm:grid-cols-2 gap-3">
             {[
@@ -267,20 +262,15 @@ const AcuteLiverFailureTopic = () => {
         <div>
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Acute-on-Chronic Liver Failure (ACLF)</h2>
           <p className="text-muted-foreground leading-relaxed mb-3">
-            ACLF is a distinct syndrome: acute deterioration in a patient with pre-existing chronic liver disease, characterised by organ failure(s) and high short-term mortality. It differs from a simple acute decompensation (AD) event (ascites, variceal bleed, encephalopathy, infection) by the presence of extra-hepatic organ failures.
+            EASL–CLIF ACLF is acutely decompensated cirrhosis with specified organ-failure/dysfunction combinations and high short-term mortality. Extrahepatic failure is not a universal requirement; single hepatic failure may qualify with the required renal dysfunction or mild HE.<InlineRef topicId="acute-liver-failure" refLabel="EASL ACLF 2023" />
           </p>
 
           <h3 className="text-lg font-serif font-bold text-foreground mb-2">EASL–CLIF Definition & Grading</h3>
           <p className="text-muted-foreground leading-relaxed mb-3">
-            The CLIF-SOFA / CLIF-C OF score defines organ failures. ACLF is graded by number of organ failures, which directly predicts 28-day mortality:
+            The CLIF-SOFA / CLIF-C OF score defines organ failures. Grading uses the complete single-organ exceptions below, then organ counts for grades 2/3. Approximate 28-day mortality figures describe the historical CANONIC population, not individual prognosis:
           </p>
           <div className="space-y-2 mb-4">
-            {[
-              { grade: "No ACLF", description: "Acute decompensation without organ failure", mortality: "~5%" },
-              { grade: "ACLF Grade 1", description: "Single organ failure (renal alone, or single non-renal OF + renal dysfunction)", mortality: "~23%" },
-              { grade: "ACLF Grade 2", description: "Two organ failures", mortality: "~32%" },
-              { grade: "ACLF Grade 3", description: "Three or more organ failures", mortality: "~75%" },
-            ].map((g) => (
+            {ACLF_CLASSIFICATION.map((g) => (
               <div key={g.grade} className="p-3 rounded border border-border">
                 <div className="flex justify-between items-start mb-1">
                   <p className="font-bold text-primary text-sm">{g.grade}</p>
@@ -293,6 +283,7 @@ const AcuteLiverFailureTopic = () => {
 
           <CLIFCACLFDiagram />
 
+          <p className="text-xs text-muted-foreground">Classification and trajectory recommendations: <InlineRef topicId="acute-liver-failure" refLabel="EASL ACLF 2023" /></p>
           <h3 className="text-lg font-serif font-bold text-foreground mb-2">Precipitants</h3>
           <div className="grid sm:grid-cols-2 gap-3 mb-4">
             {[
@@ -311,10 +302,10 @@ const AcuteLiverFailureTopic = () => {
           <h3 className="text-lg font-serif font-bold text-foreground mb-2">ICU Management of ACLF</h3>
           <div className="space-y-2 mb-4">
             {[
-              { system: "General Principles", management: "Identify and treat precipitant. Early ICU admission for grade ≥2. Discuss with hepatology/transplant centre. Reassess trajectory at 48–72 h — futility if worsening ACLF grade 3 at day 3–7." },
+              { system: "General Principles", management: "Identify and treat precipitant. Early ICU/hepatology/transplant discussion. Reassess prognosis after 3–7 days of full organ support; worsening grade 3 alone does not establish futility." },
               { system: "Hepatic", management: "Alcoholic hepatitis: Maddrey discriminant function (DF ≥32 = severe). Prednisolone 40 mg/day if no contraindication (sepsis, GI bleed, renal failure). Lille score at day 7 — stop if >0.45 (non-responder). NAC may be used as adjunct." },
               { system: "Cardiovascular", management: "Portal hypertension + systemic vasodilation → hyperdynamic state. Noradrenaline first-line. Terlipressin for hepatorenal syndrome (HRS-AKI). Target MAP ≥65 mmHg." },
-              { system: "Renal", management: "HRS-AKI: terlipressin + albumin (ICA criteria). CRRT if not responding. Avoid nephrotoxins (NSAIDs, aminoglycosides, IV contrast)." },
+              { system: "Renal", management: "HRS-AKI: full ADQI–ICA 2024 assessment, vasoconstrictor plus individually volume-adjusted albumin. RRT depends on clinical indications, trajectory and transplant plan. Review nephrotoxic exposures; indicated contrast imaging requires individual risk–benefit assessment, not blanket withholding." },
               { system: "Neurological", management: "Hepatic encephalopathy: lactulose (target 2–3 soft stools/day) ± rifaximin. Grade III/IV: intubate for airway protection. Ammonia >150 µmol/L associated with cerebral oedema risk." },
               { system: "Coagulation", management: "Rebalanced haemostasis — global tests (TEG/ROTEM) more informative than INR. Bleeding risk from portal hypertension (varices) not coagulopathy per se. Transfuse to clinical targets, not lab values." },
               { system: "Infection", management: "Cirrhosis-associated immune dysfunction (CAID). Low threshold for cultures and empiric broad-spectrum antibiotics. SBP prophylaxis (norfloxacin/ciprofloxacin). Consider antifungals if deteriorating on antibiotics." },
@@ -329,40 +320,27 @@ const AcuteLiverFailureTopic = () => {
 
           <h3 className="text-lg font-serif font-bold text-foreground mb-2">Hepatorenal Syndrome (HRS)</h3>
           <p className="text-muted-foreground leading-relaxed mb-3">
-            Hepatorenal syndrome is functional renal failure in advanced liver disease caused by splanchnic arterial vasodilation → reduced effective circulating volume → renal vasoconstriction. Kidneys are structurally normal (may function post-transplant). Revised ICA 2015 criteria classify HRS into two types:
+            HRS is a haemodynamic kidney dysfunction phenotype in cirrhosis with ascites and may coexist with tubular/structural injury, proteinuria or CKD. ADQI–ICA 2024 replaces historical type 1/2 terminology with HRS-AKI, HRS-AKD and HRS-CKD.<InlineRef topicId="acute-liver-failure" refLabel="ADQI–ICA HRS 2024" />
           </p>
-
           <div className="grid sm:grid-cols-2 gap-3 mb-4">
-            <div className="p-4 rounded-lg border border-border" style={{ borderLeftWidth: 4, borderLeftColor: "#ef4444" }}>
-              <p className="font-bold text-foreground text-sm mb-1">HRS-AKI (formerly Type 1)</p>
-              <p className="text-xs text-muted-foreground mb-2">Rapidly progressive — doubling of creatinine to {'>'} 2.5 mg/dL (221 µmol/L) in {'<'} 2 weeks</p>
-              <ul className="text-xs text-muted-foreground space-y-1 list-disc list-inside">
-                <li>Often precipitated by SBP or GI bleeding</li>
-                <li>Median survival untreated: ~2 weeks</li>
-                <li>Now diagnosed using AKI criteria: ↑ creatinine ≥0.3 mg/dL within 48 h or ≥50% from baseline within 7 days</li>
-                <li>Must exclude other causes (nephrotoxins, shock, obstruction, parenchymal disease)</li>
-              </ul>
+            <div className="p-4 rounded-lg border border-border">
+              <p className="font-bold text-foreground text-sm mb-1">HRS-AKI</p>
+              <p className="text-xs text-muted-foreground">Cirrhosis with ascites; creatinine increase ≥26.5 µmol/L (0.3 mg/dL) within 48 h or ≥50% within 7 days and/or urine output ≤0.5 mL/kg/h for ≥6 h; no improvement within 24 h after adequate resuscitation when clinically indicated; no strong alternative explanation as the primary cause. Low urinary sodium/FENa is not diagnostic. Routine 48 h albumin is not required.</p>
             </div>
-            <div className="p-4 rounded-lg border border-border" style={{ borderLeftWidth: 4, borderLeftColor: "#f59e0b" }}>
-              <p className="font-bold text-foreground text-sm mb-1">HRS-NAKI (formerly Type 2)</p>
-              <p className="text-xs text-muted-foreground mb-2">Slowly progressive or stable renal impairment — eGFR {'<'} 60 mL/min for {'>'} 3 months</p>
-              <ul className="text-xs text-muted-foreground space-y-1 list-disc list-inside">
-                <li>Typically associated with refractory ascites</li>
-                <li>Better prognosis than HRS-AKI — median survival months</li>
-                <li>Now termed HRS-CKD (chronic) or HRS-AKD (acute kidney disease, 3–90 days)</li>
-                <li>Management focuses on volume status, avoiding nephrotoxins, TIPS if appropriate</li>
-              </ul>
+            <div className="p-4 rounded-lg border border-border">
+              <p className="font-bold text-foreground text-sm mb-1">HRS-AKD / HRS-CKD</p>
+              <p className="text-xs text-muted-foreground">Persistent HRS kidney dysfunction for &lt;90 days is HRS-AKD (classified HRS-AKI if AKI criteria are met); persistence &gt;90 days is HRS-CKD. No 3-day lower bound is imposed. HRS-AKI may occur on pre-existing CKD. Duration and phenotype need specialist assessment.</p>
             </div>
           </div>
 
           <p className="text-sm font-semibold text-foreground mb-2">Management Algorithm (HRS-AKI)</p>
           <div className="space-y-2 mb-4">
             {[
-              { step: "Step 1", action: "Stop diuretics, nephrotoxins, and vasodilators. Exclude other causes of AKI (urinalysis, USS, urine sodium <20 mEq/L in HRS)." },
-              { step: "Step 2", action: "Volume expansion with 20% albumin (1 g/kg, max 100 g) over 48 hours. If no response → HRS-AKI diagnosis confirmed." },
+              { step: "Step 1", action: "Assess volume status, precipitants, medicines, urine sediment and renal imaging; investigate alternative primary causes. Review diuretics according to volume status rather than reflex withdrawal; low urine sodium/FENa alone is not diagnostic." },
+              { step: "Step 2", action: "In cirrhosis with ascites and qualifying AKI, assess absence of improvement within 24 h after adequate resuscitation WHEN clinically indicated, with no strong alternative primary cause. Do not mandate 48 h albumin; avoid reflex albumin loading in euvolaemia or overload." },
               { step: "Step 3", action: "Terlipressin plus albumin adjusted to volume status. Select one HRS regimen: EMA continuous infusion starts at 2 mg terlipressin acetate/24 h, with response-guided titration to at most 12 mg/24 h; bolus protocols have different starting/titration rules. Monitor creatinine, perfusion, oxygenation and fluid status, and stop for serious adverse effects or protocol-defined non-response; maximum course 14 days." },
               { step: "Step 4", action: "If terlipressin unavailable or contraindicated: noradrenaline infusion (target ↑ MAP by 10 mmHg) + albumin. Midodrine + octreotide is inferior but used where vasopressors not feasible." },
-              { step: "Step 5", action: "Non-responders (no ↓ creatinine by day 4): consider CRRT as bridge to transplant. TIPS in selected patients without advanced liver failure. Liver transplantation is the definitive treatment." },
+              { step: "Step 5", action: "Individualise RRT to AKI complications, volume status, trajectory, goals and transplant candidacy, not day 4 or creatinine alone. Seek timely hepatology/renal/transplant assessment; selected interventions depend on clinical suitability." },
             ].map((s) => (
               <div key={s.step} className="flex gap-3 p-3 rounded border border-border">
                 <span className="font-bold text-primary text-sm whitespace-nowrap">{s.step}</span>
@@ -371,6 +349,7 @@ const AcuteLiverFailureTopic = () => {
             ))}
           </div>
 
+          <p className="text-xs text-muted-foreground"><InlineRef topicId="acute-liver-failure" refLabel="ADQI–ICA HRS 2024" /><InlineRef topicId="acute-liver-failure" refLabel="ADQI–ICA RRT 2024" /></p>
           <div className="p-3 rounded-lg bg-secondary/50 border border-primary/20 mb-4">
             <p className="text-sm font-semibold text-foreground mb-1">⚠️ Terlipressin Safety</p>
             <p className="text-sm text-muted-foreground">
@@ -385,9 +364,9 @@ const AcuteLiverFailureTopic = () => {
           <div className="grid sm:grid-cols-2 gap-3 mb-3">
             {[
               { factor: "ICU Mortality", detail: "Overall ICU mortality for decompensated ALD: 30–50%. ACLF grade 3: ICU mortality approaches 70–80%." },
-              { factor: "Trajectory Matters", detail: "Patients whose CLIF-C ACLF score improves by day 3–7 have significantly better survival. Worsening or static grade 3 ACLF at day 3–7 has >90% mortality." },
+              { factor: "Trajectory Matters", detail: "Reassess after 3–7 days of full organ support. Trajectory and persistent organ failures matter; grade 3 alone neither determines individual mortality nor establishes futility." },
               { factor: "Transplant Candidacy", detail: "Historically required 6 months abstinence. Increasingly, early transplant considered for selected patients with severe alcoholic hepatitis not responding to medical therapy (post ACCELERATE-AH trial data)." },
-              { factor: "Futility Considerations", detail: "ACLF grade 3 with ≥4 organ failures, rising lactate, and no transplant option — mortality approaches 100%. Palliative care discussion essential." },
+              { factor: "Futility Considerations", detail: "After 3–7 days of full organ support, patients with no salvage transplant option and ≥4 organ failures OR CLIF-C ACLF >70 may warrant individual multidisciplinary consideration of continuing support, withdrawal and palliative care. This is not automatic futility; reassess trajectory and candidacy." },
             ].map((p) => (
               <div key={p.factor} className="p-3 rounded-lg border border-border">
                 <p className="font-semibold text-foreground text-sm">{p.factor}</p>
@@ -396,6 +375,7 @@ const AcuteLiverFailureTopic = () => {
             ))}
           </div>
 
+          <p className="text-xs text-muted-foreground"><InlineRef topicId="acute-liver-failure" refLabel="EASL ACLF 2023" /> Prognosis depends on trajectory and transplant candidacy; selected severe ACLF patients may benefit from transplantation.</p>
           <h3 className="text-lg font-serif font-bold text-foreground mb-2">Prognostic Scores</h3>
           <div className="space-y-2">
             {[
@@ -424,7 +404,7 @@ const AcuteLiverFailureTopic = () => {
           <ExamPitfallsCallout
             accent="icu"
             pitfalls={[
-              "King's College Criteria (paracetamol): arterial pH <7.30 OR (INR >6.5 + creat >300 + grade III/IV encephalopathy) — transplant referral.",
+              "King's College Criteria (paracetamol): arterial pH <7.30 OR (INR >6.5 + creat >300 + grade III/IV encephalopathy) — poor-prognosis criteria informing specialist assessment; do not wait for these before liver-unit referral.",
               "Cerebral oedema is the leading cause of death — ICP monitoring controversial; treat with osmotherapy, head-up, mild hypothermia.",
               "Paracetamol toxicity: NAC regardless of timing or level if ALF established; treat for 'staggered' OD or unknown timing.",
               "Avoid hypoglycaemia (10–50% glucose infusion), correct coagulopathy only for bleeding/procedures (INR is also a prognostic marker).",

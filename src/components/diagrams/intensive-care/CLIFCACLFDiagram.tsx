@@ -1,3 +1,5 @@
+import { ACLF_CLASSIFICATION } from "@/lib/c4-clinical-rules";
+import { InlineRef } from "@/components/references/InlineRef";
 import { DiagramFigure } from "../_shared/DiagramFigure";
 const CLIFCACLFDiagram = () => {
   const organFailures = [
@@ -9,12 +11,7 @@ const CLIFCACLFDiagram = () => {
     { organ: "Respiration", criterion: "PaO₂/FiO₂ ≤200\nor SpO₂/FiO₂ ≤214", color: "#06b6d4" },
   ];
 
-  const grades = [
-    { grade: "No ACLF", criteria: "No organ failure\nOR single non-renal OF\nwithout renal/cerebral dysfunction", mortality: "~5%", color: "#22c55e", bg: "#22c55e15" },
-    { grade: "Grade 1", criteria: "Single renal failure\nOR single non-renal OF\n+ renal dysfunction (Cr 1.5–1.9)\nor HE grade I–II", mortality: "~23%", color: "#f59e0b", bg: "#f59e0b15" },
-    { grade: "Grade 2", criteria: "Two organ failures", mortality: "~32%", color: "#f97316", bg: "#f9731615" },
-    { grade: "Grade 3", criteria: "Three or more\norgan failures", mortality: "~75%", color: "#ef4444", bg: "#ef444415" },
-  ];
+  const grades = ACLF_CLASSIFICATION.map((g, i) => ({ grade: g.grade, criteria: g.description, mortality: g.mortality, color: ["hsl(var(--primary))", "hsl(var(--foreground))", "hsl(var(--foreground))", "hsl(var(--destructive))"][i], bg: "hsl(var(--muted))" }));
 
   return (
     <DiagramFigure
@@ -44,29 +41,30 @@ const CLIFCACLFDiagram = () => {
   
         {/* Arrow */}
         <div className="flex justify-center my-3">
-          <svg width="24" height="32" viewBox="0 0 24 32">
+          <svg aria-hidden="true" focusable="false" width="24" height="32" viewBox="0 0 24 32">
             <path d="M12 0 L12 24 M4 18 L12 28 L20 18" stroke="currentColor" strokeWidth="2" fill="none" className="text-muted-foreground" />
           </svg>
         </div>
   
         {/* Grading */}
         <div className="mb-4">
-          <p className="text-sm font-semibold text-foreground mb-2">Count organ failures → Assign ACLF grade</p>
+          <p className="text-sm font-semibold text-foreground mb-2">Apply single-organ exceptions, then count failures for grades 2/3</p>
           <div className="space-y-2">
             {grades.map((g) => (
               <div
                 key={g.grade}
-                className="flex items-center gap-3 p-3 rounded-lg border border-border"
+                className="flex flex-wrap items-start gap-3 p-3 rounded-lg border border-border"
                 style={{ backgroundColor: g.bg, borderLeftWidth: 4, borderLeftColor: g.color }}
               >
                 <span className="font-bold text-sm min-w-[80px]" style={{ color: g.color }}>{g.grade}</span>
-                <span className="text-xs text-muted-foreground flex-1 whitespace-pre-line">{g.criteria}</span>
+                <span className="text-xs text-muted-foreground flex-1 min-w-[180px] whitespace-pre-line">{g.criteria}</span>
                 <span className="text-sm font-bold whitespace-nowrap" style={{ color: g.color }}>28-d: {g.mortality}</span>
               </div>
             ))}
           </div>
         </div>
   
+        <p className="text-xs text-muted-foreground">Approximate 28-day figures describe the historical CANONIC cohort, not a patient prediction.<InlineRef topicId="acute-liver-failure" refLabel="EASL ACLF 2023" /></p>
         {/* Trajectory box */}
         <div className="p-3 rounded-lg bg-secondary/50 border border-primary/20">
           <p className="text-sm font-semibold text-foreground mb-1">Trajectory Reassessment (Day 3–7)</p>
@@ -81,10 +79,11 @@ const CLIFCACLFDiagram = () => {
             </div>
             <div className="p-2 rounded border border-border text-center">
               <p className="font-bold text-red-500">Worsening</p>
-              <p>↑ Grade 3 at day 3–7 → {'>'}90% mortality<br/>Consider futility</p>
+              <p>Worsening grade 3 → urgent multidisciplinary reassessment, including transplant candidacy; grade alone is not futility.</p>
             </div>
           </div>
         </div>
+        <p className="text-xs text-muted-foreground mt-3">After 3–7 days of full organ support, no salvage transplant option plus ≥4 organ failures OR CLIF-C ACLF &gt;70 may prompt individual multidisciplinary review of ongoing support and palliation, not automatic withdrawal.<InlineRef topicId="acute-liver-failure" refLabel="EASL ACLF 2023" /></p>
       </div>
     </DiagramFigure>
   );

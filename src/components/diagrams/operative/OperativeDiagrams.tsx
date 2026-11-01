@@ -613,7 +613,7 @@ const SleeveDiagram = () => (
     <Label x={30} y={40}>Bougie (blue) passed by anaesthetist</Label>
     <Label x={300} y={110}>Staple line</Label>
     <Label x={340} y={290}>Greater curve removed</Label>
-    <Label x={30} y={300}>Remove NG tube / probes before stapling</Label>
+    <Label x={30} y={300}>Confirm bougie / tube positions; clear staple jaws</Label>
   </Shell>
 );
 

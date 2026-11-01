@@ -36,16 +36,16 @@ const workedExamples: WorkedExample[] = [
     ),
     working: (
       <>
-        Sustained IAP ≥ 20 mmHg with new organ dysfunction (oliguric AKI, refractory shock, ventilatory failure)
+        Sustained IAP &gt; 20 mmHg with new organ dysfunction (oliguric AKI, refractory shock, ventilatory failure)
         = ACS (WSACS 2013). This is primary ACS from the intra-abdominal pathology and aggressive resuscitation.
-        Start the WSACS medical bundle and prepare for surgical decompression if IAP fails to fall within hours.
+        This is already overt ACS: obtain urgent surgical assessment and decompression planning while appropriate temporising measures are started; do not wait a prescribed number of hours.
       </>
     ),
     answer: (
       <>
         Deepen sedation, give a trial of NMB, NG decompression and rectal tube, stop maintenance fluid, give 20 % HAS
-        + furosemide or RRT if a negative balance is needed (WSACS 2013 made no recommendation on these, so this is pragmatic practice), review head-of-bed angle. Reassess IAP hourly. If IAP remains
-        ≥ 20 mmHg with organ failure, proceed to <strong>decompressive laparotomy</strong> and leave open abdomen with
+        + furosemide or RRT if a negative balance is needed (WSACS 2013 made no recommendation on these, so this is pragmatic practice), review head-of-bed angle. Reassess rapidly with the surgical team. Sustained IAP
+        &gt; 20 mmHg with new organ failure already meets ACS; WSACS recommends <strong>decompressive laparotomy</strong> and leave open abdomen with
         a negative-pressure temporary closure (e.g. ABThera).
       </>
     ),
@@ -62,7 +62,7 @@ const workedExamples: WorkedExample[] = [
     working: (
       <>
         Secondary ACS from massive resuscitation without intra-abdominal injury; major burns and massive fluid
-        resuscitation are both WSACS risk factors. Aggressive medical management first; escharotomy if circumferential torso eschar
+        resuscitation are both WSACS risk factors. Urgent surgical assessment alongside appropriate temporising measures; escharotomy if circumferential torso eschar
         contributes to abdominal-wall non-compliance.
       </>
     ),
@@ -70,7 +70,7 @@ const workedExamples: WorkedExample[] = [
       <>
         Stop crystalloid, switch to 5 % albumin / 20 % HAS for ongoing losses, deepen sedation + NMB, decompress
         stomach and rectum, escharotomy of torso eschar. Trial percutaneous catheter drainage if free intraperitoneal
-        fluid on US. Decompressive laparotomy if IAP &gt; 20 mmHg with organ failure persists despite the above.
+        fluid on US. Sustained IAP &gt;20 mmHg with new organ dysfunction is already ACS. WSACS recommends decompressive laparotomy for overt ACS; do not impose an hours-long medical trial before escalation.
       </>
     ),
     cites: ["WSACS 2013"],
@@ -93,7 +93,7 @@ const workedExamples: WorkedExample[] = [
     answer: (
       <>
         Repeat the measurement supine, at end-expiration, with abdominal muscles relaxed, transducer at the mid-axillary line,
-        ≤ 25 mL saline instilled. If sustained ≥ 12 mmHg → IAH; ≥ 20 mmHg + new organ failure → ACS. Trend rather
+        ≤ 25 mL saline instilled. If sustained ≥ 12 mmHg → IAH; &gt; 20 mmHg + new organ failure → ACS. Trend rather
         than single values, using a local protocol in at-risk patients (WSACS recommends protocolised monitoring).
       </>
     ),
@@ -102,14 +102,14 @@ const workedExamples: WorkedExample[] = [
 ];
 
 const keyPoints = [
-  { text: "Normal IAP in the critically ill ≈ 5–7 mmHg. IAH = sustained IAP ≥ 12 mmHg. ACS = sustained IAP ≥ 20 mmHg WITH new organ dysfunction (WSACS 2013).", cites: ["WSACS 2013"] },
+  { text: "Normal IAP in the critically ill ≈ 5–7 mmHg. IAH = sustained IAP ≥ 12 mmHg. ACS = sustained IAP > 20 mmHg WITH new organ dysfunction (WSACS 2013).", cites: ["WSACS 2013"] },
   { text: "Grades: I 12–15, II 16–20, III 21–25, IV > 25 mmHg. Grade alone does not define ACS — new organ dysfunction is required.", cites: ["WSACS 2013"] },
   { text: "Measure via the bladder: supine, end-expiration, maximum 25 mL sterile saline, transducer zeroed at the mid-axillary line, no abdominal muscle contraction.", cites: ["WSACS 2013"] },
   { text: "Primary ACS = intra-abdominal/pelvic pathology (trauma, ruptured AAA, pancreatitis, peritonitis). Secondary ACS = extra-abdominal cause, typically massive resuscitation (burns, sepsis). Recurrent ACS = re-develops after decompression.", cites: ["WSACS 2013"] },
   { text: "Pathophysiology is global: ↓ venous return, ↓ CO, ↑ SVR; ↑ ITP → ↓ FRC, ↑ plateau pressures, V/Q mismatch; renal vein compression + ↓ RBF → AKI; ↑ ICP via ↑ CVP; gut ischaemia and bacterial translocation; hepatic congestion.", cites: ["WSACS 2013"] },
   { text: "Abdominal perfusion pressure (APP = MAP − IAP) appears in the ACS definition (with or without APP < 60 mmHg), but WSACS 2013 made NO recommendation on using APP to guide resuscitation.", cites: ["WSACS 2013"] },
   { text: "WSACS medical bundle (5 domains): (1) evacuate intraluminal contents (NG, rectal tube, prokinetics); (2) evacuate intra-abdominal collections (percutaneous drain); (3) improve abdominal-wall compliance (analgesia/sedation, brief NMB trials, body position, escharotomy); (4) optimise fluid administration (avoid a positive balance after resuscitation — WSACS made no recommendation on diuretics, albumin or RRT); (5) optimise systemic and regional perfusion. Most are weak suggestions on low-quality evidence.", cites: ["WSACS 2013"] },
-  { text: "Surgical decompression: indicated for ACS unresponsive to medical management. Midline laparotomy left open with temporary abdominal closure; WSACS recommends negative-pressure wound therapy and protocolised efforts to achieve early, or at least same-hospital-stay, fascial closure.", cites: ["WSACS 2013"] },
+  { text: "WSACS recommends decompressive laparotomy for overt ACS; urgent surgical assessment accompanies temporising measures, without a mandatory waiting interval. Midline laparotomy left open with temporary abdominal closure; WSACS recommends negative-pressure wound therapy and protocolised efforts to achieve early, or at least same-hospital-stay, fascial closure.", cites: ["WSACS 2013"] },
   { text: "WSACS recommends measuring IAP whenever any risk factor is present: e.g. abdominal surgery, major trauma or burns, prone position, ileus, pancreatitis, intra-abdominal fluid or infection, damage-control laparotomy, massive fluid resuscitation or positive balance, acidosis, hypothermia, mechanical ventilation, PEEP > 10, obesity, sepsis, shock.", cites: ["WSACS 2013"] },
   { text: "Prognosis: IAH developing during the ICU stay independently predicted mortality (RR 1.85) in a multicentre mixed ICU cohort; admission IAP did not. WSACS rated the overall evidence base as generally low quality.", cites: ["Malbrain 2005 IAH epidemiology", "WSACS 2013"] },
 ];
@@ -341,14 +341,14 @@ const AbdominalCompartmentSyndromeTopic = () => {
               <h3 className="text-base font-semibold text-foreground mt-5 mb-2">Stepwise escalation by IAH grade</h3>
               <p className="text-sm text-muted-foreground leading-relaxed mb-2">
                 The WSACS algorithm is deliberately stepwise: measure IAP, treat, re-measure, and escalate only if the
-                pressure or organ function fails to improve. A pragmatic ladder — grade-specific actions are local practice, not graded WSACS statements<InlineRef topicId="abdominal-compartment-syndrome" refLabel="WSACS 2013" /><InlineRef topicId="abdominal-compartment-syndrome" refLabel="Malbrain 2006" />:
+                pressure or organ function requires it; overt ACS demands urgent surgical assessment without a fixed delay. A pragmatic ladder — grade-specific actions are local practice, not graded WSACS statements<InlineRef topicId="abdominal-compartment-syndrome" refLabel="WSACS 2013" /><InlineRef topicId="abdominal-compartment-syndrome" refLabel="Malbrain 2006" />:
               </p>
               <div className="space-y-3">
                 {[
                   { grade: "Grade I — IAP 12–15 mmHg", detail: "Maintain a high index of suspicion. Measure IAP 4–6-hourly, avoid a positive fluid balance, decompress the stomach and rectum, review sedation and analgesia, consider head-of-bed angle, and remove constricting dressings/binders. No intervention beyond these; treat the underlying pathology." },
                   { grade: "Grade II — IAP 16–20 mmHg", detail: "Escalate the medical bundle and measure IAP hourly. Prokinetics for ileus, image-guided drainage of any ascites/collection, avoid a positive balance (diuretics, albumin or RRT are pragmatic options without a WSACS recommendation), and support perfusion with vasopressors rather than fluid loading." },
-                  { grade: "Grade III — IAP 21–25 mmHg", detail: "Full medical bundle plus deeper sedation and a trial of neuromuscular blockade, which can drop IAP quickly and buys time. Escharotomy for circumferential torso burns. Stop enteral feed. Inform the surgeon now: if IAP remains ≥ 20 mmHg with new organ dysfunction after a few hours of maximal medical therapy, this is ACS and decompression is indicated." },
-                  { grade: "Grade IV — IAP > 25 mmHg", detail: "If there is new organ dysfunction this is ACS: proceed to decompressive laparotomy with temporary abdominal closure if medical measures do not rapidly lower IAP. Prepare for reperfusion hypotension and continue IAP monitoring afterwards for recurrent ACS." },
+                  { grade: "Grade III — IAP 21–25 mmHg", detail: "Full medical bundle plus deeper sedation and a trial of neuromuscular blockade, which can drop IAP quickly and buys time. Escharotomy for circumferential torso burns. Stop enteral feed. Sustained IAP >20 mmHg with new organ dysfunction already meets ACS: obtain urgent surgical assessment and decompression planning while appropriate temporising measures or drainage are undertaken with rapid reassessment, not after a prescribed few-hour wait." },
+                  { grade: "Grade IV — IAP > 25 mmHg", detail: "With sustained pressure and new organ dysfunction this is overt ACS: urgent surgical assessment and decompression planning occur alongside appropriate temporising measures; WSACS recommends decompressive laparotomy. Prepare for reperfusion hypotension and continue IAP monitoring afterwards for recurrent ACS." },
                 ].map((g) => (
                   <div key={g.grade} className="p-3 rounded-lg border border-border">
                     <p className="font-semibold text-foreground text-sm">{g.grade}</p>
@@ -357,13 +357,12 @@ const AbdominalCompartmentSyndromeTopic = () => {
                 ))}
               </div>
               <p className="text-xs text-muted-foreground italic mt-2">
-                Grade alone never mandates surgery — it is IAP <em>plus new organ dysfunction unresponsive to medical
-                management</em> that defines ACS and triggers decompression.
+                Grade alone does not diagnose ACS — sustained IAP &gt;20 mmHg <em>with new organ dysfunction/failure</em> defines adult ACS, regardless of response to medical treatment. Urgent surgical assessment should not await an arbitrary hours-long trial.
               </p>
 
               <h3 className="text-base font-semibold text-foreground mt-5 mb-2">Surgical decompression</h3>
               <p className="text-sm text-muted-foreground leading-relaxed mb-2">
-                Indicated for <strong>ACS refractory to medical management</strong>, or as a primary strategy in
+                WSACS recommends decompressive laparotomy for <strong>overt ACS</strong>; temporising measures and drainage where appropriate require close reassessment, without a mandatory waiting period, or as a primary strategy in
                 damage-control laparotomy where the abdomen is anticipated not to close (massive transfusion,
                 bowel oedema, prolonged operating time).
               </p>

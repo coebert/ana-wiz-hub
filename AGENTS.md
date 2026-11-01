@@ -44,3 +44,4 @@
 - Exact legacy topic aliases are recorded in topicRedirects and positively tested; canonical teaching destinations retain synthesis/schema requirements.
 - Diagram provenance uses an unchanged historical baseline plus an explicit residual report; newly exposed source gaps and unknown labels cannot be silently accepted.
 - Science illustration and calculator arithmetic lives in pure, tested helpers with canonical units and strict full-string parsing; model labels distinguish illustrative profiles and historical trial context from patient prediction or eligibility.
+- C4 ACLF classification descriptions are shared between the chapter and figure so single-brain-failure exceptions and renal/mild-HE alternatives cannot drift; current NICE adrenal records are reused across parent and standalone teaching.

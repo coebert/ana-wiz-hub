@@ -1,5 +1,10 @@
 # Admin metrics audit fixes
 
+## Clinical C4 — 1 November 2026
+- [x] CL35–39 operative/neonatal safety; CL60–64 and CL67 liver/HRS/ACLF/ICP; CL65 ACS; CL66 adrenal guidance; D89 bibliography, preserving drug protocols.
+- [x] Verify linked copies/citations and learner rendering; regenerate local FAQ/search/audit/count outputs and document results in docs/clinical-c4-2026-11-01.md without publication or audio regeneration.
+- [ ] C4 residuals: restricted primary full texts/unchecked EASL erratum, remote/cache replacement and inherited Operations provenance; no clinical/anatomical certification.
+
 ## Science S1 — 1 November 2026
 - [x] SCI018 presentation; SCI037 oxygen; SCI046 illustrative urine; SCI059/061 osmolar units/boundary; SCI060/062 strict parsing/finite results; SCI063–065 Murray/trial/pressure safeguards; SCI066 hypotension definition.
 - [x] Run helper/rendered regressions, refresh local search/FAQ/audit/count outputs and record results in docs/nov1-science-fixes.md. No database writes or publication.
