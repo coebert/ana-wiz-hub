@@ -16,8 +16,8 @@ import { InlineRef } from "@/components/references/InlineRef";
 
 const acutePancreatitisFaqs: Array<[string, string]> = [
   ["How is severity stratified in acute pancreatitis?", "Use the revised Atlanta classification: mild (no organ failure or complications), moderate (transient organ failure <48 h or local complications), severe (persistent organ failure >48 h); supplement with APACHE II and CRP >150 at 48 h."],
-  ["What is the role of early enteral nutrition?", PANCREATITIS_NUTRITION],
-  ["When should antibiotics be given in severe pancreatitis?", PANCREATITIS_INFECTION],
+  ["What is the role of early enteral nutrition?", "General acute pancreatitis: offer oral intake as tolerated; vomiting, ileus or obstruction may temporarily prevent it. In moderately severe/severe disease, start enteral support within 72 hours if needed (NG or NJ according to tolerance). Enteral is preferred to parenteral nutrition; use PN when enteral fails or is contraindicated after specialist nutrition assessment, not an automatic 5–7-day wait. PYTHON (2014;208 patients) compared tube feeding within 24 hours with oral feeding at 72 hours and tube feeding if needed, not TPN: major infection/death 30% vs 27%, no reduction; 69% of on-demand patients avoided tubes. Separate HTG pathway: IAP 2025 recommendation 66 advises an initial 48-hour fast, then low-fat soft diet and enteral support if oral intake is not tolerated; follow the adopted guidance and individual clinical plan, rather than applying early oral feeding indiscriminately."],
+  ["When should antibiotics be given in severe pancreatitis?", "No prophylactic antibiotics for sterile necrosis. Treat proven or strongly suspected infected necrosis (sepsis, bacteraemia or clinical deterioration) and extra-pancreatic infection; do not wait for gas or positive FNA. FNA is unnecessary in most cases. Obtain cultures when practicable without delaying urgent treatment. Select necrosis-penetrating antibiotics with local microbiology and resistance assessment; carbapenems are an option, not mandatory universal first-line therapy. Gas strongly suggests infection but can reflect an enteric fistula or recent intervention."],
 ];
 
 const objectives = [
@@ -329,6 +329,7 @@ const AcutePancreatitisTopic = () => {
             ))}
           </div>
 
+          <p className="text-xs text-muted-foreground mt-2"><InlineRef topicId="acute-pancreatitis" refLabel="IAP 2025 imaging" /> <InlineRef topicId="acute-pancreatitis" refLabel="NICE NG148 contrast" /></p>
           <div className="mt-4 p-3 rounded-lg border border-border bg-secondary/20">
             <p className="text-xs font-semibold text-foreground mb-1">Glasgow (Imrie) score — score ≥3 within 48h predicts a potentially severe course; Atlanta defines established severity</p>
             <p className="text-xs text-muted-foreground">
