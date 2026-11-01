@@ -53,7 +53,7 @@ const steps: CascadeStep[] = [
     detail: "Gallstone, alcohol, ERCP",
     title: "Initial insult",
     body:
-      "Gallstone obstruction at the ampulla, ethanol (direct toxicity + sphincter spasm), hypertriglyceridaemia, post-ERCP, drugs (azathioprine, valproate) or trauma. Premature enzyme activation is one initiating mechanism; inflammatory, oxidative and microcirculatory injury also contribute.",
+      "Gallstone obstruction at the ampulla, ethanol-associated cellular injury, hypertriglyceridaemia, post-ERCP, drugs (azathioprine, valproate) or trauma. Premature enzyme activation is one initiating mechanism; inflammatory, oxidative and microcirculatory injury also contribute.",
     sources: [BJA_AP, BSG],
   },
   {
@@ -61,7 +61,7 @@ const steps: CascadeStep[] = [
     detail: "Inside acinar cell",
     title: "Premature enzyme activation",
     body:
-      "Co-localisation of zymogen granules with lysosomal hydrolases (cathepsin B) triggers conversion of trypsinogen → active trypsin within the acinar cell. Trypsin then activates the entire pancreatic enzyme cascade (chymotrypsin, elastase, phospholipase A₂).",
+      "Co-localisation of zymogen granules with lysosomal hydrolases (cathepsin B) triggers conversion of trypsinogen → active trypsin within the acinar cell. Premature enzyme activation contributes to injury alongside oxidative stress, pathological exocytosis and inflammation.",
     sources: [TRYPSIN],
   },
   {
@@ -69,7 +69,7 @@ const steps: CascadeStep[] = [
     detail: "Lipase + elastase",
     title: "Pancreatic self-digestion",
     body:
-      "Active enzymes digest the cell membranes that contain them. Phospholipase A₂ destroys surfactant and cell membranes; elastase digests vessel walls causing haemorrhage; lipase saponifies peripancreatic fat (fat necrosis with calcium soap formation — hypocalcaemia).",
+      "Enzyme-mediated acinar injury interacts with inflammation, oxidative stress and impaired microcirculation. This schematic does not imply that autodigestion alone explains all local injury or systemic organ failure.",
     sources: [TRYPSIN, BJA_AP],
   },
   {
@@ -77,7 +77,7 @@ const steps: CascadeStep[] = [
     detail: "Cytokine release",
     title: "Acute interstitial oedema",
     body:
-      "Damaged acinar cells release IL-1, IL-6, IL-8, TNF-α and platelet-activating factor. Neutrophils infiltrate, capillary leak produces interstitial oedema. Most cases stop here — mild interstitial oedematous pancreatitis (80% of cases, mortality < 1%).",
+      "Acinar injury activates inflammatory mediators and oxidative stress; inflammatory oedema may remain local or progress. Mild disease has no organ failure or local/systemic complications under Atlanta; morphology alone does not establish clinical severity.",
     sources: [ATLANTA, BJA_AP],
   },
   {
@@ -85,7 +85,7 @@ const steps: CascadeStep[] = [
     detail: "Distant organ effects",
     title: "Systemic inflammatory response",
     body:
-      "Cytokines spill into systemic circulation → SIRS within 48 h. Capillary leak causes massive third-space fluid loss (sequestration into retroperitoneum and gut wall). Early ARDS, AKI and circulatory shock define severe acute pancreatitis. Atlanta classification: persistent organ failure > 48 h = severe.",
+      "Cytokines spill into systemic circulation → SIRS within 48 h. Capillary leak causes massive third-space fluid loss (sequestration into retroperitoneum and gut wall). Organ failure may occur early; severe acute pancreatitis requires persistent organ failure >48 hours. Atlanta classification: persistent organ failure > 48 h = severe.",
     sources: [SIRS_AP, ATLANTA],
   },
   {

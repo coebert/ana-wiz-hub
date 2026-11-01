@@ -1,4 +1,4 @@
-import { glasgowPrediction } from "@/lib/pancreatitis-clinical-rules";
+import { glasgowPrediction } from "@/components/topic/PancreatitisTeaching";
 import { InlineRef } from "@/components/references/InlineRef";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";

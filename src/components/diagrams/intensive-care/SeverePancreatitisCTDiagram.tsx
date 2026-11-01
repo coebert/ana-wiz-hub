@@ -1,4 +1,4 @@
-import { PANCREATITIS_SOURCE_CONTROL } from "@/lib/pancreatitis-clinical-rules";
+import { PANCREATITIS_SOURCE_CONTROL } from "@/components/topic/PancreatitisTeaching";
 import { InlineRef } from "@/components/references/InlineRef";
 import { useState } from "react";
 import { DiagramFigure } from "../_shared/DiagramFigure";

@@ -1,4 +1,4 @@
-import { PANCREATITIS_FLUIDS, PANCREATITIS_NUTRITION, PANCREATITIS_INFECTION, PANCREATITIS_SOURCE_CONTROL } from "@/lib/pancreatitis-clinical-rules";
+import { PANCREATITIS_FLUIDS, PANCREATITIS_NUTRITION, PANCREATITIS_INFECTION, PANCREATITIS_SOURCE_CONTROL } from "@/components/topic/PancreatitisTeaching";
 import { QuizQuestion } from "@/components/quiz/QuizSection";
 export { anaestheticRiskQuiz } from "./anaestheticRiskQuiz";
 

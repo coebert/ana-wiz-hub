@@ -1,4 +1,4 @@
-import { WATERFALL_OUTCOMES } from "@/lib/pancreatitis-clinical-rules";
+import { WATERFALL_OUTCOMES } from "@/components/topic/PancreatitisTeaching";
 import { InlineRef } from "@/components/references/InlineRef";
 import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";

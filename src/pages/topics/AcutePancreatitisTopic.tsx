@@ -11,12 +11,12 @@ import PancreatitisEvolutionTimeline from "@/components/diagrams/intensive-care/
 import { DiagramSection } from "@/components/topic/DiagramSection";
 import type { WorkedExample } from "@/components/topic/WorkedExamples";
 import { ExamPitfallsCallout } from "@/components/exam/ExamPitfallsCallout";
-import { PANCREATITIS_FLUIDS, PANCREATITIS_NUTRITION, PANCREATITIS_INFECTION, PANCREATITIS_SOURCE_CONTROL, HTG_MANAGEMENT } from "@/lib/pancreatitis-clinical-rules";
+import { PANCREATITIS_FLUIDS, PANCREATITIS_NUTRITION, PANCREATITIS_INFECTION, PANCREATITIS_SOURCE_CONTROL, HTG_MANAGEMENT } from "@/components/topic/PancreatitisTeaching";
 import { InlineRef } from "@/components/references/InlineRef";
 
 const acutePancreatitisFaqs: Array<[string, string]> = [
   ["How is severity stratified in acute pancreatitis?", "Use the revised Atlanta classification: mild (no organ failure or complications), moderate (transient organ failure <48 h or local complications), severe (persistent organ failure >48 h); supplement with APACHE II and CRP >150 at 48 h."],
-  ["What is the role of early enteral nutrition?", "General acute pancreatitis: offer oral intake as tolerated; vomiting, ileus or obstruction may temporarily prevent it. In moderately severe/severe disease, start enteral support within 72 hours if needed (NG or NJ according to tolerance). Enteral is preferred to parenteral nutrition; use PN when enteral fails or is contraindicated after specialist nutrition assessment, not an automatic 5–7-day wait. PYTHON (2014;208 high-predicted-risk patients) compared tube feeding within 24 hours with oral feeding at 72 hours and tube feeding if needed, not TPN: major infection/death within 6 months 30% vs 27%, no reduction; 69% of on-demand patients avoided tubes. Separate HTG pathway: IAP 2025 recommendation 66 advises an initial 48-hour fast, then low-fat soft diet and enteral support if oral intake is not tolerated; follow the adopted guidance and individual clinical plan, rather than applying early oral feeding indiscriminately."],
+  ["What is the role of early enteral nutrition?", "General acute pancreatitis: offer oral intake as tolerated; vomiting, ileus or obstruction may temporarily prevent it. In moderately severe/severe disease, start enteral support within 72 hours if needed (NG or NJ according to tolerance). Enteral is preferred to parenteral nutrition; use PN when enteral fails or is contraindicated after specialist nutrition assessment, not an automatic 5–7-day wait. PYTHON (2014;208 high-predicted-risk patients) compared tube feeding within 24 hours with oral feeding at 72 hours and tube feeding if needed, not TPN: major infection/death within 6 months 30% vs 27%, no reduction; 69% of on-demand patients avoided tubes. Separate HTG pathway: IAP 2025 recommendation 66 advises an initial 48-hour fast, then low-fat soft diet and enteral support if oral intake is not tolerated; follow the adopted guidance and individual clinical plan, rather than applying early oral feeding indiscriminately. If PN is required in HTG pancreatitis, IAP 2025 advises withholding intravenous fat emulsion when TG ≥400 mg/dL."],
   ["When should antibiotics be given in severe pancreatitis?", "No prophylactic antibiotics for sterile necrosis. Treat proven or strongly suspected infected necrosis (sepsis, bacteraemia or clinical deterioration) and extra-pancreatic infection; do not wait for gas or positive FNA. FNA is unnecessary in most cases. Obtain cultures when practicable without delaying urgent treatment. Select necrosis-penetrating antibiotics with local microbiology and resistance assessment; carbapenems are an option, not mandatory universal first-line therapy. Gas strongly suggests infection but can reflect an enteric fistula or recent intervention."],
 ];
 
@@ -94,8 +94,9 @@ const workedExamples: WorkedExample[] = [
       <>
         Gas in a necrotic collection plus clinical deterioration is highly suggestive of infected
         necrosis; enteric fistula or intervention can also cause gas. Start necrosis-penetrating antibiotics using local microbiology advice, not a mandatory carbapenem.
-        Step-up source control (PANTER trial): percutaneous or endoscopic transgastric drainage first,
-        not immediate open necrosectomy.
+        PANTER supports percutaneous-drainage-first surgical step-up. At day 12, consider earlier percutaneous
+        drainage with HPB/ICU assessment; endoscopic transmural drainage depends on an organised collection,
+        anatomy and expertise, not immediate open necrosectomy.
       </>
     ),
     answer: (

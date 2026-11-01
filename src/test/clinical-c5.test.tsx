@@ -2,7 +2,7 @@ import { afterEach, describe, expect, it } from "vitest";
 import { cleanup, fireEvent, render, screen } from "@testing-library/react";
 import { MemoryRouter } from "react-router-dom";
 import { readFileSync } from "node:fs";
-import { WATERFALL_OUTCOMES, glasgowPrediction, PANCREATITIS_FLUIDS, PANCREATITIS_NUTRITION, PANCREATITIS_INFECTION, PANCREATITIS_SOURCE_CONTROL, HTG_MANAGEMENT } from "@/lib/pancreatitis-clinical-rules";
+import { WATERFALL_OUTCOMES, glasgowPrediction, PANCREATITIS_FLUIDS, PANCREATITIS_NUTRITION, PANCREATITIS_INFECTION, PANCREATITIS_SOURCE_CONTROL, HTG_MANAGEMENT } from "@/components/topic/PancreatitisTeaching";
 import Waterfall from "@/components/diagrams/intensive-care/WaterfallFluidDiagram";
 import Glasgow from "@/components/diagrams/intensive-care/GlasgowImrieScoreDiagram";
 import CT from "@/components/diagrams/intensive-care/SeverePancreatitisCTDiagram";
