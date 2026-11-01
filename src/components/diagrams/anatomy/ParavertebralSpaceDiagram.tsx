@@ -216,7 +216,7 @@ const ParavertebralSpaceDiagram = () => {
                         key={key}
                         aria-pressed={selected === key}
                         onClick={() => setSelected(key)}
-                        className={`text-xs px-2 py-1 rounded border transition-all ${
+                        className={`max-w-full h-auto whitespace-normal text-left text-xs px-2 py-1 rounded border transition-all ${
                           selected === key
                             ? "border-primary bg-primary/10 text-foreground font-medium"
                             : "border-border text-muted-foreground hover:border-primary/50"

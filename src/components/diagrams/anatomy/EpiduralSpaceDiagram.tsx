@@ -567,7 +567,7 @@ const EpiduralSpaceDiagram = () => {
                 key={k}
                 type="button"
                 onClick={() => handlePick(k)}
-                className="text-[11px] px-2 py-0.5 rounded-full border transition-colors"
+                className="max-w-full h-auto whitespace-normal text-left text-[11px] px-2 py-0.5 rounded-full border transition-colors"
                 style={{
                   borderColor: active ? c : "hsl(var(--border))",
                   background: active ? `${c}1F` : "transparent",

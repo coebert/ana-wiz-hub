@@ -123,7 +123,7 @@ const NeckCrossSectionDiagram = () => {
                 key={s.id}
                 aria-pressed={selected === s.id}
                 onClick={() => setSelected(selected === s.id ? null : s.id)}
-                className={`text-left text-xs px-2.5 py-1.5 rounded border transition-all ${
+                className={`max-w-full h-auto whitespace-normal text-left text-xs px-2.5 py-1.5 rounded border transition-all ${
                   selected === s.id
                     ? "border-primary bg-primary/10 font-semibold text-foreground"
                     : "border-border text-muted-foreground hover:border-primary/50"

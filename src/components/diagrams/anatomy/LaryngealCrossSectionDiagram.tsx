@@ -191,7 +191,7 @@ const LaryngealCrossSectionDiagram = () => {
 
       <p className="text-xs text-muted-foreground mb-3">Projection: coronal section, axial view from superior, or muscle table; no lateral view is offered.<InlineRef topicId="head-neck-anatomy" refLabel="Michigan laryngeal membranes" /><InlineRef topicId="head-neck-anatomy" refLabel="Litman airway MRI 2003" /><InlineRef topicId="head-neck-anatomy" refLabel="Dalal airway 2009" /></p>
       <Tabs defaultValue="coronal">
-        <TabsList className="grid w-full grid-cols-1 sm:grid-cols-3 mb-3">
+        <TabsList className="grid h-auto w-full grid-cols-1 sm:grid-cols-3 mb-3">
           <TabsTrigger value="coronal" className="text-xs">Coronal View</TabsTrigger>
           <TabsTrigger value="axial" className="text-xs">Axial (Superior)</TabsTrigger>
           <TabsTrigger value="muscles" className="text-xs">Intrinsic Muscles</TabsTrigger>

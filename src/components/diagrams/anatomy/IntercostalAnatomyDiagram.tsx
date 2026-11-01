@@ -59,7 +59,7 @@ const IntercostalAnatomyDiagram = () => {
               <IntercostalRelationships selected={selected} onSelect={key => setSelected(key as LayerKey)} labels={showLabels} />
               <p className="text-sm text-muted-foreground mt-2">{INTERCOSTAL_SPATIAL}</p>
               <InlineRef topicId="thoracic-anatomy" refLabel="BTS pleural procedures 2023" /><InlineRef topicId="thoracic-anatomy" refLabel="Intercostal anatomy" /><InlineRef topicId="thoracic-anatomy" refLabel="Thoracic wall VAN" /><InlineRef topicId="thoracic-anatomy" refLabel="TTUHSC thoracic wall relationships" />
-              <div className="flex flex-wrap gap-2 mt-4">{layerOrder.map(key => <Button key={key} variant="outline" size="sm" aria-pressed={selected === key} onClick={() => setSelected(key)}>{layers[key].label}</Button>)}</div>
+              <div className="flex flex-wrap gap-2 mt-4">{layerOrder.map(key => <Button key={key} variant="outline" size="sm" className="max-w-full h-auto whitespace-normal text-left" aria-pressed={selected === key} onClick={() => setSelected(key)}>{layers[key].label}</Button>)}</div>
             </div>
             <div className="flex-1 min-w-0">
               <div
