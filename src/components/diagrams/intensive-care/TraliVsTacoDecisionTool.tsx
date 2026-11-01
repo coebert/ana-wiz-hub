@@ -44,7 +44,7 @@ const score = (i: Inputs) => {
     taco += 2;
     reasons.push({ dx: "TACO", text: "Onset 6–12 h favours TACO (TRALI strictly ≤6 h)" });
   } else {
-    reasons.push({ dx: "TACO", text: ">12 h after transfusion — neither classical, consider delayed TACO or alternative diagnosis" });
+    reasons.push({ dx: "TACO", text: "Beyond the 12-h surveillance window; SHOT accepts TACO reports up to 24 h. Assess delayed overload and alternative causes, without timing-only exclusion." });
   }
 
   // Filling pressures — most discriminating single feature
@@ -73,7 +73,7 @@ const score = (i: Inputs) => {
   // Response to diuretics
   if (i.diuretic === "improves") {
     taco += 4;
-    reasons.push({ dx: "TACO", text: "Rapid improvement with diuresis is diagnostic of TACO" });
+    reasons.push({ dx: "TACO", text: "Improvement with diuresis supports hydrostatic overload but is not diagnostic alone" });
   } else if (i.diuretic === "worsens") {
     trali += 4;
     reasons.push({ dx: "TRALI", text: "Worsening with diuresis fits intravascular depletion in TRALI" });
