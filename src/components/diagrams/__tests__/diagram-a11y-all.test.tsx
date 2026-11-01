@@ -381,7 +381,9 @@ describe("every diagram passes basic a11y checks", () => {
         for (const stage of Array.from(container.querySelectorAll('button[aria-label^="Stage "]'))) {
           fireEvent.click(stage); checkState();
         }
-        for (const toggle of Array.from(container.querySelectorAll('button[aria-pressed]')).filter(el => !el.getAttribute('aria-label')?.startsWith('Stage '))) {
+        const toggles = Array.from(container.querySelectorAll('button')).filter(el => /^(Labels|Detail|Sutures)$/.test(el.textContent?.trim() ?? ''));
+        expect(toggles.length, `${name}/${variant} requires real drawing toggles`).toBeGreaterThan(0);
+        for (const toggle of toggles) {
           fireEvent.click(toggle); checkState();
         }
       }
