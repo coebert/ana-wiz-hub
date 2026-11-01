@@ -1,0 +1,86 @@
+[
+  {
+    "file": "src/pages/topics/OxidationReductionTopic.tsx",
+    "before": "A galvanic (fuel) cell consumes O\u2082 at a lead anode (Pb + 2OH\u207b \u2192 PbO + H\u2082O + 2e\u207b), generating a current proportional to O\u2082 partial pressure at the gold cathode (O\u2082 + 2H\u2082O + 4e\u207b \u2192 4OH\u207b).",
+    "after": "In a lead/gold galvanic (fuel) oxygen cell, oxygen is reduced at the gold cathode (O\u2082 + 2H\u2082O + 4e\u207b \u2192 4OH\u207b), while lead is oxidised at the anode (Pb + 2OH\u207b \u2192 PbO + H\u2082O + 2e\u207b). The resulting current is proportional to O\u2082 partial pressure.",
+    "hash": "edcf87e53264077c30bd6e936fbe7513de1da9ce6c162389ed6e9e400989c023"
+  },
+  {
+    "file": "src/pages/topics/OxidationReductionTopic.tsx",
+    "before": "Free radicals have unpaired electrons \u2014 superoxide, hydroxyl radical, peroxynitrite\", cites: [\"Wright 1999 (MetHb)\"]",
+    "after": "Free radicals have unpaired electrons: superoxide, hydroxyl radical and nitric oxide. Hydrogen peroxide and peroxynitrite are nonradical oxidants; ONOO\u207b is a reactive nitrogen species\", cites: [\"Pacher 2007 Peroxynitrite\"]",
+    "hash": "3d62e8a7a80ddb79ae40b3c59637dcf47850f9868d6496157fa4b6f523f4edd6"
+  },
+  {
+    "file": "src/pages/topics/OxidationReductionTopic.tsx",
+    "before": "Free radicals contain an unpaired electron and are highly reactive. Reactive oxygen species (ROS) include\n                <strong> superoxide (O\u2082\u207b\u00b7), hydroxyl radical (OH\u00b7) and peroxynitrite (ONOO\u207b)</strong>.",
+    "after": "Free radicals contain an unpaired electron: examples are <strong>superoxide (O\u2082\u207b\u00b7), hydroxyl radical (OH\u00b7) and nitric oxide (NO\u00b7)</strong>. Hydrogen peroxide (H\u2082O\u2082) is a nonradical reactive oxygen species; <strong>peroxynitrite (ONOO\u207b) is a nonradical reactive nitrogen species</strong>, although its reactions can generate radicals. <InlineRef topicId=\"oxidation-reduction\" refLabel=\"Pacher 2007 Peroxynitrite\" />",
+    "hash": "cdbff5fd2d53b41f6d300ece13748f08c9297a69b0d10072a808d8d37286b55b"
+  },
+  {
+    "file": "src/pages/topics/OxidationReductionTopic.tsx",
+    "before": "Pb + 2OH\u207b \u2192 PbO + H\u2082O + 2e\u207b; at the cathode, O\u2082 + 2H\u2082O + 4e\u207b \u2192 4OH\u207b.",
+    "after": "Pb + 2OH\u207b \u2192 PbO + H\u2082O + 2e\u207b (lead oxidation); at the cathode, O\u2082 + 2H\u2082O + 4e\u207b \u2192 4OH\u207b (oxygen reduction). <InlineRef topicId=\"oxidation-reduction\" refLabel=\"Cross & Plunkett Ch.3\" />",
+    "hash": "8f66ed62781e5d071666d05a2269658728ef4a6a4ff406b027d4bebdf8a9d85d"
+  },
+  {
+    "file": "src/pages/topics/OrganicChemistryTopic.tsx",
+    "before": "import { Exam } from \"@/data/curriculum\";",
+    "after": "import { Exam } from \"@/data/curriculum\";\nimport { ESTER_DRUG_DISTINCTIONS, AMIDE_NAME_AID } from \"@/lib/teaching-chemistry\";",
+    "hash": "9aecc240e7ce70c277fa66077854643ec94534fa71017cb82508fa3998fc90f8"
+  },
+  {
+    "file": "src/pages/topics/OrganicChemistryTopic.tsx",
+    "before": "Rapidly hydrolysed by plasma (pseudo)cholinesterase and tissue esterases \u2014 Phase I metabolism completes in the plasma itself, giving very short half-lives",
+    "after": "{ESTER_DRUG_DISTINCTIONS}<InlineRef topicId=\"organic-chemistry\" refLabel=\"Remifentanil Esterases SmPC\" /><InlineRef topicId=\"organic-chemistry\" refLabel=\"Atracurium Esterases SmPC\" />",
+    "hash": "78ed45da238683aedd9cada83dd56b9f4f77615dc76541ea8d0485a0ca466953"
+  },
+  {
+    "file": "src/pages/topics/OrganicChemistryTopic.tsx",
+    "before": "(amide LAs, two \"i\"s before \"-caine\")",
+    "after": "(amide LAs). {AMIDE_NAME_AID}<InlineRef topicId=\"organic-chemistry\" refLabel=\"PubChem Lidocaine Linkage\" />",
+    "hash": "721f69ad282900a265d377047b9013bf80b58991947c2cd19fab088361f88c67"
+  },
+  {
+    "file": "src/pages/topics/OrganicChemistryTopic.tsx",
+    "before": "<strong>Propofol</strong>, <strong>thiopentone</strong> and <strong>midazolam</strong> (aromatic rings underpin rapid CNS penetration)",
+    "after": "<strong>Propofol</strong> and <strong>midazolam</strong> have aromatic rings. Thiopentone is a substituted thiobarbiturate heterocycle, not a benzene-ring example.<InlineRef topicId=\"organic-chemistry\" refLabel=\"NIST Thiopental Structure\" />",
+    "hash": "fbd68794a4c1bb45efe261a8c453d31acf90b53aa34efa9db9a4ddd5bce88d52"
+  },
+  {
+    "file": "src/pages/topics/OrganicChemistryTopic.tsx",
+    "before": "Benzene rings increase lipophilicity \u2192 better CNS penetration (propofol, thiopentone, midazolam)\", cites: [\"Peck & Hill Ch.3\"]",
+    "after": "Propofol and midazolam have aromatic rings; thiopentone has a substituted thiobarbiturate heterocycle, not a benzene ring\", cites: [\"NIST Thiopental Structure\"]",
+    "hash": "f426d1f96946c9229aca2ba2a02cb9e24f0cd2d829b428f48446c24f7db11ef4"
+  },
+  {
+    "file": "src/pages/topics/OrganicChemistryTopic.tsx",
+    "before": "Ketamine: S(+)-ketamine is the eutomer, roughly 3\u20134\u00d7 more potent as an NMDA-receptor antagonist and analgesic than R(-)-ketamine, with a more favourable emergence and recovery profile; the eudismic ratio favours using S-ketamine alone where available.",
+    "after": "Ketamine has S and R enantiomers with the same connectivity and different stereocentre configurations. These chemical facts do not alone establish dose, recovery, emergence effects or clinical superiority.<InlineRef topicId=\"organic-chemistry\" refLabel=\"PubChem Ketamine Structures\" />",
+    "hash": "251119e7976592f1dd178042b2a64efe4a3c35906c2ef534b799fb24a6a000fa"
+  },
+  {
+    "file": "src/pages/topics/OrganicChemistryTopic.tsx",
+    "before": "S-ketamine is the more potent eutomer of ketamine, with less emergence delirium",
+    "after": "ketamine enantiomers share connectivity but differ at a stereocentre; this alone does not establish an emergence or recovery advantage",
+    "hash": "13514a02aac012f498acbdecfcd72523b2a377f4e92b07afa38a04d25e6f295a"
+  },
+  {
+    "file": "src/data/quizzes.ts",
+    "before": "Amide LAs have two 'i's before '-caine' (e.g. lidocaine)",
+    "after": "Common amide names have two letters i in the complete name, one in -caine",
+    "hash": "836508309e82274e3913d3a75a2ca75f3d9817606b1d3f38c0e213f1e3e09455"
+  },
+  {
+    "file": "src/data/quizzes.ts",
+    "before": "Amide LAs have two 'i's before '-caine': lidocaine, bupivacaine, ropivacaine, prilocaine. Ester LAs have one 'i' or none: procaine, cocaine, benzocaine, tetracaine.",
+    "after": "Common amide names such as lidocaine and bupivacaine have two letters i in the complete name, one in -caine. This limited mnemonic is not the chemical definition: classify by the amide versus ester linkage.",
+    "hash": "5a9e8d716b7539727b998b8d2ecd45c6cf7b84a612af102ab2d07143a2d836f6"
+  },
+  {
+    "file": "src/data/quizzes.ts",
+    "before": "{ question: \"S(+) ketamine compared to racemic ketamine is:\", options: [\"Less potent with more side effects\", \"Approximately twice as potent with less dysphoria\", \"Identical in effect\", \"Only available intravenously\"], correctIndex: 1, explanation: \"S(+) ketamine (esketamine) is roughly twice as potent as the racemate (and about 3-4\u00d7 more potent than R(-) ketamine alone), with faster recovery and fewer emergence phenomena. It has higher affinity for the NMDA receptor.\" }",
+    "after": "{ question: \"Which chemical relationship describes S- and R-ketamine?\", options: [\"Different molecular connectivity\", \"Same connectivity, opposite configuration at the stereocentre\", \"Identical spatial configuration\", \"Chirality alone proves fewer emergence effects\"], correctIndex: 1, explanation: \"S- and R-ketamine are enantiomers with the same molecular connectivity and opposite stereocentre configurations. Chlorine is ortho on the phenyl ring, not directly on the stereocentre. Chirality alone does not establish dose, recovery or clinical superiority.\" }",
+    "hash": "63e31474991f3f69f8bd2522a2b1757e5637d68ae8dae7483bb370875d52e1c2"
+  }
+]

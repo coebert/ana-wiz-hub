@@ -15,6 +15,7 @@ import AmineComparisonDiagram from "@/components/diagrams/chemistry/AmineCompari
 import { organicChemistryQuiz } from "@/data/quizzes";
 import { InlineRef } from "@/components/references/InlineRef";
 import { Exam } from "@/data/curriculum";
+import { ESTER_DRUG_DISTINCTIONS, AMIDE_NAME_AID } from "@/lib/teaching-chemistry";
 
 const OrganicChemistryTopic = () => {
   return (
@@ -200,7 +201,7 @@ const OrganicChemistryTopic = () => {
                     <tr className="border-b border-border/50 align-top">
                       <td className="py-1 pr-2 font-semibold text-foreground">Ester (−COO−)</td>
                       <td className="py-1 pr-2">Polar carbonyl-oxygen linkage; the C−O bond is chemically labile and readily attacked by water</td>
-                      <td className="py-1 pr-2">Rapidly hydrolysed by plasma (pseudo)cholinesterase and tissue esterases — Phase I metabolism completes in the plasma itself, giving very short half-lives</td>
+                      <td className="py-1 pr-2">{ESTER_DRUG_DISTINCTIONS}<InlineRef topicId="organic-chemistry" refLabel="Remifentanil Esterases SmPC" /><InlineRef topicId="organic-chemistry" refLabel="Atracurium Esterases SmPC" /></td>
                       <td className="py-1 pr-2">Duration depends on agent, site and formulation: tetracaine can have prolonged topical action. Hydrolysis products such as PABA can contribute to allergy</td>
                       <td className="py-1"><strong>Remifentanil</strong> (ester hydrolysed by non-specific plasma/tissue esterases, context-sensitive half-time ~3 min, essentially independent of infusion duration); <strong>atracurium</strong> (partly by non-specific esterase, alongside Hofmann elimination); <strong>cocaine</strong> and <strong>tetracaine</strong> (ester local anaesthetics)</td>
                     </tr>
@@ -209,7 +210,7 @@ const OrganicChemistryTopic = () => {
                       <td className="py-1 pr-2">Resonance-stabilised C−N bond, much more resistant to hydrolysis than an ester</td>
                       <td className="py-1 pr-2">Requires hepatic microsomal (CYP) metabolism, so it is slower — half-lives of hours rather than minutes</td>
                       <td className="py-1 pr-2">Block duration is agent/site/formulation-dependent, not inferred from plasma half-life alone. Hepatic impairment can reduce clearance; amide allergy is rare but possible</td>
-                      <td className="py-1"><strong>Lidocaine</strong> and <strong>bupivacaine</strong> (amide LAs, two "i"s before "-caine") contrasted with the ester LAs <strong>cocaine</strong> and <strong>tetracaine</strong></td>
+                      <td className="py-1"><strong>Lidocaine</strong> and <strong>bupivacaine</strong> (amide LAs). {AMIDE_NAME_AID}<InlineRef topicId="organic-chemistry" refLabel="PubChem Lidocaine Linkage" /> contrasted with the ester LAs <strong>cocaine</strong> and <strong>tetracaine</strong></td>
                     </tr>
                     <tr className="border-b border-border/50 align-top">
                       <td className="py-1 pr-2 font-semibold text-foreground">Ether (C−O−C)</td>
@@ -223,7 +224,7 @@ const OrganicChemistryTopic = () => {
                       <td className="py-1 pr-2">Planar, highly lipophilic, delocalised π-electron cloud allows π–π stacking interactions</td>
                       <td className="py-1 pr-2">Increases lipid solubility, protein binding and volume of distribution; promotes hepatic oxidative (CYP) rather than renal clearance</td>
                       <td className="py-1 pr-2">Drives partitioning into lipid-rich CNS tissue, enhancing potency and speed of onset for centrally-acting drugs</td>
-                      <td className="py-1"><strong>Propofol</strong>, <strong>thiopentone</strong> and <strong>midazolam</strong> (aromatic rings underpin rapid CNS penetration)</td>
+                      <td className="py-1"><strong>Propofol</strong> and <strong>midazolam</strong> have aromatic rings. Thiopentone is a substituted thiobarbiturate heterocycle, not a benzene-ring example.<InlineRef topicId="organic-chemistry" refLabel="NIST Thiopental Structure" /></td>
                     </tr>
                   </tbody>
                 </table>
@@ -331,7 +332,7 @@ const OrganicChemistryTopic = () => {
                 <li>Receptors are themselves chiral (built from L-amino acids), so the two enantiomers can interact with a binding site differently. The <strong>Easson–Stedman hypothesis</strong> explains why: stereoselective activity requires at least <strong>three points of simultaneous contact</strong> between drug and receptor. Only one enantiomer's three substituents can align correctly with all three complementary receptor sites at once; its mirror image can achieve at best two of the three contacts, so it binds more weakly (or not at all).</li>
                 <li>The more potent, "better-fitting" enantiomer is termed the <strong>eutomer</strong>; the less potent (or less desirable) mirror image is the <strong>distomer</strong>. The ratio of their potencies is the <strong>eudismic ratio</strong> — a large ratio means high stereoselectivity and a strong case for using the single eutomer clinically.</li>
                 <li>Bupivacaine: the eutomer S(-)-bupivacaine (<strong>levobupivacaine</strong>) is the therapeutically desired isomer, with a similar local anaesthetic potency to the racemate but less affinity for cardiac Na⁺ channels. The distomer, R(+)-bupivacaine, contributes disproportionately to <strong>cardiotoxicity</strong> (fast-in/slow-out sodium channel block, refractory ventricular arrhythmias) seen with racemic bupivacaine — the rationale for preferring levobupivacaine or ropivacaine (a pure S-enantiomer from first synthesis) in high-dose regional blocks.</li>
-                <li>Ketamine: S(+)-ketamine is the eutomer, roughly 3–4× more potent as an NMDA-receptor antagonist and analgesic than R(-)-ketamine, with a more favourable emergence and recovery profile; the eudismic ratio favours using S-ketamine alone where available.</li>
+                <li>Ketamine has S and R enantiomers with the same connectivity and different stereocentre configurations. These chemical facts do not alone establish dose, recovery, emergence effects or clinical superiority.<InlineRef topicId="organic-chemistry" refLabel="PubChem Ketamine Structures" /></li>
                 <li>Dexmedetomidine is itself a single, pharmacologically active enantiomer (the dextrorotatory, S-configured enantiomer of medetomidine — "d" describes optical rotation and "S" absolute configuration, two separate naming systems that do not always coincide) selected specifically for its high α2:α1 selectivity — a further example of enantiomer selection improving the therapeutic index rather than using a racemate.</li>
               </ol>
               <div className="mt-2 rounded-md border border-destructive/30 bg-destructive/5 p-2">
@@ -344,7 +345,7 @@ const OrganicChemistryTopic = () => {
               </div>
             </div>
           ),
-          answer: "Chiral receptors need three simultaneous points of contact (Easson-Stedman) for full activity, so only one enantiomer (the eutomer) binds optimally; the eudismic ratio quantifies its potency advantage over the distomer. Levobupivacaine/S-bupivacaine is the safer eutomer versus the more cardiotoxic R(+)-distomer in racemic bupivacaine; S-ketamine is the more potent eutomer of ketamine, with less emergence delirium; dexmedetomidine is the dextrorotatory (S) enantiomer of medetomidine used as a single active enantiomer for receptor selectivity.",
+          answer: "Chiral receptors need three simultaneous points of contact (Easson-Stedman) for full activity, so only one enantiomer (the eutomer) binds optimally; the eudismic ratio quantifies its potency advantage over the distomer. Levobupivacaine/S-bupivacaine is the safer eutomer versus the more cardiotoxic R(+)-distomer in racemic bupivacaine; ketamine enantiomers share connectivity but differ at a stereocentre; this alone does not establish an emergence or recovery advantage; dexmedetomidine is the dextrorotatory (S) enantiomer of medetomidine used as a single active enantiomer for receptor selectivity.",
           cites: ["Nau & Strichartz 2002", "Cross & Plunkett Ch.4"],
         },
       ]}
@@ -353,7 +354,7 @@ const OrganicChemistryTopic = () => {
         { text: "Amide LAs commonly undergo hepatic metabolism; class/plasma half-life alone does not determine block duration. True amide allergy is rare but possible", cites: ["Cross & Plunkett Ch.4"] },
         { text: "Quaternary amines (R₄N⁺) carry permanent charge → poorly penetrate BBB and have limited passive placental transfer, not zero passage (glycopyrronium SmPC)", cites: ["Peck & Hill Ch.3"] },
         { text: "Chirality: enantiomers can have very different potency and toxicity (levobupivacaine vs racemic bupivacaine)", cites: ["Nau & Strichartz 2002"] },
-        { text: "Benzene rings increase lipophilicity → better CNS penetration (propofol, thiopentone, midazolam)", cites: ["Peck & Hill Ch.3"] },
+        { text: "Propofol and midazolam have aromatic rings; thiopentone has a substituted thiobarbiturate heterocycle, not a benzene ring", cites: ["NIST Thiopental Structure"] },
         { text: "Halogenation (adding F, Cl, Br) increases molecular stability and alters volatility of anaesthetic agents", cites: ["Cross & Plunkett Ch.4"] },
         { text: "Hydrogen bonding capability determines water solubility and protein binding characteristics", cites: ["Peck & Hill Ch.3"] },
       ]}
