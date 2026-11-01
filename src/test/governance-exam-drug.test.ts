@@ -8,7 +8,9 @@ import { tmpdir } from 'node:os';
 import rule from '../../eslint-rules/valid-exam-tag.js';
 import { validateDoseSummary } from '../../scripts/lib/drug-summary.mjs';
 const linter = new Linter({ configType: 'flat' });
-const config = [{ languageOptions: { parser: tseslint.parser }, plugins: { local: { rules: { exam: rule } } }, rules: { 'local/exam': 'error' } }];
+// typescript-eslint exposes a deliberately loose parser type; ESLint executes
+// this parser directly. Keep the narrowing confined to the test adapter.
+const config: Linter.Config[] = [{ languageOptions: { parser: tseslint.parser as unknown as NonNullable<Linter.Config['languageOptions']>['parser'] }, plugins: { local: { rules: { exam: rule } } }, rules: { 'local/exam': 'error' } }];
 describe('exam checker safeguards', () => {
   it.each(['unrelated-label', 'fic'])('does not autofix distant/ambiguous %s', value => {
     const source = `const examTags = ["${value}"];`;
@@ -20,7 +22,7 @@ describe('exam checker safeguards', () => {
   it('invalid TS makes CLI fail with filename and parser reason', () => {
     const dir = mkdtempSync(join(tmpdir(), 'exam-check-')); const file = join(dir, 'bad.ts'); writeFileSync(file, 'const examTags: = [');
     try { execFileSync('node', ['scripts/check-exam-tags.mjs', file], { encoding:'utf8' }); throw new Error('Checker incorrectly passed'); }
-    catch (error) { const e = error as { stdout?: string }; expect(e.stdout).toContain('bad.ts'); expect(e.stdout).toMatch(/checker-error.*Parsing error/); }
+    catch (error) { const e = error as { stdout?: string }; const output = e.stdout?.replace(/\u001b\[[0-9;]*m/g, '') ?? ''; expect(output).toContain('bad.ts'); expect(output).toMatch(/checker-error.*Parsing error/); }
     finally { rmSync(dir, { recursive: true }); }
   });
 });

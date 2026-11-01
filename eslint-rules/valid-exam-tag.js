@@ -65,6 +65,15 @@ function isStringLiteral(node) {
 function contextKey(node) {
   let cur = node.parent;
   while (cur) {
+    // Only value positions are tags: comparison operands, query keys and
+    // typeof/type literals do not supply an exam value.
+    if (["BinaryExpression", "CallExpression", "UnaryExpression", "TSLiteralType"].includes(cur.type)) return null;
+    if (cur.type === "ConditionalExpression" && cur.test === node) return null;
+    if (cur.type === "ConditionalExpression") {
+      let child = node;
+      while (child.parent && child.parent !== cur) child = child.parent;
+      if (cur.test === child) return null;
+    }
     if (cur.type === "Property" || cur.type === "PropertyDefinition") {
       const key = cur.key;
       if (key) {
@@ -122,6 +131,11 @@ const rule = {
         // "exam" also denotes a radiological examination. Its typed row shape
         // (dose_mSv + category) is clinical prose, not an ExamTag context.
         if (key === "exam" && node.parent?.type === "Property" && node.parent.parent?.type === "ObjectExpression" && node.parent.parent.properties.some(p => p.key?.name === "dose_mSv")) return;
+        // Syllabus labels paired with code/topic are display labels, not tags.
+        if (key === "exam" && node.parent?.type === "Property" && node.parent.parent?.type === "ObjectExpression") {
+          const keys = node.parent.parent.properties.map(p => p.key?.name);
+          if (keys.includes("code") && keys.includes("topic")) return;
+        }
 
         // Only flag string literals that sit in an obvious exam context
         // (examTags array, `exam:` / `exams:` property, `examTags` variable).

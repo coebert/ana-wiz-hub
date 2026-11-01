@@ -3,7 +3,7 @@ import { render, cleanup } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
 import { readFileSync } from 'node:fs';
 import { topicRedirects, isTopicRedirectFile } from '../data/topicRedirects';
-import { topicRouteEntries } from '../routes/topicRoutes';
+import { TOPIC_ROUTES } from '../routes/topicRoutes';
 const navigation = vi.hoisted(() => vi.fn());
 vi.mock('react-router-dom', async importOriginal => ({ ...await importOriginal<typeof import('react-router-dom')>(), Navigate: (props: unknown) => { navigation(props); return null; } }));
 const wrappers = import.meta.glob<{ default: React.ComponentType }>('../pages/topics/Icu*Topic.tsx', { eager: true });
@@ -20,8 +20,8 @@ describe('explicit legacy topic redirects', () => {
       const source = readFileSync(`src/pages/topics/${alias.file}`, 'utf8');
       expect(source).not.toMatch(/<TopicTemplate|<SectionLayout|<p[\s>]/);
       expect(source).toMatch(/<Navigate|<IcuCostLegacyRedirect/);
-      expect(topicRouteEntries.some(([path, name]) => path === alias.path && `${name}.tsx` === alias.file)).toBe(true);
-      expect(topicRouteEntries.some(([path, name]) => path === alias.target && `${name}.tsx` === alias.canonicalFile)).toBe(true);
+      expect(TOPIC_ROUTES.some(([path, name]) => path === alias.path && `${name}.tsx` === alias.file)).toBe(true);
+      expect(TOPIC_ROUTES.some(([path, name]) => path === alias.target && `${name}.tsx` === alias.canonicalFile)).toBe(true);
       expect(readFileSync(`src/pages/topics/${alias.canonicalFile}`, 'utf8')).toContain('<TopicTemplate');
     });
   }

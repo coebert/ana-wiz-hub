@@ -26,7 +26,7 @@ describe('shared citation contracts', () => {
   });
   it('nonliteral citation is not silently dropped', () => expect(parseTopic('<TopicTemplate topicId="single-key" keyPoints={[{cites:[computed]}]} />').diagnostics).toEqual(['nonliteral cites: computed']));
   it('five operative labels resolve in the executed pool without duplicate additions', () => {
-    for (const label of ['GALA 2008', 'ESVS 2024 AAA', 'EVAR-1 2004', 'NICE NG156', 'NICE NG45']) expect(referenceLabels().get('operative-steps')?.has(label), label).toBe(true);
+    for (const label of ['GALA 2008', 'ESVS 2024 AAA', 'EVAR-1 2004', 'NICE NG156', 'AAGBI BCIS 2015']) expect(referenceLabels().get('operative-steps')?.has(label), label).toBe(true);
   });
   it('a newly diagram-bearing topic cannot pass without its diagram declaration', () => {
     const t = parseTopic('import Diagram from "@/components/diagrams/Example"; <TopicTemplate topicId="single-key" coreConcepts={<Diagram />} />');
