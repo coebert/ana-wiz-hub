@@ -1,9 +1,11 @@
 # Admin metrics audit fixes
 
 ## D30 medicine reference access — 1 November 2026
-- [ ] Expose exact references and honestly labelled search tools; verify safe links, keyboard and mobile rendering.
-- [ ] Independently open/match 66 candidate sources; append only scoped metadata with current-source guards/readback and document unresolved records.
-- [ ] Focused tests, browser evidence and automatic validation; no publication/audio/clinical-field changes.
+- [x] Exposed references on both medicine views; safe URLs, provenance preservation, accurate search-tool labels and desktop/mobile keyboard access checked.
+- [x] Independently opened source candidates;56scoped appends with exact guards/readback,2coordinated root records preserved; per-record evidence/counts and exact-before differences in docs/d30/. Not66completed or208certified.
+- [x] 20focused tests passed; drug checker passed with inherited caffeine summary warning; automatic build OK. No publication/audio/clinical-field changes.
+- [ ] Eight exact source matches unresolved: clevidipine,diltiazem,flucytosine,hypertonic-saline,hydroxocobalamin,magnesium-bronchospasm,omeprazole,droperidol. Blockers: unavailable official labels or mismatched formulation/brand; detailed evidence retained.
+- [ ] Explicit manual production build/typecheck remains unavailable under governing execution restrictions; automatic validation does not provide separate manual proof.
 
 ## Narrow residual source batch — 1 November 2026
 - [x] Reconciled 17 supplied guards on current HEAD; calculator arithmetic/unrelated work preserved; IV paracetamol lookup-only and three DAS 2025 source links verified.
