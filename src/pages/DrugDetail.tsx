@@ -7,6 +7,7 @@ import { supabase } from "@/integrations/supabase/client";
 import { allTopics, sectionMeta } from "@/data/curriculum";
 import { classifyImpact as classifyImpactExternal } from "@/lib/drug-impact-classifier";
 import { Breadcrumbs } from "@/components/layout/Breadcrumbs";
+import { DrugSources } from "@/components/references/DrugSources";
 import { computeMlPerHr, extractMassDilutions, formatConcentration, formatMassConcentration, formatMix, normaliseInfusionStandard } from "@/lib/infusion-standard";
 
 interface InfusionStandard {
@@ -40,6 +41,7 @@ interface Drug {
   interactions: string;
   infusion_standard: InfusionStandard;
   related_topic_ids: string[];
+  sources?: unknown;
 }
 
 const Section = ({ title, body }: { title: string; body: string }) => (
@@ -904,6 +906,7 @@ export default function DrugDetail() {
             { id: "side-effects", label: "Side effects" },
             { id: "contraindications", label: "Contraindications" },
             { id: "interactions", label: "Interactions" },
+            { id: "references", label: "References" },
           ];
           return (
             <nav
@@ -962,6 +965,7 @@ export default function DrugDetail() {
             </ul>
           </section>
         )}
+        <DrugSources sources={drug.sources} />
       </main>
     </div>
   );
