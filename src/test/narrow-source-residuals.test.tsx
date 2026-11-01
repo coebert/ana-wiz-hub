@@ -63,12 +63,11 @@ describe("named source residual safety boundaries", () => {
   it("renders the corrected CICO block and all three resolving current references", async () => {
     const Topic = (await import("@/pages/topics/ClinicalIncidentsTopic")).default;
     const { container } = render(wrap(<Topic />));
-    const section = container.querySelector("#section-cannot-intubate-cannot-oxygenate-cico");
     const text = container.textContent ?? "";
     expect(text).toContain("do not wait for a numerical oxygen-saturation threshold");
     expect(text).toContain("default to a midline vertical skin incision");
     expect(screen.getAllByRole("link", { name: "DAS 2025", hidden: true })).toHaveLength(3);
-    for (const link of screen.getAllByRole("link", { name: "DAS 2025", hidden: true })) expect(link.getAttribute("href")).toBe("https://das.uk.com/guidelines/das_intubation_guidelines/");
+    for (const link of screen.getAllByRole("link", { name: "DAS 2025", hidden: true })) expect(link.getAttribute("href")).toBe("https://das.uk.com/new-das-2025-intubation-guidelines/");
     expect(topicReferences["clinical-incidents"].find(r => r.label === "DAS 2025")?.citation).toContain("10.1016/j.bja.2025.10.006");
   });
   it("renders the corrected paediatric propofol and dexmedetomidine blocks", async () => {
