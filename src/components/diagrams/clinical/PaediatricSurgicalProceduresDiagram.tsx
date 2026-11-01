@@ -28,7 +28,7 @@ const PROCEDURES: Procedure[] = [
       "Resuscitate with 10–20 ml/kg balanced crystalloid boluses; correct acidosis",
       "Correct coagulopathy/thrombocytopenia (FFP, platelets, cryoprecipitate)",
       "Glucose check — neonates have minimal glycogen reserves; run dextrose-containing maintenance",
-      "Consent for blood transfusion; cross-match 1 unit irradiated CMV-negative neonatal red cells",
+      "Consent for transfusion; arrange cross-matched neonatal-specification red cells according to anticipated need. Confirm CMV/leucodepletion and specific irradiation indications with the transfusion laboratory; neonatal age alone does not require irradiation.",
       "Discuss with NICU: transfer in incubator, maintain ventilation continuity",
     ],
     inductionPlan:
