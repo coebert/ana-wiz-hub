@@ -127,3 +127,9 @@
 - [x] D70–74: align static, quiz, chemistry and peripheral-block duplicates and add targeted regressions.
 - [x] D75: retain owner-applied calcium correction; reread and record status without overwriting.
 - [x] Finish queued calculator/unit safeguards, tests, audit record and affected dynamic IDs; no publication.
+
+## Governance verification repair — 1 November 2026
+- [ ] GOV02/GOV06 shared runtime references, conservative topic-ID extraction, reviewed provenance debt.
+- [ ] GOV03–GOV05 explicit redirect verification, real operation fixtures, viva metadata.
+- [ ] GOV07 exam diagnostics and age-aware drug structural checks.
+- [ ] Run focused and full tests; record commands, exact residuals and current source basis. No publication or database edits.
