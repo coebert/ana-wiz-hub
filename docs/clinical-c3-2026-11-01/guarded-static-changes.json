@@ -1,0 +1,807 @@
+[
+  {
+    "path": "src/lib/clinical-audit-rules.ts",
+    "before": "calcium chloride 10 mL 10% IV over 5 minutes is the equivalent-calcium alternative, preferred in arrest/peri-arrest under the appropriate protocol.",
+    "after": "calcium chloride 10 mL 10% IV over 5 minutes is the equivalent-calcium alternative, preferred in peri-arrest. During CPR for hyperkalaemic cardiac arrest, calcium chloride 10 mL 10% is given as a bolus under the separate resuscitation protocol."
+  },
+  {
+    "path": "src/lib/clinical-audit-rules.ts",
+    "before": "calcium does not lower potassium. Give 10 units",
+    "after": "calcium does not lower potassium. Severe K ≥6.5 mmol/L requires urgent potassium-lowering treatment even without ECG changes; K 6.0–6.4 mmol/L requires clinical assessment and consideration of treatment. Calcium for ECG toxicity and potassium-lowering treatment have different indications. Give 10 units"
+  },
+  {
+    "path": "src/pages/topics/BronchospasticFailureTopic.tsx",
+    "before": "<li><strong>Later:</strong> antihistamine (e.g. chlorphenamine) and corticosteroid are not first-line and should never delay adrenaline; send mast-cell tryptase and refer to an allergy clinic.</li>",
+    "after": "<li><strong>After stabilisation:</strong> corticosteroids are not routine anaphylaxis treatment and do not prevent biphasic reactions. Antihistamines treat residual skin symptoms, not airway, breathing or circulatory compromise; prefer a non-sedating oral agent where appropriate. Steroids may be considered for persistent asthma or refractory shock after initial resuscitation, never instead of adrenaline. Send mast-cell tryptase and refer to an allergy clinic <InlineRef topicId=\"bronchospastic-failure\" refLabel=\"RCUK Anaphylaxis 2021\" />.</li>"
+  },
+  {
+    "path": "src/pages/topics/SolutionsConcentrationTopic.tsx",
+    "before": "emergency regardless of chronicity: give <strong>150 mL of 3% NaCl over 20 minutes</strong>, and repeat up\n                to <strong>three times</strong>, aiming for either a <strong>5 mmol/L rise</strong> in serum sodium or\n                resolution of symptoms — whichever comes first — then stop the hypertonic saline.",
+    "after": "emergency regardless of chronicity: immediate treatment must not await cause, volume-status or urine classification. Give <strong>150 mL of 3% NaCl over 20 minutes</strong> and <strong>check sodium after 20 minutes and between repeat boluses</strong>. The European 2014 first-hour algorithm repeats this bolus up to two further times, or until a <strong>5 mmol/L rise</strong> is reached, with reassessment after each; stop on the symptom/target-rise response and seek urgent specialist help if severe symptoms persist <InlineRef topicId=\"solutions-concentration\" refLabel=\"Society for Endocrinology Hyponatraemia 2016\" />."
+  },
+  {
+    "path": "src/pages/topics/SolutionsConcentrationTopic.tsx",
+    "before": "sodium re-checked every 2–4 hours during active correction. Always classify by volume status (hypovolaemic,\n                euvolaemic, hypervolaemic) and urine osmolality/Na⁺ before treatment;",
+    "after": "after the initial first-hour boluses and interim sodium checks, re-check sodium every 2–4 hours during subsequent active correction. Classify by volume status (hypovolaemic,\n                euvolaemic, hypervolaemic) and urine osmolality/Na⁺ to guide subsequent cause-specific treatment, without delaying emergency hypertonic saline;"
+  },
+  {
+    "path": "src/pages/topics/TransfusionCoagulationTopic.tsx",
+    "before": "TRALI vs TACO: both cause pulmonary oedema within 6 h — TRALI has normal CVP/JVP and worsens with diuretics; TACO improves with diuresis\", cites: [\"BJA Educ 2015\"]",
+    "after": "TRALI develops during or within 6 h; TACO surveillance includes onset during or up to 12 h after transfusion, and SHOT accepts reports up to 24 h. Assess hydrostatic overload; do not exclude TACO at 6–12 h\", cites: [\"MHRA TACO 2024\", \"SHOT TACO 2025\"]"
+  },
+  {
+    "path": "src/pages/topics/TransfusionCoagulationTopic.tsx",
+    "before": "FIB-PPH (2023)\", detail: \"Empiric fibrinogen concentrate 2 g vs placebo in PPH — no reduction in RBC transfusion. Empiric replacement without confirmed hypofibrinogenaemia not beneficial.",
+    "after": "FIB-PPH (2015)\", detail: \"Wikkelsø et al., BJA 114:623–633 (doi:10.1093/bja/aeu444): empiric fibrinogen concentrate 2 g vs placebo in largely normofibrinogenaemic PPH did not reduce RBC transfusion. This does not establish lack of benefit in confirmed hypofibrinogenaemia."
+  },
+  {
+    "path": "src/pages/topics/TransfusionCoagulationTopic.tsx",
+    "before": "Volume overload within 6 h. Raised BNP/JVP",
+    "after": "Volume overload during or up to 12 h after transfusion in the surveillance definition; SHOT accepts reports up to 24 h. Raised BNP/JVP"
+  },
+  {
+    "path": "src/pages/topics/TransfusionCoagulationTopic.tsx",
+    "before": "Both present with hypoxia and bilateral infiltrates within 6 h of transfusion.",
+    "after": "Both can present with hypoxia and bilateral infiltrates. TRALI onset is during or within 6 h; TACO surveillance includes onset during or up to 12 h after transfusion, and SHOT accepts reports up to 24 h. Do not exclude TACO at 6–12 h <InlineRef topicId=\"transfusion-coagulation\" refLabel=\"MHRA TACO 2024\" /><InlineRef topicId=\"transfusion-coagulation\" refLabel=\"SHOT TACO 2025\" />."
+  },
+  {
+    "path": "src/pages/topics/TransfusionCoagulationTopic.tsx",
+    "before": "Treat with plasma exchange — do NOT transfuse platelets.",
+    "after": "Treat with urgent specialist plasma exchange. Avoid prophylactic platelet transfusion; life-threatening haemorrhage may justify platelets with urgent specialist haematology input <InlineRef topicId=\"transfusion-coagulation\" refLabel=\"BSH Platelets 2021\" />."
+  },
+  {
+    "path": "src/pages/topics/TransfusionCoagulationTopic.tsx",
+    "before": "            </div>\n            </CollapsibleSubsection>\n          </ExamSection>\n\n          <ExamSection id=\"reactions\"",
+    "after": "            </div>\n            <p className=\"text-xs text-muted-foreground\"><InlineRef topicId=\"transfusion-coagulation\" refLabel=\"FIB-PPH 2015\" /></p>\n            </CollapsibleSubsection>\n          </ExamSection>\n\n          <ExamSection id=\"reactions\""
+  },
+  {
+    "path": "src/pages/topics/ClinicalIncidentsTopic.tsx",
+    "before": "NMBAs cause ~38% of perioperative anaphylaxis (NAP6), followed by antibiotics (26%) and chlorhexidine (9%)",
+    "after": "UK NAP6 2018: of 199 identified culprit agents, antibiotics 94 (47%), NMBAs 65 (33%), chlorhexidine 18 (9%) and Patent Blue 9 (5%)"
+  },
+  {
+    "path": "src/pages/topics/ClinicalIncidentsTopic.tsx",
+    "before": "refLabel=\"NAP6 2018 (Triggers)\" /></>, cites: [\"AAGBI 2009\"]",
+    "after": "refLabel=\"NAP6 2018 (Triggers)\" /></>, cites: [\"NAP6 2018 (Triggers)\"]"
+  },
+  {
+    "path": "src/pages/topics/ClinicalIncidentsTopic.tsx",
+    "before": "Perioperative anaphylaxis occurs in ~1:10,000 anaesthetics (NAP6). <Link to=\"/pharmacology/muscle-relaxants\" className=\"text-pharmacology underline\">NMBAs</Link> account for ~38% of cases, with antibiotics (especially teicoplanin and co-amoxiclav, ~26%), chlorhexidine (~9%) and patent blue dye making up most of the rest",
+    "after": "Perioperative anaphylaxis occurs in ~1:10,000 anaesthetics (UK NAP6 2018). Of 199 identified culprit agents, antibiotics were commonest: 94 (47%), followed by <Link to=\"/pharmacology/muscle-relaxants\" className=\"text-pharmacology underline\">NMBAs</Link> 65 (33%), chlorhexidine 18 (9%) and Patent Blue 9 (5%). These are proportions of identified agents, not all reports"
+  },
+  {
+    "path": "src/pages/topics/ClinicalIncidentsTopic.tsx",
+    "before": "Anaphylaxis (NAP6): NMBAs (38%), antibiotics (26%) and chlorhexidine (9%) top the list",
+    "after": "Anaphylaxis (UK NAP6 2018): of 199 identified culprit agents, antibiotics 94 (47%), NMBAs 65 (33%), chlorhexidine 18 (9%) and Patent Blue 9 (5%)"
+  },
+  {
+    "path": "src/pages/topics/ClinicalIncidentsTopic.tsx",
+    "before": "Antihistamines and steroids are not part of immediate ABC treatment; steroids only for refractory reactions or shock",
+    "after": "Corticosteroids are not routine treatment or biphasic-reaction prevention; consider only specific persistent asthma or refractory shock indications after initial resuscitation. After stabilisation, a non-sedating oral antihistamine may treat residual skin symptoms, never ABC compromise"
+  },
+  {
+    "path": "src/components/topic/IcuEmergencyTeaching.tsx",
+    "before": "Hydralazine can cause a sudden drop in blood pressure, which is why NICE pairs it with a small fluid preload (next lesson).",
+    "after": "Hydralazine can cause a sudden drop in blood pressure. After assessing fluid status, NICE NG133 permits considering up to 500 mL crystalloid before or with the first IV hydralazine dose in the antenatal period; this is not a compulsory preload for every dose or for postpartum patients."
+  },
+  {
+    "path": "src/components/topic/IcuEmergencyTeaching.tsx",
+    "before": "<EQ label=\"NICE NG133 1.8.6\" />",
+    "after": "<EQ label=\"NICE NG133 1.8.6\" />\n      <EQ label=\"NICE NG133 1.8.8\" />"
+  },
+  {
+    "path": "src/pages/topics/PaediatricIcuTopic.tsx",
+    "before": "Cerebral oedema risk highest in children — 10 mL/kg bolus only if shocked, then deficit over 48 h.",
+    "after": "Follow NICE NG18/BSPED paediatric DKA guidance: if dehydrated but not shocked and IV fluids are required, give 10 mL/kg 0.9% saline over 30 minutes; in shock give the initial bolus more rapidly. Reassess and obtain senior paediatric input before repeated boluses, then replace deficit over 48 h."
+  },
+  {
+    "path": "src/pages/topics/PaediatricIcuTopic.tsx",
+    "before": "<strong>Potassium 40 mmol/L in every rehydration bag</strong> unless anuric — total body potassium is always depleted and insulin drives it intracellularly.",
+    "after": "<strong>Potassium 40 mmol/L in ongoing fluids, not initial IV boluses</strong>, unless anuric or potassium is above the normal range. In initial hyperkalaemia follow NG18 1.4.30: add only after urine has been passed or potassium is &lt;5.5 mmol/L; continue electrolyte/ECG monitoring. No IV insulin bolus <InlineRef topicId=\"paediatric-icu\" refLabel=\"NICE NG18 potassium\" />."
+  },
+  {
+    "path": "src/pages/topics/PaediatricIcuTopic.tsx",
+    "before": "keep the tube tip above the fistula, and look for the VACTERL associations including duct-dependent cardiac lesions.",
+    "after": "if intubation is required, localise the fistula with bronchoscopy and position the tube to isolate/bypass it, typically distal to the fistula when feasible. Check ventilation and gastric distension; carinal or bronchial fistulae may need specialist endobronchial ventilation or fistula occlusion. Anatomy and expert anaesthetic/surgical planning determine management. Look for VACTERL associations including duct-dependent cardiac lesions <InlineRef topicId=\"paediatric-icu\" refLabel=\"BJA Educ TEF 2025\" />."
+  },
+  {
+    "path": "src/pages/topics/PaediatricIcuTopic.tsx",
+    "before": "<strong>DKA:</strong> 10 mL/kg bolus only if shocked, then deficit (assume 5% if pH ≥7.1, 10%",
+    "after": "<strong>DKA (NICE NG18/BSPED):</strong> dehydrated but not shocked children requiring IV fluids receive 10 mL/kg 0.9% saline over 30 minutes; give the initial bolus more rapidly in shock. Reassess and seek senior paediatric input before repeat boluses. Then deficit (assume 5% if pH ≥7.1, 10%"
+  },
+  {
+    "path": "src/pages/topics/PaediatricIcuTopic.tsx",
+    "before": "units/kg/h started 1–2 h after fluids; no bicarbonate. <strong>Add potassium 40 mmol/L to every rehydration bag from the outset</strong> unless the child is anuric or potassium is above 5.5 mmol/L:",
+    "after": "units/kg/h started 1–2 h after fluids; no IV insulin bolus; no routine bicarbonate. <strong>Add potassium 40 mmol/L to ongoing fluids, excluding initial IV boluses</strong>, unless anuric or potassium is above the normal range. For initial hyperkalaemia, NG18 1.4.30 permits addition only after urine has been passed or potassium is &lt;5.5 mmol/L <InlineRef topicId=\"paediatric-icu\" refLabel=\"NICE NG18 potassium\" />:"
+  },
+  {
+    "path": "src/pages/topics/PaediatricIcuTopic.tsx",
+    "before": "Hourly GCS, neuro-obs and fluid balance <InlineRef",
+    "after": "Hourly GCS, neuro-obs and fluid balance <InlineRef topicId=\"paediatric-icu\" refLabel=\"NICE NG18\" /> <InlineRef"
+  },
+  {
+    "path": "src/pages/topics/ArrhythmiasEcgIcuTopic.tsx",
+    "before": "Current RCUK / ERC–ESICM 2025 practice is",
+    "after": "The current RCUK algorithm (March 2026, implementing 2025 guidance) uses"
+  },
+  {
+    "path": "src/pages/topics/ArrhythmiasEcgIcuTopic.tsx",
+    "before": "if simple measures fail <InlineRef topicId=\"arrhythmias-ecg-icu\" refLabel=\"ERC/ESICM 2021 Post-Resus\" />.",
+    "after": "if simple measures fail. The 2025 narrative guideline specifies 36–72 h; the current algorithm specifies ≥72 h <InlineRef topicId=\"arrhythmias-ecg-icu\" refLabel=\"RCUK PRC 2025\" /><InlineRef topicId=\"arrhythmias-ecg-icu\" refLabel=\"RCUK PRC Algorithm March 2026\" />."
+  },
+  {
+    "path": "src/pages/topics/PrognosticationEthicsIcuTopic.tsx",
+    "before": "Post-Cardiac Arrest (ERC/ESICM 2021; updated by ILCOR 2022 / TTM2)",
+    "after": "Post-Cardiac Arrest (RCUK 2025; March 2026 algorithm)"
+  },
+  {
+    "path": "src/pages/topics/PrognosticationEthicsIcuTopic.tsx",
+    "before": "for ≥72 h post-ROSC<InlineRef topicId=\"prognostication-ethics-icu\" refLabel=\"TTM2 2021\" /><InlineRef topicId=\"prognostication-ethics-icu\" refLabel=\"ILCOR CoSTR 2022\" />",
+    "after": "in patients who remain unconscious after ROSC: ≥72 h when following the RCUK March 2026 algorithm; the narrative guideline says 36–72 h<InlineRef topicId=\"prognostication-ethics-icu\" refLabel=\"RCUK PRC 2025\" /><InlineRef topicId=\"prognostication-ethics-icu\" refLabel=\"RCUK PRC Algorithm March 2026\" />"
+  },
+  {
+    "path": "src/pages/topics/PrognosticationEthicsIcuTopic.tsx",
+    "before": "At least 2 concordant indicators:",
+    "after": "After excluding confounders, use at least 2 concordant indicators from independent modalities:"
+  },
+  {
+    "path": "src/pages/topics/PrognosticationEthicsIcuTopic.tsx",
+    "before": "diffuse anoxic injury on MRI; absent brainstem reflexes.",
+    "after": "diffuse anoxic injury on MRI. Do not double-count overlapping absent brainstem reflexes as an independent modality."
+  },
+  {
+    "path": "src/components/diagrams/intensive-care/TtmTargetExplorerDiagram.tsx",
+    "before": "Mandatory baseline for all post-ROSC patients. Even when 33 / 36 / normothermia targets are not reached, keep T ≤ 37.5 °C for ≥72 h.",
+    "after": "For patients who remain unconscious after ROSC: actively prevent fever at ≤37.5 °C for ≥72 h under the RCUK March 2026 algorithm. The 2025 narrative guideline says 36–72 h. This is not a mandate for active temperature control in awake survivors."
+  },
+  {
+    "path": "src/components/diagrams/intensive-care/TtmTargetExplorerDiagram.tsx",
+    "before": "Pragmatic, applicable to every post-arrest patient",
+    "after": "Applicable to patients who remain unconscious after ROSC"
+  },
+  {
+    "path": "src/components/diagrams/intensive-care/TtmTargetExplorerDiagram.tsx",
+    "before": "Always indicated regardless of which TTM strategy is otherwise chosen",
+    "after": "Prevent fever in unconscious survivors regardless of any selected cooling target"
+  },
+  {
+    "path": "src/components/diagrams/intensive-care/TtmTargetExplorerDiagram.tsx",
+    "before": "Equivalent neurological outcome to 33 °C in landmark TTM trial",
+    "after": "No significant neurological outcome difference in the TTM trial; not proof of equivalence"
+  },
+  {
+    "path": "src/components/diagrams/intensive-care/TtmTargetExplorerDiagram.tsx",
+    "before": "but TTM2 suggests strict normothermia is non-inferior.",
+    "after": "but TTM2 found no significant outcome difference; this does not prove non-inferiority."
+  },
+  {
+    "path": "src/components/diagrams/intensive-care/TtmTargetExplorerDiagram.tsx",
+    "before": "though TTM2 found no advantage over 36 °C / fever control.",
+    "after": "though TTM2 compared 33 °C with normothermia/fever treatment, not a 36 °C arm."
+  },
+  {
+    "path": "src/components/diagrams/intensive-care/TtmTargetExplorerDiagram.tsx",
+    "before": "to 72h post-ROSC (per ERC/ESICM 2021 + TTM2 evidence).",
+    "after": "to at least 72h in unconscious survivors under the RCUK March 2026 algorithm;\n * the RCUK 2025 narrative guideline says 36–72h. Historical trial curves are illustrative."
+  },
+  {
+    "path": "src/pages/topics/AirwayManagementTopic.tsx",
+    "before": "label: \"DAS 2015 Algorithm\"",
+    "after": "label: \"DAS 2025 Algorithm\""
+  },
+  {
+    "path": "src/pages/topics/AirwayManagementTopic.tsx",
+    "before": "Apply the DAS 2015 unanticipated difficult intubation algorithm: Plans A → B → C → D with maximum attempts at each step.",
+    "after": "Apply the DAS 2025 adult non-obstetric pathway: Plans A → B → C → D, with attempt ceilings, not quotas, and early declaration of failure."
+  },
+  {
+    "path": "src/pages/topics/AirwayManagementTopic.tsx",
+    "before": "Apnoeic oxygenation 15 L/min nasal cannulae (THRIVE).",
+    "after": "Low-flow nasal apnoeic oxygenation 15 L/min where appropriate; this is not high-flow THRIVE."
+  },
+  {
+    "path": "src/pages/topics/AirwayManagementTopic.tsx",
+    "before": "Have a Plan B (videolaryngoscope) and Plan D (FONA) ready before induction.",
+    "after": "Use videolaryngoscopy first-line whenever possible for Plan A; have Plan B (second-generation SAD), Plan C (optimised facemask) and Plan D (eFONA) ready before induction (DAS 2025)."
+  },
+  {
+    "path": "src/pages/topics/AirwayManagementTopic.tsx",
+    "before": "event rates were low (0.6% vs 0.5%)",
+    "after": "aspiration occurred in 10/1735 (0.6%) with cricoid pressure and 9/1736 (0.5%) with sham"
+  },
+  {
+    "path": "src/pages/topics/AirwayManagementTopic.tsx",
+    "before": "The Difficult Airway Society (DAS) 2015 non-obstetric adult algorithm has four sequential plans:",
+    "after": "The current Difficult Airway Society (DAS) 2025 non-obstetric adult algorithm retains four sequential plans (the DAS 2015 version is historical):"
+  },
+  {
+    "path": "src/pages/topics/AirwayManagementTopic.tsx",
+    "before": "maximum 3 + 1 attempts, changing operator or technique",
+    "after": "maximum 3 + 1 attempts, changing operator or technique; a ceiling, not a requirement before declaring failure; use videolaryngoscopy first-line whenever possible"
+  },
+  {
+    "path": "src/pages/topics/AirwayManagementTopic.tsx",
+    "before": "The joint OAA/DAS obstetric guideline is deliberately more restrictive and limits tracheal intubation to two attempts in total.",
+    "after": "The separate OAA/DAS 2015 obstetric guideline uses two attempts as the default limit; a third attempt only by an experienced anaesthetist where appropriate, not the non-obstetric 3+1 allowance."
+  },
+  {
+    "path": "src/pages/topics/AirwayManagementTopic.tsx",
+    "before": "Technique: extend neck, palpate cricothyroid membrane, transverse stab with size 10 scalpel, rotate blade caudally, railroad a Frova/bougie, advance a 6.0 cuffed tube 2–3 cm, confirm with capnography.",
+    "after": "Technique (DAS 2025): extend the neck when appropriate. If cricothyroid-membrane anatomy was not explicitly assessed or remains uncertain, default to a midline vertical skin incision and expose/identify the membrane. A transverse approach is suitable only if the membrane is confidently identified or previously marked. Open the membrane with a size 10 scalpel, rotate the blade caudally, insert the bougie into the trachea and railroad a 6.0 cuffed tube; confirm ventilation with waveform capnography."
+  },
+  {
+    "path": "src/pages/topics/AirwayManagementTopic.tsx",
+    "before": "extends safe apnoea by passive diffusion of O₂ but does not clear CO₂",
+    "after": "may extend apnoea tolerance depending on the patient and airway patency, but neither replaces pre-oxygenation or ventilation; CO₂ continues to accumulate"
+  },
+  {
+    "path": "src/pages/topics/AirwayManagementTopic.tsx",
+    "before": "<strong>Plan A failed (3 attempts max).</strong>",
+    "after": "<strong>Plan A failed after three unsuccessful attempts.</strong> The DAS 2025 3+1 limit is a ceiling, not a quota; declare failure sooner if appropriate."
+  },
+  {
+    "path": "src/pages/topics/AirwayManagementTopic.tsx",
+    "before": "SAD inserted, oxygenation inadequate after 3 attempts",
+    "after": "SAD oxygenation is inadequate despite optimisation; three attempts is a maximum, not a required sequence"
+  },
+  {
+    "path": "src/pages/topics/AirwayManagementTopic.tsx",
+    "before": "Repeating Plan A &gt; 3 times — NAP4 highlighted persistence with laryngoscopy as a recurrent failure mode.",
+    "after": "Exhausting the 3+1 maximum before declaring failure — NAP4 highlighted harmful persistence; move on earlier if oxygenation or conditions deteriorate."
+  },
+  {
+    "path": "src/pages/topics/AirwayManagementTopic.tsx",
+    "before": "   cites: [\"DAS 2015\"],",
+    "after": "   cites: [\"DAS 2025\"],"
+  },
+  {
+    "path": "src/pages/topics/AirwayManagementTopic.tsx",
+    "before": "objectives: [\"DAS 2015\", \"NAP4 2011\"]",
+    "after": "objectives: [\"DAS 2025\", \"OAA/DAS 2015\", \"NAP4 2011\"]"
+  },
+  {
+    "path": "src/pages/topics/AirwayManagementTopic.tsx",
+    "before": "workedExamples: [\"DAS 2015\", \"NAP4 2011\"]",
+    "after": "workedExamples: [\"DAS 2025\", \"NAP4 2011\"]"
+  },
+  {
+    "path": "src/pages/topics/AirwayManagementTopic.tsx",
+    "before": "keyPoints: [\"DAS 2015\", \"NAP4 2011\", \"BJA Educ 2017\"]",
+    "after": "keyPoints: [\"DAS 2025\", \"NAP4 2011\", \"BJA Educ 2017\"]"
+  },
+  {
+    "path": "src/pages/topics/AirwayManagementTopic.tsx",
+    "before": "title=\"DAS 2015 algorithm — four sequential plans\"",
+    "after": "title=\"DAS 2025 algorithm — four sequential plans\""
+  },
+  {
+    "path": "src/pages/topics/AirwayManagementTopic.tsx",
+    "before": "The non-obstetric DAS 2015 pathway permits a maximum of three attempts plus one by a more experienced\n              operator. Obstetric practice is different: the joint OAA/DAS guideline limits total tracheal-intubation\n              attempts to two because airway trauma and hypoxaemia develop rapidly in pregnancy",
+    "after": "The current non-obstetric DAS 2025 pathway retains a maximum of three attempts plus one by a more experienced\n              operator, not a required quota; declare failure earlier when appropriate. Videolaryngoscopy is first-line whenever possible\n              <InlineRef topicId=\"airway-management\" refLabel=\"DAS 2025\" />. The DAS 2015 adult pathway is a historical comparison. Obstetric practice is separate: OAA/DAS 2015 uses two attempts as the default limit,\n              with a third only by an experienced anaesthetist where appropriate"
+  },
+  {
+    "path": "src/pages/topics/AirwayManagementTopic.tsx",
+    "before": "If successful, wake or proceed. If ventilation fails → Plan C.",
+    "after": "If successful, stop, think and communicate; awakening is the default unless a considered alternative is justified. If intubation through a suitable SAD is essential, consider one attempt only in a stable, adequately oxygenated patient with trained staff, under flexible endoscopic guidance; never blind. If oxygenation fails → Plan C."
+  },
+  {
+    "path": "src/pages/topics/AirwayManagementTopic.tsx",
+    "before": "Scalpel cricothyroidotomy. Stab incision through cricothyroid membrane, bougie, 6.0 cuffed tube. DECLARE CICO EARLY.",
+    "after": "Scalpel-bougie-tube eFONA. Default vertical skin incision if membrane anatomy was not explicitly assessed or remains uncertain; transverse only if confidently identified/marked. Identify/open membrane, insert bougie, railroad 6.0 cuffed tube. DECLARE CICO EARLY."
+  },
+  {
+    "path": "src/pages/topics/AirwayManagementTopic.tsx",
+    "before": "<li>Palpate cricothyroid membrane (or use ultrasound pre-procedure)</li>\n              <li>Transverse stab incision through skin and membrane</li>",
+    "after": "<li>Assess and verbalise cricothyroid-membrane anatomy before induction; ultrasound identification/marking when appropriate</li>\n              <li>If anatomy was not explicitly assessed or remains uncertain, default to a midline vertical skin incision and expose the membrane. A transverse approach is valid only if confidently identified or marked <InlineRef topicId=\"airway-management\" refLabel=\"DAS 2025\" /></li>\n              <li>Incise the identified membrane with a size 10 scalpel</li>"
+  },
+  {
+    "path": "src/pages/topics/AirwayManagementTopic.tsx",
+    "before": "(a third only by a more experienced colleague)",
+    "after": "(a third only by an experienced anaesthetist where appropriate; not the non-obstetric 3+1 allowance)"
+  },
+  {
+    "path": "src/pages/topics/AirwayManagementTopic.tsx",
+    "before": "\"DAS 2015 unanticipated difficult intubation: Plan A (mask + tracheal tube), B (SAD), C (face-mask), D (front-of-neck access).\"",
+    "after": "\"DAS 2025 non-obstetric adult pathway: A (videolaryngoscopy first-line whenever possible), B (second-generation SAD), C (optimised facemask), D (eFONA); attempt limits are ceilings, not quotas.\""
+  },
+  {
+    "path": "src/pages/topics/AirwayManagementTopic.tsx",
+    "before": "THRIVE / nasal cannulae at 15 L/min",
+    "after": "high-flow THRIVE or distinct low-flow nasal oxygen at 15 L/min"
+  },
+  {
+    "path": "src/pages/topics/AirwayManagementTopic.tsx",
+    "before": "DAS 2015 — 4 sequential plans: intubation → SAD → facemask → FONA. Maximum 3+1 intubation attempts.\", cites: [\"DAS 2015\"]",
+    "after": "DAS 2025 adult non-obstetric pathway: intubation → second-generation SAD → facemask → eFONA. Maximum 3+1 intubation attempts, not a quota; declare failure earlier when appropriate.\", cites: [\"DAS 2025\"]"
+  },
+  {
+    "path": "src/pages/topics/AirwayManagementTopic.tsx",
+    "before": "Videolaryngoscopy reduces failed intubation rates (Cochrane 2022) and is now the recommended default in predicted difficulty.\", cites: [\"DAS 2015\"]",
+    "after": "DAS 2025 recommends videolaryngoscopy first-line whenever possible for adult tracheal intubation.\", cites: [\"DAS 2025\"]"
+  },
+  {
+    "path": "src/pages/topics/AirwayManagementTopic.tsx",
+    "before": "recommended as default in patients with predicted difficulty, with Cochrane evidence supporting reduced failed",
+    "after": "recommended first-line whenever possible for adult tracheal intubation under DAS 2025 <InlineRef topicId=\"airway-management\" refLabel=\"DAS 2025\" />, with Cochrane evidence supporting reduced failed"
+  },
+  {
+    "path": "src/pages/topics/AirwayManagementTopic.tsx",
+    "before": "refLabel=\"Difficult Airway Trolley 2019\" /> <InlineRef topicId=\"airway-management\" refLabel=\"DAS 2015\"",
+    "after": "refLabel=\"Difficult Airway Trolley 2019\" /> <InlineRef topicId=\"airway-management\" refLabel=\"DAS 2025\""
+  },
+  {
+    "path": "src/pages/topics/AirwayManagementTopic.tsx",
+    "before": "                    {a}\n",
+    "after": "                    {a}\n                    <InlineRef topicId=\"airway-management\" refLabel={i === 2 ? \"IRIS 2019\" : \"DAS 2025\"} />\n"
+  },
+  {
+    "path": "src/components/diagrams/clinical/DASAlgorithmDiagram.tsx",
+    "before": "Direct or video laryngoscopy. External laryngeal manipulation (ELM). Bougie if needed.",
+    "after": "Videolaryngoscopy first-line whenever possible (DAS 2025). Optimise view and use an appropriate introducer."
+  },
+  {
+    "path": "src/components/diagrams/clinical/DASAlgorithmDiagram.tsx",
+    "before": "Change device, operator, or approach. Max 3+1 attempts total.",
+    "after": "Change device, operator, or approach. 3+1 is a maximum, not a quota; declare failure earlier if appropriate."
+  },
+  {
+    "path": "src/components/diagrams/clinical/DASAlgorithmDiagram.tsx",
+    "before": "Most experienced available. Consider video laryngoscopy if not already used.",
+    "after": "Only attempt again if justified and optimised; a fourth/final attempt is reserved for a more experienced colleague."
+  },
+  {
+    "path": "src/components/diagrams/clinical/DASAlgorithmDiagram.tsx",
+    "before": "If intubation fails after max attempts → move to Plan B.",
+    "after": "Declare failed intubation when appropriate, no later than the 3+1 ceiling; move to second-generation SAD rescue."
+  },
+  {
+    "path": "src/components/diagrams/clinical/DASAlgorithmDiagram.tsx",
+    "before": "Or attempt intubation through SAD (max 1 attempt).",
+    "after": "If essential, consider one intubation attempt through a suitable, well-functioning SAD only with stable physiology, adequate oxygenation and trained staff, under flexible endoscopic guidance; never blind."
+  },
+  {
+    "path": "src/components/diagrams/clinical/DASAlgorithmDiagram.tsx",
+    "before": "Palpate cricothyroid membrane. Stab incision through skin and membrane. Rotate scalpel 90°.",
+    "after": "If membrane anatomy was not explicitly assessed or remains uncertain, default to a vertical midline skin incision and expose/identify it. Transverse approach only if confidently identified/marked. Open membrane; rotate scalpel caudally."
+  },
+  {
+    "path": "src/components/diagrams/clinical/DASAlgorithmDiagram.tsx",
+    "before": "Railroad bougie through incision into trachea (feel tracheal clicks).",
+    "after": "Insert bougie through the membrane opening into the trachea; then railroad the tube over it."
+  },
+  {
+    "path": "src/components/diagrams/clinical/DASAlgorithmDiagram.tsx",
+    "before": "DAS Difficult Airway Algorithm (2015)",
+    "after": "DAS Difficult Airway Algorithm (2025, non-obstetric adults)"
+  },
+  {
+    "path": "src/components/diagrams/clinical/DASAlgorithmDiagram.tsx",
+    "before": "Difficult Airway Society algorithm walking",
+    "after": "DAS 2025 adult non-obstetric algorithm walking"
+  },
+  {
+    "path": "src/pages/topics/SepsisTopic.tsx",
+    "before": "it is a screening tool, not a diagnostic criterion.",
+    "after": "it is a bedside risk prompt with limited sensitivity, not a diagnostic criterion or a sole screening tool. A low qSOFA score does not exclude sepsis (SSC 2026)."
+  },
+  {
+    "path": "src/pages/topics/SepsisTopic.tsx",
+    "before": "The 2021 Surviving Sepsis Campaign Hour-1 bundle is a recognition-to-action package that should be initiated within 1 hour of sepsis recognition:",
+    "after": "The historical SSC 2018 Hour-1 bundle is a recognition-to-action package, not a mandate to complete every intervention within one hour. Current SSC 2026 timing depends on shock and infection likelihood:"
+  },
+  {
+    "path": "src/pages/topics/SepsisTopic.tsx",
+    "before": "For sepsis without shock where infection is possible but not proven, SSC 2021 permits up to 3 hours for antibiotics while diagnostic work-up continues.",
+    "after": "SSC 2026 recommends antimicrobials immediately, ideally within 1 h, for possible/probable/definite septic shock and probable/definite sepsis without shock; the rapid diagnostic window of up to 3 h applies to possible sepsis without shock if concern persists."
+  },
+  {
+    "path": "src/pages/topics/SepsisTopic.tsx",
+    "before": "Yes — SSC 2021 retains a 30 mL/kg balanced crystalloid bolus over the first 3 hours in sepsis-induced hypoperfusion or septic shock as a weak recommendation.",
+    "after": "SSC 2026 conditionally suggests at least 30 mL/kg IV crystalloid in the first 3 h for sepsis-induced hypoperfusion or septic shock (low certainty); it is not a mandatory fixed bolus. Individual characteristics, fluid tolerance and frequent reassessment determine what is given."
+  },
+  {
+    "path": "src/pages/topics/SepsisTopic.tsx",
+    "before": "Compare SSC 2021, NICE NG51 and IDSA 2024 guidance on antibiotic timing, fluids and steroids.",
+    "after": "Distinguish current SSC 2026 international recommendations from NICE NG253 UK early-management guidance and historical trials."
+  },
+  {
+    "path": "src/pages/topics/SepsisTopic.tsx",
+    "before": "and consider albumin if &gt;60–80 mL/kg given.",
+    "after": "when clinically indicated. SSC 2026 generally suggests crystalloids alone; supplemental albumin may suit selected patients after large crystalloid volumes or with cirrhosis, without an evidence-based fixed volume trigger <InlineRef topicId=\"sepsis\" refLabel=\"SSC 2026 albumin\" />."
+  },
+  {
+    "path": "src/pages/topics/SepsisTopic.tsx",
+    "before": "Give ~2.5 L Hartmann's or Plasma-Lyte. Reassess",
+    "after": "The SSC 2021/2026 suggestion gives an arithmetic volume of ~2.5 L, not a prescription to administer it regardless of response. Use Hartmann's or Plasma-Lyte in reassessed steps. Reassess"
+  },
+  {
+    "path": "src/pages/topics/SepsisTopic.tsx",
+    "before": "IDSA\n        2024 cautions against rigidly chasing 30 mL/kg if not fluid-responsive — switch to\n        vasopressors",
+    "after": "Do not\n        rigidly chase 30 mL/kg if not fluid-responsive — consider\n        vasopressors"
+  },
+  {
+    "path": "src/pages/topics/SepsisTopic.tsx",
+    "before": "qSOFA ≥2 at bedside (RR ≥22, altered mentation, SBP ≤100).",
+    "after": "qSOFA is a separate bedside risk prompt (RR ≥22, altered mentation, SBP ≤100), not the SOFA diagnostic rise; limited sensitivity means a low score cannot exclude sepsis."
+  },
+  {
+    "path": "src/pages/topics/SepsisTopic.tsx",
+    "before": "Hour-1 Bundle (SSC 2021)",
+    "after": "Historical Hour-1 Bundle; Current SSC 2026 Priorities"
+  },
+  {
+    "path": "src/pages/topics/SepsisTopic.tsx",
+    "before": "The Surviving Sepsis Campaign recommends initiating ALL elements within 1 hour of sepsis recognition:",
+    "after": "Act promptly, but do not turn the historical bundle into mandatory simultaneous targets. SSC 2026 recommends immediate antibiotics for shock or probable/definite sepsis, and conditional reassessed fluids <InlineRef topicId=\"sepsis\" refLabel=\"SSC 2026 antibiotics\" /><InlineRef topicId=\"sepsis\" refLabel=\"SSC 2026 fluids\" />:"
+  },
+  {
+    "path": "src/pages/topics/SepsisTopic.tsx",
+    "before": "Within 1 hour for possible shock or probable sepsis (up to 3 h if sepsis only possible, no shock).",
+    "after": "Immediately, ideally within 1 hour for possible/probable/definite shock or probable/definite sepsis without shock; rapid assessment up to 3 h only for possible sepsis without shock if concern persists."
+  },
+  {
+    "path": "src/pages/topics/SepsisTopic.tsx",
+    "before": "Start 30 mL/kg crystalloid for hypotension or lactate ≥4 mmol/L — SSC 2021 suggests completing it within 3 h (weak recommendation)",
+    "after": "SSC 2026 conditionally suggests at least 30 mL/kg IV crystalloid in the first 3 h for sepsis-induced hypoperfusion or septic shock, with frequent individual reassessment; not a mandatory single bolus"
+  },
+  {
+    "path": "src/pages/topics/SepsisTopic.tsx",
+    "before": "Target MAP ≥65 mmHg\"",
+    "after": "Initial MAP target 65 mmHg using a practical range (e.g. within 5 mmHg); SSC 2026 separately suggests 60–65 mmHg in adults aged ≥65, individualised to perfusion\""
+  },
+  {
+    "path": "src/pages/topics/SepsisTopic.tsx",
+    "before": "Identify and control the source of infection as rapidly as possible.",
+    "after": "Identify and control the source of infection early: SSC 2026 conditionally suggests ideally within 6 h of diagnosis of sepsis/shock requiring source control, with individual anatomical and clinical assessment <InlineRef topicId=\"sepsis\" refLabel=\"SSC 2026 source control\" />."
+  },
+  {
+    "path": "src/pages/topics/SepsisTopic.tsx",
+    "before": "<li><strong>Surviving Sepsis Campaign 2021</strong> — <em>weak recommendation</em> for albumin in patients who have received <strong>large volumes of crystalloid</strong> (e.g. &gt;60–80 mL/kg) for sepsis or septic shock; balanced crystalloid remains first-line. Not recommended as the initial resuscitation fluid.</li>",
+    "after": "<li><strong>SSC 2026 (current international guidance)</strong> — conditionally suggests crystalloids alone over supplemental albumin; albumin may be appropriate after large crystalloid volumes or with cirrhosis, without a fixed-volume trigger. The historical SSC 2021 large-volume suggestion did not define a 60–80 mL/kg threshold <InlineRef topicId=\"sepsis\" refLabel=\"SSC 2026 albumin\" />.</li>"
+  },
+  {
+    "path": "src/pages/topics/SepsisTopic.tsx",
+    "before": "<li><strong>NICE NG51</strong> — crystalloid first; <strong>do not use</strong> tetrastarch; albumin not routinely recommended but may be considered in ongoing large-volume resuscitation.</li>",
+    "after": "<li><strong>NICE NG253 (UK, 2025–26)</strong> — balanced crystalloid initially (saline if unavailable), 250 mL over 10–15 min, reassess each bolus; further 250 mL up to 1,000 mL including previous fluids, then senior advice if response inadequate <InlineRef topicId=\"sepsis\" refLabel=\"NICE NG253 2025 fluids\" />.</li>"
+  },
+  {
+    "path": "src/pages/topics/SepsisTopic.tsx",
+    "before": "<li><strong>IDSA 2024</strong> — emphasises individualised, dynamic fluid assessment over fixed volumes; reserves albumin for the same large-volume scenario, noting absence of robust mortality benefit.</li>",
+    "after": "<li><strong>Trial evidence is separate:</strong> SAFE and ALBIOS did not establish an overall survival benefit from albumin; subgroup signals are not a universal treatment trigger.</li>"
+  },
+  {
+    "path": "src/pages/topics/SepsisTopic.tsx",
+    "before": "<li><strong>Trigger:</strong> persistent hypotension or ongoing vasopressor requirement <em>after</em> ~30 mL/kg balanced crystalloid (SSC 2021 initial bolus), and especially once cumulative crystalloid approaches <strong>60–80 mL/kg</strong> in the first 24 h.</li>",
+    "after": "<li><strong>Individual consideration, not a trigger:</strong> SSC 2026 generally suggests crystalloids alone. Selected large-volume or cirrhosis cases may justify supplemental albumin after assessment of fluid responsiveness and overload risk; no fixed crystalloid-volume threshold establishes benefit <InlineRef topicId=\"sepsis\" refLabel=\"SSC 2026 albumin\" />.</li>"
+  },
+  {
+    "path": "src/pages/topics/SepsisTopic.tsx",
+    "before": "plateau or rise mandates reassessment.",
+    "after": "plateau or rise prompts clinical reassessment; biomarker trends alone do not mandate treatment."
+  },
+  {
+    "path": "src/pages/topics/SepsisTopic.tsx",
+    "before": "Side-by-side summary of the three contemporary sepsis guidelines on the four big management decisions.",
+    "after": "Current SSC 2026 international recommendations and NICE NG253 UK early-management recommendations have different scopes; the third column is historical trial evidence, not an invented IDSA 2024 guideline."
+  },
+  {
+    "path": "src/pages/topics/SepsisTopic.tsx",
+    "before": ">Surviving Sepsis Campaign 2021</th>",
+    "after": ">Surviving Sepsis Campaign 2026</th>"
+  },
+  {
+    "path": "src/pages/topics/SepsisTopic.tsx",
+    "before": ">NICE NG51 (UK, updated 2024)</th>",
+    "after": ">NICE NG253 (UK, 2025–26)</th>"
+  },
+  {
+    "path": "src/pages/topics/SepsisTopic.tsx",
+    "before": ">IDSA 2024 (sepsis position statement)</th>",
+    "after": ">Evidence and scope limitations</th>"
+  },
+  {
+    "path": "src/pages/topics/SepsisTopic.tsx",
+    "before": "Septic shock or definite sepsis: within 1h. Possible sepsis without shock: investigate and give within 3h if sepsis confirmed.",
+    "after": "Shock (possible/probable/definite) or probable/definite sepsis without shock: immediately, ideally within 1h. Possible sepsis without shock: rapid assessment and antibiotics within 3h if concern persists."
+  },
+  {
+    "path": "src/pages/topics/SepsisTopic.tsx",
+    "before": "High-risk criteria with suspected sepsis: within 1h of identification. Otherwise senior review and source-specific assessment.",
+    "after": "High-risk suspected sepsis: IV antibiotics within 1h of initial NEWS2 calculation. Other risk bands have separate maximum windows and senior/source-specific assessment."
+  },
+  {
+    "path": "src/pages/topics/SepsisTopic.tsx",
+    "before": "Disagrees with rigid 1h target for all — argues 1h is appropriate for septic shock but causes diagnostic over-treatment in undifferentiated patients. Recommends rapid assessment, with timing tailored to certainty of diagnosis (within 1h for shock, within 3h for probable sepsis).",
+    "after": "Seymour 2017 associated delay with mortality; observational association is not proof of causation or a uniform timing rule for all infection likelihoods."
+  },
+  {
+    "path": "src/pages/topics/SepsisTopic.tsx",
+    "before": "30 mL/kg balanced crystalloid within 3h for sepsis-induced hypoperfusion or septic shock. Reassess dynamically. Albumin if large volumes needed.",
+    "after": "Conditionally suggest at least 30 mL/kg IV crystalloid in first 3h for sepsis-induced hypoperfusion/shock, with individual and frequent reassessment. Generally crystalloids alone; albumin in selected large-volume/cirrhosis cases, no fixed trigger."
+  },
+  {
+    "path": "src/pages/topics/SepsisTopic.tsx",
+    "before": "IV crystalloid bolus 500 mL over <15 min if hypotensive or lactate >2 — repeat to max 30 mL/kg with senior review. Avoid starches and gelatins.",
+    "after": "NG253: 250 mL balanced crystalloid over 10–15 min, reassess after each; further 250 mL up to 1,000 mL total including prior fluids, senior advice if inadequate improvement. Saline if balanced fluid unavailable."
+  },
+  {
+    "path": "src/pages/topics/SepsisTopic.tsx",
+    "before": "Critical of fixed 30 mL/kg target — recommends individualised, dynamic assessment (CLASSIC, CLOVERS trials). Restrictive strategy non-inferior in many. Use balanced crystalloid; avoid 0.9% saline in large volumes.",
+    "after": "CLASSIC and CLOVERS found no significant mortality difference in their studied strategies/populations after initial fluids; neither proves universal non-inferiority or mandates one strategy."
+  },
+  {
+    "path": "src/pages/topics/SepsisTopic.tsx",
+    "before": "Noradrenaline first line. Target MAP ≥65. Add vasopressin (0.03 U/min) if NA dose rising — start at NA 0.25–0.5 µg/kg/min. Adrenaline if still inadequate. Dobutamine for cardiac dysfunction.",
+    "after": "Noradrenaline first line. Initial MAP target 65 with practical range (e.g. within 5 mmHg); age ≥65: suggested initial 60–65. Individualise to perfusion; consider adjuncts if response inadequate."
+  },
+  {
+    "path": "src/pages/topics/SepsisTopic.tsx",
+    "before": "Noradrenaline first line in critical care for MAP ≥65. Peripheral noradrenaline acceptable short-term while CVC sited.",
+    "after": "NG253 covers early management and critical-care escalation; do not attribute a specific ICU vasopressor/MAP or peripheral-duration protocol to it."
+  },
+  {
+    "path": "src/pages/topics/SepsisTopic.tsx",
+    "before": "Endorses noradrenaline first line, MAP ≥65 (higher target 80–85 only in chronic hypertension — SEPSISPAM). Earlier vasopressin addition supported. Methylene blue for refractory vasoplegia.",
+    "after": "65 trial (2020) in older patients with vasodilatory hypotension: no significant primary 90-day mortality difference; keep this trial result distinct from SSC 2026 age-specific recommendations."
+  },
+  {
+    "path": "src/pages/topics/SepsisTopic.tsx",
+    "before": "Consider hydrocortisone in septic shock not responding to fluid + vasopressors; refer to critical care.",
+    "after": "NG253 supports escalation to senior/critical-care review, not a specified septic-shock hydrocortisone regimen."
+  },
+  {
+    "path": "src/pages/topics/SepsisTopic.tsx",
+    "before": "Supports hydrocortisone 200 mg/day in vasopressor-dependent septic shock (APROCCHSS, ADRENAL meta-analysis — faster shock reversal, possible mortality benefit). Add fludrocortisone 50 µg/day per APROCCHSS.",
+    "after": "ADRENAL: no 90-day mortality benefit, faster shock resolution. APROCCHSS tested hydrocortisone plus fludrocortisone; trial regimen is not an automatic prescription."
+  },
+  {
+    "path": "src/pages/topics/SepsisTopic.tsx",
+    "before": "Lactate clearance useful but not superior to dynamic measures (capillary refill — ANDROMEDA-SHOCK). Avoid chasing lactate with more fluid in non-fluid-responsive patients.",
+    "after": "ANDROMEDA-SHOCK tested capillary-refill-guided versus lactate-guided resuscitation; evaluate perfusion and fluid tolerance, not lactate alone."
+  },
+  {
+    "path": "src/pages/topics/SepsisTopic.tsx",
+    "before": "As soon as possible — within 6–12h where logistically feasible.",
+    "after": "Early source control suggested, ideally within 6h of diagnosis when a specific source requires intervention; clinical/anatomical assessment remains necessary."
+  },
+  {
+    "path": "src/pages/topics/SepsisTopic.tsx",
+    "before": "Earliest feasible — recognises 6–12h is operational rather than evidence-based; emphasises minimally invasive options first.",
+    "after": "Intervention depends on anatomy, feasibility and risk; the SSC 2026 timing suggestion has very-low certainty."
+  },
+  {
+    "path": "src/pages/topics/SepsisTopic.tsx",
+    "before": ">Where they all agree</p>",
+    "after": ">Shared early-management priorities</p>"
+  },
+  {
+    "path": "src/pages/topics/SepsisTopic.tsx",
+    "before": "<li>Noradrenaline first-line vasopressor; MAP target ≥65 mmHg</li>",
+    "after": "<li>Assess perfusion and involve critical care for shock; ICU haemodynamic targets come from SSC, not NG253</li>"
+  },
+  {
+    "path": "src/pages/topics/SepsisTopic.tsx",
+    "before": "<li>Hydrocortisone 200 mg/day in vasopressor-dependent septic shock</li>",
+    "after": "<li>Distinguish ICU adjuncts from UK early-management scope</li>"
+  },
+  {
+    "path": "src/pages/topics/SepsisTopic.tsx",
+    "before": "<li><strong>1h antibiotic target</strong>: SSC/NICE strict for high-risk; IDSA 2024 pushes back — risk of over-treatment in undifferentiated patients</li>",
+    "after": "<li><strong>Antibiotics:</strong> SSC uses shock/infection-likelihood groups; NICE uses risk bands. Possible sepsis without shock is not probable sepsis.</li>"
+  },
+  {
+    "path": "src/pages/topics/SepsisTopic.tsx",
+    "before": "<li><strong>30 mL/kg fluid bolus</strong>: SSC mandates; IDSA prefers individualised approach (CLASSIC/CLOVERS)</li>",
+    "after": "<li><strong>Fluid:</strong> SSC conditionally suggests 30 mL/kg over 3 h; NICE NG253 uses reassessed 250 mL boluses with senior advice after 1,000 mL if response inadequate.</li>"
+  },
+  {
+    "path": "src/pages/topics/SepsisTopic.tsx",
+    "before": "<li><strong>Steroid recommendation strength</strong>: SSC weak; IDSA stronger, with added fludrocortisone per APROCCHSS</li>",
+    "after": "<li><strong>Scope:</strong> ICU corticosteroid guidance and historical trials must not be attributed to NG253 early management.</li>"
+  },
+  {
+    "path": "src/pages/topics/SepsisTopic.tsx",
+    "before": "IDSA notes capillary refill (ANDROMEDA-SHOCK) equally valid and avoids fluid overload",
+    "after": "capillary refill is an adjunct; avoid automatic fluid escalation for isolated lactate elevation"
+  },
+  {
+    "path": "src/pages/topics/SepsisTopic.tsx",
+    "before": "bedside prompt to suspect sepsis outside ICU — sensitive but not diagnostic.",
+    "after": "bedside risk prompt with limited sensitivity, not diagnostic or a sole screening tool; a low score does not exclude sepsis <InlineRef topicId=\"sepsis\" refLabel=\"SSC 2026 qSOFA\" />."
+  },
+  {
+    "path": "src/pages/topics/SepsisTopic.tsx",
+    "before": "Broad-spectrum within 1 h for septic shock; within 3 h for sepsis without shock if infection probable",
+    "after": "Immediately, ideally within 1 h for shock or probable/definite sepsis; up to 3 h rapid assessment only for possible sepsis without shock if concern persists"
+  },
+  {
+    "path": "src/pages/topics/SepsisTopic.tsx",
+    "before": "<strong>Peripheral noradrenaline</strong> is safe via a proximal large-bore cannula for up to 6 h while CVC access is being obtained (Cardenas-Garcia 2015 cohort); this avoids the mortality cost of waiting for a CVC before starting pressors (CENSER trial — early NA improved shock control).",
+    "after": "<strong>Peripheral noradrenaline</strong> may be started to avoid delaying vasopressor support, with appropriate access, site monitoring and local safeguards. SSC 2026 does not establish a universal evidence-based safe duration. CENSER (2019) improved shock control at 6 h, but did not demonstrate a mortality benefit or validate a peripheral-site duration <InlineRef topicId=\"sepsis\" refLabel=\"SSC 2026 peripheral vasopressors\" />."
+  },
+  {
+    "path": "src/pages/topics/SepsisTopic.tsx",
+    "before": ">Early peripheral NA vs standard</td>",
+    "after": ">Early low-dose NA vs standard</td>"
+  },
+  {
+    "path": "src/pages/topics/SepsisTopic.tsx",
+    "before": "Latest Guidelines and Bedside Management (NICE NG253, SSC 2021)",
+    "after": "Latest Guidelines and Bedside Management (NICE NG253, SSC 2026)"
+  },
+  {
+    "path": "src/pages/topics/SepsisTopic.tsx",
+    "before": "qSOFA is a screen, not diagnostic.",
+    "after": "qSOFA is a limited-sensitivity bedside risk prompt, not diagnostic or a sole screen; a low score does not exclude sepsis."
+  },
+  {
+    "path": "src/pages/topics/SepsisTopic.tsx",
+    "before": "Source control within 6–12 h where feasible — undrained pus, infected lines, necrotic tissue.",
+    "after": "SSC 2026 suggests early source control, ideally within 6 h of diagnosis when intervention is required; assess anatomy and clinical circumstances."
+  },
+  {
+    "path": "src/pages/topics/SepsisTopic.tsx",
+    "before": "subtitle=\"The Surviving Sepsis 2021 bundle distilled to the actions that change outcome.\"",
+    "after": "subtitle=\"Current SSC 2026 and NICE NG253 recommendations; historical bundle and trials distinguished.\""
+  },
+  {
+    "path": "src/pages/topics/SepsisTopic.tsx",
+    "before": "<strong>Broad-spectrum antibiotics within 1 h</strong> (septic shock); within 3 h (sepsis without shock if uncertain).",
+    "after": "<strong>Antibiotics immediately, ideally within 1 h</strong> for shock or probable/definite sepsis; rapid investigation up to 3 h only for possible sepsis without shock if concern persists <InlineRef topicId=\"sepsis\" refLabel=\"SSC 2026 antibiotics\" />."
+  },
+  {
+    "path": "src/pages/topics/SepsisTopic.tsx",
+    "before": "SSC 2021 suggests at least 30 mL/kg within 3 h; NICE NG253 uses 250 mL boluses with senior review at 1,000 mL.",
+    "after": "SSC 2026 conditionally suggests at least 30 mL/kg within 3 h; NICE NG253 uses 250 mL over 10–15 min, reassesses each bolus, further 250 mL up to 1,000 mL including prior fluids and senior advice if response inadequate <InlineRef topicId=\"sepsis\" refLabel=\"SSC 2026 fluids\" /><InlineRef topicId=\"sepsis\" refLabel=\"NICE NG253 2025 fluids\" />."
+  },
+  {
+    "path": "src/pages/topics/SepsisTopic.tsx",
+    "before": "<strong>Vasopressors for MAP ≥65</strong>",
+    "after": "<strong>Vasopressors: initial MAP target 65 with a practical range; age ≥65 suggested 60–65</strong>"
+  },
+  {
+    "path": "src/pages/topics/SepsisTopic.tsx",
+    "before": "<strong>Source control</strong> as soon as anatomically feasible — drainage, debridement, removal of infected device.",
+    "after": "<strong>Source control</strong> early, ideally within 6 h of diagnosis when intervention is required, individualised to anatomy and physiology <InlineRef topicId=\"sepsis\" refLabel=\"SSC 2026 source control\" />."
+  },
+  {
+    "path": "src/pages/topics/SepsisTopic.tsx",
+    "before": "SSC 2021, NICE NG253); CLOVERS",
+    "after": "SSC 2026, NICE NG253); CLOVERS"
+  },
+  {
+    "path": "src/pages/topics/SepsisTopic.tsx",
+    "before": "IDSA 2024 challenges rigid 1h antibiotic + 30 mL/kg fluid targets in undifferentiated sepsis\", cites: [\"Sepsis-3 2016\"]",
+    "after": "SSC 2026 distinguishes probable/definite sepsis from possible sepsis without shock; initial fluid is a conditional suggestion, not a mandate\", cites: [\"SSC 2026 antibiotics\", \"SSC 2026 fluids\"]"
+  },
+  {
+    "path": "src/pages/topics/SepsisResuscitationTopic.tsx",
+    "before": "SSC 2021 timing for antimicrobials",
+    "after": "SSC 2026 timing for antimicrobials"
+  },
+  {
+    "path": "src/pages/topics/SepsisResuscitationTopic.tsx",
+    "before": "SSC 2021 initial crystalloid suggestion",
+    "after": "SSC 2026 initial crystalloid suggestion"
+  },
+  {
+    "path": "src/pages/topics/SepsisResuscitationTopic.tsx",
+    "before": "Which screening approach does SSC 2021 recommend against?",
+    "after": "Which single screening approach does SSC 2026 prefer NEWS/NEWS2/MEWS/SIRS over?"
+  },
+  {
+    "path": "src/pages/topics/SepsisResuscitationTopic.tsx",
+    "before": "A weak suggestion; give in steps with reassessment after each bolus.",
+    "after": "A conditional, low-certainty suggestion, not a mandatory fixed bolus; individualise and reassess after each step."
+  },
+  {
+    "path": "src/pages/topics/SepsisResuscitationTopic.tsx",
+    "before": "Give antimicrobials immediately, ideally within 1 h\",",
+    "after": "Give antimicrobials immediately, ideally within 1 h for shock or probable/definite sepsis; distinguish possible sepsis without shock\","
+  },
+  {
+    "path": "src/pages/topics/SepsisResuscitationTopic.tsx",
+    "before": "Give fluid in reassessed steps and start noradrenaline to a MAP of 65 mm Hg",
+    "after": "Give fluid in reassessed steps and individualise initial MAP 65; age ≥65 suggested 60–65"
+  },
+  {
+    "path": "src/pages/topics/SepsisResuscitationTopic.tsx",
+    "before": "Antimicrobials immediately, ideally within 1 h, in possible septic shock",
+    "after": "Antimicrobials immediately, ideally within 1 h, for possible/probable/definite septic shock or probable/definite sepsis without shock"
+  },
+  {
+    "path": "src/pages/topics/SepsisResuscitationTopic.tsx",
+    "before": "MAP 65 mm Hg with noradrenaline first line; add vasopressin rather than escalating",
+    "after": "SSC 2026 initial MAP 65 with practical range; age ≥65 suggested 60–65, individualised to perfusion; noradrenaline first line"
+  },
+  {
+    "path": "src/pages/topics/SepsisResuscitationTopic.tsx",
+    "before": "\"SSC 2021 (Antimicrobial timing)\"",
+    "after": "\"SSC 2026 antibiotics\""
+  },
+  {
+    "path": "src/pages/topics/SepsisResuscitationTopic.tsx",
+    "before": "\"SSC 2021 qSOFA screening\"",
+    "after": "\"SSC 2026 qSOFA\""
+  },
+  {
+    "path": "src/pages/topics/SepsisResuscitationTopic.tsx",
+    "before": "\"SSC 2021 MAP target\"",
+    "after": "\"SSC 2026 MAP\""
+  },
+  {
+    "path": "src/components/topic/SepsisResuscitationTeaching.tsx",
+    "before": "<Quote label=\"SSC 2021 qSOFA screening\" />",
+    "after": "<Quote label=\"SSC 2026 qSOFA\" />"
+  },
+  {
+    "path": "src/components/topic/SepsisResuscitationTeaching.tsx",
+    "before": "Screening uses a broad tool; qSOFA alone is not enough.",
+    "after": "SSC 2026 prefers NEWS/NEWS2/MEWS/SIRS over qSOFA as a single screening tool; qSOFA is a bedside risk prompt with limited sensitivity and a low score does not exclude sepsis."
+  },
+  {
+    "path": "src/components/topic/SepsisResuscitationTeaching.tsx",
+    "before": "<Quote label=\"SSC 2021 (Antimicrobial timing)\" />",
+    "after": "<Quote label=\"SSC 2026 antibiotics\" />\n      <Quote label=\"SSC 2026 possible sepsis\" />"
+  },
+  {
+    "path": "src/components/topic/SepsisResuscitationTeaching.tsx",
+    "before": "possible septic shock is the highest-urgency group — \"immediately, ideally within 1 h\".",
+    "after": "possible/probable/definite septic shock and probable/definite sepsis without shock require antimicrobials immediately, ideally within 1 h. Only possible sepsis without shock has a rapid diagnostic window up to 3 h if concern persists."
+  },
+  {
+    "path": "src/components/topic/SepsisResuscitationTeaching.tsx",
+    "before": "<Quote label=\"SSC 2021\" />",
+    "after": "<Quote label=\"SSC 2026 fluids\" />"
+  },
+  {
+    "path": "src/components/topic/SepsisResuscitationTeaching.tsx",
+    "before": "30 mL/kg within 3 hours is a weak suggestion, not a fixed bolus.",
+    "after": "SSC 2026 conditionally suggests at least 30 mL/kg IV crystalloid in the first 3 hours (low certainty), not a mandatory fixed bolus; individual characteristics and context matter."
+  },
+  {
+    "path": "src/components/topic/SepsisResuscitationTeaching.tsx",
+    "before": "<Quote label=\"SSC 2021 MAP target\" />",
+    "after": "<Quote label=\"SSC 2026 MAP\" />\n      <p>Initial target 65 mm Hg with practical range (e.g. within 5 mm Hg); age ≥65 suggested initial 60–65 mm Hg, individualised to perfusion.</p>"
+  },
+  {
+    "path": "src/components/diagrams/clinical/CICODrillAnimation.tsx",
+    "before": "DAS 2015 emergency front-of-neck",
+    "after": "DAS 2025 adult non-obstetric emergency front-of-neck"
+  },
+  {
+    "path": "src/components/diagrams/clinical/CICODrillAnimation.tsx",
+    "before": "DAS 2015)",
+    "after": "DAS 2025)"
+  },
+  {
+    "path": "src/components/diagrams/clinical/CICODrillAnimation.tsx",
+    "before": "Difficult/obese neck: use a longitudinal midline incision first to find\n        the membrane by feel.",
+    "after": "If membrane anatomy was not explicitly assessed or remains uncertain, default to a vertical midline skin incision to expose and identify it; transverse approach only if confidently identified/marked."
+  },
+  {
+    "path": "src/components/diagrams/clinical/CICODrillAnimation.tsx",
+    "before": "<strong>Transverse stab</strong> through skin and CTM with a size-10\n        scalpel, blade pointing caudad. If you cannot palpate the CTM, make a\n        vertical 8–10 cm midline skin incision first, then re-palpate and stab\n        transversely.",
+    "after": "After identifying the CTM (default vertical skin incision, up to 8 cm, if anatomy is unassessed or uncertain), open the membrane with a size-10 scalpel, blade pointing caudad. A transverse skin/membrane approach is only suitable when the CTM is confidently identified or marked."
+  },
+  {
+    "path": "src/components/diagrams/clinical/CICODrillAnimation.tsx",
+    "before": "DAS 2025 adult non-obstetric emergency front-of-neck\n * access drill",
+    "after": "DAS 2025 adult non-obstetric emergency front-of-neck\n * access drill"
+  },
+  {
+    "path": "src/components/diagrams/clinical/CICODrillAnimation.tsx",
+    "before": "callout: <>Don't waste time on a 4th laryngoscopy. Time-to-FONA &lt; 5 min.</>",
+    "after": "callout: <>Once CICO is declared, proceed immediately to eFONA; do not wait for further laryngoscopy or a saturation threshold.</>"
+  },
+  {
+    "path": "src/components/diagrams/intensive-care/TraliVsTacoDecisionTool.tsx",
+    "before": ">12 h after transfusion — neither classical, consider delayed TACO or alternative diagnosis",
+    "after": "Beyond the 12-h surveillance window; SHOT accepts TACO reports up to 24 h. Assess delayed overload and alternative causes, without timing-only exclusion."
+  },
+  {
+    "path": "src/components/diagrams/intensive-care/TraliVsTacoDecisionTool.tsx",
+    "before": "Rapid improvement with diuresis is diagnostic of TACO",
+    "after": "Improvement with diuresis supports hydrostatic overload but is not diagnostic alone"
+  }
+]

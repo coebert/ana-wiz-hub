@@ -1,0 +1,92 @@
+[
+  {
+    "file": "prc.txt",
+    "sha256": "a086c74117cfc0126bba528e73ae5d06fef85e3b5f08d590abea9a72b70a2683",
+    "http_status": 200
+  },
+  {
+    "file": "ng133.txt",
+    "sha256": "d12939d69e64d967d203defff7b8788830f13ee074a40722f45e132d4359bb49",
+    "http_status": 200
+  },
+  {
+    "file": "ng253.txt",
+    "sha256": "0379fd3d0896063c875a497901955b4946e8b9d827d7f60b56e968dc99e5c1fc",
+    "http_status": 200
+  },
+  {
+    "file": "ng18.txt",
+    "sha256": "1c9ff0697e7610461d970e7de5b2fc0b1f546a65c1a2faabec011a3c3f545e56",
+    "http_status": 200
+  },
+  {
+    "file": "nap6.txt",
+    "sha256": "bc19764d6fb3b0253d30b0e5ef7c180f4017dd583c677a932b54b2f31fee7421",
+    "http_status": 200
+  },
+  {
+    "file": "fib.txt",
+    "sha256": "a8b6a8f887704f9fa7526f0e6713e6dc82e6aa49654098a0c23db5e89a5e6cc8",
+    "http_status": 200
+  },
+  {
+    "file": "oaa.txt",
+    "sha256": "2d592b87d4d02ffa3ca13e94500e0cef9ef2ac44e854b511fe531c61993ecb04",
+    "http_status": 200
+  },
+  {
+    "file": "ssc.txt",
+    "sha256": "fb79fd3f10f473a150007dae4fde028f99a5f1036a85152646a28f853037224f",
+    "http_status": 200
+  },
+  {
+    "file": "das.txt",
+    "sha256": "74ad5e6f76c7de4513dac4a5e83425b3ae52b5579653e9964450fc86f04b5a5a",
+    "http_status": 200
+  },
+  {
+    "file": "das-full.txt",
+    "sha256": "4256724d91bc958eca0369f9823365e405b8d89afc0d735995157e7b76ca1b66",
+    "http_status": 200
+  },
+  {
+    "file": "shot.txt",
+    "sha256": "dac0a9bf68a19446e53ee5495a4f925eb598ef8feb0918f2ab802069ce053ea6",
+    "http_status": 403
+  },
+  {
+    "file": "taco.txt",
+    "sha256": "90be5de222941e72a1cbef0fa4637ec5fe2353d797e8cc6f8594873624043202",
+    "http_status": 200
+  },
+  {
+    "file": "tef.txt",
+    "sha256": "7a4513cab2e4fa071f27072e38e613294796174a83b6f05e9c84eafff8ad9b97",
+    "http_status": 200
+  },
+  {
+    "file": "hypo.txt",
+    "sha256": "bd7ed6d87666eb1f9d34f226ac55aaf12b1cb3ece12db88b961a0829cb5c2732",
+    "http_status": 200
+  },
+  {
+    "file": "anaph.txt",
+    "sha256": "e7d9dc4bd410e0dbf1b9965a00c833e7d0afcbc7daa20d4b0c5937d5aeecd6e6",
+    "http_status": 200
+  },
+  {
+    "file": "hyper.txt",
+    "sha256": "8a6c6d0e454b7f8cf202dc24cc0c09c2b89d94edf68477c6971b6307693251d1",
+    "http_status": 200
+  },
+  {
+    "file": "prc-alg.txt",
+    "sha256": "9b1f9375bbfc5ad85dc13f6798eeb12197d5ec11706f6153fcc706d2ea165cb0",
+    "http_status": 200
+  },
+  {
+    "file": "bsh.txt",
+    "sha256": "a3af4d141282f25100e2847c8d834c16cfae3c184138ca881b46f36c7e576a69",
+    "http_status": 200
+  }
+]

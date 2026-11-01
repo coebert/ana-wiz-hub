@@ -1,0 +1,20 @@
+--- 
++++ 
+@@ -1828,7 +1828,7 @@
+       "q": "Should I use balanced crystalloids or 0.9% saline?",
+     },
+     {
+-      "a": "Noradrenaline is first-line vasopressor in septic shock (SSC 2021, strong recommendation). Target MAP ≥ 65 mmHg, titrated to perfusion (urine output, mental state, lactate clearance, CRT). Add vasopressin 0.03 U/min when noradrenaline reaches 0.25–0.5 µg/kg/min — VANISH (Gordon, JAMA 2016) showed early vasopressin reduced renal-replacement therapy use. Add hydrocortisone 200 mg/day (50 mg QDS or continuous infusion) when vasopressor-dependent for > 4 h — ADRENAL (Venkatesh, NEJM 2018) showed faster shock resolution; APROCCHSS (Annane, NEJM 2018) showed mortality benefit. Adrenaline is a third-line catecholamine; dopamine is not recommended.",
++      "a": "Noradrenaline is first-line vasopressor in septic shock (SSC 2021, strong recommendation). Current SSC 2026 initial MAP target is 65 mmHg with a practical range (e.g. within 5 mmHg); age ≥65 suggested 60–65 mmHg, individualised to perfusion (urine output, mental state, lactate trend, CRT). Add vasopressin 0.03 U/min when noradrenaline reaches 0.25–0.5 µg/kg/min — VANISH (Gordon, JAMA 2016) showed early vasopressin reduced renal-replacement therapy use. Add hydrocortisone 200 mg/day (50 mg QDS or continuous infusion) when vasopressor-dependent for > 4 h — ADRENAL (Venkatesh, NEJM 2018) showed faster shock resolution; APROCCHSS (Annane, NEJM 2018) showed mortality benefit. Adrenaline is a third-line catecholamine; dopamine is not recommended.",
+       "q": "Which vasopressor should I start first, and when do I add vasopressin and hydrocortisone?",
+     },
+     {
+@@ -7195,7 +7195,7 @@
+         "@type": "Question",
+         "acceptedAnswer": {
+           "@type": "Answer",
+-          "text": "Noradrenaline is first-line vasopressor in septic shock (SSC 2021, strong recommendation). Target MAP ≥ 65 mmHg, titrated to perfusion (urine output, mental state, lactate clearance, CRT). Add vasopressin 0.03 U/min when noradrenaline reaches 0.25–0.5 µg/kg/min — VANISH (Gordon, JAMA 2016) showed early vasopressin reduced renal-replacement therapy use. Add hydrocortisone 200 mg/day (50 mg QDS or continuous infusion) when vasopressor-dependent for > 4 h — ADRENAL (Venkatesh, NEJM 2018) showed faster shock resolution; APROCCHSS (Annane, NEJM 2018) showed mortality benefit. Adrenaline is a third-line catecholamine; dopamine is not recommended.",
++          "text": "Noradrenaline is first-line vasopressor in septic shock (SSC 2021, strong recommendation). Current SSC 2026 initial MAP target is 65 mmHg with a practical range (e.g. within 5 mmHg); age ≥65 suggested 60–65 mmHg, individualised to perfusion (urine output, mental state, lactate trend, CRT). Add vasopressin 0.03 U/min when noradrenaline reaches 0.25–0.5 µg/kg/min — VANISH (Gordon, JAMA 2016) showed early vasopressin reduced renal-replacement therapy use. Add hydrocortisone 200 mg/day (50 mg QDS or continuous infusion) when vasopressor-dependent for > 4 h — ADRENAL (Venkatesh, NEJM 2018) showed faster shock resolution; APROCCHSS (Annane, NEJM 2018) showed mortality benefit. Adrenaline is a third-line catecholamine; dopamine is not recommended.",
+         },
+         "name": "Which vasopressor should I start first, and when do I add vasopressin and hydrocortisone?",
+       },
