@@ -5,10 +5,10 @@ import { InlineRef } from "@/components/references/InlineRef";
 import { PLEXUS_SPATIAL } from "@/components/topic/AnatomySpatialTeaching";
 import { DiagramToggleBar } from "@/components/diagrams/shared/DiagramToggleBar";
 import { DiagramFigure } from "../_shared/DiagramFigure";
-import interscaleneMap from "@/assets/diagrams/plexus-relationships/interscalene.svg.asset.json";
-import supraclavicularMap from "@/assets/diagrams/plexus-relationships/supraclavicular.svg.asset.json";
-import infraclavicularMap from "@/assets/diagrams/plexus-relationships/infraclavicular.svg.asset.json";
-import axillaryMap from "@/assets/diagrams/plexus-relationships/axillary.svg.asset.json";
+import interscaleneMap from "@/assets/diagrams/plexus-relationships/interscalene.svg";
+import supraclavicularMap from "@/assets/diagrams/plexus-relationships/supraclavicular.svg";
+import infraclavicularMap from "@/assets/diagrams/plexus-relationships/infraclavicular.svg";
+import axillaryMap from "@/assets/diagrams/plexus-relationships/axillary.svg";
 
 type BlockLevel = "interscalene" | "supraclavicular" | "infraclavicular" | "axillary";
 
@@ -49,25 +49,25 @@ const levels: Record<BlockLevel, { label: string; subtitle: string; description:
 
 const relationshipMaps: Record<BlockLevel, { url: string; anatomy: string; limitations: string; references: string[] }> = {
   interscalene: {
-    url: interscaleneMap.url,
+    url: interscaleneMap,
     anatomy: "Conceptual transverse neck relationship: plexus lies between anterior and middle scalene muscles, deep to sternocleidomastoid. No needle, target or procedural route is represented.",
     limitations: "Medial / anterior versus lateral / posterior is explicitly labelled. Typical roots/trunks occupy the scalene interval; not every root or intervening vessel is shown. Root number and appearance vary. This is not a complete anatomical section or scanning template.",
     references: ["RAUK Plan A upper limb", "Royse plexus variation"],
   },
   supraclavicular: {
-    url: supraclavicularMap.url,
+    url: supraclavicularMap,
     anatomy: "The plexus lies usually lateral and posterior to the subclavian artery at the first rib. Both lie above the rib. Pleura is distinct and deeper; a rib is not a universal barrier under every possible approach. This is not an ultrasound image.",
     limitations: "Vertical order expresses conceptual depth, not a scan plane. Rib, its acoustic shadow and adjacent pleura are distinct ultrasound landmarks; the map does not establish a protective rib beneath every route.",
     references: ["SPA supraclavicular guide"],
   },
   infraclavicular: {
-    url: infraclavicularMap.url,
+    url: infraclavicularMap,
     anatomy: "Pectoralis major is superficial to pectoralis minor. The three brachial plexus cords and axillary vessels lie deep to pectoralis minor. No fixed angular or clock-face positions of individual cords are represented.",
     limitations: "Typical depth relationships at the lateral infraclavicular level only, not a costoclavicular scan plane. Cord and vein locations vary with anatomy, plane and arm position; the grouped cords are not assigned fixed screen positions.",
     references: ["Sandhu infraclavicular anatomy", "Di Filippo cord variation"],
   },
   axillary: {
-    url: axillaryMap.url,
+    url: axillaryMap,
     anatomy: "Median, ulnar and radial nerves have variable positions around the axillary artery. The musculocutaneous nerve is commonly found separately between biceps and coracobrachialis. No fixed compass or clock positions are shown.",
     limitations: "Left-to-right order is not an anatomical axis. Trace nerves to establish identity, not from a clock position. Venous structures and anatomical variants are omitted from this concept map.",
     references: ["RAUK Plan A upper limb", "Royse plexus variation"],

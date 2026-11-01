@@ -62,4 +62,4 @@
 - Physics/fluid duplicates share scoped model constants and unit-labelled Larmor arithmetic; ultrasound/VQ corrected pages remain separate from quiz-only repair to prevent regression or treatment clearance.
 
 - Anatomy risk/perfusion duplicates reuse scoped anatomy-context-teaching constants; keep FAQ answers literal and test extraction equality so rendered teaching and generated FAQs cannot lose safety qualifications.
-- SCI052 keeps its external diagram identity while serving original concept-map asset pointers with equivalent HTML anatomy and native-image enlargement; sonographic/procedural geometry remains withheld so relationship teaching cannot imply procedural clearance.
+- SCI052 keeps its external diagram identity while importing exact original authored SVGs with equivalent HTML anatomy and native-image enlargement; sonographic/procedural geometry remains withheld so relationship teaching cannot imply procedural clearance.
