@@ -46,3 +46,4 @@
 - Science illustration and calculator arithmetic lives in pure, tested helpers with canonical units and strict full-string parsing; model labels distinguish illustrative profiles and historical trial context from patient prediction or eligibility.
 - C4 ACLF classification descriptions are shared between the chapter and figure so single-brain-failure exceptions and renal/mild-HE alternatives cannot drift; current NICE adrenal records are reused across parent and standalone teaching.
 - Hosted support destinations and outbound source labels live in donation.ts; policy extensions must guard the exact previously approved predicate and preserve roles/time limits because clicks are not payments.
+- Pancreatitis clinical strings and trial outcomes are shared through PancreatitisTeaching so topic/quiz/diagram wording remains aligned and existing Teaching-module extraction retains generated coverage; FAQ literals are checked for equality to shared facts.
