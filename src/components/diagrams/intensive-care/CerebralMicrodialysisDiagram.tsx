@@ -1,3 +1,6 @@
+import { CMD_INTERPRETATION, CMD_GLUCOSE } from "@/components/topic/NeuroIcuReviewedFacts";
+import { InlineRef } from "@/components/references/InlineRef";
+import { Button } from "@/components/ui/button";
 import { useState } from "react";
 
 type PatternKey = "normal" | "ischaemia" | "mitochondrial" | "neuroglycopenia" | "excitotoxicity";
@@ -19,7 +22,7 @@ type PatternData = {
 
 const PATTERNS: Record<PatternKey, PatternData> = {
   normal: {
-    label: "Healthy brain",
+    label: "Illustrative reference profile",
     shortLabel: "Normal",
     glucose: 2.0,
     lactate: 2.5,
@@ -31,10 +34,10 @@ const PATTERNS: Record<PatternKey, PatternData> = {
     catheterAlarm: false,
     description:
       "Normal aerobic metabolism — substrate delivery matches demand. LPR low, pyruvate normal, no excitotoxic glutamate release, intact membranes.",
-    action: "Routine monitoring. Maintain CPP 60–70 mmHg, glucose 6–10 mmol/L.",
+    action: "Interpret local trends with systemic physiology and the adopted neurocritical-care protocol; illustrative values do not prescribe targets.",
   },
   ischaemia: {
-    label: "Type 1 — Ischaemia",
+    label: "Possible impaired substrate delivery",
     shortLabel: "Ischaemia",
     glucose: 0.5,
     lactate: 7.5,
@@ -45,12 +48,12 @@ const PATTERNS: Record<PatternKey, PatternData> = {
     brainTint: "hsl(15 80% 55%)",
     catheterAlarm: true,
     description:
-      "↑ LPR with LOW pyruvate and LOW tissue glucose — substrate not reaching the cell. Hypotension, ↑ ICP, vasospasm or hypoxia. Glutamate and glycerol rising = evolving injury.",
+      CMD_INTERPRETATION,
     action:
-      "Optimise CPP (often >70 mmHg in this patient), exclude vasospasm (TCD/CT angio), increase oxygen delivery, escalate ICP control.",
+      "Assess pressure referencing, ICP, cerebral oxygenation, perfusion, seizures and catheter location. Treat reversible causes with the neurocritical-care team and monitor response; no fixed CPP or transfusion prescription from the pattern alone.",
   },
   mitochondrial: {
-    label: "Type 2 — Mitochondrial dysfunction",
+    label: "Possible non-ischaemic metabolic disturbance",
     shortLabel: "Mitochondrial",
     glucose: 1.8,
     lactate: 6.5,
@@ -61,9 +64,9 @@ const PATTERNS: Record<PatternKey, PatternData> = {
     brainTint: "hsl(280 50% 55%)",
     catheterAlarm: true,
     description:
-      "↑ LPR but pyruvate is NORMAL/HIGH and tissue glucose is preserved. Substrate is arriving but the mitochondria can't use it. Common after TBI — will NOT respond to further CPP escalation.",
+      CMD_INTERPRETATION,
     action:
-      "Do NOT escalate CPP further (no benefit, ↑ ARDS risk). Treat fever, optimise PaO₂/PaCO₂. Currently no proven mitochondrial therapy — guides prognosis.",
+      "Investigate reversible causes and integrate multimodal trends. This pattern does not prove mitochondrial failure, predict perfusion nonresponse or establish prognosis. Targeted mitochondrial therapies remain experimental.",
   },
   neuroglycopenia: {
     label: "Neuroglycopenia",
@@ -77,9 +80,9 @@ const PATTERNS: Record<PatternKey, PatternData> = {
     brainTint: "hsl(45 85% 55%)",
     catheterAlarm: true,
     description:
-      "Brain glucose <0.8 mmol/L — substrate starvation despite adequate flow. Triggered by tight systemic glucose control (NICE-SUGAR-style 4.5–6 mmol/L). LPR rises secondarily.",
+      CMD_GLUCOSE,
     action:
-      "Liberalise systemic glucose target to 6–10 mmol/L. CMD has reshaped post-TBI glycaemic management away from tight control.",
+      CMD_GLUCOSE,
   },
   excitotoxicity: {
     label: "Excitotoxicity / membrane breakdown",
@@ -138,13 +141,13 @@ const CerebralMicrodialysisDiagram = () => {
         Cerebral Microdialysis — Interactive Pattern Recognition
       </p>
       <p className="text-xs text-muted-foreground text-center mb-3">
-        Coronal brain with cranial bolt, coaxial catheter and live neurochemistry panel. Toggle patterns to compare.
+        Illustrative local monitoring profiles, not patient records, diagnoses or treatment predictions.
       </p>
 
       {/* Pattern selector */}
       <div className="flex flex-wrap gap-1.5 justify-center mb-4">
         {ORDER.map((k) => (
-          <button
+          <Button variant="outline" size="sm"
             key={k}
             onClick={() => setPattern(k)}
             className={`text-[11px] px-2.5 py-1 rounded border transition ${
@@ -154,7 +157,7 @@ const CerebralMicrodialysisDiagram = () => {
             }`}
           >
             {PATTERNS[k].shortLabel}
-          </button>
+          </Button>
         ))}
       </div>
 
@@ -310,7 +313,7 @@ const CerebralMicrodialysisDiagram = () => {
                   data.catheterAlarm ? "bg-destructive text-destructive-foreground" : "bg-primary/20 text-primary"
                 }`}
               >
-                {data.catheterAlarm ? "● METABOLIC CRISIS" : "● STABLE"}
+                {data.catheterAlarm ? "● METABOLIC WARNING" : "● STABLE"}
               </span>
             </div>
 
@@ -354,7 +357,7 @@ const CerebralMicrodialysisDiagram = () => {
             <p className="text-sm font-bold text-foreground mb-1">{data.label}</p>
             <p className="text-xs text-muted-foreground leading-relaxed mb-2">{data.description}</p>
             <div className="pt-2 border-t border-border/60">
-              <p className="text-[11px] font-semibold text-foreground mb-0.5">Action:</p>
+              <p className="text-[11px] font-semibold text-foreground mb-0.5">Assessment:</p>
               <p className="text-xs text-muted-foreground leading-relaxed">{data.action}</p>
             </div>
           </div>
@@ -364,7 +367,7 @@ const CerebralMicrodialysisDiagram = () => {
       {/* Discriminator hint */}
       <div className="mt-3 p-2.5 rounded bg-secondary/40 border border-border">
         <p className="text-[11px] text-muted-foreground leading-relaxed">
-          <strong className="text-foreground">Key discriminator:</strong> when LPR is high, look at <strong>pyruvate</strong>. <span className="text-destructive font-semibold">Low pyruvate = ischaemia</span> (substrate not arriving — escalate CPP). <span className="text-primary font-semibold">Normal/high pyruvate = mitochondrial dysfunction</span> (substrate arriving but cells can't use it — do NOT escalate CPP). Compare the <em>Ischaemia</em> and <em>Mitochondrial</em> patterns above.
+          {CMD_INTERPRETATION}<InlineRef topicId="neurointensive-care" refLabel="CMD Forum 2014" /><InlineRef topicId="neurointensive-care" refLabel="CMD Delphi 2025" />
         </p>
       </div>
     </div>

@@ -1,4 +1,6 @@
-import { useMemo, useState } from "react";
+import { POST_ARREST_ECPR_TRIALS } from "@/components/topic/PostArrestReviewedFacts";
+import { InlineRef } from "@/components/references/InlineRef";
+import { useState } from "react";
 import { withAlpha } from "@/lib/color-utils";
 import { DiagramToggleBar } from "@/components/diagrams/shared/DiagramToggleBar";
 import { DiagramFigure } from "../_shared/DiagramFigure";
@@ -32,13 +34,13 @@ const tree: Record<Step, NodeMeta> = {
     question: "Witnessed arrest with bystander CPR within 5 min?",
     options: [
       { label: "Yes", favourable: true, rationale: "Short no-flow time → highest chance of meaningful neurological recovery." },
-      { label: "No / unknown", favourable: false, rationale: "Unwitnessed arrest with prolonged no-flow predicts dismal neurological outcome — eCPR rarely justified." },
+      { label: "No / unknown", favourable: false, rationale: "Unknown or longer no-flow requires assessment of circumstances and the local rescue pathway; this answer alone is not exclusion." },
     ],
   },
   rhythm: {
     question: "Initial rhythm?",
     options: [
-      { label: "VF / pulseless VT", favourable: true, rationale: "Shockable rhythm = best evidence base. ARREST and Prague OHCA both restricted enrolment to VF/VT." },
+      { label: "VF / pulseless VT", favourable: true, rationale: "Shockable rhythm = best evidence base. ARREST enrolled refractory VF; Prague OHCA enrolled witnessed presumed cardiac OHCA and did not restrict all enrolment to VF/VT." },
       { label: "PEA with reversible cause", favourable: true, rationale: "PEA is acceptable if a clear reversible cause (PE, tamponade, hypothermia, toxicity) — highly selected." },
       { label: "Asystole", favourable: false, rationale: "Asystole as the presenting rhythm is generally an exclusion outside hypothermia / toxicology." },
     ],
@@ -54,7 +56,7 @@ const tree: Record<Step, NodeMeta> = {
   lowFlow: {
     question: "Anticipated low-flow time (CPR → ECMO flow)?",
     options: [
-      { label: "< 60 min", favourable: true, rationale: "ELSO recommends initiating ECMO within 60 min of arrest. Survival drops sharply beyond this." },
+      { label: "< 60 min", favourable: true, rationale: "ELSO describes a rapid time-to-flow goal and example selection criteria; local goals are not guarantees or universal exclusions." },
       { label: "60–90 min", favourable: false, rationale: "Borderline; case-by-case. Prague OHCA included low-flow up to ~60 min." },
       { label: "> 90 min", favourable: false, rationale: "Survival to good neurological outcome is rare. Generally an exclusion outside hypothermia." },
     ],
@@ -62,14 +64,14 @@ const tree: Record<Step, NodeMeta> = {
   etco2: {
     question: "End-tidal CO₂ during high-quality CPR?",
     options: [
-      { label: "≥ 10 mmHg (1.3 kPa)", favourable: true, rationale: "Sustained ETCO₂ ≥10 mmHg suggests effective CPR perfusion and viability." },
-      { label: "< 10 mmHg sustained", favourable: false, rationale: "Persistently low ETCO₂ during good-quality CPR predicts non-survival." },
+      { label: "≥ 10 mmHg (1.3 kPa)", favourable: true, rationale: "ETCO₂ can support assessment of CPR physiology; this value does not establish viability or eligibility." },
+      { label: "< 10 mmHg sustained", favourable: false, rationale: "Low ETCO₂ warrants assessment of CPR quality, ventilation and cause; it is not a stand-alone futility or eligibility test." },
     ],
   },
   comorbidity: {
     question: "Patient profile?",
     options: [
-      { label: "Age < 70, good baseline, no major comorbidity", favourable: true, rationale: "Best candidate: physiological reserve + neurological recovery potential." },
+      { label: "Age < 70, good baseline, no major comorbidity", favourable: true, rationale: "Age thresholds vary by service; assess physiological reserve and baseline function with the ECMO team, not a universal age cutoff." },
       { label: "Significant comorbidity / frailty / metastatic cancer", favourable: false, rationale: "ELSO relative exclusions: irreversible terminal illness, severe frailty, advanced organ failure unlikely to recover." },
     ],
   },
@@ -81,47 +83,12 @@ const EcprDecisionTreeDiagram = () => {
   const [answers, setAnswers] = useState<Partial<Record<Step, number>>>({});
   const [showRationale, setShowRationale] = useState(true);
 
-  const verdict = useMemo(() => {
-    const answered = stepOrder.filter((s) => answers[s] !== undefined);
-    if (answered.length === 0) return null;
-    const favCount = answered.filter((s) => tree[s].options[answers[s]!].favourable).length;
-    const total = answered.length;
-    const allFav = favCount === total;
-    const completed = answered.length === stepOrder.length;
-    if (completed && allFav) {
-      return {
-        type: "candidate" as const,
-        color: "hsl(140, 55%, 42%)",
-        label: "ECPR candidate",
-        message:
-          "Activate the eCPR pathway: alert ECMO team, prepare cannulation kit, continue mechanical CPR (LUCAS), aim for cannulation within 60 min of arrest. Coronary angiography after stable ECMO flow.",
-      };
-    }
-    if (favCount >= total - 1 && completed) {
-      return {
-        type: "borderline" as const,
-        color: "hsl(38, 92%, 50%)",
-        label: "Borderline — senior decision",
-        message:
-          "Discuss urgently with the on-call ECMO consultant. Consider patient-specific factors (witnessed status, downtime quality, premorbid function, family wishes). Continue CPR while deciding.",
-      };
-    }
-    if (!allFav) {
-      return {
-        type: "excluded" as const,
-        color: "hsl(0, 65%, 50%)",
-        label: "Not an eCPR candidate",
-        message:
-          "One or more disqualifying factors. Continue conventional ALS; consider transition to comfort care once standard reversible causes addressed and prolonged downtime confirmed.",
-      };
-    }
-    return {
-      type: "incomplete" as const,
-      color: "hsl(var(--muted-foreground))",
-      label: `Continue (${favCount}/${total} favourable)`,
-      message: "Answer the remaining questions to complete the assessment.",
-    };
-  }, [answers]);
+  const answeredCount = stepOrder.filter(key => answers[key] !== undefined).length;
+  const verdict = answeredCount ? {
+    color: "hsl(var(--anatomy))",
+    label: "Educational pathway checklist — specialist decision required",
+    message: "These recorded factors do not establish eligibility or exclusion. Confirm the locally agreed pathway with the receiving ECMO team while high-quality ALS continues. Projected transport time does not guarantee time to flow. Do not stop resuscitation or initiate treatment solely from this checklist.",
+  } : null;
 
   const reset = () => setAnswers({});
 
@@ -129,13 +96,13 @@ const EcprDecisionTreeDiagram = () => {
     <DiagramFigure
       id="ecpr-decision-tree-diagram"
       title="Ecpr decision tree"
-      description="ECMO-CPR (eCPR) decision tree. The clinician answers up to 6 sequential questions; the diagram traces a path through the tree and shows whether the patient is a candidate, a borderline case, or excluded — with the reasoning that drove the call."
+      description="ECMO-CPR (eCPR) decision tree. Educational checklist of pathway factors; local specialist judgement determines acceptance. No automated candidate, exclusion or withdrawal verdict."
     >
               <div className="my-6 space-y-4">
         <div className="bg-muted/30 rounded-xl border border-border p-4">
           <DiagramToggleBar
-            title="eCPR (ECMO-CPR) decision tree"
-            subtitle="Walk through the 6 selection criteria — answers feed a real-time eligibility verdict"
+            title="eCPR educational pathway checklist"
+            subtitle="Locally defined selection; no automatic eligibility or exclusion"
             toggles={[{ label: "Rationale", active: showRationale, onChange: () => setShowRationale((s) => !s) }]}
           />
   
@@ -144,7 +111,8 @@ const EcprDecisionTreeDiagram = () => {
               const node = tree[step];
               const ans = answers[step];
               const answered = ans !== undefined;
-              const fav = answered ? node.options[ans!].favourable : null;
+              const chosen = ans !== undefined ? node.options[ans] : undefined;
+              const fav = chosen?.favourable;
               const stepColor = answered
                 ? fav
                   ? "hsl(140, 55%, 42%)"
@@ -189,7 +157,7 @@ const EcprDecisionTreeDiagram = () => {
                   </div>
                   {showRationale && answered && (
                     <p className="text-[11px] text-muted-foreground mt-2 ml-8 italic leading-relaxed">
-                      {node.options[ans!].rationale}
+                      {chosen?.rationale}
                     </p>
                   )}
                 </div>
@@ -222,13 +190,13 @@ const EcprDecisionTreeDiagram = () => {
               </div>
             ) : (
               <p className="text-xs text-muted-foreground italic text-center py-2">
-                Answer the questions above to see the eCPR eligibility verdict.
+                Local ECMO-team assessment is required; this checklist does not provide eligibility clearance.
               </p>
             )}
           </div>
   
           <p className="text-[11px] text-muted-foreground mt-2 italic text-center">
-            Frameworks: ELSO 2020/2023, ARREST (2020), Prague OHCA (2022), INCEPTION (2023). Always involve the local ECMO retrieval service early — minutes matter.
+            {POST_ARREST_ECPR_TRIALS}<InlineRef topicId="cardiac-arrest-post-resus" refLabel="ELSO ECPR 2021" /><InlineRef topicId="cardiac-arrest-post-resus" refLabel="ARREST 2020" /><InlineRef topicId="cardiac-arrest-post-resus" refLabel="Prague OHCA 2022" /><InlineRef topicId="cardiac-arrest-post-resus" refLabel="INCEPTION 2023" />
           </p>
         </div>
       </div>
