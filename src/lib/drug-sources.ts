@@ -30,14 +30,15 @@ export function normaliseDrugSources(value: unknown): DisplayDrugSource[] {
       if (typeof field === "string" && field.trim()) fields[key] = field.trim();
       else if (key === "sections" && Array.isArray(field)) fields[key] = field.filter(x => typeof x === "string").join("; ");
     }
-    const url = safeSourceUrl(fields.url);
+    const url = safeSourceUrl((item as Record<string, unknown>).url);
     if (!fields.title && !url) continue;
     const search = url ? isSourceSearch(url) : false;
     const title = search ? `${new URL(url ?? "https://invalid.test").hostname.replace(/^www\./, "")} — search tool` : fields.title || "Source (title not recorded)";
     // URL only grouping never discards distinct metadata, sections, or claim scope.
     const existing = url ? result.find(source => source.url === url) : undefined;
     if (existing) {
-      if (!existing.provenance.some(p => JSON.stringify(p) === JSON.stringify(fields))) existing.provenance.push(fields);
+      const identity = (record: Record<string, string>) => JSON.stringify(Object.entries(record).sort(([a], [b]) => a.localeCompare(b)));
+      if (!existing.provenance.some(p => identity(p) === identity(fields))) existing.provenance.push(fields);
     } else result.push({ url, search, title, provenance: [fields] });
   }
   return result.sort((a, b) => Number(a.search) - Number(b.search));

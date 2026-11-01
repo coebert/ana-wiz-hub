@@ -22,10 +22,11 @@ export function DrugSources({ sources }: { sources: unknown }) {
               {source.provenance.map((record, i) => <div key={i} className="mt-1 space-y-1 text-muted-foreground">
                 {!search && record.title && record.title !== source.title && <p className="font-medium">{record.title}</p>}
                 {record.publisher && <p>{record.publisher}</p>}
-                {!search && (record.section || record.sections) && <p>Sections: {record.section || record.sections}</p>}
+                {!search && (record.section || record.sections) && <p>Sections: {[record.section, record.sections].filter(Boolean).join("; ")}</p>}
                 {!search && record.revision && <p>Revision: {record.revision}</p>}
                 {record.accessed && <p>{search ? "Recorded search access" : "Accessed"}: {record.accessed}</p>}
                 {record.scope && <p>Scope: {record.scope}</p>}
+                {!search && !record.scope && !record.reviewNote && <p>Claim scope not recorded; do not infer dosing verification.</p>}
                 {record.reviewNote && <p>Review note: {record.reviewNote}</p>}
               </div>)}
             </li>)}

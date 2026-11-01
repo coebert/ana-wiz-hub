@@ -11,6 +11,13 @@ describe("D30 source provenance", () => {
     expect(safeSourceUrl("https://www.medicines.org.uk/emc/product/6409/smpc")).toBe("https://www.medicines.org.uk/emc/product/6409/smpc");
     expect(safeSourceUrl("http://example.test/source")).toBe("http://example.test/source");
   });
+  it("validates original URL input through normalization", () => {
+    expect(normaliseDrugSources([{ title: "Malformed URL", url: "https://example.test/\n" }])[0].url).toBeNull();
+  });
+  it("deduplicates reordered metadata without dropping sections", () => {
+    const sources = normaliseDrugSources([{ title: "Product", url: "https://example.test/", scope: "Composition" }, { scope: "Composition", url: "https://example.test/", title: "Product" }]);
+    expect(sources[0].provenance).toHaveLength(1);
+  });
   it.each([null, {}, [null, 2, {}, []]])("has no fabricated records for malformed input", input => {
     expect(normaliseDrugSources(input)).toEqual([]);
   });
