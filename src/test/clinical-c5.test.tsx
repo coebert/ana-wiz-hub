@@ -27,7 +27,7 @@ describe("C5 pancreatitis clinical regressions", () => {
     expect(WATERFALL_OUTCOMES.map(o => o.demonstratedIncrease)).toEqual([true,false,false,false]);
     show(<Waterfall />);
     expect(screen.getByText("5 days")).toBeInTheDocument();
-    fireEvent.click(screen.getByRole("button", { name: "Aggressive", exact: true }));
+    fireEvent.click(screen.getByRole("button", { name: /^Aggressive$/ }));
     expect(screen.getByText("6 days")).toBeInTheDocument();
     expect(screen.getByText("6.6%" )).toBeInTheDocument();
     expect(screen.getByText(/0.56–12.88/)).toBeInTheDocument();
