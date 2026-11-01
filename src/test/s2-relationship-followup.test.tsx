@@ -18,9 +18,9 @@ describe("S2 relationship/UI scope, no procedural certification", () => {
     mount(Larynx); tab(name);
     const svg = screen.getByRole("tabpanel").querySelector("svg"); if (!svg) throw new Error("missing view");
     const before = geometry(svg); const labels = svg.querySelectorAll("text").length; expect(labels).toBeGreaterThan(10);
-    fireEvent.click(screen.getByRole("button",{name:"Labels"})); expect(svg.querySelectorAll("text")).toHaveLength(0); expect(geometry(svg)).toEqual(before); expect(svg.querySelector("title")).not.toBeNull();
-    fireEvent.click(screen.getByRole("button",{name:"Labels"})); expect(svg.querySelectorAll("text")).toHaveLength(labels);
-    tab("Intrinsic Muscles"); fireEvent.click(screen.getByRole("button",{name:"Labels"})); expect(screen.getByRole("table").querySelectorAll("tbody tr")).toHaveLength(6);
+    fireEvent.click(screen.getByRole("button",{name:/Labels/})); expect(svg.querySelectorAll("text")).toHaveLength(0); expect(geometry(svg)).toEqual(before); expect(svg.querySelector("title")).not.toBeNull();
+    fireEvent.click(screen.getByRole("button",{name:/Labels/})); expect(svg.querySelectorAll("text")).toHaveLength(labels);
+    tab("Intrinsic Muscles"); fireEvent.click(screen.getByRole("button",{name:/Labels/})); expect(screen.getByRole("table").querySelectorAll("tbody tr")).toHaveLength(6);
   });
   it("SCI075/041 actual cervical selected panels are qualified and cited", () => {
     mount(Cervical); expect(screen.getByText(/approximate midpoint of the posterior SCM border/)).toBeInTheDocument();

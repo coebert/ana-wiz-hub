@@ -60,7 +60,7 @@ describe("S2 limited anatomy corrections (not anatomical certification)", () => 
   it("SCI067 labels toggle controls replacement visual annotations", () => {
     const { container } = mount(Intercostal);
     const before = container.querySelectorAll("svg text").length;
-    fireEvent.click(screen.getByRole("button", { name: "Labels" }));
+    fireEvent.click(screen.getByRole("button", { name: /Labels/ }));
     expect(container.querySelectorAll("svg text").length).toBeLessThan(before);
   });
   it("SCI069 removes mixed axial ribs and through-cortex route", () => {
