@@ -169,14 +169,10 @@ const EcprDecisionTreeDiagram = () => {
           <div className="mt-4">
             {verdict ? (
               <div
-                className="p-3 rounded-lg border-2"
-                style={{
-                  borderColor: verdict.color,
-                  backgroundColor: withAlpha(verdict.color, 0.08),
-                }}
+                className="p-3 rounded-lg border-2 border-anatomy bg-background"
               >
                 <div className="flex items-center justify-between gap-2 flex-wrap mb-1">
-                  <p className="text-sm font-bold" style={{ color: verdict.color }}>
+                  <p className="text-sm font-bold text-foreground">
                     {verdict.label}
                   </p>
                   <button

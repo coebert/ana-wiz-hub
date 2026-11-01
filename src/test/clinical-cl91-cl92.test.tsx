@@ -34,9 +34,9 @@ describe("CL91 current post-arrest source scope",()=>{
   fireEvent.click(screen.getByRole('button',{name:/Somatosensory Evoked/}));expect(screen.getByText(/Consider neuromuscular blockade to reduce artefact/)).toBeInTheDocument();
  });
  it("all checklist answers including adverse profile never issue clearance or exclusion",()=>{
-  mount(Ecpr);for(const name of ['Yes','VF / pulseless VT','≤ 5 min','< 60 min','≥ 10 mmHg (1.3 kPa)','Age < 70, good baseline, no major comorbidity'])fireEvent.click(screen.getByRole('button',{name,exact:true}));
+  mount(Ecpr);for(const name of ['Yes','VF / pulseless VT','≤ 5 min','< 60 min','≥ 10 mmHg (1.3 kPa)','Age < 70, good baseline, no major comorbidity'])fireEvent.click(screen.getByRole('button',{name}));
   expect(screen.getByText('Educational pathway checklist — specialist decision required')).toBeInTheDocument();expect(screen.queryByText('ECPR candidate',{exact:true})).toBeNull();
-  fireEvent.click(screen.getByRole('button',{name:'No / unknown',exact:true}));expect(screen.getByText(/do not establish eligibility or exclusion/)).toBeInTheDocument();expect(screen.queryByText('Not an eCPR candidate',{exact:true})).toBeNull();
+  fireEvent.click(screen.getByRole('button',{name:'No / unknown'}));expect(screen.getByText(/do not establish eligibility or exclusion/)).toBeInTheDocument();expect(screen.queryByText('Not an eCPR candidate',{exact:true})).toBeNull();
  });
  it("actual quiz answer values agree with current targets, motor entry and NSE scope",()=>{
   const q=cardiacArrestPostResusQuestions.find(q=>q.question.includes('ventilation target'));expect(q?.options[q.correctIndex]).toBe('SpO₂ 94–98 % and PaCO₂ 4.7–6.0 kPa');
@@ -50,7 +50,7 @@ describe("CL92 denervation/SCI/CMD scope",()=>{
   expect(cases[3].textContent).toContain('CPP is already 70 mmHg');expect(cases[3].textContent).toContain('transfusing to a fixed Hb solely');expect(container.textContent).toContain(SCI_MAP_2024);
  });
  it("all five selected CMD profiles remain contextual not treatment predictions",()=>{
-  const {container}=mount(Cmd);for(const name of ['Normal','Ischaemia','Mitochondrial','Neuroglycopenia','Excitotoxic']){fireEvent.click(screen.getByRole('button',{name,exact:true}));expect(container.textContent).not.toContain('Do NOT escalate CPP further');expect(container.textContent).not.toContain('Liberalise systemic glucose target');expect(container.textContent).toContain(CMD_INTERPRETATION);}
+  const {container}=mount(Cmd);for(const name of ['Normal','Ischaemia','Mitochondrial','Neuroglycopenia','Excitotoxic']){fireEvent.click(screen.getByRole('button',{name}));expect(container.textContent).not.toContain('Do NOT escalate CPP further');expect(container.textContent).not.toContain('Liberalise systemic glucose target');expect(container.textContent).toContain(CMD_INTERPRETATION);}
   expect(container.textContent).toContain('METABOLIC WARNING');
  });
  it("named source pools resolve uniquely without borrowing BTF for SCI",()=>{
