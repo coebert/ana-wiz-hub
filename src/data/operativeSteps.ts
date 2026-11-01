@@ -1683,9 +1683,9 @@ export const operations: Operation[] = [
       { step: "Tumour removal, closure and postoperative monitoring in HDU.", anaesthetic: "Monitor for persistent hypotension and rebound hypoglycaemia; give steroid cover after bilateral adrenalectomy." },
     ],
     criticalMoments: ["Tumour handling — hypertensive crisis", "Adrenal vein ligation — sudden hypotension", "Early postoperative — hypoglycaemia"],
-    anaestheticNotes: ["Close surgeon–anaesthetist communication during handling is essential.", "Randomised preparation trials include PRESCRIPT (phenoxybenzamine versus doxazosin, 2020) and a separate 2022 alpha-blocker study. PRESCRIPT found no significant difference in its primary BP-time outcome; clinical complication superiority was not established. These comparisons do not resolve routine blockade versus no blockade: observational omission cohorts cannot establish equivalent safety."],
+    anaestheticNotes: ["Close surgeon–anaesthetist communication during handling is essential.", "Randomised preparation trials include PRESCRIPT (phenoxybenzamine versus doxazosin, 2020) and a separate 2022 comparative study initially randomised but converted to a case-control design after crossover. PRESCRIPT found no significant difference in its primary BP-time outcome; clinical complication superiority was not established. These comparisons do not resolve routine blockade versus no blockade: observational omission cohorts cannot establish equivalent safety."],
     related: { label: "Endocrine emergencies", path: "/intensive-care/icu-endocrine-emergencies" },
-    sources: ["Groeben Catecholamine Tumours 2020", "Araujo-Castro Phaeo Protocol 2021", "PRESCRIPT 2020", "Alpha blockade RCT 2022"],
+    sources: ["Groeben Catecholamine Tumours 2020", "Araujo-Castro Phaeo Protocol 2021", "PRESCRIPT 2020", "Alpha blockade comparison 2022"],
   },
   {
     id: "endoscopic-sinus-surgery", name: "Functional endoscopic sinus surgery (FESS)", aka: ["FESS", "ESS", "sinus surgery", "nasal polypectomy"],
