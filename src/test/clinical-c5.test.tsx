@@ -112,6 +112,17 @@ describe("C5 pancreatitis clinical regressions", () => {
     fireEvent.click(screen.getByRole("button", { name: "Next step" }));
     expect(screen.getByText(/Do not delay necessary source control to reach 4 weeks/)).toBeInTheDocument();
   });
+  it("CL71 actual late timeline reports the PANTER surgical pathway and composite, not mortality benefit", () => {
+    show(<Timeline />);
+    for (let i = 0; i < 4; i++) fireEvent.click(screen.getByRole("button", { name: "Next step" }));
+    const late = screen.getByText(/principally percutaneous drainage followed/);
+    expect(late).toHaveTextContent("minimally invasive retroperitoneal necrosectomy");
+    expect(late).toHaveTextContent("major complications or death occurred in 40% versus 69%");
+    expect(late).toHaveTextContent("mortality alone did not differ significantly");
+    expect(late).toHaveTextContent("endoscopic step-up approaches have separate evidence");
+    expect(late).not.toHaveTextContent("halving");
+    expect(topicReferences["acute-pancreatitis"].find(r => r.label === "PANTER 2010")?.url).toBe("https://doi.org/10.1056/NEJMoa0908821");
+  });
   it("CL72 clicked cascade retains true severity and early source control with corrected sources", () => {
     show(<Cascade />);
     fireEvent.click(screen.getByRole("tab", { name: /Step 5 of 7: SIRS/ }));
