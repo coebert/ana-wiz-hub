@@ -1,3 +1,5 @@
+import { PANCREATITIS_SOURCE_CONTROL } from "@/lib/pancreatitis-clinical-rules";
+import { InlineRef } from "@/components/references/InlineRef";
 import { useState } from "react";
 import { DiagramFigure } from "../_shared/DiagramFigure";
 
@@ -88,15 +90,15 @@ const findings: Finding[] = [
   },
   {
     id: "gas",
-    text: "Gas bubbles =\ninfected necrosis",
+    text: "Gas bubbles: suspect\ninfection",
     dot: { x: 56, y: 56 },
     side: "right",
     labelY: 24,
     detail: {
       title: "Gas within a necrotic collection",
       body:
-        "Pathognomonic of infected pancreatic necrosis (in the absence of recent intervention). Indication for source control — image-guided percutaneous drainage as the first step in the 'step-up' approach (PANTER trial), escalating to endoscopic or minimally invasive necrosectomy if needed.",
-      severity: "Triggers step-up drainage",
+        "Gas strongly suggests infection, but can also reflect enteric fistula or recent intervention. Clinical deterioration and anatomy guide urgent antibiotics/source-control planning. " + PANCREATITIS_SOURCE_CONTROL,
+      severity: "Urgent clinical assessment",
     },
   },
   {
@@ -121,7 +123,7 @@ const findings: Finding[] = [
     detail: {
       title: "Splanchnic vein thrombosis",
       body:
-        "Splenic, portal or SMV thrombosis complicates 15–25% of severe pancreatitis. Risk of left-sided portal hypertension and gastric varices. Anticoagulation is individualised — weighed against bleeding risk from inflamed tissue and pseudoaneurysm.",
+        "Splenic, portal or SMV thrombosis complicates 15–25% of severe pancreatitis. Risk of left-sided portal hypertension and gastric varices. Anticoagulation is individualised with HPB/haematology: vessel involvement, progression, bowel ischaemia and bleeding/pseudoaneurysm risk. IAP 2025 does not routinely treat isolated splenic thrombosis; portal/mesenteric extension may warrant it. iLATAM-AP 2026 also considers progressive splenic thrombosis; evidence is low-certainty.",
       severity: "15–25% of severe cases",
     },
   },
@@ -134,8 +136,8 @@ const findings: Finding[] = [
     detail: {
       title: "Reactive (sympathetic) pleural effusion",
       body:
-        "Left-sided or bilateral effusions are common (~50% of severe cases) and are part of the Glasgow / Imrie criteria when associated with hypoxia (PaO₂ <8 kPa). Reflect diaphragmatic irritation and capillary leak; can progress to ARDS.",
-      severity: "Marker of severity (Glasgow)",
+        "Pleural effusion is a BISAP variable and can be associated with greater illness severity. Hypoxaemia (PaO₂ <8 kPa), not the effusion itself, is the Glasgow/Imrie respiratory variable. Effusions reflect diaphragmatic irritation and capillary leak.",
+      severity: "BISAP variable; assess oxygenation",
     },
   },
   {
@@ -255,7 +257,7 @@ const SeverePancreatitisCTDiagram = () => {
               viewBox="0 0 100 100"
               preserveAspectRatio="xMidYMid meet"
               role="img"
-              aria-label="Schematic axial CT slice through the upper abdomen at L1, showing the cardinal features of severe acute pancreatitis: pancreatic necrosis, peripancreatic fluid collections, fat stranding, gas within a necrotic collection indicating infection, splenic vein thrombosis, pleural effusion, ascites and perinephric stranding."
+              aria-label="Schematic axial CT slice through the upper abdomen at L1, showing the cardinal features of severe acute pancreatitis: pancreatic necrosis, peripancreatic fluid collections, fat stranding, gas within a necrotic collection strongly suggesting infection (also consider fistula/intervention), splenic vein thrombosis, pleural effusion, ascites and perinephric stranding."
               className="w-full h-auto block rounded-lg border border-border bg-[hsl(var(--background))]"
             >
               <defs>
@@ -718,6 +720,7 @@ const SeverePancreatitisCTDiagram = () => {
               </span>
             </div>
             <p className="text-sm text-muted-foreground leading-relaxed">{selectedFinding.detail.body}</p>
+            <p className="text-xs text-muted-foreground mt-2"><InlineRef topicId="acute-pancreatitis" refLabel="Atlanta 2012" /> {selected === "gas" && <><InlineRef topicId="acute-pancreatitis" refLabel="AGA necrosis 2020" /><InlineRef topicId="acute-pancreatitis" refLabel="IAP 2025" /></>} {selected === "effusion" && <InlineRef topicId="acute-pancreatitis" refLabel="BISAP 2008" />} {selected === "splenic" && <><InlineRef topicId="acute-pancreatitis" refLabel="IAP 2025 SVT" /><InlineRef topicId="acute-pancreatitis" refLabel="iLATAM 2026 SVT" /></>}</p>
           </div>
   
           {/* Findings chip row */}

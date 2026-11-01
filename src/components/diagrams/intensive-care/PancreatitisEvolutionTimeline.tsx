@@ -1,3 +1,4 @@
+import { InlineRef } from "@/components/references/InlineRef";
 import { AnimatedMechanism, AnimatedMechanismStep } from "@/components/diagrams/shared/AnimatedMechanism";
 import { DiagramFigure } from "../_shared/DiagramFigure";
 
@@ -267,8 +268,7 @@ const steps: AnimatedMechanismStep[] = [
     ),
     callout: (
       <>
-        <strong>Avoid contrast</strong> if AKI / unstable haemodynamics — non-contrast CT or MRI/MRCP are
-        alternatives. Do not delay resuscitation to chase imaging.
+        <strong>Contrast benefit-risk assessment</strong> with radiology in AKI/instability; do not delay essential emergency imaging solely for renal impairment. Noncontrast CT does not equivalently assess enhancement/necrosis. Continue resuscitation. <InlineRef topicId="acute-pancreatitis" refLabel="NICE NG148 contrast" />
       </>
     ),
   },
@@ -281,14 +281,12 @@ const steps: AnimatedMechanismStep[] = [
         sac, anterior pararenal space and paracolic gutters. With necrosis present this is an{" "}
         <strong>acute necrotic collection (ANC)</strong>; without parenchymal necrosis it is an{" "}
         <strong>acute peripancreatic fluid collection (APFC)</strong>. Both are <em>unencapsulated</em> at this
-        stage and must not be drained electively (high failure / fistula rate).
+        stage: defer elective intervention when feasible, but deterioration may require urgent drainage.
       </>
     ),
     callout: (
       <>
-        <strong>Hands-off</strong> in the first 4 weeks unless: infected (gas / positive culture / sepsis), or
-        gastric outlet / biliary obstruction. Even infected collections are best stabilised with antibiotics until
-        a wall forms — every week of delay improves drainage success.
+        <strong>Drainage is not debridement.</strong> In stable patients defer intervention until collections mature when feasible; avoid early debridement and aim for about 4 weeks. Deterioration/infected or symptomatic collections may need earlier percutaneous drainage, including within 2 weeks. Do not delay necessary source control to reach 4 weeks. <InlineRef topicId="acute-pancreatitis" refLabel="AGA necrosis 2020" />
       </>
     ),
   },
@@ -299,14 +297,13 @@ const steps: AnimatedMechanismStep[] = [
       <>
         After ~4 weeks the collection develops a thick, vascularised, fibrous{" "}
         <strong>pseudocapsule</strong>. With necrotic debris inside it is now <strong>walled-off necrosis (WON)</strong>;
-        if homogeneous fluid only, a <strong>pseudocyst</strong>. Encapsulation makes percutaneous, endoscopic
-        transgastric or surgical drainage feasible and safe.
+        if homogeneous fluid only, a <strong>pseudocyst</strong>. Encapsulation can facilitate intervention; anatomy, clinical condition and expertise still determine risks.
       </>
     ),
     callout: (
       <>
         <strong>Atlanta nomenclature:</strong> APFC → pseudocyst (no necrosis). ANC → WON (with necrosis). The
-        4-week wall is the inflection point.
+        Wall formation is assessed on imaging, not guaranteed by a calendar.
       </>
     ),
   },
@@ -316,8 +313,7 @@ const steps: AnimatedMechanismStep[] = [
     detail: (
       <>
         Suspect infection if persistent SIRS, deteriorating organ function, or new gas bubbles within the
-        collection on CT. Confirmed by image-guided FNA only if uncertain — empirical step-up management is now
-        first-line. The <strong>PANTER trial</strong> (van Santvoort, NEJM 2010) established the{" "}
+        collection on CT. Gas also occurs with enteric fistula/intervention. Treat strong suspicion without waiting for FNA, which is unnecessary in most cases; select antibiotics with local microbiology. Clinical deterioration guides urgent drainage planning. The <strong>PANTER trial</strong> (van Santvoort, NEJM 2010) established the{" "}
         <strong>step-up approach</strong>: percutaneous (or endoscopic transgastric) drainage first, escalating to
         minimally invasive necrosectomy only if the patient does not improve — halving the rate of major
         complications versus open necrosectomy.

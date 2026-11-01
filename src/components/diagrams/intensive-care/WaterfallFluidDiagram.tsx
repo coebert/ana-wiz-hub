@@ -1,22 +1,12 @@
+import { WATERFALL_OUTCOMES } from "@/lib/pancreatitis-clinical-rules";
+import { InlineRef } from "@/components/references/InlineRef";
 import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { DiagramFigure } from "../_shared/DiagramFigure";
 
 type Strategy = "aggressive" | "moderate";
 
-interface Outcome {
-  label: string;
-  aggressive: number;
-  moderate: number;
-  worseIs: "high"; // higher = worse
-}
-
-const outcomes: Outcome[] = [
-  { label: "Fluid overload at 72 h", aggressive: 20.5, moderate: 6.3, worseIs: "high" },
-  { label: "Progression to moderate/severe AP", aggressive: 22.1, moderate: 17.3, worseIs: "high" },
-  { label: "Median hospital stay (days)", aggressive: 9, moderate: 7, worseIs: "high" },
-  { label: "Persistent organ failure", aggressive: 7.4, moderate: 4.5, worseIs: "high" },
-];
+const outcomes = WATERFALL_OUTCOMES;
 
 export const WaterfallFluidDiagram = () => {
   const [strategy, setStrategy] = useState<Strategy>("moderate");
@@ -31,17 +21,17 @@ export const WaterfallFluidDiagram = () => {
   const protocol =
     strategy === "aggressive"
       ? {
-          title: "Aggressive (legacy IAP/APA 2013)",
+          title: "Aggressive (WATERFALL trial arm)",
           bolus: "20 mL/kg over 2 h",
           maintenance: "3 mL/kg/h",
           note: "Stopped early in WATERFALL (NEJM 2022) for fluid overload without benefit.",
           tone: "destructive" as const,
         }
       : {
-          title: "Moderate (WATERFALL / AGA 2024 / BSG 2024)",
+          title: "Moderate (WATERFALL trial arm)",
           bolus: "10 mL/kg only if hypovolaemic",
           maintenance: "1.5 mL/kg/h Ringer's lactate",
-          note: "Reassess at 12, 24, 48, 72 h — titrate to MAP, UO, lactate, BUN.",
+          note: "Overload check at 3 ±1 h; frequent individual reassessment, then trial checks at 12/24/48/72 h. Reduce/stop for overload; review IV needs as oral intake is tolerated.",
           tone: "primary" as const,
         };
 
@@ -59,7 +49,7 @@ export const WaterfallFluidDiagram = () => {
             Fluid resuscitation strategy in acute pancreatitis — WATERFALL trial
           </p>
           <p className="text-xs text-muted-foreground">
-            Toggle the strategy to compare 72 h outcomes. Bars animate to scale.
+            Compare reported WATERFALL trial outcomes. Rates are group estimates, not an individual prediction; the trial stopped early for fluid overload.
           </p>
         </div>
   
@@ -96,7 +86,7 @@ export const WaterfallFluidDiagram = () => {
           </p>
           <p className="text-xs text-muted-foreground mt-1">
             <span className="font-medium text-foreground">Bolus:</span> {protocol.bolus} ·{" "}
-            <span className="font-medium text-foreground">Maintenance:</span> {protocol.maintenance}
+            <span className="font-medium text-foreground">Initial infusion:</span> {protocol.maintenance}
           </p>
           <p className="text-xs text-muted-foreground mt-1 italic">{protocol.note}</p>
         </div>
@@ -106,7 +96,7 @@ export const WaterfallFluidDiagram = () => {
             const value = strategy === "aggressive" ? o.aggressive : o.moderate;
             const animated = (value * tick) / 100;
             const widthPct = (animated / max) * 100;
-            const isWorse = strategy === "aggressive" && value > o.moderate;
+            const isWorse = strategy === "aggressive" && o.demonstratedIncrease;
             return (
                   <div key={o.label}>
                 <div className="flex items-center justify-between text-xs mb-1">
@@ -117,9 +107,10 @@ export const WaterfallFluidDiagram = () => {
                     }`}
                   >
                     {value}
-                    {o.label.includes("days") ? "" : "%"}
+                    {o.unit}
                   </span>
                 </div>
+                <p className="text-xs text-muted-foreground mb-1">{o.note}</p>
                 <div className="h-2 rounded-full bg-muted overflow-hidden">
                   <div
                     className={`h-full transition-[width] duration-100 ${
@@ -133,9 +124,10 @@ export const WaterfallFluidDiagram = () => {
           })}
         </div>
   
+        <p className="text-xs text-muted-foreground">Trial excluded baseline shock/respiratory failure, significant heart failure and eGFR &lt;60 mL/min/1.73 m². Severe disease/comorbidity requires individual resuscitation, not automatic continuation of this arm. <InlineRef topicId="acute-pancreatitis" refLabel="WATERFALL protocol 2020" /></p>
         <p className="text-xs text-muted-foreground italic">
           Source: de‑Madaria et al., Aggressive or Moderate Fluid Resuscitation in Acute Pancreatitis
-          (WATERFALL), NEJM 2022;387:989–1000.
+          (WATERFALL), NEJM 2022;387:989–1000. <InlineRef topicId="acute-pancreatitis" refLabel="WATERFALL 2022" />
         </p>
       </div>
     </DiagramFigure>
