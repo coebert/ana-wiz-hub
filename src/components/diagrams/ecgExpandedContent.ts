@@ -283,12 +283,12 @@ export const eegTraceContent: EcgExpandedContent = {
 export const postArrestProgContent: EcgExpandedContent = {
   title: "Post-cardiac-arrest neuroprognostication timeline",
   summary:
-    "ERC 2021 multimodal framework: combine clinical exam, EEG, SSEP, biomarkers and MRI from ≥72 h post-ROSC, after sedation washout and normothermia.",
+    "Current RCUK 2025: consider patients not obeying commands (motor < 6) at ≥ 72 h after ROSC, excluding confounders. Combine specified timed predictors and assess recovery signs; no automatic withdrawal or DNC rule.",
   annotations: [
     { label: "0–24 h", description: "Stabilise (TTM, MAP, SpO₂, normocapnia). NO prognostication — too many confounders. Manage seizures aggressively." },
-    { label: "24–48 h", description: "NSE day 1 baseline. Rising trend over 48–72 h is more predictive than absolute value. cEEG to detect non-convulsive seizures." },
-    { label: "48–72 h", description: "Bilaterally absent pupillary + corneal reflexes off sedation, status myoclonus, NSE >60 µg/L at 48–72 h all carry FPR <5% for poor outcome (when combined)." },
-    { label: "≥72 h (multimodal)", description: "ERC algorithm: 2 of {bilaterally absent N20 SSEP, highly malignant EEG, diffuse MRI DWI lesions, NSE >60 at 48–72 h, status myoclonus, no pupil/corneal reflexes} — robust prediction of poor neurological outcome." },
+    { label: "24–48 h", description: "NSE day 1 baseline. NSE > 60 µg/L at 48 h and/or 72 h is specified; a rising trend is not a substitute. cEEG to detect non-convulsive seizures." },
+    { label: "48–72 h", description: "Interpret pupil/corneal reflexes at ≥ 72 h, status myoclonus ≤ 72 h and NSE > 60 µg/L at 48 h and/or 72 h at their specified times, with technical quality and confounders." },
+    { label: "≥72 h (multimodal)", description: "RCUK 2025 multimodal assessment: at least two concordant specified predictors from {bilaterally absent N20 SSEP, highly malignant EEG, diffuse MRI DWI lesions, NSE >60 at 48–72 h, status myoclonus, no pupil/corneal reflexes}; assess recovery signs, discordance and the whole patient, not an automatic treatment decision." },
     { label: "Confounders to exclude first", description: "Sedation, NMB, hypothermia, severe metabolic derangement, hypotension, hepatic/renal failure — all delay or mimic poor exam findings." },
   ],
   comparison: {
@@ -298,21 +298,21 @@ export const postArrestProgContent: EcgExpandedContent = {
     ],
     rows: [
       { label: "Pupillary + corneal reflexes", rate: "≥72 h, off sedation", key: "Bilaterally absent — strong predictor", highlight: true },
-      { label: "Status myoclonus", rate: "<48 h, persistent", key: "Combine with EEG (Lance–Adams reactive ≠ poor)" },
+      { label: "Status myoclonus", rate: "≤72 h, status myoclonus", key: "Combine with EEG (Lance–Adams reactive ≠ poor)" },
       { label: "EEG (highly malignant)", rate: "≥24 h, ideally ≥72 h", key: "Suppression / identical burst-suppression / suppression + periodic discharges" },
       { label: "SSEP N20", rate: "24–72 h", key: "Bilaterally absent N20 — robust predictor when no confounders", highlight: true },
-      { label: "NSE", rate: "48 + 72 h trend", key: ">60 µg/L at 48–72 h or rising trend (haemolysis falsely elevates)" },
+      { label: "NSE", rate: "48 + 72 h trend", key: ">60 µg/L at 48 h and/or 72 h; trend adds information but is not an alternative threshold (check haemolysis)" },
       { label: "MRI DWI", rate: "2–7 days", key: "Diffuse cortical + deep grey matter restriction" },
     ],
   },
   pitfalls: [
     { mistake: "Prognosticating at 24 h on clinical exam alone", reality: "Hypothermia + sedatives confound; FPR is unacceptable.", tip: "Wait ≥72 h, off sedation, normothermic." },
-    { mistake: "Using a single modality", reality: "Each test has FPR 0–10%; combining ≥2 brings FPR <1%.", tip: "Always multimodal; document every test before discussing withdrawal." },
+    { mistake: "Using a single modality", reality: "No single test establishes outcome. Technical quality, timing, confounders and concordance matter; fixed universal false-positive rates are not guaranteed.", tip: "Always multimodal; document every test before discussing withdrawal." },
     { mistake: "Calling Lance–Adams 'status myoclonus'", reality: "Lance–Adams is post-anoxic action myoclonus with preserved consciousness — survivors recover function.", tip: "Status myoclonus = generalised, continuous, comatose patient; needs EEG to differentiate." },
     { mistake: "Treating elevated NSE as definitive", reality: "Haemolysis (sample handling, ECMO), neuroendocrine tumours falsely elevate NSE.", tip: "Always trend over 48–72 h and combine with other modalities; reject haemolysed samples." },
   ],
   vignettes: [
-    { scenario: "OHCA, downtime 12 min, ROSC after 25 min CPR. Day 3 off sedation 48 h: GCS M1, absent pupil + corneal reflexes, NSE 95 → 120 µg/L, identical-burst BS on EEG, bilaterally absent N20.", ecgFinding: "≥4 unfavourable modalities concordant.", diagnosis: "Poor neurological outcome highly likely.", management: "MDT + family meeting; consider WLST and organ donation pathway." },
+    { scenario: "OHCA, downtime 12 min, ROSC after 25 min CPR. Day 3 off sedation 48 h: GCS M1, absent pupil + corneal reflexes, NSE 95 → 120 µg/L, identical-burst BS on EEG, bilaterally absent N20.", ecgFinding: "≥4 unfavourable modalities concordant.", diagnosis: "Poor neurological outcome highly likely.", management: "Verify clearance and technical quality, assess recovery evidence, then discuss patient wishes, illness and uncertainty with the MDT and family; no automatic withdrawal." },
     { scenario: "Day 3 post-arrest, TTM 36 °C complete. NSE 38 µg/L, EEG continuous reactive background, SSEP N20 present bilaterally, GCS M4 to pain.", ecgFinding: "All favourable modalities.", diagnosis: "Recovery possible — continue active care.", management: "Wean sedation, daily SAT/SBT, intensive neuro-rehab planning." },
   ],
 };
