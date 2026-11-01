@@ -1,5 +1,10 @@
 # Admin metrics audit fixes
 
+## CL53/ROOT02 paediatric and proposed CL86 donation residuals — 1 November 2026
+- [ ] Reconcile current repeated paediatric DNC claims with the 2025 Appendix 2 summary; retain full preconditions and corrected death timing/apnoea thresholds.
+- [ ] Retire active superseded citation support and align dated donor proportions, conditional fWIT arithmetic and protocol-scoped NRP/organ discussion with opened primary sources.
+- [ ] Run combined focused citation/quiz/source checks and desktop/mobile topic/popover verification; record exact results and validation limitations. No database/backend/audio/publication work or whole-topic certification.
+
 ## Lookup presentation and exact principle debt — 1 November 2026
 - [ ] Hide calculation controls for lookup-only selection, preserve notes/links and verify switching actual page states.
 - [ ] Use executed labels and retire only independently reviewed adrenal snapshot line; retain other historical debt.
