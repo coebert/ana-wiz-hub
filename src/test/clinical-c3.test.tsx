@@ -1,6 +1,7 @@
 import { readFileSync } from "node:fs";
 import { describe, expect, it } from "vitest";
 import { renderToStaticMarkup } from "react-dom/server";
+import { cleanup, fireEvent, render, screen } from "@testing-library/react";
 import { MemoryRouter } from "react-router-dom";
 import { topicReferences } from "@/data/references";
 import { clinicalIncidentsQuestions, cardiacArrestPostResusQuestions, airwayManagementQuestions } from "@/data/quizzes";
@@ -30,9 +31,17 @@ describe("C3 clinical pathways and source mappings", () => {
     expect(ref("solutions-concentration", "Society for Endocrinology Hyponatraemia 2016")?.url).toContain("PMC5314809");
   });
   it("CL-20 rendered adult pathway uses video first-line and ceilings not quotas", () => {
-    const s = text(<DASAlgorithmDiagram />);
-    expect(s).toContain("2025, non-obstetric adults");
-    expect(s).toContain("Videolaryngoscopy first-line whenever possible");
+    render(<DASAlgorithmDiagram />);
+    expect(screen.getByText("DAS Difficult Airway Algorithm (2025, non-obstetric adults)")).toBeTruthy();
+    fireEvent.click(screen.getByRole("button", { name: "2 1st intubation attempt" }));
+    expect(screen.getByText(/Videolaryngoscopy first-line whenever possible/)).toBeTruthy();
+    fireEvent.click(screen.getByRole("button", { name: "Plan B" }));
+    fireEvent.click(screen.getByRole("button", { name: "3 If surgery is essential" }));
+    expect(screen.getByText(/under flexible endoscopic guidance; never blind/)).toBeTruthy();
+    fireEvent.click(screen.getByRole("button", { name: "Plan D" }));
+    fireEvent.click(screen.getByRole("button", { name: "2 Scalpel cricothyroidotomy" }));
+    expect(screen.getByText(/default to a vertical midline skin incision/)).toBeTruthy();
+    cleanup();
     const q = airwayManagementQuestions.find((q) => q.question.includes("attempt ceiling"));
     expect(q?.options[q.correctIndex]).toBe("3+1");
     expect(q?.explanation).toContain("not a quota");
