@@ -28,7 +28,7 @@ describe("CL91 current post-arrest source scope",()=>{
   expect(POST_ARREST_CO2).toBe("4.7–6.0 kPa");expect(faqs.map(f=>f[1]).join(' ')).not.toContain('GCS motor ≤ 3');
  });
  it("selected ≥72 h / clinical / NSE / SSEP panels actually show current boundaries",()=>{
-  mount(Prog);fireEvent.click(screen.getByRole('button',{name:/2 ≥72 h/}));expect(screen.getByText(/Consider current RCUK 2025/)).toBeInTheDocument();
+  mount(Prog);fireEvent.click(screen.getByRole('button',{name:/2 ≥72 h/}));expect(screen.getAllByText(/Consider current RCUK 2025/)).toHaveLength(2);
   fireEvent.click(screen.getByRole('button',{name:/Clinical Examination/}));expect(screen.getByText(/GCS motor < 6 at ≥ 72 h is the current consideration/)).toBeInTheDocument();
   fireEvent.click(screen.getByRole('button',{name:/Biomarkers/}));expect(screen.getByText(/rising values can add information but are not a substitute/)).toBeInTheDocument();
   fireEvent.click(screen.getByRole('button',{name:/Somatosensory Evoked/}));expect(screen.getByText(/Consider neuromuscular blockade to reduce artefact/)).toBeInTheDocument();
