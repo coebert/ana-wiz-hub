@@ -558,6 +558,8 @@ export const anaesthesiaCalcDrugs: AnaesthesiaCalcDrug[] = [
     drug: "Paracetamol (IV)",
     groupId: "adjuncts",
     kind: "bolus",
+    lookupOnly: true,
+    sourceUrl: "https://www.medicines.org.uk/emc/product/100803/smpc",
     unit: "mg/kg",
     startDose: 15,
     minDose: 15,
@@ -566,8 +568,8 @@ export const anaesthesiaCalcDrugs: AnaesthesiaCalcDrug[] = [
     amountUnit: "mg",
     concentrationLabel: "1 g in 100 mL = 10 mg/mL",
     maxSingleDose: 1000,
-    route: "IV infusion over 15 min, 6-hourly",
-    notes: "Maximum 1 g per dose and 4 g in 24 h. Reduce to 15 mg/kg (max 3 g/day) if under 50 kg or with liver risk factors.",
+    route: "IV product-specific lookup; no generic mg/kg output",
+    notes: "UK IV product emc 100803: ≤10 kg 7.5 mg/kg/dose, max 30 mg/kg/day; >10–33 kg 15 mg/kg/dose, max 60 mg/kg/day and 2 g; >33–50 kg 15 mg/kg/dose, max 60 mg/kg/day and 3 g; >50 kg 1 g/dose, max 3 g/day with hepatotoxicity risks or 4 g/day without. Follow product dose intervals; count all routes/products. No preterm dosing is established by this product. This lookup does not calculate a patient-specific dose.",
     topicPaths: ["/pharmacology/analgesics"],
   },
   {
@@ -685,7 +687,7 @@ export const anaesthesiaCalcDrugs: AnaesthesiaCalcDrug[] = [
     amountUnit: "mg",
     concentrationLabel: "0.25% = 2.5 mg/mL",
     route: "Adult field block / infiltration only",
-    notes: "Named product emc 11611: field-block/infiltration table limit 150 mg; 2 mg/kg is a conservative local teaching constraint, not a universal adult product limit. Not a neuraxial or major-nerve-block dose. Reduce where indicated and account for all prior/mixed LA exposure. Highly cardiotoxic: never IV; lipid rescue available.",
+    notes: "Named product emc 11611: field-block/infiltration table limit 150 mg; no more than 2 mg/kg in any four-hour period, including prior doses. This is not a neuraxial or major-nerve-block dose. Reduce where indicated and account for all prior/mixed LA exposure. Highly cardiotoxic: never IV; lipid rescue available.",
     topicPaths: ["/pharmacology/local-anaesthetics"],
   },
   {
