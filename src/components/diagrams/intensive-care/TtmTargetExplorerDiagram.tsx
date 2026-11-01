@@ -10,7 +10,8 @@ import { DiagramFigure } from "../_shared/DiagramFigure";
  * the rationale, current evidence, physiological effects and complications.
  * Includes a simple temperature curve illustrating the 24h target + 12h
  * controlled rewarm at 0.25–0.5 °C/h, with ≤37.5 °C fever prevention out
- * to 72h post-ROSC (per ERC/ESICM 2021 + TTM2 evidence).
+ * to at least 72h in unconscious survivors under the RCUK March 2026 algorithm;
+ * the RCUK 2025 narrative guideline says 36–72h. Historical trial curves are illustrative.
  */
 
 type Target = "33" | "36" | "normo" | "fever";
@@ -50,7 +51,7 @@ const targets: Record<Target, TargetMeta> = {
       "Impaired drug clearance (sedatives, NMBA accumulate)",
     ],
     whoBenefits:
-      "Some centres still use 33 °C for refractory ICP, status epilepticus, or selected shockable OHCA — though TTM2 found no advantage over 36 °C / fever control.",
+      "Some centres still use 33 °C for refractory ICP, status epilepticus, or selected shockable OHCA — though TTM2 compared 33 °C with normothermia/fever treatment, not a 36 °C arm.",
   },
   "36": {
     label: "Mild hypothermia 36 °C",
@@ -64,7 +65,7 @@ const targets: Record<Target, TargetMeta> = {
     pros: [
       "Fewer arrhythmias and less haemodynamic compromise than 33 °C",
       "Easier nursing, less shivering, less sedation needed",
-      "Equivalent neurological outcome to 33 °C in landmark TTM trial",
+      "No significant neurological outcome difference in the TTM trial; not proof of equivalence",
     ],
     cons: [
       "Still requires active cooling device + core temperature monitoring",
@@ -72,7 +73,7 @@ const targets: Record<Target, TargetMeta> = {
       "TTM2 questioned whether any active cooling improves on tight normothermia",
     ],
     whoBenefits:
-      "A pragmatic choice when haemodynamics are precarious or bleeding risk high — but TTM2 suggests strict normothermia is non-inferior.",
+      "A pragmatic choice when haemodynamics are precarious or bleeding risk high — but TTM2 found no significant outcome difference; this does not prove non-inferiority.",
   },
   normo: {
     label: "Normothermia ≤ 37.5 °C",
@@ -106,9 +107,9 @@ const targets: Record<Target, TargetMeta> = {
     rationale:
       "Prevent secondary injury from hyperthermia-driven excitotoxicity, increased CMR, BBB disruption, and seizure burden.",
     pros: [
-      "Pragmatic, applicable to every post-arrest patient",
+      "Applicable to patients who remain unconscious after ROSC",
       "Cheap (paracetamol, surface cooling, fans)",
-      "Always indicated regardless of which TTM strategy is otherwise chosen",
+      "Prevent fever in unconscious survivors regardless of any selected cooling target",
     ],
     cons: [
       "Reactive only — fever is already harmful by the time you treat it",
@@ -116,7 +117,7 @@ const targets: Record<Target, TargetMeta> = {
       "Shivering on aggressive surface cooling without sedation",
     ],
     whoBenefits:
-      "Mandatory baseline for all post-ROSC patients. Even when 33 / 36 / normothermia targets are not reached, keep T ≤ 37.5 °C for ≥72 h.",
+      "For patients who remain unconscious after ROSC: actively prevent fever at ≤37.5 °C for ≥72 h under the RCUK March 2026 algorithm. The 2025 narrative guideline says 36–72 h. This is not a mandate for active temperature control in awake survivors.",
   },
 };
 

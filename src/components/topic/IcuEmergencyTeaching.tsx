@@ -66,7 +66,8 @@ export function EclampsiaHypertensionTeaching() {
     <div className={lessonWrap}>
       <H>Severe hypertension</H>
       <EQ label="NICE NG133 1.8.6" />
-      <p><Reasoning />severe hypertension in pre-eclampsia is treated immediately because it can cause stroke in the mother. Choose one of the three listed drugs and follow local doses and blood-pressure targets. Hydralazine can cause a sudden drop in blood pressure, which is why NICE pairs it with a small fluid preload (next lesson).</p>
+      <EQ label="NICE NG133 1.8.8" />
+      <p><Reasoning />severe hypertension in pre-eclampsia is treated immediately because it can cause stroke in the mother. Choose one of the three listed drugs and follow local doses and blood-pressure targets. Hydralazine can cause a sudden drop in blood pressure. After assessing fluid status, NICE NG133 permits considering up to 500 mL crystalloid before or with the first IV hydralazine dose in the antenatal period; this is not a compulsory preload for every dose or for postpartum patients.</p>
       <Check question="Which three antihypertensives does NG133 list for severe hypertension in critical care?">Labetalol (oral or IV), oral nifedipine, or IV hydralazine.</Check>
     </div>
   );
