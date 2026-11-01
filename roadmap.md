@@ -1,8 +1,8 @@
 # Admin metrics audit fixes
 
 ## S3 eight-ID physics/fluid recovery
-- [ ] Reconcile SCI026/039 quizzes only; SCI027/028/029/030/042/044 named pages and direct matching figures/copies.
-- [ ] Verify numbers, preserved pages, actual model selections and sources; document executed checks and terminal result without backend/database/audio/payment/publication changes.
+- [x] Reconcile SCI026/039 quizzes only; SCI027/028/029/030/042/044 named pages and direct matching figures/copies.
+- [x] Verify numbers, preserved pages, actual model selections and sources; document executed checks and terminal result without backend/database/audio/payment/publication changes.
 
 ## S3 six-ID chemistry recovery
 - [x] Reconcile SCI032 and SCI047–051 with verified source chemistry and direct matching topic/quiz copies.
