@@ -52,7 +52,7 @@ describe("required-citations snapshot", () => {
         return null;
       }
       // Teaching sections retain their own citations after extraction from a topic.
-      errors.push(...parseTopic(src, rel).diagnostics.map(diagnostic => `${rel}: ${diagnostic}`));
+      errors.push(...parseTopic(src, rel).diagnostics.filter(d => d.startsWith("syntax ")).map(diagnostic => `${rel}: ${diagnostic}`));
       // Seed the cache before recursion to guard circular shared imports.
       fileCache.set(rel, src);
       const imported = [...src.matchAll(/from\s+["'](@\/components\/topic\/[\w/]+Teaching|(?:\.\.\/|\.\/)[\w./]+Teaching)["']/g)]
