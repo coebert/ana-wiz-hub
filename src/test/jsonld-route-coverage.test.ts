@@ -1,6 +1,7 @@
 import { describe, it, expect } from "vitest";
 import { readFileSync, readdirSync, statSync, existsSync } from "fs";
 import { resolve, join, relative, dirname } from "path";
+import { isTopicRedirectFile } from "../data/topicRedirects";
 
 /**
  * Per-route JSON-LD coverage validation.
@@ -192,7 +193,7 @@ interface RouteGroup {
 const ROUTE_GROUPS: RouteGroup[] = [
   {
     label: "Topic pages (/<section>/<topic>)",
-    pageMatcher: (p) => p.startsWith("src/pages/topics/") && p.endsWith("Topic.tsx"),
+    pageMatcher: (p) => p.startsWith("src/pages/topics/") && p.endsWith("Topic.tsx") && !isTopicRedirectFile(p),
     expectedTypes: ["LearningResource"], // emitted by TopicTemplate
   },
   {
