@@ -1,8 +1,8 @@
 # Admin metrics audit fixes
 
 ## SCI052 limited relationship aid
-- [ ] Import hash-verified original maps; reconcile component copy and source records without restoring procedural geometry.
-- [ ] Exercise all four maps and enlargement by keyboard on narrow/wide layouts; run focused checks and document limitations.
+- [x] Import hash-verified original maps; reconcile component copy and source records without restoring procedural geometry.
+- [x] Exercise all four maps and enlargement by keyboard on narrow/wide layouts; run focused checks and document limitations.
 
 ## S3 nine-ID anatomy/context recovery
 - [x] Reconcile SCI019/020/023/031/034/035/041/043/045 and exact duplicates; preserve S2 withdrawn figures and SCI074/075.
