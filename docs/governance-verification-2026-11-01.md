@@ -41,5 +41,7 @@ Outputs and exact failing names are retained under `docs/verification-gov-2026-1
 
 ### Remaining content-command failures
 - Safety-citations reports **106 topic files** above its historical numeric-citation baselines; full filenames/claims in `all-content.log`. These heuristics do not establish 106 clinical errors. No numeric prose or citations changed merely to satisfy them.
-- Drug-dose-range checker reports **22 contextual dose warnings across 12 files**: ALF, AirwayManagement, AnaestheticEmergencies, BurnsIcu, HeadNeckAnatomy, IcuAnaphylaxis, LocalAnaesthetics, NeurointensiveCare, Opioids, PsychiatricSubstanceDisease, Rocuronium, TraumaEmergency. These historical-range/context matches are not source-verified dosing errors; no automatic clinical edits.
+- Drug-dose-range checker reports **22 contextual dose warnings across 12 files**: AirwayManagement, BariatricAnaesthesia, CardiacArrestPostResus, ENTAnaesthesia, HeadNeckAnatomy, IcuAnaphylaxis, LocalAnaesthetics, NeurointensiveCare, Opioids, PsychiatricSubstanceDisease, Rocuronium, TraumaEmergency. These historical-range/context matches are not source-verified dosing errors; no automatic clinical edits.
 - Historical diagram debt and two legacy identity gaps still require source-specific editorial work; no whole-library/source/anatomy certification.
+
+Final report revision inspected: `fc0e99d7b2ad0bf7dceaf4fd12e03656f050dc39`; latest automatic validation at 13:10:49 UTC: build OK. Report correction only thereafter.
