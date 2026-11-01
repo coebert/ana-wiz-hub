@@ -1,0 +1,106 @@
+[
+  {
+    "slug": "5-percent-glucose",
+    "exactCurrentBefore": "Clear, sterile 5% w/v D-glucose monohydrate solution (50 g/L D-glucose anhydrous). Theoretical osmolarity 278 mOsmol/L. pH 3.5-6.5. Available in bags from 50 mL to 1000 mL.",
+    "sourceUrl": "https://www.medicines.org.uk/emc/product/13132/smpc",
+    "primaryEvidence": "3\\. Pharmaceutical form\n\nSolution for infusion.\n\nColourless to faintly straw-coloured solution without visible particles in bags, individually overwrapped.\n\npH 4.15 \u2013 Osmolality approx 300mOsm/kgH2O\n",
+    "action": "Root review only: selected-label difference, not automatic clinical correction. Some differences are product-specific quantities/precision rather than universal errors."
+  },
+  {
+    "slug": "normal-saline",
+    "exactCurrentBefore": "Clear, sterile, non-pyrogenic solution. Available in bags or vials from 10 mL to 1000 mL. Concentration: 0.9% w/v (9g NaCl per litre). Osmolarity: 308 mOsmol/L. pH: 4.5\u20137.0. Electrolytes: Na+ 154 mmol/L, Cl- 154 mmol/L.",
+    "sourceUrl": "https://www.medicines.org.uk/emc/product/13131/smpc",
+    "primaryEvidence": "3\\. Pharmaceutical form\n\nSolution for infusion.\n\nColourless to faintly straw-coloured solution without visible particles in bags, individually overwrapped.\n\npH 5. Osmolality approx 300mOsm/kgH2O\n",
+    "action": "Root review only: selected-label difference, not automatic clinical correction. Some differences are product-specific quantities/precision rather than universal errors."
+  },
+  {
+    "slug": "plasma-lyte",
+    "exactCurrentBefore": "500 mL or 1000 mL Viaflo bags. Clear, colourless solution.\nElectrolytes (mmol/L): Na+ 140, K+ 5, Mg2+ 1.5, Cl- 98, Acetate 27, Gluconate 23. Osmolality: 295 mOsmol/kg (calculated). pH 7.3-7.6.",
+    "sourceUrl": "https://www.medicines.org.uk/emc/product/1795/smpc",
+    "primaryEvidence": "3\\. Pharmaceutical form\n\nSolution for infusion.\n\nClear solution, free from visible particles\n\nOsmolarity: 295 mOsm/l (approx.)\n\npH: approx. 7.4 (6.5 to 8.0)\n",
+    "action": "Root review only: selected-label difference, not automatic clinical correction. Some differences are product-specific quantities/precision rather than universal errors."
+  },
+  {
+    "slug": "desmopressin",
+    "exactCurrentBefore": "\u2022 Solution for injection (IV, IM, SC): 4 micrograms/mL in 1 mL ampoules.\n\u2022 Oral lyophilisates (melt): 60 micrograms, 120 micrograms, 240 micrograms.\n\u2022 Tablets: 0.1 mg, 0.2 mg.",
+    "sourceUrl": "https://www.medicines.org.uk/emc/product/5447/smpc",
+    "primaryEvidence": "2\\. Qualitative and quantitative composition\n\n1 ml DDAVP/Desmopressin solution for injection contains 4 microgram desmopressin acetate equivalent to 3.56.\n\nmicrogram desmopressin.\n\n**Excipients with known effect:**\n\nThis medicinal product contains 3.5 mg sodium per ampoule, equivalent to 0.2% of the WHO recommended maximum daily intake of 2 g sodium for an adult.\n\nFor the full list of excipients, see section 6.1.\n",
+    "action": "Root review only: selected-label difference, not automatic clinical correction. Some differences are product-specific quantities/precision rather than universal errors."
+  },
+  {
+    "slug": "nicardipine",
+    "exactCurrentBefore": "10 mg in 10 mL solution for injection or infusion (1 mg/mL). Clear glass ampoule. Protect from light. Store below 25\u00b0C. Do not freeze.",
+    "sourceUrl": "https://www.medicines.org.uk/emc/product/12140/smpc",
+    "primaryEvidence": "3\\. Pharmaceutical form\n\nSolution for infusion (infusion).\n\nClear, pale yellow colour solution.\n\npH 3.2 \u2013 3.8\n\nOsmolality 280 \u2013 320 mOsm/Kg\n",
+    "action": "Root review only: selected-label difference, not automatic clinical correction. Some differences are product-specific quantities/precision rather than universal errors."
+  },
+  {
+    "slug": "oxytocin",
+    "exactCurrentBefore": "Clear, colourless solution for injection/infusion. 1 mL ampoules containing 5 international units (IU) or 10 IU oxytocin. Store in a refrigerator (2\u20138\u00b0C); stable for up to 3 months at room temperature (below 25\u00b0C) if protected from light. Do not freeze.",
+    "sourceUrl": "https://www.medicines.org.uk/emc/product/1971/smpc",
+    "primaryEvidence": "3\\. Pharmaceutical form\n\nConcentrate for solution for infusion.\n\nA clear, colourless, sterile solution in 1ml clear glass ampoules.\n\npH 3.5 \u2013 4.5\n",
+    "action": "Root review only: selected-label difference, not automatic clinical correction. Some differences are product-specific quantities/precision rather than universal errors."
+  },
+  {
+    "slug": "magnesium-sulphate",
+    "exactCurrentBefore": "Ampoules: 20% solution (1 g in 5 mL, 4.1 mmol Mg\u00b2\u207a) or 50% solution (2.5 g in 5 mL, 10.25 mmol Mg\u00b2\u207a; 5 g in 10 mL, 20.5 mmol Mg\u00b2\u207a).",
+    "sourceUrl": "https://www.medicines.org.uk/emc/product/13170/smpc",
+    "primaryEvidence": "2\\. Qualitative and quantitative composition\n\nMagnesium sulfate heptahydrate 50% w/v (2 mmol Mg2+ in 1 ml).\n\nEach 1 ml of solution contains 2 mmol Mg2+ (equivalent to 500 mg magnesium sulfate heptahydrate).\n\nEach 2 ml ampoule contains 4 mmol Mg2+ (equivalent to 1 g magnesium sulfate heptahydrate).\n\nEach 10 ml ampoule contains 20 mmol Mg2+ (equivalent to 5 g magnesium sulfate heptahydrate).\n\nThe concentrations of magnesium ions (Mg2+) in millimoles are given as approximate values.\n\nFor the full list of excipients, see section 6.1.\n",
+    "action": "Root review only: selected-label difference, not automatic clinical correction. Some differences are product-specific quantities/precision rather than universal errors."
+  },
+  {
+    "slug": "flumazenil",
+    "exactCurrentBefore": "100 micrograms/mL solution for injection in 5 mL (500 micrograms) and 10 mL (1 mg) vials.",
+    "sourceUrl": "https://www.medicines.org.uk/emc/product/6300/smpc",
+    "primaryEvidence": "2\\. Qualitative and quantitative composition\n\nEach ml contains 100 micrograms flumazenil.\n\n1 ampoule with 5 ml contains 500 micrograms flumazenil.\n\n1 ampoule with 10 ml contains 1000 micrograms flumazenil.\n\n**Excipient with known effect:**\n\nThis medicinal product contains approximately 3.7 mg sodium per ml of flumazenil solution for injection/infusion (see section 4.4).\n\nFor the full list ofexcipients, see section 6.1.\n",
+    "action": "Root review only: selected-label difference, not automatic clinical correction. Some differences are product-specific quantities/precision rather than universal errors."
+  },
+  {
+    "slug": "flucytosine",
+    "exactCurrentBefore": "Solution for infusion 2.5 g in 250 mL (10 mg/mL). Oral capsules 500 mg (imported, obtain on a named-patient basis).",
+    "reason": "No exact current official UK label opened.",
+    "action": "No source substitution or clinical update"
+  },
+  {
+    "slug": "hypertonic-saline",
+    "exactCurrentBefore": "Sodium Chloride 3% Intravenous Infusion: 513 mmol/L Na+, 513 mmol/L Cl-. Available in 100 mL, 250 mL, 500 mL bags.",
+    "reason": "No exact 3% official UK label opened; 30% not substituted.",
+    "action": "No source substitution or clinical update"
+  },
+  {
+    "slug": "hydroxocobalamin",
+    "exactCurrentBefore": "2.5 g glass vials of dark red lyophilised powder for solution for infusion (supplied as a 2-vial kit totalling 5 g).",
+    "reason": "Opened5g/vial does not match listed2x2.5g kit; no metadata applied.",
+    "action": "No source substitution or clinical update"
+  },
+  {
+    "slug": "magnesium-bronchospasm",
+    "exactCurrentBefore": "Ampoules of magnesium sulfate heptahydrate 500 mg/mL (50% w/v), equivalent to 2 mmol/mL.\n\u2022 Available as 2 mL (1 g / 4 mmol) or 10 mL (5 g / 20 mmol) presentations.",
+    "reason": "Opened10% does not match listed50%; asthma not licensed in this label, needs adopted guideline.",
+    "action": "No source substitution or clinical update"
+  },
+  {
+    "slug": "clevidipine",
+    "exactCurrentBefore": "Injectable emulsion for intravenous infusion. 0.5 mg/mL: 25 mg in 50 mL or 50 mg in 100 mL vials. White, opaque lipid emulsion containing soya-bean oil, egg phospholipids, and glycerol.",
+    "reason": "No current UK SmPC; dm+d actual products not available.",
+    "action": "No source substitution or clinical update"
+  },
+  {
+    "slug": "diltiazem",
+    "exactCurrentBefore": "\u2022 Powder for solution for injection containing 25 mg or 100 mg diltiazem hydrochloride.",
+    "reason": "Only oral label opened; listed IV product remains unverified.",
+    "action": "No source substitution or clinical update"
+  },
+  {
+    "slug": "omeprazole",
+    "exactCurrentBefore": "40 mg powder for solution for injection (as omeprazole sodium) in vials. Also 10 mg, 20 mg, 40 mg gastro-resistant capsules/tablets.",
+    "reason": "Opened powder for infusion is not the listed powder for injection; exact injection product not established.",
+    "action": "No source substitution or clinical update"
+  },
+  {
+    "slug": "droperidol",
+    "exactCurrentBefore": "2.5 mg/mL solution for injection in 1 mL ampoules (Xomolix).",
+    "reason": "Opened PANPHARMA matches generic concentration but not named Xomolix; no brand substitution.",
+    "action": "No source substitution or clinical update"
+  }
+]
