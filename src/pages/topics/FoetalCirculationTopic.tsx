@@ -351,7 +351,7 @@ const FoetalCirculationTopic = () => {
             ]}
           />
           <TopicFaqs faqs={foetalCirculationFaqs} />
-          <p className="text-xs text-muted-foreground"><InlineRef topicId="foetal-circulation" refLabel="Fetal shunts review 2024" /></p>
+          <p className="text-xs text-muted-foreground"><InlineRef topicId="foetal-circulation" refLabel="Fetal shunts review 2024" /><InlineRef topicId="foetal-circulation" refLabel="Fetal bypass routes" /></p>
 
         </>
       }

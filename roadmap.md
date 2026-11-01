@@ -1,8 +1,8 @@
 # Admin metrics audit fixes
 
 ## S3 nine-ID anatomy/context recovery
-- [ ] Reconcile SCI019/020/023/031/034/035/041/043/045 and exact duplicates; preserve S2 withdrawn figures and SCI074/075.
-- [ ] Verify actual selected FAQs/panels/quizzes, sources and local outputs; document checks, limitations and terminal SHA. No backend/database/audio/credentials/payment/publication changes.
+- [x] Reconcile SCI019/020/023/031/034/035/041/043/045 and exact duplicates; preserve S2 withdrawn figures and SCI074/075.
+- [x] Verify actual selected FAQs/panels/quizzes, sources and local outputs; document checks, limitations and terminal SHA. No backend/database/audio/credentials/payment/publication changes.
 
 ## S3 eight-ID physics/fluid recovery
 - [x] Reconcile SCI026/039 quizzes only; SCI027/028/029/030/042/044 named pages and direct matching figures/copies.

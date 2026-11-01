@@ -225,7 +225,7 @@ const LowerLimbAnatomyTopic = () => {
             </CollapsibleSubsection>
           </ExamSection>
           <TopicFaqs faqs={lowerLimbAnatomyFaqs} />
-          <p className="text-xs text-muted-foreground"><InlineRef topicId="lower-limb-anatomy" refLabel="TTUHSC thigh anatomy" /><InlineRef topicId="lower-limb-anatomy" refLabel="NICE CG124 hip fracture" /></p>
+          <p className="text-xs text-muted-foreground"><InlineRef topicId="lower-limb-anatomy" refLabel="Reviewed cutaneous territories" /><InlineRef topicId="lower-limb-anatomy" refLabel="Sural territory" /><InlineRef topicId="lower-limb-anatomy" refLabel="Superficial fibular territory" /><InlineRef topicId="lower-limb-anatomy" refLabel="Deep fibular territory" /><InlineRef topicId="lower-limb-anatomy" refLabel="NICE CG124 hip fracture" /></p>
         </>
       }
     />
