@@ -1,4 +1,8 @@
 import { useState } from "react";
+import { Button } from "@/components/ui/button";
+import { InlineRef } from "@/components/references/InlineRef";
+import { KetamineStructures } from "./KetamineStructures";
+import { ESTER_DRUG_DISTINCTIONS, AMIDE_NAME_AID } from "@/lib/teaching-chemistry";
 
 type FunctionalGroup = "hydroxyl" | "carbonyl" | "carboxyl" | "amine" | "ester" | "amide" | "ether" | "benzene";
 
@@ -7,10 +11,10 @@ const groups: Record<FunctionalGroup, { name: string; formula: string; example: 
   carbonyl: { name: "Carbonyl (C=O)", formula: "R—CO—R'", example: "Ketamine", relevance: "Ketone group. Polar → some water solubility. Site of metabolism by reduction. Ketamine's asymmetric carbon adjacent to the carbonyl gives chirality." },
   carboxyl: { name: "Carboxyl (—COOH)", formula: "R—COOH", example: "NSAIDs (aspirin, ibuprofen)", relevance: "Weak acid. Ionises at physiological pH → largely ionised in plasma (ion trapped). Protein binding via ionic interaction with albumin." },
   amine: { name: "Amine (—NH₂ / —NR₂)", formula: "R—NH₂", example: "Local anaesthetics, morphine", relevance: "Weak base. Degree of ionisation depends on pH and pKa. Tertiary amines (3 R-groups) cross BBB better. Quaternary amines (4 R-groups, e.g. glycopyrrolate) cannot cross." },
-  ester: { name: "Ester (—COO—)", formula: "R—COO—R'", example: "Remifentanil, atracurium, ester LAs", relevance: "Hydrolysed by esterases (plasma cholinesterase). Systemic elimination half-life is not block duration: topical tetracaine may last 4–6 hours. Some ester LA metabolites such as PABA contribute to allergy." },
-  amide: { name: "Amide (—CONH—)", formula: "R—CONH—R'", example: "Amide local anaesthetics (lidocaine)", relevance: "More stable than esters — hepatic metabolism (CYP450). Block duration depends on agent/site/formulation, not class alone. True amide allergy is rare but possible. Identified by having TWO 'i's before '-caine' (lidocaine, bupivacaine)." },
+  ester: { name: "Ester (—COO—)", formula: "R—COO—R'", example: "Remifentanil, atracurium, ester LAs", relevance: ESTER_DRUG_DISTINCTIONS + " Systemic elimination half-life is not block duration: topical tetracaine may last 4–6 hours. Some ester LA metabolites such as PABA contribute to allergy." },
+  amide: { name: "Amide (—CONH—)", formula: "R—CONH—R'", example: "Amide local anaesthetics (lidocaine)", relevance: "More stable than esters — hepatic metabolism (CYP450). Block duration depends on agent/site/formulation, not class alone. True amide allergy is rare but possible. " + AMIDE_NAME_AID + "" },
   ether: { name: "Ether (—O—)", formula: "R—O—R'", example: "Sevoflurane, desflurane", relevance: "C-F bonds + ether linkage → low blood-gas solubility → rapid onset/offset. Ether bond in sevoflurane broken by CYP2E1 → fluoride ions (nephrotoxicity debate)." },
-  benzene: { name: "Benzene Ring (Ar)", formula: "C₆H₆", example: "Propofol, thiopentone, midazolam", relevance: "Aromatic ring increases lipophilicity → CNS penetration. Planar structure allows π-π stacking with receptor proteins. Halogenation of benzene rings alters potency." },
+  benzene: { name: "Benzene Ring (Ar)", formula: "C₆H₆", example: "Propofol, midazolam", relevance: "Aromatic ring increases lipophilicity → CNS penetration. Planar structure allows π-π stacking with receptor proteins. Halogenation of benzene rings alters potency." },
 };
 
 export const OrganicChemistryDiagram = () => {
@@ -21,21 +25,21 @@ export const OrganicChemistryDiagram = () => {
     <div className="w-full max-w-2xl mx-auto">
       <div className="flex items-center justify-between mb-4">
         <h4 className="text-sm font-semibold text-foreground">Functional Groups in Anaesthetic Drugs</h4>
-        <button
+        <Button
           onClick={() => setShowChirality(!showChirality)}
           className={`px-3 py-1 rounded-lg text-xs font-medium border transition-all ${
             showChirality ? "bg-chemistry/10 border-chemistry text-chemistry" : "border-border text-muted-foreground"
           }`}
         >
           {showChirality ? "← Groups" : "Chirality →"}
-        </button>
+        </Button>
       </div>
 
       {!showChirality ? (
         <>
           <div className="flex flex-wrap gap-1.5 justify-center mb-4">
             {(Object.keys(groups) as FunctionalGroup[]).map((g) => (
-              <button
+              <Button
                 key={g}
                 onClick={() => setActiveGroup(g)}
                 className={`px-2.5 py-1 rounded-lg text-xs font-medium border transition-all ${
@@ -45,7 +49,7 @@ export const OrganicChemistryDiagram = () => {
                 }`}
               >
                 {groups[g].name.split(" (")[0]}
-              </button>
+              </Button>
             ))}
           </div>
 
@@ -96,7 +100,7 @@ export const OrganicChemistryDiagram = () => {
                 <path d="M 200 85 Q 200 100 200 105" stroke="hsl(210 70% 50%)" strokeWidth="1.5" fill="none" markerEnd="url(#arrowBlue)" />
                 <text x={220} y={95} fontSize="8" className="fill-muted-foreground">+ H₂O</text>
                 <text x={200} y={120} textAnchor="middle" fontSize="9" className="fill-foreground font-medium">→ R—COOH + HO—R'</text>
-                <text x={200} y={138} textAnchor="middle" fontSize="8" className="fill-muted-foreground">Rapid hydrolysis by plasma esterases (e.g. remifentanil: context-sensitive half-time 3–4 min)</text>
+                <text x={200} y={138} textAnchor="middle" fontSize="8" className="fill-muted-foreground">Drug-specific blood/tissue esterases — not universally plasma cholinesterase</text>
               </g>
             )}
             {activeGroup === "amide" && (
@@ -113,8 +117,8 @@ export const OrganicChemistryDiagram = () => {
                 <line x1={242} y1={67} x2={260} y2={67} stroke="hsl(var(--foreground))" strokeWidth="2" />
                 <text x={270} y={72} textAnchor="middle" fontSize="14" className="fill-foreground font-bold">R'</text>
                 <text x={200} y={100} textAnchor="middle" fontSize="9" className="fill-foreground font-medium">Stable bond — requires hepatic metabolism</text>
-                <text x={200} y={120} textAnchor="middle" fontSize="8" className="fill-muted-foreground">Ester vs Amide LA: count the 'i's before '-caine'</text>
-                <text x={200} y={134} textAnchor="middle" fontSize="8" className="fill-muted-foreground">1 'i' = ester (procaine) · 2 'i's = amide (lidocaine, bupivacaine)</text>
+                <text x={200} y={120} textAnchor="middle" fontSize="8" className="fill-muted-foreground">Memory aid: count letters i in the complete generic name</text>
+                <text x={200} y={134} textAnchor="middle" fontSize="8" className="fill-muted-foreground">Lidocaine / bupivacaine: two letters i, one in -caine</text>
               </g>
             )}
             {activeGroup === "amine" && (
@@ -162,7 +166,7 @@ export const OrganicChemistryDiagram = () => {
           <div className="bg-secondary/30 rounded-xl p-4 border border-border">
             <h4 className="text-sm font-semibold text-foreground mb-1">{groups[activeGroup].name}</h4>
             <p className="text-xs text-muted-foreground mb-1"><strong>Example:</strong> {groups[activeGroup].example}</p>
-            <p className="text-xs text-muted-foreground leading-relaxed">{groups[activeGroup].relevance}</p>
+            <p className="text-xs text-muted-foreground leading-relaxed">{groups[activeGroup].relevance}{activeGroup === "ester" && <><InlineRef topicId="organic-chemistry" refLabel="Remifentanil Esterases SmPC" /><InlineRef topicId="organic-chemistry" refLabel="Atracurium Esterases SmPC" /></>}{activeGroup === "amide" && <InlineRef topicId="organic-chemistry" refLabel="PubChem Lidocaine Linkage" />}{activeGroup === "benzene" && <> Thiopentone is a substituted thiobarbiturate heterocycle, not a benzene-ring example.<InlineRef topicId="organic-chemistry" refLabel="NIST Thiopental Structure" /></>}</p>
           </div>
         </>
       ) : (
@@ -175,52 +179,14 @@ export const OrganicChemistryDiagram = () => {
             </p>
           </div>
 
-          <svg viewBox="0 0 400 160" className="w-full">
-            {/* R-enantiomer */}
-            <g>
-              <text x={120} y={20} textAnchor="middle" fontSize="10" className="fill-foreground font-semibold">S(+) Ketamine</text>
-              <circle cx={120} cy={70} r={8} fill="hsl(95 55% 38%)" opacity="0.3" stroke="hsl(95 55% 38%)" strokeWidth="2" />
-              <text x={120} y={74} textAnchor="middle" fontSize="8" fill="hsl(95 55% 38%)" fontWeight="bold">C*</text>
-              <line x1={120} y1={62} x2={120} y2={42} stroke="hsl(var(--foreground))" strokeWidth="1.5" />
-              <text x={120} y={38} textAnchor="middle" fontSize="8" className="fill-muted-foreground">Cl</text>
-              <line x1={112} y1={74} x2={90} y2={90} stroke="hsl(var(--foreground))" strokeWidth="1.5" />
-              <text x={80} y={98} textAnchor="middle" fontSize="8" className="fill-muted-foreground">NH—CH₃</text>
-              <line x1={128} y1={74} x2={150} y2={90} stroke="hsl(var(--foreground))" strokeWidth="1.5" />
-              <text x={160} y={98} textAnchor="middle" fontSize="8" className="fill-muted-foreground">C=O</text>
-              <line x1={120} y1={78} x2={120} y2={100} stroke="hsl(var(--foreground))" strokeWidth="1.5" strokeDasharray="3 3" />
-              <text x={120} y={112} textAnchor="middle" fontSize="8" className="fill-muted-foreground">Ar</text>
-              <text x={120} y={135} textAnchor="middle" fontSize="8" fill="hsl(95 55% 38%)" fontWeight="600">~2× racemate (3–4× R)</text>
-              <text x={120} y={148} textAnchor="middle" fontSize="7" className="fill-muted-foreground">Less dysphoria</text>
-            </g>
-
-            {/* Mirror line */}
-            <line x1={200} y1={15} x2={200} y2={155} stroke="hsl(var(--border))" strokeWidth="1" strokeDasharray="4 4" />
-            <text x={200} y={12} textAnchor="middle" fontSize="7" className="fill-muted-foreground">mirror plane</text>
-
-            {/* S-enantiomer */}
-            <g>
-              <text x={280} y={20} textAnchor="middle" fontSize="10" className="fill-foreground font-semibold">R(-) Ketamine</text>
-              <circle cx={280} cy={70} r={8} fill="hsl(340 60% 50%)" opacity="0.3" stroke="hsl(340 60% 50%)" strokeWidth="2" />
-              <text x={280} y={74} textAnchor="middle" fontSize="8" fill="hsl(340 60% 50%)" fontWeight="bold">C*</text>
-              <line x1={280} y1={62} x2={280} y2={42} stroke="hsl(var(--foreground))" strokeWidth="1.5" />
-              <text x={280} y={38} textAnchor="middle" fontSize="8" className="fill-muted-foreground">Cl</text>
-              <line x1={288} y1={74} x2={310} y2={90} stroke="hsl(var(--foreground))" strokeWidth="1.5" />
-              <text x={320} y={98} textAnchor="middle" fontSize="8" className="fill-muted-foreground">NH—CH₃</text>
-              <line x1={272} y1={74} x2={250} y2={90} stroke="hsl(var(--foreground))" strokeWidth="1.5" />
-              <text x={240} y={98} textAnchor="middle" fontSize="8" className="fill-muted-foreground">C=O</text>
-              <line x1={280} y1={78} x2={280} y2={100} stroke="hsl(var(--foreground))" strokeWidth="1.5" strokeDasharray="3 3" />
-              <text x={280} y={112} textAnchor="middle" fontSize="8" className="fill-muted-foreground">Ar</text>
-              <text x={280} y={135} textAnchor="middle" fontSize="8" fill="hsl(340 60% 50%)" fontWeight="600">Less potent</text>
-              <text x={280} y={148} textAnchor="middle" fontSize="7" className="fill-muted-foreground">More side effects</text>
-            </g>
-          </svg>
+          <KetamineStructures />
 
           <div className="bg-card rounded-xl border border-border p-4">
             <h4 className="text-xs font-semibold text-foreground mb-2">Clinically Important Chiral Drugs</h4>
             <div className="space-y-2 text-xs text-muted-foreground">
               {[
                 { drug: "Bupivacaine", note: "S(−) levobupivacaine: less cardiotoxic than racemic mixture" },
-                { drug: "Ketamine", note: "S(+) esketamine: about twice as potent as the racemic mixture (3–4× R-ketamine), faster recovery, less emergence phenomena" },
+                { drug: "Ketamine", note: "S- and R-ketamine share connectivity but differ at the stereocentre; chemical configuration alone does not establish clinical superiority" },
                 { drug: "Atracurium", note: "R-cis,R'-cis isomer (cisatracurium): ~3× more potent than atracurium, minimal histamine release, Hofmann elimination" },
                 { drug: "Omeprazole", note: "S-esomeprazole: higher bioavailability (less first-pass CYP2C19)" },
                 { drug: "Thiopentone", note: "Racemic mixture — S(−) is roughly twice as potent as R(+)" },

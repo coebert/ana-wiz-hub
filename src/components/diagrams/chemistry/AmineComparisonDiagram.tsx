@@ -3,8 +3,10 @@ import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { DiagramFigure } from "../_shared/DiagramFigure";
+import { InlineRef } from "@/components/references/InlineRef";
+import { unchargedWeakBaseFraction } from "@/lib/teaching-chemistry";
 
-type Mode = "tertiary" | "quaternary";
+type Mode = "secondary" | "tertiary" | "quaternary";
 
 interface DrugRow {
   name: string;
@@ -20,8 +22,8 @@ const drugs: DrugRow[] = [
   { name: "Morphine", type: "tertiary", use: "Opioid", pKa: "8.0", note: "Crosses BBB (slowly — relatively hydrophilic) and placenta. Active metabolite M6G also crosses." },
   { name: "Fentanyl", type: "tertiary", use: "Opioid", pKa: "8.4", note: "Highly lipid-soluble tertiary amine → rapid CNS penetration despite >90% ionised at pH 7.4." },
   { name: "Atropine", type: "tertiary", use: "Antimuscarinic", pKa: "9.8", note: "Crosses BBB → central anticholinergic effects (sedation, delirium, mydriasis from systemic absorption)." },
-  { name: "Ephedrine", type: "tertiary", use: "Vasopressor", pKa: "9.6", note: "Crosses BBB → CNS stimulation; crosses placenta → safe in obstetrics for maternal hypotension (now superseded by phenylephrine)." },
-  { name: "Ketamine", type: "tertiary", use: "IV anaesthetic", pKa: "7.5", note: "Largely unionised at physiological pH → rapid BBB crossing → fast onset of dissociative anaesthesia." },
+  { name: "Ephedrine", type: "secondary", use: "Vasopressor", pKa: "9.6", note: "Two carbon substituents and one hydrogen on the amino nitrogen. Placental transfer does not establish fetal safety; selection requires clinical evidence and context." },
+  { name: "Ketamine", type: "secondary", use: "IV anaesthetic", pKa: "7.5", note: `Methylamino group: two carbon substituents and one hydrogen on nitrogen. Assuming pH 7.4 and pKa 7.5, uncharged fraction = 1/(1+10^0.1) = ${unchargedWeakBaseFraction(7.4, 7.5)?.toFixed(10)} (about 44%). This is not mostly uncharged and does not alone determine onset or fetal safety.` },
 
   { name: "Glycopyrrolate", type: "quaternary", use: "Antimuscarinic", note: "Permanent +ve charge → poorly penetrates BBB and crosses placenta to a limited extent (glycopyrronium SmPC). First-line antisialagogue and pairing for neostigmine reversal." },
   { name: "Neostigmine", type: "quaternary", use: "Anticholinesterase", note: "Charged → confined to NMJ; cannot reverse central anticholinergic syndrome (use physostigmine, a tertiary amine, for that)." },
@@ -68,7 +70,7 @@ const AmineSVG = ({ mode }: { mode: Mode }) => {
 
       {/* R3 */}
       <line x1="142" y1="125" x2="180" y2="160" stroke="hsl(var(--foreground))" strokeWidth="1.5" />
-      <RGroup cx={190} cy={170} label="R₃" />
+      <RGroup cx={190} cy={170} label={mode === "secondary" ? "H" : "R₃"} />
 
       {/* R4 (only in quaternary) or lone pair (in tertiary) */}
       {isQuat ? (
@@ -141,14 +143,15 @@ export const AmineComparisonDiagram = () => {
               <Card className="p-6 bg-gradient-to-br from-background to-muted/20">
         <div className="flex flex-col gap-1 mb-4">
           <h3 className="text-xl font-serif font-bold text-foreground">
-            Tertiary vs Quaternary Amines
+            Secondary, Tertiary and Quaternary Amines
           </h3>
           <p className="text-sm text-muted-foreground">
-            Why one nitrogen substitution determines whether a drug crosses the blood–brain barrier, the placenta, and the cell membrane.
+            Nitrogen substitution and charge affect passive transfer; amine class alone does not establish onset or fetal safety.
           </p>
         </div>
   
-        <div className="flex gap-2 mb-4">
+        <div className="flex flex-wrap gap-2 mb-4">
+          <Button variant={mode === "secondary" ? "default" : "outline"} onClick={() => setMode("secondary")} className="flex-1 min-w-40">Secondary amine (R₂NH)</Button>
           <Button
             variant={mode === "tertiary" ? "default" : "outline"}
             onClick={() => setMode("tertiary")}
