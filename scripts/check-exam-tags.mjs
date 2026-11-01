@@ -18,7 +18,7 @@
  *   node scripts/check-exam-tags.mjs --fix src/    # combine
  */
 import { readFileSync, writeFileSync, statSync, readdirSync } from "node:fs";
-import { join, relative, resolve } from "node:path";
+import { basename, join, relative, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 import { Linter } from "eslint";
 import tseslint from "typescript-eslint";
@@ -100,7 +100,7 @@ for (const file of files) {
 
   if (FIX) {
     // Iteratively apply autofixes until stable, then write back if changed.
-    const result = linter.verifyAndFix(code, config, { filename: file, allowInlineConfig: false });
+    const result = linter.verifyAndFix(code, config, { filename: basename(file), allowInlineConfig: false });
     const remaining = result.messages.filter(
       (m) => m.severity > 0,
     );
@@ -109,7 +109,7 @@ for (const file of files) {
       writeFileSync(file, result.output);
       // Number of fixes = original violation count minus what's still left.
       const before = linter
-        .verify(code, config, { filename: file, allowInlineConfig: false })
+        .verify(code, config, { filename: basename(file), allowInlineConfig: false })
         .filter((m) => m.ruleId === "lovable-local/valid-exam-tag").length;
       const fixedHere = before - remaining.length;
       totalFixed += fixedHere;
@@ -122,7 +122,7 @@ for (const file of files) {
     }
   } else {
     const messages = linter
-      .verify(code, config, { filename: file, allowInlineConfig: false })
+      .verify(code, config, { filename: basename(file), allowInlineConfig: false })
       .filter((m) => m.severity > 0);
     if (messages.length > 0) {
       violationsByFile.push({ file, messages });
