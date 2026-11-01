@@ -581,7 +581,7 @@ const VascularAccessDevicesTopic = () => {
               <div className="p-4 rounded-lg border border-border">
                 <p className="font-semibold text-foreground text-sm">Site selection</p>
                 <ul className="text-sm text-muted-foreground mt-1 space-y-1 list-disc list-inside">
-                  <li><strong className="text-foreground">Radial</strong> — first-line; superficial, collateral flow via the ulnar artery (confirm with Allen's test/Doppler), lowest complication rate</li>
+                  <li><strong className="text-foreground">Radial</strong> — first-line; superficial, collateral flow via the ulnar artery. Assess vascular history, perfusion and local access guidance; a normal modified Allen test cannot guarantee freedom from ischaemia. ESA 2020 conditionally suggests duplex/colour-Doppler collateral assessment (2C, low-certainty evidence). <InlineRef topicId="upper-limb-anatomy" refLabel="ESA vascular access 2020" /></li>
                   <li><strong className="text-foreground">Brachial</strong> — no collateral supply, so distal ischaemia if occluded carries a higher risk; end artery at the elbow near the median nerve</li>
                   <li><strong className="text-foreground">Femoral</strong> — larger waveform with more distal-pulse overshoot/resonance; easier to palpate and cannulate in shocked patients but higher infection and retroperitoneal haematoma risk</li>
                   <li><strong className="text-foreground">Dorsalis pedis</strong> — useful alternative when upper-limb sites are unavailable; smallest, most distal waveform with greatest amplification/overshoot</li>
