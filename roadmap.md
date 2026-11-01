@@ -1,5 +1,9 @@
 # Admin metrics audit fixes
 
+## Consolidated residual copies and governance — 1 November 2026
+- [ ] Reconcile A10/B17/D4 source snippets and three checker/provenance defects on current HEAD; preserve unrelated work and historical baselines.
+- [ ] Verify negative CLI fixtures, source/operation rendering and accessibility, regenerate affected local outputs, run one final full suite and document exact validation limitations. No database/audio/publication.
+
 ## Approved Phase A AI safety pause — 1 November 2026
 - [x] Prepared isolated current-source candidate; approved portable gate16/16 passed; metadata/count/held-fingerprint readback recorded in docs/phase-a-review/RESULTS.md.
 - [ ] Activation blocked: isolated semantic app typecheck/build/preview evidence unavailable under governing validation restrictions; actual-role rollback policy rehearsal remains required. No pause policies/endpoints/frontend activated.

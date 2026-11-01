@@ -9,7 +9,7 @@ export function checkTopicLabels(kind: 'cites' | 'sections') {
   for (const filename of readdirSync('src/pages/topics').filter(f => f.endsWith('.tsx'))) {
     const file = join('src/pages/topics', filename);
     const topic = parseTopic(readFileSync(file, 'utf8'), file);
-    if (!topic.foundTopicTemplate && !topic.cites.length && !Object.keys(topic.sections).length) continue;
+    if (!topic.foundTopicTemplate && !topic.cites.length && !Object.keys(topic.sections).length && !topic.diagnostics.length) continue;
     count++;
     issues.push(...labelIssues(topic, pool, kind).map(issue => `${file}: ${issue}`));
   }
