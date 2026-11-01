@@ -64,7 +64,7 @@ const config = [
     files: ["**/*.{ts,tsx}"],
     // Inline suppressions belong to the application's full lint configuration,
     // not this isolated rule scan; do not create unknown-rule/unused noise.
-    linterOptions: { noInlineConfig: true, reportUnusedDisableDirectives: false },
+    linterOptions: { reportUnusedDisableDirectives: false },
     languageOptions: {
       parser: tseslint.parser,
       parserOptions: {
@@ -100,7 +100,7 @@ for (const file of files) {
 
   if (FIX) {
     // Iteratively apply autofixes until stable, then write back if changed.
-    const result = linter.verifyAndFix(code, config, { filename: file });
+    const result = linter.verifyAndFix(code, config, { filename: file, allowInlineConfig: false });
     const remaining = result.messages.filter(
       (m) => m.severity > 0,
     );
@@ -109,7 +109,7 @@ for (const file of files) {
       writeFileSync(file, result.output);
       // Number of fixes = original violation count minus what's still left.
       const before = linter
-        .verify(code, config, { filename: file })
+        .verify(code, config, { filename: file, allowInlineConfig: false })
         .filter((m) => m.ruleId === "lovable-local/valid-exam-tag").length;
       const fixedHere = before - remaining.length;
       totalFixed += fixedHere;
@@ -122,7 +122,7 @@ for (const file of files) {
     }
   } else {
     const messages = linter
-      .verify(code, config, { filename: file })
+      .verify(code, config, { filename: file, allowInlineConfig: false })
       .filter((m) => m.severity > 0);
     if (messages.length > 0) {
       violationsByFile.push({ file, messages });

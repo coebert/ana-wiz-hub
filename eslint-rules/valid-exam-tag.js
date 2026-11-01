@@ -119,6 +119,9 @@ const rule = {
         const { tag: suggestion, distance, unique } = closestTag(value);
         const key = contextKey(node);
         const inExamContext = key && EXAM_HINT_RE.test(key);
+        // "exam" also denotes a radiological examination. Its typed row shape
+        // (dose_mSv + category) is clinical prose, not an ExamTag context.
+        if (key === "exam" && node.parent?.type === "Property" && node.parent.parent?.type === "ObjectExpression" && node.parent.parent.properties.some(p => p.key?.name === "dose_mSv")) return;
 
         // Only flag string literals that sit in an obvious exam context
         // (examTags array, `exam:` / `exams:` property, `examTags` variable).
