@@ -1,6 +1,7 @@
 import { describe, it, expect } from "vitest";
 import { readFileSync, readdirSync } from "fs";
 import { resolve } from "path";
+import { referenceLabels } from "../../scripts/lib/reference-labels";
 
 /**
  * Per-diagram source-citation contract for animated principle diagrams.
@@ -29,7 +30,6 @@ import { resolve } from "path";
  */
 
 const DIAGRAMS_DIR = resolve("src/components/diagrams");
-const REFS_FILE = resolve("src/data/references.ts");
 
 /** Recursively list every `.tsx` file under the diagrams tree (diagrams are
  * organised into per-section subfolders such as `physiology/`, `clinical/`). */
@@ -51,28 +51,6 @@ const ANIMATION_FILE_RE = /(?:^Animated[A-Z]\w*|Animation)\.tsx$/;
 
 /* ───────────────────────────── reference index ─────────────────────────── */
 
-function loadReferenceLabels(): Map<string, Set<string>> {
-  const src = readFileSync(REFS_FILE, "utf8");
-  const map = new Map<string, Set<string>>();
-  const topicRe = /"([a-z0-9-]+)"\s*:\s*\[/g;
-  let m: RegExpExecArray | null;
-  while ((m = topicRe.exec(src)) !== null) {
-    const topicId = m[1];
-    let depth = 1;
-    let i = topicRe.lastIndex;
-    while (i < src.length && depth > 0) {
-      const ch = src[i];
-      if (ch === "[") depth++;
-      else if (ch === "]") depth--;
-      i++;
-    }
-    const block = src.slice(topicRe.lastIndex, i - 1);
-    const labels = new Set<string>();
-    for (const lm of block.matchAll(/label\s*:\s*"([^"]+)"/g)) labels.add(lm[1]);
-    map.set(topicId, labels);
-  }
-  return map;
-}
 
 /* ───────────────────────── animation discovery ─────────────────────────── */
 
@@ -192,11 +170,25 @@ interface Issue {
 }
 
 describe("Per-diagram principle-citation contract (animated diagrams)", () => {
-  const refLabels = loadReferenceLabels();
+  const refLabels = referenceLabels();
   const units = listAnimationUnits();
 
   it("loads reference labels (guards parser regressions)", () => {
     expect(refLabels.size).toBeGreaterThan(20);
+  });
+
+  it.each(["NICE NG243 2024 recovery", "NICE NG243 2024 sick day"])("resolves actual merged endocrine label %s", label => {
+    expect(refLabels.get("icu-endocrine-emergencies")?.has(label)).toBe(true);
+    const adrenal = units.find(u => u.name === "AdrenalCrisisAnimation");
+    if (!adrenal) throw new Error("Missing adrenal animation");
+    expect(extractCites(adrenal.componentSrc)).toContainEqual({ topicId: "icu-endocrine-emergencies", labels: [label] });
+  });
+
+  it("rejects a deliberately nonexistent label and topic in the executed pool", () => {
+    const cites = extractCites('<InlineRef topicId="icu-endocrine-emergencies" refLabel="deliberately nonexistent per-principle label" />');
+    expect(cites).toHaveLength(1);
+    expect(refLabels.get(cites[0].topicId ?? "")?.has(cites[0].labels[0])).toBe(false);
+    expect(refLabels.has("deliberately-nonexistent-topic")).toBe(false);
   });
 
   it("discovers animated diagram units", () => {

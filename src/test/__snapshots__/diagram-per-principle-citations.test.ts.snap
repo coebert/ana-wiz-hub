@@ -10,7 +10,6 @@ exports[`Per-diagram principle-citation contract (animated diagrams) > missing-p
   "src/components/diagrams/clinical/PatientPositioningMechanisms.tsx::ProneIVCFreeAbdomenAnimation",
   "src/components/diagrams/clinical/PatientPositioningMechanisms.tsx::SittingHydrostaticAnimation",
   "src/components/diagrams/clinical/PatientPositioningMechanisms.tsx::VAEDetectionLadderAnimation",
-  "src/components/diagrams/intensive-care/AdrenalCrisisAnimation.tsx::AdrenalCrisisAnimation",
   "src/components/diagrams/intensive-care/ComplicationBundlesAnimation.tsx::ComplicationBundlesAnimation",
   "src/components/diagrams/intensive-care/DKAAnimation.tsx::DKAAnimation",
   "src/components/diagrams/intensive-care/GoalDirectedTherapyAnimation.tsx::GoalDirectedTherapyAnimation",
