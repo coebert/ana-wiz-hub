@@ -1,3 +1,5 @@
+import { STARLING_STEADY, STARLING_BARRIER, STARLING_ANP, STARLING_FLUID } from "@/lib/physics-fluid-teaching";
+import { InlineRef } from "@/components/references/InlineRef";
 import { useState, useMemo, useCallback } from "react";
 import { DiagramFigure } from "../_shared/DiagramFigure";
 
@@ -12,11 +14,11 @@ const StarlingForcesDiagram = () => {
     {
       id: "Pc",
       label: "Capillary Hydrostatic Pressure (Pc)",
-      artValue: "32 mmHg",
-      venValue: "20 mmHg",
+      artValue: "32 mmHg (illustrative)",
+      venValue: "20 mmHg (illustrative)",
       direction: "out",
       color: "hsl(0, 65%, 55%)",
-      desc: "The blood pressure inside the capillary pushing fluid OUT through the vessel wall into the interstitium. Higher at the arteriolar end (~32 mmHg) and lower at the venular end (~20 mmHg) — values used in the revised Starling–Levick model in which net filtration persists along the entire capillary length. Increased in heart failure, venous obstruction, and fluid overload.",
+      desc: "The blood pressure inside the capillary pushing fluid OUT through the vessel wall into the interstitium. Higher at the arteriolar end (~32 mmHg) and lower at the venular end (~20 mmHg) — values used in the revised Starling–Levick model in which slight filtration usually prevails at steady state in most continuous systemic microvessels. Increased in heart failure, venous obstruction, and fluid overload.",
     },
     {
       id: "Pi",
@@ -25,7 +27,7 @@ const StarlingForcesDiagram = () => {
       venValue: "−2 mmHg",
       direction: "in",
       color: "hsl(200, 65%, 50%)",
-      desc: "Pressure in the interstitial space, normally slightly sub-atmospheric (−2 mmHg) due to lymphatic drainage. Being sub-atmospheric it adds slightly to the outward hydrostatic gradient (Pc − Pi); as it rises towards and above zero it promotes absorption by opposing filtration. Becomes positive in oedema, reducing further filtration (safety factor).",
+      desc: "Pressure in the interstitial space, normally slightly sub-atmospheric (−2 mmHg) due to lymphatic drainage. Being sub-atmospheric it adds slightly to the outward hydrostatic gradient (Pc − Pi); as it rises it opposes filtration; net exchange depends on all terms and tissue context. Becomes positive in oedema, reducing further filtration (safety factor).",
     },
     {
       id: "πc",
@@ -39,11 +41,11 @@ const StarlingForcesDiagram = () => {
     {
       id: "πsg",
       label: "Sub-glycocalyx Oncotic Pressure (πsg)",
-      artValue: "≈ 0 mmHg",
-      venValue: "≈ 0 mmHg",
+      artValue: "Low, flow-dependent",
+      venValue: "Low, flow-dependent",
       direction: "out",
       color: "hsl(35, 70%, 55%)",
-      desc: "In the revised Starling-Levick model, the effective oncotic pressure opposing filtration is the sub-glycocalyx oncotic pressure (πsg), not the bulk interstitial oncotic pressure (πi). Because the intact glycocalyx excludes plasma proteins, πsg is near zero in health, so net oncotic pull is essentially σ·πc. Glycocalyx shedding (sepsis, ischaemia-reperfusion, hypervolaemia) raises πsg and drives oedema.",
+      desc: STARLING_BARRIER,
     },
 
   ], []);
@@ -125,7 +127,7 @@ const StarlingForcesDiagram = () => {
                 {drawArrow(130, capY + capH, capY + capH + 50, forces[0].color, selectedForce === "Pc")}
                 <text x="130" y={capY + capH + 62} textAnchor="middle" fontSize="7"
                   fill={forces[0].color} fontWeight={selectedForce === "Pc" ? "700" : "500"}>
-                  Pc = 35
+                  Pc = 32
                 </text>
               </g>
               {/* Pc — venular end */}
@@ -133,7 +135,7 @@ const StarlingForcesDiagram = () => {
                 {drawArrow(410, capY + capH, capY + capH + 30, forces[0].color, selectedForce === "Pc")}
                 <text x="410" y={capY + capH + 42} textAnchor="middle" fontSize="7"
                   fill={forces[0].color} fontWeight={selectedForce === "Pc" ? "700" : "500"}>
-                  Pc = 15
+                  Pc = 20
                 </text>
               </g>
   
@@ -166,7 +168,7 @@ const StarlingForcesDiagram = () => {
                 <text x="470" y={capY + capH + 32} textAnchor="middle" fontSize="7"
                   fill={forces[3].color} fontWeight={selectedForce === "πsg" ? "700" : "500"}>
 
-                  πsg ≈ 0
+                  πsg: low / variable
                 </text>
                 <text x="470" y={capY + capH + 42} textAnchor="middle" fontSize="5"
                   fill="hsl(var(--muted-foreground))">
@@ -192,7 +194,7 @@ const StarlingForcesDiagram = () => {
               </text>
               <text x={w / 2} y={h - 20} textAnchor="middle" fontSize="5.5"
                 fill="hsl(var(--muted-foreground))">
-                Revised Starling-Levick equation — πsg = sub-glycocalyx oncotic pressure (≈ 0 in health)
+                Revised Starling-Levick equation — πsg = sub-glycocalyx oncotic pressure (flow-dependent)
               </text>
   
               {/* Legend squares */}
@@ -236,7 +238,7 @@ const StarlingForcesDiagram = () => {
               <div className="p-3 rounded-lg border border-border">
                 <p className="font-semibold text-foreground text-sm">Click a force to explore</p>
                 <p className="text-xs text-muted-foreground mt-1 leading-relaxed">
-                  The <strong>revised Starling equation</strong> (Levick & Michel, 2010) recognises that the glycocalyx — not the full interstitial space — is the effective barrier. Sub-glycocalyx oncotic pressure (πsg) replaces interstitial oncotic pressure (πi) in the equation. In health, πsg ≈ 0 because the glycocalyx excludes proteins.
+                  {STARLING_BARRIER}
                 </p>
               </div>
             )}
@@ -255,19 +257,19 @@ const StarlingForcesDiagram = () => {
                   <tbody>
                     <tr className="border-b border-border/50">
                       <td className="py-1 text-foreground">Arteriolar end</td>
-                      <td className="text-center text-foreground">+12 mmHg</td>
+                      <td className="text-center text-foreground">Context-dependent</td>
                       <td className="py-1 text-muted-foreground">Net filtration (fluid leaves)</td>
                     </tr>
                     <tr>
                       <td className="py-1 text-foreground">Venular end</td>
-                      <td className="text-center text-foreground">≈ 0 mmHg</td>
-                      <td className="py-1 text-muted-foreground">Filtration equilibrium; no net reabsorption (revised model)</td>
+                      <td className="text-center text-foreground">Context-dependent</td>
+                      <td className="py-1 text-muted-foreground">Usually slight steady-state filtration; not universal</td>
                     </tr>
                   </tbody>
                 </table>
               </div>
               <p className="text-[10px] text-muted-foreground mt-1.5 leading-relaxed">
-                <strong>Key revision:</strong> The classic model suggested reabsorption at the venular end. The revised model shows filtration occurs along the entire capillary length. Fluid return to the circulation depends on <strong>lymphatic drainage</strong>, not venular reabsorption.
+                {STARLING_STEADY}<InlineRef topicId="starling-forces" refLabel="Starling Extension 2020" />
               </p>
             </div>
   

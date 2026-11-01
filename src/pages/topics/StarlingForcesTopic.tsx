@@ -1,3 +1,4 @@
+import { STARLING_STEADY, STARLING_BARRIER, STARLING_ANP, STARLING_FLUID } from "@/lib/physics-fluid-teaching";
 import { TopicTemplate } from "@/components/topic/TopicTemplate";
 import { TopicFaqs } from "@/components/topic/TopicFaqs";
 import { InlineRef } from "@/components/references/InlineRef";
@@ -14,15 +15,15 @@ import { Exam } from "@/data/curriculum";
 const starlingForcesFaqs: Array<[string, string]> = [
   [
     "State the Starling equation in its modern form.",
-    "Jv = Kf × [(Pc − Pi) − σ(πp − πg)], where Jv = net filtration; Kf = filtration coefficient; Pc/Pi = capillary/interstitial hydrostatic pressure; πp/πg = plasma/subglycocalyx oncotic pressure; σ = reflection coefficient (1 = impermeable to protein, 0 = freely permeable). The endothelial glycocalyx is the true semi-permeable barrier — not the endothelial cell membrane (revised Starling principle, Levick & Michel 2010)."
+    "Jv = Kf × [(Pc − Pi) − σ(πp − πg)], where Jv = net filtration; Kf = filtration coefficient; Pc/Pi = capillary/interstitial hydrostatic pressure; πp/πg = plasma/subglycocalyx oncotic pressure; σ = reflection coefficient (1 = impermeable to protein, 0 = freely permeable). The glycocalyx is an important macromolecular sieve acting with endothelial and intercellular pathways, not excluding junctions. Subglycocalyx oncotic pressure depends on flow and is not universally zero."
   ],
   [
     "What is the endothelial glycocalyx and why is it clinically important?",
-    "Gel-like layer of proteoglycans and glycoproteins on the luminal endothelial surface, ~0.5–1 µm thick. Excludes plasma proteins from contact with the endothelial barrier, generates the effective oncotic gradient, regulates leucocyte adhesion and coagulation. Damaged by sepsis, hyperglycaemia, ischaemia–reperfusion, atrial natriuretic peptide (released by fluid loading). Glycocalyx loss → capillary leak — explains why fluid overload worsens oedema."
+    "Gel-like layer of proteoglycans and glycoproteins on the luminal endothelial surface, ~0.5–1 µm thick. Excludes plasma proteins from contact with the endothelial barrier, generates the effective oncotic gradient, regulates leucocyte adhesion and coagulation. Injury can impair barrier function. ANP-associated shedding has experimental support in guinea-pig hearts and small human volume-loading associations; this does not prove direct cleavage or clinical oedema after every bolus."
   ],
   [
     "Why does hypoalbuminaemia cause oedema less than predicted by classical Starling?",
-    "Compensatory mechanisms: increased lymphatic drainage, dilution of interstitial protein (reducing πi), and the glycocalyx-protected subglycocalyx space maintains a large oncotic gradient even at low plasma albumin. Oedema only becomes clinically apparent when these are overwhelmed (albumin typically <20 g/L plus increased capillary pressure or permeability)."
+    "Compensatory mechanisms: increased lymphatic drainage, dilution of interstitial protein (reducing πi), while flow-dependent subglycocalyx protein concentration modifies the effective oncotic gradient. Oedema depends on filtration, lymphatic capacity and tissue context; there is no universal albumin threshold."
   ]
 ];
 
@@ -36,10 +37,10 @@ const objectives = [
 
 const workedExamples: WorkedExample[] = [
   {
-    title: "Calculating net filtration in a normal capillary",
+    title: "Fictional illustrative filtration calculation",
     scenario: (
       <>
-        At the arteriolar end of a systemic capillary: Pc = 32 mmHg, Pi = −2 mmHg, πc = 25 mmHg, πsg ≈ 0
+        In this fictional illustrative filtering microvessel, assume: Pc = 32 mmHg, Pi = −2 mmHg, πc = 25 mmHg, πsg ≈ 0
         mmHg, σ ≈ 0.9. Calculate the net filtration pressure under the revised Starling model.
       </>
     ),
@@ -51,15 +52,12 @@ const workedExamples: WorkedExample[] = [
           <li>Effective oncotic gradient = 0.9 × (25 − 0) = <strong>22.5 mmHg</strong> (in)</li>
           <li>NFP = 34 − 22.5 = <strong>+11.5 mmHg</strong> outward (filtration)</li>
         </ul>
-        Crucially, in the revised model πsg ≈ 0 throughout the capillary length, so net filtration is
-        positive even at the venular end — there is no reabsorption. Returned fluid leaves via lymphatics.
+        The assumed zero πsg is an arithmetic simplification for this example, not a universal healthy value. {STARLING_BARRIER} {STARLING_STEADY}
       </>
     ),
     answer: (
       <>
-        Net outward filtration ≈ 11.5 mmHg. All filtered fluid (~8 L/day net of lymph return) must drain via
-        lymphatics — explaining why lymphatic obstruction (post-axillary clearance, filariasis) causes oedema
-        even with normal Starling forces.
+        Net outward filtration pressure is 11.5 mmHg under the stated fictional assumptions; this is a pressure calculation, not a patient prediction. {STARLING_STEADY}
       </>
     ),
     cites: ["Woodcock & Woodcock 2012"],
@@ -81,8 +79,7 @@ const workedExamples: WorkedExample[] = [
             crystalloid filters into the interstitium more rapidly.
           </li>
           <li>
-            Bolus raises CVP → atrial stretch releases ANP → directly cleaves glycocalyx → further increases
-            permeability — a self-perpetuating cycle.
+            {STARLING_ANP}
           </li>
           <li>
             In the fasted, normovolaemic-but-depleted elective patient: glycocalyx intact, Pc lower, σ
@@ -93,11 +90,7 @@ const workedExamples: WorkedExample[] = [
     ),
     answer: (
       <>
-        In sepsis only a small fraction of the bolus (often cited as ~5%) may remain intravascular at 1 h; the rest
-        becomes interstitial oedema. Use small (≤4 mL/kg) titrated boluses with dynamic monitoring, and start
-        vasopressors early rather than chasing MAP with repeated crystalloid — consistent with the Surviving Sepsis
-        Campaign 2021 recommendation to give an initial 30 mL/kg crystalloid over 3 h and then guide further fluids
-        with dynamic measures.
+        In this fictional case, the observed response does not quantify retained volume or establish a universal retention percentage. {STARLING_FLUID} Treat sepsis using patient-specific clinical guidance rather than a fluid-clearance rule derived from this model.
       </>
     ),
     cites: ["Levick & Michel 2010", "SSC 2021", "Woodcock & Woodcock 2012"],
@@ -128,12 +121,12 @@ const StarlingForcesTopic = () => {
         keyPoints: ["Levick & Michel 2010", "Power & Kam Ch.6", "Woodcock & Woodcock 2012", "BJA Educ Fluid Balance 2017"],
       }}
       keyPoints={[
-        { text: "Revised Starling model: glycocalyx is the barrier, not endothelial junctions — no venular reabsorption", cites: ["Power & Kam Ch.6"] },
-        { text: "Fluid return depends entirely on lymphatic drainage, not reabsorption at the venular end", cites: ["Woodcock & Woodcock 2012"] },
-        { text: "Sub-glycocalyx oncotic pressure (πsg) ≈ 0 in health — this is why colloids don't stay intravascular as long as predicted", cites: ["Levick & Michel 2010"] },
+        { text: "Glycocalyx sieving acts with endothelial/intercellular pathways; most continuous systemic beds show slight steady-state filtration, with transient and specialised-bed absorption exceptions", cites: ["Power & Kam Ch.6"] },
+        { text: "Lymphatics are the main fluid-return route in most tissues; transient absorption and sustained absorption in specialised beds remain", cites: ["Woodcock & Woodcock 2012"] },
+        { text: "Subglycocalyx oncotic pressure is relatively low during filtration and changes with flow; it is not universally zero", cites: ["Levick & Michel 2010"] },
         { text: "Glycocalyx damage (sepsis, surgery, hypervolaemia) increases permeability and worsens oedema", cites: ["Power & Kam Ch.6"] },
         { text: "Context-sensitive volume kinetics: crystalloid is retained better in hypovolaemia (↓ Pc) than normovolaemia", cites: ["Woodcock & Woodcock 2012"] },
-        { text: "ANP release from fluid overload directly damages glycocalyx — iatrogenic oedema is self-perpetuating", cites: ["Levick & Michel 2010"] },
+        { text: "ANP-associated shedding is supported by isolated-heart experiments and small human volume-loading associations, not proof every bolus causes clinical oedema", cites: ["Levick & Michel 2010"] },
       ]}
       coreConcepts={
         <>
@@ -152,7 +145,7 @@ const StarlingForcesTopic = () => {
             <CollapsibleSubsection title="The Starling Equation">
             <div className="p-4 rounded-lg border border-border bg-secondary/20">
               <p className="font-mono text-sm text-foreground text-center mb-3">
-                Jv = Kf × [(Pc − Pi) − σ(πc − πi)]
+                Jv = Kf × [(Pc − Pi) − σ(πc − πsg)]
               </p>
               <div className="grid sm:grid-cols-2 gap-2 text-xs text-muted-foreground">
                 <div><strong>Jv</strong> = net fluid movement (positive = filtration)</div>
@@ -161,7 +154,7 @@ const StarlingForcesTopic = () => {
                 <div><strong>Pi</strong> = interstitial hydrostatic pressure</div>
                 <div><strong>σ</strong> = reflection coefficient (0–1; 1 = impermeable to protein)</div>
                 <div><strong>πc</strong> = capillary oncotic pressure</div>
-                <div><strong>πi</strong> = interstitial oncotic pressure</div>
+                <div><strong>πsg</strong> = subglycocalyx oncotic pressure (flow-dependent)</div>
               </div>
             </div>
             <div className="mt-4 bg-card rounded-xl border border-border p-4 md:p-6">
@@ -171,7 +164,7 @@ const StarlingForcesTopic = () => {
           </ExamSection>
 
           <ExamSection id="classic-vs-revised" exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]} curriculumCodes={["CR_BK_05"]}>
-            <CollapsibleSubsection title="Classic vs Revised Model">
+            <CollapsibleSubsection title="Classic vs Revised Model"><p className="text-muted-foreground">{STARLING_STEADY} {STARLING_BARRIER}<InlineRef topicId="starling-forces" refLabel="Starling Extension 2020" /></p>
             <div className="overflow-x-auto">
               <table className="w-full text-sm border-collapse">
                 <thead>
@@ -185,22 +178,22 @@ const StarlingForcesTopic = () => {
                   <tr className="border-b border-border">
                     <td className="py-2 font-medium text-foreground">Barrier</td>
                     <td>Endothelial cell junctions</td>
-                    <td>Endothelial glycocalyx layer</td>
+                    <td>Glycocalyx sieving plus endothelial/intercellular pathways, including junctions</td>
                   </tr>
                   <tr className="border-b border-border">
                     <td className="py-2 font-medium text-foreground">Venular reabsorption</td>
                     <td>Yes — fluid reabsorbed at venular end</td>
-                    <td>No — filtration occurs along entire length</td>
+                    <td>Most continuous systemic beds: slight filtration at steady state; transient and specialised-bed absorption exceptions</td>
                   </tr>
                   <tr className="border-b border-border">
                     <td className="py-2 font-medium text-foreground">πi in equation</td>
                     <td>Interstitial oncotic pressure</td>
-                    <td>Sub-glycocalyx oncotic pressure (πsg ≈ 0)</td>
+                    <td>Flow-dependent subglycocalyx oncotic pressure (relatively low during filtration)</td>
                   </tr>
                   <tr>
                     <td className="py-2 font-medium text-foreground">Fluid return</td>
                     <td>Venular reabsorption + lymphatics</td>
-                    <td>Lymphatic drainage only</td>
+                    <td>Mainly lymphatics in most tissues, not an exclusive universal route</td>
                   </tr>
                 </tbody>
               </table>
@@ -213,9 +206,9 @@ const StarlingForcesTopic = () => {
             <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside leading-relaxed">
               <li>A gel-like layer on the luminal surface of endothelial cells: ~0.5–1 µm thick in capillaries, up to ~4 µm in larger arteries</li>
               <li>Composed of proteoglycans, glycosaminoglycans (heparan sulphate, hyaluronic acid), and glycoproteins</li>
-              <li>Acts as a <strong>molecular sieve</strong> — excludes plasma proteins, creating a protein-free sub-glycocalyx space</li>
+              <li>Acts as a <strong>molecular sieve</strong> — restricts macromolecular passage with endothelial/intercellular pathways; subglycocalyx protein is relatively low during filtration, not universally absent</li>
               <li>Functions: vascular permeability barrier, mechanotransduction (shear stress), anti-inflammatory, anticoagulant</li>
-              <li><strong>Damaged by</strong>: sepsis, ischaemia-reperfusion, hyperglycaemia, surgery, excessive IV fluid (particularly &gt;2L crystalloid bolus)</li>
+              <li><strong>Damaged by</strong>: sepsis, ischaemia-reperfusion, hyperglycaemia, surgery, volume-loading associations (no universal bolus injury threshold)</li>
               <li>Damage releases syndecan-1 and heparan sulphate into plasma (measurable biomarkers)</li>
               <li>Glycocalyx shedding → ↑ permeability → ↑ interstitial protein → oedema (explains why crystalloid boluses in sepsis are poorly retained)</li>
             </ul>
@@ -226,13 +219,13 @@ const StarlingForcesTopic = () => {
           </ExamSection>
 
           <ExamSection id="fluid-therapy" exams={[Exam.FINAL, Exam.FFICM]} curriculumCodes={["OA_BK_06"]}>
-            <CollapsibleSubsection title="Clinical Implications for Fluid Therapy">
+            <CollapsibleSubsection title="Clinical Implications for Fluid Therapy"><p className="text-muted-foreground">{STARLING_ANP} {STARLING_FLUID}<InlineRef topicId="starling-forces" refLabel="Jacob ANP Hearts 2013" /><InlineRef topicId="starling-forces" refLabel="Chappell Volume Loading 2014" /></p>
             <div className="space-y-3">
               {[
-                { title: "Colloid vs Crystalloid Debate", desc: "The revised model explains why colloids don't stay intravascular as long as predicted by the classic model. With an intact glycocalyx, both crystalloid and colloid filtrate at similar rates. In glycocalyx damage (sepsis), colloid advantage is further diminished." },
+                { title: "Colloid vs Crystalloid Debate", desc: "The model explains context-sensitive exchange, not universally equal colloid/crystalloid filtration or clinical outcome superiority. Fluid identity, pressure, barrier state and patient context matter." },
                 { title: "Context-Sensitive Volume Kinetics", desc: "Hypovolaemia reduces Pc → reduces filtration → crystalloid stays intravascular longer. Normovolaemia has higher Pc → faster filtration → bolus poorly retained. This is why fluid resuscitation is more effective in the depleted patient." },
-                { title: "Hypervolaemia and ANP", desc: "Volume expansion triggers ANP release → directly damages glycocalyx → ↑ permeability → fluid shifts to interstitium → oedema. Iatrogenic fluid overload is self-perpetuating." },
-                { title: "Goal-Directed Fluid Therapy", desc: "Titrated small boluses (3-4 mL/kg) with dynamic monitoring avoid glycocalyx damage from excessive administration. The 'fluid challenge' approach respects Starling physiology." },
+                { title: "Hypervolaemia and ANP", desc: "ANP-associated shedding/permeability has experimental support in guinea-pig hearts and small human volume-loading associations; no direct enzymatic cleavage or every-bolus clinical oedema claim follows." },
+                { title: "Goal-Directed Fluid Therapy", desc: "Small titrated boluses with reassessment do not guarantee avoidance of glycocalyx injury. Choice and volume require patient-specific clinical evidence; the model alone does not prescribe fluids." },
               ].map((item) => (
                 <div key={item.title} className="p-4 rounded-lg border border-border">
                   <p className="font-semibold text-foreground text-sm">{item.title}</p>
@@ -289,9 +282,7 @@ const StarlingForcesTopic = () => {
               The reserve is finite and is overwhelmed in disease: sepsis and ischaemia–reperfusion shed the glycocalyx
               (raising Kf and lowering σ, so protein leaks and the washdown factor is lost), heart failure raises Pc while
               raised right atrial pressure obstructs thoracic-duct lymph drainage, and lymphatic disruption (axillary
-              clearance, filariasis) removes the largest single factor. Aggressive fluid loading adds ANP-mediated glycocalyx
-              damage to a rising Pc, which is why oedema in critical illness appears at capillary pressures far below the
-              17 mmHg predicted in health <InlineRef topicId="starling-forces" refLabel="Levick & Michel 2010" />.
+              clearance, filariasis) removes the largest single factor. Volume loading raises Pc; experimental and small human ANP/shedding associations may help explain altered barrier function, without proving that every bolus causes oedema or a universal pressure threshold <InlineRef topicId="starling-forces" refLabel="Levick & Michel 2010" />.
             </p>
             </CollapsibleSubsection>
           </ExamSection>
@@ -365,10 +356,10 @@ const StarlingForcesTopic = () => {
           <ExamPitfallsCallout
             pitfalls={[
               <><strong>Glycocalyx is fragile</strong>: damaged by hypervolaemia, sepsis, ischaemia–reperfusion and surgical inflammation — drives capillary leak.</>,
-              <><strong>Albumin's oncotic pull</strong> is overstated by the classic equation — the revised model emphasises the subglycocalyx space, hence "less is more" with crystalloid.</>,
+              <><strong>Albumin's oncotic pull</strong> is overstated by the classic equation — the revised model emphasises the subglycocalyx space, but does not establish a clinical fluid-volume recommendation.</>,
               <><strong>Pulmonary oedema</strong>: low protein interstitium + high pulmonary lymphatic capacity → larger Pc safety margin than systemic capillaries, but once breached deteriorates rapidly.</>,
               <><strong>Hypoalbuminaemia</strong> alone rarely causes oedema unless other Starling forces are deranged.</>,
-              <><strong>Goal-directed fluid therapy</strong> minimises both hypovolaemia and the glycocalyx injury of over-resuscitation.</>,
+              <><strong>Goal-directed fluid therapy</strong> requires reassessment; small boluses do not guarantee avoidance of glycocalyx injury.</>,
             ]}
           />
           <TopicFaqs faqs={starlingForcesFaqs} />

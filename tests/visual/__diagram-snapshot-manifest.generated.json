@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-11-01T18:26:03.452Z",
-  "count": 474,
+  "generatedAt": "2026-11-01T19:45:51.139Z",
+  "count": 475,
   "diagrams": [
     {
       "name": "AAShuntAnimation",
@@ -933,6 +933,10 @@
     {
       "name": "KetaminePharmacologyDiagram",
       "route": "/dev/diagram-snapshot/KetaminePharmacologyDiagram"
+    },
+    {
+      "name": "KetamineStructures",
+      "route": "/dev/diagram-snapshot/KetamineStructures"
     },
     {
       "name": "KetamineToleranceReversalDiagram",

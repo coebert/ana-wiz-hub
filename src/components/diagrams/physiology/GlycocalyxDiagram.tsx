@@ -1,3 +1,5 @@
+import { STARLING_STEADY, STARLING_BARRIER, STARLING_ANP, STARLING_FLUID } from "@/lib/physics-fluid-teaching";
+import { InlineRef } from "@/components/references/InlineRef";
 import { useState } from "react";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import { DiagramFigure } from "../_shared/DiagramFigure";
@@ -24,7 +26,7 @@ export const GlycocalyxDiagram = () => {
           </TabsList>
   
           {/* ─────────────── INTACT ─────────────── */}
-          <TabsContent value="structure">
+          <TabsContent value="structure"><p className="text-xs text-muted-foreground mb-3">{STARLING_BARRIER} {STARLING_STEADY}<InlineRef topicId="starling-forces" refLabel="Starling Extension 2020" /></p>
             <div className="w-full overflow-x-auto">
               <svg viewBox="0 0 720 460" className="w-full h-auto" role="img" aria-label="Intact endothelial glycocalyx structure">
                 <defs>
@@ -117,13 +119,13 @@ export const GlycocalyxDiagram = () => {
   
                   {/* Sub-glycocalyx label */}
                   <rect x="320" y="218" width="115" height="14" fill="hsl(var(--background))" stroke="hsl(var(--border))" strokeWidth="0.5" rx="2" />
-                  <text x="377" y="228" textAnchor="middle" fontSize="9" className="fill-muted-foreground">sub-glycocalyx πsg ≈ 0</text>
+                  <text x="377" y="228" textAnchor="middle" fontSize="9" className="fill-muted-foreground">πsg: low / flow-dependent</text>
                 </g>
   
                 {/* Legend */}
                 <g transform="translate(20, 395)" fontFamily="ui-sans-serif" fontSize="10">
                   <circle cx="6" cy="0" r="3" fill="hsl(var(--primary))" />
-                  <text x="14" y="3" className="fill-foreground">albumin / plasma proteins (excluded)</text>
+                  <text x="14" y="3" className="fill-foreground">plasma proteins (restricted access)</text>
                   <line x1="0" y1="20" x2="12" y2="20" stroke="hsl(var(--accent))" strokeWidth="2" />
                   <text x="18" y="23" className="fill-foreground">proteoglycan + GAG mesh</text>
                   <ellipse cx="6" cy="40" rx="6" ry="2.5" fill="hsl(var(--destructive) / 0.55)" />
@@ -275,7 +277,7 @@ export const GlycocalyxDiagram = () => {
                   <li>Inflammation: TNF-α, IL-6, complement, oxidised LDL</li>
                   <li>Hyperglycaemia, ischaemia–reperfusion injury</li>
                   <li>Surgical trauma, sepsis, major haemorrhage</li>
-                  <li>Iatrogenic crystalloid bolus &gt; 30 mL/kg</li>
+                  <li>Volume loading: experimental/human associations, not a universal bolus threshold</li>
                 </ul>
               </div>
               <div className="p-3 rounded-lg border-2 border-destructive/40 bg-destructive/5">
@@ -291,7 +293,7 @@ export const GlycocalyxDiagram = () => {
             </div>
   
             <div className="mt-3 p-3 rounded-lg border-l-4 border-perioperative bg-perioperative/5 text-sm text-foreground">
-              <span className="font-semibold">Glycocalyx-protective strategies:</span> avoid hypervolaemia (zero-balance fluids, GDFT); titrated small boluses (3–4 mL/kg); permissive hypotension in haemorrhage; albumin in sepsis (SAFE/ALBIOS); sevoflurane &gt; propofol for ischaemia-reperfusion (preconditioning); hydrocortisone in septic shock; tight glycaemic control (avoid hyperglycaemia, but not &lt; 6 mmol/L).
+              <span className="font-semibold">Clinical interpretation:</span> {STARLING_ANP} {STARLING_FLUID}<InlineRef topicId="starling-forces" refLabel="Jacob ANP Hearts 2013" /><InlineRef topicId="starling-forces" refLabel="Chappell Volume Loading 2014" />
             </div>
           </TabsContent>
         </Tabs>

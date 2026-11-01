@@ -1,3 +1,4 @@
+import { ArterialDynamicResponseTeaching } from "@/components/topic/ArterialDynamicResponseTeaching";
 import { TopicTemplate } from "@/components/topic/TopicTemplate";
 import { TopicFaqs } from "@/components/topic/TopicFaqs";
 import { WorkedExample } from "@/components/topic/WorkedExamples";
@@ -33,9 +34,9 @@ const objectives = [
 
 const keyPoints = [
   { text: "Arterial transducers use a Wheatstone bridge strain gauge; zero to atmosphere and level to the phlebostatic axis (mid-axillary, 4th ICS)", cites: ["Cross & Plunkett Ch.16"] },
-  { text: "Natural frequency must be >10× the fundamental frequency of the arterial waveform (ideally >200 Hz) to avoid resonance artefact", cites: ["BJA Educ 2005"] },
-  { text: "Optimal damping coefficient = 0.64 — flat frequency response with no overshoot; assessed by the fast flush (square wave) test", cites: ["Middleton Ch.18"] },
-  { text: "Underdamped: >2 oscillations after flush → overestimates SBP; Overdamped: no oscillations → underestimates SBP; MAP preserved in both", cites: ["Cross & Plunkett Ch.16"] },
+  { text: "Frequency response must cover clinically relevant harmonics; assess natural frequency and damping together. HR 120/min gives a 2 Hz fundamental, so 10× is 20 Hz", cites: ["BJA Educ 2005"] },
+  { text: "A damping coefficient around 0.64 is an illustrative design value, not a guarantee of perfect response; assess the complete system and fast-flush trace", cites: ["Middleton Ch.18"] },
+  { text: "Underdamping may exaggerate SBP and overdamping may blunt it; MAP can be less affected but is not guaranteed accurate. Oscillation count alone is not a pass/fail test", cites: ["Cross & Plunkett Ch.16"] },
   { text: "CVP waveform: a (atrial contraction), c (tricuspid closure), x (atrial relaxation), v (passive filling), y (rapid emptying)", cites: ["BJA Educ 2005"] },
   { text: "PAC thermodilution is the clinical gold standard for CO measurement; Stewart-Hamilton equation: CO inversely proportional to area under curve", cites: ["Middleton Ch.18"] },
   { text: "Non-invasive CO methods: oesophageal Doppler (VTI × CSA × HR), LiDCO, FloTrac, thoracic bioimpedance, echocardiography", cites: ["Cross & Plunkett Ch.16"] },
@@ -131,7 +132,7 @@ const ClinicalMeasurementTopic = () => {
             <p>
               The arterial waveform shows <strong>systolic amplification</strong> in distal arteries — systolic pressure increases and
               diastolic pressure decreases as the waveform moves peripherally, due to wave reflection and decreased arterial compliance.
-              Crucially, <strong>MAP is preserved</strong> and is the most reliable parameter for clinical decisions. The <strong>anacrotic
+              Mean pressure is often less affected by peripheral amplification, but this does not guarantee accuracy or validate a distorted trace. The <strong>anacrotic
               notch</strong> is a small inflection on the <em>ascending</em> limb that marks aortic valve opening (before peak systolic
               pressure); the <strong>dicrotic notch</strong> on the descending limb corresponds to aortic valve closure
               <InlineRef topicId="clinical-measurement" refLabel="LITFL Arterial Waveform" />
@@ -144,26 +145,8 @@ const ClinicalMeasurementTopic = () => {
         <div>
           <h2 className="text-xl font-bold text-foreground mb-2">Natural Frequency & Damping</h2>
           <div className="text-muted-foreground leading-relaxed space-y-3">
-            <p>
-              Every transducer system has a <strong>natural (resonant) frequency</strong> — the frequency at which it oscillates
-              maximally in response to an input signal. The arterial waveform is a complex wave comprising a fundamental frequency
-              (equal to heart rate) plus 6–8 harmonics. To reproduce the waveform faithfully, the system's natural frequency must
-              be at least <strong>10× the fundamental frequency</strong> — typically &gt;200 Hz.
-            </p>
-            <p>
-              <strong>Damping</strong> describes the tendency of the system to resist oscillation. The <strong>damping coefficient (D)</strong> of
-              0.64 is optimal, providing a flat frequency response up to the natural frequency. An <strong>underdamped</strong> system
-              (D &lt; 0.64) exhibits excessive oscillation (ringing), overestimating systolic and underestimating diastolic pressure.
-              An <strong>overdamped</strong> system (D &gt; 0.64) has a sluggish response, underestimating systolic and overestimating
-              diastolic pressure. In both cases, MAP remains relatively accurate.
-            </p>
-            <p>
-              The <strong>fast flush (square wave) test</strong> assesses system dynamics at the bedside. A brief flush followed by
-              rapid release produces oscillations: 1–2 oscillations before returning to the waveform indicates optimal damping;
-              &gt;2 oscillations suggests underdamping; absence of oscillations suggests overdamping. Common causes of underdamping
-              include long tubing, compliant tubing, and additional stopcocks. Causes of overdamping include air bubbles, blood clots,
-              kinked tubing, and a partially closed stopcock.
-            </p>
+            <p>Adequate frequency response includes clinically relevant arterial harmonics. At HR 120/min, the fundamental is 120/60 = 2 Hz; an illustrative tenth harmonic is 20 Hz, not a universal equipment threshold. Natural frequency and damping must be assessed together.<InlineRef topicId="clinical-measurement" refLabel="Saugel 2020 Arterial Measurement" /></p>
+            <ArterialDynamicResponseTeaching />
           </div>
         </div>
 
@@ -271,8 +254,8 @@ const ClinicalMeasurementTopic = () => {
           <ExamPitfallsCallout
             accent="physics"
             pitfalls={[
-              "Optimal damping coefficient ≈ 0.64; natural frequency should be ≥10× the fundamental of the waveform (≈40 Hz at HR 150).",
-              "Square-wave (fast-flush) test: 1–2 oscillations before return = optimal; many oscillations = under-damped; sluggish = over-damped.",
+              "Assess natural frequency and damping together. HR 120/min gives a 2 Hz fundamental and an illustrative tenth harmonic of 20 Hz; 0.64 alone does not guarantee accuracy.",
+              "Fast-flush ringing or sluggish return screens for distortion; inspect spacing/amplitude and the complete chain, not a universal 1–2 oscillation pass rule.",
               "CVP waveform a/c/v waves and x/y descents reflect right-heart events; cannon a waves suggest AV dissociation.",
               "Thermodilution (Stewart–Hamilton): area under the temperature–time curve is inversely proportional to cardiac output.",
               "Always level the transducer to the phlebostatic axis; raising it by 10 cm under-reads pressure by ~7 mmHg.",

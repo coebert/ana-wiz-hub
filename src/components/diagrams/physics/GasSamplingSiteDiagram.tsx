@@ -24,7 +24,7 @@ const modes: Record<Mode, ModeInfo> = {
     cons: [
       "Adds 5–10 mL dead space (significant in neonates)",
       "Heavy cuvette + cable at the airway → ETT drag",
-      "Usually CO₂ only (single-wavelength IR)",
+      "Commonly CO₂; mainstream multigas devices also exist",
       "Window can fog — must be heated to ~39 °C",
     ],
   },
@@ -33,7 +33,7 @@ const modes: Record<Mode, ModeInfo> = {
     summary:
       "A T-piece adaptor at the airway feeds a 2–3 m sample line. A pump aspirates 50–250 mL/min through a water trap to a remote multi-gas analyser inside the monitor.",
     pros: [
-      "Multi-gas: CO₂, N₂O, O₂, all volatile agents",
+      "CO₂ or multigas capability depends on the specific device",
       "Light T-piece adaptor — negligible dead space",
       "Works in non-intubated patients (nasal cannula sampling)",
     ],

@@ -241,6 +241,7 @@ export const diagramSnapshotRegistry: Record<string, LazyExoticComponent<Compone
   "JVPWaveformDiagram": lazy(() => import("./physiology/JVPWaveformDiagram")),
   "KDIGOAKIClassifier": lazy(() => import("./intensive-care/KDIGOAKIClassifier").then((m) => ({ default: m.KDIGOAKIClassifier as ComponentType<any> }))),
   "KetaminePharmacologyDiagram": lazy(() => import("./pharmacology/KetaminePharmacologyDiagram")),
+  "KetamineStructures": lazy(() => import("./chemistry/KetamineStructures").then((m) => ({ default: m.KetamineStructures as ComponentType<any> }))),
   "KetamineToleranceReversalDiagram": lazy(() => import("./pharmacology/KetamineToleranceReversalDiagram").then((m) => ({ default: m.KetamineToleranceReversalDiagram as ComponentType<any> }))),
   "LactateCRTTool": lazy(() => import("./intensive-care/LactateCRTTool")),
   "LaplacesLawDiagram": lazy(() => import("./physiology/LaplacesLawDiagram")),
