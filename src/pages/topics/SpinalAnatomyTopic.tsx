@@ -3,7 +3,7 @@ import { ExamSection } from "@/components/exam/ExamSection";
 import { TopicFaqs } from "@/components/topic/TopicFaqs";
 
 const spinalAnatomyFaqs: Array<[string, string]> = [
-  ["At what vertebral level does the adult spinal cord end?", "The conus medullaris ends at L1/L2 in adults (most commonly the lower border of L1). In neonates it extends to L3 and ascends with growth. Lumbar puncture and spinal anaesthesia are therefore performed at L3/4 or L4/5 — Tuffier's line (intercristal line) traditionally identifies L4 — to avoid cord injury."],
+  ["At what vertebral level does the adult spinal cord end?", "The conus medullaris ends at L1/L2 in adults (most commonly the lower border of L1). In neonates it extends to L3 and ascends with growth. Lumbar puncture and spinal anaesthesia are therefore performed at L3/4 or L4/5 — Tuffier's line (intercristal line) traditionally identifies L4 — as an initial estimate, not a guarantee: the traditional intercristal level is L4 or L4/5, and palpated levels can be more cephalad. Confirm anatomy with appropriate ultrasound when uncertain."],
   ["What are the contents of the epidural space?", "The epidural space lies between the dura mater and bony spinal canal. It contains fat (which buffers dose), the internal vertebral (Batson's) venous plexus, lymphatics, segmental nerve roots, and small arteries including the artery of Adamkiewicz (T9–T12 in 75%). Anterior–posterior depth is typically 4–6 mm at lumbar levels."],
   ["Which ligaments does a Tuohy needle pass through during a midline lumbar epidural?", "From superficial to deep: skin → subcutaneous fat → supraspinous ligament → interspinous ligament → ligamentum flavum (where loss of resistance is felt) → epidural space. The paramedian approach bypasses the supraspinous and interspinous ligaments, passing directly through the ligamentum flavum — useful when calcified midline ligaments resist needle advance."],
 ];
@@ -30,8 +30,8 @@ const SpinalAnatomyTopicWorkedExamples: WorkedExample[] = [
         <p className="font-semibold text-foreground">Step-by-step reasoning</p>
         <ol className="list-decimal list-inside space-y-1">
           <li>Position upright or lateral with maximal lumbar flexion to widen interspinous gaps</li>
-          <li>Identify Tuffier's line (intercristal): in adults this crosses L4 spinous process or the L3/4 interspace</li>
-          <li>In obese pregnancy the line may overlie L3 — go one space caudal (L3/4 or L4/5) to stay well below the L1/2 conus</li>
+          <li>Identify Tuffier's line (intercristal): in adults this crosses L4 or the L4/5 interspace as a traditional estimate; bony and palpated levels vary</li>
+          <li>Palpated and true bony levels may differ, particularly with difficult landmarks; going one space caudal does not guarantee a safe level. Use appropriate ultrasound/anatomical confirmation when uncertain</li>
           <li>If landmarks are unreliable use ultrasound paramedian sagittal oblique to identify laminae and count from the sacrum upward</li>
           <li>Confirm midline by symmetrical paraspinous resistance and CSF flow free of paraesthesia</li>
         </ol>
@@ -77,7 +77,7 @@ const SpinalAnatomyTopic = () => {
         { text: "Ligamentum flavum: dense elastic tissue providing 'loss of resistance' for epidural identification", cites: ["BJA Educ 2006"] },
         { text: "Artery of Adamkiewicz (T9-T12, usually left) — damage causes anterior spinal artery syndrome", cites: ["BJA Educ 2018"] },
         { text: "Batson's plexus is valveless — engorges in pregnancy, reducing epidural space volume", cites: ["Ellis & Feldman Ch.6"] },
-        { text: "Tuffier's line (intercristal) identifies L4 spinous process or L3/4 interspace", cites: ["BJA Educ 2006"] },
+        { text: "Tuffier's line traditionally estimates L4 or L4/5; palpation can identify a more cephalad level", cites: ["Intercristal landmark variation"] },
       ]}
       sectionExamMapping={{
         objectives: { exams: [Exam.PRIMARY, Exam.FINAL] },
@@ -117,7 +117,7 @@ const SpinalAnatomyTopic = () => {
               <tbody className="text-muted-foreground">
                 <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Cervical</td><td>Bifid (C2-C6), C7 prominent</td><td>Atlas (C1) no body/spinous process. Axis (C2) has odontoid peg. C1-2 subluxation risk in RA.</td></tr>
                 <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Thoracic</td><td>Long, downward-angled</td><td>Acute angle makes midline approach to epidural space difficult. Paramedian approach preferred at mid-thoracic level.</td></tr>
-                <tr><td className="py-2 font-medium text-foreground">Lumbar</td><td>Horizontal, broad</td><td>Best access for neuraxial techniques. Tuffier's line (intercristal line) at L4 or L3/4 interspace.</td></tr>
+                <tr><td className="py-2 font-medium text-foreground">Lumbar</td><td>Horizontal, broad</td><td>Best access for neuraxial techniques. Tuffier's line traditionally estimates L4 or L4/5; anatomical confirmation is needed when uncertain.</td></tr>
               </tbody>
             </table>
           </div>
@@ -128,7 +128,7 @@ const SpinalAnatomyTopic = () => {
             </div>
             <div className="p-4 rounded-lg border border-border">
               <p className="font-semibold text-foreground text-sm">Spinal Curvatures</p>
-              <p className="text-sm text-muted-foreground mt-1">Thoracic and sacral kyphoses are primary curves, concave anteriorly; cervical and lumbar lordoses are secondary curves, convex anteriorly. In a supine adult the lumbar region around L3 and upper thoracic region around T4–6 form relative high points, with dependent troughs between them and towards the sacrum. Hyperbaric intrathecal solution follows gravity along these curves, so position and the thoracic kyphosis strongly influence cephalad spread and final block height <InlineRef topicId="spinal-anatomy" refLabel="Ellis & Feldman Ch.6" />.</p>
+              <p className="text-sm text-muted-foreground mt-1">Thoracic and sacral kyphoses are primary curves, concave anteriorly; cervical and lumbar lordoses are secondary curves, convex anteriorly. In a supine adult lumbar lordosis forms a relative high point approximately L3–L4, while thoracic kyphosis forms a dependent trough. Hyperbaric solution can spread cephalad down this slope. Individual anatomy and positioning vary: one MRI series found thoracic lowest points at T7–T9 rather than conventional T5–6. Neither a fixed lowest thoracic level nor final block height is reliably predicted <InlineRef topicId="spinal-anatomy" refLabel="Hirabayashi MRI 1995" />.</p>
             </div>
           </div>
         </div>
@@ -183,7 +183,7 @@ const SpinalAnatomyTopic = () => {
             <div className="grid sm:grid-cols-3 gap-3">
               <div className="p-4 rounded-lg border border-border sm:col-span-3"><p className="font-semibold text-foreground text-sm">Dura mater</p><p className="text-sm text-muted-foreground mt-1">The tough outer meninx, formed of dense collagen and elastin fibres arranged in <strong>concentric laminae</strong> rather than the longitudinal orientation once taught — so needle-bevel orientation matters less than needle design and gauge. It is continuous with the inner (meningeal) layer of the cranial dura at the <strong>foramen magnum</strong>, where it fuses with the periosteum, and is anchored anteriorly to the posterior longitudinal ligament and laterally to the root sleeves as they exit each intervertebral foramen. Inferiorly the dural sac ends at <strong>S2 in adults</strong> (the level of the posterior superior iliac spines) but as low as <strong>S3–S4 in neonates and infants</strong> — the reason caudal needle insertion in the very young carries a real risk of dural puncture. Beyond the sac the dura continues as the <strong>filum terminale externum (coccygeal ligament)</strong> to blend with the periosteum of the coccyx. Blood supply comes from spinal branches of the segmental (vertebral, intercostal, lumbar) arteries, with venous drainage into the internal vertebral venous plexus of the epidural space. Innervation is from recurrent meningeal branches of the spinal nerves and sympathetic fibres, largely confined to the anterior and lateral dura — the posterior dura is relatively insensitive, which is why epidural needle insertion is tolerable under local anaesthesia. <strong>Clinical relevance:</strong> the dura is the pressure barrier between the epidural space and CSF, so puncture causes leak and PDPH; pencil-point (Sprotte, Whitacre) needles separate rather than cut fibres and markedly reduce PDPH compared with cutting (Quincke) tips of the same gauge; smaller gauge reduces risk further; the elastic recoil of the laminae helps close a small puncture, whereas a large-bore Tuohy breach produces a high-volume leak and a high incidence of headache; and the arachnoid, not the dura, is the main barrier to drug diffusion from the epidural space <InlineRef topicId="spinal-anatomy" refLabel="BJA Educ 2006" />.</p></div>
               <div className="p-4 rounded-lg border border-border"><p className="font-semibold text-foreground text-sm">Arachnoid mater</p><p className="text-sm text-muted-foreground mt-1">Thin avascular membrane closely apposed to dura, with only a potential subdural space between them. It is the principal pharmacological barrier to diffusion of epidural drugs; beneath it, the CSF-filled subarachnoid space extends to S2.</p></div>
-              <div className="p-4 rounded-lg border border-border"><p className="font-semibold text-foreground text-sm">Pia mater</p><p className="text-sm text-muted-foreground mt-1">Delicate vascular layer adherent to cord and roots. Lateral denticulate ligaments anchor cord to dura; the filum terminale continues from the conus, passing within the dural sac to S2 and then to the coccyx <InlineRef topicId="spinal-anatomy" refLabel="Ellis & Feldman Ch.6" />.</p></div>
+              <div className="p-4 rounded-lg border border-border"><p className="font-semibold text-foreground text-sm">Pia mater</p><p className="text-sm text-muted-foreground mt-1">Delicate vascular layer adherent to cord and roots. Lateral denticulate ligaments anchor cord to dura; the filum terminale continues from the conus, passing within the dural sac to S2 and then to the coccyx <InlineRef topicId="spinal-anatomy" refLabel="Hirabayashi MRI 1995" />.</p></div>
             </div>
           </div>
           <div className="mt-5">

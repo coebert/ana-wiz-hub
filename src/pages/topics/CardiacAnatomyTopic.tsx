@@ -2,7 +2,7 @@ import { TopicTemplate } from "@/components/topic/TopicTemplate";
 import { TopicFaqs } from "@/components/topic/TopicFaqs";
 
 const cardiacAnatomyFaqs: Array<[string, string]> = [
-  ["Why does the right coronary artery supply the SA and AV nodes in most people?", "In ~85% of patients (right-dominant circulation) the RCA gives the SA nodal artery and the AV nodal artery before becoming the posterior descending artery. This is why inferior MIs from RCA occlusion frequently cause bradycardia, AV block and right-ventricular involvement — and why right-sided ECG leads (V4R) should be recorded."],
+  ["How does coronary dominance differ from nodal artery supply?", "Coronary dominance is defined by posterior descending artery origin, not SA nodal artery origin. SA nodal supply varies: most often RCA, with LCx and other origins. AV nodal origin usually follows dominance. RCA occlusion can cause bradyarrhythmia depending on individual anatomy; dominance does not establish both nodal origins."],
   ["Where exactly does the apex beat lie and why does it shift?", "Normally in the 5th left intercostal space, just medial to the mid-clavicular line, marking the LV apex. It shifts laterally and inferiorly with LV dilation (chronic AR, dilated cardiomyopathy), and laterally without inferior shift with mediastinal displacement (pneumothorax, large pleural effusion, lobectomy)."],
   ["Which structures lie immediately posterior to the heart and what is the clinical relevance?", "The oesophagus, descending aorta and left main bronchus lie directly behind the left atrium. A TOE probe therefore gives unparalleled LA and mitral views; a massively enlarged LA can cause dysphagia (and Ortner's sign — hoarseness from recurrent laryngeal nerve compression); and aortic aneurysms can erode into the oesophagus."],
 ];
@@ -170,7 +170,7 @@ const CardiacAnatomyTopic = () => {
                 { artery: "Left Main Stem (LMS)", detail: "2 cm from left coronary sinus → divides into LAD and circumflex. Short — stenosis here is 'widow-maker'." },
                 { artery: "LAD", detail: "Runs in anterior interventricular groove. Supplies anterior LV, anterior septum (septal perforators), apex. Gives diagonal branches." },
                 { artery: "Circumflex (LCx)", detail: "Runs in left AV groove. Supplies lateral and posterior LV. Gives obtuse marginal branches. Dominant in 15%." },
-                { artery: "Right Coronary (RCA)", detail: "Runs in right AV groove. Supplies RA, RV, SA node (60%), AV node (80%), inferior LV. Dominant in 85% (gives PDA)." },
+                { artery: "Right Coronary (RCA)", detail: "Runs in right AV groove. Supplies RA, RV, SA node variably (most often RCA), AV node usually with right dominance, inferior LV. Dominant in 85% (gives PDA)." },
                 { artery: "Dominance", detail: "Defined by which artery gives the posterior descending artery (PDA). Right dominant 85%, left 15%, co-dominant rare." },
               ].map((a) => (
                 <div key={a.artery} className="flex gap-3 p-3 rounded border border-border">
@@ -224,11 +224,11 @@ const CardiacAnatomyTopic = () => {
             <div className="grid sm:grid-cols-2 gap-3">
               <div className="p-4 rounded-lg border border-border">
                 <p className="font-semibold text-foreground text-sm">SA Node</p>
-                <p className="text-sm text-muted-foreground mt-1">Junction of SVC and RA. Supplied by SA nodal artery (from RCA in 60%, LCx in 40%). Rich autonomic innervation.</p>
+                <p className="text-sm text-muted-foreground mt-1">Junction of SVC and RA. SA nodal artery origin varies, most often RCA with LCx and other origins; this is distinct from coronary dominance. Rich autonomic innervation.</p>
               </div>
               <div className="p-4 rounded-lg border border-border">
                 <p className="font-semibold text-foreground text-sm">AV Node</p>
-                <p className="text-sm text-muted-foreground mt-1">Triangle of Koch. Supplied by AV nodal artery (from RCA in 80%). Only site of normal atrio-ventricular conduction. Ablation target in AF.</p>
+                <p className="text-sm text-muted-foreground mt-1">Triangle of Koch. AV nodal artery origin usually follows coronary dominance. Only site of normal atrio-ventricular conduction. Ablation target in AF.</p>
               </div>
             </div>
             <div className="bg-card rounded-xl border border-border p-4 md:p-6 mt-4">
@@ -291,7 +291,7 @@ const CardiacAnatomyTopic = () => {
               <ol className="list-decimal list-inside space-y-1">
                 <li>Inferior leads are II, III, aVF — ST elevation = <strong>inferior MI</strong>.</li>
                 <li>Inferior wall supply: RCA (85% dominance) → PDA → inferior LV.</li>
-                <li>RCA also supplies SA node (60%) and AV node (80%) → expect bradycardia and AV block.</li>
+                <li>SA nodal supply is variable and AV nodal origin usually follows dominance; RCA occlusion can cause bradyarrhythmia depending on individual anatomy.</li>
                 <li>Add right-sided leads (V4R) — ST elevation in V4R suggests RV infarct → preload-dependent; avoid nitrates, give fluids cautiously.</li>
                 <li>Plan: PPCI within 120 min, dual antiplatelets, anticoagulation; anaesthetic input if airway/haemodynamic deterioration.</li>
               </ol>
@@ -310,7 +310,7 @@ const CardiacAnatomyTopic = () => {
   },
       ]}
       keyPoints={[
-        { text: "SA node at SVC-RA junction; AV node in triangle of Koch — both supplied primarily by RCA", cites: ["Power & Kam Ch.3"] },
+        { text: "SA nodal origin is variable, most often RCA; AV nodal origin usually follows dominance, defined by PDA origin", cites: ["Power & Kam Ch.3"] },
         { text: "Right coronary dominant in 85% — RCA gives PDA and supplies AV node", cites: ["Ellis & Feldman Ch.3"] },
         { text: "LAD supplies anterior LV and anterior septum — most commonly occluded in MI", cites: ["BJA Educ 2005"] },
         { text: "Transverse sinus lies between aorta/PA and SVC — key for aortic cross-clamping in cardiac surgery", cites: ["Power & Kam Ch.3"] },

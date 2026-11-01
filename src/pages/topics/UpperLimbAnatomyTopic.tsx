@@ -1,8 +1,9 @@
+import { INTERSCALENE_PHRENIC, ALLEN_LIMITATIONS } from "@/lib/anatomy-context-teaching";
 import { TopicTemplate } from "@/components/topic/TopicTemplate";
 import { TopicFaqs } from "@/components/topic/TopicFaqs";
 
 const upperLimbAnatomyFaqs: Array<[string, string]> = [
-  ["Where is the radial artery best palpated for arterial line insertion and why?", "At the volar wrist between the tendon of flexor carpi radialis and the distal radius, where it lies most superficially with the bony radius supporting it for compression. Always confirm collateral palmar arch flow (modified Allen's test or Doppler of the ulnar artery) before cannulation."],
+  ["Where is the radial artery best palpated for arterial line insertion and why?", "At the volar wrist between the tendon of flexor carpi radialis and the distal radius, where it lies most superficially with the bony radius supporting it for compression. Assess vascular history, hand perfusion and local vascular-access guidance. A normal modified Allen test does not guarantee freedom from ischaemia and has limited predictive performance. ESA 2020 conditionally suggests duplex/colour-Doppler collateral assessment with low-certainty evidence (2C); manual Allen testing is not universally mandatory or sufficient. Abnormal perfusion or vascular disease still requires assessment."],
   ["Which nerve is most at risk in supracondylar humeral fracture?", "The median nerve, often the anterior interosseous branch, is most commonly injured — producing weakness of the thumb–index \"OK\" sign (FPL and FDP-2). The brachial artery is also at risk, with compartment syndrome and Volkmann's contracture if missed. Radial and ulnar nerves are less commonly affected."],
   ["How are the cords of the brachial plexus arranged at the axilla relative to the artery?", "At the level of pectoralis minor: lateral cord is lateral to the axillary artery, medial cord medial, posterior cord posterior. This guides ultrasound-guided axillary block — the median nerve typically lies superior/lateral to the artery, ulnar inferomedial, radial deep/posterior."],
 ];
@@ -69,9 +70,9 @@ const UpperLimbAnatomyTopic = () => {
       ]}
       keyPoints={[
         { text: "Brachial plexus: C5–T1. 'Robert Taylor Drinks Cold Beer' — Roots, Trunks, Divisions, Cords, Branches", cites: ["Ellis & Feldman Ch.8"] },
-        { text: "Interscalene block targets C5–7 (shoulder surgery) — 100% ipsilateral phrenic nerve palsy", cites: ["BJA Educ 2021"] },
+        { text: INTERSCALENE_PHRENIC, cites: ["Riazi 2008"] },
         { text: "Cubital fossa contents lateral to medial: TAN — Tendon, Artery, Nerve", cites: ["NICE CG49"] },
-        { text: "Radial artery cannulation requires Allen's test — superficial palmar arch (ulnar) provides collateral", cites: ["BJA Educ 2005"] },
+        { text: ALLEN_LIMITATIONS, cites: ["ESA vascular access 2020", "Allen systematic review 2017"] },
         { text: "Basilic vein preferred for PICC lines — larger calibre, straighter course than cephalic", cites: ["Last's Anatomy Ch.3"] },
         { text: "Musculocutaneous nerve leaves the brachial plexus sheath early — block separately at axillary level", cites: ["Ellis & Feldman Ch.8"] },
         { text: "Subclavian vein is ANTERIOR to scalenus anterior; artery is POSTERIOR", cites: ["BJA Educ 2021"] },
@@ -131,7 +132,7 @@ const UpperLimbAnatomyTopic = () => {
           <div className="grid sm:grid-cols-2 gap-3">
             <div className="p-4 rounded-lg border border-border">
               <p className="font-semibold text-foreground text-sm">Interscalene (Roots/Trunks)</p>
-              <p className="text-sm text-muted-foreground mt-1">Between anterior and middle scalene at C6 level. Targets C5–C7 (superior/middle trunks). Misses C8/T1 (ulnar sparing). Phrenic nerve palsy 100%. Contralateral hand ventilation check essential.</p>
+              <p className="text-sm text-muted-foreground mt-1">Between anterior and middle scalene at C6 level. Targets C5–C7 (superior/middle trunks). Misses C8/T1 (ulnar sparing). {INTERSCALENE_PHRENIC} <InlineRef topicId="upper-limb-anatomy" refLabel="Riazi 2008" /></p>
             </div>
             <div className="p-4 rounded-lg border border-border">
               <p className="font-semibold text-foreground text-sm">Supraclavicular (Trunks/Divisions)</p>
@@ -196,7 +197,7 @@ const UpperLimbAnatomyTopic = () => {
           <div className="grid sm:grid-cols-2 gap-3 mt-4">
             <div className="p-4 rounded-lg border border-border">
               <p className="font-semibold text-foreground text-sm">Allen's Test</p>
-              <p className="text-sm text-muted-foreground mt-1">Compress both radial and ulnar arteries → patient clenches fist → release ulnar → hand should reperfuse within 5–7 seconds (modified Allen's test). Abnormal test suggests inadequate ulnar collateral — avoid radial artery cannulation on that side.</p>
+              <p className="text-sm text-muted-foreground mt-1">Compress both radial and ulnar arteries → patient clenches fist → release ulnar → hand should reperfuse within 5–7 seconds (modified Allen's test). Abnormal perfusion requires assessment. {ALLEN_LIMITATIONS} <InlineRef topicId="upper-limb-anatomy" refLabel="ESA vascular access 2020" /></p>
             </div>
             <div className="p-4 rounded-lg border border-border">
               <p className="font-semibold text-foreground text-sm">Elbow Anastomosis</p>
