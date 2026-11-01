@@ -63,7 +63,7 @@ const sepsisFaqs: Array<[string, string]> = [
   ],
   [
     "Which vasopressor should I start first, and when do I add vasopressin and hydrocortisone?",
-    "Noradrenaline is first-line vasopressor in septic shock (SSC 2021, strong recommendation). Target MAP ≥ 65 mmHg, titrated to perfusion (urine output, mental state, lactate clearance, CRT). Add vasopressin 0.03 U/min when noradrenaline reaches 0.25–0.5 µg/kg/min — VANISH (Gordon, JAMA 2016) showed early vasopressin reduced renal-replacement therapy use. Add hydrocortisone 200 mg/day (50 mg QDS or continuous infusion) when vasopressor-dependent for > 4 h — ADRENAL (Venkatesh, NEJM 2018) showed faster shock resolution; APROCCHSS (Annane, NEJM 2018) showed mortality benefit. Adrenaline is a third-line catecholamine; dopamine is not recommended.",
+    "Noradrenaline is first-line vasopressor in septic shock (SSC 2021, strong recommendation). Current SSC 2026 initial MAP target is 65 mmHg with a practical range (e.g. within 5 mmHg); age ≥65 suggested 60–65 mmHg, individualised to perfusion (urine output, mental state, lactate trend, CRT). Add vasopressin 0.03 U/min when noradrenaline reaches 0.25–0.5 µg/kg/min — VANISH (Gordon, JAMA 2016) showed early vasopressin reduced renal-replacement therapy use. Add hydrocortisone 200 mg/day (50 mg QDS or continuous infusion) when vasopressor-dependent for > 4 h — ADRENAL (Venkatesh, NEJM 2018) showed faster shock resolution; APROCCHSS (Annane, NEJM 2018) showed mortality benefit. Adrenaline is a third-line catecholamine; dopamine is not recommended.",
   ],
   [
     "What is the role of steroids, vitamin C, and other adjuncts in sepsis?",
@@ -424,10 +424,7 @@ const SepsisTopic = () => {
           <div className="rounded-lg border border-primary/30 bg-primary/5 p-3 text-sm text-foreground">
             <p className="font-semibold mb-1">Practical viva-ready summary</p>
             <p className="text-muted-foreground">
-              "Balanced crystalloid is first-line in sepsis. Human albumin (4–5%) is safe (SAFE) and can be added once
-              large volumes of crystalloid have been given (SSC 2021, weak recommendation), with ALBIOS showing better
-              haemodynamics and a possible benefit in septic shock but no overall mortality reduction. Synthetic colloids
-              (HES, gelatins) are contraindicated. Avoid albumin in traumatic brain injury."
+              "SSC 2026 generally suggests crystalloids alone. Supplemental albumin may suit selected large-volume or cirrhosis cases, without a fixed volume trigger; ALBIOS showed no overall mortality benefit, and subgroup signals remain hypothesis-generating. Avoid albumin in traumatic brain injury." <InlineRef topicId="sepsis" refLabel="SSC 2026 albumin" />
             </p>
           </div>
         </div>
@@ -736,7 +733,7 @@ const SepsisTopic = () => {
                 <tr className="border-b border-border"><td className="p-2 font-medium text-foreground">Lactate</td><td className="p-2">Measure now; remeasure if &gt; 2 mmol/L</td><td className="p-2">SSC 2021; Jansen 2010 lactate clearance</td></tr>
                 <tr className="border-b border-border"><td className="p-2 font-medium text-foreground">Cultures</td><td className="p-2">≥ 2 sets blood cultures before antibiotics if no significant delay (&lt; 45 min)</td><td className="p-2">Cheng 2019 — paired cultures ↑ yield</td></tr>
                 <tr className="border-b border-border"><td className="p-2 font-medium text-foreground">Antibiotics</td><td className="p-2">Immediately, ideally within 1 h for shock or probable/definite sepsis; up to 3 h rapid assessment only for possible sepsis without shock if concern persists</td><td className="p-2">Kumar 2006; Seymour NEJM 2017</td></tr>
-                <tr className="border-b border-border"><td className="p-2 font-medium text-foreground">Fluids</td><td className="p-2">30 mL/kg balanced crystalloid over 3 h for hypotension or lactate ≥ 4 mmol/L</td><td className="p-2">SSC 2021; CLASSIC 2022; CLOVERS 2023</td></tr>
+                <tr className="border-b border-border"><td className="p-2 font-medium text-foreground">Fluids</td><td className="p-2">SSC 2026 conditionally suggests at least 30 mL/kg IV crystalloid in first 3 h for sepsis-induced hypoperfusion/shock; reassess frequently</td><td className="p-2"><InlineRef topicId="sepsis" refLabel="SSC 2026 fluids" />; CLASSIC 2022; CLOVERS 2023</td></tr>
                 <tr><td className="p-2 font-medium text-foreground">Vasopressors</td><td className="p-2">Noradrenaline during or after fluid if MAP &lt; 65 mmHg; consider peripheral start to avoid delay</td><td className="p-2">SOAP-II 2010; SSC 2021</td></tr>
               </tbody>
             </table>
@@ -746,7 +743,7 @@ const SepsisTopic = () => {
         <div id="antibiotics" className="scroll-mt-24">
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Empirical antibiotics &amp; source control</h2>
           <p className="text-muted-foreground leading-relaxed mb-3">
-            Empirical cover must reflect the suspected source, the patient's recent antimicrobial exposure, local antibiogram, and severity. Source control — drainage of pus, debridement of necrotic tissue, removal of infected hardware or lines — should be achieved as soon as logistically feasible, ideally within 6–12 h.
+            Empirical cover must reflect the suspected source, the patient's recent antimicrobial exposure, local antibiogram, and severity. Source control — drainage of pus, debridement of necrotic tissue, removal of infected hardware or lines — SSC 2026 suggests early control, ideally within 6 h of diagnosis when intervention is required, with individual anatomical and physiological assessment <InlineRef topicId="sepsis" refLabel="SSC 2026 source control" />.
           </p>
           <div className="overflow-x-auto">
             <table className="w-full text-sm border-collapse">
@@ -866,7 +863,7 @@ const SepsisTopic = () => {
                 <th className="text-left p-2 font-semibold text-foreground">Evidence</th>
               </tr></thead>
               <tbody className="text-muted-foreground align-top">
-                <tr className="border-b border-border"><td className="p-2 font-medium text-foreground">Noradrenaline</td><td className="p-2">α₁ ≫ β₁; 0.05–1.0 µg/kg/min</td><td className="p-2"><strong>First-line</strong> — target MAP ≥ 65 mmHg</td><td className="p-2">SOAP-II 2010 (fewer arrhythmias vs dopamine)</td></tr>
+                <tr className="border-b border-border"><td className="p-2 font-medium text-foreground">Noradrenaline</td><td className="p-2">α₁ ≫ β₁; 0.05–1.0 µg/kg/min</td><td className="p-2"><strong>First-line</strong> — SSC 2026 initial MAP 65 with practical range; age ≥65 suggested 60–65, individualised</td><td className="p-2">SOAP-II 2010 (fewer arrhythmias vs dopamine)</td></tr>
                 <tr className="border-b border-border"><td className="p-2 font-medium text-foreground">Vasopressin</td><td className="p-2">V₁; 0.03 U/min fixed (max 0.04)</td><td className="p-2">Add when NA &gt; 0.25–0.5 µg/kg/min</td><td className="p-2">VASST 2008 (neutral overall, signal in less severe shock); VANISH 2016 (↓ RRT)</td></tr>
                 <tr className="border-b border-border"><td className="p-2 font-medium text-foreground">Hydrocortisone</td><td className="p-2">200 mg/day (50 mg QDS or infusion)</td><td className="p-2">Vasopressor-dependent &gt; 4 h</td><td className="p-2">ADRENAL 2018 (faster shock resolution); APROCCHSS 2018 (mortality ↓)</td></tr>
                 <tr className="border-b border-border"><td className="p-2 font-medium text-foreground">Adrenaline</td><td className="p-2">α + β; 0.05–1.0 µg/kg/min</td><td className="p-2">Refractory shock; useful if myocardial depression</td><td className="p-2">CAT 2008 (non-inferior to NA + dobutamine but ↑ lactate)</td></tr>
@@ -945,7 +942,7 @@ const SepsisTopic = () => {
             {sepsisFaqs.map(([q, a]) => (
               <details key={q} className="group rounded-lg border border-border p-3">
                 <summary className="cursor-pointer font-semibold text-foreground text-sm">{q}</summary>
-                <p className="text-sm text-muted-foreground mt-2 leading-relaxed">{a}</p>
+                <p className="text-sm text-muted-foreground mt-2 leading-relaxed">{a}<InlineRef topicId="sepsis" refLabel="SSC 2026 antibiotics" /><InlineRef topicId="sepsis" refLabel="SSC 2026 MAP" /></p>
               </details>
             ))}
           </div>
