@@ -1,5 +1,9 @@
 # Admin metrics audit fixes
 
+## Narrow residual source batch — 1 November 2026
+- [x] Reconciled 17 supplied guards on current HEAD; calculator arithmetic/unrelated work preserved; IV paracetamol lookup-only and three DAS 2025 source links verified.
+- [x] Scoped tests83passed, citations/sections191pages passed; actual calculator browser5/10/14/50/70kg withheld output. Numeric review warnings retained; results in docs/narrow-source-residuals-2026-11-01.md. No backend/database/audio/payment/publication.
+
 ## Consolidated residual copies and governance — 1 November 2026
 - [x] Reconcile A10/B17/D4 source snippets and three checker/provenance defects on current HEAD; preserve unrelated work and historical baselines.
 - [x] Negative CLI fixtures, nine affected browser routes, operation provenance/a11y and local outputs checked; one full suite3067 pass/3 fail/25 skipped, subsequent narrow reconciliation112 pass. Exact results/residuals in docs/consolidated-residuals-2026-11-01.md.

@@ -86,7 +86,7 @@ export const paediatricPkDrugs: PaedPkDrug[] = [
       },
     ],
     scaling: "Scale clearance allometrically (weight^0.75), not linearly; per-kg rates therefore fall as the child grows.",
-    withdrawal: "Not used for prolonged PICU sedation (propofol infusion syndrome risk) — wean over hours, not days.",
+    withdrawal: "UK product licensing contraindicates ICU sedation at age 16 years or younger, including short infusions. Anaesthesia/procedural sedation are distinct, product- and age-specific indications; this PK summary is not a PICU sedation or withdrawal regimen.",
   },
   {
     name: "Midazolam",

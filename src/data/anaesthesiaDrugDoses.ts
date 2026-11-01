@@ -397,11 +397,11 @@ export const anaesthesiaDrugDoseGroups: AnaesthesiaDrugGroup[] = [
     id: "local-anaesthetics",
     title: "Local anaesthetics (maximum doses)",
     blurb:
-      "Maximum doses for infiltration/block in a 70 kg adult; reduce in the elderly, low-weight, pregnancy and when using adjuvants. Know the signs and treatment of LAST.",
+      "Adult local-anaesthetic reference limits are product- and procedure-specific, not targets or toxicity thresholds. Use the lowest effective dose and account for prior doses, mixtures, injection site and patient factors. These examples do not prescribe spinal, epidural, IVRA or paediatric doses. Follow the exact product/procedure table and local policy.",
     drugs: [
       {
         drug: "Lidocaine",
-        dose: "Max 3 mg/kg plain (200 mg); 7 mg/kg with adrenaline (500 mg). IV regional: 3 mg/kg of 0.5%",
+        dose: "Named adult product emc 15150: plain limit 4.5 mg/kg and 300 mg; with vasoconstrictor 7 mg/kg and 500 mg. Specific procedures may require less; minor-nerve-block table limit 200 mg. This is not an IVRA or neuraxial regimen.",
         route: "Infiltration, peripheral block, IV regional",
         frequency: "Single dose per block",
         indications: "Infiltration, peripheral and neuraxial anaesthesia; topical airway",
@@ -410,7 +410,7 @@ export const anaesthesiaDrugDoseGroups: AnaesthesiaDrugGroup[] = [
       },
       {
         drug: "Bupivacaine",
-        dose: "Max 2 mg/kg (150 mg)",
+        dose: "Named product emc 11611: adult field-block/infiltration table up to 150 mg; no more than 2 mg/kg in any 4 h. Use the separate procedure-specific table for other routes; this is not a spinal dose.",
         route: "Infiltration, peripheral block, spinal, epidural",
         frequency: "Single dose per block; epidural top-ups 4–6-hourly",
         indications: "Long-duration blocks; spinal anaesthesia (0.5% heavy); epidural analgesia",
@@ -419,7 +419,7 @@ export const anaesthesiaDrugDoseGroups: AnaesthesiaDrugGroup[] = [
       },
       {
         drug: "Ropivacaine",
-        dose: "Max 3 mg/kg (200 mg)",
+        dose: "Use the exact product, concentration and procedure-specific dosing table; no universal maximum is supplied here. The paired calculator is lookup-only.",
         route: "Peripheral block, epidural",
         frequency: "Single dose or epidural infusion",
         indications: "Epidural analgesia (labour), long-duration peripheral blocks",
@@ -428,7 +428,7 @@ export const anaesthesiaDrugDoseGroups: AnaesthesiaDrugGroup[] = [
       },
       {
         drug: "Levobupivacaine",
-        dose: "Max 2 mg/kg (150 mg)",
+        dose: "Named product emc 13644: adult local infiltration up to 150 mg; recommended single-dose maximum 150 mg and 24-hour maximum 400 mg. Route-specific regimens differ; these are not instructions to repeat this dose or give it intrathecally.",
         route: "Infiltration, block, epidural",
         frequency: "Single dose or infusion",
         indications: "As bupivacaine with lower cardiotoxicity",

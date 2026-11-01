@@ -277,7 +277,7 @@ export const icuDrugDoseGroups: DrugDoseGroup[] = [
         topicIds: ["neuromuscular-blockers"],
         paediatricDose: "1–2 mg/kg (infants and neonates 2–3 mg/kg)",
         neonatalDose: "2–3 mg/kg",
-        paediatricNotes: "Give atropine 20 microgram/kg with it in infants — bradycardia is common; avoid where undiagnosed myopathy is possible.",
+        paediatricNotes: "RCUK 2025 does not advise routine atropine premedication for emergency intubation. Use an age- and indication-specific airway protocol; prevent and treat hypoxia, and reserve atropine for a specific indication. Avoid suxamethonium where undiagnosed myopathy is possible.",
       },
       {
         drug: "Vecuronium",
@@ -846,15 +846,15 @@ export const icuDrugDoseGroups: DrugDoseGroup[] = [
     drugs: [
       {
         drug: "Atropine",
-        dose: "Adult bradycardia with adverse signs (RCUK 2025): 500 micrograms IV; repeat every 3–5 minutes to total 3 mg. Not routine cardiac-arrest treatment; toxicology has separate protocols.",
+        dose: "Adult bradycardia with adverse signs (RCUK 2025): 500 micrograms IV; repeat every 3–5 minutes to total 3 mg. Do not give atropine in cardiac-transplant patients or high-degree AV block with wide QRS; seek expert treatment/pacing. Not routine cardiac-arrest treatment; toxicology has separate protocols.",
         route: "IV (IO, or 3 mg nebulised in organophosphate poisoning by protocol)",
         frequency: "PRN, repeat every 3–5 min",
         indications: "Haemodynamically significant bradycardia, vagal bradycardia during intubation or suctioning, organophosphate and nerve-agent poisoning, antisialagogue",
         notes: "Tertiary amine — crosses the blood–brain barrier and causes central anticholinergic delirium, especially in the elderly. Doses below 300 microgram can cause paradoxical bradycardia. In organophosphate poisoning the dose is titrated to drying of secretions, with doubling doses and often grams in total.",
         topicIds: ["arrhythmias", "toxicology", "autonomic-nervous-system"],
-        paediatricDose: "20 microgram/kg IV (minimum 100 microgram, maximum 600 microgram per dose)",
+        paediatricDose: "RCUK 2025 PLS: atropine 20 micrograms/kg IV, maximum 500 micrograms, only for selected bradycardia such as increased vagal tone or conduction disease.",
         neonatalDose: "10–20 microgram/kg IV",
-        paediatricNotes: "Bradycardia in a child is usually hypoxic — oxygenate and ventilate first; atropine is second-line except for vagal or drug-induced bradycardia.",
+        paediatricNotes: "Correct oxygenation and ventilation first. Severe bradycardia with poor perfusion despite adequate respiratory support requires compressions and the appropriate PALS pathway, even if a pulse remains. Atropine is for selected vagal or conduction causes, not routine second-line treatment; distinguish neonatal NLS and other indication-specific protocols.",
       },
       {
         drug: "Glycopyrronium (glycopyrrolate)",
