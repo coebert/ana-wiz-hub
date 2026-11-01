@@ -1,0 +1,8 @@
+{
+  "historicalSnapshot": "src/test/__snapshots__/diagram-source-citations.test.ts.snap",
+  "historicalReclassifications": [
+    { "file": "src/pages/topics/CapnographyWaveformsTopic.tsx", "oldKind": "missing-topicId", "newKind": "missing-diagram-sources", "evidence": "Same historical rendered diagrams; actual topicId JSX prop now resolves through shared AST. No source declaration backfilled." },
+    { "file": "src/pages/topics/VenturiMaskTopic.tsx", "oldKind": "missing-topicId", "newKind": "missing-diagram-sources", "evidence": "Same historical rendered diagrams; actual topicId JSX prop now resolves through shared AST. No source declaration backfilled." }
+  ],
+  "policy": "Historical missing source debt is not anatomical/source verification. Unknown labels and dynamic IDs are hard failures. OperativeSteps newly exposed missing source declaration is NOT accepted into baseline."
+}
