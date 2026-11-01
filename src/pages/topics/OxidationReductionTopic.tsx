@@ -183,7 +183,7 @@ const OxidationReductionTopic = () => {
                 O₂ alarm on the anaesthetic machine backbar. It generates a current proportional to pO₂ without needing any
                 external polarising voltage — the chemical reaction itself is the power source. A <strong>lead anode</strong>
                 and <strong>gold cathode</strong> sit in a <strong>potassium hydroxide (KOH)</strong> electrolyte: at the anode,
-                Pb + 2OH⁻ → PbO + H₂O + 2e⁻ (lead oxidation); at the cathode, O₂ + 2H₂O + 4e⁻ → 4OH⁻ (oxygen reduction). <InlineRef topicId="oxidation-reduction" refLabel="Cross & Plunkett Ch.3" /> Because the lead anode is progressively
+                Pb + 2OH⁻ → PbO + H₂O + 2e⁻ (lead oxidation); at the cathode, O₂ + 2H₂O + 4e⁻ → 4OH⁻ (oxygen reduction). <InlineRef topicId="oxidation-reduction" refLabel="Lead Gold Oxygen Sensor" /> Because the lead anode is progressively
                 consumed, cell lifespan is finite — typically <strong>1–2 years</strong>, and cells are rated in
                 <strong> ampere-hours (or "oxygen-hours")</strong> of remaining life. Response is relatively slow
                 (~<strong>20 s</strong>), but there is no calibration drift over the short term, making it well suited to
@@ -297,6 +297,7 @@ const OxidationReductionTopic = () => {
             </CollapsibleSubsection>
           </ExamSection>
           <TopicFaqs faqs={oxidationReductionFaqs} />
+          <p className="text-xs text-muted-foreground">Fuel-cell electrode chemistry: <InlineRef topicId="oxidation-reduction" refLabel="Lead Gold Oxygen Sensor" />; radical/nonradical distinction: <InlineRef topicId="oxidation-reduction" refLabel="Pacher 2007 Peroxynitrite" /></p>
         </>
       }
     />
