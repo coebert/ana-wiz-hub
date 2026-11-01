@@ -402,7 +402,7 @@ const PaediatricIcuTopic = () => {
           <ExamSection id="physiology" exams={[Exam.FFICM, Exam.EDIC]} className="scroll-mt-24">
             <CollapsibleSubsection title="Age-Specific Physiology">
             <div className="overflow-x-auto">
-              <table className="w-full text-sm border-collapse">
+              <table className="w-full min-w-[900px] text-sm border-collapse">
                 <thead>
                   <tr className="border-b border-border">
                     <th className="text-left py-2 text-foreground font-semibold">System</th>
