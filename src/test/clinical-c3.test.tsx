@@ -21,6 +21,8 @@ describe("C3 clinical pathways and source mappings", () => {
     expect(HYPERKALAEMIA_TEACHING).toContain("over 5 minutes");
     expect(HYPERKALAEMIA_TEACHING).toContain("During CPR");
     expect(HYPERKALAEMIA_TEACHING).toContain("given as a bolus");
+    const faq = extractFaqsByPath()["/intensive-care/aki-rrt"]?.find(([q]) => q === "When and how do I manage severe hyperkalaemia in AKI?");
+    expect(faq?.[1]).toBe(HYPERKALAEMIA_TEACHING);
   });
   it("CL-19 first-hour saline cannot await classification or skip interim sodium checks", () => {
     const s = source("src/pages/topics/SolutionsConcentrationTopic.tsx");
