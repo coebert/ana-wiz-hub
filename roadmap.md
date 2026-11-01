@@ -1,5 +1,10 @@
 # Admin metrics audit fixes
 
+## Proposed CL87 / CL88 source-only follow-ups — 1 November 2026
+- [ ] Align paediatric bradycardia/PALS/atropine copies and bounded FEAST applicability with current RCUK sources, preserving DNC and earlier clinical work.
+- [ ] Align trauma component equivalence, measured calcium, injury-specific pressure targets and selected-head-injury TXA across actual linked teaching/quiz/diagram/case copies.
+- [ ] Refresh relevant local search/FAQ copies; run combined focused checks and rendered source/quiz verification; document exact commit/results/limitations. No backend/database/audio/deployment/publication.
+
 ## CL53/ROOT02 paediatric and proposed CL86 donation residuals — 1 November 2026
 - [x] Reconciled current repeated paediatric DNC claims with the 2025 Appendix 2 summary; retained full preconditions and corrected death timing/apnoea thresholds.
 - [x] Retired active superseded citation support; aligned dated donor proportions, conditional fWIT arithmetic and protocol-scoped NRP/organ discussion with opened primary sources.
