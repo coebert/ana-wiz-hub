@@ -693,7 +693,7 @@ const coreConcepts = (
           {arrestFaqs.map(([q, a], i) => (
             <AccordionItem key={q} value={`faq-${i}`}>
               <AccordionTrigger className="text-left text-sm font-medium text-foreground">{q}</AccordionTrigger>
-              <AccordionContent className="text-xs text-muted-foreground leading-relaxed">{a}</AccordionContent>
+              <AccordionContent className="text-xs text-muted-foreground leading-relaxed">{a}{i >= 5 && <InlineRef topicId="cardiac-arrest-post-resus" refLabel="RCUK PRC 2025" />}{i === 5 && <><InlineRef topicId="cardiac-arrest-post-resus" refLabel="ARREST 2020" /><InlineRef topicId="cardiac-arrest-post-resus" refLabel="Prague OHCA 2022" /><InlineRef topicId="cardiac-arrest-post-resus" refLabel="INCEPTION 2023" /></>}{i === 6 && <InlineRef topicId="cardiac-arrest-post-resus" refLabel="RCUK PRC Algorithm March 2026" />}</AccordionContent>
             </AccordionItem>
           ))}
         </Accordion>
