@@ -111,6 +111,11 @@
     --anatomy-fat: 50 60% 88%;
     --anatomy-stroke: 215 25% 20%;
     --anatomy-paper: 40 30% 97%;
+    --anatomy-fascia: 145 30% 48%;
+    --anatomy-parietal: 170 42% 42%;
+    --anatomy-visceral: 165 50% 34%;
+    --anatomy-csf: 200 55% 80%;
+    --anatomy-alar: 285 32% 55%;
 
     /* Hero + subtle backgrounds — retuned to the new primary hue */
     --gradient-hero: linear-gradient(135deg, hsl(215 55% 24%), hsl(200 50% 32%), hsl(180 45% 34%));
