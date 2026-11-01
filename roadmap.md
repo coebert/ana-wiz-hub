@@ -1,5 +1,9 @@
 # Admin metrics audit fixes
 
+## Clinical C6 — 1 November 2026
+- [ ] CL77, CL81–84: verify current guards and primary sources; reconcile respiratory rescue, medicine/device identity, trials and COPD antibiotics while preserving CL78–80.
+- [ ] Refresh justified local FAQ/search/audit outputs, run narrow and preservation regressions, inspect learner rendering and document source/access/cached limitations; no publication or database/audio changes.
+
 ## Clinical C5 — 1 November 2026
 - [x] CL68–76 and D96: source-checked pancreatitis fluid/outcomes, nutrition, necrosis, guideline identity, imaging, prediction, epidural, thrombosis and HTG corrections.
 - [x] Reconcile linked static/generated copies, add narrow clinical tests, run affected checks and browser verification; documented in docs/clinical-c5-2026-11-01.md. No publication/audio or database work.
