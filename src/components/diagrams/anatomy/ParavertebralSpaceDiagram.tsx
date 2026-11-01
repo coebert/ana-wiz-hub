@@ -188,7 +188,7 @@ const ParavertebralSpaceDiagram = () => {
             <p className="text-sm font-semibold text-foreground">Spatial relationships — mixed-plane figure withdrawn</p>
             <p className="text-sm text-muted-foreground mt-2">{PARAVERTEBRAL_SPATIAL}</p>
             <p className="text-sm text-muted-foreground mt-2">{PRINCIPAL_VAN}</p>
-            <InlineRef topicId="thoracic-anatomy" refLabel="WFSA thoracic PVB" /><InlineRef topicId="thoracic-anatomy" refLabel="Intercostal anatomy NCBI" />
+            <InlineRef topicId="thoracic-anatomy" refLabel="WFSA thoracic PVB" /><InlineRef topicId="thoracic-anatomy" refLabel="Intercostal anatomy" /><InlineRef topicId="thoracic-anatomy" refLabel="Thoracic wall VAN" />
           </div>
           <div className="flex-1 min-w-0">
             <div className="p-4 rounded-lg border border-border animate-fade-in" key={selected}>
