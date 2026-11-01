@@ -1,9 +1,10 @@
 # Admin metrics audit fixes
 
 ## Clinical C3 — 1 November 2026
-- [ ] Reconcile current CL-01/17/19/20/21/22/23/24/28/29/30/31/32/33/34/54/85 and ROOT-19 locators, primary sources and matching static copies.
-- [ ] Inspect scoped saved claims; any changes require ID/exact-before guards and readback; preserve withheld audio.
-- [ ] Refresh affected generated search/FAQ copies, run focused clinical/citation checks and inspect learner pathways; record exact outcomes and residuals without publication.
+- [x] Reconcile current CL-01/17/19/20/21/22/23/24/28/29/30/31/32/33/34/54/85 and ROOT-19 locators, primary sources and matching static copies.
+- [x] Inspect scoped saved claims; exact transfusion recording held with ID/exact-before guards and readback; preserve original audio/script.
+- [x] Refresh local search/FAQ/audit copies, run focused clinical/citation checks and inspect learner pathways; record exact outcomes in docs/clinical-c3-2026-11-01.md without publication.
+- [ ] C3 residual verification: SHOT chapter live access (403), remote generated-copy replacement, reviewed replacement recording/audio and playback verification, full dynamic review; inherited Operations diagram provenance remains unresolved.
 
 ## Clinical audit batch 4 — 30 October 2026
 - [ ] Hold exact ROOT-01/02/05 faulty podcast rows, preserve originals, explain hold and link current sources; only release with corrected script and matching audio.
