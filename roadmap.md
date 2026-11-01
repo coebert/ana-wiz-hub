@@ -1,5 +1,10 @@
 # Admin metrics audit fixes
 
+## Proposed CL89 / CL71 timeline residual — 1 November 2026
+- [ ] Reconcile named JPAC frozen/post-thaw component storage with explicit FFP non-major-haemorrhage 24-hour limit; preserve CL88 and ordinary/provisional cryo separation.
+- [ ] Correct the actual late PANTER timeline node to percutaneous-first surgical step-up, composite 40% vs 69% and nonsignificant mortality-alone result.
+- [ ] Verify selected rendered states/source labels, focused tests and local search; report exact commit and limitations. No backend/database/audio/publication.
+
 ## Proposed CL87 / CL88 source-only follow-ups — 1 November 2026
 - [x] Align paediatric bradycardia/PALS/atropine copies and bounded FEAST applicability with current RCUK sources, preserving DNC and earlier clinical work.
 - [x] Align trauma component equivalence, measured calcium, injury-specific pressure targets and selected-head-injury TXA across actual linked teaching/quiz/diagram/case copies.
