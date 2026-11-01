@@ -4,8 +4,7 @@ import corpusData from "./topic-corpus.json" with { type: "json" };
 
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
-  "Access-Control-Allow-Headers":
-    "authorization, x-client-info, apikey, content-type, x-internal-token",
+  "Access-Control-Allow-Headers": "authorization, x-client-info, apikey, content-type, x-internal-token",
 };
 const SUPABASE_URL = Deno.env.get("SUPABASE_URL")!;
 const SERVICE_ROLE = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")!;
@@ -80,45 +79,80 @@ async function selfChain(jobId: string, delayMs = 3_000): Promise<void> {
 async function settleItem(item: QueueItem): Promise<"done" | "waiting" | "retry" | "failed"> {
   const { data: episode } = await admin
     .from("podcasts")
-    .select("status, regenerating, audio_path, error_message, updated_at")
+    .select("status, regenerating, audio_path, error_message, updated_at, audit_hold, audit_hold_reason")
     .eq("topic_id", item.topic_id)
     .eq("voice", item.voice)
     .maybeSingle();
 
+  if (episode?.audit_hold === true) {
+    await admin
+      .from("podcast_rerecord_items")
+      .update({
+        status: "failed",
+        completed_at: new Date().toISOString(),
+        error_message: episode.audit_hold_reason ?? "Clinical audit hold: replacement review is required.",
+      })
+      .eq("id", item.id)
+      .eq("status", "running");
+    return "failed";
+  }
   const episodeUpdatedAt = episode?.updated_at ? Date.parse(episode.updated_at) : 0;
   const itemStartedAt = item.started_at ? Date.parse(item.started_at) : Date.now();
-  if (
-    episode?.status === "ready" &&
-    episode.audio_path &&
-    !episode.regenerating &&
-    episodeUpdatedAt >= itemStartedAt
-  ) {
-    await admin.from("podcast_rerecord_items").update({
-      status: "done",
-      completed_at: new Date().toISOString(),
-      error_message: null,
-    }).eq("id", item.id).eq("status", "running");
+  if (episode?.status === "ready" && episode.audio_path && !episode.regenerating && episodeUpdatedAt >= itemStartedAt) {
+    await admin
+      .from("podcast_rerecord_items")
+      .update({
+        status: "done",
+        completed_at: new Date().toISOString(),
+        error_message: null,
+      })
+      .eq("id", item.id)
+      .eq("status", "running");
     return "done";
   }
   if (episode?.regenerating) return "waiting";
 
   const message = episode?.error_message ?? "Recording stopped before completion.";
   const retry = item.attempts < MAX_ATTEMPTS;
-  await admin.from("podcast_rerecord_items").update(retry ? {
-    status: "pending", started_at: null, error_message: message,
-  } : {
-    status: "failed", completed_at: new Date().toISOString(), error_message: message,
-  }).eq("id", item.id).eq("status", "running");
+  await admin
+    .from("podcast_rerecord_items")
+    .update(
+      retry
+        ? {
+            status: "pending",
+            started_at: null,
+            error_message: message,
+          }
+        : {
+            status: "failed",
+            completed_at: new Date().toISOString(),
+            error_message: message,
+          },
+    )
+    .eq("id", item.id)
+    .eq("status", "running");
   return retry ? "retry" : "failed";
 }
 
 async function requeueOrFail(item: QueueItem, message: string): Promise<void> {
   const retry = item.attempts < MAX_ATTEMPTS;
-  await admin.from("podcast_rerecord_items").update(retry ? {
-    status: "pending", started_at: null, error_message: message,
-  } : {
-    status: "failed", completed_at: new Date().toISOString(), error_message: message,
-  }).eq("id", item.id).eq("status", "running");
+  await admin
+    .from("podcast_rerecord_items")
+    .update(
+      retry
+        ? {
+            status: "pending",
+            started_at: null,
+            error_message: message,
+          }
+        : {
+            status: "failed",
+            completed_at: new Date().toISOString(),
+            error_message: message,
+          },
+    )
+    .eq("id", item.id)
+    .eq("status", "running");
 }
 
 async function run(jobId: string): Promise<void> {
@@ -165,11 +199,14 @@ async function run(jobId: string): Promise<void> {
 
   const corpus = CORPUS.get(item.topic_id);
   if (!corpus?.text || corpus.text.length < 200) {
-    await admin.from("podcast_rerecord_items").update({
-      status: "failed",
-      error_message: "No complete topic text was found in the recording corpus.",
-      completed_at: new Date().toISOString(),
-    }).eq("id", item.id);
+    await admin
+      .from("podcast_rerecord_items")
+      .update({
+        status: "failed",
+        error_message: "No complete topic text was found in the recording corpus.",
+        completed_at: new Date().toISOString(),
+      })
+      .eq("id", item.id);
     await admin.rpc("refresh_podcast_rerecord_job", { _job_id: jobId });
     await selfChain(jobId);
     return;
@@ -209,15 +246,17 @@ async function run(jobId: string): Promise<void> {
     // generate-podcast kept the existing recording rather than spending
     // credits. Settle the queue item immediately instead of polling for a
     // fresh row that will never appear.
-    const generatePayload = (await generateResponse.json().catch(() => null)) as
-      | { unchanged?: boolean }
-      | null;
+    const generatePayload = (await generateResponse.json().catch(() => null)) as { unchanged?: boolean } | null;
     if (generatePayload?.unchanged === true) {
-      await admin.from("podcast_rerecord_items").update({
-        status: "done",
-        completed_at: new Date().toISOString(),
-        error_message: null,
-      }).eq("id", item.id).eq("status", "running");
+      await admin
+        .from("podcast_rerecord_items")
+        .update({
+          status: "done",
+          completed_at: new Date().toISOString(),
+          error_message: null,
+        })
+        .eq("id", item.id)
+        .eq("status", "running");
       const { data: refreshedSkip } = await admin.rpc("refresh_podcast_rerecord_job", { _job_id: jobId });
       if (refreshedSkip?.status === "running") await selfChain(jobId, 1_000);
       return;
