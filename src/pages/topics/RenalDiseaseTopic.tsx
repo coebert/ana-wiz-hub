@@ -9,6 +9,7 @@ import { InlineRef } from "@/components/references/InlineRef";
 import { TopicTableOfContents } from "@/components/layout/TopicTableOfContents";
 import { renalDiseaseQuestions } from "@/data/quizzes";
 import { Exam } from "@/data/curriculum";
+import { HYPERKALAEMIA_CALCIUM_TEACHING } from "@/lib/clinical-audit-rules";
 
 const tocItems = [
   { id: "section-ckd-and-uraemic-effects", label: "CKD Staging & Uraemic Effects", group: "Core" },
@@ -116,7 +117,7 @@ const workedExamples: WorkedExample[] = [
             Continuous cardiac monitoring; treat as a medical emergency in parallel with surgical preparation — do not delay life-saving surgery, but stabilise potassium first if at all possible.
           </li>
           <li>
-            Adult non-arrest ECG-toxic hyperkalaemia: <strong>calcium gluconate 30 mL 10% IV over 10 minutes</strong>; equivalent-calcium chloride 10 mL 10% IV over 5 minutes is preferred in arrest/peri-arrest under the resuscitation protocol. Monitor ECG and reassess — calcium does not lower potassium. <InlineRef topicId="renal-disease" refLabel="UKKA Hyperkalaemia July 2026" />
+            {HYPERKALAEMIA_CALCIUM_TEACHING} <InlineRef topicId="renal-disease" refLabel="UKKA Hyperkalaemia July 2026" />
           </li>
           <li>
             Shift potassium intracellularly: <strong>10 units soluble insulin with 25 g glucose IV</strong> (125 mL 20%, 50 mL 50% or 250 mL 10%) per local protocol, plus <strong>nebulised salbutamol 10–20 mg</strong>. Check glucose at baseline, 30, 60, 90, 120, 180, 240, 300 and 360 minutes; extend for high risk/repeated doses. If pretreatment glucose &lt;7 mmol/L, follow with 10% glucose 50 mL/h for 5 h.
@@ -321,7 +322,7 @@ const RenalDiseaseTopic = () => {
                 <div className="bg-card border border-border rounded-lg p-4">
                   <h3 className="font-semibold text-foreground mb-2">Hyperkalaemia Treatment Ladder</h3>
                   <ul className="list-disc list-inside space-y-1 text-sm">
-                    <li><strong>1. Cardioprotection</strong>: calcium gluconate 30 mL 10% IV over 10 minutes for non-arrest ECG-toxic hyperkalaemia. Equivalent calcium chloride 10 mL 10% over 5 minutes is preferred in arrest/peri-arrest per resuscitation protocol. Monitor ECG and reassess; does not lower potassium.</li>
+                    <li><strong>1. Cardioprotection</strong>: {HYPERKALAEMIA_CALCIUM_TEACHING} <InlineRef topicId="renal-disease" refLabel="UKKA Hyperkalaemia July 2026" /></li>
                     <li><strong>2. Shift potassium intracellularly</strong>: insulin 10 units (soluble/Actrapid) in 25 g glucose IV (50 mL 50% or 250 mL 10% glucose) over 15–30 minutes; nebulised salbutamol 10–20 mg (higher than the standard bronchodilator dose).</li>
                     <li><strong>3. Sodium bicarbonate</strong> 50–100 mL 8.4% IV — useful adjunct if concurrent metabolic acidosis, of limited benefit as monotherapy.</li>
                     <li><strong>4. Removal of potassium</strong>: dialysis when indicated, loop diuretics if responsive; oral sodium zirconium cyclosilicate or oral patiromer are adjuncts, not substitutes for immediate measures. UKKA July 2026 no longer recommends calcium resonium.</li>

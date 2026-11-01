@@ -6,15 +6,14 @@ export function diagramIssues() {
   return readdirSync('src/pages/topics').filter(f => f.endsWith('.tsx')).flatMap(file => {
     const path = `src/pages/topics/${file}`;
     const topic = parseTopic(readFileSync(path, 'utf8'), path);
-    if (!topic.renderedDiagrams.length) return [];
-    const issues: { file: string; kind: string; detail: string }[] = [];
-    if (!topic.topicId) return [{ file: path, kind: 'missing-topicId', detail: topic.diagnostics.join('; ') || 'No TopicTemplate topicId' }];
+    const issues: { file: string; kind: string; detail: string }[] = topic.diagnostics.map(detail => ({ file: path, kind: 'parser-error', detail }));
+    if (!topic.renderedDiagrams.length) return issues;
+    if (!topic.topicId) return [...issues, { file: path, kind: 'missing-topicId', detail: 'No TopicTemplate topicId' }];
     const known = pool.get(topic.topicId);
-    if (!known) return [{ file: path, kind: 'missing-references-entry', detail: topic.topicId }];
+    if (!known) return [...issues, { file: path, kind: 'missing-references-entry', detail: topic.topicId }];
     const labels = topic.sections.diagrams;
     if (!labels?.length) issues.push({ file: path, kind: labels ? 'empty-diagram-sources' : 'missing-diagram-sources', detail: topic.renderedDiagrams.join(', ') });
     for (const label of labels ?? []) if (!known.has(label)) issues.push({ file: path, kind: 'label-mismatch', detail: label });
-    for (const detail of topic.diagnostics) issues.push({ file: path, kind: 'parser-error', detail });
     return issues;
   });
 }

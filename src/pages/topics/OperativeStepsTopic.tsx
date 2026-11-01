@@ -226,12 +226,14 @@ export default function OperativeStepsTopic() {
         { text: "Cemented hip surgery needs an announced cementing step and a team watch for bone cement implantation syndrome", cites: ["AAGBI BCIS 2015"] },
       ]}
       sectionExamMapping={{ objectives: { exams }, keyPoints: { exams } }}
+      sectionSources={{ diagrams: ["GALA 2008", "ESVS 2023 carotid", "NICE NG156", "ESVS 2024 AAA", "EVAR-1 2004"] }}
       quizQuestions={quiz}
       coreConcepts={
         <div className="space-y-6">
           <p className="text-muted-foreground leading-relaxed">
             A searchable summary of what the surgeon is doing at each stage of common operations, with what each step means for anaesthesia.
             Steps describe a typical sequence — techniques vary by surgeon and unit, so confirm the plan at the team brief. Diagrams are schematic, not to scale.
+            Topic-level diagram sources are representative vascular material; each operation retains its own source list below the steps. Source linkage does not certify every anatomical detail of a drawing.
             For specialty-level plans see <Link to="/clinical/surgical-protocols" className="text-primary underline">Perioperative Protocols by Surgery Type</Link>.
           </p>
           <ExamSection id="operations-library" exams={exams}>
