@@ -11,12 +11,13 @@ import PancreatitisEvolutionTimeline from "@/components/diagrams/intensive-care/
 import { DiagramSection } from "@/components/topic/DiagramSection";
 import type { WorkedExample } from "@/components/topic/WorkedExamples";
 import { ExamPitfallsCallout } from "@/components/exam/ExamPitfallsCallout";
+import { PANCREATITIS_FLUIDS, PANCREATITIS_NUTRITION, PANCREATITIS_INFECTION, PANCREATITIS_SOURCE_CONTROL, HTG_MANAGEMENT } from "@/components/topic/PancreatitisTeaching";
 import { InlineRef } from "@/components/references/InlineRef";
 
 const acutePancreatitisFaqs: Array<[string, string]> = [
   ["How is severity stratified in acute pancreatitis?", "Use the revised Atlanta classification: mild (no organ failure or complications), moderate (transient organ failure <48 h or local complications), severe (persistent organ failure >48 h); supplement with APACHE II and CRP >150 at 48 h."],
-  ["What is the role of early enteral nutrition?", "Start enteral feeding within 24–72 h via nasogastric or nasojejunal route — it maintains gut barrier, reduces infected necrosis and lowers mortality compared with TPN (PYTHON trial, IAP/APA guidelines)."],
-  ["When should antibiotics be given in severe pancreatitis?", "Only for proven or strongly suspected infected necrosis (gas on CT, positive FNA culture) or extra-pancreatic infection — routine prophylactic antibiotics do not improve outcome and promote fungal superinfection."],
+  ["What is the role of early enteral nutrition?", "General acute pancreatitis: offer oral intake as tolerated; vomiting, ileus or obstruction may temporarily prevent it. In moderately severe/severe disease, start enteral support within 72 hours if needed (NG or NJ according to tolerance). Enteral is preferred to parenteral nutrition; use PN when enteral fails or is contraindicated after specialist nutrition assessment, not an automatic 5–7-day wait. PYTHON (2014;208 high-predicted-risk patients) compared tube feeding within 24 hours with oral feeding at 72 hours and tube feeding if needed, not TPN: major infection/death within 6 months 30% vs 27%, no reduction; 69% of on-demand patients avoided tubes. Separate HTG pathway: IAP 2025 recommendation 66 advises an initial 48-hour fast, then low-fat soft diet and enteral support if oral intake is not tolerated; follow the adopted guidance and individual clinical plan, rather than applying early oral feeding indiscriminately. If PN is required in HTG pancreatitis, IAP 2025 advises withholding intravenous fat emulsion when TG ≥400 mg/dL."],
+  ["When should antibiotics be given in severe pancreatitis?", "No prophylactic antibiotics for sterile necrosis. Treat proven or strongly suspected infected necrosis (sepsis, bacteraemia or clinical deterioration) and extra-pancreatic infection; do not wait for gas or positive FNA. FNA is unnecessary in most cases. Obtain cultures when practicable without delaying urgent treatment. Select necrosis-penetrating antibiotics with local microbiology and resistance assessment; carbapenems are an option, not mandatory universal first-line therapy. Gas strongly suggests infection but can reflect an enteric fistula or recent intervention."],
 ];
 
 const objectives = [
@@ -40,7 +41,7 @@ const workedExamples: WorkedExample[] = [
     working: (
       <>
         Glasgow criteria met: PaO₂ &lt;8, age &gt;55, WBC &gt;15, Ca²⁺ &lt;2.0, urea &gt;16, AST &gt;200,
-        albumin &lt;32, glucose &gt;10 — score 8/8. CRP &gt;150 at 48 h corroborates severe disease.
+        albumin &lt;32, glucose &gt;10 — score 8/8. CRP &gt;150 at 48 h supports prediction of a potentially severe course, not an Atlanta severity diagnosis.
       </>
     ),
     answer: (
@@ -64,58 +65,62 @@ const workedExamples: WorkedExample[] = [
       <>
         WATERFALL (NEJM 2022) was stopped early: aggressive arm = 20.5 % fluid overload vs 6.3 % moderate,
         with no benefit on disease progression. The patient is normovolaemic — no bolus is indicated.
-        Maintenance = 1.5 mL/kg/h × 70 kg ≈ 105 mL/h Hartmann's.
+        Initial therapy = 1.5 mL/kg/h × 70 kg ≈ 105 mL/h Hartmann's.
       </>
     ),
     answer: (
       <>
-        No bolus. Run Hartmann's at ~ 105 mL/h (1.5 mL/kg/h). Reassess at 12, 24, 48 and 72 h targeting
-        MAP ≥ 65, UO ≥ 0.5 mL/kg/h, falling lactate, BUN and HCT. Use noradrenaline if MAP target unmet
-        once euvolaemic — do not chase MAP with more fluid. WATERFALL showed aggressive resuscitation
-        caused significantly more fluid overload (20.5 % vs 6.3 %) without reducing progression to
-        moderate/severe disease, so moderate goal-directed resuscitation is now the standard of care.
+        No bolus for this normovolaemic example; initial Hartmann's ~105 mL/h (1.5 mL/kg/h),
+        with an overload check at 3 ±1 hours and frequent individual reassessment, not a fixed 72-hour prescription.
+        Reduce/stop for overload; review IV needs as oral intake becomes tolerated. WATERFALL excluded baseline
+        shock/respiratory failure, significant heart failure and eGFR &lt;60 mL/min/1.73 m²; severe disease/comorbidity
+        needs individualised resuscitation. Later trial checks were at 12, 24, 48 and 72 hours. Monitor MAP, urine output,
+        lactate, BUN and haematocrit; do not chase MAP with fluid once euvolaemic. Increased overload was demonstrated,
+        not reduced progression or a statistically established longer hospital stay.
       </>
     ),
-   cites: ["WATERFALL 2022", "BSG 2024", "AGA 2024"],
+   cites: ["WATERFALL 2022", "WATERFALL protocol 2020", "IAP 2025"],
   },
   {
     title: "Suspected infected necrosis at day 12",
     scenario: (
       <>
         Severe necrotising pancreatitis. Initially improving, but at day 12 the patient is febrile to
-        39 °C, WCC rising, new noradrenaline requirement. CT shows extensive walled-off necrosis with
+        39 °C, WCC rising, new noradrenaline requirement. CT shows an extensive acute necrotic collection (unless an organised wall is specifically demonstrated) with
         gas bubbles within the collection.
       </>
     ),
     working: (
       <>
         Gas in a necrotic collection plus clinical deterioration is highly suggestive of infected
-        necrosis — a leading cause of late mortality. Carbapenems have the best pancreatic penetration.
-        Step-up source control (PANTER trial): percutaneous or endoscopic transgastric drainage first,
-        not immediate open necrosectomy.
+        necrosis; enteric fistula or intervention can also cause gas. Start necrosis-penetrating antibiotics using local microbiology advice, not a mandatory carbapenem.
+        PANTER supports percutaneous-drainage-first surgical step-up. At day 12, consider earlier percutaneous
+        drainage with HPB/ICU assessment; endoscopic transmural drainage depends on an organised collection,
+        anatomy and expertise, not immediate open necrosectomy.
       </>
     ),
     answer: (
       <>
-        Start meropenem, blood and (if accessible) FNA cultures. Discuss with HPB MDT for endoscopic
-        transgastric or percutaneous drainage as the first step; reserve VARD or open necrosectomy for
-        failed minimally invasive approach. Delay any intervention beyond 4 weeks where possible to
-        allow demarcation.
+        Obtain blood cultures without delaying urgent antibiotics; FNA is unnecessary in most cases. Urgent HPB/ICU
+        assessment and earlier percutaneous drainage may be needed, including within 2 weeks for deterioration.
+        Do not wait for 4 weeks for necessary source control. In stable patients defer intervention when feasible;
+        avoid early debridement and aim for about 4 weeks. Drainage and debridement are separate decisions;
+        reserve minimally invasive/open necrosectomy for selected failures of drainage.
       </>
     ),
-   cites: ["WATERFALL 2022"],
+   cites: ["AGA necrosis 2020", "WSES 2019", "PANTER 2010"],
   },
 ];
 
 const keyPoints = [
-  { text: "Diagnose with 2 of 3: typical pain + amylase/lipase ≥3× ULN + characteristic imaging (Atlanta 2012)", cites: ["WATERFALL 2022"] },
+  { text: "Diagnose with 2 of 3: typical pain + amylase/lipase ≥3× ULN + characteristic imaging (Atlanta 2012)", cites: ["Atlanta 2012"] },
   { text: "Severity stratification: Glasgow (Imrie), APACHE-II ≥8, BISAP, CRP >150 at 48h, persistent organ failure >48h", cites: ["Atlanta 2012"] },
   { text: "I GET SMASHED — gallstones (50%) and ethanol (25%) account for most UK cases", cites: ["IAP/APA 2013"] },
-  { text: "Fluids (WATERFALL/AGA 2024): balanced crystalloid (Ringer's lactate) — 10 mL/kg bolus only if hypovolaemic, then 1.5 mL/kg/h, reassess at 12/24/48/72h. Aggressive resuscitation causes fluid overload (20.5% vs 6.3%) with no clinical benefit", cites: ["BSG 2024"] },
-  { text: "Early enteral nutrition (NG/NJ) within 24–72h reduces infectious complications and mortality vs TPN", cites: ["BJA Educ 2018"] },
-  { text: "Prophylactic antibiotics are NOT indicated — only for proven infection or infected necrosis (carbapenem)", cites: ["PANTER 2010"] },
-  { text: "ERCP within 24–72h only for cholangitis or persistent biliary obstruction; cholecystectomy same admission for mild gallstone pancreatitis", cites: ["WATERFALL 2022"] },
-  { text: "Step-up approach to necrosis (PANTER trial): drainage → minimally invasive → open necrosectomy as last resort, delay >4 weeks", cites: ["Atlanta 2012"] },
+  { text: PANCREATITIS_FLUIDS, cites: ["WATERFALL 2022", "WATERFALL protocol 2020", "IAP 2025"] },
+  { text: PANCREATITIS_NUTRITION, cites: ["NICE NG104", "PYTHON 2014", "AGA 2018", "IAP 2025 HTG"] },
+  { text: PANCREATITIS_INFECTION, cites: ["AGA necrosis 2020", "WSES 2019"] },
+  { text: "ERCP within 24–72h only for cholangitis or persistent biliary obstruction; cholecystectomy same admission for mild gallstone pancreatitis", cites: ["IAP 2025"] },
+  { text: PANCREATITIS_SOURCE_CONTROL, cites: ["AGA necrosis 2020", "PANTER 2010"] },
   { text: "Refer early to tertiary HPB/ICU centre for severe disease, necrosis, organ failure, or need for IR/advanced endoscopy", cites: ["IAP/APA 2013"] },
 ];
 
@@ -144,18 +149,18 @@ const AcutePancreatitisTopic = () => {
           "Atlanta 2012",
           "WATERFALL 2022",
           "PANTER 2010",
-          "BJA Educ 2018",
-          "BSG 2024",
+          "BJA Educ 2008",
+          "IAP 2025",
         ],
         keyPoints: [
           "IAP/APA 2013",
           "Atlanta 2012",
           "WATERFALL 2022",
           "PANTER 2010",
-          "BJA Educ 2018",
-          "BSG 2024",
+          "BJA Educ 2008",
+          "IAP 2025",
         ],
-        workedExamples: ["IAP/APA 2013", "Atlanta 2012", "WATERFALL 2022"],
+        workedExamples: ["IAP/APA 2013", "Atlanta 2012", "WATERFALL 2022", "WATERFALL protocol 2020", "IAP 2025", "AGA necrosis 2020", "WSES 2019"],
       }}
       coreConcepts={
         <>
@@ -229,9 +234,9 @@ const AcutePancreatitisTopic = () => {
           intro={
             <>
               Contrast-enhanced CT (CECT) at 72–96 h after symptom onset is the imaging gold standard for assessing
-              severity, necrosis and local complications. Earlier scans systematically under-call necrosis. Use this
+              necrosis and local complications. Routine severity imaging is deferred, but uncertainty, alternative emergencies or deterioration can justify earlier diagnostic CT. Early scans can under-call necrosis. Use this
               schematic to recognise the cardinal findings — and the ones that change management (gas in necrosis,
-              splanchnic vein thrombosis, pleural effusion as a Glasgow criterion).
+              splanchnic vein thrombosis, pleural effusion as a BISAP variable; hypoxaemia is the Glasgow/Imrie respiratory variable).
             </>
           }
         >
@@ -243,8 +248,7 @@ const AcutePancreatitisTopic = () => {
           intro={
             <>
               The same anatomy looks radically different on day 1 versus week 6. The Atlanta 2012 classification
-              names each morphological stage and dictates when intervention is safe — the cardinal rule is{" "}
-              <em>hands-off in the first 4 weeks</em> until a wall has formed. Step through the timeline to see how
+              names morphological stages, not an automatic safe-intervention date. Avoid early debridement and aim for about 4 weeks when feasible; deterioration can require earlier drainage, including within 2 weeks. The timeline shows how
               interstitial oedema evolves to necrosis, then to walled-off necrosis amenable to step-up drainage.
             </>
           }
@@ -264,7 +268,7 @@ const AcutePancreatitisTopic = () => {
               { cause: "Steroids / Scorpion sting", detail: "Drug-induced (azathioprine, valproate, thiazides, GLP-1 agonists, asparaginase)." },
               { cause: "Mumps / viral", detail: "Mumps, CMV, Coxsackie, HIV, hepatitis." },
               { cause: "Autoimmune", detail: "IgG4-related (type 1) — responds to steroids. Diffuse 'sausage' pancreas on CT." },
-              { cause: "Hypertriglyceridaemia / Hypercalcaemia", detail: "TG &gt;11.3 mmol/L (1000 mg/dL). Hyperparathyroidism, malignancy. Plasma exchange or insulin infusion for severe HTG." },
+              { cause: "Hypertriglyceridaemia / Hypercalcaemia", detail: "TG &gt;11.3 mmol/L (1000 mg/dL). Hyperparathyroidism, malignancy. Specific triglyceride-lowering treatment requires specialist selection; see the HTG management section." },
               { cause: "ERCP", detail: "Post-procedure pancreatitis. Rectal indomethacin/diclofenac is standard prophylaxis." },
               { cause: "Drugs", detail: "See above. Always review medication list." },
             ].map((c) => (
@@ -281,14 +285,13 @@ const AcutePancreatitisTopic = () => {
             lipaemic serum, pseudohyponatraemia, spuriously normal amylase and a family history or poorly
             controlled diabetes. Excess chylomicrons are hydrolysed by pancreatic lipase to free fatty acids,
             which are directly cytotoxic to acinar cells and capillary endothelium and cause ischaemia and
-            inflammation; the priority is therefore rapid triglyceride reduction alongside standard care
+            inflammation; supportive care and specialist assessment remain essential; lowering triglycerides does not by itself establish clinical benefit
             <InlineRef topicId="acute-pancreatitis" refLabel="HTG Pancreatitis 2018" />.
           </p>
+          <p className="text-sm text-muted-foreground mb-3">IAP 2025 recommendation 66 adopts an initial 48-hour fast, then a low-fat soft diet and enteral support if oral intake is not tolerated. This HTG-specific plan is distinct from general early oral feeding. <InlineRef topicId="acute-pancreatitis" refLabel="IAP 2025 HTG" /></p>
           <div className="grid sm:grid-cols-2 gap-3">
             {[
-              { step: "Insulin infusion (first-line)", detail: "Insulin activates lipoprotein lipase, accelerating chylomicron and VLDL triglyceride clearance, and inhibits hormone-sensitive lipase, reducing further free fatty acid release. Give a variable-rate insulin infusion at about 0.1–0.3 units/kg/h. In non-diabetic or normoglycaemic patients run concurrent 5–10% dextrose and check capillary glucose hourly, aiming for 8–12 mmol/L; monitor potassium." },
-              { step: "Plasmapheresis / plasma exchange", detail: "Removes chylomicrons directly and can halve triglycerides in a single session. Reserve it for severe or deteriorating disease — organ failure, persistent hypocalcaemia, lactic acidosis, or triglycerides that remain very high despite insulin — and for pregnancy-associated disease. It is invasive, needs a large-bore line and citrate anticoagulation, and has not been shown to improve mortality, so it is an escalation rather than a routine step." },
-              { step: "Targets and monitoring", detail: "Aim to bring triglycerides below 5.6 mmol/L (500 mg/dL) — this is the threshold at which further pancreatic injury becomes unlikely; recheck every 12 h during active treatment. Stop the insulin infusion once the target is reached and the patient is eating, then convert to long-term control. Keep the patient nil by mouth of fat initially; heparin is not recommended as a triglyceride-lowering therapy because it depletes endothelial lipoprotein lipase stores after an initial rise." },
+              ...HTG_MANAGEMENT,
               { step: "Longer-term prevention", detail: "Once oral intake resumes: fibrate (fenofibrate) as first-line lipid-lowering therapy, omega-3 fatty acids, tight glycaemic control, complete alcohol abstinence, weight loss and a low-fat diet. Review contributing drugs — oestrogens, tamoxifen, retinoids, propofol (a lipid emulsion), thiazides, antiretrovirals, olanzapine and clozapine. Screen for familial chylomicronaemia and refer to lipid clinic after recurrent episodes." },
             ].map((h) => (
               <div key={h.step} className="p-3 rounded-lg border border-border">
@@ -297,6 +300,7 @@ const AcutePancreatitisTopic = () => {
               </div>
             ))}
           </div>
+          <p className="text-xs text-muted-foreground mt-3"><InlineRef topicId="acute-pancreatitis" refLabel="IAP 2025 HTG" /> <InlineRef topicId="acute-pancreatitis" refLabel="Endocrine Society 2020 HTG" /> <InlineRef topicId="acute-pancreatitis" refLabel="HTG insulin protocol 2023" /> <InlineRef topicId="acute-pancreatitis" refLabel="HTG exchange RCT 2022" /> Biochemical response is not proof of mortality benefit; published insulin/dextrose protocols and trial targets differ.</p>
         </div>
 
         {/* Diagnosis */}
@@ -317,7 +321,7 @@ const AcutePancreatitisTopic = () => {
               { test: "Bloods", detail: "FBC, U&E, LFT (ALT &gt;150 IU/L = 95% PPV for gallstone aetiology), Ca²⁺, glucose, lipids, CRP, lactate, ABG, coagulation, group & save." },
               { test: "Severity scores", detail: "Glasgow (Imrie ≥3), Ranson, APACHE-II ≥8, BISAP ≥3, CTSI/Balthazar. CRP &gt;150 mg/L at 48h predicts severe disease." },
               { test: "Imaging — initial", detail: "Transabdominal US within 24h to identify gallstones / dilated CBD. Erect CXR (exclude perforation, ARDS)." },
-              { test: "Imaging — CT", detail: "Contrast-enhanced CT abdomen at 72–96h (not earlier — necrosis takes time to declare). Use modified CT severity index. MRCP if persistent jaundice or stone suspected." },
+              { test: "Imaging — CT", detail: "Routine CECT for necrosis/severity at 72–96h; earlier diagnostic CT may be indicated for uncertainty, alternative emergencies or deterioration. Repeat imaging for clinical non-improvement/deterioration or intervention planning, not a calendar alone. AKI requires benefit-risk discussion with radiology; do not delay essential emergency imaging solely for renal impairment. Noncontrast CT does not equivalently assess enhancement/necrosis. MRCP if a duct stone is suspected." },
             ].map((t) => (
               <div key={t.test} className="p-3 rounded-lg border border-border">
                 <p className="font-semibold text-foreground text-sm">{t.test}</p>
@@ -326,8 +330,9 @@ const AcutePancreatitisTopic = () => {
             ))}
           </div>
 
+          <p className="text-xs text-muted-foreground mt-2"><InlineRef topicId="acute-pancreatitis" refLabel="IAP 2025 imaging" /> <InlineRef topicId="acute-pancreatitis" refLabel="NICE NG148 contrast" /></p>
           <div className="mt-4 p-3 rounded-lg border border-border bg-secondary/20">
-            <p className="text-xs font-semibold text-foreground mb-1">Glasgow (Imrie) score — score ≥3 within 48h = severe</p>
+            <p className="text-xs font-semibold text-foreground mb-1">Glasgow (Imrie) score — score ≥3 within 48h predicts a potentially severe course; Atlanta defines established severity</p>
             <p className="text-xs text-muted-foreground">
               <strong>PANCREAS:</strong> PaO₂ &lt;8 kPa · Age &gt;55 · Neutrophils (WBC) &gt;15 · Calcium &lt;2.0 mmol/L ·
               Renal urea &gt;16 mmol/L · Enzymes (LDH &gt;600 / AST &gt;200) · Albumin &lt;32 g/L · Sugar (glucose) &gt;10 mmol/L
@@ -342,7 +347,7 @@ const AcutePancreatitisTopic = () => {
         <div>
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Initial Management (first 24–72h)</h2>
           <p className="text-muted-foreground leading-relaxed mb-3">
-            Priorities are aggressive but goal-directed resuscitation, analgesia, identification of biliary obstruction
+            Priorities are carefully individualised, goal-directed resuscitation, analgesia, identification of biliary obstruction
             and early severity stratification. Most deaths in the first week are from SIRS/MODS, not infection.
           </p>
           <div className="space-y-3">
@@ -353,7 +358,7 @@ const AcutePancreatitisTopic = () => {
               },
               {
                 topic: "C — Circulation / Fluids (WATERFALL-aligned, current standard)",
-                detail: "Use balanced crystalloid (Hartmann's / Ringer's lactate) — avoid 0.9% saline (hyperchloraemic acidosis, worsens SIRS). Assess volume status first: if hypovolaemic give a 10 mL/kg bolus of Ringer's lactate; if normovolaemic, no bolus is needed. Then run maintenance at 1.5 mL/kg/h LR. Reassess clinically and biochemically at 12, 24, 48 and 72h and titrate to MAP ≥65 mmHg, urine output ≥0.5 mL/kg/h, lactate clearance, falling BUN and HCT. The WATERFALL trial (NEJM 2022) was stopped early because aggressive resuscitation (20 mL/kg bolus + 3 mL/kg/h) caused significantly more fluid overload (20.5% vs 6.3%) and longer hospital stay without reducing progression to moderate/severe disease — moderate, goal-directed resuscitation is now standard (endorsed by AGA 2024 and BSG 2024). Vasopressors (noradrenaline) if MAP target unmet despite adequate volume — do NOT chase MAP with more fluid once euvolaemic.",
+                detail: <>{PANCREATITIS_FLUIDS} <InlineRef topicId="acute-pancreatitis" refLabel="WATERFALL protocol 2020" /> <InlineRef topicId="acute-pancreatitis" refLabel="WATERFALL 2022" /> <InlineRef topicId="acute-pancreatitis" refLabel="IAP 2025" /></>,
               },
               {
                 topic: "D — Analgesia",
@@ -362,31 +367,36 @@ const AcutePancreatitisTopic = () => {
                     Multimodal. Paracetamol + opioid (morphine or fentanyl PCA). Opioid concerns about Sphincter of
                     Oddi spasm are largely theoretical — do not withhold.
                     <br /><br />
-                    <strong>Thoracic epidural analgesia</strong> — insertion at T8–T10 — should be considered in
-                    severe pancreatitis. <strong>Benefits</strong>: superior dynamic pain relief, opioid sparing,
-                    improved splanchnic and pancreatic microcirculatory perfusion, reduced ileus, fewer respiratory
-                    complications, and a signal of mortality benefit in small trials and observational data (evidence
-                    remains mixed with no large RCT). <strong>Risks/contraindications</strong>: coagulopathy and
-                    thrombocytopenia are common in severe disease, sepsis/bacteraemia, haemodynamic instability from
+                    <strong>Thoracic epidural analgesia</strong> at T8–T10 may be a specialist analgesic option
+                    in selected patients with expertise and contraindication assessment. Possible pain relief and
+                    opioid sparing are distinct from unproven prevention of organ failure or mortality benefit.
+                    EPIPAN (2023;148 enrolled,135 analysed) found no difference in ventilator-free days; longer invasive
+                    ventilation in recipients was a secondary result, not definitive proof of harm. UEG 2026 does not
+                    support routine epidural use to improve systemic outcomes. Improved perfusion, reduced ileus,
+                    fewer respiratory complications and survival are not guaranteed benefits.
+                    <InlineRef topicId="acute-pancreatitis" refLabel="EPIPAN 2023" />
+                    <InlineRef topicId="acute-pancreatitis" refLabel="UEG pain 2026" />
+                    <strong>Risks/contraindications</strong>: coagulopathy/thrombocytopenia, sepsis/bacteraemia,
+                    haemodynamic instability from
                     sympathectomy, technical difficulty and positioning in the unwell patient, and epidural
                     haematoma/abscess. <strong>Practicalities</strong>: check platelets and coagulation before
                     insertion and before removal, ensure adequate volume status and vasopressor availability, and use
                     dilute low-dose local anaesthetic with regular neurological review.{" "}
-                    <InlineRef topicId="acute-pancreatitis" refLabel="BJA Educ 2018" />
+                    <InlineRef topicId="acute-pancreatitis" refLabel="BJA Educ 2008" />
                   </>
                 ),
               },
               {
                 topic: "E — Nutrition",
-                detail: "Early enteral feeding within 24–72h (NG or NJ tube — both equivalent per multiple RCTs). Reduces infectious complications, MODS and mortality vs TPN. NBM only if ileus/obstruction. TPN reserved for those who fail enteral after 5–7 days.",
+                detail: <>{PANCREATITIS_NUTRITION} <InlineRef topicId="acute-pancreatitis" refLabel="PYTHON 2014" /> <InlineRef topicId="acute-pancreatitis" refLabel="NICE NG104" /> <InlineRef topicId="acute-pancreatitis" refLabel="AGA 2018" /> <InlineRef topicId="acute-pancreatitis" refLabel="IAP 2025 HTG" /></>,
               },
               {
                 topic: "F — Antibiotics",
-                detail: "NOT routinely indicated. Prophylactic antibiotics do not reduce mortality or infected necrosis. Use only for proven extra-pancreatic infection (cholangitis, pneumonia, line sepsis) or proven infected necrosis (positive culture from FNA or gas on CT). Carbapenem (meropenem) if needed — best pancreatic penetration.",
+                detail: <>{PANCREATITIS_INFECTION} <InlineRef topicId="acute-pancreatitis" refLabel="AGA necrosis 2020" /> <InlineRef topicId="acute-pancreatitis" refLabel="WSES 2019" /></>,
               },
               {
                 topic: "G — Glycaemic / metabolic",
-                detail: "Target glucose 6–10 mmol/L. Correct hypocalcaemia (sign of severity, fat saponification). Replace Mg²⁺, K⁺, PO₄³⁻. Insulin infusion if HTG-induced (drops triglycerides rapidly).",
+                detail: "Target glucose 6–10 mmol/L. Correct hypocalcaemia (sign of severity, fat saponification). Replace Mg²⁺, K⁺, PO₄³⁻. For HTG-associated disease, follow the patient-selection and monitoring guidance in the specific management section.",
               },
               {
                 topic: "H — Specific therapies",
@@ -396,16 +406,13 @@ const AcutePancreatitisTopic = () => {
                     gallstone pancreatitis). Cholecystectomy on same admission for mild gallstone pancreatitis
                     (reduces recurrence).
                     <br /><br />
-                    <strong>Hypertriglyceridaemia-induced pancreatitis</strong> — diagnosed when triglycerides
-                    &gt;11.3 mmol/L (1000 mg/dL); the goal is rapid reduction to &lt;5.6 mmol/L (500 mg/dL).{" "}
-                    <strong>Insulin infusion</strong> activates lipoprotein lipase and is first-line: fixed rate
-                    ~0.1 units/kg/h with concurrent 5–10% glucose to maintain euglycaemia, with hourly glucose and
-                    potassium monitoring. <strong>Plasmapheresis/apheresis</strong> physically removes chylomicrons
-                    and should be considered for organ failure, extreme levels &gt;22.6 mmol/L, or failure to
-                    respond to insulin. <strong>Supportive measures</strong>: no oral fat, strict glycaemic control,
-                    stop offending drugs (oestrogens, thiazides, alcohol, and propofol as an ongoing lipid load), and
-                    start fibrate and omega-3 therapy with lipid-clinic follow-up on recovery.{" "}
-                    <InlineRef topicId="acute-pancreatitis" refLabel="IAP/APA 2013" />
+                    <strong>Hypertriglyceridaemia-associated pancreatitis</strong> — interpret elevated triglycerides
+                    with the clinical diagnosis and other causes. Use the specific management section above for
+                    insulin selection and apheresis escalation; neither a fixed insulin rate nor a single triglyceride
+                    cutoff determines treatment for every patient. Review contributing medicines and plan long-term
+                    lipid control with specialist follow-up. See the IAP2025 and Endocrine Society2020 recommendations.
+                    <br /><a href="https://doi.org/10.1016/j.pan.2025.04.020" target="_blank" rel="noopener noreferrer">IAP2025 guideline</a>{" · "}
+                    <a href="https://doi.org/10.1210/clinem/dgaa674" target="_blank" rel="noopener noreferrer">Endocrine Society2020 guideline</a>
                   </>
                 ),
               },
@@ -424,9 +431,9 @@ const AcutePancreatitisTopic = () => {
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Ongoing Management (beyond 72h)</h2>
           <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside leading-relaxed">
             <li><strong>Daily reassessment</strong>: SOFA score, fluid balance, abdominal girth (intra-abdominal hypertension is common — measure bladder pressure if oliguric/distended; IAH &gt;12 mmHg, ACS &gt;20 mmHg with new organ failure).</li>
-            <li><strong>Repeat CECT</strong> at 7–10 days (or sooner if deterioration) to assess for necrosis, walled-off necrosis (WON), pseudocyst, vascular complications.</li>
-            <li><strong>Step-up approach to necrosis</strong> (PANTER trial 2010, MISER trial): drainage first (percutaneous or endoscopic transgastric) → minimally invasive video-assisted retroperitoneal debridement (VARD) → open necrosectomy only as last resort. Delay any intervention beyond 4 weeks if possible to allow demarcation.</li>
-            <li><strong>Infected necrosis</strong>: suspect if clinical deterioration after 7–10 days, gas on CT, positive FNA. Carbapenem cover (meropenem, imipenem). Source control via step-up approach.</li>
+            <li><strong>Repeat imaging</strong> for deterioration, persistent non-improvement or intervention planning, not automatically at 7–10 days. ANC/APFC are usually unencapsulated then; WON/pseudocyst generally form after about 4 weeks. <InlineRef topicId="acute-pancreatitis" refLabel="IAP 2025" /></li>
+            <li><strong>Step-up source control</strong>: {PANCREATITIS_SOURCE_CONTROL} <InlineRef topicId="acute-pancreatitis" refLabel="AGA necrosis 2020" /></li>
+            <li><strong>Infected necrosis</strong>: {PANCREATITIS_INFECTION} <InlineRef topicId="acute-pancreatitis" refLabel="WSES 2019" /></li>
             <li><strong>Renal replacement therapy</strong> for AKI per KDIGO indications. CRRT preferred in haemodynamically unstable or raised intra-abdominal pressure.</li>
             <li><strong>Nutrition</strong>: continue enteral. If gastric outlet obstruction from inflammatory mass, advance to NJ. Address vitamin (esp. B1 in alcohol) and trace-element deficiencies.</li>
             <li><strong>Thromboprophylaxis</strong>: high VTE risk (immobility, inflammation, splanchnic vein thrombosis). LMWH unless active bleeding.</li>
@@ -446,7 +453,7 @@ const AcutePancreatitisTopic = () => {
                 <li>Acute necrotic collection (&lt;4 weeks, contains necrosis)</li>
                 <li>Walled-off necrosis (WON, &gt;4 weeks) — endoscopic transgastric drainage ± necrosectomy</li>
                 <li>Infected necrosis — leading cause of late mortality</li>
-                <li>Splanchnic vein thrombosis (splenic, portal, SMV) — anticoagulate if no bleeding</li>
+                <li>Splanchnic vein thrombosis: individualise therapeutic anticoagulation with HPB/haematology by vessel, progression, bowel ischaemia and bleeding risk. IAP 2025 does not routinely recommend it for isolated splenic thrombosis; portal/mesenteric extension may warrant treatment. iLATAM-AP 2026 also considers progressive splenic thrombosis; evidence is low-certainty, not an absolute never-treat rule. No current bleeding alone is insufficient. <InlineRef topicId="acute-pancreatitis" refLabel="IAP 2025 SVT" /> <InlineRef topicId="acute-pancreatitis" refLabel="iLATAM 2026 SVT" /></li>
                 <li>Pseudoaneurysm (splenic, GDA) — IR embolisation; can cause catastrophic haemorrhage</li>
                 <li>Gastrointestinal: gastric outlet obstruction, colonic ischaemia, fistulae</li>
                 <li>Abdominal compartment syndrome — decompressive laparotomy if refractory</li>
@@ -473,7 +480,7 @@ const AcutePancreatitisTopic = () => {
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Indications for Tertiary Centre Referral</h2>
           <p className="text-muted-foreground leading-relaxed mb-3">
             Severe acute pancreatitis is best managed in centres with HPB surgery, interventional radiology, advanced
-            endoscopy (EUS, ERCP, transgastric necrosectomy) and tertiary ICU support. Per UK BSG / IAP–APA guidelines:
+            endoscopy (EUS, ERCP, transgastric necrosectomy) and tertiary ICU support. Use current IAP 2025/NICE guidance and regional referral arrangements:
           </p>
           <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside leading-relaxed">
             <li><strong>Predicted or established severe pancreatitis</strong> (Glasgow ≥3, APACHE-II ≥8, CRP &gt;150 at 48h, persistent SIRS &gt;48h)</li>
@@ -496,106 +503,30 @@ const AcutePancreatitisTopic = () => {
         {/* Guideline comparison */}
         <div>
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Major Guideline Comparison</h2>
-          <p className="text-muted-foreground leading-relaxed mb-3">
-            Side-by-side summary of the four major contemporary guidelines on the four big management decisions.
-            Where they agree is as instructive as where they differ.
-          </p>
+          <p className="text-muted-foreground leading-relaxed mb-3">Named versions answer different questions; historical guidance is not retroactively attributed WATERFALL. This smaller comparison includes only traceable recommendations.</p>
           <div className="overflow-x-auto rounded-lg border border-border">
-            <table className="w-full text-xs min-w-[720px]">
-              <thead>
-                <tr className="bg-secondary/40 text-foreground">
-                  <th className="text-left p-2 font-semibold border-b border-border">Topic</th>
-                  <th className="text-left p-2 font-semibold border-b border-border">IAP/APA 2013</th>
-                  <th className="text-left p-2 font-semibold border-b border-border">AGA 2018 / 2024 update</th>
-                  <th className="text-left p-2 font-semibold border-b border-border">BSG 2024 (UK)</th>
-                  <th className="text-left p-2 font-semibold border-b border-border">WSES 2019 (revised 2023)</th>
-                </tr>
-              </thead>
+            <table className="w-full text-xs min-w-[540px]">
+              <thead><tr className="bg-secondary/40 text-foreground"><th className="text-left p-2">Guidance</th><th className="text-left p-2">Scope and recommendations</th></tr></thead>
               <tbody className="text-muted-foreground align-top">
                 {[
-                  {
-                    topic: "Initial fluids",
-                    iap: "Ringer's lactate. Goal-directed (HR <120, MAP 65–85, UO ≥0.5 mL/kg/h, HCT 35–44). Historically endorsed 5–10 mL/kg/h.",
-                    aga: "2018: RL preferred, goal-directed. 2024 update post-WATERFALL: moderate resuscitation (10 mL/kg bolus only if hypovolaemic, then 1.5 mL/kg/h LR). Avoid aggressive fluids.",
-                    bsg: "Balanced crystalloid (RL/Hartmann's). Adopt WATERFALL moderate strategy. Reassess 12/24/48/72h. Avoid 0.9% saline.",
-                    wses: "RL is fluid of choice. Goal-directed. 2023 revision aligns with WATERFALL — moderate over aggressive.",
-                  },
-                  {
-                    topic: "Prophylactic antibiotics",
-                    iap: "NOT recommended in any acute pancreatitis (including severe / necrotising).",
-                    aga: "Strongly NOT recommended (no benefit, increases resistance & fungal infection).",
-                    bsg: "NOT recommended. Use only for proven extra-pancreatic infection or infected necrosis.",
-                    wses: "NOT recommended for prophylaxis. Carbapenem (or quinolone + metronidazole) only for confirmed infected necrosis.",
-                  },
-                  {
-                    topic: "ERCP timing",
-                    iap: "Urgent ERCP (<24h) for cholangitis. <72h for persistent biliary obstruction. NOT for predicted severe pancreatitis without cholangitis/obstruction.",
-                    aga: "Same: urgent ERCP only for concurrent cholangitis. APEC trial confirmed no benefit of routine early ERCP in severe gallstone pancreatitis without cholangitis.",
-                    bsg: "ERCP within 24h for cholangitis; within 72h for persistent CBD obstruction. Index-admission cholecystectomy for mild gallstone pancreatitis.",
-                    wses: "Urgent ERCP <24h for cholangitis only. Same-admission cholecystectomy for mild biliary AP.",
-                  },
-                  {
-                    topic: "Necrosectomy approach",
-                    iap: "Step-up: percutaneous/endoscopic drainage first → minimally invasive necrosectomy (VARD) → open as last resort. Delay >4 weeks if possible (PANTER trial).",
-                    aga: "Step-up endorsed. Endoscopic transgastric drainage preferred over percutaneous when anatomy allows (TENSION trial — fewer fistulae, shorter LOS). Delay >4 weeks.",
-                    bsg: "Step-up. Endoscopic-first preferred for retrogastric WON. Open necrosectomy only when minimally invasive options exhausted.",
-                    wses: "Step-up. Endoscopic = percutaneous as first step (operator/anatomy dependent). Open necrosectomy reserved for failed minimally invasive.",
-                  },
-                  {
-                    topic: "Nutrition",
-                    iap: "Early enteral within 72h (NG = NJ). TPN only if enteral intolerance >5–7 days.",
-                    aga: "Early enteral (within 24h if tolerated). Oral feeding as soon as possible in mild AP — do not wait for amylase to normalise.",
-                    bsg: "Early enteral within 72h. NG first-line; switch to NJ only if intolerance.",
-                    wses: "Early enteral within 24–72h. NG and NJ equivalent. TPN reserved.",
-                  },
-                  {
-                    topic: "Cholecystectomy (mild gallstone AP)",
-                    iap: "Same admission.",
-                    aga: "Same admission (strong recommendation).",
-                    bsg: "Same admission, ideally within 2 weeks of discharge if not done as inpatient.",
-                    wses: "Same admission.",
-                  },
-                ].map((row) => (
-                  <tr key={row.topic} className="border-b border-border last:border-b-0 hover:bg-secondary/20">
-                    <td className="p-2 font-semibold text-foreground">{row.topic}</td>
-                    <td className="p-2">{row.iap}</td>
-                    <td className="p-2">{row.aga}</td>
-                    <td className="p-2">{row.bsg}</td>
-                    <td className="p-2">{row.wses}</td>
-                  </tr>
-                ))}
+                  { name: "IAP 2025", label: "IAP 2025", text: "Moderate, individually adjusted fluids; distinguish diagnostic CT from 72–96h necrosis imaging. Necrosis/source control depends on clinical condition. Separate HTG nutrition/selection guidance, not a universal insulin or apheresis threshold." },
+                  { name: "NICE NG104 (2018; current recommendations)", label: "NICE NG104", text: "Do not withhold food without a clear reason such as vomiting. In moderately severe/severe disease start enteral nutrition within 72h; use PN only when enteral fails or is contraindicated." },
+                  { name: "AGA 2018 initial management", label: "AGA 2018", text: "Goal-directed fluids; no recommendation between normal saline and Ringer’s lactate. Oral feeding within 24h as tolerated; enteral over PN and either NG or NJ when tube feeding is needed. This predates WATERFALL." },
+                  { name: "AGA 2019 online / 2020 pancreatic necrosis update", label: "AGA necrosis 2020", text: "Antibiotics for proven or strongly suspected infected necrosis; FNA unnecessary in most. Avoid early debridement, optimally delay about 4 weeks; selected deteriorating collections may need percutaneous drainage within 2 weeks." },
+                  { name: "WSES 2019 severe pancreatitis", label: "WSES 2019", text: "No routine antibiotic prophylaxis. Necrosis-penetrating antibiotics for infected necrosis, informed by resistance risk; step-up intervention and urgent assessment for deterioration. No verified 2023 revision is represented here." },
+                ].map(row => <tr key={row.name} className="border-b border-border last:border-b-0"><td className="p-2 font-semibold text-foreground">{row.name}<InlineRef topicId="acute-pancreatitis" refLabel={row.label} /></td><td className="p-2">{row.text}</td></tr>)}
               </tbody>
             </table>
           </div>
-          <div className="mt-4 grid sm:grid-cols-2 gap-3">
-            <div className="p-3 rounded-lg border border-border bg-secondary/20">
-              <p className="font-semibold text-foreground text-sm mb-1">Where they all agree</p>
-              <ul className="text-xs text-muted-foreground space-y-1 list-disc list-inside">
-                <li>Balanced crystalloid (Ringer's lactate) over 0.9% saline</li>
-                <li>NO prophylactic antibiotics — even in necrotising AP</li>
-                <li>Urgent ERCP only for concurrent cholangitis (not for severe AP per se)</li>
-                <li>Step-up approach to necrosis; delay intervention &gt;4 weeks if possible</li>
-                <li>Early enteral nutrition over TPN; same-admission cholecystectomy for mild gallstone AP</li>
-              </ul>
-            </div>
-            <div className="p-3 rounded-lg border border-border bg-secondary/20">
-              <p className="font-semibold text-foreground text-sm mb-1">Where they differ</p>
-              <ul className="text-xs text-muted-foreground space-y-1 list-disc list-inside">
-                <li><strong>Fluid rate</strong>: older IAP/APA 2013 (5–10 mL/kg/h) vs post-WATERFALL moderate (1.5 mL/kg/h) — newer guidelines have converged on moderate</li>
-                <li><strong>Endoscopic vs percutaneous drainage</strong>: AGA &amp; BSG favour endoscopic-first for retrogastric WON; WSES treats them as equivalent</li>
-                <li><strong>Oral refeeding timing</strong>: AGA most permissive (start as tolerated, do not wait for enzymes)</li>
-                <li><strong>Antibiotic choice for infected necrosis</strong>: carbapenem universal first line; WSES allows quinolone + metronidazole</li>
-              </ul>
-            </div>
-          </div>
+          <p className="text-xs text-muted-foreground mt-3">The actual historical UK guideline is 2005, not a verified BSG 2024 update; it is not used as a current fluid prescription. <InlineRef topicId="acute-pancreatitis" refLabel="UK guidelines 2005" /> Insulin/apheresis differences between IAP 2025 and Endocrine Society 2020 are detailed in the HTG section above.</p>
         </div>
           <ExamPitfallsCallout
             accent="icu"
             pitfalls={[
               "Severity: Atlanta — mild (no organ failure), moderate (transient <48 h), severe (persistent >48 h); Glasgow score ≥3 predicts severe.",
               "Resuscitate carefully — Hartmann's, target UO 0.5 mL/kg/h; over-resuscitation worsens outcomes (WATERFALL trial).",
-              "Antibiotics not routine; reserve for infected necrosis (CT-guided FNA) or extrapancreatic infection.",
-              "Step-up approach: percutaneous drain → minimally invasive necrosectomy; delay surgery 4 weeks if possible (walled-off necrosis).",
+              "No sterile-necrosis prophylaxis; treat proven or strongly suspected infection without waiting for FNA.",
+              "Drainage and debridement differ: aim for delayed debridement when feasible, but deterioration can require drainage before 4 weeks.",
               "Refer to tertiary HPB centre early in severe disease; ICU support for organ failure with low threshold for renal replacement.",
             ]}
           />

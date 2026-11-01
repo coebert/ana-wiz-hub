@@ -2,10 +2,9 @@ import { MechanismCascadeDiagram, CascadeStep, CascadeSource } from "@/component
 import { DiagramFigure } from "../_shared/DiagramFigure";
 
 const BJA_AP: CascadeSource = {
-  label: "BJA Educ 2018",
-  citation:
-    "Bezmarević M et al. Anaesthetic and intensive care management of acute pancreatitis. BJA Education. 2018;18(8):241–48.",
-  url: "https://doi.org/10.1016/j.bjae.2018.05.001",
+  label: "Cosen-Binker 2007",
+  citation: "Cosen-Binker LI, Gaisano HY. Recent insights into the cellular mechanisms of acute pancreatitis. Can J Gastroenterol. 2007;21(1):19–24.",
+  url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC2656626/",
 };
 
 const ATLANTA: CascadeSource = {
@@ -16,10 +15,15 @@ const ATLANTA: CascadeSource = {
 };
 
 const BSG: CascadeSource = {
-  label: "BSG 2024",
-  citation:
-    "British Society of Gastroenterology UK guidelines for the management of acute pancreatitis. Gut. 2024.",
-  url: "https://www.bsg.org.uk/clinical-resource/uk-guidelines-for-the-management-of-acute-pancreatitis/",
+  label: "WSES 2019",
+  citation: "Leppäniemi A et al. 2019 WSES guidelines for the management of severe acute pancreatitis. World J Emerg Surg. 2019;14:27.",
+  url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC6567462/",
+};
+
+const NECROSIS: CascadeSource = {
+  label: "AGA necrosis 2020",
+  citation: "Baron TH, DiMaio CJ, Wang AY, Morgan KA. Management of Pancreatic Necrosis. Gastroenterology. 2020;158:67–75.",
+  url: "https://doi.org/10.1053/j.gastro.2019.07.064",
 };
 
 const TRYPSIN: CascadeSource = {
@@ -49,7 +53,7 @@ const steps: CascadeStep[] = [
     detail: "Gallstone, alcohol, ERCP",
     title: "Initial insult",
     body:
-      "Gallstone obstruction at the ampulla, ethanol (direct toxicity + sphincter spasm), hypertriglyceridaemia, post-ERCP, drugs (azathioprine, valproate) or trauma. The shared final pathway is intra-acinar activation of digestive enzymes that should only be activated in the duodenum.",
+      "Gallstone obstruction at the ampulla, ethanol-associated cellular injury, hypertriglyceridaemia, post-ERCP, drugs (azathioprine, valproate) or trauma. Premature enzyme activation is one initiating mechanism; inflammatory, oxidative and microcirculatory injury also contribute.",
     sources: [BJA_AP, BSG],
   },
   {
@@ -57,7 +61,7 @@ const steps: CascadeStep[] = [
     detail: "Inside acinar cell",
     title: "Premature enzyme activation",
     body:
-      "Co-localisation of zymogen granules with lysosomal hydrolases (cathepsin B) triggers conversion of trypsinogen → active trypsin within the acinar cell. Trypsin then activates the entire pancreatic enzyme cascade (chymotrypsin, elastase, phospholipase A₂).",
+      "Co-localisation of zymogen granules with lysosomal hydrolases (cathepsin B) triggers conversion of trypsinogen → active trypsin within the acinar cell. Premature enzyme activation contributes to injury alongside oxidative stress, pathological exocytosis and inflammation.",
     sources: [TRYPSIN],
   },
   {
@@ -65,7 +69,7 @@ const steps: CascadeStep[] = [
     detail: "Lipase + elastase",
     title: "Pancreatic self-digestion",
     body:
-      "Active enzymes digest the cell membranes that contain them. Phospholipase A₂ destroys surfactant and cell membranes; elastase digests vessel walls causing haemorrhage; lipase saponifies peripancreatic fat (fat necrosis with calcium soap formation — hypocalcaemia).",
+      "Enzyme-mediated acinar injury interacts with inflammation, oxidative stress and impaired microcirculation. This schematic does not imply that autodigestion alone explains all local injury or systemic organ failure.",
     sources: [TRYPSIN, BJA_AP],
   },
   {
@@ -73,15 +77,15 @@ const steps: CascadeStep[] = [
     detail: "Cytokine release",
     title: "Acute interstitial oedema",
     body:
-      "Damaged acinar cells release IL-1, IL-6, IL-8, TNF-α and platelet-activating factor. Neutrophils infiltrate, capillary leak produces interstitial oedema. Most cases stop here — mild interstitial oedematous pancreatitis (80% of cases, mortality < 1%).",
-    sources: [ATLANTA],
+      "Acinar injury activates inflammatory mediators and oxidative stress; inflammatory oedema may remain local or progress. Mild disease has no organ failure or local/systemic complications under Atlanta; morphology alone does not establish clinical severity.",
+    sources: [ATLANTA, BJA_AP],
   },
   {
     node: "SIRS",
     detail: "Distant organ effects",
     title: "Systemic inflammatory response",
     body:
-      "Cytokines spill into systemic circulation → SIRS within 48 h. Capillary leak causes massive third-space fluid loss (sequestration into retroperitoneum and gut wall). Early ARDS, AKI and circulatory shock define severe acute pancreatitis. Atlanta classification: persistent organ failure > 48 h = severe.",
+      "Cytokines spill into systemic circulation → SIRS within 48 h. Capillary leak causes massive third-space fluid loss (sequestration into retroperitoneum and gut wall). Organ failure may occur early; severe acute pancreatitis requires persistent organ failure >48 hours. Atlanta classification: persistent organ failure > 48 h = severe.",
     sources: [SIRS_AP, ATLANTA],
   },
   {
@@ -89,8 +93,8 @@ const steps: CascadeStep[] = [
     detail: "Walled-off (4+ wks)",
     title: "Necrotising pancreatitis",
     body:
-      "In ~ 20% of cases, microcirculatory failure causes parenchymal necrosis (CT shows non-enhancing pancreas). Necrosis evolves over 4 weeks into walled-off necrosis. Sterile necrosis is managed conservatively; infected necrosis (gas on CT, positive FNA) needs step-up drainage / endoscopic necrosectomy.",
-    sources: [STEP_UP, ATLANTA],
+      "In ~ 20% of cases, microcirculatory failure causes parenchymal necrosis (CT shows non-enhancing pancreas). Collections may encapsulate after about 4 weeks; timing alone does not prove a wall. Treat proven or strongly suspected infected necrosis without awaiting FNA; gas can also reflect fistula/intervention. Urgent source-control assessment: deterioration may need drainage within 2 weeks, whereas debridement is optimally delayed about 4 weeks when feasible.",
+    sources: [STEP_UP, ATLANTA, NECROSIS],
   },
   {
     node: "Multi-organ failure",

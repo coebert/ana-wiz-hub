@@ -1,3 +1,5 @@
+import { glasgowPrediction } from "@/components/topic/PancreatitisTeaching";
+import { InlineRef } from "@/components/references/InlineRef";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { DiagramFigure } from "../_shared/DiagramFigure";
@@ -42,7 +44,7 @@ export const GlasgowImrieScoreDiagram = () => {
           <div>
             <p className="text-sm font-semibold text-foreground">Glasgow (Imrie) score — interactive</p>
             <p className="text-xs text-muted-foreground">
-              Tick each criterion present within 48 h of admission. Score ≥ 3 = predicted severe acute pancreatitis.
+              Tick each criterion present within 48 h of admission. Score ≥ 3 predicts a potentially severe course, not established Atlanta severity.
             </p>
           </div>
           <Button size="sm" variant="outline" onClick={() => setSelected(new Set())}>
@@ -98,9 +100,10 @@ export const GlasgowImrieScoreDiagram = () => {
               severe ? "text-destructive" : "text-foreground"
             }`}
           >
-            Score {score} / 8 — {severe ? "Predicted severe (refer / ICU)" : "Mild–moderate (reassess at 48 h)"}
+            Score {score} / 8 — {glasgowPrediction(score)}
           </p>
         </div>
+        <p className="text-xs text-muted-foreground">Neither score output determines ICU admission alone. Reassess organ failure, complications and clinical condition without waiting 48 hours. <InlineRef topicId="acute-pancreatitis" refLabel="Atlanta 2012" /></p>
       </div>
     </DiagramFigure>
   );
