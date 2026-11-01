@@ -1,8 +1,31 @@
+// Temporary approved source-review pause; kept local to this existing file.
+const SOURCE_UNAVAILABLE =
+  "Current source material is not yet available for reliable AI answers or clinical scoring. Please read the relevant topic and original guidance. Your saved history has been kept.";
+
 import { useEffect, useMemo, useRef, useState } from "react";
 import { PageSection } from "@/components/layout/PageSection";
 import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
-import { ArrowLeft, BookOpen, ChevronDown, ChevronRight, Loader2, Search, Square, Headphones, Play, SkipForward, ListFilter, X, CheckCircle2, Circle, RotateCcw, Flame, CalendarCheck, Gauge } from "lucide-react";
+import {
+  ArrowLeft,
+  BookOpen,
+  ChevronDown,
+  ChevronRight,
+  Loader2,
+  Search,
+  Square,
+  Headphones,
+  Play,
+  SkipForward,
+  ListFilter,
+  X,
+  CheckCircle2,
+  Circle,
+  RotateCcw,
+  Flame,
+  CalendarCheck,
+  Gauge,
+} from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -23,7 +46,6 @@ import { playVivaSpeech, isCancelled, VIVA_AUDIO_ERROR, type SpeechPlayback } fr
 import { toast } from "sonner";
 import { allTopics, sectionMeta, Section } from "@/data/curriculum";
 import { useVivaProgress } from "@/hooks/useVivaProgress";
-
 
 const SECTION_ORDER: (Section | "_other")[] = [
   "physics",
@@ -85,7 +107,8 @@ const difficultyClasses: Record<Difficulty, string> = {
 const classifyDifficulty = (row: { question: string; model_answer: string }): Difficulty => {
   const q = row.question.toLowerCase();
   const answerLen = row.model_answer.length;
-  const examReadyCues = /(compare|contrast|critically|justify|outline your approach|critique|weigh|trade-?offs|controversies|evidence base|implications|risk[- ]benefit|differential diagnosis|complex|complications? of|management plan)/;
+  const examReadyCues =
+    /(compare|contrast|critically|justify|outline your approach|critique|weigh|trade-?offs|controversies|evidence base|implications|risk[- ]benefit|differential diagnosis|complex|complications? of|management plan)/;
   const basicCues = /^(\s*)(define|what is|name|list|state|give the (definition|formula))\b/;
 
   if (examReadyCues.test(q) || answerLen > 1800) return "exam-ready";
@@ -114,8 +137,7 @@ const CoverageBars = ({
   compact?: boolean;
 }) => {
   const qPct = questionsTotal > 0 ? Math.round((questionsPracticed / questionsTotal) * 100) : 0;
-  const tPct =
-    topicsTotal && topicsTotal > 0 ? Math.round(((topicsTouched ?? 0) / topicsTotal) * 100) : null;
+  const tPct = topicsTotal && topicsTotal > 0 ? Math.round(((topicsTouched ?? 0) / topicsTotal) * 100) : null;
 
   // Brief highlight pulse on the count whenever the underlying number changes,
   // so a tick/untick is visually obvious even if the bar moves only a sliver.
@@ -142,11 +164,7 @@ const CoverageBars = ({
   }, [topicsTouched]);
 
   return (
-    <div
-      className={`space-y-1 ${
-        compact ? "w-20 sm:w-24" : "w-32 sm:w-40"
-      } shrink-0`}
-    >
+    <div className={`space-y-1 ${compact ? "w-20 sm:w-24" : "w-32 sm:w-40"} shrink-0`}>
       <Tooltip>
         <TooltipTrigger asChild>
           <div
@@ -215,20 +233,10 @@ const escapeRegex = (s: string) => s.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
  * or any whitespace-separated token if `tokenise` is true) inside `text`.
  * Returns a fragment with `<mark>` around matches and plain text around them.
  */
-const Highlight = ({
-  text,
-  query,
-  tokenise = true,
-}: {
-  text: string;
-  query: string;
-  tokenise?: boolean;
-}) => {
+const Highlight = ({ text, query, tokenise = true }: { text: string; query: string; tokenise?: boolean }) => {
   const q = query.trim();
   if (!q) return <>{text}</>;
-  const tokens = tokenise
-    ? Array.from(new Set(q.split(/\s+/).filter((t) => t.length >= 2)))
-    : [q];
+  const tokens = tokenise ? Array.from(new Set(q.split(/\s+/).filter((t) => t.length >= 2))) : [q];
   if (tokens.length === 0) return <>{text}</>;
   const pattern = new RegExp(`(${tokens.map(escapeRegex).join("|")})`, "gi");
   const parts = text.split(pattern);
@@ -236,10 +244,7 @@ const Highlight = ({
     <>
       {parts.map((part, i) =>
         i % 2 === 1 ? (
-          <mark
-            key={i}
-            className="rounded-sm bg-primary/20 text-foreground px-0.5"
-          >
+          <mark key={i} className="rounded-sm bg-primary/20 text-foreground px-0.5">
             {part}
           </mark>
         ) : (
@@ -263,7 +268,16 @@ const VivaQuestionLibrary = () => {
   const [streamActive, setStreamActive] = useState(false);
   const [streamTopics, setStreamTopics] = useState<Set<string>>(new Set());
   const [topicPickerOpen, setTopicPickerOpen] = useState(false);
-  const { practiced, mark, toggle: toggleProgress, reset: resetProgress, resetIds, isPracticed, todayCount, streak } = useVivaProgress();
+  const {
+    practiced,
+    mark,
+    toggle: toggleProgress,
+    reset: resetProgress,
+    resetIds,
+    isPracticed,
+    todayCount,
+    streak,
+  } = useVivaProgress();
   /**
    * Pending reset confirmation. `null` = closed.
    *  - { scope: "all" }   confirms wiping practiced set + streak/activity.
@@ -271,9 +285,7 @@ const VivaQuestionLibrary = () => {
    *    leaves streak/activity intact (they reflect effort, not coverage).
    */
   const [resetConfirm, setResetConfirm] = useState<
-    | null
-    | { scope: "all" }
-    | { scope: "topic"; sectionKey: string; topicTitle: string; ids: string[] }
+    null | { scope: "all" } | { scope: "topic"; sectionKey: string; topicTitle: string; ids: string[] }
   >(null);
   const playbackRef = useRef<{ cancelled: boolean; audio: SpeechPlayback | null }>({
     cancelled: false,
@@ -287,7 +299,7 @@ const VivaQuestionLibrary = () => {
   const [playbackRate, setPlaybackRate] = useState<number>(() => {
     if (typeof window === "undefined") return 1;
     const v = parseFloat(window.localStorage.getItem(PLAYBACK_RATE_KEY) || "1");
-    return PLAYBACK_RATES.includes(v as typeof PLAYBACK_RATES[number]) ? v : 1;
+    return PLAYBACK_RATES.includes(v as (typeof PLAYBACK_RATES)[number]) ? v : 1;
   });
   useEffect(() => {
     try {
@@ -298,29 +310,9 @@ const VivaQuestionLibrary = () => {
     // Streamed audio picks up the new rate from the next segment.
   }, [playbackRate]);
 
-
   useEffect(() => {
-    const load = async () => {
-      setLoading(true);
-      const { data, error } = await supabase
-        .from("viva_model_answers")
-        .select("id, exam, question, topic_title, model_answer, high_yield_points, pitfalls, created_at")
-        .order("created_at", { ascending: false })
-        .limit(500);
-      if (error) {
-        toast.error("Could not load question library");
-      } else {
-        setRows(
-          (data ?? []).map((r) => ({
-            ...r,
-            high_yield_points: Array.isArray(r.high_yield_points) ? (r.high_yield_points as string[]) : [],
-            pitfalls: Array.isArray(r.pitfalls) ? (r.pitfalls as string[]) : [],
-          })),
-        );
-      }
-      setLoading(false);
-    };
-    load();
+    setRows([]);
+    setLoading(false);
   }, []);
 
   // Pre-classify each row once so filter, badges and stream queue all agree.
@@ -361,16 +353,14 @@ const VivaQuestionLibrary = () => {
       if (!topicMap.has(r.topic_title)) topicMap.set(r.topic_title, []);
       topicMap.get(r.topic_title)!.push(r);
     }
-    return SECTION_ORDER
-      .filter((k) => bySection.has(k))
-      .map((k) => {
-        const topicMap = bySection.get(k)!;
-        const topics = Array.from(topicMap.entries())
-          .map(([title, items]) => ({ title, items }))
-          .sort((a, b) => a.title.localeCompare(b.title));
-        const total = topics.reduce((sum, t) => sum + t.items.length, 0);
-        return { key: k, topics, total };
-      });
+    return SECTION_ORDER.filter((k) => bySection.has(k)).map((k) => {
+      const topicMap = bySection.get(k)!;
+      const topics = Array.from(topicMap.entries())
+        .map(([title, items]) => ({ title, items }))
+        .sort((a, b) => a.title.localeCompare(b.title));
+      const total = topics.reduce((sum, t) => sum + t.items.length, 0);
+      return { key: k, topics, total };
+    });
   }, [filtered, topicSectionMap]);
 
   /**
@@ -589,7 +579,12 @@ const VivaQuestionLibrary = () => {
     });
 
   // Stop any audio when the page unmounts.
-  useEffect(() => () => { stopStream(); }, []);
+  useEffect(
+    () => () => {
+      stopStream();
+    },
+    [],
+  );
 
   const examCounts = useMemo(() => {
     const c = { all: rows.length, primary: 0, final: 0, fficm: 0 } as Record<ExamFilter, number>;
@@ -636,28 +631,29 @@ const VivaQuestionLibrary = () => {
 
   return (
     <div className="min-h-screen bg-background">
+      <p role="status" className="mx-auto max-w-5xl p-6 text-sm">
+        {SOURCE_UNAVAILABLE} The shared answer library is temporarily paused.
+      </p>
       <Helmet>
         <title>Viva Question Library – AnaesthesiaCore</title>
         <meta
           name="description"
-          content="Browse and filter FRCA & FFICM viva questions by section, exam and topic — practise structured answers with model responses and curriculum mapping."
+          content="The shared AI-generated viva answer library is temporarily paused for source review."
         />
         <link rel="canonical" href="https://anaesthesiacore.app/viva/library" />
         <meta property="og:title" content="Viva Question Library – AnaesthesiaCore" />
         <meta
           property="og:description"
-          content="Filterable bank of FRCA & FFICM viva questions with model answers and curriculum mapping."
+          content="The shared AI-generated viva answer library is temporarily paused for source review."
         />
         <meta property="og:url" content="https://anaesthesiacore.app/viva/library" />
         <meta property="og:type" content="website" />
         <meta name="twitter:title" content="Viva Question Library – AnaesthesiaCore" />
         <meta
           name="twitter:description"
-          content="Filterable bank of FRCA & FFICM viva questions with model answers and curriculum mapping."
+          content="The shared AI-generated viva answer library is temporarily paused for source review."
         />
-        {faqJsonLd && (
-          <script type="application/ld+json">{JSON.stringify(faqJsonLd)}</script>
-        )}
+        {faqJsonLd && <script type="application/ld+json">{JSON.stringify(faqJsonLd)}</script>}
       </Helmet>
       <PageSection spacing="tight" width="wide">
         <Link
@@ -673,8 +669,8 @@ const VivaQuestionLibrary = () => {
             <h1 className="text-3xl font-serif font-bold text-foreground">Viva question library</h1>
           </div>
           <p className="text-muted-foreground text-sm leading-relaxed max-w-2xl">
-            Every viva question that has been asked, with its cached AI-generated model answer,
-            high-yield points and common pitfalls. Search across exams to revise efficiently.
+            The shared AI-generated answer library is temporarily paused for source review. Your previous practice
+            history has been kept. Browse the curriculum for current teaching.
           </p>
         </header>
 
@@ -836,8 +832,7 @@ const VivaQuestionLibrary = () => {
           </div>
 
           <p className="text-xs text-muted-foreground mb-3">
-            Listen to questions and model answers back-to-back. The next question starts automatically
-            when the previous answer ends. Filter by exam (above) and/or specific topics below.
+            Shared-answer playback is paused during the source review.
           </p>
 
           <div className="flex items-center justify-between gap-2 mb-2">
@@ -848,11 +843,7 @@ const VivaQuestionLibrary = () => {
             >
               <ListFilter className="h-3.5 w-3.5" />
               Topics ({streamTopics.size === 0 ? "all" : `${streamTopics.size} selected`})
-              {topicPickerOpen ? (
-                <ChevronDown className="h-3.5 w-3.5" />
-              ) : (
-                <ChevronRight className="h-3.5 w-3.5" />
-              )}
+              {topicPickerOpen ? <ChevronDown className="h-3.5 w-3.5" /> : <ChevronRight className="h-3.5 w-3.5" />}
             </button>
             {streamTopics.size > 0 && (
               <button
@@ -868,9 +859,7 @@ const VivaQuestionLibrary = () => {
           {topicPickerOpen && (
             <div className="max-h-56 overflow-y-auto rounded-md border border-border/60 bg-background/40 p-2 flex flex-wrap gap-1.5">
               {availableTopics.length === 0 ? (
-                <p className="text-xs text-muted-foreground p-2">
-                  No topics available for the selected exam.
-                </p>
+                <p className="text-xs text-muted-foreground p-2">No topics available for the selected exam.</p>
               ) : (
                 availableTopics.map((title) => {
                   const active = streamTopics.has(title);
@@ -893,16 +882,21 @@ const VivaQuestionLibrary = () => {
             </div>
           )}
 
-          {streamActive && speakingId && (() => {
-            const idx = streamQueue.findIndex((r) => r.id === speakingId);
-            const cur = idx >= 0 ? streamQueue[idx] : null;
-            return cur ? (
-              <p className="mt-3 text-xs text-muted-foreground">
-                Now playing <span className="font-medium text-foreground">{idx + 1} / {streamQueue.length}</span> ·{" "}
-                <span className="font-medium text-foreground">{cur.topic_title}</span> — {cur.question}
-              </p>
-            ) : null;
-          })()}
+          {streamActive &&
+            speakingId &&
+            (() => {
+              const idx = streamQueue.findIndex((r) => r.id === speakingId);
+              const cur = idx >= 0 ? streamQueue[idx] : null;
+              return cur ? (
+                <p className="mt-3 text-xs text-muted-foreground">
+                  Now playing{" "}
+                  <span className="font-medium text-foreground">
+                    {idx + 1} / {streamQueue.length}
+                  </span>{" "}
+                  · <span className="font-medium text-foreground">{cur.topic_title}</span> — {cur.question}
+                </p>
+              ) : null;
+            })()}
         </section>
 
         {loading ? (
@@ -912,7 +906,7 @@ const VivaQuestionLibrary = () => {
         ) : filtered.length === 0 ? (
           <p className="text-sm text-muted-foreground text-center py-12">
             {rows.length === 0
-              ? "No model answers cached yet. Generate one in a viva session and it will appear here."
+              ? "The shared answer library will return after source review. Your practice history is retained."
               : "No questions match your search."}
           </p>
         ) : (
@@ -923,10 +917,7 @@ const VivaQuestionLibrary = () => {
               // When searching, force-open everything so matches are visible.
               const sectionOpen = isSearching ? true : !collapsedSections.has(sectionKey);
               return (
-                <section
-                  key={sectionKey}
-                  className="rounded-lg border border-border bg-card overflow-hidden"
-                >
+                <section key={sectionKey} className="rounded-lg border border-border bg-card overflow-hidden">
                   <button
                     type="button"
                     onClick={() => !isSearching && toggleSection(sectionKey)}
@@ -1005,9 +996,7 @@ const VivaQuestionLibrary = () => {
                                       />
                                     ) : null;
                                   })()}
-                                  <span className="text-[11px] text-muted-foreground tabular-nums">
-                                    {items.length}
-                                  </span>
+                                  <span className="text-[11px] text-muted-foreground tabular-nums">{items.length}</span>
                                 </div>
                               </button>
                               {(() => {
@@ -1040,10 +1029,7 @@ const VivaQuestionLibrary = () => {
                                 {items.map((r) => {
                                   const isOpen = expanded.has(r.id);
                                   return (
-                                    <li
-                                      key={r.id}
-                                      className="rounded-md border border-border bg-card overflow-hidden"
-                                    >
+                                    <li key={r.id} className="rounded-md border border-border bg-card overflow-hidden">
                                       <div className="flex items-stretch">
                                         <button
                                           type="button"
@@ -1097,16 +1083,10 @@ const VivaQuestionLibrary = () => {
                                             toggleProgress(r.id);
                                           }}
                                           aria-label={
-                                            isPracticed(r.id)
-                                              ? "Mark as not yet practiced"
-                                              : "Mark as practiced"
+                                            isPracticed(r.id) ? "Mark as not yet practiced" : "Mark as practiced"
                                           }
                                           aria-pressed={isPracticed(r.id)}
-                                          title={
-                                            isPracticed(r.id)
-                                              ? "Mark as not yet practiced"
-                                              : "Mark as practiced"
-                                          }
+                                          title={isPracticed(r.id) ? "Mark as not yet practiced" : "Mark as practiced"}
                                           className="px-3 flex items-center justify-center text-muted-foreground hover:text-primary hover:bg-primary/5 border-l border-border transition-colors"
                                         >
                                           {isPracticed(r.id) ? (
@@ -1161,7 +1141,9 @@ const VivaQuestionLibrary = () => {
                                               </p>
                                               <ul className="list-disc pl-5 space-y-1 text-sm text-foreground/90">
                                                 {r.high_yield_points.map((p, i) => (
-                                                  <li key={i}><Highlight text={p} query={query} /></li>
+                                                  <li key={i}>
+                                                    <Highlight text={p} query={query} />
+                                                  </li>
                                                 ))}
                                               </ul>
                                             </div>
@@ -1174,7 +1156,9 @@ const VivaQuestionLibrary = () => {
                                               </p>
                                               <ul className="list-disc pl-5 space-y-1 text-sm text-foreground/90">
                                                 {r.pitfalls.map((p, i) => (
-                                                  <li key={i}><Highlight text={p} query={query} /></li>
+                                                  <li key={i}>
+                                                    <Highlight text={p} query={query} />
+                                                  </li>
                                                 ))}
                                               </ul>
                                             </div>
@@ -1210,7 +1194,8 @@ const VivaQuestionLibrary = () => {
               <AlertDialogHeader>
                 <AlertDialogTitle>Reset all viva progress?</AlertDialogTitle>
                 <AlertDialogDescription>
-                  This clears every practiced question on this device, plus today's count and your day streak. This cannot be undone.
+                  This clears every practiced question on this device, plus today's count and your day streak. This
+                  cannot be undone.
                 </AlertDialogDescription>
               </AlertDialogHeader>
               <AlertDialogFooter>
@@ -1230,12 +1215,11 @@ const VivaQuestionLibrary = () => {
           ) : resetConfirm?.scope === "topic" ? (
             <>
               <AlertDialogHeader>
-                <AlertDialogTitle>
-                  Reset progress for "{resetConfirm.topicTitle}"?
-                </AlertDialogTitle>
+                <AlertDialogTitle>Reset progress for "{resetConfirm.topicTitle}"?</AlertDialogTitle>
                 <AlertDialogDescription>
-                  This clears practiced marks for the {resetConfirm.ids.length}{" "}
-                  question{resetConfirm.ids.length === 1 ? "" : "s"} in this topic. Your overall day streak and today's count are kept.
+                  This clears practiced marks for the {resetConfirm.ids.length} question
+                  {resetConfirm.ids.length === 1 ? "" : "s"} in this topic. Your overall day streak and today's count
+                  are kept.
                 </AlertDialogDescription>
               </AlertDialogHeader>
               <AlertDialogFooter>
