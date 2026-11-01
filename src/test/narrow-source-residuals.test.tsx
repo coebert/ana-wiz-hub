@@ -32,14 +32,36 @@ describe("named source residual safety boundaries", () => {
     if (!drug) throw new Error("Missing IV paracetamol");
     expect(calculateAnaesthesiaDose(drug, 15, weight, 10)).toBeNull();
     const { container } = render(wrap(<Calculator />));
-    fireEvent.change(screen.getByRole("combobox", { name: "Drug" }), { target: { value: drug.drug } });
     const input = container.querySelector<HTMLInputElement>("#anaes-weight");
     if (!input) throw new Error("Missing actual weight input");
     fireEvent.change(input, { target: { value: String(weight) } });
+    fireEvent.change(screen.getByRole("combobox", { name: "Drug" }), { target: { value: drug.drug } });
+    expect(screen.getByRole("heading", { name: "Paracetamol (IV) — product reference" })).toBeTruthy();
+    expect(container.querySelector("#anaes-dose, #anaes-weight, #anaes-ideal-weight, #anaes-conc")).toBeNull();
+    expect(screen.queryByText(/Usual range/)).toBeNull();
     expect(screen.getByText(/Guideline lookup only: no universal dose is calculated/)).toBeTruthy();
     expect(container.querySelector("dd")).toBeNull();
     expect(screen.getByText(/≤10 kg 7.5 mg\/kg\/dose, max 30 mg\/kg\/day/)).toBeTruthy();
     expect(screen.getByRole("link", { name: "Named product / guideline source" }).getAttribute("href")).toBe("https://www.medicines.org.uk/emc/product/100803/smpc");
+  });
+  it("switches calculable → lookup-only → calculable on the real page, preserving weight and restoring drug defaults", () => {
+    const initial = anaesthesiaCalcDrugs[0];
+    const { container } = render(wrap(<Calculator />));
+    fireEvent.change(screen.getByLabelText("Patient weight (kg)"), { target: { value: "10" } });
+    fireEvent.change(screen.getByLabelText(`Dose (${initial.unit})`), { target: { value: "1" } });
+    for (const lookup of anaesthesiaCalcDrugs.filter(d => d.lookupOnly)) {
+      fireEvent.change(screen.getByRole("combobox", { name: "Drug" }), { target: { value: lookup.drug } });
+      expect(screen.getByRole("heading", { name: `${lookup.drug} — product reference` })).toBeTruthy();
+      expect(container.querySelector("input, dd")).toBeNull();
+      expect(container.textContent).toContain(lookup.notes);
+      expect(screen.queryByText(/Usual range/)).toBeNull();
+    }
+    fireEvent.change(screen.getByRole("combobox", { name: "Drug" }), { target: { value: initial.drug } });
+    expect(screen.getByRole("heading", { name: `${initial.drug} — calculated dose` })).toBeTruthy();
+    expect(screen.getByLabelText("Patient weight (kg)").getAttribute("value")).toBe("10");
+    expect(screen.getByLabelText(`Dose (${initial.unit})`).getAttribute("value")).toBe(String(initial.startDose));
+    expect(screen.getByLabelText(`Concentration (${initial.amountUnit}/mL)`).getAttribute("value")).toBe(String(initial.concentrationPerMl));
+    expect(container.querySelector("dd")).not.toBeNull();
   });
   it("preserves corrected IV paracetamol tables and standalone helper without wiring it into calculator", () => {
     const icu = icuDrugDoseGroups.flatMap(g => g.drugs).find(d => d.drug === "Paracetamol");

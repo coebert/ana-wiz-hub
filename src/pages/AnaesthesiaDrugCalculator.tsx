@@ -127,6 +127,7 @@ const AnaesthesiaDrugCalculator = () => {
               <p className="mt-1 text-xs text-muted-foreground">{groupTitle} — {drug.route}</p>
             </div>
 
+            {!drug.lookupOnly && <>
             <div>
               <Label htmlFor="anaes-dose">Dose ({drug.unit})</Label>
               <Input
@@ -136,7 +137,6 @@ const AnaesthesiaDrugCalculator = () => {
                 min="0"
                 step="any"
                 value={dose}
-                disabled={drug.lookupOnly}
                 onChange={(e) => setDose(e.target.value)}
                 className="mt-1.5"
               />
@@ -189,6 +189,7 @@ const AnaesthesiaDrugCalculator = () => {
                 Standard presentation: {drug.concentrationLabel}
               </p>
             </div>
+            </>}
           </div>
         </section>
 
@@ -199,7 +200,7 @@ const AnaesthesiaDrugCalculator = () => {
         >
           <div className="mb-4 flex items-center gap-2 text-perioperative">
             <Syringe className="h-5 w-5" />
-            <h2 className="font-heading text-lg font-semibold">{drug.drug} — calculated dose</h2>
+            <h2 className="font-heading text-lg font-semibold">{drug.drug} — {drug.lookupOnly ? "product reference" : "calculated dose"}</h2>
           </div>
 
           {result ? (
