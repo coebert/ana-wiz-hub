@@ -2,8 +2,9 @@
 
 ## Paid Apple App Store readiness
 - [x] Begin read-only assessment of existing learning value, safety residuals and Apple release requirements; preserve current work and holds.
-- [ ] Confirm app format and charging model with Rob before native packaging or payment implementation.
-- [ ] Present a prioritised readiness plan with clinical review, learner journeys, privacy, purchase compliance, device testing and submission gates.
+- [x] Rob chose native iOS delivery, a one-time paid download and all FRCA/FFICM learners; Apple handles the download purchase, not web checkout.
+- [x] Prepare a prioritised readiness plan covering clinical review, learner journeys, privacy, purchase compliance, device testing and submission gates.
+- [ ] Stage 1 readiness register and public learning-flow assessment awaits plan approval; later implementation and submission remain separately gated.
 
 ## Epidural compartment schematic
 - [x] Add independent inset labels, catheter visibility and compartment selections; preserve catheter topology and withdrawn routes.
