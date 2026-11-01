@@ -95,13 +95,13 @@ describe("SCI059/061 canonical osmolar units and threshold", () => {
     expect(screen.getByText(raised ? /↑ osmolar gap \+ ↑ anion gap/ : /Gap below illustrative \+10 threshold \+ ↑ AG/)).toBeInTheDocument();
   });
   it("unit switching converts value and preserves glucose600 results", () => {
-    show(<Osmolar />); fireEvent.click(screen.getByRole("button", { name: "mg/dL", exact: true }));
+    show(<Osmolar />); fireEvent.click(screen.getByRole("button", { name: /^mg\/dL$/ }));
     input(/Glucose/, "600"); input(/Measured osmolality/, "330");
     expect(screen.getByText("318.3 mOsm/kg")).toBeInTheDocument();
     const urea = screen.getByLabelText(/Urea/); expect(urea).toHaveAttribute("max", "200");
     fireEvent.click(screen.getByRole("button", { name: "mg/dL (BUN)" })); input(/Urea/, "280");
     expect(screen.queryByText(/no result is calculated from invalid inputs/)).not.toBeInTheDocument();
-    const mmolButtons = screen.getAllByRole("button", { name: "mmol/L", exact: true }); fireEvent.click(mmolButtons[1]);
+    const mmolButtons = screen.getAllByRole("button", { name: /^mmol\/L$/ }); fireEvent.click(mmolButtons[1]);
     expect(Number((screen.getByLabelText(/Glucose/) as HTMLInputElement).value)).toBeCloseTo(600 / 18, 12);
   });
 });

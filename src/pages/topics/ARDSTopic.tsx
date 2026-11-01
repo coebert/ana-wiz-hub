@@ -30,7 +30,7 @@ const ardsFaqs: Array<[string, string]> = [
   ],
   [
     "Why is driving pressure important in ARDS?",
-    "Driving pressure (ΔP = plateau − PEEP) approximates the cyclic stress applied to the aerated 'baby lung'. In Amato's 2015 NEJM mediation analysis pooling nine ARDS trials, ΔP was the ventilator variable most strongly associated with mortality — a 1 SD (~7 cmH₂O) increase in ΔP corresponded to a relative mortality increase of ~40%, and reductions in tidal volume or increases in PEEP only improved survival if they lowered ΔP. The widely used target is ΔP ≤ 15 cmH₂O, achieved by reducing tidal volume or increasing PEEP to recruit collapsed lung.",
+    "Driving pressure during passive/static assessment (ΔP = plateau − total PEEP, including intrinsic PEEP) approximates the cyclic stress applied to the aerated 'baby lung'. In Amato's 2015 NEJM mediation analysis pooling nine ARDS trials, ΔP was the ventilator variable most strongly associated with mortality — a 1 SD (~7 cmH₂O) increase in ΔP corresponded to a relative mortality increase of ~40%, and reductions in tidal volume or increases in PEEP only improved survival if they lowered ΔP. This association does not establish a universally safe cutoff or guarantee benefit from changing a single setting; assess total PEEP, recruitment and the full ventilator context.",
   ],
   [
     "When should prone positioning be used in ARDS?",
@@ -58,7 +58,7 @@ const objectives = [
   "Apply the Berlin definition to stratify ARDS severity and prognosis.",
   "Prescribe lung-protective ventilation (Vt, plateau and driving pressure, PEEP titration).",
   "Justify and deliver adjuncts: prone positioning, neuromuscular blockade, recruitment, iNO.",
-  "Identify candidates for VV-ECMO using EOLIA / Murray score and outline referral.",
+  "Calculate Murray lung injury severity and distinguish EOLIA trial context from specialist ECMO candidacy assessment.",
   "Describe ECMO circuit physiology, anticoagulation, and management of common complications.",
   "Manage COVID-19 specific evidence: dexamethasone, tocilizumab, anticoagulation, respiratory support escalation.",
 ];
@@ -81,8 +81,7 @@ const workedExamples: WorkedExample[] = [
     answer: (
       <>
         <strong>Severe ARDS</strong> (P/F &lt;100). Mortality ~45%. Indications now triggered for
-        prone positioning ≥16 h/day and early ECMO referral discussion (EOLIA threshold P/F &lt;80
-        for &gt;6 h despite optimisation).
+        prone positioning ≥16 h/day and early ECMO-centre discussion while optimising management; this current gas does not establish sustained EOLIA trial criteria.<InlineRef topicId="ards" refLabel="ELSO 2021 adult VV ECMO" />
       </>
     ),
     cites: ["PROSEVA 2013"],
@@ -173,7 +172,7 @@ const ARDSTopic = () => {
         { text: "COVID-19: Therapeutic anticoagulation benefits moderate (non-ICU) patients but NOT critically ill (REMAP-CAP/ATTACC/ACTIV-4a)", cites: ["BJA Educ 2018"] },
         { text: "COVID-19: CPAP preferred over HFNO over standard O₂ for non-intubated patients (RECOVERY-RS). Awake proning reduces intubation", cites: ["ARDSNet 2000"] },
         { text: "VV weaning: sweep-off trial (NOT flow-off). VA weaning: gradual flow reduction with echo assessment", cites: ["PROSEVA 2013"] },
-        { text: "EOLIA: VV-ECMO for P/F <80 — non-significant but practice-changing (28% crossover, Bayesian benefit ~88%)", cites: ["ARDS Definition 2012"] },
+        { text: "EOLIA (2018) studied sustained very severe ARDS under defined ventilator conditions; single gases and Murray scores do not establish entry or patient candidacy. 60-day mortality was 35% vs 46% (RR0.76, p=0.09). Early centre discussion should not wait for trial durations.", cites: ["EOLIA 2018", "ELSO 2021 adult VV ECMO"] },
       ]}
       topicId="ards"
       topicTitle="ARDS & Lung Injury"
@@ -324,7 +323,7 @@ const ARDSTopic = () => {
             {[
               { level: "Foundation", items: "Lung-protective ventilation (VT 6 ml/kg IBW, Pplat ≤30), conservative fluid strategy, treat underlying cause" },
               { level: "Moderate ARDS", items: "Higher PEEP strategy, prone positioning for ≥16 hours/day (PROSEVA — mortality benefit), neuromuscular blockade in first 48h (ACURASYS/ROSE)" },
-              { level: "Severe / Rescue", items: "VV-ECMO (EOLIA — referral for PaO₂/FiO₂ <80 despite optimisation), inhaled nitric oxide (↑V/Q matching, no mortality benefit), recruitment manoeuvres (caution — ART trial)" },
+              { level: "Severe / Rescue", items: "VV-ECMO specialist discussion early while optimising management (EOLIA is historical trial context, not an instantaneous eligibility rule), inhaled nitric oxide (↑V/Q matching, no mortality benefit), recruitment manoeuvres (caution — ART trial)" },
             ].map((l) => (
               <div key={l.level} className="p-4 rounded-lg border border-border">
                 <p className="font-semibold text-foreground text-sm">{l.level}</p>
@@ -383,7 +382,7 @@ const ARDSTopic = () => {
                 <li><strong>Continue proning</strong> while the patient remains in moderate–severe ARDS (P/F &lt;150 on FiO₂ ≥0.6, PEEP ≥10) — each session offers incremental benefit.</li>
                 <li><strong>Stop criteria</strong> (PROSEVA, widely adopted): in the supine position for ≥4 h after a prone session, PaO₂/FiO₂ ≥150 with PEEP ≤10 and FiO₂ ≤0.6. Other reasons to stop: life-threatening complication (unplanned extubation, displaced lines, haemodynamic collapse, severe pressure injury), or transition to palliation/ECMO.</li>
                 <li>There is <strong>no fixed maximum</strong>: case series and COVID-19 cohorts report 5–10+ sessions in responders; durability of oxygenation response (rather than first-session response alone) predicts survival.</li>
-                <li>"Non-responders" (no improvement in P/F or compliance after 2–3 sessions) should prompt re-evaluation: consider ECMO referral (EOLIA criteria), reassess for unaddressed causes (fluid overload, ventilator dyssynchrony, undrained pleural collection, secondary infection).</li>
+                <li>"Non-responders" (no improvement in P/F or compliance after 2–3 sessions) should prompt re-evaluation: consider early ECMO-centre discussion without waiting for sustained trial criteria, reassess for unaddressed causes (fluid overload, ventilator dyssynchrony, undrained pleural collection, secondary infection).</li>
               </ul>
             </div>
 
@@ -526,9 +525,9 @@ const ARDSTopic = () => {
                     <li>Anticipated escalation: failing on HFNO/NIV with rising oxygen requirement, or pre-intubation in fulminant viral pneumonitis / status asthmaticus.</li>
                   </ul>
                 </li>
-                <li><strong>Do not wait for EOLIA criteria</strong> (P/F &lt;80 for 6 h, P/F &lt;50 for 3 h, or pH &lt;7.25 + PaCO₂ ≥60 for 6 h) before <em>phoning</em> — these are historical trial-entry criteria, not automatic cannulation rules. By the time they are met, retrieval logistics (4–8 h door-to-door in the UK) may make transfer hazardous.</li>
-                <li><strong>Refer within the first 7 days of mechanical ventilation.</strong> Mechanical ventilation &gt;7 days is a relative contraindication (ELSO/EOLIA); &gt;10 days approaches absolute. Outcomes deteriorate sharply once fibroproliferative change is established.</li>
-                <li><strong>Initiate proning and NMB before or in parallel with the referral call</strong> — do not delay either. SARF teams expect the referring unit to have optimised PEEP, attempted ≥1 prone session where feasible, and corrected fluid balance/sepsis source before retrieval.</li>
+                <li><strong>Do not wait for EOLIA criteria</strong> (P/F &lt;80 for 6 h, P/F &lt;50 for 3 h, or pH &lt;7.25 + PaCO₂ ≥60 for 6 h) before <em>phoning</em> — these are historical trial-entry criteria, not automatic cannulation rules. Plan transfer early with the specialist service.<InlineRef topicId="ards" refLabel="ELSO 2021 adult VV ECMO" /></li>
+                <li><strong>Discuss promptly rather than use a fixed waiting period.</strong> EOLIA excluded ventilation ≥7 days; ELSO 2021 lists prolonged ventilation under specified high-intensity settings as a relative contraindication. Duration alone does not establish an absolute exclusion; centre assessment determines candidacy.<InlineRef topicId="ards" refLabel="EOLIA 2018" /><InlineRef topicId="ards" refLabel="ELSO 2021 adult VV ECMO" /></li>
+                <li><strong>Implement appropriate conventional management in parallel with centre discussion</strong> — consider prone positioning when appropriate and NMB when indicated; neither a fixed NMB duration nor a completed prone session is a prerequisite for an early advisory call.<InlineRef topicId="ards" refLabel="ELSO 2021 adult VV ECMO" /></li>
                 <li><strong>What to have ready for the call</strong> (UK SARF proforma): demographics &amp; weight, premorbid functional status &amp; comorbidities, aetiology &amp; day of illness, current ventilator settings + last ABG (with FiO₂/PEEP), Murray score components (P/F, PEEP, compliance, CXR quadrants), vasopressor dose, recent imaging, COVID/PCR status, and bleeding/anticoagulation status.</li>
                 <li><strong>Special groups warranting earlier discussion</strong>: pregnant or peripartum patients, young patients (&lt;65) with single-organ respiratory failure, suspected reversible aetiology (viral pneumonitis, asthma, eosinophilic pneumonia, AAV/anti-GBM, smoke inhalation), and any patient where awake/pre-intubation VV-ECMO is being considered.</li>
                 <li><strong>Mobile ECMO retrieval</strong>: if the patient is too unstable to transfer conventionally, SARF centres can deploy a mobile cannulation team — this option only exists if you have referred early enough for the team to mobilise.</li>
@@ -1259,11 +1258,11 @@ const ARDSTopic = () => {
             "Berlin definition: acute (<7 days), bilateral infiltrates, not explained by cardiac failure, PaO₂/FiO₂ ≤300 on PEEP ≥5.",
             "Mild 200–300, moderate 100–200, severe ≤100 (mmHg) — mortality rises stepwise.",
             "Set tidal volume on PREDICTED body weight (height-based), not actual weight.",
-            "Driving pressure ≤15 cmH₂O is the single strongest ventilator predictor of survival (Amato 2015).",
+            "Higher passive/static driving pressure (Pplat minus total PEEP, including intrinsic PEEP) was associated with worse outcomes in Amato 2015; no universal safe cutoff or patient prognosis follows.",
             "Prone for ≥16 h/day in severe ARDS (PaO₂/FiO₂ <150) — PROSEVA showed mortality benefit.",
             "Neuromuscular blockade for 48 h in severe ARDS reduces barotrauma but ROSE trial showed no mortality benefit.",
             "Avoid aggressive recruitment manoeuvres — ART (2017) showed increased mortality.",
-            "Refractory hypoxaemia: refer EARLY to SARF/ECMO centre (P/F <150) — don't wait for EOLIA cannulation criteria.",
+            "Refractory hypoxaemia: refer EARLY to SARF/ECMO centre (P/F <150) — don't wait for historical EOLIA trial durations; candidacy is assessed by the centre.",
           ]}
         />
         </div>
