@@ -314,9 +314,7 @@ const steps: AnimatedMechanismStep[] = [
       <>
         Suspect infection if persistent SIRS, deteriorating organ function, or new gas bubbles within the
         collection on CT. Gas also occurs with enteric fistula/intervention. Treat strong suspicion without waiting for FNA, which is unnecessary in most cases; select antibiotics with local microbiology. Clinical deterioration guides urgent drainage planning. The <strong>PANTER trial</strong> (van Santvoort, NEJM 2010) established the{" "}
-        <strong>step-up approach</strong>: percutaneous (or endoscopic transgastric) drainage first, escalating to
-        minimally invasive necrosectomy only if the patient does not improve — halving the rate of major
-        complications versus open necrosectomy.
+        <strong>surgical step-up approach</strong>: principally percutaneous drainage followed, if needed, by minimally invasive retroperitoneal necrosectomy. The composite of major complications or death occurred in 40% versus 69% with primary open necrosectomy; mortality alone did not differ significantly. Modern endoscopic step-up approaches have separate evidence and depend on anatomy and expertise. <InlineRef topicId="acute-pancreatitis" refLabel="PANTER 2010" />
       </>
     ),
     callout: (
