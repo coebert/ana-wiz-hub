@@ -133,8 +133,8 @@ const FoetalCirculationTopic = () => {
           <ExamSection id="overview" exams={[Exam.PRIMARY, Exam.FINAL]} curriculumCodes={["PA_BK_01"]}>
             <CollapsibleSubsection title="Overview" defaultOpen>
             <p className="text-muted-foreground leading-relaxed">
-              The foetal circulation is uniquely designed to bypass the non-functioning lungs, directing oxygenated
-              blood from the placenta to the systemic circulation via three key shunts. Understanding these pathways and
+              The ductus venosus directs umbilical venous blood past part of the liver into the IVC; the foramen ovale
+              and ductus arteriosus divert blood away from fetal pulmonary circulation. Understanding these pathways and
               their closure at birth is essential for managing neonatal physiology and congenital heart disease.
             </p>
             </CollapsibleSubsection>

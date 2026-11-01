@@ -54,7 +54,7 @@ const territories: Record<Territory, {
     leads: ["II", "III", "aVF"],
     wall: "Inferior LV wall + diaphragmatic surface",
     color: "hsl(210, 60%, 50%)",
-    detail: "RCA dominant in 85% — gives PDA supplying inferior wall. AV node also from RCA (80%) → bradyarrhythmias common with inferior STEMI.",
+    detail: "Dominance is defined by PDA origin. AV nodal artery origin usually follows dominance; SA nodal origin varies separately. RCA occlusion can cause bradyarrhythmia depending on individual anatomy.",
   },
   posterior: {
     label: "Posterior",

@@ -192,6 +192,7 @@ const LowerLimbAnatomyTopic = () => {
               The arterial supply follows a continuous chain: external iliac → femoral → popliteal → anterior tibial, posterior tibial, and peroneal arteries. The profunda femoris is the main supply to the thigh musculature. Peripheral pulse assessment (femoral, popliteal, posterior tibial, dorsalis pedis) is a fundamental clinical skill.
             </p>
             <LowerLimbArteriesDiagram />
+            <p className="text-sm text-muted-foreground">Displacement of an intracapsular hip fracture can damage retinacular branches of the medial circumflex femoral artery and increases AVN/nonunion risk. NICE offers replacement arthroplasty, total hip replacement or hemiarthroplasty. Consider total replacement when the person previously walked independently outdoors with no more than a stick, has no condition making it unsuitable, and is expected to remain independent in activities of daily living beyond two years; the choice requires orthopaedic assessment. <InlineRef topicId="lower-limb-anatomy" refLabel="NICE CG124 hip fracture" /></p>
             <div className="grid sm:grid-cols-2 gap-3 mt-4">
               <div className="p-4 rounded-lg border border-border">
                 <p className="font-semibold text-foreground text-sm">Peripheral Pulse Assessment</p>
