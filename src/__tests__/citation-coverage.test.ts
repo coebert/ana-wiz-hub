@@ -17,7 +17,7 @@
 import { describe, it, expect } from "vitest";
 import { readdirSync, writeFileSync } from "node:fs";
 import { join, relative, resolve } from "node:path";
-import { topicReferences } from "@/data/references";
+import { referenceLabels } from "../../scripts/lib/reference-labels";
 import { extractTopic, type ExtractedEntry } from "./citation-coverage-extractor";
 import { CITATION_ALLOWLIST } from "./citation-coverage-allowlist";
 
@@ -42,8 +42,7 @@ interface FileReport {
 function analyzeFile(file: string): FileReport {
   const t = extractTopic(file);
   const rel = relative(REPO_ROOT, file);
-  const refs = (t.topicId && topicReferences[t.topicId]) || [];
-  const knownLabels = new Set(refs.map((r) => r.label));
+  const knownLabels = referenceLabels().get(t.topicId ?? "") ?? new Set<string>();
 
   const isUncited = (e: ExtractedEntry) =>
     !e.unresolved && (!e.hasCitesProperty || e.cites.length === 0);

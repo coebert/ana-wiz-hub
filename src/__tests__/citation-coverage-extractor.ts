@@ -17,6 +17,7 @@
  */
 import { readFileSync } from "node:fs";
 import ts from "typescript";
+import { parseTopic } from "../../scripts/lib/topic-citations";
 
 export interface ExtractedEntry {
   /** "keyPoint" | "workedExample" — for nicer error messages */
@@ -245,13 +246,9 @@ export function extractTopic(filePath: string): ExtractedTopic {
   result.foundTopicTemplate = true;
 
   const topicIdExpr = getJsxPropExpression(tpl, "topicId");
-  result.topicId = asStringLiteral(topicIdExpr ?? undefined);
-  if (!result.topicId) {
-    // Some topics hoist the id into a module constant and pass
-    // `topicId={TOPIC_ID}` — resolve that indirection.
-    const hoisted = source.match(/(?:const|let)\s+TOPIC_ID\s*(?::\s*string\s*)?=\s*"([^"]+)"/);
-    result.topicId = hoisted?.[1] ?? null;
-  }
+  const parsed = parseTopic(source, filePath);
+  result.topicId = parsed.topicId;
+  result.warnings.push(...parsed.diagnostics);
   if (!result.topicId) {
     result.warnings.push("topicId prop missing or not a string literal");
   }
