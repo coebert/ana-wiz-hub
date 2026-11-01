@@ -1,8 +1,10 @@
 # Admin metrics audit fixes
 
 ## Science S2 anatomy — 1 November 2026
-- [ ] SCI052–058, SCI067–072: compare current source, correct sourced text and suppress unsafe procedural/malformed anatomy where a sound redraw cannot be independently reviewed.
-- [ ] Inspect every retained/offered state, add narrow regressions, refresh local source/search/FAQ/audit outputs and append per-ID status/results/limitations to docs/nov1-science-fixes.md. No database writes or publishing.
+- [x] SCI052–058, SCI067–072: compare current source, correct sourced text and suppress unsafe procedural/malformed anatomy where a sound redraw cannot be independently reviewed.
+- [x] Inspect every retained/offered state, add narrow regressions, refresh local source/search/FAQ/audit outputs and append per-ID status/results/limitations to docs/nov1-science-fixes.md. No database writes or publishing.
+
+- [ ] S2 reviewed redraws: withdrawn procedural/malformed artwork requires independent anatomical review; bounded source/access and inherited Operations provenance limitations are recorded in docs/nov1-science-fixes.md.
 
 ## Clinical C6 — 1 November 2026
 - [x] CL77, CL81–84: current guards/source-checked respiratory rescue, medicine/device identity, trials and COPD antibiotics; CL78–80 preserved.
