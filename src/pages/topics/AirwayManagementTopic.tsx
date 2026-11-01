@@ -588,7 +588,7 @@ const AirwayManagementTopic = () => {
                 <p className="font-semibold text-foreground text-sm">Anatomical &amp; physiological differences</p>
                 <ul className="list-disc list-inside text-sm text-muted-foreground mt-1 space-y-1">
                   <li>A large occiput flexes the neck when supine; use a shoulder roll and neutral or slight extension in neonates, reserving the sniffing position for older children.</li>
-                  <li>The tongue is relatively large, the epiglottis long and omega-shaped, and the larynx more cephalad and anterior. The infant airway is classically funnel-shaped, with the subglottis/cricoid its narrowest fixed region.</li>
+                  <li>The tongue is relatively large, the epiglottis long and omega-shaped, and the larynx more cephalad and anterior. The rigid cricoid remains important for tube passage and pressure injury, but narrowest measured dimensions depend on level, axis, muscle/respiratory state and method. MRI and bronchoscopy commonly show glottic/immediately subglottic narrowing, not a universal eight-year cricoid rule<InlineRef topicId="airway-management" refLabel="Litman airway MRI 2003" /><InlineRef topicId="airway-management" refLabel="Dalal airway 2009" />.</li>
                   <li>The trachea is short, so small movements can cause endobronchial intubation or extubation. Recheck tube depth after positioning.</li>
                   <li>Oxygen consumption is high (about 6–8 ml/kg/min), while FRC is low and the compliant chest wall promotes airway closure. Apnoea therefore causes rapid desaturation, followed by hypoxic bradycardia.</li>
                 </ul>

@@ -407,7 +407,7 @@ const PaediatricIcuTopic = () => {
                   </tr>
                 </thead>
                 <tbody className="text-muted-foreground">
-                  <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Airway</td><td>Large head/tongue, anterior larynx, cricoid narrowest &lt;8 yrs</td><td>Cuffed ETT now acceptable from neonates <InlineRef topicId="paediatric-icu" refLabel="Litman 2013" /></td></tr>
+                  <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Airway</td><td>Large head/tongue, anterior larynx; rigid cricoid matters for tube passage, but narrowest measured level depends on axis, muscle/respiratory state and method, not an established eight-year cutoff<InlineRef topicId="paediatric-icu" refLabel="Litman airway MRI 2003" /><InlineRef topicId="paediatric-icu" refLabel="Dalal airway 2009" /></td><td>Cuffed ETT now acceptable from neonates <InlineRef topicId="paediatric-icu" refLabel="Litman 2013" /></td></tr>
                   <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Respiratory</td><td>O₂ consumption 6–8 ml/kg/min, low FRC, obligate nasal &lt;6 mo</td><td>Rapid desaturation — HFNO during intubation</td></tr>
                   <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Cardiovascular</td><td>HR-dependent CO, higher resting HR</td><td>Bradycardia ≈ pre-arrest; atropine 20 mcg/kg. Hypotension is LATE</td></tr>
                   <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Renal</td><td>Immature GFR until ~2 y</td><td>Fluid overload risk; weight-based dosing</td></tr>

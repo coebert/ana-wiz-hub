@@ -1,4 +1,8 @@
+/** Coronal art remains coronal: patient right = viewer left. Axial is viewed from superior; no sagittal/lateral art is offered. */
 import { useState } from "react";
+import { Button } from "@/components/ui/button";
+import { InlineRef } from "@/components/references/InlineRef";
+import { PAEDIATRIC_AIRWAY_DIMENSIONS } from "@/components/topic/AnatomySpatialTeaching";
 import { DiagramToggleBar } from "@/components/diagrams/shared/DiagramToggleBar";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { withAlpha } from "@/lib/color-utils";
@@ -47,7 +51,7 @@ const structures: Record<StructureKey, LaryngealStructure> = {
     label: "Cricoid Cartilage",
     color: "hsl(220, 55%, 50%)",
     detail: "Only COMPLETE cartilaginous ring in the airway. Signet-ring shaped — narrow anterior arch (~5mm), broad posterior lamina (20–30mm). Level of C6. Articulates with thyroid (cricothyroid joints) and arytenoids (cricoarytenoid joints).",
-    clinicalNote: "Sellick's manoeuvre (cricoid pressure, 30N) compresses oesophagus against C6 vertebral body to prevent passive regurgitation during RSI. Controversial — may worsen laryngoscopic view. Narrowest point of paediatric airway (<8yr) is at cricoid level (not glottis).",
+    clinicalNote: "Sellick's manoeuvre (cricoid pressure, 30N) compresses oesophagus against C6 vertebral body to prevent passive regurgitation during RSI. Controversial — may worsen laryngoscopic view. " + PAEDIATRIC_AIRWAY_DIMENSIONS + "",
   },
   arytenoid: {
     label: "Arytenoid Cartilages",
@@ -59,12 +63,12 @@ const structures: Record<StructureKey, LaryngealStructure> = {
     label: "True Vocal Cords (Folds)",
     color: "hsl(340, 55%, 52%)",
     detail: "Vocal ligament (free edge of conus elasticus) covered by stratified squamous epithelium. Attach from arytenoid vocal process to thyroid angle anteriorly. Abducted by posterior cricoarytenoid (only abductor). Adducted by lateral cricoarytenoid and interarytenoid muscles. Tensioned by cricothyroid (tilts thyroid forward).",
-    clinicalNote: "Narrowest point of adult airway (rima glottidis: anteroposterior 23mm ♂, 17mm ♀). In children <8yr, narrowest at subglottic/cricoid level. RLN palsy → cord paramedian (all intrinsic muscles paralysed except cricothyroid). Bilateral RLN palsy → stridor/obstruction.",
+    clinicalNote: "Narrowest point of adult airway (rima glottidis: anteroposterior 23mm ♂, 17mm ♀). " + PAEDIATRIC_AIRWAY_DIMENSIONS + " RLN palsy → cord paramedian (all intrinsic muscles paralysed except cricothyroid). Bilateral RLN palsy → stridor/obstruction.",
   },
   "vestibular-folds": {
     label: "False Vocal Cords (Vestibular Folds)",
     color: "hsl(300, 35%, 50%)",
-    detail: "Above true cords. Contain vestibular ligaments (upper edge of quadrangular membrane). Ventricle of Morgagni (laryngeal ventricle) lies between true and false cords — saccule extends superiorly from its anterior part. Lined by respiratory epithelium.",
+    detail: "Above true cords. Contain vestibular ligaments (thickened inferior free edge of the quadrangular membrane; its superior free edge contributes to the aryepiglottic fold). Ventricle of Morgagni (laryngeal ventricle) lies between true and false cords — saccule extends superiorly from its anterior part. Lined by respiratory epithelium.",
     clinicalNote: "Do not normally vibrate during phonation. May obscure view during laryngoscopy if oedematous. Reinke's space (potential space deep to epithelium of true cords) may fill with fluid in Reinke's oedema → breathy voice.",
   },
   trachea: {
@@ -113,7 +117,7 @@ const structures: Record<StructureKey, LaryngealStructure> = {
     label: "Conus Elasticus",
     color: "hsl(15, 60%, 55%)",
     detail: "Fibroelastic membrane from upper border of cricoid arch to vocal ligament (its free superior edge). Forms the subglottic lateral wall. Continuous with CTM anteriorly. The vocal ligament is the thickened superior free edge.",
-    clinicalNote: "Defines the subglottic space. Subglottic stenosis (post-intubation) occurs here. In children <8yr, this region (not the glottis) is the narrowest point of the airway. Cuffed ETT exerts pressure on this structure.",
+    clinicalNote: "Defines the subglottic space. Subglottic stenosis (post-intubation) occurs here. " + PAEDIATRIC_AIRWAY_DIMENSIONS + " Cuffed ETT exerts pressure on this structure.",
   },
   "quadrangular-membrane": {
     label: "Quadrangular Membrane",
@@ -177,7 +181,7 @@ const LaryngealCrossSectionDiagram = () => {
   return (
     <div className="border border-border rounded-lg p-4 mb-6">
       <DiagramToggleBar
-        title="Laryngeal Anatomy — Coronal Cross-Section"
+        title="Laryngeal Anatomy"
         subtitle="Tap any structure to see its anatomy and anaesthetic relevance"
         toggles={[
           { label: "Sutures", active: showSutures, onChange: () => setShowSutures(v => !v) },
@@ -185,15 +189,15 @@ const LaryngealCrossSectionDiagram = () => {
         ]}
       />
 
-      <Tabs defaultValue="sagittal">
-        <TabsList className="grid w-full grid-cols-2 sm:grid-cols-4 mb-3">
-          <TabsTrigger value="sagittal" className="text-xs">Coronal View</TabsTrigger>
-          <TabsTrigger value="true-sagittal" className="text-xs">Sagittal (Lateral)</TabsTrigger>
+      <p className="text-xs text-muted-foreground mb-3">Projection: coronal section, axial view from superior, or muscle table; no lateral view is offered.<InlineRef topicId="head-neck-anatomy" refLabel="Michigan laryngeal membranes" /><InlineRef topicId="head-neck-anatomy" refLabel="Litman airway MRI 2003" /><InlineRef topicId="head-neck-anatomy" refLabel="Dalal airway 2009" /></p>
+      <Tabs defaultValue="coronal">
+        <TabsList className="grid w-full grid-cols-1 sm:grid-cols-3 mb-3">
+          <TabsTrigger value="coronal" className="text-xs">Coronal View</TabsTrigger>
           <TabsTrigger value="axial" className="text-xs">Axial (Superior)</TabsTrigger>
           <TabsTrigger value="muscles" className="text-xs">Intrinsic Muscles</TabsTrigger>
         </TabsList>
 
-        <TabsContent value="sagittal">
+        <TabsContent value="coronal">
           <div className="flex flex-col sm:flex-row gap-4 items-start">
             <div className="flex-shrink-0 mx-auto">
               <svg viewBox="0 0 280 340" width="280" height="340" className="border border-border rounded">

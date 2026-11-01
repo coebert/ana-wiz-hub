@@ -45,7 +45,7 @@ const tocItems = [
 const paediatricFaqs: Array<[string, string]> = [
   [
     "How is paediatric airway anatomy different from adults?",
-    "Children have several anatomical differences that make airway management more challenging: a relatively large head and tongue; a high anterior larynx at C3–C4 (adult: C4–C5); a long, floppy epiglottis; a narrowest airway at the subglottic cricoid ring (cylindrical) rather than the glottis; and a short trachea (4–5 cm in neonates). These features explain why straight blades (Miller) are preferred in infants, why uncuffed endotracheal tubes were traditionally used under age 8 (though modern cuffed tubes are now accepted from ~3 kg), and why neonates desaturate rapidly after apnoea due to high oxygen consumption (6–8 mL/kg/min) and low functional reserve capacity.",
+    "Children have several anatomical differences that make airway management more challenging: a relatively large head and tongue; a high anterior larynx at C3–C4 (adult: C4–C5); a long, floppy epiglottis; a rigid cricoid ring important for tube passage and pressure injury, while the measured narrowest level depends on axis, muscle/respiratory state and method (MRI and bronchoscopy commonly find glottic/immediately subglottic narrowing; no universal eight-year cutoff); and a short trachea (4–5 cm in neonates). These features explain why straight blades (Miller) are preferred in infants, why uncuffed endotracheal tubes were traditionally used under age 8 (though modern cuffed tubes are now accepted from ~3 kg), and why neonates desaturate rapidly after apnoea due to high oxygen consumption (6–8 mL/kg/min) and low functional reserve capacity.",
   ],
   [
     "What is the correct ETT size for a child?",

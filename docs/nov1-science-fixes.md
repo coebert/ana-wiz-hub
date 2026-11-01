@@ -64,3 +64,59 @@ Initial existing3filecheck had19passes/1failure because overlyprecise converterd
 - No source-support review of allhistoricaldiagrams, allcached/dynamicteaching orremoteAIcorpus. No database/APIreads orwrites in this batch; heldaudio staysheld.
 - FullVitest, separate manualtypecheck/productionbuild, mobile/darkmode checks were not performed. The automaticvalidation and exactaffectedtests above are the actual evidence.
 - No independentclinical/anatomicalsign-off, wholeappverification, newprognosismodel orpublication.
+
+# Science S2 anatomy corrections — 1 November 2026
+
+## Scope, guards and save
+
+Owner baseline `fafdee92a329ee37cd1b520c35743ba272a3b14f`; start HEAD `e3df8aaa18bebe4aed9bafca02ad326894491133`. Current six files were read before editing; recorded SHA256 guards matched supplied observations. Latest observed implementation save before this report: `9aba2b75c1f4d0649c46a590340c715a6242194c`; final heading/generator/documentation saves may have later hashes (automatic commits, no manual Git writes). No publication, database writes, audio/transcript edits, cached-lesson deletion, deployment or payment changes. These statuses concern only named defects, not clinical/anatomical sign-off.
+
+## Per-finding status
+
+| Finding | Status | Actual files and correction |
+|---|---|---|
+| SCI052 | Mitigated, redraw pending | `src/components/diagrams/anatomy/BrachialPlexusUltrasoundDiagram.tsx`: All four unsafe shaft/tip trajectories and malformed supraclavicular sonogram removed, not merely moved; four block-level textual explanations remain. |
+| SCI053 | Mitigated, redraw pending | `src/components/diagrams/anatomy/EpiduralSpaceDiagram.tsx`: Needle/catheter overlay removed completely. Text specifies epidural compartment outside dura/CSF and cranial travel; no replacement catheter geometry claimed. |
+| SCI054 | Implemented wording | `src/components/diagrams/anatomy/EpiduralSpaceDiagram.tsx`: Paramedian withdrawal followed by cephalad/medial redirection separated from possible caudal/lateral skin entry; no paramedian procedural route drawn. |
+| SCI055 | Implemented wording | `src/components/diagrams/anatomy/EpiduralSpaceDiagram.tsx`: Universal adult0.3–0.5mL/dermatome regimen removed; drug/concentration/level/patient-dependent incremental dose context retained. |
+| SCI056 | Mitigated, redraw pending | `src/components/diagrams/anatomy/IntercostalAnatomyDiagram.tsx`: Mixed independent axes, misplaced ribs and reversed lung-side access trajectory removed; explicit skin-to-pleural-space relationships replace figure. |
+| SCI057 | Implemented wording | `src/components/diagrams/anatomy/IntercostalAnatomyDiagram.tsx`: Intercostal internal/innermost plane distinguished from ESP at transverse process and paravertebral space; spread does not equate targets. |
+| SCI058 | Mitigated, redraw pending | `src/components/diagrams/anatomy/IntercostalAnatomyDiagram.tsx`: Misleading figure and all figure labels removed; no vestigial label/needle switches or out-of-viewBox labels remain. |
+| SCI067 | Mitigated, redraw pending | `src/components/diagrams/anatomy/ParavertebralSpaceDiagram.tsx`: Mixed axial/craniocaudal ribs and all needle geometry removed. Explicit axial boundary relationships and separate parasagittal withdrawal/redirection requirement; no line through cortex. |
+| SCI068 | Mitigated artwork; implemented wording, redraw pending | `src/components/diagrams/anatomy/ParavertebralSpaceDiagram.tsx`: Wrong blue/red V/A artwork removed. Principal VAN superior-to-inferior stated; variable collateral bundle qualified. |
+| SCI069 | Mitigated, redraw pending | `src/components/diagrams/anatomy/NeckCrossSectionDiagram.tsx`: Malformed vertebra/cord/longus-colli artwork removed. Canal posterior to body, connected posterior arch and anterior/anterolateral longus colli described. |
+| SCI070 | Mitigated artwork; implemented wording, redraw pending | `src/components/diagrams/anatomy/NeckCrossSectionDiagram.tsx`: Malformed fascial envelopes removed. UAMS convention plus Phan2022 boundary review; oesophagus within visceral envelope and danger space between alar/prevertebral layers; nomenclature variation explicit. |
+| SCI071 | Implemented offered views and wording | `src/components/diagrams/anatomy/LaryngealCrossSectionDiagram.tsx`: Unavailable lateral tab removed without relabelling coronal art. Vestibular ligament inferior free edge corrected from Michigan source. Offered coronal, superior/axial and muscle table are nonempty; neutral heading no longer contradicts selected projection. |
+| SCI072 | Implemented qualifications | `src/components/diagrams/anatomy/LaryngealCrossSectionDiagram.tsx`, `src/pages/topics/PaediatricAnaesthesiaTopic.tsx`, `src/pages/topics/PaediatricIcuTopic.tsx`, `src/pages/topics/AirwayManagementTopic.tsx`, `src/components/diagrams/anatomyFolios.ts`: All three laryngeal age-cutoff claims qualified; rigid-cricoid importance retained without universal glottis rule. Matching FAQ/body/table/historical-plate overlay notes reconciled. |
+
+Shared wording: `src/components/topic/AnatomySpatialTeaching.tsx`. Registry: `src/data/references.ts`. Tests: `src/test/nov1-anatomy-s2.test.tsx`. Architectural rule: `AGENTS.md`; task status: `roadmap.md`. Paediatric page paths are `src/pages/topics/PaediatricAnaesthesiaTopic.tsx`, `PaediatricIcuTopic.tsx`, `AirwayManagementTopic.tsx`; folio path `src/components/diagrams/anatomyFolios.ts`.
+
+## Source coverage and limitations
+
+- Independently accessed/read WFSA Visser epidural Issue13 (withdrawal/direction and variable spread/dosing), Loader/Ford thoracic PVB (boundary anatomy and withdrawal then inferior redirection), NICE HTG1792.2.1 adjacent-nerve placement, RAUK needling, SPA supraclavicular first-rib/pleural guide and RAUK/ESRA2022 ESP target factsheet. These support limited teaching, not diagram certification or patient procedural clearance.
+- Michigan BlueLink directly states free inferior edge/inferior-most quadrangular membrane forms vestibular ligament; vertebral canal/posterior arch relationships checked. UAMS supports named visceral/prevertebral convention; Phan, Lay, Scali2022 Cureus14:e32871 supports danger-space boundaries and nomenclature uncertainty. Initial2023 metadata error caught and corrected before completion.
+- Litman2003 MRI:99 children2months–13years under propofol; Dalal2009 bronchoscopy:135 enrolled/128 analysed,6months–13years under GA; Kwon2018 deeply sedated CT46 children distinguishes functional/subcricoid concern. Primary abstracts retrieved from EuropePMC; no dynamic airway/tube-suitability certification. Registry excerpts are actual source wording, not replacement prose.
+- USRA canonical host503; www hostname certificate mismatch was not bypassed. NCBI intercostal fetch returned challenge, not source text. Principal VAN independently corroborated by Osmosis thoracic-wall transcript; no invented NCBI quotation used. RCoA epidural PDF and BTS full publisher statement403; recorded restricted-access notes preserved. WFSA independently supports outside-dura teaching. The complete BTS/USRA technique has not been reverified and surrounding valid teaching was not broadly rewritten.
+- Source/access checks do not confer clinical review. Retained epidural/laryngeal art is simplified and not independently certified. No new procedural coordinates invented.
+
+## Local and remote copies
+
+Project generators `gen:diagram-snapshots`, `gen:search-index`, `build:audit-corpus` run after final source edits:474 snapshot entries; anatomy inventory116 entries/39 needing review;192 topics in search/audit. Changed generated `src/data/anatomyDiagramSources.generated.json`, `src/data/searchIndex.generated.json`, `data-build/audit-corpus.json` and the generator-maintained local `supabase/functions/process-podcast-rerecord/topic-corpus.json` where output differs; local corpus changes do not deploy a function or alter recordings. Existing FAQ extractor executed by FAQ/schema tests; only two justified paediatric FAQ snapshot literals reconciled in `src/test/__snapshots__/topic-faq-snapshots.test.ts.snap`, not blanket snapshot regeneration. Searches found no matching categorical quiz rule; related AirwayManagement residual reconciled. Remote cached lessons, saved AI/viva records and recordings not edited or fully inventoried; no database access in this batch.
+
+## Tests and visual inspection
+
+- New S2 rendered regressions:14 passed (all finding IDs plus source-resolution test). No coordinate bounds presented as anatomical proof; removal and selected teaching states tested. No numeric calculator/input engine introduced, so arithmetic boundary/malformed-number tests are not applicable to text replacements.
+- Affected8-file run:587 passed,18 skipped. Includes S2, FAQ snapshots/schema, anatomy inventory, anatomy-label verifier, anatomy references, citation coverage and all-diagram accessibility (555 passed/18 skipped). Canvas-not-implemented warnings from unrelated diagrams remain test-environment limitations.
+- Preservation6-file run:120 passed,1 failed. Exact inherited failure: `src/test/diagram-source-citations.test.ts` → `new diagram-source gaps fail against reviewed historical debt`: missing-diagram-sources for `OperativeDiagram` in `src/pages/topics/OperativeStepsTopic.tsx`. One obsolete historical snapshot reported. No baseline/snapshot allowance altered to conceal debt. C4/C5/C6, S1 and support tests passed.
+- Final S2 + FAQ/schema rerun and exam-tag/source-excerpt checker results logged below. Full-suite pass was not requested/run; no claim of full-suite success.
+- Harness automatic build/typevalidation latest observed before report:buildOK14:15:28UTC. Manual production-build/typecheck prohibited by environment (automatic harness runs them); therefore no separate command result is claimed. Final log read recorded separately below.
+- Real learner pages `/anatomy/brachial-plexus`, `/anatomy/thoracic-anatomy`, `/anatomy/spinal-anatomy`, `/anatomy/head-neck-anatomy`: Playwright selection flow completed,0page errors. Four plexus block states; all12 intercostal and21 paravertebral selections; epidural default/needle/dura/CSF/lamina, vessel overlay-off and labels-off; neck vertebral/prevertebral/pretracheal/alar and deselected state; all three larynx tabs and vestibular selection captured and actually viewed. Needle-on/label-toggle states of withdrawn figures no longer offered; verified no procedural geometry or obsolete switches. Mobile larynx390×844 showed no horizontal page overflow.
+- Capture sheets0–4 and individual epidural/larynx images visually reviewed. Removed figures are genuinely absent, not hazardous geometry with warnings. Epidural residual segmental-vessel schematic is not a needle/catheter and remains unreviewed art. Sticky page navigation can occlude top portions of tall element screenshots; desktop larynx captures show complete tabs/art. Other mobile/darkmode states and independent consultant anatomy review remain outstanding.
+
+## Residual work
+
+Reviewed redraws remain pending for SCI052, SCI053, SCI056, SCI058, SCI067, SCI068, SCI069 and SCI070. They are mitigated, not fixed artwork. No whole-app anatomical/clinical approval, source completeness, treatment clearance or recording release claimed.
+
+### Final readback
+
+Final focused S2/FAQ/schema rerun: **21 passed**. Exam-tag checker passed1424 files; source-excerpt checker passed (coverage deficits remain explicit, not source certification). Existing donation-scroll regression rerun is recorded in the final response. Final automatic log read: **buildOK2026-11-01T14:20:19Z**. Resulting implementation/generator/report save observed: **`96aba5a4c15407431af96977839ca2f9a8365358`** (this final documentation readback may create a later automatic documentation-only save). No separate manual production-build/typecheck result.
