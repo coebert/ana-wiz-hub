@@ -11,6 +11,7 @@ import { icuDrugMechanismGroups } from "@/data/icuDrugMechanisms";
 import { drugSlug } from "@/lib/caseDoseReferences";
 import { mechanismLinkForDrug } from "@/lib/icuDrugMechanismLinks";
 import { PageJsonLd } from "@/components/layout/PageJsonLd";
+import { DrugResidualSources } from "@/components/icu/DrugResidualSources";
 
 type AgeMode = "adult" | "paediatric" | "neonatal";
 
@@ -301,6 +302,7 @@ const IcuDrugDoses = () => {
             <section key={group.id} id={group.id} className="scroll-mt-24">
               <h2 className="text-xl font-semibold tracking-tight">{group.title}</h2>
               <p className="mt-1 max-w-3xl text-sm text-muted-foreground">{group.blurb}</p>
+              <DrugResidualSources groupId={group.id} />
 
               {/* Table on wider screens */}
               <div className="mt-4 hidden overflow-x-auto rounded-xl border border-border md:block">
