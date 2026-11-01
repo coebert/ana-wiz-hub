@@ -1,5 +1,9 @@
 # Admin metrics audit fixes
 
+## Buy Me a Coffee — 1 November 2026
+- [ ] Add understated support link after PayPal; preserve Stripe priority/feedback; guarded eighth click source migration and readback.
+- [ ] Verify link/44px/focus at desktop and mobile, policy acceptance/rejection and existing donation-scroll tests; no publication or payment claims.
+
 ## Clinical C4 — 1 November 2026
 - [x] CL35–39 operative/neonatal safety; CL60–64 and CL67 liver/HRS/ACLF/ICP; CL65 ACS; CL66 adrenal guidance; D89 bibliography, preserving drug protocols.
 - [x] Verify linked copies/citations and learner rendering; regenerate local FAQ/search/audit/count outputs and document results in docs/clinical-c4-2026-11-01.md without publication or audio regeneration.
