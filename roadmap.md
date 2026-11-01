@@ -1,5 +1,9 @@
 # Admin metrics audit fixes
 
+## Thoracic paravertebral boundary schematic
+- [x] Match relationship schematic controls with working boundary visibility, labels and keyboard selections; preserve omitted anatomy and procedural withdrawal.
+- [x] Verify selected boundaries and toggles on desktop/mobile; run focused anatomy regressions (24 passed).
+
 ## SCI052 limited relationship aid
 - [x] Import hash-verified original maps; reconcile component copy and source records without restoring procedural geometry.
 - [x] Exercise all four maps and enlargement by keyboard on narrow/wide layouts; run focused checks and document limitations.

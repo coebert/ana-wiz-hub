@@ -57,13 +57,15 @@ export function NeckRelationships(props: Props) {
   </Canvas>;
 }
 export const pvsHighlights: Record<string,string> = {"vertebral-body":"medial", "disc-foramen":"medial", "superior-costotransverse":"posterior", "parietal-pleura":"anterolateral", "pvs-contents":"compartment"};
-export function ParavertebralRelationships(props: Props) {
+export function ParavertebralRelationships(props: Props & { boundaries?: boolean }) {
   const active = props.selected ? pvsHighlights[props.selected] : undefined;
   const edges = [{id:"medial",key:"vertebral-body",d:"M140 100V330",role:"bone",label:"Medial: body / disc / foramen",y:377},{id:"anterolateral",key:"parietal-pleura",d:"M140 100L425 330",role:"parietal",label:"Anterolateral: parietal pleura",y:402},{id:"posterior",key:"superior-costotransverse",d:"M140 330H425",role:"fascia",label:"Posterior: superior costotransverse ligament",y:427}];
   return <Canvas title="Paravertebral abstract axial boundary map" description="Anterior top, posterior bottom, medial left, lateral right. Triangle is a compartment, not a needle target. Superior and inferior continuity out of plane; neural, vascular and endothoracic detail omitted.">
     <Label x={225} y={28}>ANTERIOR ↑</Label><Label x={222} y={354}>POSTERIOR ↓</Label><Label x={15} y={245}>MEDIAL</Label><Label x={448} y={245}>LATERAL</Label>
-    <Pick id="pvs-contents" {...props}><path data-part="compartment" d="M140 100L425 330H140Z" fill={tone("organ")} fillOpacity={0.35} /></Pick>
-    {edges.map(e => <g key={e.id} data-boundary={e.id} data-selected={active === e.id} onClick={() => props.onSelect(e.key)} className="cursor-pointer"><path d={e.d} fill="none" stroke={tone(e.role)} strokeWidth={active === e.id ? 12 : 7} />{props.labels !== false && <g data-annotations="true"><path d={`M25 ${e.y-5}H52`} stroke={tone(e.role)} strokeWidth={7} /><Label x={64} y={e.y}>{e.label}</Label></g>}</g>)}
+    <g data-structure="pvs-contents" data-selected={props.selected === "pvs-contents"} onClick={() => props.onSelect("pvs-contents")}>
+      <path data-part="compartment" d="M140 100L425 330H140Z" fill={tone("organ")} fillOpacity={props.selected === "pvs-contents" ? 0.5 : 0.25} stroke="hsl(var(--border))" />
+    </g>
+    {props.boundaries !== false && edges.map(e => <g key={e.id} data-boundary={e.id} data-selected={active === e.id} onClick={() => props.onSelect(e.key)} className="cursor-pointer"><path d={e.d} fill="none" stroke={tone(e.role)} strokeWidth={active === e.id ? 12 : 7} />{props.labels !== false && <g data-annotations="true"><path d={`M25 ${e.y-5}H52`} stroke={tone(e.role)} strokeWidth={7} /><Label x={64} y={e.y}>{e.label}</Label></g>}</g>)}
     {props.labels !== false && <><Label x={168} y={277}>Paravertebral</Label><Label x={211} y={302}>space</Label></>}
   </Canvas>;
 }
