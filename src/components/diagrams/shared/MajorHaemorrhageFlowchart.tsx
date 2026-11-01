@@ -28,8 +28,8 @@ const MajorHaemorrhageFlowchart = () => {
         <title id={`${id}-title`}>Major haemorrhage and transfusion reaction flowchart</title>
         <desc id={`${id}-desc`}>
           Flowchart for major haemorrhage. Recognise and activate the protocol,
-          give empirical red cells and plasma in equal ratio with tranexamic acid
-          within three hours, and correct ionised calcium, temperature and
+          follow the local protocol; initial adult trauma plasma:red cell ratio is 1:1,
+          with tranexamic acid for bleeding trauma within three hours, and measured normal-range ionised calcium, temperature and
           acidosis. A decision point diverts patients developing new hypoxia,
           fever or hypotension during transfusion to the acute reaction pathway
           distinguishing TACO, TRALI, acute haemolytic and bacterial reactions;
@@ -54,7 +54,7 @@ const MajorHaemorrhageFlowchart = () => {
             Uncontrolled bleeding — activate major haemorrhage protocol
           </text>
           <text x={W / 2} y={52} fontSize="10" textAnchor="middle" fill="hsl(var(--muted-foreground))">
-            &gt; 4 units in 1 h with ongoing loss, or one blood volume in 24 h, or anticipated need
+            Physiology, ongoing loss and response — not a predicted-unit threshold alone
           </text>
         </g>
         <line x1={W / 2} y1={66} x2={W / 2} y2={92} stroke="hsl(var(--foreground))" strokeWidth="1.5" markerEnd={`url(#${id}-arr)`} />
@@ -81,13 +81,13 @@ const MajorHaemorrhageFlowchart = () => {
             Empirical phase — before any test results
           </text>
           <text x={W / 2} y={236} fontSize="10" textAnchor="middle" fill="hsl(var(--muted-foreground))">
-            Red cells : plasma ≈ 1:1 · platelets with the second pack · avoid crystalloid dilution
+            Adult trauma plasma:RBC 1:1 · platelet packs per local MHP · other causes differ
           </text>
           <text x={W / 2} y={252} fontSize="10" textAnchor="middle" fill="hsl(var(--muted-foreground))">
-            Tranexamic acid 1 g within 3 h of trauma · fluid warmer and active rewarming
+            Bleeding trauma: TXA 1 g then 1 g over 8 h, start within 3 h · active warming
           </text>
           <text x={W / 2} y={268} fontSize="10" textAnchor="middle" fill="hsl(var(--muted-foreground))">
-            Ionised Ca²⁺ &gt; 1.0 mmol/L · treat acidosis by restoring perfusion, not bicarbonate
+            Measure iCa²⁺ frequently: normal ~1.1–1.3 mmol/L · protocol-guided replacement
           </text>
         </g>
         <line x1={W / 2} y1={272} x2={W / 2} y2={292} stroke="hsl(var(--foreground))" strokeWidth="1.5" markerEnd={`url(#${id}-arr)`} />
@@ -266,11 +266,15 @@ const MajorHaemorrhageFlowchart = () => {
         <ul className="space-y-1 text-muted-foreground">
           <li>
             <span className="font-medium text-foreground">Activation, empirical ratio and product targets:</span>
-            <Cite topicId="transfusion-coagulation" labels={["NICE NG24", "BSH 2017"]} />
+            <Cite topicId="transfusion-coagulation" labels={["NICE NG39 major haemorrhage", "NICE NG24", "BSH 2017"]} />
           </li>
           <li>
-            <span className="font-medium text-foreground">Tranexamic acid timing:</span> early administration in bleeding trauma, including head injury
-            <Cite topicId="transfusion-coagulation" labels={["CRASH-3 2019", "POISE-3 2022"]} />
+            <span className="font-medium text-foreground">Tranexamic acid timing:</span> bleeding-trauma regimen; selected head injury without suspected active extracranial bleeding is a separate NICE pathway (GCS ≤12, age ≥16: consider 2 g IV within 2 h, before imaging). CRASH-3 is trial evidence, not a universal regimen.
+            <Cite topicId="transfusion-coagulation" labels={["CRASH-2 2010", "CRASH-3 2019", "NICE NG232 selected head injury TXA", "POISE-3 2022"]} />
+          </li>
+          <li>
+            <span className="font-medium text-foreground">Calcium:</span> laboratory/pH-context normal range, frequent measurement and local protocol-guided replacement, not a fixed national pack schedule.
+            <Cite topicId="transfusion-coagulation" labels={["Rossaint 2023 calcium"]} />
           </li>
           <li>
             <span className="font-medium text-foreground">Viscoelastic triggers:</span> FIBTEM, EXTEM CT/A5 and lysis thresholds

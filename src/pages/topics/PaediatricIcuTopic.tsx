@@ -16,6 +16,8 @@ import { paediatricEmergenciesQuestions } from "@/data/quizzes";
 
 export const PAEDIATRIC_DNC_2025_SUMMARY = "UK AoMRC 2025/RCPCH: DNC is not established below 37 weeks corrected gestation. From 37 weeks to under 2 years corrected age, wait at least 24 hours after the last observed brainstem reflex or spontaneous breath and allow at least 24 hours between test sets. Ancillary investigations are not recommended to establish DNC in this age group. Apply the complete 2025 Code with paediatric specialist expertise.";
 
+export const PAEDIATRIC_BRADYCARDIA_2025_SUMMARY = "RCUK 2025: immediately assess oxygenation, ventilation and perfusion. If HR <60/min with poor perfusion persists despite adequate respiratory support, commence chest compressions and follow PALS, even if a pulse is detectable. In that PALS/compressions pathway give adrenaline 10 micrograms/kg IV/IO (maximum 1 mg), repeated every 3–5 minutes. Do not give this arrest bolus for uncomplicated bradycardia or circulatory failure outside that pathway. Reserve IV atropine 20 micrograms/kg (maximum 0.5 mg) for increased vagal tone or selected cardiac conduction disease; do not use it routinely before intubation.";
+
 const tocItems = [
   { id: "wetflag", label: "WETFLAG & Age-Specific Vital Signs", group: "Foundations" },
   { id: "physiology", label: "Age-Specific Physiology", group: "Foundations" },
@@ -240,8 +242,8 @@ const PaediatricIcuTopic = () => {
     cites: ["NICE NG195", "Kanani PGE1 2019"],
   },
   {
-    text: "Paediatric bradycardia with poor perfusion is treated first with oxygen and effective ventilation, because it is almost always hypoxic in origin; adrenaline 10 micrograms/kg is the first drug, with atropine reserved for increased vagal tone or primary atrioventricular block.",
-    cites: ["RCUK PALS 2021"],
+    text: PAEDIATRIC_BRADYCARDIA_2025_SUMMARY,
+    cites: ["RCUK PALS 2025"],
   },
   {
     text: "Stable SVT is treated with vagal manoeuvres then adenosine 100 micrograms/kg (increasing to 200 then 300 micrograms/kg, adult maximum 12 mg per dose); unstable SVT or VT with a pulse needs synchronised cardioversion at 1 J/kg, then 2 J/kg.",
@@ -263,14 +265,14 @@ const PaediatricIcuTopic = () => {
     text: "Prolonged stabilisation by a retrieval team is usually better than a rushed transfer by an untrained crew, but time-critical lesions (expanding intracranial haemorrhage, duct-dependent lesion needing intervention, surgical bleeding) justify a time-critical transfer by the local team with retrieval advice.",
     cites: ["PCCS Standards 2021"],
   },
-        { text: "Children have HR-dependent cardiac output — bradycardia is a pre-arrest sign; treat with atropine 20 mcg/kg", cites: ["Resuscitation Council UK 2021"] },
+        { text: PAEDIATRIC_BRADYCARDIA_2025_SUMMARY, cites: ["RCUK PALS 2025"] },
         { text: "Paediatric septic shock: 10 ml/kg boluses with reassessment after each (20 ml/kg only for profound shock); adrenaline for cold shock, noradrenaline for warm shock", cites: ["BJA Educ 2010"] },
         { text: "Single ventricle physiology: target SpO₂ 75–85%; excessive O₂ causes pulmonary overcirculation and systemic steal", cites: ["RCPCH 2019"] },
         { text: "Propofol is contraindicated by its product licence for ICU sedation at or below 16 years — use it for induction and short procedures only, never as a PICU sedation infusion", cites: ["MHRA Propofol"] },
         { text: "Isotonic maintenance fluids only — hypotonic fluids can cause fatal hyponatraemia in children", cites: ["NICE NG29"] },
         { text: "Paediatric cardiac arrest is usually respiratory in origin — 5 rescue breaths first, defibrillation 4 J/kg", cites: ["Resuscitation Council UK 2021"] },
         { text: PAEDIATRIC_DNC_2025_SUMMARY, cites: ["AoMRC 2025 Paediatric DNC"] },
-        { text: "FEAST trial: fluid boluses increased mortality in resource-limited settings — does NOT change UK practice", cites: ["RCPCH 2019"] },
+        { text: "FEAST (2011) found increased 48-hour mortality with boluses in enrolled children with severe febrile illness and impaired perfusion in hospitals in Uganda, Kenya and Tanzania. Population and setting affect applicability; do not dismiss the trial or prohibit all UK resuscitation fluids. RCUK 2025 uses reassessed small boluses, condition-specific pathways, overload surveillance and timely vasoactive support.", cites: ["FEAST 2011", "RCUK PALS 2025 fluids"] },
         { text: "Maintenance 4-2-1 (100/50/20 mL/kg/day) but restrict to 50–70% in ventilated or brain-injured children — cumulative positive balance >10% body weight tracks with mortality", cites: ["NICE NG29"] },
         { text: "Neonates need larger mg/kg loading doses (TBW 75–80%, ECF 40–45%) yet lower maintenance doses — immature glucuronidation, low protein binding and GFR 20–30% of adult", cites: ["BJA Educ 2010"] },
         { text: "Toddlers (1–6 y) clear many drugs faster per kg than adults — under-dosing is as common as over-dosing; always state a mg/kg dose with an adult-dose ceiling", cites: ["BJA Educ 2010"] },
@@ -306,12 +308,12 @@ const PaediatricIcuTopic = () => {
           question: "A previously well 2-year-old collapses. Initial rhythm is asystole. Which of the following best reflects paediatric resuscitation priorities?",
           options: [
             "Immediate defibrillation at 4 J/kg",
-            "5 rescue breaths first, then CPR at 15:2 with adrenaline 10 mcg/kg every 3–5 min",
+            "5 rescue breaths first, then CPR at 15:2 with adrenaline 10 micrograms/kg IV/IO (maximum 1 mg) every 3–5 min",
             "Adrenaline 1 mg IV every 3–5 minutes as per adult ALS",
             "Atropine 20 mcg/kg as first-line drug",
           ],
           correctIndex: 1,
-          explanation: "Paediatric arrests are usually hypoxic — 5 rescue breaths precede CPR. Adrenaline 10 mcg/kg.",
+          explanation: PAEDIATRIC_BRADYCARDIA_2025_SUMMARY,
         },
         {
           question: "A 10-kg toddler is admitted post-operatively. Which maintenance fluid is most appropriate?",
@@ -350,7 +352,7 @@ const PaediatricIcuTopic = () => {
       sectionSources={{
         objectives: ["RCPCH 2019", "Resuscitation Council UK 2021", "APLS 2021", "BJA Educ 2010"],
         workedExamples: ["Resuscitation Council UK 2021", "APLS 2021", "NICE NG29", "FEAST 2011"],
-        keyPoints: ["RCPCH 2019", "FEAST 2011", "NICE NG29", "Resuscitation Council UK 2021", "APLS 2021", "BJA Educ 2010", "AoMRC 2025 Paediatric DNC"],
+        keyPoints: ["RCPCH 2019", "FEAST 2011", "RCUK PALS 2025", "RCUK PALS 2025 fluids", "NICE NG29", "Resuscitation Council UK 2021", "APLS 2021", "BJA Educ 2010", "AoMRC 2025 Paediatric DNC"],
       }}
       sectionExamMapping={{
         objectives: { exams: [Exam.FFICM, Exam.EDIC], curriculumCodes: ["FFICM 4.6", "EDIC 5.6"] },
@@ -400,7 +402,7 @@ const PaediatricIcuTopic = () => {
           <ExamSection id="physiology" exams={[Exam.FFICM, Exam.EDIC]} className="scroll-mt-24">
             <CollapsibleSubsection title="Age-Specific Physiology">
             <div className="overflow-x-auto">
-              <table className="w-full text-sm border-collapse">
+              <table className="w-full min-w-[900px] text-sm border-collapse">
                 <thead>
                   <tr className="border-b border-border">
                     <th className="text-left py-2 text-foreground font-semibold">System</th>
@@ -411,7 +413,7 @@ const PaediatricIcuTopic = () => {
                 <tbody className="text-muted-foreground">
                   <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Airway</td><td>Large head/tongue, anterior larynx; rigid cricoid matters for tube passage, but narrowest measured level depends on axis, muscle/respiratory state and method, not an established eight-year cutoff<InlineRef topicId="paediatric-icu" refLabel="Litman airway MRI 2003" /><InlineRef topicId="paediatric-icu" refLabel="Dalal airway 2009" /></td><td>Cuffed ETT now acceptable from neonates <InlineRef topicId="paediatric-icu" refLabel="Litman 2013" /></td></tr>
                   <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Respiratory</td><td>O₂ consumption 6–8 ml/kg/min, low FRC, obligate nasal &lt;6 mo</td><td>Rapid desaturation — HFNO during intubation</td></tr>
-                  <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Cardiovascular</td><td>HR-dependent CO, higher resting HR</td><td>Bradycardia ≈ pre-arrest; atropine 20 mcg/kg. Hypotension is LATE</td></tr>
+                  <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Cardiovascular</td><td>HR-dependent CO, higher resting HR</td><td>{PAEDIATRIC_BRADYCARDIA_2025_SUMMARY} <InlineRef topicId="paediatric-icu" refLabel="RCUK PALS 2025" /> Hypotension is late.</td></tr>
                   <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Renal</td><td>Immature GFR until ~2 y</td><td>Fluid overload risk; weight-based dosing</td></tr>
                   <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Thermoregulation</td><td>Large BSA:weight, brown fat, no shivering</td><td>Active warming essential</td></tr>
                   <tr><td className="py-2 font-medium text-foreground">Pharmacology</td><td>Higher Vd, immature CYP, low protein binding</td><td>Weight-based mg/kg; some drugs need higher doses</td></tr>
@@ -460,10 +462,8 @@ const PaediatricIcuTopic = () => {
               </li>
               <li>
                 <strong>Autonomic imbalance</strong> — parasympathetic dominance means vagal stimuli
-                (laryngoscopy, suction, hypoxia) readily produce bradycardia. In a child, bradycardia is treated
-                as <strong>hypoxia until proved otherwise</strong>: oxygenate and ventilate first, then atropine
-                20 mcg/kg (min 100 mcg) and adrenaline 10 mcg/kg if HR &lt;60 with poor perfusion{" "}
-                <InlineRef topicId="paediatric-icu" refLabel="Resuscitation Council UK 2021" />.
+                (laryngoscopy, suction, hypoxia) readily produce bradycardia. {PAEDIATRIC_BRADYCARDIA_2025_SUMMARY}{" "}
+                <InlineRef topicId="paediatric-icu" refLabel="RCUK PALS 2025" />
               </li>
               <li>
                 <strong>Compensated shock is the rule.</strong> Vasoconstriction maintains blood pressure until
@@ -993,19 +993,19 @@ const PaediatricIcuTopic = () => {
                 </div>
                 <div className="grid gap-3 sm:grid-cols-2">
                   <div className="bg-card border border-border rounded-lg p-4">
-                    <h3 className="font-semibold text-foreground mb-2">Non-shockable (asystole, PEA, bradycardia &lt;60/min with poor perfusion)</h3>
+                    <h3 className="font-semibold text-foreground mb-2">Non-shockable PALS pathway (asystole, PEA, or persistent bradycardia meeting the respiratory-support and perfusion criteria)</h3>
                     <ul className="list-disc list-inside space-y-1 text-sm text-muted-foreground">
-                      <li>Give <strong>adrenaline 10 micrograms/kg IV/IO</strong> as soon as access is available, then every 3–5 minutes (every other cycle) <InlineRef topicId="paediatric-icu" refLabel="RCUK PALS 2021" />.</li>
+                      <li>{PAEDIATRIC_BRADYCARDIA_2025_SUMMARY} <InlineRef topicId="paediatric-icu" refLabel="RCUK PALS 2025" /></li>
                       <li>Continue CPR 15:2, oxygenate and ventilate well — hypoxia is the commonest cause.</li>
                       <li>Give a fluid bolus if hypovolaemia or sepsis is likely, and treat hyperkalaemia, hypoglycaemia and hypothermia actively.</li>
-                      <li>A profound bradycardia with poor perfusion is managed as an arrest: ventilate, then adrenaline; pace only for block or a post-surgical cause <InlineRef topicId="paediatric-icu" refLabel="APLS 2021" />.</li>
+                      <li>A low heart rate alone does not establish cardiac arrest. A detectable pulse does not exclude the PALS/compressions pathway when the stated respiratory-support and poor-perfusion criteria persist. Consider pacing only for selected conduction disease with specialist advice <InlineRef topicId="paediatric-icu" refLabel="RCUK PALS 2025" />.</li>
                     </ul>
                   </div>
                   <div className="bg-card border border-border rounded-lg p-4">
                     <h3 className="font-semibold text-foreground mb-2">Shockable (VF, pulseless VT)</h3>
                     <ul className="list-disc list-inside space-y-1 text-sm text-muted-foreground">
                       <li>Defibrillate at <strong>4 J/kg</strong> and resume compressions immediately, reassessing every 2 minutes <InlineRef topicId="paediatric-icu" refLabel="RCUK PALS 2021" />.</li>
-                      <li>After the <strong>third</strong> shock give adrenaline 10 micrograms/kg and amiodarone 5 mg/kg; repeat both after the <strong>fifth</strong> shock, with adrenaline then continuing every 3–5 minutes.</li>
+                      <li>After the <strong>third</strong> shock give adrenaline 10 micrograms/kg IV/IO (maximum 1 mg) and amiodarone 5 mg/kg; repeat both after the <strong>fifth</strong> shock, with adrenaline then continuing every 3–5 minutes.</li>
                       <li>Use paediatric pads or an attenuator under 8 years where available; adult pads are acceptable if that is all that is available.</li>
                       <li>Think of a channelopathy, myocarditis, poisoning, electrolyte abnormality or an underlying repaired congenital lesion in an unexpected shockable arrest.</li>
                     </ul>
@@ -1064,8 +1064,8 @@ const PaediatricIcuTopic = () => {
                   <tbody className="text-muted-foreground">
                     <tr className="border-b border-border">
                       <td className="py-2 font-medium text-foreground">Bradycardia with poor perfusion</td>
-                      <td>Heart rate &lt;60/min in an infant or child with poor perfusion; almost always hypoxic or vagal</td>
-                      <td><InlineRef topicId="paediatric-icu" refLabel="RCUK PALS 2021" /> Oxygen and effective ventilation first; if unresponsive start CPR, then adrenaline 10 micrograms/kg IV/IO repeated every 3–5 min; atropine 20 micrograms/kg (minimum 100 micrograms) for vagal cause or AV block; consider pacing for congenital or post-surgical block</td>
+                      <td>Assess cause, oxygenation, ventilation and perfusion; a low pulse rate alone is not cardiac arrest.</td>
+                      <td>{PAEDIATRIC_BRADYCARDIA_2025_SUMMARY} <InlineRef topicId="paediatric-icu" refLabel="RCUK PALS 2025" /> Monitored circulatory-failure specialist titration (small IV adrenaline boluses or infusion) is distinct from the PALS arrest bolus; seek paediatric cardiology advice <InlineRef topicId="paediatric-icu" refLabel="RCUK PALS 2025 arrhythmias" />.</td>
                     </tr>
                     <tr className="border-b border-border">
                       <td className="py-2 font-medium text-foreground">Supraventricular tachycardia</td>
@@ -1080,7 +1080,7 @@ const PaediatricIcuTopic = () => {
                     <tr className="border-b border-border">
                       <td className="py-2 font-medium text-foreground">VF / pulseless VT</td>
                       <td>Shockable arrest rhythm — more likely with cardiac disease, hypothermia, poisoning or channelopathy than in the typical hypoxic paediatric arrest</td>
-                      <td><InlineRef topicId="paediatric-icu" refLabel="RCUK PALS 2021" /> Unsynchronised defibrillation 4 J/kg, CPR 15:2, adrenaline 10 micrograms/kg and amiodarone 5 mg/kg after the third shock (repeat amiodarone once after the fifth), searching the reversible causes</td>
+                      <td><InlineRef topicId="paediatric-icu" refLabel="RCUK PALS 2025" /> Unsynchronised defibrillation 4 J/kg, CPR 15:2, adrenaline 10 micrograms/kg IV/IO (maximum 1 mg) and amiodarone 5 mg/kg after the third shock (repeat amiodarone once after the fifth), searching the reversible causes</td>
                     </tr>
                     <tr className="border-b border-border">
                       <td className="py-2 font-medium text-foreground">Junctional ectopic tachycardia</td>
@@ -1276,7 +1276,7 @@ const PaediatricIcuTopic = () => {
                   <h3 className="font-semibold text-foreground mb-2">Paediatric RSI and extubation readiness</h3>
                   <ul className="list-disc list-inside space-y-1 text-sm text-muted-foreground">
                     <li><strong>Why children desaturate in seconds</strong>: functional residual capacity is low relative to a two-to-three-times-higher oxygen consumption, so pre-oxygenate deliberately, keep nasal high-flow or nasal oxygen running through the apnoeic period, and consider gentle ventilation during apnoea rather than accepting desaturation. Use a videolaryngoscope, a straight-blade option in infants, and a cuffed tube with cuff pressure kept <strong>below 20–25 cmH₂O</strong> and checked each shift.</li>
-                    <li><strong>Physiologically difficult intubation</strong> is the norm in PICU: optimise volume status and start vasoactive support before induction, use ketamine or a reduced propofol dose, atropine for infants at risk of bradycardia, and plan for post-intubation hypotension.</li>
+                    <li><strong>Physiologically difficult intubation</strong> is the norm in PICU: optimise volume status and start vasoactive support before induction, use ketamine or a reduced propofol dose, and plan for post-intubation hypotension. Do not use atropine routinely as premedication; selected vagal or conduction-related indications are distinct <InlineRef topicId="paediatric-icu" refLabel="RCUK PALS 2025 intubation" />.</li>
                     <li><strong>Extubation readiness</strong>: resolving disease, minimal sedation with an awake and interactive child, adequate cough and secretion clearance, FiO₂ ≤0.4 with PEEP ≤5 cmH₂O, an audible <strong>cuff-leak</strong>, tolerating a short spontaneous breathing trial on pressure support 8–10 cmH₂O, and no imminent trip to theatre. Failure rates are 10–20%, and repeated failure suggests malacia, subglottic stenosis, vocal cord dysfunction, cardiac disease, neuromuscular weakness or under-treated delirium and withdrawal.</li>
                     <li><strong>Post-extubation stridor</strong>: dexamethasone 0.25–0.5 mg/kg (a dose before extubation in high-risk children), nebulised adrenaline, heliox in selected cases, and non-invasive positive pressure. Consider a pre-extubation air-leak assessment and ENT review for airway examination in recurrent failure; plan a high-risk extubation in daylight hours with senior airway support present.</li>
                   </ul>
@@ -1623,15 +1623,15 @@ const PaediatricIcuTopic = () => {
                   </tr>
                 </thead>
                 <tbody className="text-muted-foreground">
-                  <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Adrenaline (arrest)</td><td>10 mcg/kg IV/IO = <strong>0.1 mL/kg of 1:10,000</strong></td><td>Every 3–5 min. Never give the 1:1000 ampoule undiluted IV</td></tr>
+                  <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Adrenaline (PALS/compressions pathway)</td><td>10 micrograms/kg IV/IO (maximum 1 mg) = <strong>0.1 mL/kg of 1:10,000</strong> before the maximum</td><td>Every 3–5 min in this pathway, not an uncomplicated-bradycardia or circulatory-failure bolus. Never give the 1:1000 ampoule undiluted IV <InlineRef topicId="paediatric-icu" refLabel="RCUK PALS 2025" /></td></tr>
                   <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Adrenaline (anaphylaxis)</td><td>IM 1:1000 — 150 mcg &lt;6 y, 300 mcg 6–12 y, 500 mcg &gt;12 y</td><td>Anterolateral thigh; repeat at 5 min</td></tr>
-                  <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Atropine</td><td>20 mcg/kg</td><td>Minimum 100 mcg (smaller doses cause paradoxical bradycardia), max 600 mcg</td></tr>
+                  <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Atropine (selected bradycardia causes)</td><td>20 micrograms/kg IV (maximum 0.5 mg)</td><td>Increased vagal tone or selected conduction disease only; no minimum dose specified in RCUK 2025, not routine pre-intubation medication <InlineRef topicId="paediatric-icu" refLabel="RCUK PALS 2025 arrhythmias" /></td></tr>
                   <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Amiodarone</td><td>5 mg/kg after 3rd and 5th shock</td><td>Max 300 mg</td></tr>
                   <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Adenosine</td><td>100 mcg/kg, then 200, then 300 mcg/kg</td><td>Max single dose 12 mg; rapid flush, large proximal vein</td></tr>
                   <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Lorazepam / midazolam (seizure)</td><td>Lorazepam 100 mcg/kg IV (max 4 mg); buccal midazolam 300 mcg/kg (max 10 mg)</td><td>Two doses maximum before escalating</td></tr>
                   <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Levetiracetam / phenytoin</td><td>Levetiracetam 40–60 mg/kg (max 4.5 g); phenytoin 20 mg/kg over 20 min</td><td>Cardiac monitoring for phenytoin; levetiracetam preferred (no monitoring, fewer interactions)</td></tr>
                   <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Induction agents</td><td>Ketamine 1–2 mg/kg; propofol 2–4 mg/kg (higher per kg in infants); thiopentone 4–6 mg/kg (2–3 in neonates)</td><td>Halve doses in shock; ketamine is the usual choice for haemodynamic instability</td></tr>
-                  <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Neuromuscular blockers</td><td>Rocuronium 1 mg/kg (RSI); suxamethonium <strong>2 mg/kg &lt;1 y, 1.5 mg/kg child</strong>; atracurium 0.5 mg/kg</td><td>Sugammadex 2–4 mg/kg (16 mg/kg for immediate reversal); atropine before sux in infants</td></tr>
+                  <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Neuromuscular blockers</td><td>Rocuronium 1 mg/kg (RSI); suxamethonium <strong>2 mg/kg &lt;1 y, 1.5 mg/kg child</strong>; atracurium 0.5 mg/kg</td><td>Sugammadex 2–4 mg/kg (16 mg/kg for immediate reversal); do not use routine atropine premedication <InlineRef topicId="paediatric-icu" refLabel="RCUK PALS 2025 intubation" /></td></tr>
                   <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Analgesia / antipyretics</td><td>Paracetamol IV 15 mg/kg 6-hourly (max 60 mg/kg/day; 7.5 mg/kg and 30 mg/kg/day in neonates &lt;10 kg); ibuprofen 5–10 mg/kg 8-hourly; morphine 100 mcg/kg IV (<strong>25–50 mcg/kg in neonates</strong>)</td><td>Titrate opioids in 20 mcg/kg increments; naloxone 10 mcg/kg (400 mcg max) if needed</td></tr>
                   <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Antibiotics (sepsis)</td><td>Ceftriaxone 80 mg/kg od (max 4 g); cefotaxime 50 mg/kg 6–8-hourly; amoxicillin 30 mg/kg tds; gentamicin 7 mg/kg od (5 mg/kg neonates, extended interval); vancomycin 15 mg/kg 6–8-hourly (level-guided); aciclovir 10–20 mg/kg tds</td><td>Meningitic doses are higher; add dexamethasone 150 mcg/kg <strong>four times daily for 4 days</strong> in bacterial meningitis &gt;3 months (contrast the <strong>single</strong> 150 mcg/kg dose used in croup)</td></tr>
                   <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Hypertonic saline / mannitol</td><td>2.7% saline 3 mL/kg (max 150 mL); mannitol 0.5–1 g/kg</td><td>For raised ICP or hyponatraemic seizure</td></tr>

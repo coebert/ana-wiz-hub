@@ -1,3 +1,4 @@
+import { TransfusionHaemorrhageTeaching, PROPPR_COMPONENTS, PROPPR_OUTCOMES, TRAUMA_PRODUCTS, TRANSFUSION_CALCIUM, TRAUMA_PRESSURE, HEAD_INJURY_TXA } from "@/components/topic/TransfusionHaemorrhageTeaching";
 import { TransfusionPracticeTeaching } from "@/components/topic/TransfusionPracticeTeaching";
 import { TopicTemplate } from "@/components/topic/TopicTemplate";
 import { TopicFaqs } from "@/components/topic/TopicFaqs";
@@ -16,7 +17,7 @@ import { ExamPitfallsCallout } from "@/components/exam/ExamPitfallsCallout";
 import { InlineRef } from "@/components/references/InlineRef";
 
 const transfusionCoagulationFaqs: Array<[string, string]> = [
-  ["What ratios are used in major haemorrhage protocols?", "Empirical 1:1:1 (RBC:FFP:platelets) until ROTEM/TEG-guided, based on PROPPR trial; activate at predicted 4+ units in 1 h, give TXA 1 g within 3 h (CRASH-2) and target ionised Ca²⁺ >1.0 mmol/L."],
+  ["What ratios are used in major haemorrhage protocols?", "PROPPR 2015 used plasma:platelet-equivalents:RBC 1:1:1 in severe trauma: 6 plasma units, 1 adult platelet dose (about 6 whole-blood-derived platelet units or 1 apheresis unit), and 6 RBC units, not one adult platelet dose per RBC. More achieved haemostasis and fewer died from exsanguination; 24-hour/30-day mortality differences were not statistically significant. NICE NG39 initial adult major-trauma plasma:RBC is 1:1; follow the local MHP and transition promptly to laboratory/viscoelastic-guided treatment. Activation uses physiology, bleeding and response, not predicted units alone. Measure ionised calcium frequently and replace by protocol to the normal range (approximately 1.1–1.3 mmol/L; laboratory/pH context). Ratios and targets are not universal across bleeding causes."],
   ["When is prothrombin complex concentrate preferred over FFP?", "For warfarin reversal in major bleeding (25–50 U/kg with vitamin K, BSH 2018), or factor replacement in liver disease where volume load from FFP is harmful; PCC restores INR within minutes versus hours for FFP."],
   ["How is ROTEM/TEG used to guide blood product use?", "FIBTEM A5 <12 mm → fibrinogen concentrate or cryoprecipitate; EXTEM CT >80 s → FFP or PCC; EXTEM A5 <40 mm with normal FIBTEM → platelets; ML >15% → tranexamic acid (ITACTIC trial)."],
 ];
@@ -39,10 +40,10 @@ const workedExamples: WorkedExample[] = [
     scenario:
       "32-year-old, RTC, pelvic and femur fractures, BP 78/40, HR 138, FAST positive, Hb 68 on point-of-care. ABG: pH 7.18, lactate 6.8, iCa²⁺ 0.86, temperature 34.4°C.",
     working:
-      "Activate MHP: 1:1:1 (PRBC:FFP:platelets) packs. Give TXA 1 g IV bolus as soon as possible and within 3 h (CRASH-2); the follow-on 1 g over 8 h is retained by most UK major-haemorrhage protocols and is clearly indicated in isolated traumatic brain injury, where CRASH-3 showed benefit in mild-to-moderate injury given within 3 h — POISE-3 in non-cardiac surgery studied 1 g IV at the start AND 1 g at the end of surgery, not a universal elective-surgery regimen. Address lethal triad: warm fluids/forced-air warming → temperature; correct acidosis by source control + perfusion; coagulopathy by 1:1:1 + cryo or fibrinogen concentrate to keep fibrinogen >1.5–2 g/L. Citrate-induced hypocalcaemia: 10 mL CaCl₂ 10% per 4 units PRBC and whenever iCa²⁺ <1.0. Damage control resuscitation — permissive hypotension (SBP 80–90) until surgical/IR control. Send ROTEM to switch from empiric ratios to goal-directed.",
+      `${TRAUMA_PRODUCTS} Give TXA 1 g IV over 10 minutes then 1 g over 8 hours for major-trauma haemorrhage, started as soon as possible within 3 hours (CRASH-2). ${HEAD_INJURY_TXA} POISE-3 in non-cardiac surgery studied 1 g IV at the start AND 1 g at the end of surgery, not a universal elective-surgery regimen. Address the lethal triad: warm fluids/forced-air warming; correct acidosis through source control and perfusion; guide coagulopathy/fibrinogen replacement with laboratory/viscoelastic results and the local MHP. ${TRANSFUSION_CALCIUM} ${TRAUMA_PRESSURE} Expedite surgical/IR bleeding control.`,
     answer:
-      "Activate MHP, TXA within 3 h, 1:1:1 ratio, calcium replacement, active warming, permissive hypotension, urgent damage-control surgery/IR. Transition to ROTEM-guided once available.",
-    cites: ["BSH 2017"],
+      "Activate the local MHP on clinical grounds; initial adult-trauma plasma:RBC 1:1, then laboratory/viscoelastic-guided treatment. Give indicated early trauma TXA, measure/replace calcium by protocol, warm actively, individualise pressure targets for injuries, and obtain urgent surgical/IR source control.",
+    cites: ["NICE NG39 major haemorrhage", "CRASH-2 2010", "CRASH-3 2019", "NICE NG232 selected head injury TXA", "POISE-3 2022", "Rossaint 2023 calcium", "Rossaint 2023 BP target"],
   },
   {
     title: "Setting up cell salvage for a redo aortic case",
@@ -95,7 +96,7 @@ const TransfusionCoagulationTopic = () => {
           "NICE NG24",
           "BSH 2017",
         ],
-        workedExamples: ["BSH 2017", "NICE NG24", "BJA Educ 2015"],
+        workedExamples: ["BSH 2017", "NICE NG24", "BJA Educ 2015", "NICE NG39 major haemorrhage", "CRASH-2 2010", "CRASH-3 2019", "NICE NG232 selected head injury TXA", "POISE-3 2022", "Rossaint 2023 calcium", "Rossaint 2023 BP target"],
       }}
       keyPoints={[
         { text: "Restrictive transfusion (Hb 70 g/L trigger) is safe in most ICU patients — TRICC, TRISS", cites: ["BSH 2017"] },
@@ -108,7 +109,7 @@ const TransfusionCoagulationTopic = () => {
         { text: "ICS contraindications are largely relative — sickle cell disease, contamination with iodine/topical haemostats, and pharmacological agents not licensed for IV use; obstetric and oncological use is now supported with a leucodepletion filter (NICE TA/OAA-AAGBI)", cites: ["NICE NG24"] },
         { text: "ROTEM/TEG enables goal-directed transfusion — FIBTEM guides fibrinogen, EXTEM guides FFP/platelets", cites: ["BJA Educ 2015"] },
         { text: "TXA within 3 hours of trauma reduces mortality (CRASH-2: 1 g bolus then 1 g over 8 h). POISE-3 studied 1 g IV at the start and 1 g IV at the end of non-cardiac surgery, reducing bleeding but not establishing cardiovascular non-inferiority — so weigh bleeding against thrombotic risk", cites: ["CRASH-2 2010", "POISE-3 2022"] },
-        { text: "Massive transfusion: hypocalcaemia is the most dangerous metabolic complication — give CaCl₂ early", cites: ["NICE NG24"] },
+        { text: TRANSFUSION_CALCIUM, cites: ["Rossaint 2023 calcium"] },
         { text: "Lethal triad: hypothermia + acidosis + coagulopathy — damage control resuscitation breaks the cycle", cites: ["BJA Educ 2015"] },
         { text: "DIC: ISTH score ≥5 = overt DIC. Treat the underlying cause — the most important intervention", cites: ["BSH 2017"] },
         { text: "DIC vs TTP: coagulation screen normal in TTP, abnormal in DIC. Avoid prophylactic platelet transfusion in TTP; life-threatening haemorrhage may justify transfusion with urgent specialist haematology input", cites: ["BSH Platelets 2021"] },
@@ -310,10 +311,11 @@ const TransfusionCoagulationTopic = () => {
           <ExamSection id="mtp" exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]} curriculumCodes={["FFICM 4.6"]}>
             <CollapsibleSubsection title="Massive Transfusion Protocol (MTP)">
             <p className="text-muted-foreground leading-relaxed mb-3">
-              Defined as one entire blood volume in 24 h (~10 units PRBC in 70 kg adult), or &gt;4 units in 1 h with ongoing bleeding. Activation enables coordinated product delivery.
+              Historical massive-transfusion definitions (such as one blood volume in 24 hours) describe blood use, not automatic activation rules. Activate the local MHP using physiological criteria, haemodynamic status, ongoing bleeding and response to resuscitation <InlineRef topicId="transfusion-coagulation" refLabel="NICE NG39 major haemorrhage" />.
             </p>
 
             <h3 className="text-base font-semibold text-foreground mt-4 mb-1">Major Haemorrhage — Flowchart with Reaction Branch</h3>
+            <TransfusionHaemorrhageTeaching />
             <p className="text-sm text-muted-foreground">
               The hard exam scenario is the bleeding patient who also develops hypoxia or fever mid-transfusion. The flow below separates the empirical phase from goal-directed therapy, and branches into the acute reaction pathway (TACO, TRALI, haemolytic, bacterial) without abandoning resuscitation.
             </p>
@@ -321,8 +323,8 @@ const TransfusionCoagulationTopic = () => {
 
             <div className="grid sm:grid-cols-2 gap-3 mb-4">
               <div className="p-4 rounded-lg border border-border">
-                <p className="font-semibold text-foreground text-sm">Empiric 1:1:1</p>
-                <p className="text-sm text-muted-foreground mt-1">PROPPR (2015): 1:1:1 vs 1:1:2 — faster haemostasis, no mortality difference. UK MTP packs typically 6 PRBC : 4 FFP : 1 ATD platelets.</p>
+                <p className="font-semibold text-foreground text-sm">PROPPR component equivalence</p>
+                <p className="text-sm text-muted-foreground mt-1">{PROPPR_COMPONENTS} <InlineRef topicId="transfusion-coagulation" refLabel="PROPPR 2015 protocol" /></p>
               </div>
               <div className="p-4 rounded-lg border border-border">
                 <p className="font-semibold text-foreground text-sm">Goal-Directed (ROTEM/TEG)</p>
@@ -343,7 +345,7 @@ const TransfusionCoagulationTopic = () => {
                   <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Fibrinogen</td><td>&gt;1.5–2.0 g/L</td><td>Cryo or fibrinogen concentrate</td></tr>
                   <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">PT/APTT ratio</td><td>&lt;1.5× normal</td><td>FFP 15 mL/kg</td></tr>
                   <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Platelets</td><td>&gt;75 ×10⁹/L</td><td>1 ATD</td></tr>
-                  <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">iCa²⁺</td><td>&gt;1.0 mmol/L</td><td>10% CaCl₂ 10 mL = 6.8 mmol</td></tr>
+                  <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">iCa²⁺</td><td>Normal range, approximately 1.1–1.3 mmol/L; laboratory/pH context</td><td>Frequent ionised-calcium measurement; protocol-guided replacement, not a fixed pack prescription <InlineRef topicId="transfusion-coagulation" refLabel="Rossaint 2023 calcium" /></td></tr>
                   <tr><td className="py-2 font-medium text-foreground">Temperature</td><td>&gt;35°C</td><td>Fluid warmer, forced-air</td></tr>
                 </tbody>
               </table>
@@ -351,7 +353,7 @@ const TransfusionCoagulationTopic = () => {
             <div className="p-3 rounded-lg bg-secondary/50 border border-destructive/30">
               <p className="text-sm font-semibold text-foreground mb-1">⚠️ The Lethal Triad</p>
               <p className="text-sm text-muted-foreground">
-                Hypothermia + acidosis + coagulopathy form a self-perpetuating cycle. Damage control resuscitation: permissive hypotension (SBP 80–90), minimise crystalloid, early blood products, TXA &lt;3 h, correct hypothermia and Ca²⁺, expedite definitive haemorrhage control.
+                Hypothermia + acidosis + coagulopathy form a self-perpetuating cycle. Expedite source control, warming, indicated early trauma TXA and measured calcium replacement. {TRAUMA_PRESSURE} <InlineRef topicId="transfusion-coagulation" refLabel="Rossaint 2023 BP target" /> <InlineRef topicId="transfusion-coagulation" refLabel="NICE NG39 major haemorrhage" />
               </p>
             </div>
             </CollapsibleSubsection>
@@ -372,7 +374,7 @@ const TransfusionCoagulationTopic = () => {
               </p>
             </div>
             <p className="text-muted-foreground leading-relaxed mb-3">
-              Management follows damage-control resuscitation principles: empirical 1:1:1 ratios or viscoelastic (ROTEM/TEG) goal-directed factor therapy, tranexamic acid 1 g IV within 3 hours of injury followed by 1 g over 8 hours, correction of ionised calcium to &gt;1.0 mmol/L, active warming to reverse hypothermia, and permissive hypotension until surgical or radiological control of bleeding is achieved <InlineRef topicId="transfusion-coagulation" refLabel="Anaesthesia 2017 TIC" />.
+              {TRAUMA_PRODUCTS} <InlineRef topicId="transfusion-coagulation" refLabel="NICE NG39 major haemorrhage" /> For indicated traumatic haemorrhage give TXA 1 g IV over 10 minutes then 1 g over 8 hours, started within 3 hours <InlineRef topicId="transfusion-coagulation" refLabel="CRASH-2 2010" />. {TRANSFUSION_CALCIUM} <InlineRef topicId="transfusion-coagulation" refLabel="Rossaint 2023 calcium" /> Maintain active warming and prompt source control. {TRAUMA_PRESSURE} <InlineRef topicId="transfusion-coagulation" refLabel="Rossaint 2023 BP target" />
             </p>
             </CollapsibleSubsection>
           </ExamSection>
@@ -568,11 +570,11 @@ const TransfusionCoagulationTopic = () => {
                 { trial: "TRICC (1999)", result: "Restrictive (Hb 70) as safe as liberal (100) in most ICU patients." },
                 { trial: "TRISS (2014)", result: "Restrictive (Hb 70) vs liberal (90) in septic shock — no difference in 90-day mortality." },
                 { trial: "TITRe2 (2015)", result: "Restrictive (Hb 75) vs liberal (90) post-cardiac surgery — restrictive non-inferior. Trend to higher mortality in restrictive group." },
-                { trial: "PROPPR (2015)", result: "1:1:1 vs 1:1:2 in trauma — 1:1:1 faster haemostasis, no mortality difference." },
+                { trial: "PROPPR (2015)", result: PROPPR_OUTCOMES },
               ].map((t) => (
                 <div key={t.trial} className="p-3 rounded-lg bg-secondary/30 border border-border">
                   <p className="font-semibold text-foreground text-sm">{t.trial}</p>
-                  <p className="text-sm text-muted-foreground mt-1">{t.result}</p>
+                  <p className="text-sm text-muted-foreground mt-1">{t.result} {t.trial === "PROPPR (2015)" && <InlineRef topicId="transfusion-coagulation" refLabel="PROPPR 2015 outcomes" />}</p>
                 </div>
               ))}
             </div>
@@ -685,7 +687,9 @@ const TransfusionCoagulationTopic = () => {
           <ExamPitfallsCallout
             accent="icu"
             pitfalls={[
-              "Massive haemorrhage protocol: 1:1:1 RBC:FFP:platelets, TXA within 3 h, fibrinogen >2 g/L (>2.5 in obstetrics), calcium replacement.",
+              TRAUMA_PRODUCTS,
+              TRANSFUSION_CALCIUM,
+              TRAUMA_PRESSURE,
               "TACO (overload — hypertension, raised JVP) vs TRALI (lung injury — bilateral infiltrates, normal CVP, fever).",
               "Cell salvage: contraindicated relative to malignancy/sepsis (but useful in obstetrics with leukocyte filter).",
               "TEG/ROTEM: clot initiation (R/CT), kinetics (K/CFT), strength (MA/MCF), fibrinolysis (LY30) — guides goal-directed therapy.",

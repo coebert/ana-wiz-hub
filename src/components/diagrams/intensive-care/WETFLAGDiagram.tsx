@@ -1,5 +1,6 @@
 import { useMemo, useState } from "react";
 import { DiagramFigure } from "../_shared/DiagramFigure";
+import { InlineRef } from "@/components/references/InlineRef";
 
 const WETFLAGDiagram = () => {
   const [age, setAge] = useState<number>(4); // years
@@ -81,9 +82,9 @@ const WETFLAGDiagram = () => {
       letter: "A",
       title: "Adrenaline (µg)",
       value: `${adrenalineMicrog} µg  =  ${adrenalineMl} mL of 1:10 000`,
-      formula: "10 µg/kg = 0.1 mL/kg of 1:10 000",
+      formula: "PALS: 10 µg/kg = 0.1 mL/kg of 1:10 000 (maximum 1 mg)",
       detail:
-        "Cardiac arrest dose IV/IO every 3–5 min. Anaphylaxis: 10 µg/kg IM of 1:1000 (max 500 µg). Croup: nebulised adrenaline 400 µg/kg of 1:1000 (max 5 mL). Avoid endotracheal route — IV/IO preferred.",
+        "RCUK 2025 PALS/compressions dose IV/IO every 3–5 min, maximum 1 mg. For HR <60/min with poor perfusion persisting despite adequate respiratory support, start compressions/PALS even with a detectable pulse. Not an uncomplicated-bradycardia or circulatory-failure bolus. Anaphylaxis: 10 µg/kg IM of 1:1000 (max 500 µg). Croup: nebulised adrenaline 400 µg/kg of 1:1000 (max 5 mL). Avoid endotracheal route — IV/IO preferred.",
       color: "hsl(35 90% 45%)",
     },
     {
@@ -109,6 +110,7 @@ const WETFLAGDiagram = () => {
             <h3 className="text-lg font-serif font-bold text-foreground">WETFLAG — Paediatric Resuscitation Calculator</h3>
             <p className="text-xs text-muted-foreground mt-0.5">
               APLS 2021 mnemonic for weight-based emergency drug & equipment doses. Calculated when a child arrives in resus.
+              {" "}Adrenaline pathway qualification: <InlineRef topicId="paediatric-icu" refLabel="RCUK PALS 2025" />
             </p>
           </div>
         </div>
