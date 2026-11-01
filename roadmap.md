@@ -4,7 +4,8 @@
 - [x] Begin read-only assessment of existing learning value, safety residuals and Apple release requirements; preserve current work and holds.
 - [x] Rob chose native iOS delivery, a one-time paid download and all FRCA/FFICM learners; Apple handles the download purchase, not web checkout.
 - [x] Prepare a prioritised readiness plan covering clinical review, learner journeys, privacy, purchase compliance, device testing and submission gates.
-- [ ] Stage 1 readiness register and public learning-flow assessment awaits plan approval; later implementation and submission remain separately gated.
+- [x] Stage 1 readiness register and sampled iPhone-sized public learning flow completed: ten-question quiz, selected MRI figure/sources and anonymous local completion/resume; six existing regression tests passed. Evidence/limits: docs/app-store-readiness-2026-11-01.md. No app/backend/payment/publication changes.
+- [ ] Later bounded improvements await scope approval; hosted/authenticated and native validation need separately authorised testing, clinical/rights review needs independent reviewers, Apple submission needs owner enrolment and Xcode/TestFlight evidence.
 
 ## Epidural compartment schematic
 - [x] Add independent inset labels, catheter visibility and compartment selections; preserve catheter topology and withdrawn routes.
