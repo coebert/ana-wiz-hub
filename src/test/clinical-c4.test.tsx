@@ -8,7 +8,7 @@ import { ACLF_CLASSIFICATION, adultAcsDefinition } from "@/lib/c4-clinical-rules
 import CLIF from "@/components/diagrams/intensive-care/CLIFCACLFDiagram";
 import ALFDiagram from "@/components/diagrams/intensive-care/ALFCerebralOedemaDiagram";
 import { AdrenalCrisisTreatmentTeaching, AdrenalCrisisRecoveryTeaching } from "@/components/topic/AdrenalCrisisTeaching";
-import { liverDiseaseQuestions } from "@/data/quizzes";
+import { hepaticDiseaseQuestions } from "@/data/quizzes";
 afterEach(cleanup);
 const text = (path: string) => readFileSync(path, "utf8");
 const show = (node: React.ReactNode) => render(<MemoryRouter>{node}</MemoryRouter>);
@@ -52,10 +52,10 @@ describe("C4 liver and neonatal records", () => {
     const s = text("src/pages/topics/AcuteLiverFailureTopic.tsx");
     expect(s).toContain("cirrhosis with ascites"); expect(s).toContain("≤0.5 mL/kg/h for ≥6 h");
     expect(s).toContain("within 24 h"); expect(s).not.toContain("Failure to respond to albumin volume expansion confirms");
-    expect(s).toContain("Structural injury"); expect(s).not.toContain("3–90 days");
+    expect(s).toContain("structural injury"); expect(s).not.toContain("3–90 days");
     expect(s).toContain("maximum of 12 mg/24 h"); expect(s).toContain("maximum 14-day course");
     expect(s).toContain("2009 regeneration warning comes from mice");
-    expect(liverDiseaseQuestions.find(q => q.question.includes("ADQI–ICA"))?.explanation).toContain("not day 4 alone");
+    expect(hepaticDiseaseQuestions.find(q => q.question.includes("ADQI–ICA"))?.explanation).toContain("not day 4 alone");
   });
   it("CL61 grade3 alone is not futility in rendered figure", () => {
     show(<CLIF />);
