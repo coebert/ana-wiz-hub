@@ -71,7 +71,7 @@ const workedExamples: WorkedExample[] = [
         injury, prolonged ICU stay (&gt;1 week), and Guillain–Barré.
       </>
     ),
-    cites: ["Power & Kam Ch.15"],
+    cites: ["Power & Kam Ch.15", "Salisbury Burns Checklist", "Suxamethonium SmPC"],
   },
   {
     title: "Interpreting train-of-four fade",

@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { SectionLayout } from "@/components/layout/SectionLayout";
 import { AnaesthesiaDosingCallout } from "@/components/perioperative/AnaesthesiaDosingCallout";
 import { PageJsonLd } from "@/components/layout/PageJsonLd";
+import { LessonSources } from "@/components/topic/LessonSources";
 
 /**
  * Comparison guide: Suxamethonium vs Rocuronium for RSI.
@@ -173,9 +174,10 @@ const SuxVsRocComparisonTopic = () => {
           <p className="text-xs text-muted-foreground mt-2">
             Sources: Sparr et al., <em>Anesthesiology</em> 1999 (rocuronium 1.2 mg/kg
             intubating conditions); Tran et al., <em>Cochrane Database</em> 2017
-            (sux vs roc for RSI); Schaller &amp; Fink, <em>Anaesthesia</em> 2013
-            (sugammadex 16 mg/kg reversal time).
+            (sux vs roc for RSI). Product-specific reversal/contraception advice and
+            quantitative monitoring recommendations use the named sources below.
           </p>
+          <LessonSources topicId="suxamethonium-vs-rocuronium" labels={["ASA 2023 NMB", "Bridion SmPC", "Salisbury Burns Checklist", "Suxamethonium SmPC"]} />
         </section>
 
         <section>

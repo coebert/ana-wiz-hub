@@ -41,6 +41,7 @@
 - Shared source-scoped clinical audit facts keep duplicate hyperkalaemia teaching aligned; numeric warning tests do not provide intubation or treatment clearance.
 - FAQ extraction resolves explicitly imported shared hyperkalaemia teaching from its executed module so generated FAQs retain the same correction; unknown expressions remain diagnostics.
 - Citation checks share executed reference pools and conservative same-module immutable topic-ID AST resolution; regex approximations cannot preserve imported/merged provenance.
+- Citation scanners retain positioned TS syntax and unresolved legacy diagnostics through CLI eligibility; operation-specific source resolution complements representative topic declarations, never certifying artwork.
 - Exact legacy topic aliases are recorded in topicRedirects and positively tested; canonical teaching destinations retain synthesis/schema requirements.
 - Diagram provenance uses an unchanged historical baseline plus an explicit residual report; newly exposed source gaps and unknown labels cannot be silently accepted.
 - Science illustration and calculator arithmetic lives in pure, tested helpers with canonical units and strict full-string parsing; model labels distinguish illustrative profiles and historical trial context from patient prediction or eligibility.

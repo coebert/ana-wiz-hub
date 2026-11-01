@@ -9,7 +9,7 @@ const s = {
   pd: { label: "BJA Educ: pharmacodynamics", href: "https://doi.org/10.1093/bjaceaccp/mkm016" },
   volatiles: { label: "BJA Educ: inhalational agents", href: "https://doi.org/10.1093/bjaceaccp/mkg002" },
   mh: { label: "AAGBI/MHAUS malignant hyperthermia guideline", href: "https://associationofanaesthetists-publications.onlinelibrary.wiley.com/doi/10.1111/anae.14257" },
-  nmbGuideline: { label: "Assoc Anaesth 2023: neuromuscular blockade", href: "https://associationofanaesthetists-publications.onlinelibrary.wiley.com/doi/10.1111/anae.16114" },
+  nmbGuideline: { label: "ASA 2023: neuromuscular blockade", href: "https://doi.org/10.1097/ALN.0000000000004379" },
   vasopressor: { label: "BJA Educ: vasoactive drugs", href: "https://doi.org/10.1093/bjaed/mkw066" },
   antimicrobial: { label: "Antimicrobial PK/PD in critical illness", href: "https://doi.org/10.1007/s00134-020-06050-1" },
   last: { label: "Assoc Anaesth: management of severe local anaesthetic toxicity", href: "https://anaesthetists.org/Home/Resources-publications/Guidelines/Management-of-severe-local-anaesthetic-toxicity" },
