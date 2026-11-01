@@ -330,6 +330,8 @@ const MRIPhysicsDiagram = () => {
               },
             ]}
           />
+        </TabsContent>
+        <TabsContent value="relaxation">
           <RelaxationTab />
           <WorkedExampleCallout
             title="Choosing the sequence for a suspected stroke"
