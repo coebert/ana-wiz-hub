@@ -918,6 +918,7 @@ export default function DrugDetail() {
                   <li key={s.id}>
                     <a
                       href={`#${s.id}`}
+                      onClick={() => { if (s.id === "references") setCrashCardMinimised(true); }}
                       className="inline-flex min-h-11 items-center text-[11px] font-medium px-2.5 py-1 rounded-full border border-border bg-card text-muted-foreground hover:border-drugs/50 hover:text-drugs focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring transition-colors whitespace-nowrap"
                     >
                       {s.label}
