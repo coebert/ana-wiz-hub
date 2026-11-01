@@ -12,6 +12,7 @@ import { PodcastJobsIndicator } from "@/components/topic/PodcastJobsIndicator";
 import { VisitTrackerWrapper } from "@/components/layout/VisitTrackerWrapper";
 import Landing from "./pages/Landing";
 import Index from "./pages/Index";
+import { isNativeApp } from "./lib/native-platform";
 const NotFound = lazy(() => import("./pages/NotFound"));
 const AdminLogin = lazy(() => import("./pages/AdminLogin"));
 const AdminDashboard = lazy(() => import("./pages/AdminDashboard"));
@@ -164,7 +165,7 @@ const App = () => (
         <VisitTrackerWrapper>
         <Suspense fallback={<Loading />}>
         <Routes>
-          <Route path="/" element={<Landing />} />
+          <Route path="/" element={isNativeApp() ? <Navigate to="/revise" replace /> : <Landing />} />
           <Route path="/ask" element={<AskAi />} />
           <Route path="/login" element={<Login />} />
           <Route path="/review" element={<Review />} />
