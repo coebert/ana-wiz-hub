@@ -45,7 +45,7 @@ describe("S2 limited anatomy corrections (not anatomical certification)", () => 
     expect(screen.getByText(new RegExp(EPIDURAL_DOSE_CONTEXT.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")))).toBeInTheDocument();
     expect(EPIDURAL_DOSE_CONTEXT).toContain("no universal adult mL-per-dermatome prescription");
   });
-  it("SCI067 mixed chest-wall axes/pleural path are withdrawn in every selection", () => {
+  it("SCI067 replacement relationships retain the independent axes and no procedural path", () => {
     const { container } = mount(Intercostal);
     const buttons = screen.getAllByRole("button").filter(b => !b.getAttribute("aria-label")?.includes("reference"));
     for (const button of buttons) fireEvent.click(button);
@@ -63,7 +63,7 @@ describe("S2 limited anatomy corrections (not anatomical certification)", () => 
     fireEvent.click(screen.getByRole("button", { name: /Labels/ }));
     expect(container.querySelectorAll("svg text").length).toBeLessThan(before);
   });
-  it("SCI069 removes mixed axial ribs and through-cortex route", () => {
+  it("SCI069 boundary map retains withdrawal/redirection teaching without a route", () => {
     const { container } = mount(Paravertebral);
     expect(container.textContent).toContain("never continue through cortex");
     expect(container.textContent).toContain("separate parasagittal staged view");
@@ -75,7 +75,7 @@ describe("S2 limited anatomy corrections (not anatomical certification)", () => 
     expect(PRINCIPAL_VAN).toContain("vein–artery–nerve from superior to inferior");
     expect(PRINCIPAL_VAN).toContain("variable collateral bundle");
   });
-  it("SCI071 malformed vertebral/cord geometry is replaced with explicit relationships", () => {
+  it("SCI071 reduced central schematic accompanies explicit body/canal relationships", () => {
     const { container } = mount(Neck);
     expect(screen.getByText(NECK_SPATIAL)).toBeInTheDocument();
     expect(NECK_SPATIAL).toContain("canal posterior to the vertebral body");
