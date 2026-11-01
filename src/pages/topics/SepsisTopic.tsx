@@ -43,11 +43,11 @@ const sepsisTocItems = [
 const sepsisFaqs: Array<[string, string]> = [
   [
     "What is the Sepsis-3 definition of sepsis and septic shock?",
-    "Sepsis (Singer, JAMA 2016) is life-threatening organ dysfunction caused by a dysregulated host response to infection, operationalised as a rise of ≥ 2 points in the Sequential Organ Failure Assessment (SOFA) score from baseline in the presence of suspected or proven infection. Septic shock is the subset requiring vasopressors to maintain mean arterial pressure ≥ 65 mmHg AND a serum lactate > 2 mmol/L after adequate fluid resuscitation, identifying a group with hospital mortality > 40%. qSOFA (RR ≥ 22, altered mentation, SBP ≤ 100) is a bedside prompt to consider sepsis — it is a screening tool, not a diagnostic criterion.",
+    "Sepsis (Singer, JAMA 2016) is life-threatening organ dysfunction caused by a dysregulated host response to infection, operationalised as a rise of ≥ 2 points in the Sequential Organ Failure Assessment (SOFA) score from baseline in the presence of suspected or proven infection. Septic shock is the subset requiring vasopressors to maintain mean arterial pressure ≥ 65 mmHg AND a serum lactate > 2 mmol/L after adequate fluid resuscitation, identifying a group with hospital mortality > 40%. qSOFA (RR ≥ 22, altered mentation, SBP ≤ 100) is a bedside prompt to consider sepsis — it is a bedside risk prompt with limited sensitivity, not a diagnostic criterion or a sole screening tool. A low qSOFA score does not exclude sepsis (SSC 2026).",
   ],
   [
     "What is the Surviving Sepsis Hour-1 bundle?",
-    "The 2021 Surviving Sepsis Campaign Hour-1 bundle is a recognition-to-action package that should be initiated within 1 hour of sepsis recognition: (1) measure lactate and re-measure if > 2 mmol/L; (2) obtain blood cultures before antibiotics; (3) administer broad-spectrum antibiotics; (4) begin 30 mL/kg crystalloid for hypotension or lactate ≥ 4 mmol/L — SSC 2021 suggests giving this within the first 3 hours (weak recommendation, low-quality evidence); (5) start vasopressors during or after fluid if MAP < 65 mmHg. For sepsis without shock where infection is possible but not proven, SSC 2021 permits up to 3 hours for antibiotics while diagnostic work-up continues.",
+    "The historical SSC 2018 Hour-1 bundle is a recognition-to-action package, not a mandate to complete every intervention within one hour. Current SSC 2026 timing depends on shock and infection likelihood: (1) measure lactate and re-measure if > 2 mmol/L; (2) obtain blood cultures before antibiotics; (3) administer broad-spectrum antibiotics; (4) begin 30 mL/kg crystalloid for hypotension or lactate ≥ 4 mmol/L — SSC 2021 suggests giving this within the first 3 hours (weak recommendation, low-quality evidence); (5) start vasopressors during or after fluid if MAP < 65 mmHg. SSC 2026 recommends antimicrobials immediately, ideally within 1 h, for possible/probable/definite septic shock and probable/definite sepsis without shock; the rapid diagnostic window of up to 3 h applies to possible sepsis without shock if concern persists.",
   ],
   [
     "Why does every hour of delayed antibiotics matter in septic shock?",
@@ -55,7 +55,7 @@ const sepsisFaqs: Array<[string, string]> = [
   ],
   [
     "Is 30 mL/kg of crystalloid still the recommended initial fluid bolus?",
-    "Yes — SSC 2021 retains a 30 mL/kg balanced crystalloid bolus over the first 3 hours in sepsis-induced hypoperfusion or septic shock as a weak recommendation. Subsequent boluses should be guided by dynamic measures of fluid responsiveness (passive leg raise, stroke-volume variation, end-expiratory occlusion). CLASSIC (Meyhoff, NEJM 2022) showed that a restrictive fluid strategy after initial resuscitation is safe and feasible (no mortality difference vs liberal). CLOVERS (NHLBI 2023) similarly found no difference between early vasopressor-led vs liberal-fluid strategies — both signals support 'don't over-resuscitate after the first bolus'.",
+    "SSC 2026 conditionally suggests at least 30 mL/kg IV crystalloid in the first 3 h for sepsis-induced hypoperfusion or septic shock (low certainty); it is not a mandatory fixed bolus. Individual characteristics, fluid tolerance and frequent reassessment determine what is given. Subsequent boluses should be guided by dynamic measures of fluid responsiveness (passive leg raise, stroke-volume variation, end-expiratory occlusion). CLASSIC (Meyhoff, NEJM 2022) showed that a restrictive fluid strategy after initial resuscitation is safe and feasible (no mortality difference vs liberal). CLOVERS (NHLBI 2023) similarly found no difference between early vasopressor-led vs liberal-fluid strategies — both signals support 'don't over-resuscitate after the first bolus'.",
   ],
   [
     "Should I use balanced crystalloids or 0.9% saline?",
@@ -82,7 +82,7 @@ const objectives = [
   "Deliver the SSC Hour-1 bundle and justify antibiotic, fluid and vasopressor choices.",
   "Titrate noradrenaline, vasopressin, adrenaline and hydrocortisone for catecholamine-resistant shock.",
   "Interpret lactate, CRP, procalcitonin and presepsin trends to guide resuscitation and antibiotic stewardship.",
-  "Compare SSC 2021, NICE NG51 and IDSA 2024 guidance on antibiotic timing, fluids and steroids.",
+  "Distinguish current SSC 2026 international recommendations from NICE NG253 UK early-management guidance and historical trials.",
   "Plan source control and de-escalation, including PCT-guided antibiotic stop rules.",
 ];
 
@@ -130,10 +130,10 @@ const workedExamples: WorkedExample[] = [
     ),
     answer: (
       <>
-        Give ~2.5 L Hartmann's or Plasma-Lyte. Reassess <em>dynamically</em> after each 250–500
-        mL bolus (PLR, stroke volume variation, IVC, capillary refill — ANDROMEDA-SHOCK). IDSA
-        2024 cautions against rigidly chasing 30 mL/kg if not fluid-responsive — switch to
-        vasopressors and consider albumin if &gt;60–80 mL/kg given.
+        The SSC 2021/2026 suggestion gives an arithmetic volume of ~2.5 L, not a prescription to administer it regardless of response. Use Hartmann's or Plasma-Lyte in reassessed steps. Reassess <em>dynamically</em> after each 250–500
+        mL bolus (PLR, stroke volume variation, IVC, capillary refill — ANDROMEDA-SHOCK). Do not
+        rigidly chase 30 mL/kg if not fluid-responsive — consider
+        vasopressors when clinically indicated. SSC 2026 generally suggests crystalloids alone; supplemental albumin may suit selected patients after large crystalloid volumes or with cirrhosis, without an evidence-based fixed volume trigger <InlineRef topicId="sepsis" refLabel="SSC 2026 albumin" />.
       </>
     ),
     cites: ["SSC 2021"],
@@ -184,7 +184,7 @@ const SepsisTopic = () => {
         { text: "PCT-guided de-escalation reduces antibiotic duration by 2–3 days without increasing mortality", cites: ["Sepsis-3 2016"] },
         { text: "Lactate ≥4 mmol/L carried 28.4% mortality in ED patients with infection (vs 4.9% below 2.5); serial clearance guides resuscitation", cites: ["Shapiro 2005 lactate mortality", "SSC 2021 lactate"] },
         { text: "No single biomarker diagnoses sepsis — trends are more informative than single values", cites: ["SSC 2021"] },
-        { text: "IDSA 2024 challenges rigid 1h antibiotic + 30 mL/kg fluid targets in undifferentiated sepsis", cites: ["Sepsis-3 2016"] },
+        { text: "SSC 2026 distinguishes probable/definite sepsis from possible sepsis without shock; initial fluid is a conditional suggestion, not a mandate", cites: ["SSC 2026 antibiotics", "SSC 2026 fluids"] },
       ]}
       topicId="sepsis"
       topicTitle="Sepsis & Septic Shock"
@@ -231,7 +231,7 @@ const SepsisTopic = () => {
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Sepsis-3 Definitions</h2>
           <div className="space-y-3">
             {[
-              { term: "Sepsis", def: "Infection + organ dysfunction (SOFA score ≥2 points above baseline). qSOFA ≥2 at bedside (RR ≥22, altered mentation, SBP ≤100)." },
+              { term: "Sepsis", def: "Infection + organ dysfunction (SOFA score ≥2 points above baseline). qSOFA is a separate bedside risk prompt (RR ≥22, altered mentation, SBP ≤100), not the SOFA diagnostic rise; limited sensitivity means a low score cannot exclude sepsis." },
               { term: "Septic Shock", def: "Sepsis + vasopressors required to maintain MAP ≥65 mmHg AND lactate >2 mmol/L despite adequate fluid resuscitation." },
             ].map((item) => (
               <div key={item.term} className="p-4 rounded-lg border border-border bg-secondary/30">
@@ -249,18 +249,18 @@ const SepsisTopic = () => {
         <VasopressorLadderTool />
 
         <div>
-          <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Hour-1 Bundle (SSC 2021)</h2>
+          <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Historical Hour-1 Bundle; Current SSC 2026 Priorities</h2>
           <p className="text-muted-foreground leading-relaxed mb-4">
-            The Surviving Sepsis Campaign recommends initiating ALL elements within 1 hour of sepsis recognition:
+            Act promptly, but do not turn the historical bundle into mandatory simultaneous targets. SSC 2026 recommends immediate antibiotics for shock or probable/definite sepsis, and conditional reassessed fluids <InlineRef topicId="sepsis" refLabel="SSC 2026 antibiotics" /><InlineRef topicId="sepsis" refLabel="SSC 2026 fluids" />:
           </p>
           <div className="rounded-xl border border-border bg-card p-5">
             <div className="space-y-3">
               {[
                 { step: "1", action: "Measure lactate", detail: "Re-measure if initial lactate >2 mmol/L" },
                 { step: "2", action: "Obtain blood cultures", detail: "Before antibiotics, from 2 separate sites" },
-                { step: "3", action: "Administer broad-spectrum antibiotics", detail: "Within 1 hour for possible shock or probable sepsis (up to 3 h if sepsis only possible, no shock). Each hour of delay: ~4% higher odds of death (Seymour 2017)" },
-                { step: "4", action: "Begin rapid IV fluid resuscitation", detail: "Start 30 mL/kg crystalloid for hypotension or lactate ≥4 mmol/L — SSC 2021 suggests completing it within 3 h (weak recommendation)" },
-                { step: "5", action: "Apply vasopressors", detail: "If hypotensive during or after fluid resuscitation. Target MAP ≥65 mmHg" },
+                { step: "3", action: "Administer broad-spectrum antibiotics", detail: "Immediately, ideally within 1 hour for possible/probable/definite shock or probable/definite sepsis without shock; rapid assessment up to 3 h only for possible sepsis without shock if concern persists. Each hour of delay: ~4% higher odds of death (Seymour 2017)" },
+                { step: "4", action: "Begin rapid IV fluid resuscitation", detail: "SSC 2026 conditionally suggests at least 30 mL/kg IV crystalloid in the first 3 h for sepsis-induced hypoperfusion or septic shock, with frequent individual reassessment; not a mandatory single bolus" },
+                { step: "5", action: "Apply vasopressors", detail: "If hypotensive during or after fluid resuscitation. Initial MAP target 65 mmHg using a practical range (e.g. within 5 mmHg); SSC 2026 separately suggests 60–65 mmHg in adults aged ≥65, individualised to perfusion" },
               ].map((s) => (
                 <div key={s.step} className="flex gap-3">
                   <div className="shrink-0 w-7 h-7 rounded-full bg-primary/10 flex items-center justify-center">
@@ -300,7 +300,7 @@ const SepsisTopic = () => {
         <div>
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Source Control</h2>
           <p className="text-muted-foreground leading-relaxed">
-            Identify and control the source of infection as rapidly as possible. Drainage of abscesses, debridement of infected tissue, removal of infected devices. Delay in source control is independently associated with increased mortality. Consider CT imaging early if source unclear.
+            Identify and control the source of infection early: SSC 2026 conditionally suggests ideally within 6 h of diagnosis of sepsis/shock requiring source control, with individual anatomical and clinical assessment <InlineRef topicId="sepsis" refLabel="SSC 2026 source control" />. Drainage of abscesses, debridement of infected tissue, removal of infected devices. Delay in source control is independently associated with increased mortality. Consider CT imaging early if source unclear.
           </p>
         </div>
 
@@ -366,9 +366,9 @@ const SepsisTopic = () => {
 
           <h3 className="text-lg font-serif font-semibold text-foreground mt-4 mb-2">Guideline positions</h3>
           <ul className="list-disc list-inside text-sm text-muted-foreground space-y-1 mb-3">
-            <li><strong>Surviving Sepsis Campaign 2021</strong> — <em>weak recommendation</em> for albumin in patients who have received <strong>large volumes of crystalloid</strong> (e.g. &gt;60–80 mL/kg) for sepsis or septic shock; balanced crystalloid remains first-line. Not recommended as the initial resuscitation fluid.</li>
-            <li><strong>NICE NG51</strong> — crystalloid first; <strong>do not use</strong> tetrastarch; albumin not routinely recommended but may be considered in ongoing large-volume resuscitation.</li>
-            <li><strong>IDSA 2024</strong> — emphasises individualised, dynamic fluid assessment over fixed volumes; reserves albumin for the same large-volume scenario, noting absence of robust mortality benefit.</li>
+            <li><strong>SSC 2026 (current international guidance)</strong> — conditionally suggests crystalloids alone over supplemental albumin; albumin may be appropriate after large crystalloid volumes or with cirrhosis, without a fixed-volume trigger. The historical SSC 2021 large-volume suggestion did not define a 60–80 mL/kg threshold <InlineRef topicId="sepsis" refLabel="SSC 2026 albumin" />.</li>
+            <li><strong>NICE NG253 (UK, 2025–26)</strong> — balanced crystalloid initially (saline if unavailable), 250 mL over 10–15 min, reassess each bolus; further 250 mL up to 1,000 mL including previous fluids, then senior advice if response inadequate <InlineRef topicId="sepsis" refLabel="NICE NG253 2025 fluids" />.</li>
+            <li><strong>Trial evidence is separate:</strong> SAFE and ALBIOS did not establish an overall survival benefit from albumin; subgroup signals are not a universal treatment trigger.</li>
             <li><strong>Avoid</strong> albumin in <strong>traumatic brain injury</strong> (SAFE TBI signal of harm) and use cautiously in decompensated heart failure (volume load).</li>
           </ul>
 
@@ -390,7 +390,7 @@ const SepsisTopic = () => {
             <div>
               <p className="font-semibold text-foreground mb-1">When to consider it</p>
               <ul className="list-disc list-inside text-muted-foreground space-y-1">
-                <li><strong>Trigger:</strong> persistent hypotension or ongoing vasopressor requirement <em>after</em> ~30 mL/kg balanced crystalloid (SSC 2021 initial bolus), and especially once cumulative crystalloid approaches <strong>60–80 mL/kg</strong> in the first 24 h.</li>
+                <li><strong>Individual consideration, not a trigger:</strong> SSC 2026 generally suggests crystalloids alone. Selected large-volume or cirrhosis cases may justify supplemental albumin after assessment of fluid responsiveness and overload risk; no fixed crystalloid-volume threshold establishes benefit <InlineRef topicId="sepsis" refLabel="SSC 2026 albumin" />.</li>
                 <li><strong>Goal:</strong> reduce further crystalloid load (limit interstitial oedema, hyperchloraemia and abdominal pressure) while maintaining MAP ≥65 mmHg and adequate end-organ perfusion.</li>
                 <li><strong>Avoid</strong> in traumatic brain injury (SAFE TBI). Use cautiously in decompensated heart failure and oliguric AKI with established fluid overload.</li>
               </ul>
@@ -587,7 +587,7 @@ const SepsisTopic = () => {
               { label: "Diagnosis", detail: "No biomarker replaces clinical assessment. PCT >0.5 ng/mL with compatible clinical picture supports bacterial sepsis. Presepsin may add value in early detection but availability is limited." },
               { label: "Antibiotic Stewardship", detail: "PCT-guided algorithms reduce antibiotic duration by 2–3 days without increasing mortality (multiple RCTs). SSC 2021 recommends daily PCT for de-escalation. PCT that fails to decline suggests inadequate source control, resistant organism, or non-infectious cause." },
               { label: "Prognostication", detail: "Lactate ≥4 mmol/L carried 28.4% mortality in ED patients with infection (Shapiro 2005). Persistently elevated lactate despite resuscitation is the strongest predictor of poor outcome. Rising PCT/CRP despite treatment suggests treatment failure." },
-              { label: "Serial Monitoring", detail: "Trends are more informative than single values. Lactate 2–4 hourly during resuscitation, CRP daily, PCT 24–48 hourly. Declining trajectory supports current management; plateau or rise mandates reassessment." },
+              { label: "Serial Monitoring", detail: "Trends are more informative than single values. Lactate 2–4 hourly during resuscitation, CRP daily, PCT 24–48 hourly. Declining trajectory supports current management; plateau or rise prompts clinical reassessment; biomarker trends alone do not mandate treatment." },
             ].map((item) => (
               <div key={item.label} className="p-3 rounded-lg bg-secondary/30 border border-border">
                 <p className="font-semibold text-foreground text-sm">{item.label}</p>
@@ -601,7 +601,7 @@ const SepsisTopic = () => {
         <div>
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Major Guideline Comparison</h2>
           <p className="text-muted-foreground leading-relaxed mb-3">
-            Side-by-side summary of the three contemporary sepsis guidelines on the four big management decisions.
+            Current SSC 2026 international recommendations and NICE NG253 UK early-management recommendations have different scopes; the third column is historical trial evidence, not an invented IDSA 2024 guideline.
             Where they differ matters in vivas — particularly antibiotic timing windows.
           </p>
           <div className="overflow-x-auto rounded-lg border border-border">
@@ -609,48 +609,48 @@ const SepsisTopic = () => {
               <thead>
                 <tr className="bg-secondary/40 text-foreground">
                   <th className="text-left p-2 font-semibold border-b border-border">Topic</th>
-                  <th className="text-left p-2 font-semibold border-b border-border">Surviving Sepsis Campaign 2021</th>
-                  <th className="text-left p-2 font-semibold border-b border-border">NICE NG51 (UK, updated 2024)</th>
-                  <th className="text-left p-2 font-semibold border-b border-border">IDSA 2024 (sepsis position statement)</th>
+                  <th className="text-left p-2 font-semibold border-b border-border">Surviving Sepsis Campaign 2026</th>
+                  <th className="text-left p-2 font-semibold border-b border-border">NICE NG253 (UK, 2025–26)</th>
+                  <th className="text-left p-2 font-semibold border-b border-border">Evidence and scope limitations</th>
                 </tr>
               </thead>
               <tbody className="text-muted-foreground align-top">
                 {[
                   {
                     topic: "Antibiotic timing",
-                    ssc: "Septic shock or definite sepsis: within 1h. Possible sepsis without shock: investigate and give within 3h if sepsis confirmed.",
-                    nice: "High-risk criteria with suspected sepsis: within 1h of identification. Otherwise senior review and source-specific assessment.",
-                    idsa: "Disagrees with rigid 1h target for all — argues 1h is appropriate for septic shock but causes diagnostic over-treatment in undifferentiated patients. Recommends rapid assessment, with timing tailored to certainty of diagnosis (within 1h for shock, within 3h for probable sepsis).",
+                    ssc: "Shock (possible/probable/definite) or probable/definite sepsis without shock: immediately, ideally within 1h. Possible sepsis without shock: rapid assessment and antibiotics within 3h if concern persists.",
+                    nice: "High-risk suspected sepsis: IV antibiotics within 1h of initial NEWS2 calculation. Other risk bands have separate maximum windows and senior/source-specific assessment.",
+                    idsa: "Seymour 2017 associated delay with mortality; observational association is not proof of causation or a uniform timing rule for all infection likelihoods.",
                   },
                   {
                     topic: "Initial fluids",
-                    ssc: "30 mL/kg balanced crystalloid within 3h for sepsis-induced hypoperfusion or septic shock. Reassess dynamically. Albumin if large volumes needed.",
-                    nice: "IV crystalloid bolus 500 mL over <15 min if hypotensive or lactate >2 — repeat to max 30 mL/kg with senior review. Avoid starches and gelatins.",
-                    idsa: "Critical of fixed 30 mL/kg target — recommends individualised, dynamic assessment (CLASSIC, CLOVERS trials). Restrictive strategy non-inferior in many. Use balanced crystalloid; avoid 0.9% saline in large volumes.",
+                    ssc: "Conditionally suggest at least 30 mL/kg IV crystalloid in first 3h for sepsis-induced hypoperfusion/shock, with individual and frequent reassessment. Generally crystalloids alone; albumin in selected large-volume/cirrhosis cases, no fixed trigger.",
+                    nice: "NG253: 250 mL balanced crystalloid over 10–15 min, reassess after each; further 250 mL up to 1,000 mL total including prior fluids, senior advice if inadequate improvement. Saline if balanced fluid unavailable.",
+                    idsa: "CLASSIC and CLOVERS found no significant mortality difference in their studied strategies/populations after initial fluids; neither proves universal non-inferiority or mandates one strategy.",
                   },
                   {
                     topic: "Vasopressor choice & target",
-                    ssc: "Noradrenaline first line. Target MAP ≥65. Add vasopressin (0.03 U/min) if NA dose rising — start at NA 0.25–0.5 µg/kg/min. Adrenaline if still inadequate. Dobutamine for cardiac dysfunction.",
-                    nice: "Noradrenaline first line in critical care for MAP ≥65. Peripheral noradrenaline acceptable short-term while CVC sited.",
-                    idsa: "Endorses noradrenaline first line, MAP ≥65 (higher target 80–85 only in chronic hypertension — SEPSISPAM). Earlier vasopressin addition supported. Methylene blue for refractory vasoplegia.",
+                    ssc: "Noradrenaline first line. Initial MAP target 65 with practical range (e.g. within 5 mmHg); age ≥65: suggested initial 60–65. Individualise to perfusion; consider adjuncts if response inadequate.",
+                    nice: "NG253 covers early management and critical-care escalation; do not attribute a specific ICU vasopressor/MAP or peripheral-duration protocol to it.",
+                    idsa: "65 trial (2020) in older patients with vasodilatory hypotension: no significant primary 90-day mortality difference; keep this trial result distinct from SSC 2026 age-specific recommendations.",
                   },
                   {
                     topic: "Corticosteroids",
                     ssc: "Suggest IV hydrocortisone 200 mg/day in septic shock with ongoing vasopressor requirement (NA/adrenaline ≥0.25 µg/kg/min for ≥4h). Weak recommendation.",
-                    nice: "Consider hydrocortisone in septic shock not responding to fluid + vasopressors; refer to critical care.",
-                    idsa: "Supports hydrocortisone 200 mg/day in vasopressor-dependent septic shock (APROCCHSS, ADRENAL meta-analysis — faster shock reversal, possible mortality benefit). Add fludrocortisone 50 µg/day per APROCCHSS.",
+                    nice: "NG253 supports escalation to senior/critical-care review, not a specified septic-shock hydrocortisone regimen.",
+                    idsa: "ADRENAL: no 90-day mortality benefit, faster shock resolution. APROCCHSS tested hydrocortisone plus fludrocortisone; trial regimen is not an automatic prescription.",
                   },
                   {
                     topic: "Lactate-guided resuscitation",
                     ssc: "Suggest using serial lactate to guide resuscitation in patients with elevated lactate.",
                     nice: "Lactate >2 = high risk; >4 = very high risk. Use to escalate care.",
-                    idsa: "Lactate clearance useful but not superior to dynamic measures (capillary refill — ANDROMEDA-SHOCK). Avoid chasing lactate with more fluid in non-fluid-responsive patients.",
+                    idsa: "ANDROMEDA-SHOCK tested capillary-refill-guided versus lactate-guided resuscitation; evaluate perfusion and fluid tolerance, not lactate alone.",
                   },
                   {
                     topic: "Source control",
-                    ssc: "As soon as possible — within 6–12h where logistically feasible.",
+                    ssc: "Early source control suggested, ideally within 6h of diagnosis when a specific source requires intervention; clinical/anatomical assessment remains necessary.",
                     nice: "Identify and control source urgently; involve relevant specialty.",
-                    idsa: "Earliest feasible — recognises 6–12h is operational rather than evidence-based; emphasises minimally invasive options first.",
+                    idsa: "Intervention depends on anatomy, feasibility and risk; the SSC 2026 timing suggestion has very-low certainty.",
                   },
                 ].map((row) => (
                   <tr key={row.topic} className="border-b border-border last:border-b-0 hover:bg-secondary/20">
@@ -665,22 +665,22 @@ const SepsisTopic = () => {
           </div>
           <div className="mt-4 grid sm:grid-cols-2 gap-3">
             <div className="p-3 rounded-lg border border-border bg-secondary/20">
-              <p className="font-semibold text-foreground text-sm mb-1">Where they all agree</p>
+              <p className="font-semibold text-foreground text-sm mb-1">Shared early-management priorities</p>
               <ul className="text-xs text-muted-foreground space-y-1 list-disc list-inside">
                 <li>Antibiotics within 1h for septic shock</li>
-                <li>Noradrenaline first-line vasopressor; MAP target ≥65 mmHg</li>
+                <li>Assess perfusion and involve critical care for shock; ICU haemodynamic targets come from SSC, not NG253</li>
                 <li>Balanced crystalloid over 0.9% saline; avoid starches and gelatins</li>
-                <li>Hydrocortisone 200 mg/day in vasopressor-dependent septic shock</li>
+                <li>Distinguish ICU adjuncts from UK early-management scope</li>
                 <li>Urgent source control</li>
               </ul>
             </div>
             <div className="p-3 rounded-lg border border-border bg-secondary/20">
               <p className="font-semibold text-foreground text-sm mb-1">Where they differ</p>
               <ul className="text-xs text-muted-foreground space-y-1 list-disc list-inside">
-                <li><strong>1h antibiotic target</strong>: SSC/NICE strict for high-risk; IDSA 2024 pushes back — risk of over-treatment in undifferentiated patients</li>
-                <li><strong>30 mL/kg fluid bolus</strong>: SSC mandates; IDSA prefers individualised approach (CLASSIC/CLOVERS)</li>
-                <li><strong>Steroid recommendation strength</strong>: SSC weak; IDSA stronger, with added fludrocortisone per APROCCHSS</li>
-                <li><strong>Lactate clearance</strong>: SSC endorses; IDSA notes capillary refill (ANDROMEDA-SHOCK) equally valid and avoids fluid overload</li>
+                <li><strong>Antibiotics:</strong> SSC uses shock/infection-likelihood groups; NICE uses risk bands. Possible sepsis without shock is not probable sepsis.</li>
+                <li><strong>Fluid:</strong> SSC conditionally suggests 30 mL/kg over 3 h; NICE NG253 uses reassessed 250 mL boluses with senior advice after 1,000 mL if response inadequate.</li>
+                <li><strong>Scope:</strong> ICU corticosteroid guidance and historical trials must not be attributed to NG253 early management.</li>
+                <li><strong>Lactate clearance</strong>: SSC endorses; capillary refill is an adjunct; avoid automatic fluid escalation for isolated lactate elevation</li>
               </ul>
             </div>
           </div>
@@ -719,7 +719,7 @@ const SepsisTopic = () => {
             </table>
           </div>
           <p className="text-xs text-muted-foreground mt-3">
-            <strong>qSOFA</strong> (any 2 of RR ≥ 22, altered mentation, SBP ≤ 100): bedside prompt to suspect sepsis outside ICU — sensitive but not diagnostic. <strong>NEWS2</strong> remains the in-hospital track-and-trigger tool of choice in UK practice (NHS England Sepsis CQUIN).
+            <strong>qSOFA</strong> (any 2 of RR ≥ 22, altered mentation, SBP ≤ 100): bedside risk prompt with limited sensitivity, not diagnostic or a sole screening tool; a low score does not exclude sepsis <InlineRef topicId="sepsis" refLabel="SSC 2026 qSOFA" />. <strong>NEWS2</strong> remains the in-hospital track-and-trigger tool of choice in UK practice (NHS England Sepsis CQUIN).
           </p>
         </div>
 
@@ -735,7 +735,7 @@ const SepsisTopic = () => {
               <tbody className="text-muted-foreground align-top">
                 <tr className="border-b border-border"><td className="p-2 font-medium text-foreground">Lactate</td><td className="p-2">Measure now; remeasure if &gt; 2 mmol/L</td><td className="p-2">SSC 2021; Jansen 2010 lactate clearance</td></tr>
                 <tr className="border-b border-border"><td className="p-2 font-medium text-foreground">Cultures</td><td className="p-2">≥ 2 sets blood cultures before antibiotics if no significant delay (&lt; 45 min)</td><td className="p-2">Cheng 2019 — paired cultures ↑ yield</td></tr>
-                <tr className="border-b border-border"><td className="p-2 font-medium text-foreground">Antibiotics</td><td className="p-2">Broad-spectrum within 1 h for septic shock; within 3 h for sepsis without shock if infection probable</td><td className="p-2">Kumar 2006; Seymour NEJM 2017</td></tr>
+                <tr className="border-b border-border"><td className="p-2 font-medium text-foreground">Antibiotics</td><td className="p-2">Immediately, ideally within 1 h for shock or probable/definite sepsis; up to 3 h rapid assessment only for possible sepsis without shock if concern persists</td><td className="p-2">Kumar 2006; Seymour NEJM 2017</td></tr>
                 <tr className="border-b border-border"><td className="p-2 font-medium text-foreground">Fluids</td><td className="p-2">30 mL/kg balanced crystalloid over 3 h for hypotension or lactate ≥ 4 mmol/L</td><td className="p-2">SSC 2021; CLASSIC 2022; CLOVERS 2023</td></tr>
                 <tr><td className="p-2 font-medium text-foreground">Vasopressors</td><td className="p-2">Noradrenaline during or after fluid if MAP &lt; 65 mmHg; consider peripheral start to avoid delay</td><td className="p-2">SOAP-II 2010; SSC 2021</td></tr>
               </tbody>
@@ -876,7 +876,7 @@ const SepsisTopic = () => {
             </table>
           </div>
           <p className="text-xs text-muted-foreground mt-3">
-            <strong>Peripheral noradrenaline</strong> is safe via a proximal large-bore cannula for up to 6 h while CVC access is being obtained (Cardenas-Garcia 2015 cohort); this avoids the mortality cost of waiting for a CVC before starting pressors (CENSER trial — early NA improved shock control).
+            <strong>Peripheral noradrenaline</strong> may be started to avoid delaying vasopressor support, with appropriate access, site monitoring and local safeguards. SSC 2026 does not establish a universal evidence-based safe duration. CENSER (2019) improved shock control at 6 h, but did not demonstrate a mortality benefit or validate a peripheral-site duration <InlineRef topicId="sepsis" refLabel="SSC 2026 peripheral vasopressors" />.
           </p>
         </div>
 
@@ -925,7 +925,7 @@ const SepsisTopic = () => {
                 <tr className="border-b border-border"><td className="p-2 font-medium text-foreground">SMART (2018)</td><td className="p-2">Balanced crystalloid vs saline (ICU)</td><td className="p-2">Composite of death/RRT/AKI 14.3% vs 15.4%</td><td className="p-2">Use balanced crystalloid first-line</td></tr>
                 <tr className="border-b border-border"><td className="p-2 font-medium text-foreground">ADRENAL (2018)</td><td className="p-2">Hydrocortisone infusion in septic shock</td><td className="p-2">No 90-d mortality benefit; faster shock resolution; ↓ transfusion</td><td className="p-2">Supports hydrocortisone for vasopressor weaning</td></tr>
                 <tr className="border-b border-border"><td className="p-2 font-medium text-foreground">APROCCHSS (2018)</td><td className="p-2">Hydrocortisone + fludrocortisone vs placebo</td><td className="p-2">90-d mortality 43% vs 49%</td><td className="p-2">Steroids reduce mortality in severe shock</td></tr>
-                <tr className="border-b border-border"><td className="p-2 font-medium text-foreground">CENSER (2019)</td><td className="p-2">Early peripheral NA vs standard</td><td className="p-2">↑ shock control by 6 h; ↓ pulmonary oedema</td><td className="p-2">Don't wait for CVC to start pressors</td></tr>
+                <tr className="border-b border-border"><td className="p-2 font-medium text-foreground">CENSER (2019)</td><td className="p-2">Early low-dose NA vs standard</td><td className="p-2">↑ shock control by 6 h; ↓ pulmonary oedema</td><td className="p-2">Don't wait for CVC to start pressors</td></tr>
                 <tr className="border-b border-border"><td className="p-2 font-medium text-foreground">LOVIT (2022)</td><td className="p-2">High-dose IV vitamin C in septic shock</td><td className="p-2">Composite organ dysfunction/death HR 1.21</td><td className="p-2"><strong>Do not use</strong> vitamin C</td></tr>
                 <tr className="border-b border-border"><td className="p-2 font-medium text-foreground">CLASSIC (2022)</td><td className="p-2">Restrictive vs liberal fluid after initial resus</td><td className="p-2">No 90-d mortality difference (42.3% vs 42.1%)</td><td className="p-2">Restrictive strategy is safe</td></tr>
                 <tr className="border-b border-border"><td className="p-2 font-medium text-foreground">CLOVERS (2023)</td><td className="p-2">Early vasopressor vs liberal fluid</td><td className="p-2">No mortality difference (14.0% vs 14.9%)</td><td className="p-2">Either strategy acceptable; avoid over-resuscitation</td></tr>
@@ -966,7 +966,7 @@ const SepsisTopic = () => {
       </section>
 
       <section className="max-w-5xl mx-auto px-4 py-6">
-        <LessonSubsection title="Latest Guidelines and Bedside Management (NICE NG253, SSC 2021)">
+        <LessonSubsection title="Latest Guidelines and Bedside Management (NICE NG253, SSC 2026)">
           <SepsisPracticeTeaching />
         </LessonSubsection>
         <LessonSubsection title="Sepsis Criteria: Sepsis-3, Septic Shock and Screening">
@@ -988,27 +988,27 @@ const SepsisTopic = () => {
 
       <SynthesisBlock
         title="Sepsis — Hour-1 Bundle Synthesis"
-        subtitle="The Surviving Sepsis 2021 bundle distilled to the actions that change outcome."
+        subtitle="Current SSC 2026 and NICE NG253 recommendations; historical bundle and trials distinguished."
         variant="summary"
       >
         <ul className="space-y-2 list-disc list-inside text-sm">
           <li><strong>Measure lactate</strong>; remeasure if &gt;2 mmol/L.</li>
           <li><strong>Blood cultures × 2</strong> before antibiotics (don't delay antibiotics &gt;45 min).</li>
-          <li><strong>Broad-spectrum antibiotics within 1 h</strong> (septic shock); within 3 h (sepsis without shock if uncertain).</li>
-          <li><strong>Balanced crystalloid in reassessed steps</strong>: SSC 2021 suggests at least 30 mL/kg within 3 h; NICE NG253 uses 250 mL boluses with senior review at 1,000 mL.</li>
-          <li><strong>Vasopressors for MAP ≥65</strong> if hypotensive after fluid (or alongside) — noradrenaline first-line; add vasopressin / hydrocortisone if catecholamine-resistant.</li>
-          <li><strong>Source control</strong> as soon as anatomically feasible — drainage, debridement, removal of infected device.</li>
+          <li><strong>Antibiotics immediately, ideally within 1 h</strong> for shock or probable/definite sepsis; rapid investigation up to 3 h only for possible sepsis without shock if concern persists <InlineRef topicId="sepsis" refLabel="SSC 2026 antibiotics" />.</li>
+          <li><strong>Balanced crystalloid in reassessed steps</strong>: SSC 2026 conditionally suggests at least 30 mL/kg within 3 h; NICE NG253 uses 250 mL over 10–15 min, reassesses each bolus, further 250 mL up to 1,000 mL including prior fluids and senior advice if response inadequate <InlineRef topicId="sepsis" refLabel="SSC 2026 fluids" /><InlineRef topicId="sepsis" refLabel="NICE NG253 2025 fluids" />.</li>
+          <li><strong>Vasopressors: initial MAP target 65 with a practical range; age ≥65 suggested 60–65</strong> if hypotensive after fluid (or alongside) — noradrenaline first-line; add vasopressin / hydrocortisone if catecholamine-resistant.</li>
+          <li><strong>Source control</strong> early, ideally within 6 h of diagnosis when intervention is required, individualised to anatomy and physiology <InlineRef topicId="sepsis" refLabel="SSC 2026 source control" />.</li>
         </ul>
       </SynthesisBlock>
 
           <ExamPitfallsCallout
             accent="icu"
             pitfalls={[
-              "Sepsis = life-threatening organ dysfunction from dysregulated host response; SOFA increase ≥2 defines it; qSOFA is a screen, not diagnostic.",
+              "Sepsis = life-threatening organ dysfunction from dysregulated host response; SOFA increase ≥2 defines it; qSOFA is a limited-sensitivity bedside risk prompt, not diagnostic or a sole screen; a low score does not exclude sepsis.",
               "Hour-1 bundle: lactate, blood cultures, broad-spectrum antibiotics, 30 mL/kg crystalloid for hypotension/lactate ≥4, vasopressors to MAP ≥65.",
               "Noradrenaline is first-line vasopressor; add vasopressin 0.03 U/min then hydrocortisone 200 mg/day in catecholamine-resistant shock.",
-              "Source control within 6–12 h where feasible — undrained pus, infected lines, necrotic tissue.",
-              "Balanced crystalloids are suggested over 0.9% saline (SSC 2021, NICE NG253); CLOVERS and CLASSIC found no mortality difference between restrictive and liberal fluid after initial resuscitation.",
+              "SSC 2026 suggests early source control, ideally within 6 h of diagnosis when intervention is required; assess anatomy and clinical circumstances.",
+              "Balanced crystalloids are suggested over 0.9% saline (SSC 2026, NICE NG253); CLOVERS and CLASSIC found no mortality difference between restrictive and liberal fluid after initial resuscitation.",
             ]}
           />
     </ExamSection>
