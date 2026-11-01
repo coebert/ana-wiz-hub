@@ -1,0 +1,19 @@
+import { InlineRef } from "@/components/references/InlineRef";
+
+export const PROPPR_COMPONENTS = "PROPPR 2015 studied severely injured trauma patients predicted to need massive transfusion. Its 1:1:1 was plasma:platelet-equivalents:RBC, not one adult platelet dose per RBC unit: the pack contained 6 plasma units, 1 adult platelet dose (about 6 whole-blood-derived platelet units, or 1 apheresis unit), and 6 RBC units.";
+export const PROPPR_OUTCOMES = "Compared with 1:1:2, 1:1:1 achieved haemostasis more often (86.1% vs 78.1%) and fewer died from exsanguination within 24 hours (9.2% vs 14.6%). All-cause mortality differences at 24 hours (12.7% vs 17.0%) and 30 days (22.4% vs 26.1%) were not statistically significant; time to haemostasis among those achieving it was not significantly different.";
+export const TRAUMA_PRODUCTS = "NICE NG39: initial adult major-trauma plasma:RBC ratio is 1:1. Follow the agreed local major haemorrhage protocol (MHP), including platelet packs, and transition promptly to laboratory/viscoelastic-guided treatment. Activate using physiological criteria, haemodynamic status, ongoing bleeding and response to resuscitation, not a numerical predicted-unit threshold alone. Do not apply a universal 1:1:1 pack to every bleeding cause.";
+export const TRANSFUSION_CALCIUM = "Hypocalcaemia is one serious complication of major haemorrhage/transfusion. Measure ionised calcium frequently and replace according to the local protocol to the normal range (approximately 1.1–1.3 mmol/L; laboratory and pH context matter). An empirical local pack schedule is not a national mandate or a substitute for measurement; calcium product, route and replacement dose are protocol-specific.";
+export const TRAUMA_PRESSURE = "SBP 80–90 mmHg is an initial target for adult traumatic haemorrhage without clinical brain or spinal cord injury, pending bleeding control. Targets depend on the injuries and patient; traumatic brain injury requires cerebral-perfusion protection and may need less restrictive resuscitation. Do not apply this target to every haemorrhage, isolated TBI or spinal cord injury.";
+export const HEAD_INJURY_TXA = "CRASH-3 is named trial evidence, not a universal isolated-TBI prescription. NICE NG232 recommendation 1.3.17: for head injury with GCS 12 or less and no suspected active extracranial bleeding, consider 2 g TXA IV bolus for people 16 and over, as soon as possible within 2 hours and before imaging. This selected-head-injury pathway is separate from the major-trauma haemorrhage regimen (1 g IV over 10 minutes then 1 g over 8 hours, started within 3 hours).";
+
+export function TransfusionHaemorrhageTeaching() {
+  return <div className="space-y-3 text-sm text-muted-foreground leading-relaxed">
+    <p>{PROPPR_COMPONENTS} <InlineRef topicId="transfusion-coagulation" refLabel="PROPPR 2015 protocol" /></p>
+    <p>{PROPPR_OUTCOMES} <InlineRef topicId="transfusion-coagulation" refLabel="PROPPR 2015 outcomes" /></p>
+    <p>{TRAUMA_PRODUCTS} <InlineRef topicId="transfusion-coagulation" refLabel="NICE NG39 major haemorrhage" /></p>
+    <p>{TRANSFUSION_CALCIUM} <InlineRef topicId="transfusion-coagulation" refLabel="Rossaint 2023 calcium" /></p>
+    <p>{TRAUMA_PRESSURE} <InlineRef topicId="transfusion-coagulation" refLabel="Rossaint 2023 BP target" /> <InlineRef topicId="transfusion-coagulation" refLabel="NICE NG39 major haemorrhage" /></p>
+    <p>{HEAD_INJURY_TXA} <InlineRef topicId="transfusion-coagulation" refLabel="CRASH-3 2019" /> <InlineRef topicId="transfusion-coagulation" refLabel="NICE NG232 selected head injury TXA" /> <InlineRef topicId="transfusion-coagulation" refLabel="CRASH-2 2010" /></p>
+  </div>;
+}
