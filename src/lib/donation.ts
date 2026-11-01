@@ -49,6 +49,10 @@ export const logDonateClick = (source: string) => {
 export const STRIPE_CONTRIBUTE_URL = "https://buy.stripe.com/bJebJ1ePnglq3hQ3om7IY00";
 export const STRIPE_SOURCE = "support-card-stripe";
 
+/** Optional external support alternative; no embedded payment integration. */
+export const BUY_ME_A_COFFEE_URL = "https://buymeacoffee.com/anaesthesiacore";
+export const BUY_ME_A_COFFEE_SOURCE = "support-card-buymeacoffee";
+
 let cancelActive: (() => void) | null = null;
 
 /** Cancel the active support-scroll job (route change, unmount, user input). Safe to call anytime. */

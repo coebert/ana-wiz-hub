@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Heart, MessageSquare, ExternalLink, X, Send, Loader2 } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { toast } from "sonner";
-import { DONATION_CHOICES, STRIPE_CONTRIBUTE_URL, STRIPE_SOURCE, logDonateClick } from "@/lib/donation";
+import { DONATION_CHOICES, STRIPE_CONTRIBUTE_URL, STRIPE_SOURCE, BUY_ME_A_COFFEE_URL, BUY_ME_A_COFFEE_SOURCE, logDonateClick } from "@/lib/donation";
 
 type FormType = "topic" | "error";
 
@@ -110,6 +110,24 @@ export const SupportSection = () => {
         <p className="text-xs text-muted-foreground mt-3 break-words">
           PayPal will show Robert Coe, the creator of AnaesthesiaCore. Opens in a new tab.
         </p>
+
+        <div className="mt-4">
+          <a
+            href={BUY_ME_A_COFFEE_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Buy Me a Coffee (opens in a new tab)"
+            aria-describedby="support-buymeacoffee-note"
+            onClick={() => logDonateClick(BUY_ME_A_COFFEE_SOURCE)}
+            className="min-h-11 w-full sm:w-auto inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-lg border border-border bg-background text-sm font-medium text-foreground hover:bg-muted transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+          >
+            Buy Me a Coffee
+            <ExternalLink className="h-3.5 w-3.5 opacity-60 shrink-0" aria-hidden />
+          </a>
+          <p id="support-buymeacoffee-note" className="text-xs text-muted-foreground mt-2">
+            Another optional way to support AnaesthesiaCore.
+          </p>
+        </div>
 
         <div className="border-t border-border mt-6 pt-5 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
           <p className="text-sm text-muted-foreground">Feedback is welcome too.</p>

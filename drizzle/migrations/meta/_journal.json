@@ -85,6 +85,13 @@
       "when": 1793387979047,
       "tag": "0011_donation_clicks_add_stripe_source",
       "breakpoints": true
+    },
+    {
+      "idx": 12,
+      "version": "7",
+      "when": 1793540658055,
+      "tag": "0012_donation_clicks_add_buymeacoffee_source",
+      "breakpoints": true
     }
   ]
 }
