@@ -1,7 +1,8 @@
 # Admin metrics audit fixes
 
 ## Paid Apple App Store readiness
-- [ ] Implement isolated Capacitor iOS source project, native entry/safe areas and guarded release/preview commands; verify configuration tests and browser regression.
+- [x] Implement isolated Capacitor iOS source project, native entry/safe areas and guarded release/preview commands; existing-brand icon/splash, iPhone-only target. Four tests passed; simulated-native and web Chromium at 390/1280 widths passed entry, MRI selection and Ask-pause checks; automatic web build OK 21:52:36 UTC. Setup: docs/native-iphone-setup.md.
+- [ ] Native asset build/sync, Xcode compile/signing and real iPhone QA require local Mac/Xcode; native OAuth/account deletion/privacy, rights/clinical review and Apple listing/price remain release blockers. No upload/publication/backend/payment changes.
 - [x] Begin read-only assessment of existing learning value, safety residuals and Apple release requirements; preserve current work and holds.
 - [x] Rob chose native iOS delivery, a one-time paid download and all FRCA/FFICM learners; Apple handles the download purchase, not web checkout.
 - [x] Prepare a prioritised readiness plan covering clinical review, learner journeys, privacy, purchase compliance, device testing and submission gates.
