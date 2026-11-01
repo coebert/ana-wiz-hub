@@ -587,7 +587,7 @@ const XRayRadiationSafetyTopic = () => {
           </ExamSection>
 
           <ExamSection id="dose-limits" exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]}>
-            <CollapsibleSubsection title="Dose Limits & Personal Dosimetry">
+            <CollapsibleSubsection title="Dose Limits & Personal Dosimetry"><p className="text-muted-foreground mb-3">{UK_WORKER_DOSE}<InlineRef topicId="xray-radiation" refLabel="IRR 2017" /></p>
             <div className="text-muted-foreground leading-relaxed space-y-3">
               <p>UK Ionising Radiations Regulations 2017 (IRR 2017) set the following effective dose limits per calendar year:</p>
 
@@ -621,8 +621,8 @@ const XRayRadiationSafetyTopic = () => {
                         <span className="tabular-nums font-semibold text-foreground">20 mSv</span>
                       </li>
                       <li className="flex items-baseline justify-between gap-3 text-muted-foreground">
-                        <span className="italic">5-yr average; max in any 1 yr</span>
-                        <span className="tabular-nums">50 mSv</span>
+                        <span className="italic">Routine adult effective-dose limit</span>
+                        <span className="tabular-nums">Any calendar year</span>
                       </li>
                       <li className="flex items-baseline justify-between gap-3">
                         <span className="text-foreground"><strong>Trainee 16–18</strong></span>

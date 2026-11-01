@@ -312,7 +312,7 @@ const MRIPhysicsDiagram = () => {
             anchorLabel="Nuclear Spin & Precession"
             points={[
               "¹H protons (spin ½) align parallel/anti-parallel in B₀; small parallel excess gives net M₀.",
-              "Larmor equation: ω₀ = γ × B₀ (γ/2π for ¹H ≈ 42.58 MHz/T).",
+              "ω₀ = γB₀ in rad/s; f₀ = (γ/2π)B₀ in Hz; ¹H γ/2π ≈ 42.58 MHz/T.",
               "Resonance: an RF pulse at ω₀ tips M₀ into the transverse plane (90° flip); 180° inverts M₀.",
               "Higher B₀ → higher SNR but quadratically higher SAR (∝ B₀²) and more artefact.",
             ]}
