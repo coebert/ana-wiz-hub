@@ -184,7 +184,7 @@ const TransfusionCoagulationTopic = () => {
                     <th className="text-left py-2 text-foreground font-semibold">Component</th>
                     <th className="text-left py-2 text-foreground font-semibold">Storage</th>
                     <th className="text-left py-2 text-foreground font-semibold">Shelf-life</th>
-                    <th className="text-left py-2 text-foreground font-semibold">Once issued / thawed</th>
+                    <th className="min-w-64 text-left py-2 text-foreground font-semibold">Once issued / thawed</th>
                     <th className="text-left py-2 text-foreground font-semibold">In-vivo survival</th>
                   </tr>
                 </thead>
