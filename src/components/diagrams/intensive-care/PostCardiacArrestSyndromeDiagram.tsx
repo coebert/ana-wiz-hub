@@ -1,4 +1,3 @@
-import { POST_ARREST_PERFUSION } from "@/components/topic/PostArrestReviewedFacts";
 import { MechanismCascadeDiagram, CascadeStep, CascadeSource } from "@/components/diagrams/shared/MechanismCascadeDiagram";
 import { DiagramFigure } from "../_shared/DiagramFigure";
 

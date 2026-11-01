@@ -1,0 +1,338 @@
+[
+  {
+    "scope": "CL91-01",
+    "path": "src/pages/topics/CardiacArrestPostResusTopic.tsx",
+    "before": "    \"ARREST (Yannopoulos, Lancet 2020, n = 30, single-centre Minnesota) randomised refractory shockable OHCA and was stopped early for benefit — 43% vs 7% survival to discharge with eCPR. Prague OHCA (Belohlavek, JAMA 2022, n = 256) compared invasive (eCPR + cath lab) with standard advanced ALS and showed a non-significant trend to better 180-day favourable neurological outcome (31.5% vs 22.0%); subgroup analysis favoured the invasive strategy with longer arrest durations. INCEPTION (Suverein, NEJM 2023, n = 134) was a multicentre Dutch trial and was neutral — reflecting the impact of system speed and operator volume. Suitable candidates have: witnessed arrest, bystander CPR, initial shockable rhythm, age < 65–75, no major comorbidity, ETCO₂ > 10 mmHg sustained, and a realistic prospect of cannulation within 60 minutes of collapse. Outside high-volume eCPR centres with rapid pathways, benefit is unlikely.\",",
+    "after": "    POST_ARREST_ECPR_TRIALS,",
+    "before_sha256": "bd9cc8483ba16e270449a996937c35ce6f4a918c37ca343117aed5b177febcf2",
+    "occurrences": 1
+  },
+  {
+    "scope": "CL91-02",
+    "path": "src/pages/topics/CardiacArrestPostResusTopic.tsx",
+    "before": "    \"Neuroprognostication is performed in the comatose post-cardiac-arrest patient at ≥ 72 hours after ROSC, only once confounders (sedation, NMBA, hypothermia, severe metabolic derangement, hypoglycaemia, hypotension, ongoing seizure activity) are excluded. The entry criterion is GCS motor ≤ 3 (abnormal flexion, extension, or no motor response) at ≥ 72 h. ERC/ESICM 2021 consider poor outcome likely when two or more of these are present: (1) bilaterally absent pupillary and corneal reflexes at ≥ 72 h (quantitative pupillometry may be used); (2) bilaterally absent N20 SSEP waves at ≥ 24 h; (3) highly malignant EEG (suppressed background or burst-suppression) at > 24 h; (4) NSE > 60 µg/L at 48 h and/or 72 h; (5) status myoclonus ≤ 72 h; (6) diffuse and extensive anoxic injury on CT or MRI. No single marker is sufficient on its own. Withdrawal of life-sustaining therapy in the first 72 hours risks self-fulfilling prophecy.\",",
+    "after": "    \"Use current RCUK 2025 multimodal neuroprognostication in patients not awake and obeying commands (GCS motor < 6) at ≥ 72 h after ROSC, after excluding relevant confounders. Combine at least two concordant poor-outcome predictors at their specified times, and assess evidence supporting recovery as well as poor outcome. NSE > 60 µg/L at 48 h and/or 72 h is one specified marker; a rising trend alone is not an interchangeable threshold. EEG must be interpreted by pattern, timing and confounders. Technical quality matters for bilateral N20 absence, and neuromuscular blockade may improve recording quality. Indeterminate or discordant findings require further assessment. Prognosis informs shared decisions alongside patient wishes, overall illness and other factors; it is not an automatic withdrawal rule.\",",
+    "before_sha256": "3d4e4b226a4b3695ec0357ddcbc173218dbe99e2e89579bb1cd98b065b033467",
+    "occurrences": 1
+  },
+  {
+    "scope": "CL91-03-plus-root",
+    "path": "src/pages/topics/CardiacArrestPostResusTopic.tsx",
+    "before": "    \"Intubate if not already (or replace a supraglottic with a tracheal tube once stable). Set tidal volume 6–8 mL/kg predicted body weight, PEEP 5–10 cmH₂O, FiO₂ titrated to SpO₂ 94–98% (avoid hyperoxia — observational data link PaO₂ > 40 kPa to higher mortality; but the EXACT RCT found lower survival when pre-hospital SpO₂ was targeted at 90–94%, so avoid aiming below 94%). Set minute ventilation to PaCO₂ 4.5–6.0 kPa (avoid hypocapnia which causes cerebral vasoconstriction and is independently associated with worse neurological outcome — TAME trial 2023 found no benefit from mild hypercapnia 6.7–7.3 kPa over normocapnia). Use continuous waveform capnography. Sedate with short-acting agents (propofol + remifentanil or fentanyl ± dexmedetomidine) to facilitate later neuroprognostication. Avoid prolonged NMBA except briefly for shivering not controlled by sedation and counter-warming.\",",
+    "after": "    POST_ARREST_VENTILATION,",
+    "before_sha256": "a70e57162a22c300437a1a711e6aaf37b8662cb2f3eb26ec9e8dc4ff96685885",
+    "occurrences": 1
+  },
+  {
+    "scope": "CL91-04",
+    "path": "src/pages/topics/CardiacArrestPostResusTopic.tsx",
+    "before": "      \"Hyperoxia (PaO₂ 38 kPa) is associated with worse outcome — wean FiO₂ to target SpO₂ 94–98 %. Hypocapnia (PaCO₂ 3.4 kPa) causes cerebral vasoconstriction — reduce minute ventilation to target 4.5–6.0 kPa. Tidal volume 550 mL = 7.9 mL/kg PBW — acceptable but trim to 6–8 mL/kg. MAP 60 is below the ≥ 65 mmHg target — uptitrate noradrenaline.\",",
+    "after": "      \"Reliable oxygen measurements show hyperoxaemia and PaCO₂ 3.4 kPa shows hypocapnia. Titrate FiO₂ toward SpO₂ 94–98% and adjust ventilation toward PaCO₂ 4.7–6.0 kPa, using repeat arterial gases. TV 550 mL at PBW 70 kg is 7.9 mL/kg, within the 6–8 mL/kg range. MAP 60 requires reassessment of perfusion, volume status, myocardial function and cause; current UK guidance targets SBP > 100 mmHg or MAP > 60–65 mmHg with individual adjustment. Do not prescribe a fixed vasopressor escalation from that number alone.\",",
+    "before_sha256": "7d46581817d9bae41521e0f2f0178949f57cd6f70179544322ce02cdb0ef594f",
+    "occurrences": 1
+  },
+  {
+    "scope": "CL91-05",
+    "path": "src/pages/topics/CardiacArrestPostResusTopic.tsx",
+    "before": "      \"Wean FiO₂ for SpO₂ 94–98 %, reduce RR for PaCO₂ 4.5–6.0 kPa, TV ~ 480 mL (6.8 mL/kg PBW), increase noradrenaline to MAP ≥ 65 mmHg, then start active fever prevention targeting ≤ 37.5 °C and book early coronary angiography.\",",
+    "after": "      \"Titrate oxygen and ventilation to the current targets, assess perfusion and cardiac function, and tailor fluid/vasoactive support. If the patient remains comatose, use active fever prevention targeting ≤ 37.5 °C. Obtain ECG and echocardiography; prioritise immediate angiography for ST elevation or strong suspicion of occlusion, including haemodynamic or electrical instability. VF as the original rhythm alone does not require immediate angiography in every stable patient.\",",
+    "before_sha256": "738d4a410e94d5b7dc80a4c16bc90027d299ff7dbfca83a18047de35bc96c975",
+    "occurrences": 1
+  },
+  {
+    "scope": "CL91-06",
+    "path": "src/pages/topics/CardiacArrestPostResusTopic.tsx",
+    "before": "      \"Confounders excluded (rewarmed, sedation washed out, no metabolic derangement, no status epilepticus). Apply ERC/ESICM 2021 algorithm — entry criterion (GCS M ≤ 3 at ≥ 72 h) met. Look for ≥ 2 concordant poor-outcome markers from independent modalities: (1) bilaterally absent pupillary + corneal reflexes, (2) NSE > 60 µg/L at 48 h and 72 h, (3) highly malignant unreactive burst-suppression EEG, (4) bilaterally absent N20 SSEPs.\",",
+    "after": "      \"At day 4, a motor score 2 meets the current RCUK 2025 entry criterion (motor < 6), but 36 h without sedation alone does not establish drug clearance. Confirm all confounders and technical quality. Concordant absent pupil/corneal reflexes, highly malignant burst-suppression, bilateral N20 absence and appropriately timed NSE elevations warrant a structured multimodal assessment; EEG unreactivity alone is not the malignant-pattern definition. Consider recovery signs and the whole patient before communicating prognosis or treatment decisions.\",",
+    "before_sha256": "75e3911ad70d1ecf5fc482244448d1f48c4abffeef843dd8ef8075ac20b0d716",
+    "occurrences": 1
+  },
+  {
+    "scope": "CL91-07",
+    "path": "src/pages/topics/CardiacArrestPostResusTopic.tsx",
+    "before": "      \"ARREST/Prague OHCA criteria favouring eCPR: witnessed arrest, bystander CPR, initial shockable rhythm, age < 65–70, ETCO₂ > 10 mmHg (sign of effective CPR), low-flow time projected < 60 min at cannulation, no major comorbidity. All criteria met. INCEPTION reminds us system speed matters — must reach cannulation within ~ 60 min.\",",
+    "after": "      \"This history may meet the local eCPR selection pathway: witnessed arrest, immediate CPR, refractory shockable rhythm and a prospect of short low-flow time. Confirm eligibility with the receiving ECMO team while high-quality ALS continues. Trial enrolment rules are not universal criteria; projected transport time does not itself guarantee timely extracorporeal flow.\",",
+    "before_sha256": "40f5e62993e50d3898d15e0339f28b4a9c7f873e611ff2bae348334adaab1c8b",
+    "occurrences": 1
+  },
+  {
+    "scope": "CL91-08",
+    "path": "src/pages/topics/CardiacArrestPostResusTopic.tsx",
+    "before": "      \"Suitable eCPR candidate. Activate ECMO team, continue mechanical CPR, transport directly to ECMO bay/cath lab, target femoral VA cannulation within 60 min of arrest, then immediate coronary angiography after stable flow. Insert distal limb perfusion catheter at the time of cannulation.\",",
+    "after": "      \"Activate the organised eCPR pathway if accepted, continue high-quality CPR during safe transport and aim for rapid extracorporeal flow. The specialist team determines coronary assessment and cannulation details. Monitor limb perfusion and arrange a distal-perfusion cannula promptly when indicated; it should not delay initial restoration of circulation.\",",
+    "before_sha256": "04db350337cd3c99faca71f932a9394b2b7b83b7fb686bea41971d2e92e5d6b0",
+    "occurrences": 1
+  },
+  {
+    "scope": "CL91-09",
+    "path": "src/pages/topics/CardiacArrestPostResusTopic.tsx",
+    "before": "  { text: \"Avoid hyperoxia, hypoxaemia and hypocapnia: target SpO₂ 94–98 %, PaCO₂ 4.5–6.0 kPa, avoid MAP < 65 mmHg, and avoid hypoglycaemia (manage glucose by standard ICU protocol).\", cites: [\"ERC/ESICM 2021 Post-Resus\"] },",
+    "after": "  { text: `After reliable measurement, target SpO₂ 94–98% and PaCO₂ ${POST_ARREST_CO2}. ${POST_ARREST_PERFUSION} Use standard ICU glucose care, avoiding hypoglycaemia.`, cites: [\"RCUK PRC 2025\", \"RCUK PRC Algorithm March 2026\"] },",
+    "before_sha256": "43bb88c013f44335a13035f1062c06c30fcf51307562112ca8cf301f22150c46",
+    "occurrences": 1
+  },
+  {
+    "scope": "CL91-10",
+    "path": "src/pages/topics/CardiacArrestPostResusTopic.tsx",
+    "before": "  { text: \"eCPR: ARREST and Prague OHCA show benefit only in highly selected witnessed shockable arrests with rapid cannulation (< 60 min); INCEPTION emphasises system speed.\", cites: [\"ARREST 2020\"] },",
+    "after": "  { text: POST_ARREST_ECPR_TRIALS, cites: [\"ARREST 2020\", \"Prague OHCA 2022\", \"INCEPTION 2023\"] },",
+    "before_sha256": "44735b0747739c01286dbf66eb29654f492a7408fa46669fc3a57187f6c912ee",
+    "occurrences": 1
+  },
+  {
+    "scope": "CL91-11",
+    "path": "src/pages/topics/CardiacArrestPostResusTopic.tsx",
+    "before": "          { label: \"eCPR survival (selected)\", value: \"30–43 %\", note: \"ARREST 2020, Prague OHCA 2022\" },",
+    "after": "          { label: \"eCPR trial evidence\", value: \"Mixed\", note: \"ARREST positive; Prague OHCA and INCEPTION primary outcomes not significant\" },",
+    "before_sha256": "d7745b943e8f101a251550d8c3306141049c5f2ab143a08a4fe6294d3f330021",
+    "occurrences": 1
+  },
+  {
+    "scope": "CL91-12",
+    "path": "src/pages/topics/CardiacArrestPostResusTopic.tsx",
+    "before": "target PaCO₂ 4.5–6.0 kPa (normocapnia)",
+    "after": "target PaCO₂ {POST_ARREST_CO2} (normocapnia)",
+    "before_sha256": "dfd4fbc44279a7237082cd24551de5864608a4dcdcb8f09b4695001fff45237f",
+    "occurrences": 1
+  },
+  {
+    "scope": "CL91-13",
+    "path": "src/pages/topics/CardiacArrestPostResusTopic.tsx",
+    "before": "\"Target PaCO₂ 4.5–6.0 kPa (avoid hypocapnia — cerebral vasoconstriction)\",",
+    "after": "`Target PaCO₂ ${POST_ARREST_CO2} (avoid hypocapnia — cerebral vasoconstriction)`,",
+    "before_sha256": "26e3a105dbc0ecc51db0eaa4f9d41042f2acee47ce228ea3c8a636892ea6e634",
+    "occurrences": 1
+  },
+  {
+    "scope": "CL91-14",
+    "path": "src/pages/topics/CardiacArrestPostResusTopic.tsx",
+    "before": "              \"Immediate angiography ± PCI for STEMI or new LBBB\",",
+    "after": "              \"Prioritise immediate angiography for ST elevation or high suspicion of coronary occlusion, including haemodynamic/electrical instability; new LBBB alone is not an automatic indication\",",
+    "before_sha256": "950f947ca7e2a01953337333e8a2fd90cca2aa606185e817e19f434b9d9b5897",
+    "occurrences": 1
+  },
+  {
+    "scope": "CL91-15",
+    "path": "src/pages/topics/CardiacArrestPostResusTopic.tsx",
+    "before": "              [\"PaCO₂\", \"4.5–6.0 kPa (35–45 mmHg)\", \"Hypocapnia → cerebral vasoconstriction; hypercapnia → ↑ICP.\"],",
+    "after": "              [\"PaCO₂\", `${POST_ARREST_CO2} (35–45 mmHg)`, \"Hypocapnia → cerebral vasoconstriction; hypercapnia → ↑ICP.\"],",
+    "before_sha256": "6515b544b0abcc6861d24143d32a60315241227282d0916db99651f3a9b906e5",
+    "occurrences": 1
+  },
+  {
+    "scope": "CL91-16",
+    "path": "src/pages/topics/CardiacArrestPostResusTopic.tsx",
+    "before": "GCS motor ≤ 3 after exclusion of confounders. Two or more",
+    "after": "GCS motor &lt; 6 after exclusion of confounders. Two or more",
+    "before_sha256": "9d631c8640ac8d7d6970fee32880a7e404d7f14886ede6145a6d0de31c5a9470",
+    "occurrences": 1
+  },
+  {
+    "scope": "CL91-17",
+    "path": "src/pages/topics/CardiacArrestPostResusTopic.tsx",
+    "before": "              \"Bilateral absent pupillary light reflex AND absent corneal reflex at ≥ 72 h is the single most specific bedside sign of poor outcome (FPR ~ 1 %). Quantitative pupillometry is more reproducible than manual examination. GCS motor ≤ 3 at ≥ 72 h is the trigger for formal multimodal assessment, but is NOT sufficient on its own. Status myoclonus within 72 h counts as one ERC/ESICM poor-outcome marker; it is not the same as status epilepticus and should prompt EEG.\",",
+    "after": "              \"Assess pupils and corneal reflexes at the specified times with attention to technique and confounders. Current RCUK 2025 considers patients with GCS motor < 6 at ≥ 72 h who are not awake and obeying commands. Neither that motor score nor an isolated reflex finding establishes outcome. Status myoclonus within 72 h is one algorithm marker and should prompt EEG; distinguish it from electrographic status epilepticus.\",",
+    "before_sha256": "3792e3cf5fd6bfc2f0d813e8664553c74b04106a0a663ec4f955c2402909e0fe",
+    "occurrences": 1
+  },
+  {
+    "scope": "CL91-18",
+    "path": "src/pages/topics/CardiacArrestPostResusTopic.tsx",
+    "before": "              \"Serum NSE at 48–72 h. NSE > 60 µg/L at 48 h and/or 72 h, OR a rising trend, predicts poor outcome (FPR < 5 %). Confounders: haemolysis (RBC contain NSE — recheck if rising in isolation), neuroendocrine tumours. Trend matters more than a single value. Take samples in non-haemolysed serum; many labs report NSE alongside S100B.\",",
+    "after": "              POST_ARREST_NSE,",
+    "before_sha256": "9c7df342a2cf659b501ac2f7ab43c0a9fc334393869e7e1efb60c84d7159f3cf",
+    "occurrences": 1
+  },
+  {
+    "scope": "CL91-19",
+    "path": "src/pages/topics/CardiacArrestPostResusTopic.tsx",
+    "before": "              \"Bilaterally absent N20 cortical responses to median nerve stimulation at ≥ 24 h is one of the most specific markers of poor outcome (FPR ~ 0–1 %). Less affected by sedation and hypothermia than EEG. Operator-dependent; requires technical expertise. Best performed off muscle relaxant. A present N20 does not predict good outcome — it just removes one piece of bad evidence.\",",
+    "after": "              POST_ARREST_SSEP,",
+    "before_sha256": "04b0758ba853e21dde13d28b995c229138186af6288c328f64fa2a6c1cc4b113",
+    "occurrences": 1
+  },
+  {
+    "scope": "CL91-20",
+    "path": "src/pages/topics/CardiacArrestPostResusTopic.tsx",
+    "before": "        \"Post-ROSC bundle: PaCO₂ 4.5–6.0 kPa, SpO₂ 94–98%, MAP ≥65, 12-lead ECG, urgent PCI if STEMI.\",",
+    "after": "        `Post-ROSC: after reliable measurement, SpO₂ 94–98% and PaCO₂ ${POST_ARREST_CO2}; individual perfusion support; 12-lead ECG; immediate coronary assessment for ST elevation or strong occlusion suspicion.`,",
+    "before_sha256": "d70a4d763618b1a64544a3638ff2c55e0788c0ac60ebdbfb3833e174af97e0dc",
+    "occurrences": 1
+  },
+  {
+    "scope": "CL91-21",
+    "path": "src/pages/topics/CardiacArrestPostResusTopic.tsx",
+    "before": "                [\"TAME (NEJM 2023)\", \"Mild hypercapnia 6.7–7.3 kPa vs normocapnia post-arrest\", \"No difference 6-mo good neuro outcome (43.5% vs 44.6%)\", \"Continue normocapnia 4.5–6.0 kPa\"],",
+    "after": "                [\"TAME (NEJM 2023)\", \"Mild hypercapnia 6.7–7.3 kPa vs normocapnia post-arrest\", \"No difference 6-mo good neuro outcome (43.5% vs 44.6%)\", `Continue normocapnia ${POST_ARREST_CO2}`],",
+    "before_sha256": "b3902df73389846e299204eb91ca85f77554ddec9fcfcd1e851409bf18677131",
+    "occurrences": 1
+  },
+  {
+    "scope": "CL91-22",
+    "path": "src/pages/topics/CardiacArrestPostResusTopic.tsx",
+    "before": "                [\"Prague OHCA (JAMA 2022)\", \"Invasive (eCPR + cath) vs standard, n = 256\", \"180-d good neuro 31.5% vs 22.0% (NS overall; benefit in longer arrests)\", \"Supports eCPR in selected refractory arrest\"],",
+    "after": "                [\"Prague OHCA (JAMA 2022)\", \"Invasive strategy versus standard care, n = 256\", \"180-day favourable neurological survival 31.5% versus 22.0%, P = 0.09\", \"Primary endpoint not significant; secondary/subgroup signals exploratory\"],",
+    "before_sha256": "de5e481f612d26810474d2de463902efd19dabe30ce40efba447538d98046151",
+    "occurrences": 1
+  },
+  {
+    "scope": "CL91-23",
+    "path": "src/pages/topics/CardiacArrestPostResusTopic.tsx",
+    "before": "                [\"INCEPTION (NEJM 2023)\", \"eCPR vs standard ALS, multicentre Dutch, n = 134\", \"No difference in 30-d good neuro outcome (20% vs 16%)\", \"Highlights importance of system speed & volume\"],",
+    "after": "                [\"INCEPTION (NEJM 2023)\", \"Multicentre eCPR versus conventional CPR\", \"30-day favourable neurological survival 20% versus 16%, not significant\", \"Does not prove speed or centre volume caused the neutral result\"],",
+    "before_sha256": "7335d136ddf0db2182d7aa6e93b4f1ace0baec44039bbcbb02f6a4e23a8c4689",
+    "occurrences": 1
+  },
+  {
+    "scope": "CL91-24",
+    "path": "src/pages/topics/CardiacArrestPostResusTopic.tsx",
+    "before": "cardiac arrest. ARREST (2020) and Prague OHCA (2022) demonstrated\n        survival benefit in highly selected patients with witnessed\n        shockable rhythms; INCEPTION (2023) was neutral, reflecting the\n        critical importance of patient selection, system speed, and\n        experienced operators. Outside high-volume centres with rapid\n        cannulation pathways the marginal benefit shrinks rapidly.",
+    "after": "cardiac arrest. {POST_ARREST_ECPR_TRIALS}<InlineRef topicId=\"cardiac-arrest-post-resus\" refLabel=\"ARREST 2020\" /><InlineRef topicId=\"cardiac-arrest-post-resus\" refLabel=\"Prague OHCA 2022\" /><InlineRef topicId=\"cardiac-arrest-post-resus\" refLabel=\"INCEPTION 2023\" />",
+    "before_sha256": "79338a19fab810a166915e271e1ea8c393454119755bddd3aad5044554a71251",
+    "occurrences": 1
+  },
+  {
+    "scope": "CL91-25",
+    "path": "src/pages/topics/CardiacArrestPostResusTopic.tsx",
+    "before": "<li><span className=\"font-medium text-foreground\">Limb ischaemia</span> from arterial cannulation — distal perfusion cannula is mandatory</li>",
+    "after": "<li><span className=\"font-medium text-foreground\">Limb ischaemia</span> requires surveillance and prompt specialist distal-perfusion planning; cannula placement should not delay initial restoration of circulation.<InlineRef topicId=\"cardiac-arrest-post-resus\" refLabel=\"ELSO ECPR 2021\" /></li>",
+    "before_sha256": "84e2673ee4632f30ec50616cc1e2bc0cf62ca420b8ef6afa536c04b763a00fb4",
+    "occurrences": 1
+  },
+  {
+    "scope": "CL91-case-prognosis",
+    "path": "src/pages/topics/CardiacArrestPostResusTopic.tsx",
+    "before": "      \"Four concordant poor-outcome markers across clinical, biochemical, electrophysiological and SSEP modalities — poor neurological outcome can be predicted with high specificity. Discuss WLST with family, refer to SNOD before withdrawal for potential DCD donation.\",",
+    "after": "      \"These findings warrant a specialist multimodal assessment after confounders and technical quality are verified, alongside signs supporting recovery. Communicate uncertainty and patient-centred goals; motor score or a count of tests does not automatically determine withdrawal. Prognostication is distinct from DNC testing.\",",
+    "before_sha256": "630a5ec3282db1864db0880f945f7d9e9e6e5c9e85e8c77fed00d7dc6ee12693",
+    "occurrences": 1
+  },
+  {
+    "scope": "CL92-01",
+    "path": "src/pages/topics/NeurointensiveCareTopic.tsx",
+    "before": "suxamethonium safety window",
+    "after": "suxamethonium denervation risk",
+    "before_sha256": "9f9b01dfeb87bab471b9d31639a7f2392e395230e9435cab35cfe51bfc0dbdfd",
+    "occurrences": 1
+  },
+  {
+    "scope": "CL92-02",
+    "path": "src/pages/topics/NeurointensiveCareTopic.tsx",
+    "before": "Upregulation of extra-junctional ACh receptors begins ~24–48 h post-denervation injury,\n        peaks 7–10 days, persists ~6–12 months (some sources quote &gt;12 m). Suxamethonium can\n        cause massive K⁺ efflux → cardiac arrest.",
+    "after": "{SCI_DENERVATION_RISK}",
+    "before_sha256": "38329b8a48ef646e37a3e5bad5296670e7e67a17b743fa647d9bfe4e4d78a19e",
+    "occurrences": 1
+  },
+  {
+    "scope": "CL92-03",
+    "path": "src/pages/topics/NeurointensiveCareTopic.tsx",
+    "before": "<strong>Avoid suxamethonium between 48 h and ~12 months post-SCI</strong>. Use rocuronium\n        1.2 mg/kg for RSI (reversible with sugammadex 16 mg/kg). The same caveat applies to burns,\n        prolonged immobility, and denervation injuries.",
+    "after": "<strong>Avoid suxamethonium in this patient with established SCI and denervation risk.</strong> Use an appropriate alternative and a complete airway plan. Burns, immobility and other denervating conditions have distinct onset and recovery patterns. Sugammadex availability does not guarantee restoration of oxygenation in a failed airway.",
+    "before_sha256": "fd720b7b23a6d88fc74f77702d2b79147171a77438b2caae4d4a1beb02563b70",
+    "occurrences": 1
+  },
+  {
+    "scope": "CL92-04",
+    "path": "src/pages/topics/NeurointensiveCareTopic.tsx",
+    "before": "videolaryngoscopy; suxamethonium is safe within the first 48 h but is contraindicated from\n                ~72 h to 9 months (denervation upregulation of acetylcholine receptors → hyperkalaemia).",
+    "after": "videolaryngoscopy. {SCI_DENERVATION_RISK}<InlineRef topicId=\"neurointensive-care\" refLabel=\"Suxamethonium SmPC denervation\" />",
+    "before_sha256": "b12d2f062bbb44e3084dae2d0d52267b496c9b81cc4a323745cc818ed3d6c6ea",
+    "occurrences": 1
+  },
+  {
+    "scope": "CL92-05",
+    "path": "src/pages/topics/NeurointensiveCareTopic.tsx",
+    "before": "Suxamethonium is <strong>CONTRAINDICATED from 48 hours to ~6–12 months post-SCI</strong> due to upregulation of extrajunctional acetylcholine receptors → life-threatening hyperkalaemia on depolarisation. Safe in the first 24–48 hours. Use rocuronium for RSI after this window.",
+    "after": "{SCI_DENERVATION_RISK}<InlineRef topicId=\"neurointensive-care\" refLabel=\"Suxamethonium SmPC denervation\" />",
+    "before_sha256": "54b0e1b27645f9e0d4bab5f435d29a352041996c857358f1632462b8deb13bc0",
+    "occurrences": 1
+  },
+  {
+    "scope": "CL92-06",
+    "path": "src/pages/topics/NeurointensiveCareTopic.tsx",
+    "before": "\"SCI: MAP ≥75–80 mmHg (AO Spine 2024; older AANS/CNS 85–90) for 3–7 days; suxamethonium contraindicated 48h–12m post-injury (hyperkalaemia)\", cites: [\"BTF 2017\"]",
+    "after": "SCI_MAP_2024 + \" \" + SCI_DENERVATION_RISK, cites: [\"AO Spine haemodynamics 2024\", \"Suxamethonium SmPC denervation\"]",
+    "before_sha256": "32fd587b550e8cff5b83fb16dd3048dc5c3b35e08ee3181f6c718618f8e7afc2",
+    "occurrences": 1
+  },
+  {
+    "scope": "CL92-07",
+    "path": "src/pages/topics/NeurointensiveCareTopic.tsx",
+    "before": "LPR &gt;25 = metabolic crisis. <strong>Low pyruvate + high LPR + low glucose</strong> →\n        ischaemic pattern (substrate delivery failure). Rising glycerol = cell membrane\n        breakdown. Contrast: normal/high pyruvate with high LPR = mitochondrial dysfunction\n        (won't respond to ↑ CPP).",
+    "after": "{CMD_INTERPRETATION}",
+    "before_sha256": "5b8a401f8a90f9d0219847b15c7c9ab1239ba1a315bb9bfcabf76fc04246fa15",
+    "occurrences": 1
+  },
+  {
+    "scope": "CL92-08",
+    "path": "src/pages/topics/NeurointensiveCareTopic.tsx",
+    "before": "<strong>Ischaemic crisis</strong> despite \"adequate\" CPP — push CPP towards 70 mmHg,\n        check for vasospasm (TCD/CT angio), exclude raised ICP / herniation, confirm Hb\n        &gt;90 g/L, ensure normoglycaemia. If LPR pattern were mitochondrial, raising CPP would\n        not help — consider reducing metabolic demand (deeper sedation, normothermia, treat\n        seizures).",
+    "after": "{CMD_REASSESSMENT}",
+    "before_sha256": "9d672ce02ffbea62a8d742f0ebb2acd2eccb48ec8e5a7c615060994ccd08d462",
+    "occurrences": 1
+  },
+  {
+    "scope": "CL92-09",
+    "path": "src/pages/topics/NeurointensiveCareTopic.tsx",
+    "before": "\"Cerebral microdialysis: LPR >25 = metabolic crisis. ↓ pyruvate = ischaemia; normal/↑ pyruvate = mitochondrial dysfunction (won't respond to ↑ CPP)\", cites: [\"BJA Educ 2014\"]",
+    "after": "CMD_INTERPRETATION, cites: [\"CMD Forum 2014\", \"CMD Delphi 2025\"]",
+    "before_sha256": "d6a70283051561e49edfd709eaf3bd3359d94423abb6da01f85b58bd0030817e",
+    "occurrences": 1
+  },
+  {
+    "scope": "CL92-10",
+    "path": "src/pages/topics/NeurointensiveCareTopic.tsx",
+    "before": "\"Myasthenic vs cholinergic crisis: edrophonium test improves myasthenic, worsens cholinergic; cholinergic = SLUDGE + miosis + fasciculations — stop anticholinesterases, give atropine, support ventilation\", cites: [\"BJA Educ 2014\"]",
+    "after": "MG_CRISIS_ASSESSMENT, cites: [\"MG consensus 2016\"]",
+    "before_sha256": "f8bad6d857ed18e020cf56e0bd57d247667436c6f9bb5d1726c06473961a3d73",
+    "occurrences": 1
+  },
+  {
+    "scope": "CL92-11",
+    "path": "src/pages/topics/NeurointensiveCareTopic.tsx",
+    "before": "AANS/CNS 2013 advised MAP 85–90 mmHg for the first 7 days, based on low-quality observational data. The 2024 AO Spine/Praxis guideline instead suggests a lower limit of 75–80 mmHg and an upper limit of 90–95 mmHg for 3–7 days. Follow local spinal-unit protocol; vasopressors are often needed for days.",
+    "after": "AANS/CNS 2013 advised MAP 85–90 mmHg for 7 days. AO Spine/Praxis 2024 weakly suggests a lower limit 75–80 mmHg and avoiding active augmentation above 90–95 mmHg for 3–7 days, based on very-low-certainty evidence. This upper limit does not mean lowering a naturally higher BP. Individualise with the spinal team.",
+    "before_sha256": "789e9c88a107c4e1f88d6e7f38d7883931fb27bd3b6778268b348b973b579b50",
+    "occurrences": 1
+  },
+  {
+    "scope": "CL92-12",
+    "path": "src/pages/topics/NeurointensiveCareTopic.tsx",
+    "before": "Caused by ↓ delivery — hypotension, ↑ ICP/↓ CPP, vasospasm in SAH, hypoxia. Action: optimise CPP, exclude vasospasm, increase oxygen delivery.",
+    "after": "Possible impaired delivery requires assessment of perfusion, ICP, oxygenation, catheter location and trends. The pattern alone does not identify its cause or justify a fixed CPP/transfusion intervention.",
+    "before_sha256": "ca27719ca958ad4d555f0dd77c2b39587a7d214da244a019c1771b3e2df05ad1",
+    "occurrences": 1
+  },
+  {
+    "scope": "CL92-13",
+    "path": "src/pages/topics/NeurointensiveCareTopic.tsx",
+    "before": "Substrate is reaching the cell but cannot be used. Common after TBI — does not respond to ↑ CPP and indicates a poor prognosis. May respond to therapies aimed at restoring mitochondrial function (currently experimental).",
+    "after": "This may suggest a non-ischaemic metabolic disturbance but does not prove mitochondrial failure, establish prognosis alone or guarantee nonresponse to perfusion changes. Investigate reversible causes and integrate multimodal trends; targeted mitochondrial therapies remain experimental.",
+    "before_sha256": "aadf347bc737967bfd841549ba3e1c0ec98dd5dbba07efe66be1bf1d204ef735",
+    "occurrences": 1
+  },
+  {
+    "scope": "CL92-14",
+    "path": "src/pages/topics/NeurointensiveCareTopic.tsx",
+    "before": "CMD has reshaped TBI glucose targets — consensus now favours 6–10 mmol/L systemic glucose to keep brain glucose >0.8.",
+    "after": "Interpret low local brain glucose with systemic glucose and other monitoring. Avoid hypoglycaemia and overly tight systemic control; no universal systemic target guarantees adequate glucose at the catheter.",
+    "before_sha256": "a8cf9eace6670f63fc5befcf444d54dbf1bbdae09e907fc04fce51cab0bb7d07",
+    "occurrences": 1
+  },
+  {
+    "scope": "CL92-15",
+    "path": "src/pages/topics/NeurointensiveCareTopic.tsx",
+    "before": "Triggers escalation: induced hypertension, angiography ± intra-arterial vasodilator/angioplasty.",
+    "after": "Prompts urgent multimodal assessment for DCI and other causes; haemodynamic augmentation or endovascular treatment requires the full clinical context and specialist decision.",
+    "before_sha256": "d7cb6bf41d7d4ef7d1907d7e68ae8b53f5dcb0cca5268fe4abcb7da620ef61bd",
+    "occurrences": 1
+  },
+  {
+    "scope": "CL92-16",
+    "path": "src/pages/topics/NeurointensiveCareTopic.tsx",
+    "before": "The <strong>Lactate:Pyruvate Ratio (LPR)</strong> is the single highest-yield CMD value. Threshold &gt;25 = metabolic crisis; &gt;40 = severe. Distinguish ischaemia (LPR ↑ <em>with</em> ↓ pyruvate) from mitochondrial dysfunction (LPR ↑ <em>with</em> normal/↑ pyruvate) — they look similar but have completely different management implications. CMD also drove the move <em>away</em> from tight glycaemic control in TBI after evidence of brain neuroglycopenia at systemic glucose 4.5–6 mmol/L (Vespa, Oddo).",
+    "after": "<strong>LPR</strong> helps assess local metabolic stress. Thresholds such as 25 or 40 are contextual warning values, not stand-alone diagnoses. {CMD_INTERPRETATION} {CMD_GLUCOSE}<InlineRef topicId=\"neurointensive-care\" refLabel=\"CMD Forum 2014\" /><InlineRef topicId=\"neurointensive-care\" refLabel=\"CMD Delphi 2025\" />",
+    "before_sha256": "6cebad64504a8ae0278787c520f3f4c0a0ccfbe31c8908d5217edb172b734ebf",
+    "occurrences": 1
+  }
+]
