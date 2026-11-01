@@ -1,6 +1,7 @@
 import { useMemo, useState } from "react";
 import { Link, useParams } from "react-router-dom";
-import { AlertTriangle, ArrowLeft, ExternalLink } from "lucide-react";
+import { AlertTriangle, ArrowLeft } from "lucide-react";
+import { DrugSources } from "@/components/references/DrugSources";
 
 import ReferenceAppLayout from "@/features/drugReference/ReferenceAppLayout";
 import { useDrugEntry } from "@/features/drugReference/useDrugReference";
@@ -205,6 +206,7 @@ export default function DrugReferenceEntry() {
             <ArrowLeft aria-hidden="true" className="h-4 w-4" /> Drug reference library
           </Link>
           <h1 className="mt-3 font-serif text-3xl text-foreground">{drug.name}</h1>
+          <a href="#references" className="inline-flex min-h-11 items-center text-primary underline focus-visible:ring-2 focus-visible:ring-ring">References</a>
           <p className="mt-1 text-sm uppercase tracking-wide text-muted-foreground">
             {drug.drug_class}
           </p>
@@ -387,34 +389,14 @@ export default function DrugReferenceEntry() {
           <Prose text={drug.interactions} />
         </Section>
 
-        <Section title="Sources" id="sources">
-          <p className="mb-3 text-sm text-muted-foreground">Sources support only the named formulation and claims reviewed. Search links are discovery aids, not independently verified evidence; the entire monograph has not been clinically verified.</p>
-          <ul className="space-y-2 text-sm">
-            {[...drug.sources, ...(tdm?.sources ?? [])].map((s) => (
-              <li key={`${s.title}-${s.url}`}>
-                <a
-                  href={s.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-start gap-1 text-foreground underline decoration-muted-foreground/50 hover:decoration-foreground"
-                >
-                  <span>
-                    {s.title} — <span className="text-muted-foreground">{s.publisher}</span>
-                    {s.revision && <span className="block text-xs text-muted-foreground">Product revision: {s.revision}</span>}
-                    {s.accessed && <span className="block text-xs text-muted-foreground">Accessed: {s.accessed}</span>}
-                    {/\/search(?:[/?]|$)/i.test(s.url) && <span className="block text-xs text-muted-foreground">Search destination — not independently source-verified</span>}
-                  </span>
-                  <ExternalLink aria-hidden="true" className="mt-0.5 h-3.5 w-3.5 shrink-0" />
-                </a>
-              </li>
-            ))}
-          </ul>
+        <div id="sources">
+          <DrugSources sources={[...(Array.isArray(drug.sources) ? drug.sources : []), ...(Array.isArray(tdm?.sources) ? tdm.sources : [])]} />
           <p className="mt-4 text-xs text-muted-foreground">
             Educational reference for trained clinicians. Always confirm doses, dilutions and
             monitoring targets against the BNF, the product SPC, your smart-pump drug library and
             local protocols before administration.
           </p>
-        </Section>
+        </div>
       </main>
     </ReferenceAppLayout>
   );
