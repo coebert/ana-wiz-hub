@@ -1,23 +1,9 @@
 import { useState, useMemo, useCallback } from "react";
 import { DiagramFigure } from "../_shared/DiagramFigure";
 
-// Hill equation for ODC
-const hillEquation = (pO2: number, p50: number, n: number = 2.7): number => {
-  return (Math.pow(pO2, n) / (Math.pow(p50, n) + Math.pow(pO2, n))) * 100;
-};
-
-// COHb reduces effective Hb and shifts curve left
-const effectiveSat = (sO2: number, cohbFraction: number): number => {
-  return sO2 * (1 - cohbFraction);
-};
-
-// O₂ content calculation: CaO₂ = (1.34 × Hb × SaO₂/100) + (0.023 × PaO₂)
-const o2Content = (sO2: number, pO2: number, hb: number): number => {
-  return (1.34 * hb * sO2 / 100) + (0.023 * pO2);
-};
-
-// Dissolved O₂ only
-const dissolvedO2 = (pO2: number): number => 0.023 * pO2;
+import { hillEquation, effectiveSat, o2Content, dissolvedO2 } from "@/lib/oxygen-illustration";
+import { Button } from "@/components/ui/button";
+import { InlineRef } from "@/components/references/InlineRef";
 
 interface Factor {
   id: string;
@@ -100,7 +86,7 @@ export const OxygenDissociationCurve = ({ showShifts = false }: CurveProps) => {
     for (let i = 0; i <= 100; i++) {
       let sO2 = hillEquation(i, p50Val);
       if (coFrac > 0) sO2 = effectiveSat(sO2, coFrac);
-      const yVal = viewMode === "content" ? o2Content(sO2, i, hbConc * (1 - coFrac)) : sO2;
+      const yVal = viewMode === "content" ? o2Content(sO2, i, hbConc) : sO2;
       pts.push(`${i === 0 ? "M" : "L"} ${toX(i).toFixed(1)} ${toY(yVal).toFixed(1)}`);
     }
     return pts.join(" ");
@@ -130,7 +116,7 @@ export const OxygenDissociationCurve = ({ showShifts = false }: CurveProps) => {
     if (viewMode === "content") {
       return {
         normal: o2Content(nSat, hoveredPO2, hbConc),
-        shifted: o2Content(sSat, hoveredPO2, hbConc * (1 - cohbFrac)),
+        shifted: o2Content(sSat, hoveredPO2, hbConc),
         dissolved: dissolvedO2(hoveredPO2),
       };
     }
@@ -162,24 +148,25 @@ export const OxygenDissociationCurve = ({ showShifts = false }: CurveProps) => {
   // Delivery zone annotation
   const artSat = effectiveSat(hillEquation(100, p50), cohbFrac);
   const venSat = effectiveSat(hillEquation(40, p50), cohbFrac);
-  const artContent = o2Content(artSat, 100, hbConc * (1 - cohbFrac));
-  const venContent = o2Content(venSat, 40, hbConc * (1 - cohbFrac));
+  const artContent = o2Content(artSat, 100, hbConc);
+  const venContent = o2Content(venSat, 40, hbConc);
   const o2Delivery = artContent - venContent; // ml O₂/dL blood extracted
 
   // ═══════ SIMPLE VIEW ═══════
   if (!showShifts) {
     return (
       <div className="w-full max-w-lg mx-auto space-y-3">
+        <p className="text-xs text-muted-foreground">Illustrative Hill approximation, not patient prediction. Saturation is fractional O₂Hb (all Hb sites); functional saturation describes available non-CO-bound sites. Content uses total Hb in g/dL and PaO₂ in mmHg.<InlineRef topicId="oxygen-haemoglobin" refLabel="Hess 2014 oxygen physiology" /></p>
         {/* View toggle */}
         <div className="flex items-center justify-center gap-2">
-          <button onClick={() => setViewMode("saturation")}
+          <Button variant="ghost" onClick={() => setViewMode("saturation")}
             className={`px-2.5 py-1 rounded text-[10px] sm:text-xs font-medium border transition-all ${viewMode === "saturation" ? "border-primary/50 bg-primary/10 text-foreground" : "border-border text-muted-foreground"}`}>
-            SaO₂ (%)
-          </button>
-          <button onClick={() => setViewMode("content")}
+            Fractional O₂Hb (%)
+          </Button>
+          <Button variant="ghost" onClick={() => setViewMode("content")}
             className={`px-2.5 py-1 rounded text-[10px] sm:text-xs font-medium border transition-all ${viewMode === "content" ? "border-primary/50 bg-primary/10 text-foreground" : "border-border text-muted-foreground"}`}>
             O₂ Content (ml/dL)
-          </button>
+          </Button>
           <label className="flex items-center gap-1 text-[10px] text-muted-foreground ml-2">
             <input type="checkbox" checked={showDissolved} onChange={e => setShowDissolved(e.target.checked)} className="w-3 h-3 accent-primary" />
             Dissolved O₂
@@ -189,7 +176,7 @@ export const OxygenDissociationCurve = ({ showShifts = false }: CurveProps) => {
         {viewMode === "content" && (
           <div className="flex items-center gap-2 justify-center">
             <label className="text-xs text-muted-foreground">Hb:</label>
-            <input type="range" min={5} max={20} step={0.5} value={hbConc}
+            <input aria-label="Haemoglobin (g/dL)" type="range" min={5} max={20} step={0.5} value={hbConc}
               onChange={e => setHbConc(Number(e.target.value))}
               className="w-24 h-1.5 rounded-full appearance-none bg-secondary cursor-pointer accent-primary" />
             <span className="text-xs font-mono text-foreground">{hbConc} g/dL</span>
@@ -225,7 +212,7 @@ export const OxygenDissociationCurve = ({ showShifts = false }: CurveProps) => {
           <text x={svgW / 2} y={svgH - 2} textAnchor="middle" fontSize="8" fill="hsl(var(--muted-foreground))" opacity="0.6">PaO₂ (kPa)</text>
           <text x={12} y={padT + plotH / 2} textAnchor="middle" fontSize="10" fill="hsl(var(--muted-foreground))" fontWeight="600"
             transform={`rotate(-90, 12, ${padT + plotH / 2})`}>
-            {viewMode === "content" ? "O₂ Content (ml/dL)" : "SaO₂ (%)"}
+            {viewMode === "content" ? "O₂ Content (ml/dL)" : "Fractional O₂Hb (%)"}
           </text>
 
           {/* Steep zone shading (20-60 mmHg ≈ 2.7-8 kPa) */}
@@ -296,7 +283,7 @@ export const OxygenDissociationCurve = ({ showShifts = false }: CurveProps) => {
           <div className="rounded-lg border border-primary/20 bg-primary/5 p-3 text-center">
             <p className="text-xs font-semibold text-foreground mb-1">O₂ Content Equation</p>
             <p className="text-[11px] text-muted-foreground font-mono">
-              CaO₂ = (1.34 × Hb × SaO₂/100) + (0.023 × PaO₂)
+              CaO₂ = (1.34 × Hb × SaO₂/100) + (0.003 × PaO₂ (mmHg))
             </p>
             <p className="text-[10px] text-muted-foreground mt-1">
               Bound: {(1.34 * hbConc * hillEquation(100, 26.7) / 100).toFixed(1)} ml/dL &nbsp;|&nbsp;
@@ -311,18 +298,19 @@ export const OxygenDissociationCurve = ({ showShifts = false }: CurveProps) => {
 
   // ═══════ INTERACTIVE SHIFT VIEW ═══════
   return (
-    <DiagramFigure id="odc" title="Oxyhaemoglobin dissociation curve with right- and left-shift modifiers" description="Hill-equation oxygen dissociation curve with adjustable P50 — temperature, pH, 2,3-DPG and PaCO2 shift the curve and alter oxygen content.">
+    <DiagramFigure id="odc" title="Oxyhaemoglobin dissociation curve with right- and left-shift modifiers" description="Illustrative Hill curve with linear P50 modifiers; not a validated patient oxygenation prediction.">
     <div className="space-y-4">
+      <p className="text-xs text-muted-foreground">Illustrative, unvalidated Hill/linear-shift model, not patient prediction. Functional saturation refers to available non-CO-bound sites; plotted fractional O₂Hb uses all Hb sites (assuming COHb is the only dyshemoglobin). Content uses fractional O₂Hb with total Hb, reducing capacity exactly once.<InlineRef topicId="oxygen-haemoglobin" refLabel="Hess 2014 oxygen physiology" /></p>
       {/* View toggle */}
       <div className="flex items-center justify-center gap-2 flex-wrap">
-        <button onClick={() => setViewMode("saturation")}
+        <Button variant="ghost" onClick={() => setViewMode("saturation")}
           className={`px-2.5 py-1 rounded text-[10px] sm:text-xs font-medium border transition-all ${viewMode === "saturation" ? "border-primary/50 bg-primary/10 text-foreground" : "border-border text-muted-foreground"}`}>
-          SaO₂ (%)
-        </button>
-        <button onClick={() => setViewMode("content")}
+          Fractional O₂Hb (%)
+        </Button>
+        <Button variant="ghost" onClick={() => setViewMode("content")}
           className={`px-2.5 py-1 rounded text-[10px] sm:text-xs font-medium border transition-all ${viewMode === "content" ? "border-primary/50 bg-primary/10 text-foreground" : "border-border text-muted-foreground"}`}>
           O₂ Content (ml/dL)
-        </button>
+        </Button>
         <label className="flex items-center gap-1 text-[10px] text-muted-foreground ml-1">
           <input type="checkbox" checked={showDissolved} onChange={e => setShowDissolved(e.target.checked)} className="w-3 h-3 accent-primary" />
           Dissolved O₂
@@ -330,7 +318,7 @@ export const OxygenDissociationCurve = ({ showShifts = false }: CurveProps) => {
         {viewMode === "content" && (
           <div className="flex items-center gap-1">
             <label className="text-[10px] text-muted-foreground">Hb:</label>
-            <input type="range" min={5} max={20} step={0.5} value={hbConc}
+            <input aria-label="Haemoglobin (g/dL)" type="range" min={5} max={20} step={0.5} value={hbConc}
               onChange={e => setHbConc(Number(e.target.value))}
               className="w-16 h-1 rounded-full appearance-none bg-secondary cursor-pointer accent-primary" />
             <span className="text-[10px] font-mono text-foreground">{hbConc}</span>
@@ -343,7 +331,9 @@ export const OxygenDissociationCurve = ({ showShifts = false }: CurveProps) => {
           const svg = e.currentTarget;
           const pt = svg.createSVGPoint();
           pt.x = e.clientX;
-          const svgPt = pt.matrixTransform(svg.getScreenCTM()!.inverse());
+          const matrix = svg.getScreenCTM();
+          if (!matrix) return;
+          const svgPt = pt.matrixTransform(matrix.inverse());
           const pO2 = ((svgPt.x - padL) / plotW) * xMax;
           if (pO2 >= 0 && pO2 <= xMax) setHoveredPO2(pO2);
           else setHoveredPO2(null);
@@ -378,7 +368,7 @@ export const OxygenDissociationCurve = ({ showShifts = false }: CurveProps) => {
         <text x={(padL + svgW - padR) / 2} y={svgH - 2} textAnchor="middle" fontSize="8" fill="hsl(var(--muted-foreground))" opacity="0.6">PaO₂ (kPa)</text>
         <text x={12} y={padT + plotH / 2} textAnchor="middle" fontSize="10" fill="hsl(var(--muted-foreground))" fontWeight="600"
           transform={`rotate(-90, 12, ${padT + plotH / 2})`}>
-          {viewMode === "content" ? "O₂ Content (ml/dL)" : "SaO₂ (%)"}
+          {viewMode === "content" ? "O₂ Content (ml/dL)" : "Fractional O₂Hb (%)"}
         </text>
 
         {/* Steep zone (20-60 mmHg ≈ 2.7-8 kPa) */}
@@ -432,14 +422,14 @@ export const OxygenDissociationCurve = ({ showShifts = false }: CurveProps) => {
         {/* P50 markers */}
         {viewMode === "saturation" && (
           <>
-            <circle cx={toX(26.7 / 7.5)} cy={toY(50)} r="3" fill="hsl(var(--muted-foreground))" opacity="0.3" />
+            <circle cx={toX(26.7)} cy={toY(50)} r="3" fill="hsl(var(--muted-foreground))" opacity="0.3" />
             {isShifted && (
               <>
-                <line x1={toX(p50 / 7.5)} y1={toY(effectiveSat(50, cohbFrac))} x2={toX(p50 / 7.5)} y2={toY(0)}
+                <line x1={toX(p50)} y1={toY(effectiveSat(50, cohbFrac))} x2={toX(p50)} y2={toY(0)}
                   stroke={shiftDirection === "right" ? "hsl(0 65% 50%)" : "hsl(210 70% 55%)"} strokeWidth="0.75" strokeDasharray="3 3" opacity="0.5" />
-                <circle cx={toX(p50 / 7.5)} cy={toY(effectiveSat(50, cohbFrac))} r="4"
+                <circle cx={toX(p50)} cy={toY(effectiveSat(50, cohbFrac))} r="4"
                   fill={shiftDirection === "right" ? "hsl(0 65% 50%)" : "hsl(210 70% 55%)"} />
-                <text x={toX(p50 / 7.5) + (shiftDirection === "right" ? 8 : -8)} y={toY(effectiveSat(50, cohbFrac)) - 6}
+                <text x={toX(p50) + (shiftDirection === "right" ? 8 : -8)} y={toY(effectiveSat(50, cohbFrac)) - 6}
                   fontSize="8" fill="hsl(var(--foreground))" fontWeight="600"
                   textAnchor={shiftDirection === "right" ? "start" : "end"}>
                   P₅₀ = {(p50 / 7.5).toFixed(1)} kPa
@@ -459,7 +449,7 @@ export const OxygenDissociationCurve = ({ showShifts = false }: CurveProps) => {
             <rect x={Math.min(toX(hoveredPO2) + 8, svgW - padR - 95)} y={toY(hoverSats.shifted) - 28} width="90" height={showDissolved ? 38 : 28} rx="4"
               fill="hsl(var(--card))" stroke="hsl(var(--border))" strokeWidth="0.5" />
             <text x={Math.min(toX(hoveredPO2) + 14, svgW - padR - 89)} y={toY(hoverSats.shifted) - 15} fontSize="8" fill="hsl(var(--foreground))">
-              PO₂ {hoveredPO2.toFixed(1)} kPa → {viewMode === "content" ? `${hoverSats.shifted.toFixed(1)} ml/dL` : `${Math.round(hoverSats.shifted)}%`}
+              PO₂ {hoveredPO2.toFixed(1)} mmHg → {viewMode === "content" ? `${hoverSats.shifted.toFixed(1)} ml/dL` : `${Math.round(hoverSats.shifted)}%`}
             </text>
             {showDissolved && viewMode === "content" && (
               <text x={Math.min(toX(hoveredPO2) + 14, svgW - padR - 89)} y={toY(hoverSats.shifted) - 3} fontSize="7" fill="hsl(210 60% 60%)">
@@ -496,16 +486,16 @@ export const OxygenDissociationCurve = ({ showShifts = false }: CurveProps) => {
               isChanged ? "border-primary/30 bg-primary/5" : "border-border"
             }`}>
               <div className="flex items-center justify-between mb-1">
-                <button onClick={() => setActiveInfo(activeInfo === f.id ? null : f.id)}
+                <Button variant="ghost" onClick={() => setActiveInfo(activeInfo === f.id ? null : f.id)}
                   className="text-xs font-medium text-foreground hover:text-primary transition-colors">
                   {f.label} {activeInfo === f.id ? "▾" : "▸"}
-                </button>
+                </Button>
                 <span className="text-xs text-muted-foreground font-mono">
                   {values[f.id]}{f.unit}
                   {isChanged && <span className="ml-1 text-primary">(N: {f.normal})</span>}
                 </span>
               </div>
-              <input type="range" min={f.min} max={f.max} step={f.step} value={values[f.id]}
+              <input aria-label={f.label} type="range" min={f.min} max={f.max} step={f.step} value={values[f.id]}
                 onChange={e => setValues(prev => ({ ...prev, [f.id]: Number(e.target.value) }))}
                 className="w-full h-1.5 rounded-full appearance-none bg-secondary cursor-pointer accent-primary" />
               <div className="flex justify-between mt-0.5">
@@ -529,13 +519,13 @@ export const OxygenDissociationCurve = ({ showShifts = false }: CurveProps) => {
           </p>
         </div>
         <div className="rounded-lg border border-border p-2">
-          <p className="text-xs text-muted-foreground">SaO₂ @PvO₂ 5.3</p>
+          <p className="text-xs text-muted-foreground">Fractional O₂Hb @40 mmHg</p>
           <p className="text-sm font-semibold text-foreground">
             {Math.round(effectiveSat(hillEquation(40, p50), cohbFrac))}%
           </p>
         </div>
         <div className="rounded-lg border border-border p-2">
-          <p className="text-xs text-muted-foreground">CaO₂</p>
+          <p className="text-xs text-muted-foreground">CaO₂ @100 mmHg</p>
           <p className="text-sm font-semibold text-foreground">
             {artContent.toFixed(1)} ml/dL
           </p>
@@ -549,10 +539,10 @@ export const OxygenDissociationCurve = ({ showShifts = false }: CurveProps) => {
       </div>
 
       <div className="flex justify-center">
-        <button onClick={reset}
+        <Button variant="ghost" onClick={reset}
           className="px-3 py-1 rounded-lg text-xs font-medium border border-border text-muted-foreground hover:bg-secondary transition-all">
           Reset all
-        </button>
+        </Button>
       </div>
     </div>
     </DiagramFigure>

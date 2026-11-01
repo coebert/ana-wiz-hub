@@ -14,7 +14,7 @@ interface RiskFactor {
 }
 
 const factors: RiskFactor[] = [
-  { id: "hypotension", label: "Hypotension", detail: "SBP <80 mmHg for ≥1 h requiring inotropes within 24 h periprocedurally", points: 5 },
+  { id: "hypotension", label: "Hypotension", detail: "SBP <80 mmHg for ≥1 h requiring inotropic medication or IABP support within 24 h periprocedurally", points: 5 },
   { id: "iabp", label: "Intra-aortic balloon pump", detail: "IABP in situ", points: 5 },
   { id: "chf", label: "Congestive heart failure", detail: "NYHA III/IV or pulmonary oedema", points: 5 },
   { id: "age", label: "Age >75 years", detail: "Older patients have reduced renal reserve", points: 4 },
