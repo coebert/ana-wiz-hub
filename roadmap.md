@@ -1,5 +1,10 @@
 # Admin metrics audit fixes
 
+## D30 medicine reference access — 1 November 2026
+- [ ] Expose exact references and honestly labelled search tools; verify safe links, keyboard and mobile rendering.
+- [ ] Independently open/match 66 candidate sources; append only scoped metadata with current-source guards/readback and document unresolved records.
+- [ ] Focused tests, browser evidence and automatic validation; no publication/audio/clinical-field changes.
+
 ## Narrow residual source batch — 1 November 2026
 - [x] Reconciled 17 supplied guards on current HEAD; calculator arithmetic/unrelated work preserved; IV paracetamol lookup-only and three DAS 2025 source links verified.
 - [x] Scoped tests83passed, citations/sections191pages passed; actual calculator browser5/10/14/50/70kg withheld output. Numeric review warnings retained; results in docs/narrow-source-residuals-2026-11-01.md. No backend/database/audio/payment/publication.
