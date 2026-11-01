@@ -42,9 +42,9 @@ const workedExamples: WorkedExample[] = [
     scenario:
       "65-year-old, 80 kg actual / PBW 70 kg, P/F ratio 12 kPa on FiO₂ 0.8. VCV: Vt 550 mL, RR 22, PEEP 10, Pplat 32, Ppeak 38. Are settings lung-protective?",
     working:
-      "Vt/PBW = 550/70 = 7.9 mL/kg (above 6 mL/kg target). ΔP = Pplat − PEEP = 32 − 10 = 22 cmH₂O (above 15 cmH₂O ceiling — strongest mortality predictor, Amato 2015). Pplat 32 > 30. Resistance = (38 − 32)/Flow — acceptable. Compliance = 550/(32 − 10) = 25 mL/cmH₂O (severe ARDS).",
+      "Vt/PBW = 550/70 = 7.9 mL/kg (above 6 mL/kg target). ΔP = Pplat − PEEP = 32 − 10 = 22 cmH₂O (assuming PEEP10 is total PEEP during passive assessment; higher ΔP was associated with worse outcomes in Amato 2015, not a safe/unsafe cutoff). Pplat 32 > 30. Resistance = (38 − 32)/Flow — acceptable. Compliance = 550/(32 − 10) = 25 mL/cmH₂O (reduced compliance, not a standalone ARDS diagnosis).",
     answer:
-      "Reduce Vt to 420 mL (6 mL/kg PBW), recheck Pplat. If ΔP still > 15, increase PEEP per FiO₂/PEEP table to recruit (lower ΔP for same Vt) and accept permissive hypercapnia (pH ≥ 7.20). If P/F < 20 kPa (150 mmHg) persists despite optimisation → prone ≥ 16 h/day (PROSEVA); consider a short NMB infusion for refractory dyssynchrony (ACURASYS positive, ROSE neutral); refer for ECMO if EOLIA-type criteria are met.",
+      "Reduce Vt to 420 mL (6 mL/kg PBW), recheck Pplat. Reassess passive plateau and total PEEP, including intrinsic PEEP; individualise PEEP to recruitment, oxygenation and haemodynamics rather than chase a single ΔP cutoff. Permissive hypercapnia may be appropriate if tolerated. If P/F < 20 kPa (150 mmHg) persists despite optimisation → prone ≥ 16 h/day (PROSEVA); consider a short NMB infusion for refractory dyssynchrony (ACURASYS positive, ROSE neutral); discuss potential ECMO candidates early while optimising care, without waiting for EOLIA trial observation durations.",
     cites: ["BJA Educ 2019"],
   },
   {
@@ -275,7 +275,7 @@ const MechanicalVentilationTopic = () => {
             <div className="rounded-lg border border-border bg-muted/20 p-3">
               <p className="font-semibold text-foreground text-sm mb-1">Driving pressure (ΔP)</p>
               <p className="text-xs text-muted-foreground leading-relaxed">
-                ΔP = P<sub>plat</sub> − PEEP = V<sub>T</sub> / C<sub>RS</sub>. <strong>&lt; 15 cmH₂O</strong>. Strongest single mortality predictor in ARDS (Amato, NEJM 2015).
+                Static ΔP = P<sub>plat</sub> − total PEEP (including intrinsic PEEP) = V<sub>T</sub> / C<sub>RS</sub>, assessed passively. Higher values were associated with worse outcomes in Amato 2015; no universal safe cutoff is established.<InlineRef topicId="mechanical-ventilation" refLabel="Amato 2015 driving pressure" />
               </p>
             </div>
             <div className="rounded-lg border border-border bg-muted/20 p-3">
@@ -711,7 +711,7 @@ const MechanicalVentilationTopic = () => {
             <li><span className="font-semibold text-foreground">Neuromuscular blockade</span> — consider for refractory dyssynchrony, severe hypoxaemia, or to facilitate proning (limit 48h)</li>
             <li><span className="font-semibold text-foreground">Prone positioning ≥16 hours/day</span> — strongest evidence, do not skip</li>
             <li>Inhaled pulmonary vasodilator (epoprostenol or iNO) as oxygenation bridge</li>
-            <li>Consider ECMO referral using EOLIA entry criteria: P/F &lt;50 mmHg for &gt;3 h, P/F &lt;80 mmHg for &gt;6 h, or pH &lt;7.25 with PaCO₂ ≥60 mmHg for &gt;6 h despite optimised ventilation</li>
+            <li>Discuss potential ECMO candidates early while optimising management. EOLIA historical entry definitions are taught in the linked ARDS lesson: durations and full ventilation conditions cannot be established by a current gas or Murray score, and must not delay an advisory call</li>
           </ol>
 
           <h3 className="text-lg font-semibold text-foreground mb-2">Electrical Impedance Tomography (EIT)</h3>
@@ -1650,7 +1650,7 @@ const MechanicalVentilationTopic = () => {
               ["Mode (initial)", "VCV (controlled) or PCV with set RR/FiO₂/PEEP", "VCV guarantees minute volume; PCV limits peak airway pressure"],
               ["Tidal volume", "6 ml/kg PBW (ARDS); 6–8 ml/kg PBW (uninjured lung)", "ARDSNet 2000 — ↓ ventilator-induced lung injury & mortality"],
               ["Plateau pressure", "<30 cmH₂O", "Surrogate for end-inspiratory transpulmonary pressure / overdistension"],
-              ["Driving pressure", "<15 cmH₂O", "Amato 2015 — strongest mortality predictor independent of Vt"],
+              ["Driving pressure", "Pplat − total PEEP (passive/static)", "Amato 2015 association with outcomes; not a validated universal safety cutoff"],
               ["PEEP", "5–24 cmH₂O titrated to oxygenation/compliance", "ALVEOLI / EXPRESS / LOV — moderate-high PEEP in moderate-severe ARDS"],
               ["Weaning trigger", "FiO₂ ≤0.4, PEEP ≤8, awake, haemodynamically stable", "Daily SAT + SBT (ABC trial) — ↓ ventilator days"],
               ["Tracheostomy timing", "Day 7–10 if extubation unlikely (TracMan)", "No mortality benefit from very early; consider patient comfort"],

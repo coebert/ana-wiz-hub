@@ -418,7 +418,7 @@ export const physiologyCaseBank: CaseBank = {
           title: "Do the delivery arithmetic",
           prompt: "Why is a saturation of 96% not reassuring here?",
           answer: [
-            "Arterial oxygen content is dominated by haemoglobin: roughly 1.34 mL of oxygen per gram of haemoglobin per percent saturation, plus a small dissolved component of about 0.023 mL per mmHg.",
+            "Arterial oxygen content is dominated by haemoglobin: 1.34 × haemoglobin (g/dL) × fractional oxyhaemoglobin saturation (0–1), plus 0.003 × PaO₂ (mmHg), giving mL O₂/dL. Capacity reduction from dyshemoglobins must not be counted twice.",
             "At 71 g/L and 96% saturation, content is only about 9–10 mL per 100 mL, around half of normal, so delivery depends heavily on cardiac output.",
             "Oxygen delivery equals cardiac output multiplied by arterial content; saturation alone says nothing about content, output or tissue extraction.",
           ],

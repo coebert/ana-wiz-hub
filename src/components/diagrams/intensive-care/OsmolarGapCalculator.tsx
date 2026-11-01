@@ -1,6 +1,8 @@
 import { useState, useMemo } from "react";
 import { DiagramFigure } from "../_shared/DiagramFigure";
 import { Button } from "@/components/ui/button";
+import { boundedDecimal as parseNum, osmolarSolute, osmolarUnitMaximum, osmolarGapRaised } from "@/lib/science-input";
+import { InlineRef } from "@/components/references/InlineRef";
 import { RotateCcw } from "lucide-react";
 
 /**
@@ -17,8 +19,7 @@ import { RotateCcw } from "lucide-react";
  *   Glucose              mmol/L  ↔ mg/dL              mg/dL ÷ 18 = mmol/L
  *   Ethanol/methanol/EG  mg/dL    →  mOsm/kg          (mg/dL ÷ MW) × 10
  *
- * All numeric inputs are bounded — clamped to physiological/toxicological
- * ranges before use to prevent absurd outputs from typos.
+ * Numeric inputs are rejected outside transparent arithmetic entry limits; never clamped.
  */
 
 type UreaUnit = "mmol/L" | "mg/dL (BUN)";
@@ -35,27 +36,21 @@ interface Field {
   placeholder?: string;
 }
 
-const parseNum = (s: string, lo: number, hi: number): number | null => {
-  if (s.trim() === "") return null;
-  const n = Number(s);
-  if (!Number.isFinite(n)) return null;
-  return n < lo || n > hi ? null : n;
-};
-
 const NumInput = ({ label, value, set, unit, min, max, step = 0.1, placeholder }: Field) => (
   <label className="block">
     <span className="text-xs font-medium text-foreground">{label}{unit ? <span className="text-muted-foreground"> ({unit})</span> : null}</span>
     <input
-      type="number"
+      type="text"
       inputMode="decimal"
       value={value}
       min={min}
       max={max}
       step={step}
       placeholder={placeholder}
-      onChange={(e) => set(e.target.value.slice(0, 8))}
+      onChange={(e) => set(e.target.value)}
       className="mt-1 w-full px-2 py-1.5 text-sm rounded border border-border bg-background focus:outline-none focus:ring-1 focus:ring-primary"
     />
+    <span className="text-[10px] text-muted-foreground">Entry limits: {min}–{Number(max.toPrecision(8))} {unit}</span>
   </label>
 );
 
@@ -78,17 +73,15 @@ const OsmolarGapCalculator = () => {
 
   const result = useMemo(() => {
     const naV = parseNum(na, 100, 200);
-    const ureaRaw = parseNum(urea, 0, 200);
-    const gluRaw = parseNum(glucose, 0, 200);
+    const ureaMmol = osmolarSolute(urea, "urea", ureaUnit);
+    const gluMmol = osmolarSolute(glucose, "glucose", gluUnit);
     const ethRaw = parseNum(ethanol, 0, 600);
     const measV = parseNum(measured, 200, 450);
     const agV = parseNum(ag, 0, 60);
 
-    if (naV === null || ureaRaw === null || gluRaw === null || (measured.trim() !== "" && measV === null) || (ethanol.trim() !== "" && ethRaw === null) || (ag.trim() !== "" && agV === null)) return null;
+    if (naV === null || ureaMmol === null || gluMmol === null || (measured.trim() !== "" && measV === null) || (ethanol.trim() !== "" && ethRaw === null) || (ag.trim() !== "" && agV === null)) return null;
 
     // Convert to mmol/L
-    const ureaMmol = ureaUnit === "mg/dL (BUN)" ? ureaRaw * 0.357 : ureaRaw;
-    const gluMmol = gluUnit === "mg/dL" ? gluRaw / 18 : gluRaw;
     const ethMOsm = ethRaw !== null ? (ethRaw / 46) * 10 : 0; // ethanol MW 46
 
     const calc = 2 * naV + ureaMmol + gluMmol + ethMOsm;
@@ -98,7 +91,7 @@ const OsmolarGapCalculator = () => {
     let tone: "ok" | "warn" | "alarm" = "ok";
     if (gap === null) {
       interpretation = "Enter a measured osmolality to compute the gap.";
-    } else if (gap < 10) {
+    } else if (!osmolarGapRaised(gap)) {
       tone = "ok";
       interpretation = "Gap below the illustrative +10 review threshold. This does not exclude toxic alcohol poisoning at any stage; use the laboratory reference range, exposure history and direct toxin levels.";
     } else if (gap < 25) {
@@ -111,9 +104,9 @@ const OsmolarGapCalculator = () => {
 
     let combo = "";
     if (gap !== null && agV !== null) {
-      if (gap > 10 && agV > 14) combo = "↑ osmolar gap + ↑ anion gap → consider toxic alcohol with metabolism underway (formate / glycolate / oxalate).";
-      else if (gap > 10 && agV <= 14) combo = "↑ osmolar gap, normal AG → consider early toxic alcohol ingestion before ADH metabolism, or osmotic agent (mannitol, propylene glycol).";
-      else if (gap <= 10 && agV > 14) combo = "Normal osmolar gap + ↑ AG → late toxic alcohol presentation (parent metabolised) OR another HAGMA cause (lactate, ketones, uraemia, salicylate).";
+      if (osmolarGapRaised(gap) && agV > 14) combo = "↑ osmolar gap + ↑ anion gap → consider toxic alcohol with metabolism underway (formate / glycolate / oxalate).";
+      else if (osmolarGapRaised(gap) && agV <= 14) combo = "↑ osmolar gap, normal AG → consider early toxic alcohol ingestion before ADH metabolism, or osmotic agent (mannitol, propylene glycol).";
+      else if (!osmolarGapRaised(gap) && agV > 14) combo = "Gap below illustrative +10 threshold + ↑ AG → late toxic alcohol presentation (parent metabolised) OR another HAGMA cause (lactate, ketones, uraemia, salicylate).";
       else combo = "Neither gap is raised by these illustrative thresholds; this does not rule out toxic alcohol exposure.";
     }
 
@@ -129,7 +122,7 @@ const OsmolarGapCalculator = () => {
     <DiagramFigure
       id="osmolar-gap-calculator"
       title="Osmolar Gap Calculator"
-      description="Interactive calculator for serum osmolar gap with unit handling for sodium, urea, glucose, and ethanol; cross-checks against the anion gap to interpret the toxic-alcohol time course."
+      description="Interactive calculator for serum osmolar gap with unit handling for sodium, urea, glucose, and ethanol; compares illustrative gap thresholds without determining exposure or its time course."
     >
       <div className="border border-border rounded-lg p-4 mb-4">
         <div className="flex items-center justify-between mb-3">
@@ -146,10 +139,10 @@ const OsmolarGapCalculator = () => {
           <NumInput label="Na⁺" value={na} set={setNa} unit="mmol/L" min={100} max={200} step={1} />
 
           <div>
-            <NumInput label="Urea" value={urea} set={setUrea} unit={ureaUnit} min={0} max={200} step={0.1} />
+            <NumInput label="Urea" value={urea} set={setUrea} unit={ureaUnit} min={0} max={osmolarUnitMaximum("urea", ureaUnit)} step={0.1} />
             <div className="mt-1 inline-flex rounded border border-border overflow-hidden text-[10px] w-full">
               {(["mmol/L", "mg/dL (BUN)"] as UreaUnit[]).map((u) => (
-                <Button variant="ghost" size="sm" aria-pressed={ureaUnit === u} key={u} onClick={() => setUreaUnit(u)}
+                <Button variant="ghost" size="sm" aria-pressed={ureaUnit === u} key={u} onClick={() => { if (u === ureaUnit) return; const canonical = osmolarSolute(urea, "urea", ureaUnit); setUrea(canonical === null ? "" : String(u === "mmol/L" ? canonical : canonical / 0.357)); setUreaUnit(u); }}
                   className={`min-w-0 flex-1 rounded-none px-1 text-[10px] transition-colors ${ureaUnit === u ? "bg-primary text-primary-foreground" : "hover:bg-secondary"}`}>
                   {u}
                 </Button>
@@ -158,10 +151,10 @@ const OsmolarGapCalculator = () => {
           </div>
 
           <div>
-            <NumInput label="Glucose" value={glucose} set={setGlucose} unit={gluUnit} min={0} max={200} step={0.1} />
+            <NumInput label="Glucose" value={glucose} set={setGlucose} unit={gluUnit} min={0} max={osmolarUnitMaximum("glucose", gluUnit)} step={0.1} />
             <div className="mt-1 inline-flex rounded border border-border overflow-hidden text-[10px] w-full">
               {(["mmol/L", "mg/dL"] as GlucoseUnit[]).map((u) => (
-                <Button variant="ghost" size="sm" aria-pressed={gluUnit === u} key={u} onClick={() => setGluUnit(u)}
+                <Button variant="ghost" size="sm" aria-pressed={gluUnit === u} key={u} onClick={() => { if (u === gluUnit) return; const canonical = osmolarSolute(glucose, "glucose", gluUnit); setGlucose(canonical === null ? "" : String(u === "mmol/L" ? canonical : canonical * 18)); setGluUnit(u); }}
                   className={`min-w-0 flex-1 rounded-none px-1 text-[10px] transition-colors ${gluUnit === u ? "bg-primary text-primary-foreground" : "hover:bg-secondary"}`}>
                   {u}
                 </Button>
@@ -175,7 +168,7 @@ const OsmolarGapCalculator = () => {
         </div>
 
         {!result && <p role="status" className="text-sm text-destructive">Enter valid values within the displayed ranges; no result is calculated from invalid inputs.</p>}
-        <p className="text-xs text-muted-foreground mb-3">Teaching estimate: ethanol uses mg/dL ÷ 4.6 (ideal molar contribution). Empirical laboratory formulas and reference intervals differ. AG comparisons use an illustrative Na-only threshold, not a universal range.</p>
+        <p className="text-xs text-muted-foreground mb-3">Entry ceilings are arithmetic safeguards, not physiological reference intervals; glucose and urea are validated in mmol/L before unit display. A unit change converts valid entries and clears invalid entries. Teaching estimate: ethanol uses mg/dL ÷ 4.6 (ideal molar contribution). Empirical laboratory formulas and reference intervals differ. AG comparisons use an illustrative Na-only threshold, not a universal range.<InlineRef topicId="acid-base" refLabel="JBDS Front Door 2023 osmolality" /></p>
         {result && (
           <>
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 mb-3 text-xs">

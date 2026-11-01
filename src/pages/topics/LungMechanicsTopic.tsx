@@ -62,7 +62,7 @@ const workedExamples: WorkedExample[] = [
       <ul className="list-disc pl-5 space-y-1">
         <li>Driving pressure ΔP = P<sub>plat</sub> − PEEP = 28 − 12 = <strong>16 cmH₂O</strong>.</li>
         <li>Static C<sub>RS</sub> = Vt / ΔP = 420 / 16 ≈ <strong>26 mL/cmH₂O</strong> (severely reduced).</li>
-        <li>Amato 2015: ΔP &gt; 15 cmH₂O independently predicts mortality in ARDS.</li>
+        <li>Amato 2015 associated higher driving pressure with worse outcomes during passive assessment, not a universally safe threshold.<InlineRef topicId="lung-mechanics" refLabel="Amato 2015 driving pressure" /></li>
       </ul>
     ),
     answer: (
@@ -154,7 +154,7 @@ const LungMechanicsTopic = () => {
         { text: "Major site of airway resistance: medium bronchi (generations 4-8), not small airways.", cites: ["BJA Educ 2015"] },
         { text: "Time constant τ = R × C. 3τ required for 95% equilibration. Heterogeneous τ causes V/Q mismatch.", cites: ["Lumb Ch.2-3"] },
         { text: "Normal WOB = 0.3-0.6 J/L, consuming 2-3% of VO₂. Can exceed 30% in respiratory failure.", cites: ["West Ch.7"] },
-        { text: "Driving pressure (Pplat − PEEP) > 15 cmH₂O independently predicts ARDS mortality (Amato 2015).", cites: ["BJA Educ 2015"] },
+        { text: "Static driving pressure = Pplat − total PEEP (including intrinsic PEEP), assessed passively. Amato 2015 associated higher values with worse outcomes; no universal safe cutoff or individual prognosis follows.", cites: ["Amato 2015 driving pressure"] },
       ]}
       coreConcepts={
         <>

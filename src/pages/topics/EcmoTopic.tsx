@@ -20,7 +20,7 @@ const ecmoFaqs: Array<[string, string]> = [
   ],
   [
     "What are the EOLIA criteria for VV-ECMO referral in ARDS?",
-    "EOLIA criteria for severe ARDS refractory to optimal ventilation and proning: PaO₂/FiO₂ < 50 mmHg for > 3 h, or PaO₂/FiO₂ < 80 mmHg for > 6 h, or arterial pH < 7.25 with PaCO₂ ≥ 60 mmHg for > 6 h with respiratory rate increased to 35 and tidal volume reduced to 4 mL/kg PBW. EOLIA stopped early for futility (p = 0.09) but a pre-specified Bayesian re-analysis estimated a 96% probability of mortality benefit, and contemporary ELSO criteria mirror EOLIA.",
+    "EOLIA (2018) used sustained physiological trial-entry criteria, not automatic referral or cannulation rules: PaO₂/FiO₂ <50 mmHg for >3 h, or <80 mmHg for >6 h, or pH <7.25 with PaCO₂ ≥60 mmHg for >6 h with respiratory rate increased to 35/min and settings adjusted to keep plateau pressure ≤32 cmH₂O. Trial optimisation was FiO₂ ≥0.80, tidal volume 6 mL/kg predicted body weight and PEEP ≥10 cmH₂O; prone positioning and neuromuscular blockade were encouraged. Other trial inclusion/exclusions applied, including mechanical ventilation ≥7 days. Murray score was not a fourth criterion. Single current values cannot establish duration or candidacy. Discuss potential candidates early while management is optimised; do not wait for trial durations before an advisory call. ELSO 2021 guidance is distinct, not identical.",
   ],
   [
     "When is ECPR indicated for refractory cardiac arrest?",
@@ -54,7 +54,7 @@ const ecmoFaqs: Array<[string, string]> = [
 
 const objectives = [
   "Distinguish veno-venous (VV) and veno-arterial (VA) ECMO by indication, cannulation, physiology and target outputs.",
-  "Apply ELSO / EOLIA / CESAR criteria to select adults with severe respiratory or cardiac failure for ECMO referral.",
+  "Distinguish EOLIA/CESAR historical trial context from ELSO guidance and individual specialist ECMO referral assessment.",
   "Describe the components of an ECMO circuit (drainage / centrifugal pump / membrane oxygenator / heat exchanger / return) and the meaning of blood flow, sweep gas, FdO₂.",
   "Recognise and manage major ECMO complications: recirculation, Harlequin / North–South syndrome, LV distension, limb ischaemia, bleeding, HIT, oxygenator failure.",
   "Plan anticoagulation, transfusion thresholds and daily monitoring during ECMO support.",
@@ -73,22 +73,17 @@ const workedExamples: WorkedExample[] = [
     ),
     working: (
       <>
-        EOLIA / ELSO criteria for VV-ECMO referral in ARDS: PaO₂/FiO₂ &lt; 50 mmHg for
-        &gt; 3 h, <strong>or</strong> PaO₂/FiO₂ &lt; 80 mmHg for &gt; 6 h, <strong>or</strong>
-        pH &lt; 7.25 with PaCO₂ ≥ 60 mmHg for &gt; 6 h despite Vt reduced to 4 mL/kg and
-        respiratory rate up to 35. He has refractory hypoxaemic and hypercapnic failure
-        despite proning and optimised ventilation.
+        EOLIA historical trial entry required P/F &lt;50 for &gt;3 h, or &lt;80 for &gt;6 h, or pH &lt;7.25 with PaCO₂ ≥60 for &gt;6 h with RR increased to 35/min and Pplat ≤32. Trial optimisation used FiO₂ ≥0.80, VT 6 mL/kg PBW and PEEP ≥10. This fictional case supplies a current gas, not the criterion-specific durations or all eligibility data; Murray 3.5 alone does not establish inclusion.
       </>
     ),
     answer: (
       <>
         Refer to the regional ECMO centre. Pending transfer, continue lung-protective
         ventilation, deepen sedation ± neuromuscular blockade, optimise haemodynamics
-        and consider inhaled pulmonary vasodilator as a bridge. Document the EOLIA
-        rescue criteria triggered to support the referral conversation.
+        and consider inhaled pulmonary vasodilator as a bridge. Document current gases, ventilation, trajectory and missing duration/eligibility information; discuss early rather than wait for trial observation durations.
       </>
     ),
-    cites: ["EOLIA 2018", "CESAR 2009", "ELSO Guidelines 2017"],
+    cites: ["EOLIA 2018", "CESAR 2009", "ELSO 2021 adult VV ECMO"],
   },
   {
     title: "Right radial SpO₂ 82 % on peripheral VA-ECMO",
@@ -158,8 +153,8 @@ const keyPoints = [
     cites: ["BJA Educ ECMO 2018"],
   },
   {
-    text: "EOLIA criteria for VV-ECMO referral in severe ARDS: PaO₂/FiO₂ < 50 mmHg for > 3 h, or < 80 mmHg for > 6 h, or pH < 7.25 with PaCO₂ ≥ 60 mmHg for > 6 h, despite optimal lung-protective ventilation and proning.",
-    cites: ["EOLIA 2018", "ELSO Guidelines 2017"],
+    text: "EOLIA historical trial entry: P/F <50 for >3 h, or <80 for >6 h, or pH <7.25 with PaCO₂ ≥60 for >6 h with RR increased to 35/min and Pplat ≤32. Trial optimisation: FiO₂ ≥0.80, VT 6 mL/kg PBW, PEEP ≥10. Other criteria/exclusions applied; Murray score is not a fourth criterion. Discuss potential candidates early while optimising care, not after a mandatory trial-duration wait.",
+    cites: ["EOLIA 2018", "ELSO 2021 adult VV ECMO"],
   },
   {
     text: "CESAR (2009) showed referral to an ECMO centre improved 6-month disability-free survival in severe respiratory failure; EOLIA (2018) was stopped early for futility but a Bayesian re-analysis suggested a mortality benefit. Modern ELSO criteria reflect both.",
@@ -407,22 +402,22 @@ const EcmoTopic = () => {
               <p className="text-muted-foreground leading-relaxed mb-3">
                 Severe ARDS or other reversible hypoxaemic / hypercapnic respiratory
                 failure refractory to lung-protective ventilation, proning and
-                rescue therapies. ELSO entry criteria mirror the EOLIA trial:
+                rescue therapies. The following are EOLIA historical physiological trial-entry definitions, not a current patient eligibility checklist; ELSO 2021 guidance is distinct:
               </p>
               <ul className="list-disc list-inside text-sm text-muted-foreground space-y-1 mb-3">
                 <li>PaO₂/FiO₂ &lt; 50 mmHg for &gt; 3 h, <em>or</em></li>
                 <li>PaO₂/FiO₂ &lt; 80 mmHg for &gt; 6 h, <em>or</em></li>
-                <li>pH &lt; 7.25 with PaCO₂ ≥ 60 mmHg for &gt; 6 h, with Vt reduced to 4 mL/kg and RR up to 35.</li>
+                <li>pH &lt; 7.25 with PaCO₂ ≥ 60 mmHg for &gt; 6 h, with RR increased to 35/min and ventilator settings adjusted to keep Pplat ≤32.</li>
               </ul>
+              <p className="text-sm text-muted-foreground">Trial optimisation: FiO₂ ≥0.80, VT 6 mL/kg predicted body weight, PEEP ≥10; prone positioning and NMB were encouraged. Other inclusion/exclusions applied. Early centre discussion and transfer planning must not wait for these durations.<InlineRef topicId="ecmo" refLabel="EOLIA 2018" /><InlineRef topicId="ecmo" refLabel="ELSO 2021 adult VV ECMO" /></p>
               <p className="text-sm text-muted-foreground">
                 <strong>CESAR (2009)</strong> randomised severe respiratory failure
                 to referral to a single UK ECMO centre vs conventional management;
                 referral improved 6-month disability-free survival.
-                <strong> EOLIA (2018)</strong> stopped early for futility (60 % vs
+                <strong> EOLIA (2018)</strong> stopped early for futility (35 % vs
                 46 % 60-day mortality, p = 0.09) but a pre-specified Bayesian
                 re-analysis estimated a 96 % probability of mortality benefit at
-                the trial's chosen prior. Practice has converged on referral for
-                EOLIA-eligible patients.
+                the trial's chosen prior. Trial results inform specialist assessment, but trial eligibility is not a prerequisite for an early advisory call.
               </p>
             </div>
 

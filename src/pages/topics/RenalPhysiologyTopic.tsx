@@ -396,9 +396,7 @@ const RenalPhysiologyTopic = () => {
             <section className="mb-8">
               <h2 className="text-2xl font-serif font-bold text-foreground">Urine Concentration & Dilution Simulator</h2>
               <p className="text-foreground/90 leading-relaxed mb-4">
-                Slide the ADH level from 0 to 100% to see how tubular fluid osmolality changes through each nephron segment
-                — and how final urine osmolality varies between 50 mOsm/kg (water diuresis / DI) and 1200 mOsm/kg
-                (maximal antidiuresis / SIADH).
+                The relative antidiuretic-effect slider shows continuous, unvalidated illustrative profiles through the nephron. It is not a measured hormone concentration or patient prediction; low/high presets do not diagnose diabetes insipidus or SIAD.
               </p>
               <div className="bg-card rounded-xl border border-border p-6">
                 <UrineConcentrationSimulator />
