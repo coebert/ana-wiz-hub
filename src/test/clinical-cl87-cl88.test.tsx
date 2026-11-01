@@ -33,7 +33,7 @@ describe("CL87 RCUK 2025 scoped paediatric bradycardia", () => {
     if (!question) throw new Error("Missing bradycardia question");
     render(<MemoryRouter><QuizSection questions={[question]} /></MemoryRouter>);
     fireEvent.click(screen.getByRole("button", { name: /Oxygen and effective assisted ventilation/ }));
-    fireEvent.click(screen.getByRole("button", { name: /Check Answer/i }));
+    fireEvent.click(screen.getByRole("button", { name: "Submit Answer" }));
     expect(screen.getByText(question.explanation)).toBeInTheDocument();
     expect(question.explanation).toContain("despite adequate respiratory support");
     expect(question.explanation).toContain("maximum 0.5 mg");
@@ -56,7 +56,7 @@ describe("CL88 trial-specific haemorrhage evidence", () => {
     if (!question) throw new Error("Missing PROPPR question");
     render(<MemoryRouter><QuizSection questions={[question]} /></MemoryRouter>);
     fireEvent.click(screen.getByRole("button", { name: /More achieved haemostasis and fewer died/ }));
-    fireEvent.click(screen.getByRole("button", { name: /Check Answer/i }));
+    fireEvent.click(screen.getByRole("button", { name: "Submit Answer" }));
     expect(screen.getByText(question.explanation)).toBeInTheDocument();
     expect(question.explanation).toContain("not statistically significant");
     expect(question.explanation).not.toContain("faster than");
