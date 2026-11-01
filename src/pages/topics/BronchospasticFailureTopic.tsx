@@ -11,9 +11,10 @@ import type { WorkedExample } from "@/components/topic/WorkedExamples";
 import { ExamPitfallsCallout } from "@/components/exam/ExamPitfallsCallout";
 import { InlineRef } from "@/components/references/InlineRef";
 import { IntrinsicPeepTeaching } from "@/components/topic/IntrinsicPeepTeaching";
+import { ASTHMA_OXYGEN, KETAMINE_INDUCTION, ASTHMA_ADRENALINE, SEDACONDA_PRODUCT, VOLATILE_TRIALS, VOLATILE_RESCUE, COPD_ANTIBIOTICS, HELIOX_RESCUE } from "@/components/topic/BronchospasticRescueTeaching";
 
 const bronchospasticFailureFaqs: Array<[string, string]> = [
-  ["How is severe acute asthma treated in ICU?", "High-flow O₂, back-to-back salbutamol/ipratropium nebs, IV hydrocortisone 100 mg, IV magnesium 2 g over 20 min; escalate to IV salbutamol or aminophylline; intubate for exhaustion, silent chest or PaCO₂ rising despite treatment (BTS 2019)."],
+  ["How is severe acute asthma treated in ICU?", "Correct life-threatening hypoxia immediately with 100% oxygen, then titrate to SpO₂ 94–98% after stabilisation (UK BTS/SIGN). Back-to-back salbutamol/ipratropium nebs, IV hydrocortisone 100 mg, IV magnesium 2 g over 20 min; specialist escalation to IV salbutamol or aminophylline; intubate for exhaustion, silent chest or PaCO₂ rising despite treatment."],
   ["What ventilator strategy minimises gas trapping in severe asthma?", "Low rate (8–10/min), Vt 6 mL/kg, long expiratory time (I:E ≥1:4), permit hypercapnia (pH ≥7.20), apply minimal PEEP (3–5) below intrinsic PEEP, and use heavy sedation ± paralysis to prevent dyssynchrony."],
   ["When should ECMO be considered in life-threatening asthma?", "Refractory hypercapnia (pH <7.20), dynamic hyperinflation with haemodynamic compromise, or barotrauma; VV-ECMO allows lung rest and CO₂ clearance with reported survival >80% in this group (ELSO registry)."],
 ];
@@ -21,10 +22,10 @@ const bronchospasticFailureFaqs: Array<[string, string]> = [
 const objectives = [
   "Apply BTS/SIGN criteria to recognise life-threatening and near-fatal asthma and escalate appropriately.",
   "Set safe ventilator parameters in severe bronchospasm — low RR, prolonged expiratory time, permissive hypercapnia — and detect dynamic hyperinflation.",
-  "Choose ketamine as the induction agent and outline rescue strategies (volatile via Sedaconda, heliox, ECMO).",
+  "Select an induction agent and dose appropriate to bronchospasm and haemodynamics; ketamine is one option. Outline specialist rescue strategies (volatile via Sedaconda ACD, heliox, ECMO).",
   "Differentiate management of IECOPD from asthma — controlled O₂ 88–92 %, NIV first-line for hypercapnic respiratory failure.",
   "Manage cardiovascular collapse from auto-PEEP by ventilator disconnection, fluid and reduction of minute ventilation.",
-  "Explain how Sedaconda/AnaConDa delivers volatile agent through a standard ICU ventilator.",
+  "Distinguish Sedaconda isoflurane medicine from the Sedaconda ACD/AnaConDa delivery device and explain monitored volatile delivery through a compatible ICU ventilator.",
 ];
 
 const workedExamples: WorkedExample[] = [
@@ -82,16 +83,17 @@ const workedExamples: WorkedExample[] = [
     cites: ["BJA Educ Asthma 2017"],
   },
   {
-    title: "Sedaconda for refractory bronchospasm",
+    title: "Specialist volatile rescue for refractory bronchospasm",
     scenario: (
       <>
         Day 2 ventilated near-fatal asthma. Maxed on salbutamol, ipratropium, magnesium, ketamine
-        infusion, IV adrenaline 0.1 µg/kg/min, plateau still 38, ETCO₂ 11 kPa.
+        infusion; plateau still 38, ETCO₂ 11 kPa despite specialist optimisation. Assess haemodynamics
+        separately; adrenaline is not a routine asthma bronchodilator without anaphylaxis.
       </>
     ),
     working: (
       <>
-        Volatile anaesthetics are potent bronchodilators (sevoflurane, isoflurane). Sedaconda places a
+        Volatile anaesthetics have bronchodilatory properties (sevoflurane, isoflurane). Sedaconda ACD places a
         carbon reflector between the ETT and ventilator that recaptures ~ 90 % of exhaled volatile,
         allowing delivery via a standard ICU ventilator with a small syringe driver, no anaesthetic
         machine required.
@@ -99,12 +101,13 @@ const workedExamples: WorkedExample[] = [
     ),
     answer: (
       <>
-        Set up Sedaconda with sevoflurane 5–8 mL/h, target end-tidal sevo 0.5–1 % (~ 0.3–0.5 MAC).
-        Monitor end-tidal volatile, BP (vasodilation), and watch for fluoride accumulation if &gt; 48 h.
-        If still failing → VV-ECMO referral.
+        Discuss specialist/off-label sevoflurane rescue via a compatible Sedaconda ACD device, using
+        an agreed local agent-specific protocol rather than a fixed pump rate or the isoflurane SmPC.
+        Continuously monitor end-tidal sevoflurane, ventilation and haemodynamics; provide specified
+        scavenging and assess organ risks. Review response and refer to the regional ECMO team if failing.
       </>
     ),
-    cites: ["GINA 2023"],
+    cites: ["Sevoflurane rescue review 2024", "Sedaconda ACD instructions"],
   },
 ];
 
@@ -113,9 +116,9 @@ const keyPoints = [
   { text: "Ventilation strategy: low RR, prolonged I:E ratio, high inspiratory flow, permissive hypercapnia — minimising gas trapping is the priority", cites: ["GOLD COPD 2023"] },
   { text: "In COPD, start NIV for persistent pH <7.35 and PaCO₂ >6.5 kPa despite optimal treatment; severe acidosis needs higher-level monitoring and an escalation plan. Acute-asthma NIV has weak evidence and requires separate specialist assessment.", cites: ["BTS/ICS AHRF 2016", "GINA 2026"] },
   { text: "Normal or rising PaCO₂ in acute asthma is a life-threatening sign — the patient is tiring", cites: ["GINA 2023"] },
-  { text: "Ketamine is the ideal induction agent for intubation in bronchospasm (bronchodilator + haemodynamic stability)", cites: ["BTS/SIGN Asthma 2019"] },
-  { text: "Volatile agents via Sedaconda/AnaConDa provide potent bronchodilation in refractory bronchospasm — rescue therapy when conventional treatment fails", cites: ["GOLD COPD 2023"] },
-  { text: "Sedaconda uses a carbon reflector to recapture ~90% of exhaled volatile, allowing delivery via standard ICU ventilators without an anaesthetic machine — typical adult infusion ~5–12 mL/h titrated to end-tidal agent", cites: ["BJA Educ Asthma 2017", "Sedaconda SPC"] },
+  { text: KETAMINE_INDUCTION, cites: ["Ketamine SmPC", "Gayen severe asthma 2024"] },
+  { text: VOLATILE_RESCUE, cites: ["Gayen severe asthma 2024", "Sevoflurane rescue review 2024"] },
+  { text: SEDACONDA_PRODUCT, cites: ["Sedaconda SPC", "Sedaconda ACD instructions"] },
   { text: "Mucus plugging is the major cause of death in fatal asthma — corticosteroids and bronchoscopic lavage address this", cites: ["GINA 2023"] },
   { text: "COPD O₂ target 88–92%; asthma O₂ target 94–98% — controlled oxygen is critical in COPD to avoid worsening hypercapnia", cites: ["BTS/SIGN Asthma 2019"] },
 ];
@@ -151,9 +154,9 @@ const BronchospasticFailureTopic = () => {
           "GINA 2023",
           "BJA Educ Asthma 2017",
           "GOLD COPD 2023",
-          "Sedaconda SPC",
+          "Sedaconda SPC", "Sedaconda ACD instructions", "Ketamine SmPC", "Gayen severe asthma 2024", "Sevoflurane rescue review 2024",
         ],
-        workedExamples: ["GOLD COPD 2023", "BJA Educ Asthma 2017", "GINA 2023"],
+        workedExamples: ["RCUK Special Circumstances 2025", "BTS/ICS AHRF 2016", "Sevoflurane rescue review 2024", "Sedaconda ACD instructions"],
       }}
       coreConcepts={
         <>
@@ -267,7 +270,7 @@ const BronchospasticFailureTopic = () => {
                 <tr>
                   <td className="py-2 font-medium text-foreground">Oxygen</td>
                   <td>Target SpO₂ 94–98% (asthma) or 88–92% (COPD).</td>
-                  <td>Asthma: hypoxia kills — give high-flow O₂ freely. COPD: risk of hypercapnia with uncontrolled O₂. Venturi masks for precise FiO₂.</td>
+                  <td>{ASTHMA_OXYGEN}<InlineRef topicId="bronchospastic-failure" refLabel="BTS oxygen 2017" /><InlineRef topicId="bronchospastic-failure" refLabel="RCUK Special Circumstances 2025" /> Venturi masks allow precise FiO₂.</td>
                 </tr>
               </tbody>
             </table>
@@ -312,8 +315,8 @@ const BronchospasticFailureTopic = () => {
                 </tr>
                 <tr>
                   <td className="py-2 font-medium text-foreground">IV adrenaline</td>
-                  <td>α + β agonist. 0.5 mg IM (anaphylaxis protocol) or IV infusion 0.05–0.5 μg/kg/min in extremis.</td>
-                  <td>Reserved for peri-arrest/cardiac arrest with bronchospasm, or when anaphylaxis cannot be excluded. Potent bronchodilator via β₂ but significant cardiac risk.</td>
+                  <td>Anaphylaxis: adult IM adrenaline 0.5 mg, repeat after 5 min if needed. Cardiac arrest: follow standard ALS dosing; specialist peri-arrest shock support is separate.</td>
+                  <td>{ASTHMA_ADRENALINE}<InlineRef topicId="bronchospastic-failure" refLabel="GINA 2026" /><InlineRef topicId="bronchospastic-failure" refLabel="RCUK Special Circumstances 2025" /></td>
                 </tr>
               </tbody>
             </table>
@@ -380,7 +383,7 @@ const BronchospasticFailureTopic = () => {
           <div className="space-y-2 mb-4">
             {[
               { label: "Indications", detail: "Respiratory arrest, GCS <8, exhaustion, worsening hypoxaemia despite maximal therapy, cardiovascular collapse, inability to speak/cough. A clinical decision — do not wait for ABG confirmation." },
-              { label: "Induction", detail: "Ketamine is ideal (bronchodilator + haemodynamic stability). Propofol also has bronchodilatory properties. Avoid thiopentone (histamine release). Suxamethonium or rocuronium — suxamethonium does NOT worsen bronchospasm despite common misconception. Largest ETT possible (≥7.5 mm) to reduce airway resistance." },
+              { label: "Induction", detail: KETAMINE_INDUCTION },
               { label: "Immediate Post-Intubation", detail: "Hand ventilate initially to assess compliance and expiratory time. Watch for cardiovascular collapse on positive pressure (auto-PEEP exacerbation). Have vasopressors available. Ventilate slowly with low rate — allow passive expiration." },
             ].map((item) => (
               <div key={item.label} className="p-3 rounded-lg bg-secondary/30 border border-border">
@@ -494,8 +497,8 @@ const BronchospasticFailureTopic = () => {
           </div>
           <div className="space-y-2 mb-4">
             {[
-              { label: "Medical Management", detail: <>Controlled oxygen (24–28% Venturi, target SpO₂ 88–92%). Nebulised salbutamol + ipratropium (air-driven nebulisers if hypercapnic — or use O₂-driven with 6 min limit). Prednisolone 30 mg PO × 5 days (REDUCE trial). Aminophylline if inadequate response.
-                <br /><strong>Antibiotics<InlineRef topicId="bronchospastic-failure" refLabel="NICE NG114" /><InlineRef topicId="bronchospastic-failure" refLabel="GOLD COPD 2023" />:</strong> indicated when purulent sputum is accompanied by increased sputum volume and/or increased dyspnoea (Anthonisen criteria). No risk factors for resistance: amoxicillin, doxycycline, or clarithromycin for 5 days. Risk factors for treatment failure or resistance (&gt;3 exacerbations/year, recent hospitalisation, antibiotics within the last 3 months, severe underlying COPD) — use co-amoxiclav. Risk of <em>Pseudomonas</em> (previous isolation, bronchiectasis, recent hospitalisation, very severe COPD, chronic oral steroids) — use ciprofloxacin or levofloxacin with specialist microbiology advice. Send sputum culture when antibiotics fail or resistance is likely.</> },
+              { label: "Medical Management", detail: <>Controlled oxygen (24–28% Venturi, target SpO₂ 88–92%). Nebulised salbutamol + ipratropium (air-driven nebulisers if hypercapnic — or use O₂-driven with 6 min limit). Prednisolone 30 mg PO daily × 5 days (NICE NG115)<InlineRef topicId="bronchospastic-failure" refLabel="NICE NG115" />. REDUCE used prednisone 40 mg daily for 5 versus 14 days, a different trial regimen<InlineRef topicId="bronchospastic-failure" refLabel="REDUCE 2013" />. Aminophylline if inadequate response.
+                <br /><strong>Antibiotics<InlineRef topicId="bronchospastic-failure" refLabel="NICE NG114" /><InlineRef topicId="bronchospastic-failure" refLabel="MHRA fluoroquinolones 2024" />:</strong> {COPD_ANTIBIOTICS}</> },
               { label: "Weaning from Ventilation", detail: "Often more challenging than asthma. Diaphragm weakness, malnutrition, and deconditioning contribute. Early tracheostomy may facilitate weaning. Pressure support weaning trials. NIV can be used as step-down from invasive ventilation. Physiotherapy for secretion clearance. COPD patients may not return to pre-admission baseline." },
             ].map((item) => (
               <div key={item.label} className="p-3 rounded-lg bg-secondary/30 border border-border">
@@ -586,7 +589,7 @@ const BronchospasticFailureTopic = () => {
         {/* ---- Inhaled Volatile Agents / Sedaconda ---- */}
         <CollapsibleSubsection title="Inhaled Volatile Agents in ICU">
           <p className="text-muted-foreground leading-relaxed mb-3">
-            Volatile anaesthetic agents (isoflurane, sevoflurane) are potent bronchodilators that act by direct smooth muscle relaxation, inhibition of airway reflexes, and reduction of inflammatory mediator release. They have been used as rescue therapy in refractory bronchospasm for decades, but traditionally required an anaesthetic machine at the bedside. The development of the <strong>Anaesthetic Conserving Device (AnaConDa / Sedaconda)</strong> has made ICU delivery practical.
+            Volatile anaesthetic agents (isoflurane, sevoflurane) are potent bronchodilators that act by direct smooth muscle relaxation, inhibition of airway reflexes, and reduction of inflammatory mediator release. They have been used as rescue therapy in refractory bronchospasm for decades, but traditionally required an anaesthetic machine at the bedside. The development of the <strong>Anaesthetic Conserving Device (AnaConDa / Sedaconda ACD)</strong> has made ICU delivery practical.
           </p>
 
           <SedacondaDiagram />
@@ -599,18 +602,18 @@ const BronchospasticFailureTopic = () => {
             </div>
             <div className="p-3 rounded-lg border border-border">
               <p className="font-semibold text-foreground text-sm">Anti-inflammatory Effects</p>
-              <p className="text-xs text-muted-foreground mt-1">Reduce neutrophil chemotaxis and activation. Decrease pro-inflammatory cytokine release (TNF-α, IL-6, IL-8). May attenuate ventilator-induced lung injury. Emerging evidence for lung-protective properties beyond bronchodilation.</p>
+              <p className="text-xs text-muted-foreground mt-1">Anti-inflammatory and preconditioning mechanisms are preclinical/physiological hypotheses, not proven clinical organ protection. Sedation trials must be interpreted by agent, population and duration; SESAR 2025 found worse patient outcomes with sevoflurane in moderate/severe ARDS, not an asthma-rescue population<InlineRef topicId="bronchospastic-failure" refLabel="SESAR 2025" />.</p>
             </div>
           </div>
 
-          <h3 className="text-lg font-semibold text-foreground mt-4 mb-2">The Sedaconda (AnaConDa) System</h3>
+          <h3 className="text-lg font-semibold text-foreground mt-4 mb-2">Sedaconda Medicine and Sedaconda ACD Device<InlineRef topicId="bronchospastic-failure" refLabel="Sedaconda SPC" /><InlineRef topicId="bronchospastic-failure" refLabel="Sedaconda ACD instructions" /></h3>
           <div className="space-y-2 mb-4">
             {[
               { label: "Device Design", detail: "A modified HME (heat-moisture exchanger) containing an activated carbon fibre reflector. Inserted between the Y-piece and ETT. Liquid volatile agent (isoflurane or sevoflurane) is infused via syringe pump through the device, evaporates within the reflector, and is delivered to the patient. On expiration, ~90% of exhaled volatile is adsorbed by the reflector and re-delivered on the next inspiration — minimising waste and environmental contamination." },
-              { label: "Sedaconda-S (Small)", detail: "50 ml dead space device designed for sedation (lower agent concentrations). Suitable for most ICU patients. Isoflurane is the most commonly used agent (lower cost, less compound A concern than sevoflurane)." },
-              { label: "Agent Delivery & Monitoring", detail: "Liquid isoflurane/sevoflurane infused via standard syringe pump — typical adult sedation rates ~3–7 mL/h with AnaConDa-S and ~5–12 mL/h with the larger AnaConDa, titrated to end-tidal agent concentration (Sedaconda SPC). End-tidal agent monitored by an inline anaesthetic gas monitor (essential for safe use). Target Fe'Iso 0.3–0.8% for sedation; higher for bronchodilation (0.5–1.5 MAC equivalent). Requires gas scavenging on ventilator exhaust port." },
+              { label: "Sedaconda ACD-S (Small)", detail: "50 ml dead space device designed for sedation (lower agent concentrations). Check device suitability, approved placement and total apparatus dead space for each patient; do not equate device compatibility with a licensed sevoflurane sedation prescription." },
+              { label: "Agent Delivery & Monitoring", detail: SEDACONDA_PRODUCT },
               { label: "Practical Setup", detail: "Use a compatible ICU ventilator, circuit, agent and gas monitor according to manufacturer instructions. ACD-S adds 50 mL dead space and ACD-L 100 mL; this can worsen CO₂ retention. Review device size, other apparatus dead space and approved alternative placement while preserving safe tidal volume, airway pressures and expiratory time; do not automatically increase tidal volume. Replace the device at 24 hours or earlier when indicated. Use calibrated agent monitoring and the manufacturer-specified scavenging arrangement." },
-              { label: "Advantages over IV Sedation", detail: "Rapid onset and offset (wake-up times 15–20 min vs hours with propofol/midazolam). No accumulation in renal/hepatic failure. Organ-protective properties (cardiac preconditioning). Reduced delirium incidence (some evidence). Direct bronchodilation — dual benefit in bronchospasm." },
+              { label: "Advantages over IV Sedation", detail: VOLATILE_TRIALS },
             ].map((item) => (
               <div key={item.label} className="p-3 rounded-lg bg-secondary/30 border border-border">
                 <p className="font-semibold text-foreground text-sm">{item.label}</p>
@@ -631,11 +634,11 @@ const BronchospasticFailureTopic = () => {
             </div>
           </div>
 
-          <h3 className="text-lg font-semibold text-foreground mt-4 mb-2">Evidence Base</h3>
+          <h3 className="text-lg font-semibold text-foreground mt-4 mb-2">Evidence Base<InlineRef topicId="bronchospastic-failure" refLabel="Meiser isoflurane 2021" /><InlineRef topicId="bronchospastic-failure" refLabel="SESAR 2025" /><InlineRef topicId="bronchospastic-failure" refLabel="Sevoflurane rescue review 2024" /></h3>
           <div className="space-y-2 mb-4">
             {[
-              { label: "Refractory Bronchospasm", detail: "Case series and observational studies demonstrate rapid improvement in airway pressures, PaCO₂, and ventilation within 30–60 min of initiating volatile therapy. No RCTs specifically for bronchospasm. Used as rescue in near-fatal asthma when conventional therapy fails." },
-              { label: "ICU Sedation (General)", detail: "ISCA trial (isoflurane via AnaConDa): similar sedation quality to propofol/midazolam with faster wake-up times. Reduced opioid requirements. SED-ICU trial and others support feasibility and safety. Not yet widely adopted outside specialist centres." },
+              { label: "Refractory Bronchospasm", detail: VOLATILE_RESCUE },
+              { label: "ICU Sedation (General)", detail: VOLATILE_TRIALS },
             ].map((item) => (
               <div key={item.label} className="p-3 rounded-lg bg-secondary/30 border border-border">
                 <p className="font-semibold text-foreground text-sm">{item.label}</p>
@@ -652,7 +655,7 @@ const BronchospasticFailureTopic = () => {
               { label: "ECMO for Refractory Asthma", detail: "VV-ECMO has been used successfully in near-fatal asthma when conventional ventilation fails. Allows 'lung rest' — can reduce or stop mechanical ventilation entirely while bronchospasm resolves. Young patients with reversible pathology are ideal candidates. Early referral to ECMO centre." },
               { label: "Extracorporeal CO₂ Removal (ECCO₂R)", detail: "Selected patients with refractory hypercapnic respiratory failure may be assessed by an expert centre for ECCO₂R, which removes CO₂ but provides little oxygenation and no direct circulatory support. It may permit lower minute ventilation and more expiratory time; it is not an established routine asthma treatment and carries bleeding, thrombosis, haemolysis and vascular-access risks. VV-ECMO supports gas exchange and may improve circulation indirectly by correcting hypoxia/acidosis and reducing ventilator pressures, but provides no direct haemodynamic support. Persistent refractory cardiovascular failure or cardiac arrest requires urgent expert assessment for an appropriate circulatory-support or ECPR configuration, commonly VA-ECMO, rather than an automatic VV-ECMO instruction. Choose the modality with the regional ECMO team according to the patient's respiratory and circulatory needs." },
 
-              { label: "Heliox (Helium-Oxygen)", detail: "Available as premixed cylinders of 79% helium/21% oxygen or 70/30 (Heliox21/Heliox28); density is roughly one-third that of air, so the Reynolds number falls and flow through narrowed, turbulent airways becomes more laminar — reducing resistive work of breathing and peak airway pressures, and improving distal delivery of nebulised salbutamol (nebulise driven by heliox at 25–30% higher flow than usual). Practical points: use a tight-fitting non-rebreathing circuit or a ventilator validated for heliox, since the low density under-reads on standard flow sensors and can misdeliver tidal volumes (verify with a heliox-compatible ventilator or measure exhaled volumes independently); FiO₂ is capped at 30–40% before the density benefit is lost, so heliox is unsuitable for significant hypoxaemia; it changes voice pitch, cools the patient, and must be scavenged/handled per local cylinder policy; benefit is immediate if it is going to work, so review within 15–20 min and abandon if there is no fall in work of breathing or airway pressures. Evidence remains weak (no mortality benefit) so it is a physiologically rational bridge while steroids and bronchodilators take effect, not a standard therapy. See BJA Education (2023) guidance on the ventilated asthmatic." },
+              { label: "Heliox (Helium-Oxygen)", detail: <>{HELIOX_RESCUE}<InlineRef topicId="bronchospastic-failure" refLabel="Gayen severe asthma 2024" /><InlineRef topicId="bronchospastic-failure" refLabel="Cochrane heliox 2006" /></> },
               { label: "Bronchoscopy & Lavage", detail: "Mucus plugging is the major cause of death in fatal asthma. Bronchoscopic lavage can remove inspissated mucus plugs in refractory cases. Risk of worsening bronchospasm during procedure. Consider in ventilated patients with persistent lobar or segmental collapse or persistently high airway pressures despite maximal therapy. Procedure: via the ETT in a deeply sedated (propofol or volatile), paralysed patient on FiO₂ 1.0, with a large-channel therapeutic bronchoscope and a swivel connector; instil small aliquots (about 20–50 mL) of warm saline and suction; nebulised N-acetylcysteine is controversial. Risks: worsening bronchospasm, hypoxaemia, barotrauma/high pressures, haemodynamic instability — have bronchodilators and adrenaline drawn up." },
               { label: "Prone Positioning", detail: "Limited evidence in asthma/COPD but may improve V/Q matching and facilitate secretion drainage. Case reports of benefit in refractory asthma. More established in ARDS — may overlap if ARDS develops as a complication." },
               { label: "General Anaesthesia", detail: "If volatile agents via Sedaconda are unavailable, transfer to theatre for inhalational anaesthesia with sevoflurane/isoflurane via a standard anaesthetic machine has been used as a last resort in near-fatal asthma." },
@@ -688,8 +691,8 @@ const BronchospasticFailureTopic = () => {
               ["4 — Anticholinergic", "Ipratropium 500 µg neb 4–6-hrly", "Synergistic with β₂; useful in COPD"],
               ["5 — Steroid", "IV hydrocortisone 200 mg or methylprednisolone 60–125 mg", "Onset 4–6 h — give early"],
               ["6 — IV magnesium", "MgSO₄ 2 g IV over 20 min", "Smooth muscle relaxation; reasonable evidence"],
-              ["7 — Volatile / ketamine", "Sevoflurane via Sedaconda; ketamine 1–3 mg/kg/hr", "Bronchodilator; consider if refractory"],
-              ["8 — Adrenaline", "IV bolus 10–50 µg or infusion", "Severe refractory bronchospasm; consider IM 0.5 mg if anaphylaxis"],
+              ["7 — Specialist rescue", "Agent-specific volatile via Sedaconda ACD or individually assessed ketamine", "Specialist/local protocol; volatile asthma rescue is off-label, not an isoflurane-to-sevoflurane dose conversion"],
+              ["Separate — Anaphylaxis / ALS", "IM adrenaline for anaphylaxis; standard ALS in arrest; specialist support for peri-arrest shock", ASTHMA_ADRENALINE],
               ["9 — Rescue", "Heliox · bronchoscopic lavage · VV-ECMO · transfer for inhalational GA", "Near-fatal asthma — ECMO referral early"],
             ].map(([step, intervention, rationale]) => (
               <tr key={step as string} className="border-b border-border/50">
@@ -706,10 +709,10 @@ const BronchospasticFailureTopic = () => {
             accent="icu"
             pitfalls={[
               "Life-threatening asthma: PEF <33%, SpO₂ <92%, silent chest, exhaustion, altered consciousness, normal/raised PaCO₂.",
-              "Treatment: O₂, nebulised salbutamol + ipratropium, IV hydrocortisone, IV magnesium 2 g, consider IV salbutamol/aminophylline.",
-              "Intubation criteria: exhaustion, rising CO₂, altered consciousness — ketamine + suxamethonium induction; expect dynamic hyperinflation.",
+              "Treatment: correct life-threatening hypoxia with 100% O₂, then titrate to SpO₂ 94–98%; nebulised salbutamol + ipratropium, IV hydrocortisone, IV magnesium 2 g, consider IV salbutamol/aminophylline.",
+              "Intubation criteria: exhaustion, rising CO₂, altered consciousness — individualise induction agent, dose and neuromuscular-blocker choice; ketamine is one option, not guaranteed haemodynamic protection. Expect dynamic hyperinflation.",
               "Ventilator settings: low RR (6–10), long expiratory time (I:E 1:4–1:5), small Vt, permissive hypercapnia, minimal PEEP.",
-              "Sedaconda (isoflurane via AnaConDa) is a useful bronchodilator rescue in refractory status asthmaticus.",
+              "Sedaconda is isoflurane medicine; Sedaconda ACD is its delivery device. Volatile asthma rescue is specialist/off-label; do not apply isoflurane product dosing to sevoflurane.",
             ]}
           />
     </ExamSection>

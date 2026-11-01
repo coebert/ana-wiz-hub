@@ -1,5 +1,8 @@
 import { useState } from "react";
 import { DiagramFigure } from "../_shared/DiagramFigure";
+import { Button } from "@/components/ui/button";
+import { InlineRef } from "@/components/references/InlineRef";
+import { SEDACONDA_PRODUCT } from "@/components/topic/BronchospasticRescueTeaching";
 
 type ViewMode = "overview" | "inspiration" | "expiration" | "setup";
 
@@ -12,7 +15,7 @@ interface ViewData {
 const views: Record<ViewMode, ViewData> = {
   overview: {
     label: "Device Overview",
-    description: "The Sedaconda (AnaConDa) is a modified HME placed between the Y-piece and ETT. It contains an activated carbon fibre reflector that captures and re-delivers volatile anaesthetic agent.",
+    description: "Sedaconda is the isoflurane medicine. Sedaconda ACD (AnaConDa), its delivery device, is a modified HME placed between the Y-piece and ETT. It contains an activated carbon fibre reflector that captures and re-delivers volatile anaesthetic agent.",
     highlights: [
       "Fits standard 22 mm circuit connectors",
       "50 ml dead space (Sedaconda-S)",
@@ -43,11 +46,11 @@ const views: Record<ViewMode, ViewData> = {
   },
   setup: {
     label: "Practical Setup",
-    description: "Complete Sedaconda setup requires a syringe pump with liquid volatile agent, an anaesthetic gas monitor, and a charcoal scavenging filter on the ventilator exhaust. The device is changed every 24 hours.",
+    description: "Sedaconda ACD setup uses an agent-specific syringe pump, a calibrated anaesthetic gas monitor and manufacturer-specified exhaust scavenging. Sedaconda medicine is isoflurane; sevoflurane rescue is specialist/off-label. Change the device every 24 hours or earlier when needed. Check current local product information.",
     highlights: [
-      "Syringe pump: isoflurane 0.5–5 ml/h (or sevoflurane)",
-      "Gas monitor: essential — target ETIso 0.3–1.5%",
-      "Scavenging: activated charcoal filter on expiratory limb",
+      "Sedaconda isoflurane: initial 3 mL/h per UK SmPC (14 June 2024), then individual titration",
+      "Gas monitor: essential — long-term end-tidal isoflurane maximum 1.0%; brief up to 1.5% for procedures",
+      "Scavenging: manufacturer-specified system at ventilator exhaust",
       "Change device every 24 h",
       "Compatible with standard ICU ventilators",
       "Assess device size, apparatus dead space and approved placement; preserve safe tidal volume, pressures and expiratory time",
@@ -64,11 +67,11 @@ const SedacondaDiagram = () => {
   return (
     <DiagramFigure
       id="sedaconda-diagram"
-      title="Sedaconda"
+      title="Sedaconda ACD"
       description="Sedaconda: labelled teaching figure showing the structures, relationships and key values FRCA and FFICM candidates need to recognise and explain for this topic."
     >
               <div className="rounded-xl border border-border bg-card p-4 sm:p-6 mb-8">
-        <h3 className="text-lg font-serif font-bold text-foreground mb-1">Sedaconda / AnaConDa Device</h3>
+        <h3 className="text-lg font-serif font-bold text-foreground mb-1">Sedaconda ACD / AnaConDa Device</h3>
         <p className="text-xs text-muted-foreground mb-4">Interactive diagram — select a view to explore device function and gas flow</p>
   
         {/* View selector */}
@@ -76,9 +79,11 @@ const SedacondaDiagram = () => {
           {viewOrder.map((view) => {
             const isActive = activeView === view;
             return (
-                  <button
+                  <Button
                 key={view}
                 onClick={() => setActiveView(view)}
+                variant="outline"
+                aria-pressed={isActive}
                 className={`p-2 rounded-lg border text-xs font-medium transition-all duration-200 ${
                   isActive
                     ? "border-primary bg-primary/10 text-foreground shadow-sm"
@@ -86,7 +91,7 @@ const SedacondaDiagram = () => {
                 }`}
               >
                 {views[view].label}
-              </button>
+              </Button>
     );
           })}
         </div>
@@ -137,7 +142,7 @@ const SedacondaDiagram = () => {
                 opacity={activeView === "overview" ? 1 : 0.8}
               />
               {/* Device label */}
-              <text x="255" y="122" textAnchor="middle" className="fill-foreground text-[9px] font-bold">SEDACONDA</text>
+              <text x="255" y="122" textAnchor="middle" className="fill-foreground text-[9px] font-bold">SEDACONDA ACD</text>
   
               {/* Carbon reflector zone */}
               <rect
@@ -171,7 +176,7 @@ const SedacondaDiagram = () => {
                 opacity={activeView === "setup" ? 1 : 0.5}
               />
               <text x="255" y="48" textAnchor="middle" className="fill-foreground text-[7px] font-semibold">Syringe Pump</text>
-              <text x="255" y="59" textAnchor="middle" className="fill-muted-foreground text-[6px]">Isoflurane 0.5–5 ml/h</text>
+              <text x="255" y="59" textAnchor="middle" className="fill-muted-foreground text-[6px]">Agent-specific titration</text>
   
               {/* Syringe line to device */}
               <line x1="255" y1="70" x2="255" y2="105" stroke="hsl(150, 60%, 40%)" strokeWidth="1.5" strokeDasharray={activeView === "setup" ? "none" : "3,3"} markerEnd="url(#arrowGreen)" opacity={activeView === "setup" ? 1 : 0.5} />
@@ -275,13 +280,13 @@ const SedacondaDiagram = () => {
               <div className="rounded-lg border border-border bg-background p-4 animate-fade-in">
                 <p className="text-xs font-semibold text-muted-foreground mb-2 uppercase tracking-wide">Agent Comparison</p>
                 <div className="space-y-2">
-                  <div className="flex items-center justify-between bg-secondary/30 rounded px-2 py-1.5">
+                  <div className="flex flex-col gap-1 bg-secondary/30 rounded px-2 py-1.5">
                     <span className="text-xs font-medium text-foreground">Isoflurane</span>
-                    <span className="text-xs text-muted-foreground">Preferred for prolonged use (&gt;48 h). Lower cost. No compound A.</span>
+                    <span className="text-xs text-muted-foreground">Sedaconda medicine: licensed adult sedation indication; follow current SmPC.</span>
                   </div>
-                  <div className="flex items-center justify-between bg-secondary/30 rounded px-2 py-1.5">
+                  <div className="flex flex-col gap-1 bg-secondary/30 rounded px-2 py-1.5">
                     <span className="text-xs font-medium text-foreground">Sevoflurane</span>
-                    <span className="text-xs text-muted-foreground">Faster onset. Compound A risk at low flows. Fluoride nephrotoxicity.</span>
+                    <span className="text-xs text-muted-foreground">Device-compatible agent; asthma rescue is specialist/off-label, not an isoflurane dose equivalent.</span>
                   </div>
                 </div>
               </div>
@@ -289,13 +294,15 @@ const SedacondaDiagram = () => {
           </div>
         </div>
   
+        {activeView === "setup" && <p className="text-xs text-muted-foreground mb-3">{SEDACONDA_PRODUCT}<InlineRef topicId="bronchospastic-failure" refLabel="Sedaconda SPC" /><InlineRef topicId="bronchospastic-failure" refLabel="Sedaconda ACD instructions" /></p>}
+
         {/* Circuit flow summary */}
         <div className="mt-4 flex flex-wrap items-center justify-center gap-1 text-[10px] text-muted-foreground">
           <span className="px-2 py-1 rounded bg-secondary/40 font-medium">Ventilator</span>
           <span>→</span>
           <span className="px-2 py-1 rounded bg-secondary/40 font-medium">Y-piece</span>
           <span>→</span>
-          <span className="px-2 py-1 rounded bg-primary/15 text-foreground font-bold border border-primary/30">Sedaconda</span>
+          <span className="px-2 py-1 rounded bg-primary/15 text-foreground font-bold border border-primary/30">Sedaconda ACD</span>
           <span>→</span>
           <span className="px-2 py-1 rounded bg-secondary/40 font-medium">ETT</span>
           <span>→</span>
