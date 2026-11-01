@@ -76,7 +76,7 @@ const workedExamples: WorkedExample[] = [
     ),
     answer: (
       <>
-        If the sustained-low-BP interval begins at 12 min and cold in-situ perfusion or NRP actually starts at 43 min,
+        If the sustained-low-BP interval begins at 12 min and cold in-situ perfusion or NRP actually starts at 43 min,{" "}
         <strong>fWIT = 43 − 12 = 31 min</strong>. Perfusion at 43 min is an explicit assumption, not a recommended deadline.
         {DCD_ACCEPTANCE_SCOPE} Discuss with the retrieval team.
       </>
