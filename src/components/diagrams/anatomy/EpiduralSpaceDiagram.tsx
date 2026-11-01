@@ -1,3 +1,4 @@
+import { EpiduralCompartment } from "./RelationshipSchematics";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { InlineRef } from "@/components/references/InlineRef";
@@ -521,6 +522,10 @@ const EpiduralSpaceDiagram = () => {
           POP — loss of resistance into epidural space.
         </p>
 
+        <h3 className="text-sm font-semibold mt-4">Epidural catheter — conceptual sagittal compartment inset</h3>
+        <EpiduralCompartment selected={selected} onSelect={key => handlePick(key as StructureKey)} labels={showLabels} />
+        <p className="text-sm text-muted-foreground">Illustrative segment stays outside dura and arachnoid, within the epidural compartment. Cranial direction does not predict catheter course. No skin entry, Tuohy route, lamina or disc is shown in this inset. The narrow interval between dura and arachnoid is exaggerated for distinction, not an open anatomical compartment.<InlineRef topicId="spinal-anatomy" refLabel="WFSA epidural" /><InlineRef topicId="spinal-anatomy" refLabel="RCoA epidural dura" /></p>
+
         {/* Detail panel */}
         <div className="mt-4 min-h-[110px]">
           {info ? (
@@ -562,7 +567,7 @@ const EpiduralSpaceDiagram = () => {
                 key={k}
                 type="button"
                 onClick={() => handlePick(k)}
-                className="text-[11px] px-2 py-0.5 rounded-full border transition-colors"
+                className="max-w-full h-auto whitespace-normal text-left text-[11px] px-2 py-0.5 rounded-full border transition-colors"
                 style={{
                   borderColor: active ? c : "hsl(var(--border))",
                   background: active ? `${c}1F` : "transparent",

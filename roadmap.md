@@ -1,9 +1,9 @@
 # Admin metrics audit fixes
 
 ## S2 narrow UI and relationship schematic follow-up
-- [ ] Repair SCI074 labels, SCI075 cervical clinical panel and SCI041 phrenic qualification.
-- [ ] Add four limited relationship schematics with working selection/toggle states; keep SCI052 procedural redraw outstanding.
-- [ ] Correct original S2 ID mapping, run rendered/geometry regressions and review desktop/mobile selected outputs; document exact results and residuals. No backend/database/audio/payment/publication.
+- [x] Repair SCI074 labels, SCI075 cervical clinical panel and SCI041 phrenic qualification.
+- [x] Add four limited relationship schematics with working selection/toggle states; keep SCI052 procedural redraw outstanding.
+- [x] Correct original S2 ID mapping, run rendered/geometry regressions and review desktop/mobile selected outputs; document exact results and residuals. No backend/database/audio/payment/publication.
 
 ## CL90 / D120 source-only alignment — 1 November 2026
 - [x] Replace paediatric sepsis vasoactive/steroid/timing shortcuts with current SSC Children 2026 and preserve RCUK/C4/CL87.

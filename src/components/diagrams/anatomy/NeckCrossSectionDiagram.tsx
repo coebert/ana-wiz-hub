@@ -1,4 +1,5 @@
 /** Text-only anatomy: malformed axial vertebral/fascial geometry withdrawn pending reviewed replacement. */
+import { NeckRelationships, illustratedNeck } from "./RelationshipSchematics";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { InlineRef } from "@/components/references/InlineRef";
@@ -91,6 +92,7 @@ const structures: Structure[] = [
 const NeckCrossSectionDiagram = () => {
   const [selected, setSelected] = useState<string | null>("vertebral");
 
+  const [showLabels, setShowLabels] = useState(true);
   const info = selected ? structures.find((s) => s.id === selected) : null;
 
   return (
@@ -103,11 +105,13 @@ const NeckCrossSectionDiagram = () => {
         <DiagramToggleBar
           title="Neck at C6 — Spatial Relationships"
           subtitle="Tap a structure to explore its contents and clinical relevance."
-          toggles={[]}
+          toggles={[{ label: "Labels", active: showLabels, onChange: () => setShowLabels(v => !v) }]}
         />
         <div className="flex flex-col lg:flex-row gap-4">
           <div className="flex-1 min-w-0 border-l-4 border-anatomy pl-4">
-            <p className="text-sm font-semibold text-foreground">Spatial relationships — C6 cross-section withdrawn</p>
+            <h3 className="text-sm font-semibold text-foreground">Central axial neck relationship schematic</h3>
+            <NeckRelationships selected={selected} onSelect={setSelected} labels={showLabels} />
+            <p className="text-sm text-muted-foreground">Lateral anatomy is omitted. LC = longus colli. Declared UAMS convention; central topology only, not all anatomy or all cervical levels.</p>
             <p className="text-sm text-muted-foreground mt-2">{NECK_SPATIAL}</p>
             <p className="text-sm text-muted-foreground mt-2">{NECK_FASCIA_CONVENTION}</p>
             <InlineRef topicId="head-neck-anatomy" refLabel="Michigan vertebral anatomy" /><InlineRef topicId="head-neck-anatomy" refLabel="UAMS neck fascia" /><InlineRef topicId="head-neck-anatomy" refLabel="Alar fascia review 2022" />
@@ -117,8 +121,9 @@ const NeckCrossSectionDiagram = () => {
             {structures.map((s) => (
               <Button variant="outline"
                 key={s.id}
+                aria-pressed={selected === s.id}
                 onClick={() => setSelected(selected === s.id ? null : s.id)}
-                className={`text-left text-xs px-2.5 py-1.5 rounded border transition-all ${
+                className={`max-w-full h-auto whitespace-normal text-left text-xs px-2.5 py-1.5 rounded border transition-all ${
                   selected === s.id
                     ? "border-primary bg-primary/10 font-semibold text-foreground"
                     : "border-border text-muted-foreground hover:border-primary/50"
@@ -134,6 +139,7 @@ const NeckCrossSectionDiagram = () => {
           <div className="mt-4 p-4 rounded-lg border border-primary/30 bg-primary/5">
             <p className="font-semibold text-foreground text-sm">{info.label}</p>
             <p className="text-sm text-muted-foreground mt-1">{info.desc}</p>
+            {!illustratedNeck.includes(info.id) && <p className="text-sm text-muted-foreground">Text-only detail: this structure is not illustrated in the reduced central map.</p>}
           </div>
         )}
       </div>
