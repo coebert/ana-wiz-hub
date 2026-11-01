@@ -1,3 +1,7 @@
+// Temporary approved source-review pause; kept local to this existing file.
+const SOURCE_UNAVAILABLE =
+  "Current source material is not yet available for reliable AI answers or clinical scoring. Please read the relevant topic and original guidance. Your saved history has been kept.";
+
 import { useEffect, useRef, useState } from "react";
 import { PageSection } from "@/components/layout/PageSection";
 import { Helmet } from "react-helmet-async";
@@ -8,6 +12,7 @@ import { Breadcrumbs } from "@/components/layout/Breadcrumbs";
 import { allTopics, type ExamTag } from "@/data/curriculum";
 
 type Exam = Extract<ExamTag, "primary" | "final" | "fficm">;
+const PAUSED_FOR_SOURCE_REVIEW = true;
 
 type MicPermission = "unknown" | "prompt" | "granted" | "denied";
 
@@ -196,9 +201,7 @@ export default function VoiceViva() {
   const dcRef = useRef<RTCDataChannel | null>(null);
 
   // Live partial-transcript buffers, indexed by item_id.
-  const partialRef = useRef<Map<string, { role: "examiner" | "candidate"; text: string }>>(
-    new Map(),
-  );
+  const partialRef = useRef<Map<string, { role: "examiner" | "candidate"; text: string }>>(new Map());
 
   function appendOrUpdate(itemId: string, role: "examiner" | "candidate", text: string) {
     const prev = partialRef.current.get(itemId);
@@ -234,6 +237,10 @@ export default function VoiceViva() {
   }
 
   async function start() {
+    setError({ title: "Source review in progress", message: SOURCE_UNAVAILABLE, recoverable: false, kind: "server" });
+    setPhase("error");
+    return;
+
     setError(null);
     setTranscript([]);
     partialRef.current.clear();
@@ -350,7 +357,7 @@ export default function VoiceViva() {
         <title>Live voice viva | Anaesthesia Core</title>
         <meta
           name="description"
-          content="Speak to an AI FRCA examiner in real time. Live two-way voice viva with transcript and rubric feedback."
+          content="Live voice viva is temporarily paused while current source material is reviewed."
         />
         <link rel="canonical" href="https://anaesthesiacore.app/viva/voice" />
         <meta property="og:url" content="https://anaesthesiacore.app/viva/voice" />
@@ -373,11 +380,12 @@ export default function VoiceViva() {
             {topic ? topic.title : "Choose a topic"}
           </h1>
           <p className="mt-1 text-sm text-muted-foreground">
-            Two-way spoken viva with an AI examiner calibrated to{" "}
-            {exam === "primary" ? "FRCA Primary" : exam === "final" ? "FRCA Final" : "FFICM"}{" "}
-            standard.
+            Live voice viva is temporarily paused while we review source material.
           </p>
         </header>
+        <p role="status" className="mb-4 rounded-lg border border-border bg-muted/40 p-3 text-sm">
+          {SOURCE_UNAVAILABLE}
+        </p>
 
         {!topic && (
           <section className="rounded-2xl border border-border bg-card p-4 shadow-sm">
@@ -386,7 +394,7 @@ export default function VoiceViva() {
               <Link to="/viva" className="text-primary underline">
                 viva hub
               </Link>{" "}
-              to start a live voice session.
+              to explore the available topic teaching.
             </p>
           </section>
         )}
@@ -405,7 +413,7 @@ export default function VoiceViva() {
                   }`}
                 />
                 <span className="text-xs uppercase tracking-wider text-muted-foreground">
-                  {phase === "idle" && "Ready"}
+                  {phase === "idle" && "Paused for source review"}
                   {phase === "connecting" && "Connecting…"}
                   {phase === "live" && "Live — speak naturally"}
                   {phase === "ended" && "Session ended"}
@@ -426,27 +434,13 @@ export default function VoiceViva() {
               </div>
             </div>
 
-            {(phase === "idle" || phase === "ended") && micPermission !== "granted" && !error && (
-              <div className="mb-4 flex items-start gap-2 rounded-lg border border-border bg-muted/40 p-3 text-xs text-muted-foreground">
-                <HelpCircle className="h-4 w-4 mt-0.5 shrink-0 text-primary" />
-                <div>
-                  <p className="font-medium text-foreground">Your browser will ask for microphone access.</p>
-                  <p className="mt-0.5">
-                    {micPermission === "denied"
-                      ? "Access is currently blocked. Use the padlock in the address bar to allow it, then retry."
-                      : "Choose ‘Allow’ when prompted so the examiner can hear you. Audio is streamed to OpenAI for speech only — nothing is stored on our servers."}
-                  </p>
-                </div>
-              </div>
-            )}
-
             <div className="flex flex-wrap items-center gap-2">
               {phase === "idle" || phase === "ended" || phase === "error" ? (
                 <>
                   <button
                     type="button"
                     onClick={start}
-                    disabled={requestingMic}
+                    disabled={PAUSED_FOR_SOURCE_REVIEW || requestingMic}
                     className="inline-flex items-center gap-2 rounded-full bg-primary px-5 py-2 text-sm font-semibold text-primary-foreground shadow-sm hover:opacity-90 disabled:opacity-60"
                   >
                     {requestingMic ? (
@@ -456,25 +450,8 @@ export default function VoiceViva() {
                     ) : (
                       <Mic className="h-4 w-4" />
                     )}
-                    {requestingMic
-                      ? "Waiting for microphone…"
-                      : phase === "error"
-                        ? "Try again"
-                        : phase === "ended"
-                          ? "Start another"
-                          : micPermission === "granted"
-                            ? "Start voice viva"
-                            : "Allow mic & start"}
+                    Voice viva paused
                   </button>
-                  {phase === "error" && error?.kind === "permission" && (
-                    <button
-                      type="button"
-                      onClick={() => requestMicPermission()}
-                      className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-4 py-2 text-sm text-foreground hover:bg-secondary"
-                    >
-                      <Mic className="h-4 w-4" /> Re-request permission
-                    </button>
-                  )}
                 </>
               ) : (
                 <>
@@ -525,7 +502,7 @@ export default function VoiceViva() {
             <div className="mt-5 max-h-[55vh] overflow-y-auto rounded-xl border border-border bg-muted/30 p-3 space-y-2">
               {transcript.length === 0 ? (
                 <p className="text-xs text-muted-foreground italic">
-                  Transcript will appear here once the session starts.
+                  No new voice sessions can be started during the review.
                 </p>
               ) : (
                 transcript.map((line) => (
@@ -544,8 +521,8 @@ export default function VoiceViva() {
             </div>
 
             <p className="mt-3 text-xs text-muted-foreground">
-              Audio is streamed to OpenAI Realtime for ASR + speech synthesis only. Nothing is
-              stored on our servers.
+              Voice sessions are temporarily unavailable. Read the topic pages and their original references for current
+              learning.
             </p>
           </section>
         )}
