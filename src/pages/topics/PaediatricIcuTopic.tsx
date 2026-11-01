@@ -358,7 +358,7 @@ const PaediatricIcuTopic = () => {
       sectionSources={{
         objectives: ["RCPCH 2019", "Resuscitation Council UK 2021", "APLS 2021", "BJA Educ 2010"],
         workedExamples: ["Resuscitation Council UK 2021", "APLS 2021", "NICE NG29", "FEAST 2011"],
-        keyPoints: ["RCPCH 2019", "FEAST 2011", "RCUK PALS 2025", "RCUK PALS 2025 fluids", "NICE NG29", "Resuscitation Council UK 2021", "APLS 2021", "BJA Educ 2010", "AoMRC 2025 Paediatric DNC"],
+        keyPoints: ["RCPCH 2019", "FEAST 2011", "RCUK PALS 2025", "RCUK PALS 2025 fluids", "NICE NG29", "Resuscitation Council UK 2021", "APLS 2021", "BJA Educ 2010", "AoMRC 2025 Paediatric DNC", "SSC Children 2026 antibiotics", "SSC Children 2026 vasoactives", "SSC Children 2026 corticosteroids"],
       }}
       sectionExamMapping={{
         objectives: { exams: [Exam.FFICM, Exam.EDIC], curriculumCodes: ["FFICM 4.6", "EDIC 5.6"] },
