@@ -1,8 +1,11 @@
-# Two bounded follow-ups
+# Paediatric DNC and donation source-copy residuals
 
-- Render lookup-only drugs as product references: retain selection, full notes, links and no-calculation explanation; omit calculation inputs/ranges and use a reference heading. Leave calculable drugs and arithmetic unchanged.
-- Update the existing component regression to select real page states, test switching both directions, and retain null calculations at 5/10/14/50/70 kg and existing cap/ideal-weight tests.
-- Use the executed shared reference-label pool in the per-principle checker. Prove merged adrenal labels resolve and unknown labels remain rejected. Independently inspect the 18 historical units and remove only the reviewed AdrenalCrisisAnimation snapshot line if no other differences arise.
-- Run one combined final targeted/governance/required-citations pass, desktop/mobile browser checks, then the full suite. Record exact counts and retained warnings/debt; automatic preview validation is separate from unavailable manual production-build/typecheck proof.
+- Use one local source-labelled 2025 paediatric DNC summary in the key point, quiz explanation, safeguarding and donation text. Keep the 37-week lower boundary, corrected age below two years, both minimum 24-hour safeguards, and no recommended ancillary establishment in that group.
+- Preserve complete eligibility/confounder guidance and already-correct DNC death timing and apnoea thresholds.
+- Mark retained 2008/2015 citations historical/superseded, remove unsafe current-instruction excerpts and visibly direct readers to the 2025 Code/Appendix 2.
+- Align donation statistics with NHSBT's dated 2025–26 deceased-donor denominator. Share BTS's sustained-low-pressure-to-perfusion/NRP fWIT definition; make the 31-minute worked example conditional and remove universal acceptance/stand-down cutoffs and kidney-benefit promises.
+- Add resolving sources beside affected statements, scoped tests and a per-finding evidence/results record; inspect both topics and source popovers on desktop/mobile.
 
-No clinical data edits, database/backend/audio/payment work, publication, broad snapshot refresh or source-pool changes. Preserve the historical obstetric citation contract.
+## Technical verification and boundaries
+
+Run combined relevant citation, quiz and source-consistency tests after edits. Preserve historical provenance baselines. Automatic preview validation is separate evidence; governing tool instructions prohibit manual production builds/typechecks. No database/backend/audio/publication work, Phase A activation, or whole-topic certification is included.
