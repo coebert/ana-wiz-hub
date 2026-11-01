@@ -1,4 +1,4 @@
-/** Text-only chest-wall teaching: depth and craniocaudal relationships are independent; mixed-plane art withdrawn. */
+/** Limited chest-wall relationship schematic; mixed-plane procedural artwork remains withdrawn. */
 import { IntercostalRelationships } from "./RelationshipSchematics";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
@@ -37,34 +37,41 @@ const IntercostalAnatomyDiagram = () => {
   const [selected, setSelected] = useState<LayerKey>("neurovascular");
   const info = layers[selected];
   const [showLabels, setShowLabels] = useState(true);
+  const [showNeurovascular, setShowNeurovascular] = useState(true);
 
 
   return (
     <DiagramFigure
       id="intercostal-anatomy-diagram"
       title="Intercostal anatomy"
-      description="Intercostal anatomy: labelled teaching figure showing the structures, relationships and key values FRCA and FFICM candidates need to recognise and explain for this topic."
+      description="Conceptual intercostal parasagittal relationship schematic. Superficial to deep runs left to right; superior is up. The principal vein, artery and nerve lie below the upper rib between internal and innermost intercostals. Not to scale; no needle route or access point."
     >
               <div className="my-6 space-y-4">
         <div className="bg-muted/30 rounded-xl border border-border p-4">
           <DiagramToggleBar
-            title="Intercostal space — spatial relationships"
-            subtitle="Tap any layer to see its anatomy and clinical relevance for chest procedures"
-            toggles={[{ label: "Labels", active: showLabels, onChange: () => setShowLabels(v => !v) }]}
+            title="Intercostal relationship schematic"
+            subtitle="Conceptual chest-wall layers; procedural routes are not depicted."
+            toggles={[]}
           />
+          <div className="flex flex-wrap gap-2 mb-3">
+            <Button variant="outline" size="sm" aria-pressed={showNeurovascular} onClick={() => setShowNeurovascular(v => !v)}>Neurovascular details</Button>
+            <Button variant="outline" size="sm" aria-pressed={showLabels} onClick={() => setShowLabels(v => !v)}>Labels</Button>
+          </div>
   
           <div className="flex flex-col gap-4 items-start">
             <div className="w-full min-w-0 border-l-4 border-anatomy pl-4">
               <h3 className="text-sm font-semibold text-foreground">Intercostal parasagittal relationship schematic</h3>
-              <IntercostalRelationships selected={selected} onSelect={key => setSelected(key as LayerKey)} labels={showLabels} />
+              <div className="w-full max-w-3xl mx-auto">
+                <IntercostalRelationships selected={selected} onSelect={key => setSelected(key as LayerKey)} labels={showLabels} neurovascularDetails={showNeurovascular} />
+              </div>
+              <p className="text-sm text-muted-foreground mt-2">Principal bundle, superior to inferior: vein, artery, nerve. It lies between internal and innermost intercostals below the upper rib; collateral anatomy varies. Hiding visual details does not remove the neurovascular plane.</p>
               <p className="text-sm text-muted-foreground mt-2">{INTERCOSTAL_SPATIAL}</p>
               <InlineRef topicId="thoracic-anatomy" refLabel="BTS pleural procedures 2023" /><InlineRef topicId="thoracic-anatomy" refLabel="Intercostal anatomy" /><InlineRef topicId="thoracic-anatomy" refLabel="Thoracic wall VAN" /><InlineRef topicId="thoracic-anatomy" refLabel="TTUHSC thoracic wall relationships" />
-              <div className="flex flex-wrap gap-2 mt-4">{layerOrder.map(key => <Button key={key} variant="outline" size="sm" className="max-w-full h-auto whitespace-normal text-left" aria-pressed={selected === key} onClick={() => setSelected(key)}>{layers[key].label}</Button>)}</div>
+              <div className="flex flex-wrap gap-2 mt-4">{layerOrder.map(key => <Button key={key} variant="outline" size="sm" className="max-w-full h-auto min-h-11 whitespace-normal text-left" aria-pressed={selected === key} onClick={() => setSelected(key)}>{layers[key].label}</Button>)}</div>
             </div>
             <div className="w-full min-w-0">
               <div
                 className="p-3 rounded-lg border border-border bg-background/80 space-y-1.5"
-                style={{ borderLeftWidth: 4, borderLeftColor: info.color }}
               >
                 <p className="font-semibold text-foreground text-sm">{info.label}</p>
                 <p className="text-xs text-muted-foreground">
