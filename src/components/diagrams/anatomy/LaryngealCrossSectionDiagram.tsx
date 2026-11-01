@@ -264,7 +264,7 @@ const LaryngealCrossSectionDiagram = () => {
                   onClick={click("aryepiglottic-fold")}
                 />
                 {isActive("aryepiglottic-fold") && (
-                  {showLabels && (<text x="8" y="96" fontSize="5" fill={structures["aryepiglottic-fold"].color} className="select-none">Aryep. fold</text>)}
+                  <>{showLabels && (<text x="8" y="96" fontSize="5" fill={structures["aryepiglottic-fold"].color} className="select-none">Aryep. fold</text>)}</>
                 )}
 
                 {/* Pre-epiglottic space — fat-filled space anterior to epiglottis */}
@@ -279,7 +279,7 @@ const LaryngealCrossSectionDiagram = () => {
                   onClick={click("pre-epiglottic")}
                 />
                 {isActive("pre-epiglottic") && (
-                  {showLabels && (<text x="104" y="62" fontSize="4" fill={structures["pre-epiglottic"].color} className="select-none">Pre-epiglottic</text>)}
+                  <>{showLabels && (<text x="104" y="62" fontSize="4" fill={structures["pre-epiglottic"].color} className="select-none">Pre-epiglottic</text>)}</>
                 )}
 
                 {/* Epiglottis - leaf shape */}
@@ -295,7 +295,7 @@ const LaryngealCrossSectionDiagram = () => {
                 <path d="M130,74 L130,88" stroke={structures.epiglottis.color} strokeWidth="2" opacity={isActive("epiglottis") ? 0.6 : 0.25} />
 
                 {/* Vallecula label */}
-                {showLabels && (<text x="130" y="9" fontSize="4" textAnchor="middle" fill="hsl(var(--muted-foreground))" opacity="0.4">Vallecula ↓</text>)}
+                <>{showLabels && (<text x="130" y="9" fontSize="4" textAnchor="middle" fill="hsl(var(--muted-foreground))" opacity="0.4">Vallecula ↓</text>)}</>
 
                 {/* Hyoid bone */}
                 <path
@@ -307,7 +307,7 @@ const LaryngealCrossSectionDiagram = () => {
                   className="cursor-pointer transition-all duration-200"
                   onClick={click("hyoid")}
                 />
-                {showLabels && (<text x="210" y="60" fontSize="7" fill={isActive("hyoid") ? structures.hyoid.color : "hsl(var(--muted-foreground))"} fontWeight={isActive("hyoid") ? "bold" : "normal"} className="cursor-pointer select-none" onClick={click("hyoid")}>Hyoid</text>)}
+                <>{showLabels && (<text x="210" y="60" fontSize="7" fill={isActive("hyoid") ? structures.hyoid.color : "hsl(var(--muted-foreground))"} fontWeight={isActive("hyoid") ? "bold" : "normal"} className="cursor-pointer select-none" onClick={click("hyoid")}>Hyoid</text>)}</>
 
                 {/* Thyrohyoid membrane */}
                 <rect x="85" y="66" width="90" height="14" rx="2"
@@ -319,7 +319,7 @@ const LaryngealCrossSectionDiagram = () => {
                   className="cursor-pointer transition-all duration-200"
                   onClick={click("thyrohyoid")}
                 />
-                {showLabels && (<text x="210" y="77" fontSize="6" fill={isActive("thyrohyoid") ? structures.thyrohyoid.color : "hsl(var(--muted-foreground))"} className="cursor-pointer select-none" onClick={click("thyrohyoid")}>Thyrohyoid memb.</text>)}
+                <>{showLabels && (<text x="210" y="77" fontSize="6" fill={isActive("thyrohyoid") ? structures.thyrohyoid.color : "hsl(var(--muted-foreground))"} className="cursor-pointer select-none" onClick={click("thyrohyoid")}>Thyrohyoid memb.</text>)}</>
 
                 {/* Thyroid cartilage */}
                 <path
@@ -332,7 +332,7 @@ const LaryngealCrossSectionDiagram = () => {
                   onClick={click("thyroid")}
                 />
                 <path d="M125,84 L130,78 L135,84" stroke={structures.thyroid.color} strokeWidth="1.5" fill="none" opacity={isActive("thyroid") ? 0.8 : 0.3} />
-                {showLabels && (<text x="210" y="115" fontSize="7" fill={isActive("thyroid") ? structures.thyroid.color : "hsl(var(--muted-foreground))"} fontWeight={isActive("thyroid") ? "bold" : "normal"} className="cursor-pointer select-none" onClick={click("thyroid")}>Thyroid cart.</text>)}
+                <>{showLabels && (<text x="210" y="115" fontSize="7" fill={isActive("thyroid") ? structures.thyroid.color : "hsl(var(--muted-foreground))"} fontWeight={isActive("thyroid") ? "bold" : "normal"} className="cursor-pointer select-none" onClick={click("thyroid")}>Thyroid cart.</text>)}</>
 
                 {/* Piriform fossa indicators */}
                 <ellipse cx="96" cy="105" rx="8" ry="14"
@@ -353,8 +353,8 @@ const LaryngealCrossSectionDiagram = () => {
                 />
                 {isActive("piriform-fossa") && (
                   <>
-                    {showLabels && (<text x="84" y="130" fontSize="4" fill={structures["piriform-fossa"].color} textAnchor="middle">Piriform</text>)}
-                    {showLabels && (<text x="176" y="130" fontSize="4" fill={structures["piriform-fossa"].color} textAnchor="middle">Piriform</text>)}
+                    <>{showLabels && (<text x="84" y="130" fontSize="4" fill={structures["piriform-fossa"].color} textAnchor="middle">Piriform</text>)}</>
+                    <>{showLabels && (<text x="176" y="130" fontSize="4" fill={structures["piriform-fossa"].color} textAnchor="middle">Piriform</text>)}</>
                   </>
                 )}
 
@@ -381,8 +381,8 @@ const LaryngealCrossSectionDiagram = () => {
                 />
                 {isActive("quadrangular-membrane") && (
                   <>
-                    {showLabels && (<text x="80" y="92" fontSize="4" fill={structures["quadrangular-membrane"].color} textAnchor="end" className="select-none">Quadrangular</text>)}
-                    {showLabels && (<text x="80" y="98" fontSize="4" fill={structures["quadrangular-membrane"].color} textAnchor="end" className="select-none">membrane</text>)}
+                    <>{showLabels && (<text x="80" y="92" fontSize="4" fill={structures["quadrangular-membrane"].color} textAnchor="end" className="select-none">Quadrangular</text>)}</>
+                    <>{showLabels && (<text x="80" y="98" fontSize="4" fill={structures["quadrangular-membrane"].color} textAnchor="end" className="select-none">membrane</text>)}</>
                   </>
                 )}
 
@@ -396,16 +396,16 @@ const LaryngealCrossSectionDiagram = () => {
                   className="cursor-pointer transition-all duration-200"
                   onClick={click("vestibular-folds")}
                 />
-                {showLabels && (<text x="220" y="110" fontSize="5.5" fill={isActive("vestibular-folds") ? structures["vestibular-folds"].color : "hsl(var(--muted-foreground))"} className="cursor-pointer select-none" onClick={click("vestibular-folds")}>False cords</text>)}
+                <>{showLabels && (<text x="220" y="110" fontSize="5.5" fill={isActive("vestibular-folds") ? structures["vestibular-folds"].color : "hsl(var(--muted-foreground))"} className="cursor-pointer select-none" onClick={click("vestibular-folds")}>False cords</text>)}</>
 
                 {/* Ventricle of Morgagni (laryngeal sinus) */}
                 <path d="M108,110 C112,116 120,118 130,118 C140,118 148,116 152,110"
                   fill="hsl(200, 30%, 92%)" fillOpacity="0.1"
                   stroke="hsl(var(--muted-foreground))" strokeWidth="0.5" strokeDasharray="2 2" opacity="0.35" />
-                {showLabels && (<text x="130" y="115" fontSize="3.5" textAnchor="middle" fill="hsl(var(--muted-foreground))" opacity="0.4">ventricle (Morgagni)</text>)}
+                <>{showLabels && (<text x="130" y="115" fontSize="3.5" textAnchor="middle" fill="hsl(var(--muted-foreground))" opacity="0.4">ventricle (Morgagni)</text>)}</>
                 {/* Saccule extending superiorly from anterior ventricle */}
                 <path d="M118,110 C116,106 115,100 116,94" fill="none" stroke="hsl(var(--muted-foreground))" strokeWidth="0.5" strokeDasharray="1.5 1.5" opacity="0.2" />
-                {showLabels && (<text x="108" y="100" fontSize="3" fill="hsl(var(--muted-foreground))" opacity="0.25">saccule</text>)}
+                <>{showLabels && (<text x="108" y="100" fontSize="3" fill="hsl(var(--muted-foreground))" opacity="0.25">saccule</text>)}</>
 
                 {/* True vocal cords */}
                 <path
@@ -417,8 +417,8 @@ const LaryngealCrossSectionDiagram = () => {
                   className="cursor-pointer transition-all duration-200"
                   onClick={click("vocal-cords")}
                 />
-                {showLabels && (<text x="130" y="112" fontSize="4" textAnchor="middle" fill="hsl(var(--muted-foreground))" opacity="0.4">glottis</text>)}
-                {showLabels && (<text x="220" y="122" fontSize="6" fill={isActive("vocal-cords") ? structures["vocal-cords"].color : "hsl(var(--muted-foreground))"} fontWeight={isActive("vocal-cords") ? "bold" : "normal"} className="cursor-pointer select-none" onClick={click("vocal-cords")}>True vocal cords</text>)}
+                <>{showLabels && (<text x="130" y="112" fontSize="4" textAnchor="middle" fill="hsl(var(--muted-foreground))" opacity="0.4">glottis</text>)}</>
+                <>{showLabels && (<text x="220" y="122" fontSize="6" fill={isActive("vocal-cords") ? structures["vocal-cords"].color : "hsl(var(--muted-foreground))"} fontWeight={isActive("vocal-cords") ? "bold" : "normal"} className="cursor-pointer select-none" onClick={click("vocal-cords")}>True vocal cords</text>)}</>
 
                 {/* Reinke's space — superficial lamina propria of true cords */}
                 <path
@@ -432,7 +432,7 @@ const LaryngealCrossSectionDiagram = () => {
                   onClick={click("reinke-space")}
                 />
                 {isActive("reinke-space") && (
-                  {showLabels && (<text x="130" y="124" fontSize="3.5" textAnchor="middle" fill={structures["reinke-space"].color} className="select-none">Reinke's space</text>)}
+                  <>{showLabels && (<text x="130" y="124" fontSize="3.5" textAnchor="middle" fill={structures["reinke-space"].color} className="select-none">Reinke's space</text>)}</>
                 )}
 
                 {/* Conus elasticus — fibroelastic membrane from cricoid to vocal ligament */}
@@ -448,8 +448,8 @@ const LaryngealCrossSectionDiagram = () => {
                 />
                 {isActive("conus-elasticus") && (
                   <>
-                    {showLabels && (<text x="78" y="142" fontSize="4" fill={structures["conus-elasticus"].color} textAnchor="end" className="select-none">Conus</text>)}
-                    {showLabels && (<text x="78" y="148" fontSize="4" fill={structures["conus-elasticus"].color} textAnchor="end" className="select-none">elasticus</text>)}
+                    <>{showLabels && (<text x="78" y="142" fontSize="4" fill={structures["conus-elasticus"].color} textAnchor="end" className="select-none">Conus</text>)}</>
+                    <>{showLabels && (<text x="78" y="148" fontSize="4" fill={structures["conus-elasticus"].color} textAnchor="end" className="select-none">elasticus</text>)}</>
                   </>
                 )}
 
@@ -464,7 +464,7 @@ const LaryngealCrossSectionDiagram = () => {
                   stroke={structures.arytenoid.color} strokeWidth={sw("arytenoid")}
                   className="cursor-pointer transition-all duration-200" onClick={click("arytenoid")}
                 />
-                {showLabels && (<text x="220" y="132" fontSize="5.5" fill={isActive("arytenoid") ? structures.arytenoid.color : "hsl(var(--muted-foreground))"} className="cursor-pointer select-none" onClick={click("arytenoid")}>Arytenoids</text>)}
+                <>{showLabels && (<text x="220" y="132" fontSize="5.5" fill={isActive("arytenoid") ? structures.arytenoid.color : "hsl(var(--muted-foreground))"} className="cursor-pointer select-none" onClick={click("arytenoid")}>Arytenoids</text>)}</>
 
                 {/* Corniculate cartilages — on apex of arytenoids */}
                 <circle cx="115" cy="116" r="2.5"
@@ -478,7 +478,7 @@ const LaryngealCrossSectionDiagram = () => {
                   className="cursor-pointer transition-all duration-200" onClick={click("corniculate")}
                 />
                 {isActive("corniculate") && (
-                  {showLabels && (<text x="130" y="132" fontSize="3.5" textAnchor="middle" fill={structures.corniculate.color} className="select-none">Corniculate (Santorini)</text>)}
+                  <>{showLabels && (<text x="130" y="132" fontSize="3.5" textAnchor="middle" fill={structures.corniculate.color} className="select-none">Corniculate (Santorini)</text>)}</>
                 )}
 
                 {/* Cuneiform cartilages — within aryepiglottic folds */}
@@ -493,7 +493,7 @@ const LaryngealCrossSectionDiagram = () => {
                   className="cursor-pointer transition-all duration-200" onClick={click("cuneiform")}
                 />
                 {isActive("cuneiform") && (
-                  {showLabels && (<text x="130" y="95" fontSize="3.5" textAnchor="middle" fill={structures.cuneiform.color} className="select-none">Cuneiform (Wrisberg)</text>)}
+                  <>{showLabels && (<text x="130" y="95" fontSize="3.5" textAnchor="middle" fill={structures.cuneiform.color} className="select-none">Cuneiform (Wrisberg)</text>)}</>
                 )}
 
                 {/* Cricothyroid joint */}
@@ -515,8 +515,8 @@ const LaryngealCrossSectionDiagram = () => {
                 />
                 {isActive("cricothyroid-joint") && (
                   <>
-                    {showLabels && (<text x="56" y="152" fontSize="4" fill={structures["cricothyroid-joint"].color} textAnchor="middle">CT joint</text>)}
-                    {showLabels && (<text x="204" y="152" fontSize="4" fill={structures["cricothyroid-joint"].color} textAnchor="middle">CT joint</text>)}
+                    <>{showLabels && (<text x="56" y="152" fontSize="4" fill={structures["cricothyroid-joint"].color} textAnchor="middle">CT joint</text>)}</>
+                    <>{showLabels && (<text x="204" y="152" fontSize="4" fill={structures["cricothyroid-joint"].color} textAnchor="middle">CT joint</text>)}</>
                   </>
                 )}
 
@@ -530,8 +530,8 @@ const LaryngealCrossSectionDiagram = () => {
                   onClick={click("cricothyroid-membrane")}
                 />
                 <path d="M125,169 L135,169" stroke={structures["cricothyroid-membrane"].color} strokeWidth="2" opacity={isActive("cricothyroid-membrane") ? 0.8 : 0.3} />
-                {showLabels && (<text x="210" y="172" fontSize="6" fill={isActive("cricothyroid-membrane") ? structures["cricothyroid-membrane"].color : "hsl(var(--muted-foreground))"} fontWeight="bold" className="cursor-pointer select-none" onClick={click("cricothyroid-membrane")}>CTM</text>)}
-                {showLabels && (<text x="210" y="180" fontSize="5" fill="hsl(0, 70%, 55%)" opacity="0.6">★ Emergency airway</text>)}
+                <>{showLabels && (<text x="210" y="172" fontSize="6" fill={isActive("cricothyroid-membrane") ? structures["cricothyroid-membrane"].color : "hsl(var(--muted-foreground))"} fontWeight="bold" className="cursor-pointer select-none" onClick={click("cricothyroid-membrane")}>CTM</text>)}</>
+                <>{showLabels && (<text x="210" y="180" fontSize="5" fill="hsl(0, 70%, 55%)" opacity="0.6">★ Emergency airway</text>)}</>
 
                 {/* Cricoid cartilage */}
                 <path
@@ -545,8 +545,8 @@ const LaryngealCrossSectionDiagram = () => {
                 />
                 <rect x="110" y="200" width="40" height="18" rx="4"
                   fill={structures.cricoid.color} fillOpacity={isActive("cricoid") ? 0.3 : 0.1} stroke="none" />
-                {showLabels && (<text x="130" y="212" fontSize="4" textAnchor="middle" fill={structures.cricoid.color} opacity="0.5">post. lamina</text>)}
-                {showLabels && (<text x="210" y="198" fontSize="7" fill={isActive("cricoid") ? structures.cricoid.color : "hsl(var(--muted-foreground))"} fontWeight={isActive("cricoid") ? "bold" : "normal"} className="cursor-pointer select-none" onClick={click("cricoid")}>Cricoid cart.</text>)}
+                <>{showLabels && (<text x="130" y="212" fontSize="4" textAnchor="middle" fill={structures.cricoid.color} opacity="0.5">post. lamina</text>)}</>
+                <>{showLabels && (<text x="210" y="198" fontSize="7" fill={isActive("cricoid") ? structures.cricoid.color : "hsl(var(--muted-foreground))"} fontWeight={isActive("cricoid") ? "bold" : "normal"} className="cursor-pointer select-none" onClick={click("cricoid")}>Cricoid cart.</text>)}</>
 
                 {/* Trachea */}
                 {[0, 1, 2, 3].map((i) => {
@@ -565,7 +565,7 @@ const LaryngealCrossSectionDiagram = () => {
                     </g>
   );
                 })}
-                {showLabels && (<text x="210" y="250" fontSize="7" fill={isActive("trachea") ? structures.trachea.color : "hsl(var(--muted-foreground))"} fontWeight={isActive("trachea") ? "bold" : "normal"} className="cursor-pointer select-none" onClick={click("trachea")}>Trachea</text>)}
+                <>{showLabels && (<text x="210" y="250" fontSize="7" fill={isActive("trachea") ? structures.trachea.color : "hsl(var(--muted-foreground))"} fontWeight={isActive("trachea") ? "bold" : "normal"} className="cursor-pointer select-none" onClick={click("trachea")}>Trachea</text>)}</>
 
                 {/* Nerves & vessels */}
                 {/* Superior laryngeal artery — accompanies internal SLN through thyrohyoid membrane */}
@@ -574,7 +574,7 @@ const LaryngealCrossSectionDiagram = () => {
                   fill="none" opacity={isActive("sln-internal") ? 0.6 : 0.15}
                 />
                 {isActive("sln-internal") && (
-                  {showLabels && (<text x="50" y="40" fontSize="3.5" fill="hsl(var(--destructive))" opacity="0.6">Sup. laryngeal A.</text>)}
+                  <>{showLabels && (<text x="50" y="40" fontSize="3.5" fill="hsl(var(--destructive))" opacity="0.6">Sup. laryngeal A.</text>)}</>
                 )}
 
                 {/* Internal SLN */}
@@ -587,8 +587,8 @@ const LaryngealCrossSectionDiagram = () => {
                   onClick={click("sln-internal")}
                 />
                 <circle cx="85" cy="73" r="2" fill={structures["sln-internal"].color} opacity={isActive("sln-internal") ? 0.8 : 0.3} />
-                {showLabels && (<text x="12" y="46" fontSize="6" fill={isActive("sln-internal") ? structures["sln-internal"].color : "hsl(var(--muted-foreground))"} fontWeight={isActive("sln-internal") ? "bold" : "normal"} className="cursor-pointer select-none" onClick={click("sln-internal")}>Int. SLN</text>)}
-                {showLabels && (<text x="12" y="54" fontSize="4.5" fill={structures["sln-internal"].color} opacity="0.5">(sensory ↑cords)</text>)}
+                <>{showLabels && (<text x="12" y="46" fontSize="6" fill={isActive("sln-internal") ? structures["sln-internal"].color : "hsl(var(--muted-foreground))"} fontWeight={isActive("sln-internal") ? "bold" : "normal"} className="cursor-pointer select-none" onClick={click("sln-internal")}>Int. SLN</text>)}</>
+                <>{showLabels && (<text x="12" y="54" fontSize="4.5" fill={structures["sln-internal"].color} opacity="0.5">(sensory ↑cords)</text>)}</>
 
                 {/* External SLN */}
                 <path d="M38,90 C50,95 60,105 68,115 C74,125 78,140 82,155"
@@ -599,8 +599,8 @@ const LaryngealCrossSectionDiagram = () => {
                   className="cursor-pointer transition-all duration-200"
                   onClick={click("sln-external")}
                 />
-                {showLabels && (<text x="12" y="88" fontSize="6" fill={isActive("sln-external") ? structures["sln-external"].color : "hsl(var(--muted-foreground))"} fontWeight={isActive("sln-external") ? "bold" : "normal"} className="cursor-pointer select-none" onClick={click("sln-external")}>Ext. SLN</text>)}
-                {showLabels && (<text x="12" y="96" fontSize="4.5" fill={structures["sln-external"].color} opacity="0.5">(motor: cricothyr.)</text>)}
+                <>{showLabels && (<text x="12" y="88" fontSize="6" fill={isActive("sln-external") ? structures["sln-external"].color : "hsl(var(--muted-foreground))"} fontWeight={isActive("sln-external") ? "bold" : "normal"} className="cursor-pointer select-none" onClick={click("sln-external")}>Ext. SLN</text>)}</>
+                <>{showLabels && (<text x="12" y="96" fontSize="4.5" fill={structures["sln-external"].color} opacity="0.5">(motor: cricothyr.)</text>)}</>
 
                 {/* RLN */}
                 <path d="M192,290 C190,275 188,260 185,245 C183,232 180,222 178,210 C176,200 174,185 172,170 C170,155 168,140 165,130"
@@ -611,9 +611,9 @@ const LaryngealCrossSectionDiagram = () => {
                   className="cursor-pointer transition-all duration-200"
                   onClick={click("rln")}
                 />
-                {showLabels && (<text x="195" y="288" fontSize="6" fill={isActive("rln") ? structures.rln.color : "hsl(var(--muted-foreground))"} fontWeight={isActive("rln") ? "bold" : "normal"} className="cursor-pointer select-none" onClick={click("rln")}>RLN</text>)}
-                {showLabels && (<text x="195" y="296" fontSize="4.5" fill={structures.rln.color} opacity="0.5">(motor: all except</text>)}
-                {showLabels && (<text x="195" y="304" fontSize="4.5" fill={structures.rln.color} opacity="0.5">cricothyroid)</text>)}
+                <>{showLabels && (<text x="195" y="288" fontSize="6" fill={isActive("rln") ? structures.rln.color : "hsl(var(--muted-foreground))"} fontWeight={isActive("rln") ? "bold" : "normal"} className="cursor-pointer select-none" onClick={click("rln")}>RLN</text>)}</>
+                <>{showLabels && (<text x="195" y="296" fontSize="4.5" fill={structures.rln.color} opacity="0.5">(motor: all except</text>)}</>
+                <>{showLabels && (<text x="195" y="304" fontSize="4.5" fill={structures.rln.color} opacity="0.5">cricothyroid)</text>)}</>
 
                 {/* Sensory innervation zones */}
                 {(isActive("sln-internal") || isActive("rln")) && (
@@ -624,7 +624,7 @@ const LaryngealCrossSectionDiagram = () => {
                       stroke={isActive("sln-internal") ? structures["sln-internal"].color : "transparent"}
                       strokeWidth="0.75" strokeDasharray="3 2" />
                     {isActive("sln-internal") && (
-                      {showLabels && (<text x="130" y="78" fontSize="4" textAnchor="middle" fill={structures["sln-internal"].color} opacity="0.6">sensory zone ↑</text>)}
+                      <>{showLabels && (<text x="130" y="78" fontSize="4" textAnchor="middle" fill={structures["sln-internal"].color} opacity="0.6">sensory zone ↑</text>)}</>
                     )}
                     <rect x="104" y="120" width="52" height="80" rx="3"
                       fill={isActive("rln") ? structures.rln.color : "transparent"}
@@ -632,17 +632,17 @@ const LaryngealCrossSectionDiagram = () => {
                       stroke={isActive("rln") ? structures.rln.color : "transparent"}
                       strokeWidth="0.75" strokeDasharray="3 2" />
                     {isActive("rln") && (
-                      {showLabels && (<text x="130" y="165" fontSize="4" textAnchor="middle" fill={structures.rln.color} opacity="0.6">sensory zone ↓</text>)}
+                      <>{showLabels && (<text x="130" y="165" fontSize="4" textAnchor="middle" fill={structures.rln.color} opacity="0.6">sensory zone ↓</text>)}</>
                     )}
                   </g>
                 )}
 
                 {/* Vertebral levels */}
                 <g opacity="0.25">
-                  {showLabels && (<text x="250" y="60" fontSize="5" fill="hsl(var(--muted-foreground))">C3</text>)}
-                  {showLabels && (<text x="250" y="115" fontSize="5" fill="hsl(var(--muted-foreground))">C4-5</text>)}
-                  {showLabels && (<text x="250" y="195" fontSize="5" fill="hsl(var(--muted-foreground))">C6</text>)}
-                  {showLabels && (<text x="250" y="260" fontSize="5" fill="hsl(var(--muted-foreground))">C7-T1</text>)}
+                  <>{showLabels && (<text x="250" y="60" fontSize="5" fill="hsl(var(--muted-foreground))">C3</text>)}</>
+                  <>{showLabels && (<text x="250" y="115" fontSize="5" fill="hsl(var(--muted-foreground))">C4-5</text>)}</>
+                  <>{showLabels && (<text x="250" y="195" fontSize="5" fill="hsl(var(--muted-foreground))">C6</text>)}</>
+                  <>{showLabels && (<text x="250" y="260" fontSize="5" fill="hsl(var(--muted-foreground))">C7-T1</text>)}</>
                 </g>
               </svg>
             </div>
@@ -680,54 +680,54 @@ const LaryngealCrossSectionDiagram = () => {
           <div className="flex flex-col sm:flex-row gap-4 items-start">
             <div className="flex-shrink-0 mx-auto">
               <svg viewBox="0 0 240 240" width="240" height="240" role="img" aria-label="Larynx axial superior view" className="border border-border rounded"><title>Larynx axial superior view</title><desc>Looking down from superior; anterior at top. Visual labels may be hidden; shapes remain.</desc>
-                {showLabels && (<text x="120" y="15" fontSize="6" textAnchor="middle" fill="hsl(var(--muted-foreground))" opacity="0.6" fontWeight="600">SUPERIOR VIEW — looking down at glottis</text>)}
+                <>{showLabels && (<text x="120" y="15" fontSize="6" textAnchor="middle" fill="hsl(var(--muted-foreground))" opacity="0.6" fontWeight="600">SUPERIOR VIEW — looking down at glottis</text>)}</>
 
                 {/* Thyroid cartilage outline */}
                 <path d="M120,35 L60,80 L60,180 L120,200 L180,180 L180,80 Z"
                   fill="none" stroke="hsl(210, 50%, 52%)" strokeWidth="2" opacity="0.3" />
-                {showLabels && (<text x="120" y="32" fontSize="5" textAnchor="middle" fill="hsl(210, 50%, 52%)" opacity="0.4">Thyroid cart. (anterior)</text>)}
+                <>{showLabels && (<text x="120" y="32" fontSize="5" textAnchor="middle" fill="hsl(210, 50%, 52%)" opacity="0.4">Thyroid cart. (anterior)</text>)}</>
 
                 {/* Cricoid (posterior arc) */}
                 <path d="M80,170 C80,190 100,210 120,210 C140,210 160,190 160,170"
                   fill="hsl(220, 55%, 50%)" fillOpacity="0.15" stroke="hsl(220, 55%, 50%)" strokeWidth="1.5" opacity="0.4" />
-                {showLabels && (<text x="120" y="222" fontSize="5" textAnchor="middle" fill="hsl(220, 55%, 50%)" opacity="0.5">Cricoid (posterior)</text>)}
+                <>{showLabels && (<text x="120" y="222" fontSize="5" textAnchor="middle" fill="hsl(220, 55%, 50%)" opacity="0.5">Cricoid (posterior)</text>)}</>
 
                 {/* Arytenoid cartilages */}
                 <path d="M95,160 L105,145 L115,160 Z" fill="hsl(280, 45%, 52%)" fillOpacity="0.3" stroke="hsl(280, 45%, 52%)" strokeWidth="1" />
                 <path d="M125,160 L135,145 L145,160 Z" fill="hsl(280, 45%, 52%)" fillOpacity="0.3" stroke="hsl(280, 45%, 52%)" strokeWidth="1" />
-                {showLabels && (<text x="88" y="170" fontSize="4.5" fill="hsl(280, 45%, 52%)">Arytenoid</text>)}
-                {showLabels && (<text x="130" y="170" fontSize="4.5" fill="hsl(280, 45%, 52%)">Arytenoid</text>)}
+                <>{showLabels && (<text x="88" y="170" fontSize="4.5" fill="hsl(280, 45%, 52%)">Arytenoid</text>)}</>
+                <>{showLabels && (<text x="130" y="170" fontSize="4.5" fill="hsl(280, 45%, 52%)">Arytenoid</text>)}</>
 
                 {/* Corniculate cartilages — on arytenoid apex, visible as tubercles */}
                 <circle cx="105" cy="144" r="3" fill="hsl(270, 40%, 55%)" fillOpacity="0.4" stroke="hsl(270, 40%, 55%)" strokeWidth="0.75" />
                 <circle cx="135" cy="144" r="3" fill="hsl(270, 40%, 55%)" fillOpacity="0.4" stroke="hsl(270, 40%, 55%)" strokeWidth="0.75" />
-                {showLabels && (<text x="120" y="140" fontSize="3.5" textAnchor="middle" fill="hsl(270, 40%, 55%)" opacity="0.6">Corniculate tubercles</text>)}
+                <>{showLabels && (<text x="120" y="140" fontSize="3.5" textAnchor="middle" fill="hsl(270, 40%, 55%)" opacity="0.6">Corniculate tubercles</text>)}</>
 
                 {/* Cuneiform cartilages — within aryepiglottic folds */}
                 <ellipse cx="88" cy="138" rx="3" ry="5" fill="hsl(310, 40%, 55%)" fillOpacity="0.3" stroke="hsl(310, 40%, 55%)" strokeWidth="0.5" transform="rotate(-15 88 138)" />
                 <ellipse cx="152" cy="138" rx="3" ry="5" fill="hsl(310, 40%, 55%)" fillOpacity="0.3" stroke="hsl(310, 40%, 55%)" strokeWidth="0.5" transform="rotate(15 152 138)" />
-                {showLabels && (<text x="76" y="130" fontSize="3.5" fill="hsl(310, 40%, 55%)" opacity="0.6">Cuneiform</text>)}
-                {showLabels && (<text x="158" y="130" fontSize="3.5" fill="hsl(310, 40%, 55%)" opacity="0.6">Cuneiform</text>)}
+                <>{showLabels && (<text x="76" y="130" fontSize="3.5" fill="hsl(310, 40%, 55%)" opacity="0.6">Cuneiform</text>)}</>
+                <>{showLabels && (<text x="158" y="130" fontSize="3.5" fill="hsl(310, 40%, 55%)" opacity="0.6">Cuneiform</text>)}</>
 
                 {/* Muscular process labels */}
-                {showLabels && (<text x="92" y="165" fontSize="3" fill="hsl(var(--muted-foreground))" opacity="0.4">MP</text>)}
-                {showLabels && (<text x="148" y="165" fontSize="3" fill="hsl(var(--muted-foreground))" opacity="0.4">MP</text>)}
+                <>{showLabels && (<text x="92" y="165" fontSize="3" fill="hsl(var(--muted-foreground))" opacity="0.4">MP</text>)}</>
+                <>{showLabels && (<text x="148" y="165" fontSize="3" fill="hsl(var(--muted-foreground))" opacity="0.4">MP</text>)}</>
 
                 {/* Vocal process labels */}
-                {showLabels && (<text x="105" y="142" fontSize="3.5" textAnchor="middle" fill="hsl(var(--muted-foreground))" opacity="0.5">VP</text>)}
-                {showLabels && (<text x="135" y="142" fontSize="3.5" textAnchor="middle" fill="hsl(var(--muted-foreground))" opacity="0.5">VP</text>)}
+                <>{showLabels && (<text x="105" y="142" fontSize="3.5" textAnchor="middle" fill="hsl(var(--muted-foreground))" opacity="0.5">VP</text>)}</>
+                <>{showLabels && (<text x="135" y="142" fontSize="3.5" textAnchor="middle" fill="hsl(var(--muted-foreground))" opacity="0.5">VP</text>)}</>
 
                 {/* True vocal cords */}
                 <line x1="105" y1="148" x2="120" y2="85" stroke="hsl(340, 55%, 52%)" strokeWidth="3" opacity="0.7" />
                 <line x1="135" y1="148" x2="120" y2="85" stroke="hsl(340, 55%, 52%)" strokeWidth="3" opacity="0.7" />
-                {showLabels && (<text x="120" y="82" fontSize="5" textAnchor="middle" fill="hsl(340, 55%, 52%)" fontWeight="bold">Anterior commissure</text>)}
+                <>{showLabels && (<text x="120" y="82" fontSize="5" textAnchor="middle" fill="hsl(340, 55%, 52%)" fontWeight="bold">Anterior commissure</text>)}</>
 
                 {/* Glottic opening */}
                 <path d="M120,85 L105,148 L135,148 Z" fill="hsl(200, 30%, 92%)" fillOpacity="0.2" stroke="none" />
-                {showLabels && (<text x="120" y="125" fontSize="5" textAnchor="middle" fill="hsl(var(--muted-foreground))" opacity="0.5">Rima glottidis</text>)}
+                <>{showLabels && (<text x="120" y="125" fontSize="5" textAnchor="middle" fill="hsl(var(--muted-foreground))" opacity="0.5">Rima glottidis</text>)}</>
                 {/* Anterior membranous / posterior cartilaginous distinction */}
                 <line x1="105" y1="148" x2="135" y2="148" stroke="hsl(var(--muted-foreground))" strokeWidth="0.5" strokeDasharray="2 1" opacity="0.3" />
-                {showLabels && (<text x="120" y="155" fontSize="3" textAnchor="middle" fill="hsl(var(--muted-foreground))" opacity="0.35">← membranous | cartilaginous →</text>)}
+                <>{showLabels && (<text x="120" y="155" fontSize="3" textAnchor="middle" fill="hsl(var(--muted-foreground))" opacity="0.35">← membranous | cartilaginous →</text>)}</>
 
                 {/* False cords (wider apart) */}
                 <line x1="98" y1="155" x2="115" y2="95" stroke="hsl(300, 35%, 50%)" strokeWidth="1.5" opacity="0.3" strokeDasharray="3 2" />
@@ -736,28 +736,28 @@ const LaryngealCrossSectionDiagram = () => {
                 {/* Piriform fossae */}
                 <ellipse cx="72" cy="130" rx="10" ry="20" fill="hsl(190, 45%, 50%)" fillOpacity="0.15" stroke="hsl(190, 45%, 50%)" strokeWidth="0.75" />
                 <ellipse cx="168" cy="130" rx="10" ry="20" fill="hsl(190, 45%, 50%)" fillOpacity="0.15" stroke="hsl(190, 45%, 50%)" strokeWidth="0.75" />
-                {showLabels && (<text x="72" y="158" fontSize="4" textAnchor="middle" fill="hsl(190, 45%, 50%)">Piriform</text>)}
-                {showLabels && (<text x="168" y="158" fontSize="4" textAnchor="middle" fill="hsl(190, 45%, 50%)">Piriform</text>)}
+                <>{showLabels && (<text x="72" y="158" fontSize="4" textAnchor="middle" fill="hsl(190, 45%, 50%)">Piriform</text>)}</>
+                <>{showLabels && (<text x="168" y="158" fontSize="4" textAnchor="middle" fill="hsl(190, 45%, 50%)">Piriform</text>)}</>
 
                 {/* Internal SLN in floor of piriform fossa */}
                 <path d="M68,142 C70,146 72,148 75,149" stroke="hsl(120, 50%, 45%)" strokeWidth="1" fill="none" strokeDasharray="2 1" opacity="0.4" />
-                {showLabels && (<text x="60" y="155" fontSize="3" fill="hsl(120, 50%, 45%)" opacity="0.4">ILN</text>)}
+                <>{showLabels && (<text x="60" y="155" fontSize="3" fill="hsl(120, 50%, 45%)" opacity="0.4">ILN</text>)}</>
 
                 {/* Aryepiglottic folds */}
                 <path d="M95,160 C88,145 82,130 80,115 C78,100 80,90 85,85" stroke="hsl(155, 45%, 48%)" strokeWidth="1.5" fill="none" opacity="0.4" />
                 <path d="M145,160 C152,145 158,130 160,115 C162,100 160,90 155,85" stroke="hsl(155, 45%, 48%)" strokeWidth="1.5" fill="none" opacity="0.4" />
-                {showLabels && (<text x="30" y="100" fontSize="4" fill="hsl(155, 45%, 48%)" opacity="0.6">Aryepiglottic fold</text>)}
+                <>{showLabels && (<text x="30" y="100" fontSize="4" fill="hsl(155, 45%, 48%)" opacity="0.6">Aryepiglottic fold</text>)}</>
 
                 {/* Epiglottis base */}
                 <path d="M85,85 C95,78 110,74 120,73 C130,74 145,78 155,85" stroke="hsl(140, 50%, 48%)" strokeWidth="2" fill="hsl(140, 50%, 48%)" fillOpacity="0.15" />
-                {showLabels && (<text x="120" y="70" fontSize="5" textAnchor="middle" fill="hsl(140, 50%, 48%)">Epiglottis</text>)}
+                <>{showLabels && (<text x="120" y="70" fontSize="5" textAnchor="middle" fill="hsl(140, 50%, 48%)">Epiglottis</text>)}</>
 
                 {/* Posterior interarytenoid */}
                 <line x1="115" y1="160" x2="125" y2="160" stroke="hsl(var(--muted-foreground))" strokeWidth="2" opacity="0.3" />
-                {showLabels && (<text x="120" y="178" fontSize="4" textAnchor="middle" fill="hsl(var(--muted-foreground))" opacity="0.4">Interarytenoid</text>)}
+                <>{showLabels && (<text x="120" y="178" fontSize="4" textAnchor="middle" fill="hsl(var(--muted-foreground))" opacity="0.4">Interarytenoid</text>)}</>
 
                 {/* Posterior commissure label */}
-                {showLabels && (<text x="120" y="186" fontSize="3.5" textAnchor="middle" fill="hsl(var(--muted-foreground))" opacity="0.3">Posterior commissure</text>)}
+                <>{showLabels && (<text x="120" y="186" fontSize="3.5" textAnchor="middle" fill="hsl(var(--muted-foreground))" opacity="0.3">Posterior commissure</text>)}</>
               </svg>
             </div>
 
