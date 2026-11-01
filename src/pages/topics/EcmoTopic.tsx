@@ -20,7 +20,7 @@ const ecmoFaqs: Array<[string, string]> = [
   ],
   [
     "What are the EOLIA criteria for VV-ECMO referral in ARDS?",
-    "EOLIA criteria for severe ARDS refractory to optimal ventilation and proning: PaO₂/FiO₂ < 50 mmHg for > 3 h, or PaO₂/FiO₂ < 80 mmHg for > 6 h, or arterial pH < 7.25 with PaCO₂ ≥ 60 mmHg for > 6 h with respiratory rate increased to 35 and tidal volume reduced to 4 mL/kg PBW. EOLIA stopped early for futility (p = 0.09) but a pre-specified Bayesian re-analysis estimated a 96% probability of mortality benefit, and contemporary ELSO criteria mirror EOLIA.",
+    "EOLIA (2018) used sustained physiological trial-entry criteria, not automatic referral or cannulation rules: PaO₂/FiO₂ <50 mmHg for >3 h, or <80 mmHg for >6 h, or pH <7.25 with PaCO₂ ≥60 mmHg for >6 h with respiratory rate increased to 35/min and settings adjusted to keep plateau pressure ≤32 cmH₂O. Trial optimisation was FiO₂ ≥0.80, tidal volume 6 mL/kg predicted body weight and PEEP ≥10 cmH₂O; prone positioning and neuromuscular blockade were encouraged. Other trial inclusion/exclusions applied, including mechanical ventilation ≥7 days. Murray score was not a fourth criterion. Single current values cannot establish duration or candidacy. Discuss potential candidates early while management is optimised; do not wait for trial durations before an advisory call. ELSO 2021 guidance is distinct, not identical.",
   ],
   [
     "When is ECPR indicated for refractory cardiac arrest?",

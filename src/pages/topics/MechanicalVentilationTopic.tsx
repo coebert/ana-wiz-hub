@@ -711,7 +711,7 @@ const MechanicalVentilationTopic = () => {
             <li><span className="font-semibold text-foreground">Neuromuscular blockade</span> — consider for refractory dyssynchrony, severe hypoxaemia, or to facilitate proning (limit 48h)</li>
             <li><span className="font-semibold text-foreground">Prone positioning ≥16 hours/day</span> — strongest evidence, do not skip</li>
             <li>Inhaled pulmonary vasodilator (epoprostenol or iNO) as oxygenation bridge</li>
-            <li>Consider ECMO referral using EOLIA entry criteria: P/F &lt;50 mmHg for &gt;3 h, P/F &lt;80 mmHg for &gt;6 h, or pH &lt;7.25 with PaCO₂ ≥60 mmHg for &gt;6 h despite optimised ventilation</li>
+            <li>Discuss potential ECMO candidates early while optimising management. EOLIA historical entry definitions are taught in the linked ARDS lesson: durations and full ventilation conditions cannot be established by a current gas or Murray score, and must not delay an advisory call</li>
           </ol>
 
           <h3 className="text-lg font-semibold text-foreground mb-2">Electrical Impedance Tomography (EIT)</h3>

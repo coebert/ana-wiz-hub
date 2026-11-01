@@ -3435,3 +3435,24 @@ topicReferences["prognostication-ethics-icu"].push(
 topicReferences["icu-eclampsia"].push(
   {"label": "NICE NG133 1.8.8", "citation": "NICE. Hypertension in pregnancy (NG133). Recommendation 1.8.8 [2010], retained in current guidance.", "url": "https://www.nice.org.uk/guidance/ng133/chapter/recommendations", "excerpt": "Consider using up to 500 ml crystalloid fluid before or at the same time as the first dose of intravenous hydralazine in the antenatal period."}
 );
+
+// S1: scoped arithmetic/model references; no source certifies the illustrative sliders.
+const scienceS1Oxygen: Reference = { label: "Cheifetz 2014 oxygen content", citation: "Cheifetz IM. Cardiorespiratory Interactions: The Relationship Between Mechanical Ventilation and Hemodynamics. Respir Care. 2014;59:1937–1945. Equation 2.", url: "https://doi.org/10.4187/respcare.03486", reviewNote: "Supports oxygen-content units and coefficient, not the adjustable Hill/linear-shift calibration." };
+topicReferences["oxygen-haemoglobin"].push(scienceS1Oxygen);
+topicReferences["renal-physiology"].push(
+  { label: "NIDDK diabetes insipidus", citation: "NIDDK. Diabetes Insipidus. Central deficiency, nephrogenic resistance and fluid replacement.", url: "https://www.niddk.nih.gov/health-information/kidney-disease/diabetes-insipidus" },
+  { label: "European hyponatraemia 2014 SIAD", citation: "Spasovski G, et al. Clinical practice guideline on diagnosis and treatment of hyponatraemia. Eur J Endocrinol. 2014;170:G1–G47. Section 6.3.1.6.", url: "https://doi.org/10.1530/EJE-13-1020", reviewNote: "SIAD requires clinical exclusions; vasopressin measurement is not recommended to confirm it. Not a calibration source for an effect slider." },
+  { label: "Nielsen 1995 AQP2", citation: "Nielsen S, et al. Vasopressin increases water permeability of kidney collecting duct by inducing translocation of aquaporin-CD water channels to plasma membrane. Proc Natl Acad Sci USA. 1995;92:1013–1017.", url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC42627/" },
+  { label: "Agre aquaporins lecture", citation: "Agre P. Aquaporin Water Channels. Nobel Lecture, 8 December 2003. Apical AQP2 and basolateral AQP3/4.", url: "https://www.nobelprize.org/uploads/2018/06/agre-lecture.pdf" }
+);
+const scienceS1Murray: Reference = { label: "Murray 1988 lung injury", citation: "Murray JF, Matthay MA, Luce JM, Flick MR. An expanded definition of the adult respiratory distress syndrome. Am Rev Respir Dis. 1988;138:720–723.", url: "https://doi.org/10.1164/ajrccm/138.3.720", reviewNote: "Historical four-component lung injury score; not a current standalone ARDS diagnosis or ECMO eligibility assessment." };
+const scienceS1Elso: Reference = { label: "ELSO 2021 adult VV ECMO", citation: "Tonna JE, Abrams D, Brodie D, et al. Management of Adult Patients Supported with Venovenous Extracorporeal Membrane Oxygenation (VV ECMO): Guideline from the Extracorporeal Life Support Organization (ELSO). ASAIO J. 2021;67:601–610.", url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC8315725/", reviewNote: "Early transfer planning and rapid optimisation; not an instruction to wait for EOLIA trial durations. ELSO hypercapnia plateau criterion differs from the trial." };
+for (const id of ["ards", "ecmo"]) {
+  topicReferences[id].push(scienceS1Murray, scienceS1Elso);
+  const primary = topicReferences["ecmo"].find(r => r.label === "EOLIA 2018");
+  if (primary && !topicReferences[id].some(r => r.label === primary.label)) topicReferences[id].push({ ...primary, excerpt: undefined, reviewNote: "Full trial methods define durations and ventilator conditions; not instantaneous patient candidacy." });
+}
+const scienceS1Amato = Object.values(topicReferences).flat().find(r => r.label === "Amato 2015 driving pressure");
+if (scienceS1Amato && !topicReferences["ards"].some(r => r.label === scienceS1Amato.label)) topicReferences["ards"].push(scienceS1Amato);
+const scienceS1Map = topicReferences["sepsis"].find(r => r.label === "SSC 2026 MAP");
+if (scienceS1Map && !topicReferences["circulatory-failure"].some(r => r.label === scienceS1Map.label)) topicReferences["circulatory-failure"].push(scienceS1Map);

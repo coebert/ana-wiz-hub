@@ -38,7 +38,7 @@ const ardsFaqs: Array<[string, string]> = [
   ],
   [
     "What are the EOLIA criteria for VV-ECMO referral in ARDS?",
-    "EOLIA criteria for VV-ECMO in severe ARDS refractory to optimal ventilation and proning: PaO₂/FiO₂ < 50 mmHg for > 3 h, or PaO₂/FiO₂ < 80 mmHg for > 6 h, or arterial pH < 7.25 with PaCO₂ ≥ 60 mmHg for > 6 h with respiratory rate increased to 35 and tidal volume reduced to 4 mL/kg PBW. EOLIA stopped early for futility (relative risk 0.76, p = 0.09); a pre-specified Bayesian re-analysis estimated ~96% probability of mortality benefit. Refer early (P/F < 150 on FiO₂ ≥ 0.6 PEEP ≥ 10) — do not wait for cannulation criteria.",
+    "EOLIA (2018) used sustained physiological trial-entry criteria, not automatic referral or cannulation rules: PaO₂/FiO₂ <50 mmHg for >3 h, or <80 mmHg for >6 h, or pH <7.25 with PaCO₂ ≥60 mmHg for >6 h with respiratory rate increased to 35/min and settings adjusted to keep plateau pressure ≤32 cmH₂O. Trial optimisation was FiO₂ ≥0.80, tidal volume 6 mL/kg predicted body weight and PEEP ≥10 cmH₂O; prone positioning and neuromuscular blockade were encouraged. Other trial inclusion/exclusions applied, including mechanical ventilation ≥7 days. Murray score was not a fourth criterion. Single current values cannot establish duration or candidacy. Discuss potential candidates early while management is optimised; do not wait for trial durations before an advisory call. ELSO 2021 guidance is distinct, not identical.",
   ],
   [
     "Does neuromuscular blockade improve outcomes in ARDS?",
@@ -497,7 +497,7 @@ const ARDSTopic = () => {
             <div className="p-4 rounded-lg border border-border bg-secondary/30">
               <p className="font-semibold text-foreground text-sm">VV-ECMO — Refractory Hypoxaemia</p>
               <p className="text-sm text-muted-foreground mt-1">
-                <strong>EOLIA criteria:</strong> PaO₂/FiO₂ &lt;80 mmHg for &gt;6 hours, OR PaO₂/FiO₂ &lt;50 for &gt;3 hours, OR pH &lt;7.25 + PaCO₂ ≥60 mmHg for &gt;6 hours — despite optimal conventional management (prone, PEEP, NMB). Refer early to ECMO centre. UK: 5 designated centres (Glenfield, Royal Papworth, St Thomas', Aberdeen, GICU).
+                <strong>EOLIA criteria:</strong> PaO₂/FiO₂ &lt;80 mmHg for &gt;6 hours, OR PaO₂/FiO₂ &lt;50 for &gt;3 hours, OR pH &lt;7.25 + PaCO₂ ≥60 mmHg for &gt;6 hours — with trial FiO₂ ≥0.80, tidal volume 6 mL/kg PBW and PEEP ≥10; the hypercapnic criterion also required respiratory rate increased to 35/min and Pplat ≤32. Prone positioning and NMB were encouraged. These are trial-entry definitions, not patient eligibility; discuss early while optimising management.<InlineRef topicId="ards" refLabel="EOLIA 2018" /><InlineRef topicId="ards" refLabel="ELSO 2021 adult VV ECMO" /> UK: 5 designated centres (Glenfield, Royal Papworth, St Thomas', Aberdeen, GICU).
               </p>
             </div>
             <div className="p-4 rounded-lg border border-border bg-secondary/30">
@@ -526,7 +526,7 @@ const ARDSTopic = () => {
                     <li>Anticipated escalation: failing on HFNO/NIV with rising oxygen requirement, or pre-intubation in fulminant viral pneumonitis / status asthmaticus.</li>
                   </ul>
                 </li>
-                <li><strong>Do not wait for EOLIA criteria</strong> (P/F &lt;80 for 6 h, P/F &lt;50 for 3 h, or pH &lt;7.25 + PaCO₂ ≥60 for 6 h) before <em>phoning</em> — these are cannulation criteria. By the time they are met, retrieval logistics (4–8 h door-to-door in the UK) may make transfer hazardous.</li>
+                <li><strong>Do not wait for EOLIA criteria</strong> (P/F &lt;80 for 6 h, P/F &lt;50 for 3 h, or pH &lt;7.25 + PaCO₂ ≥60 for 6 h) before <em>phoning</em> — these are historical trial-entry criteria, not automatic cannulation rules. By the time they are met, retrieval logistics (4–8 h door-to-door in the UK) may make transfer hazardous.</li>
                 <li><strong>Refer within the first 7 days of mechanical ventilation.</strong> Mechanical ventilation &gt;7 days is a relative contraindication (ELSO/EOLIA); &gt;10 days approaches absolute. Outcomes deteriorate sharply once fibroproliferative change is established.</li>
                 <li><strong>Initiate proning and NMB before or in parallel with the referral call</strong> — do not delay either. SARF teams expect the referring unit to have optimised PEEP, attempted ≥1 prone session where feasible, and corrected fluid balance/sepsis source before retrieval.</li>
                 <li><strong>What to have ready for the call</strong> (UK SARF proforma): demographics &amp; weight, premorbid functional status &amp; comorbidities, aetiology &amp; day of illness, current ventilator settings + last ABG (with FiO₂/PEEP), Murray score components (P/F, PEEP, compliance, CXR quadrants), vasopressor dose, recent imaging, COVID/PCR status, and bleeding/anticoagulation status.</li>
@@ -942,7 +942,7 @@ const ARDSTopic = () => {
                   {
                     topic: "ECMO criteria",
                     berlin: "Not addressed.",
-                    esicm: "VV-ECMO for severe ARDS refractory to optimal conventional therapy (lung-protective + prone + NMB). Refer early. EOLIA criteria: P/F <80 for >6h, OR pH <7.25 + PaCO₂ ≥60 for >6h, OR Murray ≥3.",
+                    esicm: "VV-ECMO for severe ARDS refractory to optimal conventional therapy (lung-protective + prone + NMB). Refer early. EOLIA criteria: P/F <80 for >6h, OR pH <7.25 + PaCO₂ ≥60 for >6h, Murray score is not an EOLIA entry criterion; see the full historical trial definitions above.",
                     global: "Endorses VV-ECMO for severe ARDS refractory to conventional therapy. Refer early to ECMO centre. Bayesian re-analysis of EOLIA + post-hoc data support mortality benefit.",
                   },
                   {

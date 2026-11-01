@@ -137,7 +137,7 @@ export const OxygenDissociationCurve = ({ showShifts = false }: CurveProps) => {
     }));
   }, [viewMode, hbConc]);
 
-  const shiftDirection = p50 > 27.5 ? "right" : p50 < 25.5 ? "left" : "normal";
+  const shiftDirection = p50 > 26.7 + 0.5 ? "right" : p50 < 26.7 - 0.5 ? "left" : "normal";
 
   const reset = () => {
     const init: Record<string, number> = {};
@@ -156,7 +156,7 @@ export const OxygenDissociationCurve = ({ showShifts = false }: CurveProps) => {
   if (!showShifts) {
     return (
       <div className="w-full max-w-lg mx-auto space-y-3">
-        <p className="text-xs text-muted-foreground">Illustrative Hill approximation, not patient prediction. Saturation is fractional O₂Hb (all Hb sites); functional saturation describes available non-CO-bound sites. Content uses total Hb in g/dL and PaO₂ in mmHg.<InlineRef topicId="oxygen-haemoglobin" refLabel="Hess 2014 oxygen physiology" /></p>
+        <p className="text-xs text-muted-foreground">Illustrative Hill approximation, not patient prediction. Saturation is fractional O₂Hb (all Hb sites); functional saturation describes available non-CO-bound sites. Content uses total Hb in g/dL and PaO₂ in mmHg.<InlineRef topicId="oxygen-haemoglobin" refLabel="Cheifetz 2014 oxygen content" /></p>
         {/* View toggle */}
         <div className="flex items-center justify-center gap-2">
           <Button variant="ghost" onClick={() => setViewMode("saturation")}
@@ -168,7 +168,7 @@ export const OxygenDissociationCurve = ({ showShifts = false }: CurveProps) => {
             O₂ Content (ml/dL)
           </Button>
           <label className="flex items-center gap-1 text-[10px] text-muted-foreground ml-2">
-            <input type="checkbox" checked={showDissolved} onChange={e => setShowDissolved(e.target.checked)} className="w-3 h-3 accent-primary" />
+            <input type="checkbox" disabled={viewMode !== "content"} checked={showDissolved && viewMode === "content"} onChange={e => setShowDissolved(e.target.checked)} className="w-3 h-3 accent-primary" />
             Dissolved O₂
           </label>
         </div>
@@ -226,7 +226,7 @@ export const OxygenDissociationCurve = ({ showShifts = false }: CurveProps) => {
           <path d={normalPath} fill="none" stroke="hsl(170 50% 40%)" strokeWidth="2" />
 
           {/* Dissolved O₂ line */}
-          {showDissolved && (
+          {showDissolved && viewMode === "content" && (
             <>
               <path d={dissolvedPath} fill="none" stroke="hsl(210 60% 60%)" strokeWidth="1.5" strokeDasharray="4 2" />
               <text x={svgW - padR - 2} y={toY(viewMode === "content" ? dissolvedO2(95) : 3) - 4}
@@ -300,7 +300,7 @@ export const OxygenDissociationCurve = ({ showShifts = false }: CurveProps) => {
   return (
     <DiagramFigure id="odc" title="Oxyhaemoglobin dissociation curve with right- and left-shift modifiers" description="Illustrative Hill curve with linear P50 modifiers; not a validated patient oxygenation prediction.">
     <div className="space-y-4">
-      <p className="text-xs text-muted-foreground">Illustrative, unvalidated Hill/linear-shift model, not patient prediction. Functional saturation refers to available non-CO-bound sites; plotted fractional O₂Hb uses all Hb sites (assuming COHb is the only dyshemoglobin). Content uses fractional O₂Hb with total Hb, reducing capacity exactly once.<InlineRef topicId="oxygen-haemoglobin" refLabel="Hess 2014 oxygen physiology" /></p>
+      <p className="text-xs text-muted-foreground">Illustrative, unvalidated Hill/linear-shift model, not patient prediction. Functional saturation refers to available non-CO-bound sites; plotted fractional O₂Hb uses all Hb sites (assuming COHb is the only dyshemoglobin). Content uses fractional O₂Hb with total Hb, reducing capacity exactly once.<InlineRef topicId="oxygen-haemoglobin" refLabel="Cheifetz 2014 oxygen content" /></p>
       {/* View toggle */}
       <div className="flex items-center justify-center gap-2 flex-wrap">
         <Button variant="ghost" onClick={() => setViewMode("saturation")}
@@ -312,7 +312,7 @@ export const OxygenDissociationCurve = ({ showShifts = false }: CurveProps) => {
           O₂ Content (ml/dL)
         </Button>
         <label className="flex items-center gap-1 text-[10px] text-muted-foreground ml-1">
-          <input type="checkbox" checked={showDissolved} onChange={e => setShowDissolved(e.target.checked)} className="w-3 h-3 accent-primary" />
+          <input type="checkbox" disabled={viewMode !== "content"} checked={showDissolved && viewMode === "content"} onChange={e => setShowDissolved(e.target.checked)} className="w-3 h-3 accent-primary" />
           Dissolved O₂
         </label>
         {viewMode === "content" && (
@@ -390,7 +390,7 @@ export const OxygenDissociationCurve = ({ showShifts = false }: CurveProps) => {
           strokeWidth="2" />
 
         {/* Dissolved O₂ line */}
-        {showDissolved && (
+        {showDissolved && viewMode === "content" && (
           <>
             <path d={dissolvedPath} fill="none" stroke="hsl(210 60% 60%)" strokeWidth="1.5" strokeDasharray="4 2" />
             <text x={svgW - padR - 2} y={toY(viewMode === "content" ? dissolvedO2(90) : 3) - 4}
@@ -464,10 +464,10 @@ export const OxygenDissociationCurve = ({ showShifts = false }: CurveProps) => {
           <g>
             <text x={svgW - padR - 5} y={padT + 15} fontSize="10" fill={shiftDirection === "right" ? "hsl(0 65% 50%)" : "hsl(210 70% 55%)"}
               textAnchor="end" fontWeight="700">
-              {shiftDirection === "right" ? "→ Right Shift" : "← Left Shift"}
+              {shiftDirection === "right" ? "→ Right Shift" : shiftDirection === "left" ? "← Left Shift" : "COHb capacity reduction"}
             </text>
             <text x={svgW - padR - 5} y={padT + 26} fontSize="7" fill="hsl(var(--muted-foreground))" textAnchor="end">
-              {shiftDirection === "right" ? "↓ Affinity — aids tissue O₂ delivery" : "↑ Affinity — impairs O₂ offloading"}
+              {shiftDirection === "right" ? "Lower affinity in this illustration" : shiftDirection === "left" ? "Higher affinity in this illustration" : "No material P50 shift in this illustration"}
             </text>
           </g>
         )}
