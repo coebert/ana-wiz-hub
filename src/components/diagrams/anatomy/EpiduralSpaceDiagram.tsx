@@ -1,7 +1,12 @@
 import { useState } from "react";
+import { Button } from "@/components/ui/button";
+import { InlineRef } from "@/components/references/InlineRef";
+import { EPIDURAL_DOSE_CONTEXT, PARAMEDIAN_DIRECTION } from "@/components/topic/AnatomySpatialTeaching";
 import { DiagramToggleBar } from "@/components/diagrams/shared/DiagramToggleBar";
 
 /**
+ * Sagittal layer schematic: posterior = viewer left, anterior = viewer right, superior = up; no laterality claim.
+ * Former needle/catheter geometry withdrawn.
  * Parasagittal view of the lumbar epidural space at L3/4, showing the layered
  * structures encountered by a midline Tuohy needle, the contents of the
  * epidural space (fat, Batson's plexus, segmental arteries, nerve roots) and
@@ -88,7 +93,7 @@ const STRUCTURES: Record<StructureKey, StructureInfo> = {
     region: "epidural",
     color: "hsl(140, 50%, 50%)",
     detail: "Potential space, 4–6 mm deep posteriorly at L2/3. Contains semi-liquid fat, lymphatics, segmental nerve roots, internal vertebral venous plexus (Batson's), and segmental arteries. Pressure ~atmospheric at lumbar level (negative thoracically).",
-    clinical: "Loss of resistance target. 0.3–0.5 mL of LA per dermatome in adults. Catheter threaded 3–5 cm into space (>5 cm → unilateral block, knotting, intrathecal/intravascular migration). Engorged Batson's plexus in pregnancy reduces effective volume → smaller doses needed.",
+    clinical: EPIDURAL_DOSE_CONTEXT + " Loss of resistance target. Catheter threaded 3–5 cm into space (>5 cm → unilateral block, knotting, intrathecal/intravascular migration). Engorged Batson's plexus in pregnancy reduces effective volume → smaller doses needed.",
   },
   batson: {
     label: "Batson's venous plexus",
@@ -137,7 +142,7 @@ const STRUCTURES: Record<StructureKey, StructureInfo> = {
     region: "bone",
     color: "hsl(35, 35%, 55%)",
     detail: "Flat bony plate forming the posterior wall of the vertebral canal, lateral to the spinous process. Connected to adjacent lamina by ligamentum flavum.",
-    clinical: "Lamina contact in paramedian approach → walk needle medially and caudally off the lamina to engage flavum. Paramedian approach 1 cm lateral and 1 cm caudal to spinous tip.",
+    clinical: PARAMEDIAN_DIRECTION,
   },
   "vertebral-body": {
     label: "Vertebral body",
@@ -157,7 +162,7 @@ const STRUCTURES: Record<StructureKey, StructureInfo> = {
     label: "Tuohy needle (16–18G)",
     region: "needle",
     color: "hsl(var(--foreground))",
-    detail: "Curved Huber tip directs catheter craniad. Standard length 8 cm with 1 cm depth markings. LOR syringe (glass or low-resistance plastic) attached after flavum engagement.",
+    detail: "In an intended cranial orientation the Tuohy curve directs a catheter craniad within the epidural compartment, outside dura and CSF. Needle/catheter geometry is withheld pending reviewed redraw. Standard length 8 cm with 1 cm depth markings. LOR syringe (glass or low-resistance plastic) attached after flavum engagement.",
     clinical: "LOR with saline (most common) or air. Air carries small risk of pneumocephalus / venous air embolism / patchy block; saline can be confused with CSF. After LOR: thread catheter 3–5 cm, secure, test dose, then incremental dosing.",
   },
 };
@@ -202,7 +207,7 @@ const EpiduralSpaceDiagram = () => {
             viewBox="0 0 600 470"
             className="w-full max-w-2xl h-auto"
             role="img"
-            aria-label="Parasagittal diagram of the lumbar epidural space at L3/4 with Tuohy needle in situ"
+            aria-label="Parasagittal diagram of the lumbar epidural space at L3/4 without procedural needle or catheter overlay"
           >
             <defs>
               {/* Radial gradient for canal depth */}
@@ -269,6 +274,7 @@ const EpiduralSpaceDiagram = () => {
             )}
 
             {/* Compass labels */}
+            {showLabels && <>
             <text x="300" y="14" textAnchor="middle"
               className="text-[9px] fill-muted-foreground font-medium">SUPERIOR</text>
             <text x="300" y="464" textAnchor="middle"
@@ -277,6 +283,7 @@ const EpiduralSpaceDiagram = () => {
             <text x="590" y="240" textAnchor="end"
               className="text-[9px] fill-muted-foreground font-medium">ANTERIOR</text>
 
+            </>}
             {/* ───── SOFT TISSUE LAYERS (posterior, left of canal in this view) ───── */}
             {/* Skin */}
             <g onClick={() => handlePick("skin")} className="cursor-pointer">
@@ -478,40 +485,6 @@ const EpiduralSpaceDiagram = () => {
               </g>
             ))}
 
-            {/* ───── TUOHY NEEDLE — entering at L3/4, midline, engaging flavum ───── */}
-            <g onClick={() => handlePick("needle")} className="cursor-pointer">
-              {/* Hub */}
-              <rect x="-2" y="295" width="22" height="20" rx="3"
-                fill="hsl(var(--foreground))" opacity={opa("needle", 1, 0.85)} />
-              {/* Wings */}
-              <path d="M14,295 L26,288 L26,322 L14,315 Z"
-                fill="hsl(var(--foreground))" opacity={opa("needle", 1, 0.85)} />
-              {/* Shaft */}
-              <line x1="20" y1="305" x2="346" y2="312"
-                stroke="hsl(var(--foreground))" strokeWidth={sw("needle", 4, 3)}
-                opacity={opa("needle", 1, 0.85)} />
-              {/* Curved Huber tip */}
-              <path d="M340,310 Q352,312 352,320"
-                fill="none" stroke="hsl(var(--foreground))" strokeWidth={sw("needle", 4, 3)}
-                strokeLinecap="round" opacity={opa("needle", 1, 0.85)} />
-              {/* LOR drop */}
-              <circle cx="358" cy="324" r="4" fill="hsl(140,55%,50%)"
-                opacity={opa("epidural-fat", 1, 0.7)} />
-              {showLabels && (
-                <text x="120" y="288"
-                  className="text-[9px] fill-foreground font-semibold pointer-events-none">
-                  Tuohy 16G
-                </text>
-              )}
-            </g>
-
-            {/* Catheter being threaded into space */}
-            {showSutures && (
-              <path d="M358,324 Q380,318 400,330 Q420,340 440,336 Q460,332 478,338"
-                fill="none" stroke="hsl(140,55%,40%)" strokeWidth="1.5"
-                strokeDasharray="3 2" opacity="0.55" />
-            )}
-
             {/* ───── LABELS (gated by showLabels) ───── */}
             {showLabels && (
               <g className="text-[8px] fill-foreground pointer-events-none">
@@ -541,6 +514,7 @@ const EpiduralSpaceDiagram = () => {
           </svg>
         </div>
 
+        <p className="text-sm text-muted-foreground mt-3">The epidural catheter belongs outside dura and CSF, within the epidural compartment, with intended cranial travel toward SUPERIOR. The misleading needle/catheter overlay is withdrawn pending reviewed redraw; intentional intrathecal catheter placement is a different technique.<InlineRef topicId="spinal-anatomy" refLabel="RCoA epidural dura" /><InlineRef topicId="spinal-anatomy" refLabel="WFSA epidural" /></p>
         {/* Mnemonic / footer */}
         <p className="text-xs text-center text-muted-foreground mt-2 italic">
           <span className="font-semibold not-italic text-foreground">Skin → Fat → Supraspinous → Interspinous → Flavum → </span>
@@ -567,7 +541,7 @@ const EpiduralSpaceDiagram = () => {
                 <span className="font-medium text-foreground">Anatomy:</span> {info.detail}
               </p>
               <p className="text-xs text-muted-foreground">
-                <span className="font-medium text-foreground">Clinical:</span> {info.clinical}
+                <span className="font-medium text-foreground">Clinical:</span> {info.clinical}<InlineRef topicId="spinal-anatomy" refLabel="WFSA epidural" />
               </p>
             </div>
           ) : (
@@ -584,7 +558,7 @@ const EpiduralSpaceDiagram = () => {
             const active = selected === k;
             const c = REGION_COLOR[s.region];
             return (
-                  <button
+                  <Button variant="outline" size="sm"
                 key={k}
                 type="button"
                 onClick={() => handlePick(k)}
@@ -596,7 +570,7 @@ const EpiduralSpaceDiagram = () => {
                 }}
               >
                 {s.label}
-              </button>
+              </Button>
   );
           })}
         </div>
