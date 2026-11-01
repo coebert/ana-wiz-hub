@@ -1,5 +1,9 @@
 # Admin metrics audit fixes
 
+## Clinical C5 — 1 November 2026
+- [ ] CL68–76 and D96: source-checked pancreatitis fluid/outcomes, nutrition, necrosis, guideline identity, imaging, prediction, epidural, thrombosis and HTG corrections.
+- [ ] Reconcile linked static/generated copies, add narrow clinical tests, run affected checks and browser verification; document limitations, no publication/audio or broad database work.
+
 ## Buy Me a Coffee — 1 November 2026
 - [x] Add understated support link after PayPal; preserve Stripe priority/feedback; guarded eighth click source migration and readback.
 - [x] Verify link/44px/focus at desktop and mobile, policy acceptance/rejection and existing donation-scroll tests; no publication or payment claims. Results: docs/buymeacoffee-2026-11-01.md.
