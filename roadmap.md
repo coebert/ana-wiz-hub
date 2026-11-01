@@ -1,9 +1,9 @@
 # Admin metrics audit fixes
 
 ## CL90 / D120 source-only alignment — 1 November 2026
-- [ ] Replace paediatric sepsis vasoactive/steroid/timing shortcuts with current SSC Children 2026 and preserve RCUK/C4/CL87.
-- [ ] Align static calcium/ceftriaxone compatibility and neonatal notes with exact product labels, exposing scoped sources; no live-record writes.
-- [ ] Combined focused tests, actual rendering/FAQ/source checks and local search regeneration; document results and source/validation limits. No backend/audio/publication.
+- [x] Replace paediatric sepsis vasoactive/steroid/timing shortcuts with current SSC Children 2026 and preserve RCUK/C4/CL87.
+- [x] Align static calcium/ceftriaxone compatibility and neonatal notes with exact product labels, exposing scoped sources; no live-record writes.
+- [x] Combined 56 tests passed; actual desktop/mobile teaching and safety-card/source checks passed; FAQ extraction and local search checked. Evidence/limits: docs/clinical-cl90-d120-2026-11-01.md. Automatic build OK; no manual build/typecheck or backend/audio/publication.
 
 ## Proposed CL89 / CL71 timeline residual — 1 November 2026
 - [x] Reconcile named JPAC frozen/post-thaw component storage with explicit FFP non-major-haemorrhage 24-hour limit; preserve CL88 and ordinary/provisional cryo separation.

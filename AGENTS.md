@@ -53,3 +53,4 @@
 - Medicine source displays normalize untrusted JSON and group identical URLs without dropping claim provenance; source repairs use ID, slug and exact JSON guards to preserve concurrent clinical work.
 - Repeated paediatric DNC and donation fWIT teaching uses local source-labelled summaries; reference popovers and section lists expose review notes so historical/protocol limitations remain visible.
 - Paediatric bradycardia uses a local RCUK-labelled summary; transfusion haemorrhage teaching shares trial-pack, measured-calcium, injury-target and selected-head-injury summaries to keep repeated claims scoped rather than universal protocols.
+- Paediatric sepsis summaries share local source-scoped constants across keypoints/body/take-home; FAQ literals are checked against them so extraction stays compatible without treatment shortcuts drifting.

@@ -18,6 +18,10 @@ export const PAEDIATRIC_DNC_2025_SUMMARY = "UK AoMRC 2025/RCPCH: DNC is not esta
 
 export const PAEDIATRIC_BRADYCARDIA_2025_SUMMARY = "RCUK 2025: immediately assess oxygenation, ventilation and perfusion. If HR <60/min with poor perfusion persists despite adequate respiratory support, commence chest compressions and follow PALS, even if a pulse is detectable. In that PALS/compressions pathway give adrenaline 10 micrograms/kg IV/IO (maximum 1 mg), repeated every 3–5 minutes. Do not give this arrest bolus for uncomplicated bradycardia or circulatory failure outside that pathway. Reserve IV atropine 20 micrograms/kg (maximum 0.5 mg) for increased vagal tone or selected cardiac conduction disease; do not use it routinely before intubation.";
 
+export const PAEDIATRIC_SEPSIS_2026_SUMMARY = "SSC Children 2026: choose adrenaline or noradrenaline through repeated haemodynamic assessment, response, echo/cardiac and lung POCUS when expertise is available, and paediatric critical-care advice. Evidence does not establish one preferred first-line agent; cold/warm labels do not mandate drug selection. UK RCUK 2025 uses 10 mL/kg isotonic crystalloid boluses with reassessment of perfusion and overload after every bolus. New or increasing hepatomegaly is one sign of overload/cardiac failure, not an isolated diagnostic equality. Stop boluses if shock resolves or overload develops; do not require 40–60 mL/kg or a fixed fluid threshold before vasoactives. Peripheral vasoactive initiation can avoid delay for central access. DKA and haemorrhagic trauma follow their own pathways.";
+export const PAEDIATRIC_SEPSIS_ANTIBIOTICS_2026 = "Suspected septic shock: start antibiotics as soon as possible, ideally within 1 hour of recognition. Probable sepsis without shock: undertake time-limited rapid investigation and, if concern is substantiated, start treatment as soon as possible after evaluation, ideally within 3 hours of recognition. If timely evaluation is difficult, consider antibiotics as soon as possible for probable bacterial sepsis.";
+export const PAEDIATRIC_SEPSIS_STEROIDS_2026 = "Hydrocortisone is not routine paediatric septic-shock therapy. SSC Children 2026 suggests against IV hydrocortisone when fluids and vasoactive therapy restore haemodynamic stability; persistent instability despite adequate support has insufficient evidence for a recommendation either way. Give stress-dose corticosteroid replacement for suspected or documented adrenal insufficiency; this is separate from routine sepsis adjuncts and does not replace adrenal-crisis management.";
+
 const tocItems = [
   { id: "wetflag", label: "WETFLAG & Age-Specific Vital Signs", group: "Foundations" },
   { id: "physiology", label: "Age-Specific Physiology", group: "Foundations" },
@@ -62,7 +66,7 @@ const paediatricIcuFaqs: Array<[string, string]> = [
     "Which children with acute stroke are considered for thrombolysis or thrombectomy?",
     "Decisions are made in a paediatric neuroscience centre. Intravenous thrombolysis is not routinely recommended in children outside specialist protocols and trials, while mechanical thrombectomy is increasingly offered for confirmed large-vessel occlusion with a significant deficit in older children within a treatment window, based on registry and adult trial data extrapolation. Sickle cell stroke is treated with urgent exchange transfusion, and haemorrhagic stroke is managed with neurosurgical involvement, so the first steps are always urgent imaging and a specialist call.",
   ],
-  ["What fluid resuscitation strategy is recommended for paediatric septic shock?", "10 mL/kg isotonic crystalloid boluses with reassessment after each; 20 mL/kg is reserved for specific situations (e.g. profound shock). DKA and trauma follow their own pathways: NICE NG18 uses a 10 mL/kg 0.9% saline bolus in DKA (given as soon as possible if shocked, over 30 minutes if dehydrated but not shocked), while haemorrhagic trauma needs early blood products and haemorrhage control. If shock persists after 1–2 boluses, move earlier to vasoactive infusions (adrenaline for cold shock, noradrenaline for warm) rather than escalating fluid further (SSC Paediatric 2020, APLS 2021; FEAST caution in resource-limited settings)."],
+  ["What fluid resuscitation strategy is recommended for paediatric septic shock?", "SSC Children 2026: choose adrenaline or noradrenaline through repeated haemodynamic assessment, response, echo/cardiac and lung POCUS when expertise is available, and paediatric critical-care advice. Evidence does not establish one preferred first-line agent; cold/warm labels do not mandate drug selection. UK RCUK 2025 uses 10 mL/kg isotonic crystalloid boluses with reassessment of perfusion and overload after every bolus. New or increasing hepatomegaly is one sign of overload/cardiac failure, not an isolated diagnostic equality. Stop boluses if shock resolves or overload develops; do not require 40–60 mL/kg or a fixed fluid threshold before vasoactives. Peripheral vasoactive initiation can avoid delay for central access. DKA and haemorrhagic trauma follow their own pathways. NICE NG18 DKA uses a 10 mL/kg 0.9% saline bolus (as soon as possible if shocked, over 30 minutes if dehydrated but not shocked), with senior review before more than one; haemorrhagic trauma needs early blood products and haemorrhage control. Hydrocortisone is not routine paediatric septic-shock therapy. SSC Children 2026 suggests against IV hydrocortisone when fluids and vasoactive therapy restore haemodynamic stability; persistent instability despite adequate support has insufficient evidence for a recommendation either way. Give stress-dose corticosteroid replacement for suspected or documented adrenal insufficiency; this is separate from routine sepsis adjuncts and does not replace adrenal-crisis management. Suspected septic shock: start antibiotics as soon as possible, ideally within 1 hour of recognition. Probable sepsis without shock: undertake time-limited rapid investigation and, if concern is substantiated, start treatment as soon as possible after evaluation, ideally within 3 hours of recognition. If timely evaluation is difficult, consider antibiotics as soon as possible for probable bacterial sepsis."],
   ["What is paediatric ARDS (PARDS) and how does ventilation differ?", "The Global Definition of PARDS (2023) requires onset within 7 days, new infiltrates not fully explained by cardiac failure or fluid overload, and hypoxaemia by OI/OSI (or non-invasively, SpO₂/FiO₂ ≤250 on CPAP ≥5 cmH₂O). Ventilate with Vt 5–8 mL/kg PBW, plateau ≤28 cmH₂O, permissive hypercapnia (pH ≥7.20), PEEP titrated 8–15 cmH₂O; prone position for moderate/severe disease (OI ≥12)."],
   ["How is intraosseous access used in paediatric resuscitation?", "Insert in the proximal tibia (or distal femur/humerus) if IV access fails within 60–90 s in shock or arrest; flow rates approach IV after a 10 mL saline flush, and all resus drugs can be given at standard doses."],
 ];
@@ -78,7 +82,7 @@ const objectives = [
   "Stabilise and hand over a critically ill child to a paediatric retrieval service using a structured, time-stamped handover.",
   "Apply WETFLAG and APLS age-banded vitals to deliver immediate weight-based therapy in a critically unwell child.",
   "Recognise the age-specific physiology that distinguishes paediatric resuscitation from adult care (HR-dependent CO, rapid desaturation, thermoregulation).",
-  "Manage paediatric septic shock with 10 mL/kg crystalloid boluses reassessed after each (20 mL/kg reserved for profound shock), early vasopressors, and stress-dose hydrocortisone.",
+  "Manage paediatric septic shock with reassessed 10 mL/kg crystalloid boluses, physiology-directed early vasoactive support and shock-specific antibiotic timing; distinguish adrenal replacement from nonroutine sepsis corticosteroids.",
   "Apply lung-protective ventilation, PRIS-aware sedation, and isotonic maintenance fluids in PICU.",
   "Lead paediatric resuscitation (15:2, 4 J/kg, adrenaline 10 mcg/kg) and recognise when brainstem death testing is permissible.",
   "Prescribe maintenance, deficit and replacement fluid separately using Holliday-Segar with isotonic solutions, adjusting for PICU fluid restriction and special situations (DKA, burns, neonates).",
@@ -266,7 +270,9 @@ const PaediatricIcuTopic = () => {
     cites: ["PCCS Standards 2021"],
   },
         { text: PAEDIATRIC_BRADYCARDIA_2025_SUMMARY, cites: ["RCUK PALS 2025"] },
-        { text: "Paediatric septic shock: 10 ml/kg boluses with reassessment after each (20 ml/kg only for profound shock); adrenaline for cold shock, noradrenaline for warm shock", cites: ["BJA Educ 2010"] },
+        { text: PAEDIATRIC_SEPSIS_2026_SUMMARY, cites: ["SSC Children 2026 vasoactives", "RCUK PALS 2025 fluids"] },
+        { text: PAEDIATRIC_SEPSIS_ANTIBIOTICS_2026, cites: ["SSC Children 2026 antibiotics"] },
+        { text: PAEDIATRIC_SEPSIS_STEROIDS_2026, cites: ["SSC Children 2026 corticosteroids"] },
         { text: "Single ventricle physiology: target SpO₂ 75–85%; excessive O₂ causes pulmonary overcirculation and systemic steal", cites: ["RCPCH 2019"] },
         { text: "Propofol is contraindicated by its product licence for ICU sedation at or below 16 years — use it for induction and short procedures only, never as a PICU sedation infusion", cites: ["MHRA Propofol"] },
         { text: "Isotonic maintenance fluids only — hypotonic fluids can cause fatal hyponatraemia in children", cites: ["NICE NG29"] },
@@ -352,7 +358,7 @@ const PaediatricIcuTopic = () => {
       sectionSources={{
         objectives: ["RCPCH 2019", "Resuscitation Council UK 2021", "APLS 2021", "BJA Educ 2010"],
         workedExamples: ["Resuscitation Council UK 2021", "APLS 2021", "NICE NG29", "FEAST 2011"],
-        keyPoints: ["RCPCH 2019", "FEAST 2011", "RCUK PALS 2025", "RCUK PALS 2025 fluids", "NICE NG29", "Resuscitation Council UK 2021", "APLS 2021", "BJA Educ 2010", "AoMRC 2025 Paediatric DNC"],
+        keyPoints: ["RCPCH 2019", "FEAST 2011", "RCUK PALS 2025", "RCUK PALS 2025 fluids", "NICE NG29", "Resuscitation Council UK 2021", "APLS 2021", "BJA Educ 2010", "AoMRC 2025 Paediatric DNC", "SSC Children 2026 antibiotics", "SSC Children 2026 vasoactives", "SSC Children 2026 corticosteroids"],
       }}
       sectionExamMapping={{
         objectives: { exams: [Exam.FFICM, Exam.EDIC], curriculumCodes: ["FFICM 4.6", "EDIC 5.6"] },
@@ -631,8 +637,10 @@ const PaediatricIcuTopic = () => {
           <ExamSection id="sepsis" exams={[Exam.FFICM, Exam.EDIC]} className="scroll-mt-24">
             <CollapsibleSubsection title="Paediatric Sepsis & Shock — Management">
             <p className="text-muted-foreground leading-relaxed mb-4">
-              Children more commonly present with <strong>cold shock</strong> (vasoconstricted, poor perfusion) than warm vasodilated shock. Antibiotics within 1 h. Fluid in <strong>10 mL/kg isotonic crystalloid boluses</strong>, reassessing after each — <strong>20 mL/kg is reserved for specific situations</strong> (e.g. severe hypovolaemia), while DKA and trauma follow condition-specific pathways rather than a shared 5 mL/kg rule — DKA uses a 10 mL/kg 0.9% saline bolus with senior review before more than one (NICE NG18), and haemorrhagic trauma needs early blood products and haemorrhage control <InlineRef topicId="paediatric-icu" refLabel="NICE NG18" /> <InlineRef topicId="paediatric-icu" refLabel="SSC Paediatric 2020" /> <InlineRef topicId="paediatric-icu" refLabel="APLS 2021" />. Hepatomegaly = fluid overload. Have <strong>earlier recourse to vasoactive infusions</strong> rather than repeatedly escalating fluid if shock persists after 1–2 boluses: peripheral adrenaline (cold) or noradrenaline (warm). Stress-dose hydrocortisone for catecholamine-resistant shock.
+              {PAEDIATRIC_SEPSIS_2026_SUMMARY} <InlineRef topicId="paediatric-icu" refLabel="SSC Children 2026 vasoactives" /> <InlineRef topicId="paediatric-icu" refLabel="RCUK PALS 2025 fluids" /> DKA uses a 10 mL/kg 0.9% saline bolus with senior review before more than one (NICE NG18); haemorrhagic trauma needs early blood products and haemorrhage control. <InlineRef topicId="paediatric-icu" refLabel="NICE NG18" />
             </p>
+            <p className="text-muted-foreground leading-relaxed mb-4">{PAEDIATRIC_SEPSIS_ANTIBIOTICS_2026} <InlineRef topicId="paediatric-icu" refLabel="SSC Children 2026 antibiotics" /></p>
+            <p className="text-muted-foreground leading-relaxed mb-4">{PAEDIATRIC_SEPSIS_STEROIDS_2026} <InlineRef topicId="paediatric-icu" refLabel="SSC Children 2026 corticosteroids" /></p>
             <div className="bg-card border border-border rounded-lg p-4 mb-3">
               <h3 className="font-semibold text-foreground mb-2">Defining paediatric sepsis — the Phoenix criteria (2024)</h3>
               <p className="text-sm text-muted-foreground">
@@ -650,7 +658,7 @@ const PaediatricIcuTopic = () => {
               </ul>
               <p className="text-sm text-muted-foreground mt-2">
                 Practically it identifies the sick child who needs escalation rather than replacing the
-                clinical Sepsis-6 response: <strong>oxygen, cultures, antibiotics within 1 h, lactate,
+                clinical response: <strong>oxygen, cultures, antibiotics with shock-specific urgency, lactate,
                 fluid, early senior/PICU involvement</strong>. Score-based definitions are for
                 epidemiology and audit — treat the child in front of you <InlineRef topicId="paediatric-icu" refLabel="NICE NG51" />.
               </p>
@@ -1913,7 +1921,7 @@ const PaediatricIcuTopic = () => {
               <li><strong>Tube sizing</strong>: cuffed ETT ID = (age/4) + 3.5; length = (age/2) + 12 (oral).</li>
               <li><strong>Fluid resuscitation</strong>: 10 ml/kg isotonic crystalloid boluses, reassess after each (20 ml/kg reserved for profound shock; DKA and haemorrhagic trauma follow their own pathways).</li>
               <li><strong>Maintenance fluids</strong>: isotonic only (NICE 2015). Holliday-Segar 4-2-1.</li>
-              <li><strong>Sepsis</strong>: antibiotics within 1 h; noradrenaline (warm) or adrenaline (cold).</li>
+              <li><strong>Sepsis</strong>: {PAEDIATRIC_SEPSIS_ANTIBIOTICS_2026} {PAEDIATRIC_SEPSIS_2026_SUMMARY} {PAEDIATRIC_SEPSIS_STEROIDS_2026} <InlineRef topicId="paediatric-icu" refLabel="SSC Children 2026 antibiotics" /><InlineRef topicId="paediatric-icu" refLabel="SSC Children 2026 vasoactives" /><InlineRef topicId="paediatric-icu" refLabel="SSC Children 2026 corticosteroids" /></li>
               <li><strong>Drug dosing</strong>: weight-based (mg/kg). Sugammadex 2–4 mg/kg, suxamethonium 1.5–2 mg/kg.</li>
               <li><strong>Family-centred care</strong>: structured updates, consider parental presence at procedures.</li>
             </ul>

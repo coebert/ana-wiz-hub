@@ -1038,12 +1038,12 @@ export const icuDrugSafetyGroups: DrugSafetyGroup[] = [
         drug: "Calcium gluconate 10%",
         slug: "calcium-gluconate",
         interactions: [
-          "Precipitates with sodium bicarbonate, phosphate and ceftriaxone — flush the line between drugs.",
+          "Physical incompatibility with sodium bicarbonate/phosphate: do not mix. Ceftriaxone and IV calcium must not be mixed or administered simultaneously, even through separate lines/sites. In patients older than 28 days, sequential administration requires the exact product label's different-site lines, replaced lines or thorough physiological saline flushing; B. Braun calcium gluconate prohibits sequential infusions in hypovolaemia. Continuous calcium-containing TPN requires pharmacy review of the exact products, not a general permission; do not transfer another product's exception to B. Braun calcium gluconate.",
           "Potentiates digoxin toxicity; antagonises the effects of calcium channel blockers and magnesium (used therapeutically).",
         ],
         contraindications: [
           "Hypercalcaemia and digoxin toxicity (relative — risk of stone heart).",
-          "Extravasation risk with calcium chloride peripherally; do not give in the same line as ceftriaxone in neonates.",
+          "Keep the peripheral calcium chloride extravasation warning: calcium salts can cause severe tissue injury. Ceftriaxone is contraindicated in neonates aged 28 days or less needing or expected to need IV calcium, regardless of lines or timing; flushing does not make neonatal co-treatment safe. B. Braun calcium gluconate also contraindicates concomitant use in premature neonates.",
         ],
         monitoring: [
           "ECG during administration for hyperkalaemia; ionised calcium after each dose.",
@@ -1201,12 +1201,13 @@ export const icuDrugSafetyGroups: DrugSafetyGroup[] = [
         drug: "Ceftriaxone",
         slug: "ceftriaxone",
         interactions: [
-          "Precipitates with calcium-containing solutions — never co-administer, and avoid entirely in neonates receiving calcium.",
+          "Do not mix ceftriaxone with calcium-containing solutions or use calcium-containing diluents. Simultaneous IV administration is prohibited even through separate lines/sites. After 28 days of age, sequential administration requires the exact labels' different-site lines, replaced lines or thorough physiological saline flushing; B. Braun calcium gluconate prohibits sequential infusions in hypovolaemia. Refer continuous calcium-containing TPN to pharmacy and the exact product information; this summary does not authorise simultaneous use or override neonatal contraindications.",
+          "Probenecid does not reduce ceftriaxone elimination (hameln SmPC §4.5); do not make a blanket ceftriaxone dose reduction on that basis.",
           "Enhances the effect of warfarin; may raise ciclosporin levels.",
         ],
         contraindications: [
           "Previous severe β-lactam hypersensitivity.",
-          "Neonatal jaundice (bilirubin displacement — kernicterus) and concurrent calcium infusions in neonates.",
+          "Premature neonates up to 41 weeks postmenstrual age (gestational plus chronological age). Full-term neonates aged 28 days or less with hyperbilirubinaemia, jaundice, hypoalbuminaemia or acidosis, or needing/expected to need IV calcium (including calcium-containing infusions): ceftriaxone is contraindicated. Different lines, timing or flushing do not remove the neonatal IV-calcium contraindication.",
           "Caution in biliary disease (pseudolithiasis) and haemolytic anaemia.",
         ],
         monitoring: [
