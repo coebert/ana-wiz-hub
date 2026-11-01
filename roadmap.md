@@ -129,7 +129,8 @@
 - [x] Finish queued calculator/unit safeguards, tests, audit record and affected dynamic IDs; no publication.
 
 ## Governance verification repair — 1 November 2026
-- [ ] GOV02/GOV06 shared runtime references, conservative topic-ID extraction, reviewed provenance debt.
-- [ ] GOV03–GOV05 explicit redirect verification, real operation fixtures, viva metadata.
-- [ ] GOV07 exam diagnostics and age-aware drug structural checks.
-- [ ] Run focused and full tests; record commands, exact residuals and current source basis. No publication or database edits.
+- [x] GOV02/GOV06 shared runtime references, conservative topic-ID extraction and explicit provenance report; newly exposed Operations gap remains failing pending source review.
+- [x] GOV03–GOV05 explicit redirect verification, real operation fixtures, viva metadata.
+- [x] GOV07 exam diagnostics and age-aware drug structural checks.
+- [x] Ran focused/full tests, affected content commands and browser; recorded exact residuals and automatic validation. No publication or database edits.
+- [ ] Review specific Operations diagram-source support (unverified sources); historical diagram debt remains outside this bounded infrastructure batch.
