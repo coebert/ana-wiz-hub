@@ -379,7 +379,7 @@ const BronchospasticFailureTopic = () => {
             <li><strong>Risks:</strong> critical illness myopathy / acute quadriplegic myopathy, especially with prolonged NMB plus high-dose steroids; prolonged weakness, loss of cough, corneal and pressure injury, VTE.</li>
           </ul>
 
-          <h3 className="text-lg font-semibold text-foreground mt-4 mb-2">Intubation Considerations</h3>
+          <h3 className="text-lg font-semibold text-foreground mt-4 mb-2">Intubation Considerations<InlineRef topicId="bronchospastic-failure" refLabel="Ketamine SmPC" /><InlineRef topicId="bronchospastic-failure" refLabel="Gayen severe asthma 2024" /></h3>
           <div className="space-y-2 mb-4">
             {[
               { label: "Indications", detail: "Respiratory arrest, GCS <8, exhaustion, worsening hypoxaemia despite maximal therapy, cardiovascular collapse, inability to speak/cough. A clinical decision — do not wait for ABG confirmation." },
@@ -626,7 +626,7 @@ const BronchospasticFailureTopic = () => {
           <div className="grid sm:grid-cols-2 gap-3 mb-4">
             <div className="p-3 rounded-lg border border-border">
               <p className="font-semibold text-foreground text-sm">Risks & Side Effects</p>
-              <p className="text-xs text-muted-foreground mt-1">Cardiovascular depression (vasodilation, myocardial depression — dose-dependent). Malignant hyperthermia risk (screen history). Sevoflurane: compound A production (low-flow) and fluoride nephrotoxicity (prolonged use &gt;48 h — prefer isoflurane for longer-term). Environmental pollution — scavenging mandatory. Hepatotoxicity (rare, mainly halothane historically but cross-sensitivity possible).</p>
+              <p className="text-xs text-muted-foreground mt-1">Dose-dependent cardiovascular depression, hypotension and arrhythmia; assess malignant-hyperthermia susceptibility. Halogenated agents can cause hepatic injury. Agent- and delivery-system-specific renal risks require monitoring and current product/local guidance; a 48-hour boundary does not establish toxicity or safety and isoflurane is not universally organ-safe. Scavenging is mandatory. SESAR's adverse sevoflurane ARDS outcomes must not be generalised to another agent or selected asthma rescue<InlineRef topicId="bronchospastic-failure" refLabel="Sedaconda SPC" /><InlineRef topicId="bronchospastic-failure" refLabel="SESAR 2025" />.</p>
             </div>
             <div className="p-3 rounded-lg border border-border">
               <p className="font-semibold text-foreground text-sm">Contraindications</p>
@@ -658,7 +658,7 @@ const BronchospasticFailureTopic = () => {
               { label: "Heliox (Helium-Oxygen)", detail: <>{HELIOX_RESCUE}<InlineRef topicId="bronchospastic-failure" refLabel="Gayen severe asthma 2024" /><InlineRef topicId="bronchospastic-failure" refLabel="Cochrane heliox 2006" /></> },
               { label: "Bronchoscopy & Lavage", detail: "Mucus plugging is the major cause of death in fatal asthma. Bronchoscopic lavage can remove inspissated mucus plugs in refractory cases. Risk of worsening bronchospasm during procedure. Consider in ventilated patients with persistent lobar or segmental collapse or persistently high airway pressures despite maximal therapy. Procedure: via the ETT in a deeply sedated (propofol or volatile), paralysed patient on FiO₂ 1.0, with a large-channel therapeutic bronchoscope and a swivel connector; instil small aliquots (about 20–50 mL) of warm saline and suction; nebulised N-acetylcysteine is controversial. Risks: worsening bronchospasm, hypoxaemia, barotrauma/high pressures, haemodynamic instability — have bronchodilators and adrenaline drawn up." },
               { label: "Prone Positioning", detail: "Limited evidence in asthma/COPD but may improve V/Q matching and facilitate secretion drainage. Case reports of benefit in refractory asthma. More established in ARDS — may overlap if ARDS develops as a complication." },
-              { label: "General Anaesthesia", detail: "If volatile agents via Sedaconda are unavailable, transfer to theatre for inhalational anaesthesia with sevoflurane/isoflurane via a standard anaesthetic machine has been used as a last resort in near-fatal asthma." },
+              { label: "General Anaesthesia", detail: "If a compatible volatile delivery device is unavailable, specialist delivery via an anaesthetic machine has been reported in near-fatal asthma. Assess equipment, gas monitoring and scavenging and the hazards of moving an unstable patient with the critical-care/anaesthetic team; transfer is not an automatic rescue step." },
             ].map((item) => (
               <div key={item.label} className="p-3 rounded-lg bg-secondary/30 border border-border">
                 <p className="font-semibold text-foreground text-sm">{item.label}</p>
