@@ -1,3 +1,4 @@
+import { POST_ARREST_CO2, POST_ARREST_PERFUSION, POST_ARREST_ENTRY, POST_ARREST_NSE, POST_ARREST_SSEP, POST_ARREST_ECPR_TRIALS, POST_ARREST_VENTILATION, POST_ARREST_PROGNOSIS } from "@/components/topic/PostArrestReviewedFacts";
 import { Helmet } from "react-helmet-async";
 import { TopicTemplate } from "@/components/topic/TopicTemplate";
 import { CollapsibleSubsection } from "@/components/topic/CollapsibleSubsection";
@@ -46,15 +47,15 @@ const arrestFaqs: Array<[string, string]> = [
   ],
   [
     "Who is an appropriate candidate for eCPR and what does ARREST, Prague OHCA and INCEPTION tell us?",
-    "ARREST (Yannopoulos, Lancet 2020, n = 30, single-centre Minnesota) randomised refractory shockable OHCA and was stopped early for benefit — 43% vs 7% survival to discharge with eCPR. Prague OHCA (Belohlavek, JAMA 2022, n = 256) compared invasive (eCPR + cath lab) with standard advanced ALS and showed a non-significant trend to better 180-day favourable neurological outcome (31.5% vs 22.0%); subgroup analysis favoured the invasive strategy with longer arrest durations. INCEPTION (Suverein, NEJM 2023, n = 134) was a multicentre Dutch trial and was neutral — reflecting the impact of system speed and operator volume. Suitable candidates have: witnessed arrest, bystander CPR, initial shockable rhythm, age < 65–75, no major comorbidity, ETCO₂ > 10 mmHg sustained, and a realistic prospect of cannulation within 60 minutes of collapse. Outside high-volume eCPR centres with rapid pathways, benefit is unlikely.",
+    POST_ARREST_ECPR_TRIALS,
   ],
   [
     "What is multimodal neuroprognostication and when do I perform it?",
-    "Neuroprognostication is performed in the comatose post-cardiac-arrest patient at ≥ 72 hours after ROSC, only once confounders (sedation, NMBA, hypothermia, severe metabolic derangement, hypoglycaemia, hypotension, ongoing seizure activity) are excluded. The entry criterion is GCS motor ≤ 3 (abnormal flexion, extension, or no motor response) at ≥ 72 h. ERC/ESICM 2021 consider poor outcome likely when two or more of these are present: (1) bilaterally absent pupillary and corneal reflexes at ≥ 72 h (quantitative pupillometry may be used); (2) bilaterally absent N20 SSEP waves at ≥ 24 h; (3) highly malignant EEG (suppressed background or burst-suppression) at > 24 h; (4) NSE > 60 µg/L at 48 h and/or 72 h; (5) status myoclonus ≤ 72 h; (6) diffuse and extensive anoxic injury on CT or MRI. No single marker is sufficient on its own. Withdrawal of life-sustaining therapy in the first 72 hours risks self-fulfilling prophecy.",
+    "Use current RCUK 2025 multimodal neuroprognostication in patients not awake and obeying commands (GCS motor < 6) at ≥ 72 h after ROSC, after excluding relevant confounders. Combine at least two concordant poor-outcome predictors at their specified times, and assess evidence supporting recovery as well as poor outcome. NSE > 60 µg/L at 48 h and/or 72 h is one specified marker; a rising trend alone is not an interchangeable threshold. EEG must be interpreted by pattern, timing and confounders. Technical quality matters for bilateral N20 absence, and neuromuscular blockade may improve recording quality. Indeterminate or discordant findings require further assessment. Prognosis informs shared decisions alongside patient wishes, overall illness and other factors; it is not an automatic withdrawal rule.",
   ],
   [
     "How should I manage the airway and ventilator in the first 6 hours post-ROSC?",
-    "Intubate if not already (or replace a supraglottic with a tracheal tube once stable). Set tidal volume 6–8 mL/kg predicted body weight, PEEP 5–10 cmH₂O, FiO₂ titrated to SpO₂ 94–98% (avoid hyperoxia — observational data link PaO₂ > 40 kPa to higher mortality; but the EXACT RCT found lower survival when pre-hospital SpO₂ was targeted at 90–94%, so avoid aiming below 94%). Set minute ventilation to PaCO₂ 4.5–6.0 kPa (avoid hypocapnia which causes cerebral vasoconstriction and is independently associated with worse neurological outcome — TAME trial 2023 found no benefit from mild hypercapnia 6.7–7.3 kPa over normocapnia). Use continuous waveform capnography. Sedate with short-acting agents (propofol + remifentanil or fentanyl ± dexmedetomidine) to facilitate later neuroprognostication. Avoid prolonged NMBA except briefly for shivering not controlled by sedation and counter-warming.",
+    POST_ARREST_VENTILATION,
   ],
 ];
 
@@ -76,7 +77,7 @@ const tocItems = [
 
 
 const objectives = [
-  "Deliver the ERC/ESICM 2021 post-ROSC bundle including airway, ventilation, haemodynamic and metabolic targets within the first 6 hours.",
+  "Deliver the current RCUK 2025 post-ROSC bundle including airway, ventilation, haemodynamic and metabolic targets within the first 6 hours.",
   "Explain why current UK guidance (RCUK 2025) targets ≤ 37.5 °C fever prevention for at least 72 h, noting that TTM2's normothermia arm also targeted ≤ 37.5 °C with a ≥ 37.8 °C device trigger.",
   "Set evidence-based MAP, SpO₂, PaCO₂, glucose and Hb targets and justify each in terms of secondary brain injury.",
   "Perform multimodal neuroprognostication ≥ 72 h post-ROSC using clinical exam, NSE, EEG, SSEPs and imaging while excluding confounders.",
@@ -91,30 +92,30 @@ const workedExamples: WorkedExample[] = [
     scenario:
       "55-year-old, witnessed VF OHCA, ROSC at 18 min after 3 shocks. Now intubated, sedated, FiO₂ 1.0, SpO₂ 100 %, PaO₂ 38 kPa, PaCO₂ 3.4 kPa on TV 550 mL (PBW 70 kg). MAP 60 on noradrenaline 0.15 µg/kg/min. Lactate 6.2.",
     working:
-      "Hyperoxia (PaO₂ 38 kPa) is associated with worse outcome — wean FiO₂ to target SpO₂ 94–98 %. Hypocapnia (PaCO₂ 3.4 kPa) causes cerebral vasoconstriction — reduce minute ventilation to target 4.5–6.0 kPa. Tidal volume 550 mL = 7.9 mL/kg PBW — acceptable but trim to 6–8 mL/kg. MAP 60 is below the ≥ 65 mmHg target — uptitrate noradrenaline.",
+      "Reliable oxygen measurements show hyperoxaemia and PaCO₂ 3.4 kPa shows hypocapnia. Titrate FiO₂ toward SpO₂ 94–98% and adjust ventilation toward PaCO₂ 4.7–6.0 kPa, using repeat arterial gases. TV 550 mL at PBW 70 kg is 7.9 mL/kg, within the 6–8 mL/kg range. MAP 60 requires reassessment of perfusion, volume status, myocardial function and cause; current UK guidance targets SBP > 100 mmHg or MAP > 60–65 mmHg with individual adjustment. Do not prescribe a fixed vasopressor escalation from that number alone.",
     answer:
-      "Wean FiO₂ for SpO₂ 94–98 %, reduce RR for PaCO₂ 4.5–6.0 kPa, TV ~ 480 mL (6.8 mL/kg PBW), increase noradrenaline to MAP ≥ 65 mmHg, then start active fever prevention targeting ≤ 37.5 °C and book early coronary angiography.",
-    cites: ["ERC/ESICM 2021 Post-Resus", "Schmidt 2022 BOX oxygen"],
+      "Titrate oxygen and ventilation to the current targets, assess perfusion and cardiac function, and tailor fluid/vasoactive support. If the patient remains comatose, use active fever prevention targeting ≤ 37.5 °C. Obtain ECG and echocardiography; prioritise immediate angiography for ST elevation or strong suspicion of occlusion, including haemodynamic or electrical instability. VF as the original rhythm alone does not require immediate angiography in every stable patient.",
+    cites: ["RCUK PRC 2025", "RCUK PRC Algorithm March 2026", "Schmidt 2022 BOX oxygen"],
   },
   {
     title: "Multimodal neuroprognostication at 72 h",
     scenario:
       "Day 4 post-OHCA, fully rewarmed, off sedation for 36 h. GCS E1 VT M2. Pupils fixed bilaterally, corneals absent, NPi 0. NSE 88 µg/L at 72 h (rising from 62 at 48 h). Continuous EEG: burst-suppression unreactive. SSEPs: bilaterally absent N20.",
     working:
-      "Confounders excluded (rewarmed, sedation washed out, no metabolic derangement, no status epilepticus). Apply ERC/ESICM 2021 algorithm — entry criterion (GCS M ≤ 3 at ≥ 72 h) met. Look for ≥ 2 concordant poor-outcome markers from independent modalities: (1) bilaterally absent pupillary + corneal reflexes, (2) NSE > 60 µg/L at 48 h and 72 h, (3) highly malignant unreactive burst-suppression EEG, (4) bilaterally absent N20 SSEPs.",
+      "At day 4, a motor score 2 meets the current RCUK 2025 entry criterion (motor < 6), but 36 h without sedation alone does not establish drug clearance. Confirm all confounders and technical quality. Concordant absent pupil/corneal reflexes, highly malignant burst-suppression, bilateral N20 absence and appropriately timed NSE elevations warrant a structured multimodal assessment; EEG unreactivity alone is not the malignant-pattern definition. Consider recovery signs and the whole patient before communicating prognosis or treatment decisions.",
     answer:
-      "Four concordant poor-outcome markers across clinical, biochemical, electrophysiological and SSEP modalities — poor neurological outcome can be predicted with high specificity. Discuss WLST with family, refer to SNOD before withdrawal for potential DCD donation.",
-    cites: ["ERC/ESICM 2021 Post-Resus"],
+      "These findings warrant a specialist multimodal assessment after confounders and technical quality are verified, alongside signs supporting recovery. Communicate uncertainty and patient-centred goals; motor score or a count of tests does not automatically determine withdrawal. Prognostication is distinct from DNC testing.",
+    cites: ["RCUK PRC 2025"],
   },
   {
     title: "eCPR candidate selection",
     scenario:
       "42-year-old collapses in front of bystander, immediate CPR. EMS arrive at 6 min — VF, 3 shocks, mechanical CPR (LUCAS) commenced. ETCO₂ 22 mmHg. No ROSC at 25 min. Initial rhythm shockable, no significant comorbidities, transport time to ECMO centre 15 min.",
     working:
-      "ARREST/Prague OHCA criteria favouring eCPR: witnessed arrest, bystander CPR, initial shockable rhythm, age < 65–70, ETCO₂ > 10 mmHg (sign of effective CPR), low-flow time projected < 60 min at cannulation, no major comorbidity. All criteria met. INCEPTION reminds us system speed matters — must reach cannulation within ~ 60 min.",
+      "This history may meet the local eCPR selection pathway: witnessed arrest, immediate CPR, refractory shockable rhythm and a prospect of short low-flow time. Confirm eligibility with the receiving ECMO team while high-quality ALS continues. Trial enrolment rules are not universal criteria; projected transport time does not itself guarantee timely extracorporeal flow.",
     answer:
-      "Suitable eCPR candidate. Activate ECMO team, continue mechanical CPR, transport directly to ECMO bay/cath lab, target femoral VA cannulation within 60 min of arrest, then immediate coronary angiography after stable flow. Insert distal limb perfusion catheter at the time of cannulation.",
-    cites: ["ARREST 2020"],
+      "Activate the organised eCPR pathway if accepted, continue high-quality CPR during safe transport and aim for rapid extracorporeal flow. The specialist team determines coronary assessment and cannulation details. Monitor limb perfusion and arrange a distal-perfusion cannula promptly when indicated; it should not delay initial restoration of circulation.",
+    cites: ["ARREST 2020", "Prague OHCA 2022", "INCEPTION 2023", "ELSO ECPR 2021"],
   },
   {
     title: "Harlequin (north–south) syndrome on VA-ECMO",
@@ -130,12 +131,12 @@ const workedExamples: WorkedExample[] = [
 
 const keyPoints = [
   { text: "Post-cardiac-arrest syndrome = brain injury + myocardial dysfunction + ischaemia–reperfusion + precipitating pathology — treat all four.", cites: ["TTM2 2021"] },
-  { text: "Avoid hyperoxia, hypoxaemia and hypocapnia: target SpO₂ 94–98 %, PaCO₂ 4.5–6.0 kPa, avoid MAP < 65 mmHg, and avoid hypoglycaemia (manage glucose by standard ICU protocol).", cites: ["ERC/ESICM 2021 Post-Resus"] },
+  { text: `After reliable measurement, target SpO₂ 94–98% and PaCO₂ ${POST_ARREST_CO2}. ${POST_ARREST_PERFUSION} Use standard ICU glucose care, avoiding hypoglycaemia.`, cites: ["RCUK PRC 2025", "RCUK PRC Algorithm March 2026"] },
   { text: "Temperature: RCUK 2025 targets ≤ 37.5 °C fever prevention in comatose survivors for at least 72 h (algorithm); TTM2 (2021) normothermia arm targeted ≤ 37.5 °C (device trigger ≥ 37.8 °C) and found 33 °C no better.", cites: ["RCUK PRC 2025", "TTM2 2021"] },
   { text: "Rewarm slowly (0.25–0.5 °C/h) — watch for hyperkalaemic rebound and prolonged drug clearance during cooling.", cites: ["ELSO Guidelines 2020"] },
   { text: "Neuroprognostication is multimodal, performed ≥ 72 h after ROSC, after confounders are excluded, and requires ≥ 2 concordant poor-outcome markers.", cites: ["ERC/ESICM 2021 Post-Resus", "BJA Educ Neuroprog 2018"] },
   { text: "Specific markers: bilaterally absent pupil + corneal reflexes, bilaterally absent N20 SSEPs, NSE > 60 µg/L at 48 h and/or 72 h, highly malignant EEG after 24 h, status myoclonus ≤ 72 h, diffuse anoxic injury on CT or MRI.", cites: ["ERC/ESICM 2021 Post-Resus"] },
-  { text: "eCPR: ARREST and Prague OHCA show benefit only in highly selected witnessed shockable arrests with rapid cannulation (< 60 min); INCEPTION emphasises system speed.", cites: ["ARREST 2020"] },
+  { text: POST_ARREST_ECPR_TRIALS, cites: ["ARREST 2020", "Prague OHCA 2022", "INCEPTION 2023"] },
   { text: "VA-ECMO: anticipate limb ischaemia (distal perfusion cannula), Harlequin syndrome (right radial sat monitoring → consider VAV), LV distension (vent with IABP/Impella).", cites: ["ELSO Guidelines 2020"] },
   { text: "Avoid the self-fulfilling prophecy — do not withdraw before multimodal assessment is complete.", cites: ["ERC/ESICM 2021 Post-Resus"] },
   { text: "Refer DCD candidates to SNOD before WLST is raised with the family — preserves donation potential without altering care.", cites: ["ERC/ESICM 2021 Post-Resus"] },
@@ -165,7 +166,7 @@ const coreConcepts = (
           { label: "OHCA survival to discharge", value: "8–10 %", note: "UK national OHCA registry" },
           { label: "Survival with good neuro outcome", value: "~6–7 %", note: "CPC 1–2 at discharge" },
           { label: "IHCA survival to discharge", value: "~24 %", note: "Higher witnessed/monitored proportion" },
-          { label: "eCPR survival (selected)", value: "30–43 %", note: "ARREST 2020, Prague OHCA 2022" },
+          { label: "eCPR trial evidence", value: "Mixed", note: "ARREST positive; Prague OHCA and INCEPTION primary outcomes not significant" },
         ].map((s) => (
           <div key={s.label} className="p-3 rounded-lg border border-border bg-card">
             <p className="text-[10px] uppercase tracking-wide text-muted-foreground font-semibold">{s.label}</p>
@@ -280,21 +281,21 @@ const coreConcepts = (
 
     <ExamSection id="rosc-bundle" exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]} className="scroll-mt-24">
 
-      <CollapsibleSubsection title="The Post-ROSC Bundle (ERC/ESICM 2021)">
+      <CollapsibleSubsection title="The Post-ROSC Bundle (RCUK 2025)">
       <p className="text-muted-foreground leading-relaxed mb-3">
         Within the first 6 h after ROSC, deliver a structured bundle in
         parallel: airway and ventilation, haemodynamics, coronary reperfusion,
         temperature control, glycaemic control, and family communication
-        (<InlineRef topicId="cardiac-arrest-post-resus" refLabel="ERC/ESICM 2021 Post-Resus" />,
+        (<InlineRef topicId="cardiac-arrest-post-resus" refLabel="RCUK PRC 2025" />,
         <InlineRef topicId="cardiac-arrest-post-resus" refLabel="Singapore Med J 2017 (Post-resus)" />).
       </p>
 
       <div className="p-4 rounded-lg border border-border bg-card mb-3">
-        <p className="text-sm font-semibold text-foreground mb-2">Consolidated ERC/ESICM 2021 structured bundle</p>
+        <p className="text-sm font-semibold text-foreground mb-2">Current RCUK 2025 structured bundle</p>
         <ol className="text-xs text-muted-foreground space-y-1.5 list-decimal list-inside">
           <li><span className="font-medium text-foreground">Identify and treat the cause</span> — 12-lead ECG in all patients; immediate coronary angiography ± PCI for STEMI or ongoing myocardial ischaemia; CT pulmonary angiogram if PE is suspected as the precipitant.</li>
-          <li><span className="font-medium text-foreground">Airway and breathing</span> — secure a definitive airway; lung-protective ventilation (6–8 mL/kg PBW); target SpO₂ 94–98 %; target PaCO₂ 4.5–6.0 kPa (normocapnia).</li>
-          <li><span className="font-medium text-foreground">Circulation</span> — target MAP ≥ 65 mmHg, aiming for urine output &gt; 0.5 mL/kg/h and a normal or falling lactate; obtain early echocardiography to assess myocardial function; use fluids, vasopressors and inotropes as required, with mechanical circulatory support (IABP, Impella, VA-ECMO) considered for refractory cardiogenic shock.</li>
+          <li><span className="font-medium text-foreground">Airway and breathing</span> — intubate for persistent coma or another ventilation indication, not automatically after rapid recovery with adequate breathing; lung-protective ventilation (6–8 mL/kg PBW); target SpO₂ 94–98 %; target PaCO₂ {POST_ARREST_CO2} (normocapnia).</li>
+          <li><span className="font-medium text-foreground">Circulation</span> — {POST_ARREST_PERFUSION} Assess urine output &gt; 0.5 mL/kg/h and a normal or falling lactate; obtain early echocardiography to assess myocardial function; use fluids, vasopressors and inotropes as required, with mechanical circulatory support (IABP, Impella, VA-ECMO) considered for refractory cardiogenic shock.</li>
           <li><span className="font-medium text-foreground">Disability / neuroprotection</span> — temperature control with active prevention of fever targeting ≤ 37.5 °C for at least 72 h; continuous EEG for seizure detection and prompt anticonvulsant treatment; a clear sedation strategy that permits later neuroprognostication.</li>
           <li><span className="font-medium text-foreground">Metabolic control</span> — avoid hypoglycaemia and manage glucose by standard ICU protocol (many units use about 6–10 mmol/L); correct potassium, magnesium and calcium.</li>
         </ol>
@@ -305,24 +306,24 @@ const coreConcepts = (
           {
             title: "Airway & ventilation",
             items: [
-              "Sedate, intubate (if not already), lung-protective tidal volume 6–8 mL/kg PBW",
+              POST_ARREST_VENTILATION,
               "Target SpO₂ 94–98 % (avoid hyperoxia — increased mortality in observational studies)",
-              "Target PaCO₂ 4.5–6.0 kPa (avoid hypocapnia — cerebral vasoconstriction)",
+              `Target PaCO₂ ${POST_ARREST_CO2} (avoid hypocapnia — cerebral vasoconstriction)`,
               "Capnography mandatory; ETCO₂ rise often heralds ROSC and falls warn of arrest recurrence",
             ],
           },
           {
             title: "Coronary reperfusion",
             items: [
-              "Immediate angiography ± PCI for STEMI or new LBBB",
-              "Strong consider in any ROSC patient with suspected coronary cause, even if comatose",
+              "Prioritise immediate angiography for ST elevation or high suspicion of coronary occlusion, including haemodynamic/electrical instability; new LBBB alone is not an automatic indication",
+              "In stable patients without ST elevation, use selective coronary assessment; the original VF rhythm alone is not an indication for immediate angiography",
               "COACT (2019) and TOMAHAWK (2021) showed no benefit of immediate angiography without ST elevation — selectivity matters",
             ],
           },
           {
             title: "Haemodynamics",
             items: [
-              "Avoid MAP < 65 mmHg; BOX (MAP 77 vs 63 mmHg) showed no benefit from a higher target",
+              POST_ARREST_PERFUSION + " BOX (MAP 77 vs 63 mmHg) showed no benefit from the higher trial target.",
               "Hypotension after ROSC is associated with worse outcome in observational studies",
               "Echocardiogram early — myocardial stunning is common, often resolves by 48–72 h",
               "Vasopressors as needed; consider mechanical support (IABP, Impella, VA-ECMO) for cardiogenic shock",
@@ -391,7 +392,7 @@ const coreConcepts = (
           <p className="text-sm font-semibold text-foreground mb-1">How to deliver TTM</p>
           <ul className="text-xs text-muted-foreground space-y-1 list-disc list-inside">
             <li>Surface (Arctic Sun) or intravascular (Thermogard / Coolgard) device with closed-loop temperature feedback</li>
-            <li>Sedation: propofol + fentanyl ± dexmedetomidine. Bolus or infuse a short-acting NMBA (rocuronium / cisatracurium) only if shivering uncontrolled by sedation + magnesium / counter-warming</li>
+            <li>Sedation: propofol + fentanyl ± dexmedetomidine. Routine NMBA is not recommended; consider individual need for critical hypoxaemia with ARDS or refractory shivering despite adequate sedation and counter-warming</li>
             <li>Core temperature monitoring — oesophageal probe is standard; bladder lags; rectal lags markedly</li>
             <li>Daily checklist: K⁺, Mg²⁺, glucose, coagulation, ileus, pressure areas, lines</li>
           </ul>
@@ -435,9 +436,9 @@ const coreConcepts = (
           </thead>
           <tbody>
             {[
-              ["MAP", "Avoid < 65 mmHg", "BOX (77 vs 63 mmHg) and NEUROPROTECT (higher MAP raised rSO₂ but did not reduce anoxic brain injury on MRI) found no benefit from higher targets."],
+              ["MAP", "SBP > 100 mmHg or MAP > 60–65 mmHg; individualised", "BOX (77 vs 63 mmHg) and NEUROPROTECT (higher MAP raised rSO₂ but did not reduce anoxic brain injury on MRI) found no benefit from higher targets."],
               ["SpO₂", "94–98 %", "Avoid hyperoxia (free-radical injury) and hypoxia."],
-              ["PaCO₂", "4.5–6.0 kPa (35–45 mmHg)", "Hypocapnia → cerebral vasoconstriction; hypercapnia → ↑ICP."],
+              ["PaCO₂", `${POST_ARREST_CO2} (35–45 mmHg)`, "Hypocapnia → cerebral vasoconstriction; hypercapnia → ↑ICP."],
               ["Tidal volume", "6–8 mL/kg PBW", "Lung-protective; reduces VILI."],
               ["Glucose", "Standard ICU protocol", "Avoid hypoglycaemia and severe hyperglycaemia; no post-arrest-specific target is mandated."],
               ["Hb", "General ICU thresholds", "No post-arrest-specific transfusion trial; most units use ~70 g/L, often higher with active myocardial ischaemia."],
@@ -452,6 +453,7 @@ const coreConcepts = (
           </tbody>
         </table>
       </div>
+      <InlineRef topicId="cardiac-arrest-post-resus" refLabel="RCUK PRC 2025" />
       </CollapsibleSubsection>
     </ExamSection>
 
@@ -463,10 +465,9 @@ const coreConcepts = (
         ERC/ESICM mandate <span className="font-medium text-foreground">multimodal assessment</span> at
         <span className="font-medium text-foreground"> ≥ 72 h after ROSC</span> (later if sedated, hypothermic
         or metabolically deranged). Entry criterion: comatose patient with
-        GCS motor ≤ 3 after exclusion of confounders. Two or more
+        GCS motor &lt; 6 after exclusion of confounders. Two or more
         concordant poor-prognosis markers from independent modalities are
-        required before consideration of withdrawal of life-sustaining
-        therapy.
+        interpreted at the specified times. {POST_ARREST_PROGNOSIS} This assessment is distinct from DNC testing.<InlineRef topicId="cardiac-arrest-post-resus" refLabel="RCUK PRC 2025" />
       </p>
 
       <div className="mt-4 p-3 rounded-lg border border-icu/30 bg-icu/5">
@@ -501,13 +502,13 @@ const coreConcepts = (
           {
             title: "Clinical examination (≥ 72 h)",
             detail:
-              "Bilateral absent pupillary light reflex AND absent corneal reflex at ≥ 72 h is the single most specific bedside sign of poor outcome (FPR ~ 1 %). Quantitative pupillometry is more reproducible than manual examination. GCS motor ≤ 3 at ≥ 72 h is the trigger for formal multimodal assessment, but is NOT sufficient on its own. Status myoclonus within 72 h counts as one ERC/ESICM poor-outcome marker; it is not the same as status epilepticus and should prompt EEG.",
+              "Assess pupils and corneal reflexes at the specified times with attention to technique and confounders. Current RCUK 2025 considers patients with GCS motor < 6 at ≥ 72 h who are not awake and obeying commands. Neither that motor score nor an isolated reflex finding establishes outcome. Status myoclonus within 72 h is one algorithm marker and should prompt EEG; distinguish it from electrographic status epilepticus.",
             color: "hsl(0, 75%, 55%)",
           },
           {
             title: "Neuron-specific enolase (NSE)",
             detail:
-              "Serum NSE at 48–72 h. NSE > 60 µg/L at 48 h and/or 72 h, OR a rising trend, predicts poor outcome (FPR < 5 %). Confounders: haemolysis (RBC contain NSE — recheck if rising in isolation), neuroendocrine tumours. Trend matters more than a single value. Take samples in non-haemolysed serum; many labs report NSE alongside S100B.",
+              POST_ARREST_NSE,
             color: "hsl(170, 60%, 40%)",
           },
           {
@@ -519,7 +520,7 @@ const coreConcepts = (
           {
             title: "Somatosensory evoked potentials (SSEPs)",
             detail:
-              "Bilaterally absent N20 cortical responses to median nerve stimulation at ≥ 24 h is one of the most specific markers of poor outcome (FPR ~ 0–1 %). Less affected by sedation and hypothermia than EEG. Operator-dependent; requires technical expertise. Best performed off muscle relaxant. A present N20 does not predict good outcome — it just removes one piece of bad evidence.",
+              POST_ARREST_SSEP,
             color: "hsl(220, 65%, 50%)",
           },
           {
@@ -545,6 +546,7 @@ const coreConcepts = (
           </div>
         ))}
       </div>
+      <InlineRef topicId="cardiac-arrest-post-resus" refLabel="RCUK PRC 2025" /><InlineRef topicId="cardiac-arrest-post-resus" refLabel="RCUK PRC 2025 SSEP" />
       <div className="mt-4 space-y-4">
         <div className="bg-card rounded-xl border border-border p-4 md:p-6">
           <ExpandableEcgCard content={eegTraceContent}>
@@ -563,12 +565,7 @@ const coreConcepts = (
       <CollapsibleSubsection title="ECMO-CPR (eCPR)">
       <p className="text-muted-foreground leading-relaxed mb-3">
         eCPR is VA-ECMO initiated <em>during</em> ongoing CPR for refractory
-        cardiac arrest. ARREST (2020) and Prague OHCA (2022) demonstrated
-        survival benefit in highly selected patients with witnessed
-        shockable rhythms; INCEPTION (2023) was neutral, reflecting the
-        critical importance of patient selection, system speed, and
-        experienced operators. Outside high-volume centres with rapid
-        cannulation pathways the marginal benefit shrinks rapidly.
+        cardiac arrest. {POST_ARREST_ECPR_TRIALS}<InlineRef topicId="cardiac-arrest-post-resus" refLabel="ARREST 2020" /><InlineRef topicId="cardiac-arrest-post-resus" refLabel="Prague OHCA 2022" /><InlineRef topicId="cardiac-arrest-post-resus" refLabel="INCEPTION 2023" />
       </p>
 
       <div className="grid md:grid-cols-2 gap-3 mt-3">
@@ -579,14 +576,14 @@ const coreConcepts = (
             <li>Mechanical CPR (LUCAS / AutoPulse) — frees hands and maintains quality during transport</li>
             <li>Activate ECMO team with simultaneous transport to cath lab / ECMO bay</li>
             <li>Femoral arterial + venous cannulation under ultrasound + fluoroscopy</li>
-            <li>Distal limb perfusion catheter to prevent leg ischaemia</li>
-            <li>Aim for cannulation within 60 min of arrest; coronary angiography immediately after stable flow</li>
+            <li>Monitor limb perfusion; specialist distal-perfusion planning must not delay initial extracorporeal circulation</li>
+            <li>Use locally defined rapid time-to-flow goals; the specialist team determines coronary assessment and cannulation details</li>
           </ul>
         </div>
         <div className="p-3 rounded-lg border border-border bg-card">
           <p className="text-sm font-semibold text-foreground mb-1">Key complications</p>
           <ul className="text-xs text-muted-foreground space-y-1 list-disc list-inside">
-            <li><span className="font-medium text-foreground">Limb ischaemia</span> from arterial cannulation — distal perfusion cannula is mandatory</li>
+            <li><span className="font-medium text-foreground">Limb ischaemia</span> requires surveillance and prompt specialist distal-perfusion planning; cannula placement should not delay initial restoration of circulation.<InlineRef topicId="cardiac-arrest-post-resus" refLabel="ELSO ECPR 2021" /></li>
             <li><span className="font-medium text-foreground">Harlequin syndrome</span> (north–south, differential hypoxia) — upper body desaturates if native lung fails on VA-ECMO; consider VAV upgrade</li>
             <li><span className="font-medium text-foreground">LV distension</span> from afterload — vent with IABP, Impella, or atrial septostomy if severe</li>
             <li>Bleeding (cannulation, GI, intracranial), thrombosis, oxygenator failure</li>
@@ -618,7 +615,7 @@ const coreConcepts = (
         <div className="p-3 rounded-lg border border-border bg-card">
           <p className="text-sm font-semibold text-foreground mb-1">Withdrawal of life-sustaining therapy</p>
           <ul className="text-xs text-muted-foreground space-y-1 list-disc list-inside">
-            <li>Only after multimodal neuroprognostication ≥ 72 h with two concordant poor-outcome markers</li>
+            <li>{POST_ARREST_PROGNOSIS}</li>
             <li>Beware self-fulfilling prophecy — early WLST removes the chance to demonstrate recovery</li>
             <li>Engage palliative care; manage symptoms (sedation, opioids, anti-secretory)</li>
           </ul>
@@ -636,10 +633,10 @@ const coreConcepts = (
     <ExamPitfallsCallout
       accent="icu"
       pitfalls={[
-        "Post-ROSC bundle: PaCO₂ 4.5–6.0 kPa, SpO₂ 94–98%, MAP ≥65, 12-lead ECG, urgent PCI if STEMI.",
+        `Post-ROSC: after reliable measurement, SpO₂ 94–98% and PaCO₂ ${POST_ARREST_CO2}; individual perfusion support; 12-lead ECG; immediate coronary assessment for ST elevation or strong occlusion suspicion.`,
         "TTM2: hypothermia at 33 °C was not superior to normothermia with early treatment of fever (≥37.8 °C) — death at 6 months 50% vs 48%.",
         "Neuroprognostication is multimodal — clinical (≥72 h), bilateral absent N20 SSEP, suppressed/burst EEG, NSE >60, MRI changes.",
-        "eCPR: witnessed arrest, shockable rhythm, low-flow <60 min, no irreversible cause — only in selected centres.",
+        "eCPR is a selected rescue pathway; local ECMO-team acceptance and rapid flow are required, not universal age or ETCO₂ clearance.",
         "Avoid premature withdrawal in the first 72 h; sedation, hypothermia and metabolic confounders cloud neuro exam.",
         "SNOD referral early — even before brain-stem death testing or withdrawal decisions.",
       ]}
@@ -664,14 +661,14 @@ const coreConcepts = (
                 ["Bernard (NEJM 2002)", "33 °C × 12 h after VF OHCA", "Good outcome 49% vs 26%", "Confirmed HACA in independent cohort"],
                 ["TTM (Nielsen, NEJM 2013)", "33 °C vs 36 °C × 24 h, n = 950", "No difference in mortality (50% vs 48%) or neuro outcome", "Either target acceptable; fever-prevention is what matters"],
                 ["TTM2 (Dankiewicz, NEJM 2021)", "33 °C vs normothermia ≤ 37.5 °C (device trigger ≥ 37.8 °C), n = 1 850", "No difference 6-mo mortality (50% vs 48%)", "Fever prevention rather than routine 33 °C; now ≤ 37.5 °C (RCUK 2025)"],
-                ["TAME (NEJM 2023)", "Mild hypercapnia 6.7–7.3 kPa vs normocapnia post-arrest", "No difference 6-mo good neuro outcome (43.5% vs 44.6%)", "Continue normocapnia 4.5–6.0 kPa"],
+                ["TAME (NEJM 2023)", "Mild hypercapnia 6.7–7.3 kPa vs normocapnia post-arrest", "No difference 6-mo good neuro outcome (43.5% vs 44.6%)", `Continue normocapnia ${POST_ARREST_CO2}`],
                 ["EXACT (Bernard, JAMA 2022)", "SpO₂ 90–94% vs 98–100% during pre-hospital post-ROSC", "Survival to discharge 38.3% vs 47.9% (lower with restrictive)", "Avoid hypoxaemia; do not aim ≤ 94% in pre-hospital phase"],
                 ["BOX (NEJM 2022)", "MAP 63 vs 77 mmHg AND restrictive vs liberal O₂ post-ROSC", "No difference in death/poor neuro outcome at 90 d", "MAP ≥ 65 reasonable; no clear benefit from higher targets"],
                 ["PARAMEDIC2 (NEJM 2018)", "Adrenaline 1 mg IV vs placebo in OHCA, n = 8 014", "30-d survival 3.2% vs 2.4%; severe disability 31% vs 18% of survivors", "Adrenaline retained but with explicit trade-off"],
                 ["DOSE-VF (NEJM 2022)", "Standard vs vector-change vs DSED for refractory VF after 3 shocks", "Survival to discharge: DSED 30.4% vs standard 13.3%", "Trial evidence; RCUK 2025 suggests vector change but does not recommend routine DSED"],
                 ["ARREST (Lancet 2020)", "eCPR vs standard ALS in refractory shockable OHCA, n = 30", "Stopped early — 43% vs 7% survival to discharge", "Proof of concept in optimal system"],
-                ["Prague OHCA (JAMA 2022)", "Invasive (eCPR + cath) vs standard, n = 256", "180-d good neuro 31.5% vs 22.0% (NS overall; benefit in longer arrests)", "Supports eCPR in selected refractory arrest"],
-                ["INCEPTION (NEJM 2023)", "eCPR vs standard ALS, multicentre Dutch, n = 134", "No difference in 30-d good neuro outcome (20% vs 16%)", "Highlights importance of system speed & volume"],
+                ["Prague OHCA (JAMA 2022)", "Invasive strategy versus standard care, n = 256", "180-day favourable neurological survival 31.5% versus 22.0%, P = 0.09", "Primary endpoint not significant; secondary/subgroup signals exploratory"],
+                ["INCEPTION (NEJM 2023)", "Multicentre eCPR versus conventional CPR", "30-day favourable neurological survival 20% versus 16%, not significant", "Does not prove speed or centre volume caused the neutral result"],
                 ["COACT (NEJM 2019)", "Immediate vs delayed angiography after shockable OHCA without STEMI", "No 90-d survival difference (64.5% vs 67.2%)", "Defer angiography in stable post-ROSC without STEMI"],
                 ["TOMAHAWK (NEJM 2021)", "Immediate vs selective angiography after OHCA without STEMI", "No 30-d mortality difference (54% vs 46%)", "Reinforces selective approach without ST elevation"],
                 ["AIRWAYS-2 (JAMA 2018)", "Supraglottic airway vs tracheal intubation in paramedic-led OHCA", "No difference in modified Rankin at 30 d", "SGA acceptable initial airway in OHCA"],
@@ -741,6 +738,7 @@ const CardiacArrestPostResusTopic = () => {
       }}
       sectionSources={{
         objectives: [
+          "RCUK PRC 2025", "RCUK PRC Algorithm March 2026",
           "ERC/ESICM 2021 Post-Resus",
           "TTM2 2021",
           "TTM 2013",
@@ -751,6 +749,7 @@ const CardiacArrestPostResusTopic = () => {
           "BJA Educ Neuroprog 2018",
         ],
         keyPoints: [
+          "RCUK PRC 2025", "RCUK PRC Algorithm March 2026",
           "ERC/ESICM 2021 Post-Resus",
           "TTM2 2021",
           "TTM 2013",
@@ -760,7 +759,7 @@ const CardiacArrestPostResusTopic = () => {
           "ELSO Guidelines 2020",
           "BJA Educ Neuroprog 2018",
         ],
-        workedExamples: ["ERC/ESICM 2021 Post-Resus", "Schmidt 2022 BOX oxygen", "ARREST 2020", "ELSO Guidelines 2020"],
+        workedExamples: ["RCUK PRC 2025", "RCUK PRC Algorithm March 2026", "ELSO ECPR 2021", "ERC/ESICM 2021 Post-Resus", "Schmidt 2022 BOX oxygen", "ARREST 2020", "ELSO Guidelines 2020"],
       }}
       coreConcepts={coreConcepts}
       workedExamples={workedExamples}
