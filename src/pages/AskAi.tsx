@@ -1,18 +1,30 @@
+// Temporary approved source-review pause; kept local to this existing file.
+const SOURCE_UNAVAILABLE =
+  "Current source material is not yet available for reliable AI answers or clinical scoring. Please read the relevant topic and original guidance. Your saved history has been kept.";
+/** A typed non-stream response is converted to the UI's normal error state. No SSE is fabricated. */
+const sourceAwareFetch: typeof fetch = async (input, init) => {
+  const response = await fetch(input, init);
+  if (response.headers.get("Content-Type")?.includes("application/json")) {
+    const body = await response
+      .clone()
+      .json()
+      .catch(() => null);
+    if (body?.code === "SOURCE_UNAVAILABLE") throw new Error(SOURCE_UNAVAILABLE);
+  }
+  return response;
+};
+
 import React, { Fragment, useEffect, useMemo, useRef, useState } from "react";
 import { Helmet } from "react-helmet-async";
 import { useChat } from "@ai-sdk/react";
 import { DefaultChatTransport, type UIMessage } from "ai";
 import ReactMarkdown from "react-markdown";
 import { Link } from "react-router-dom";
-import {
-  Send, Sparkles, Trash2, BookOpen, Loader2, History, Search, X, MessageSquare,
-} from "lucide-react";
+import { Send, Sparkles, Trash2, BookOpen, Loader2, History, Search, X, MessageSquare } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import { Input } from "@/components/ui/input";
-import {
-  Sheet, SheetContent, SheetHeader, SheetTitle, SheetDescription, SheetTrigger,
-} from "@/components/ui/sheet";
+import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetDescription, SheetTrigger } from "@/components/ui/sheet";
 import { SectionLayout } from "@/components/layout/SectionLayout";
 import { supabase } from "@/integrations/supabase/client";
 
@@ -30,14 +42,8 @@ import { supabase } from "@/integrations/supabase/client";
  */
 
 const STORAGE_KEY = "anaesthesiacore.ask.messages.v1";
+const PAUSED_FOR_SOURCE_REVIEW = true;
 const ENDPOINT = `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/kb-chat`;
-
-const SUGGESTED = [
-  "Explain the four phases of a normal capnograph",
-  "How should I manage anaphylaxis under anaesthesia?",
-  "What's the difference between SIMV and PSV?",
-  "When is voiding mandatory before day-case discharge?",
-];
 
 interface QAEntry {
   id: string;
@@ -50,11 +56,68 @@ interface QAEntry {
 }
 
 const STOPWORDS = new Set([
-  "a","an","the","is","are","was","were","be","been","being","of","to","in","on",
-  "for","and","or","but","with","without","as","at","by","from","that","this","it",
-  "its","do","does","did","how","what","why","when","where","which","who","whom",
-  "should","could","would","can","may","might","i","you","we","they","my","your",
-  "about","into","over","under","than","then","so","if","not","no","yes",
+  "a",
+  "an",
+  "the",
+  "is",
+  "are",
+  "was",
+  "were",
+  "be",
+  "been",
+  "being",
+  "of",
+  "to",
+  "in",
+  "on",
+  "for",
+  "and",
+  "or",
+  "but",
+  "with",
+  "without",
+  "as",
+  "at",
+  "by",
+  "from",
+  "that",
+  "this",
+  "it",
+  "its",
+  "do",
+  "does",
+  "did",
+  "how",
+  "what",
+  "why",
+  "when",
+  "where",
+  "which",
+  "who",
+  "whom",
+  "should",
+  "could",
+  "would",
+  "can",
+  "may",
+  "might",
+  "i",
+  "you",
+  "we",
+  "they",
+  "my",
+  "your",
+  "about",
+  "into",
+  "over",
+  "under",
+  "than",
+  "then",
+  "so",
+  "if",
+  "not",
+  "no",
+  "yes",
 ]);
 
 function normalize(text: string): string {
@@ -76,7 +139,9 @@ function jaccard(a: string[], b: string[]): number {
   const sa = new Set(a);
   const sb = new Set(b);
   let inter = 0;
-  sa.forEach((t) => { if (sb.has(t)) inter += 1; });
+  sa.forEach((t) => {
+    if (sb.has(t)) inter += 1;
+  });
   const union = new Set([...sa, ...sb]).size;
   return union === 0 ? 0 : inter / union;
 }
@@ -102,36 +167,12 @@ function rowToEntry(row: RawLibraryRow): QAEntry {
   };
 }
 
+// Retain legacy rows server-side for audit, never return them to the chat.
 async function fetchLibrary(): Promise<QAEntry[]> {
-  // The shared Q&A library is world-readable via RLS; the publishable anon
-  // key in the default client is enough.
-  const { data, error } = await supabase
-    .from("ask_qa_library")
-    .select("id, question, normalized, answer, ask_count, updated_at")
-    .order("updated_at", { ascending: false })
-    .limit(500);
-  if (error) {
-    console.error("[AskAi] failed to load Q&A library", error);
-    return [];
-  }
-  return ((data ?? []) as RawLibraryRow[]).map(rowToEntry);
+  return [];
 }
-
-function findCachedMatch(question: string, cache: QAEntry[]): QAEntry | null {
-  const norm = normalize(question);
-  if (!norm) return null;
-  const exact = cache.find((e) => e.normalized === norm);
-  if (exact) return exact;
-  const toks = tokenize(question);
-  if (toks.length < 2) return null;
-  let best: { entry: QAEntry; score: number } | null = null;
-  for (const entry of cache) {
-    const score = jaccard(toks, entry.tokens);
-    if (score >= 0.8 && (!best || score > best.score)) {
-      best = { entry, score };
-    }
-  }
-  return best?.entry ?? null;
+function findCachedMatch(_question: string, _cache: QAEntry[]): QAEntry | null {
+  return null;
 }
 
 function loadInitialMessages(): UIMessage[] {
@@ -151,14 +192,16 @@ function partsToText(parts: UIMessage["parts"]): string {
   return (parts ?? [])
     .map((p) => {
       const part = p as { type: string; text?: string };
-      return part.type === "text" ? part.text ?? "" : "";
+      return part.type === "text" ? (part.text ?? "") : "";
     })
     .join("");
 }
 
 function buildCachedReply(entry: QAEntry): string {
   const when = new Date(entry.updatedAt).toLocaleDateString(undefined, {
-    day: "numeric", month: "short", year: "numeric",
+    day: "numeric",
+    month: "short",
+    year: "numeric",
   });
   return [
     `**This question is already in the shared Ask AnaesthesiaCore library** — here's the answer saved on ${when} for "_${entry.question}_":`,
@@ -180,6 +223,7 @@ const AskAi = () => {
     () =>
       new DefaultChatTransport({
         api: ENDPOINT,
+        fetch: sourceAwareFetch,
         // Ask AI requires sign-in: send the user's session token.
         headers: async () => {
           const { data } = await supabase.auth.getSession();
@@ -231,47 +275,7 @@ const AskAi = () => {
     });
   };
 
-  // Load the shared Q&A library on mount, and stream incremental updates
-  // from postgres_changes so other users' new questions appear in real time
-  // without a full refetch (which would otherwise reshuffle the user's
-  // current pagination window).
-  useEffect(() => {
-    let cancelled = false;
-    void fetchLibrary().then((rows) => { if (!cancelled) setQaCache(rows); });
-    const channel = supabase
-      .channel("ask_qa_library_changes")
-      .on(
-        "postgres_changes",
-        { event: "INSERT", schema: "public", table: "ask_qa_library" },
-        (payload) => {
-          const row = payload.new as RawLibraryRow | null;
-          if (row) mergeRows([rowToEntry(row)]);
-        },
-      )
-      .on(
-        "postgres_changes",
-        { event: "UPDATE", schema: "public", table: "ask_qa_library" },
-        (payload) => {
-          const row = payload.new as RawLibraryRow | null;
-          if (row) mergeRows([rowToEntry(row)]);
-        },
-      )
-      .on(
-        "postgres_changes",
-        { event: "DELETE", schema: "public", table: "ask_qa_library" },
-        (payload) => {
-          const old = payload.old as { id?: string } | null;
-          if (!old?.id) return;
-          setQaCache((prev) => prev.filter((e) => e.id !== old.id));
-        },
-      )
-      .subscribe();
-    return () => {
-      cancelled = true;
-      void supabase.removeChannel(channel);
-    };
-  }, []);
-
+  // No legacy public-library realtime subscription.
   // After a streamed answer completes, refetch the library so the newly
   // saved row (written by `kb-chat`'s onFinish hook) is visible immediately
   // — realtime should also deliver it, but this is a guaranteed fallback.
@@ -280,7 +284,9 @@ const AskAi = () => {
     if (status !== "ready") return;
     if (!pendingQuestionRef.current) return;
     pendingQuestionRef.current = null;
-    const t = setTimeout(() => { void fetchLibrary().then(mergeRows); }, 600);
+    const t = setTimeout(() => {
+      void fetchLibrary().then(mergeRows);
+    }, 600);
     return () => clearTimeout(t);
   }, [status]);
 
@@ -303,28 +309,8 @@ const AskAi = () => {
 
   const submit = async (text: string) => {
     const trimmed = text.trim();
-    if (!trimmed || isBusy) return;
+    if (PAUSED_FOR_SOURCE_REVIEW || !trimmed || isBusy) return;
     setInput("");
-
-    // 1. Check the local Q&A cache first. If we've answered this (or a very
-    //    similar) question before, surface the prior answer instead of
-    //    spending another model call.
-    const cached = findCachedMatch(trimmed, qaCache);
-    if (cached) {
-      const now = Date.now();
-      const userMsg: UIMessage = {
-        id: `cached-user-${now}`,
-        role: "user",
-        parts: [{ type: "text", text: trimmed }],
-      };
-      const assistantMsg: UIMessage = {
-        id: `cached-assistant-${now}`,
-        role: "assistant",
-        parts: [{ type: "text", text: buildCachedReply(cached) }],
-      };
-      setMessages([...messages, userMsg, assistantMsg]);
-      return;
-    }
 
     pendingQuestionRef.current = trimmed;
     await sendMessage({ text: trimmed });
@@ -340,21 +326,9 @@ const AskAi = () => {
 
   // Inject a saved Q&A pair into the live conversation so the user can keep
   // following up. No model call is made.
-  const reopen = (entry: QAEntry) => {
-    const now = Date.now();
-    const userMsg: UIMessage = {
-      id: `history-user-${now}`,
-      role: "user",
-      parts: [{ type: "text", text: entry.question }],
-    };
-    const assistantMsg: UIMessage = {
-      id: `history-assistant-${now}`,
-      role: "assistant",
-      parts: [{ type: "text", text: entry.answer }],
-    };
-    setMessages([...messages, userMsg, assistantMsg]);
+  const reopen = (_entry: QAEntry) => {
+    /* Legacy shared answers are paused. */
   };
-
 
   const onSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -368,11 +342,10 @@ const AskAi = () => {
     }
   };
 
-
   return (
     <SectionLayout
       title="Ask AnaesthesiaCore"
-      subtitle="Ground your question in the FRCA / FFICM curriculum and get pointed to the right topics."
+      subtitle="AI answers are paused while we review source material. Browse the curriculum for current teaching."
       backPath="/"
       backLabel="Home"
       accentColor="text-primary"
@@ -381,32 +354,27 @@ const AskAi = () => {
         <title>Ask AnaesthesiaCore — AI study assistant | FRCA &amp; FFICM</title>
         <meta
           name="description"
-          content="Ask any FRCA Primary, FRCA Final or FFICM question and get a grounded answer with links to the relevant AnaesthesiaCore topic pages."
+          content="Ask AI is temporarily paused during source review. Existing conversations remain available on this browser."
         />
         <meta name="robots" content="noindex" />
       </Helmet>
 
+      <p role="status" className="mb-4 text-sm text-muted-foreground">
+        {SOURCE_UNAVAILABLE} Previous AI-generated messages below are historical, not a verified current source.
+      </p>
       <div className="flex flex-col h-[min(75vh,900px)] rounded-xl border border-border bg-card">
         {/* Toolbar */}
         <div className="flex items-center justify-between gap-2 border-b border-border px-3 sm:px-4 py-2">
           <div className="text-xs text-muted-foreground">
             {qaCache.length > 0
               ? `${qaCache.length} question${qaCache.length === 1 ? "" : "s"} in the shared library`
-              : "Shared library is empty — be the first to ask"}
+              : "Shared answers are paused for a source review"}
           </div>
           <HistoryPanel entries={qaCache} onReopen={reopen} />
         </div>
         {/* Transcript */}
-        <div
-          ref={scrollerRef}
-          className="flex-1 overflow-y-auto px-4 sm:px-6 py-6 space-y-6"
-          aria-live="polite"
-        >
-          {messages.length === 0 ? (
-            <EmptyState onPick={(q) => void submit(q)} />
-          ) : (
-            messages.map((m) => <Bubble key={m.id} message={m} />)
-          )}
+        <div ref={scrollerRef} className="flex-1 overflow-y-auto px-4 sm:px-6 py-6 space-y-6" aria-live="polite">
+          {messages.length === 0 ? <EmptyState /> : messages.map((m) => <Bubble key={m.id} message={m} />)}
           {status === "submitted" && (
             <div className="flex items-center gap-2 text-sm text-muted-foreground">
               <Loader2 className="h-3.5 w-3.5 animate-spin" aria-hidden />
@@ -421,10 +389,7 @@ const AskAi = () => {
         </div>
 
         {/* Composer */}
-        <form
-          onSubmit={onSubmit}
-          className="border-t border-border p-3 sm:p-4 bg-background/50"
-        >
+        <form onSubmit={onSubmit} className="border-t border-border p-3 sm:p-4 bg-background/50">
           <div className="flex items-end gap-2">
             <Textarea
               ref={textareaRef}
@@ -432,27 +397,21 @@ const AskAi = () => {
               onChange={(e) => setInput(e.target.value)}
               onKeyDown={onKeyDown}
               rows={2}
-              placeholder="e.g. How do I manage a STOP-BANG 6 patient for day-case surgery?"
+              placeholder="New questions are paused during the source review"
               className="flex-1 resize-none text-sm min-h-[60px]"
-              disabled={isBusy}
+              disabled={PAUSED_FOR_SOURCE_REVIEW || isBusy}
             />
             <div className="flex flex-col gap-2">
               <Button
                 type="submit"
                 size="icon"
-                disabled={isBusy || !input.trim()}
+                disabled={PAUSED_FOR_SOURCE_REVIEW || isBusy || !input.trim()}
                 aria-label="Send question"
               >
                 <Send className="h-4 w-4" />
               </Button>
               {isBusy ? (
-                <Button
-                  type="button"
-                  size="icon"
-                  variant="outline"
-                  onClick={stop}
-                  aria-label="Stop generating"
-                >
+                <Button type="button" size="icon" variant="outline" onClick={stop} aria-label="Stop generating">
                   <Loader2 className="h-4 w-4 animate-spin" />
                 </Button>
               ) : (
@@ -471,7 +430,8 @@ const AskAi = () => {
             </div>
           </div>
           <p className="mt-2 text-[11px] text-muted-foreground">
-            Answers are AI-generated from the AnaesthesiaCore curriculum and may not be complete. Always confirm against the linked topic and primary references before clinical use.
+            Previous answers are AI-generated historical messages. For current learning, read the topic pages and their
+            original references.
           </p>
         </form>
       </div>
@@ -479,32 +439,24 @@ const AskAi = () => {
   );
 };
 
-const EmptyState = ({ onPick }: { onPick: (q: string) => void }) => (
+const EmptyState = () => (
   <div className="text-center max-w-xl mx-auto py-8 space-y-5">
     <div className="inline-flex h-12 w-12 items-center justify-center rounded-full bg-primary/10 text-primary">
-      <Sparkles className="h-6 w-6" aria-hidden />
+      <BookOpen className="h-6 w-6" aria-hidden />
     </div>
     <div className="space-y-2">
-      <h2 className="text-lg font-serif font-semibold text-foreground">
-        Ask anything about the curriculum
-      </h2>
+      <h2 className="text-lg font-serif font-semibold text-foreground">AI answers are temporarily paused</h2>
       <p className="text-sm text-muted-foreground">
-        I'll answer using AnaesthesiaCore's FRCA Primary, FRCA Final, FFICM and
-        EDIC notes, then point you at the exact topic pages to read next.
+        While we review source material, browse the curriculum and read the original guidance linked from each topic.
+        Existing saved conversations are retained.
       </p>
     </div>
-    <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-left">
-      {SUGGESTED.map((q) => (
-        <button
-          key={q}
-          type="button"
-          onClick={() => onPick(q)}
-          className="text-xs sm:text-sm p-3 rounded-lg border border-border bg-background hover:border-primary/50 hover:bg-primary/5 transition text-foreground"
-        >
-          {q}
-        </button>
-      ))}
-    </div>
+    <Link
+      to="/curriculum"
+      className="inline-flex rounded-lg border border-border px-4 py-2 text-sm text-primary hover:bg-primary/5"
+    >
+      Browse the curriculum
+    </Link>
   </div>
 );
 
@@ -593,10 +545,7 @@ function highlightString(text: string, regex: RegExp | null): React.ReactNode {
   while ((m = regex.exec(text)) !== null) {
     if (m.index > last) out.push(text.slice(last, m.index));
     out.push(
-      <mark
-        key={`${m.index}-${out.length}`}
-        className="rounded-sm bg-primary/25 text-foreground px-0.5"
-      >
+      <mark key={`${m.index}-${out.length}`} className="rounded-sm bg-primary/25 text-foreground px-0.5">
         {m[0]}
       </mark>,
     );
@@ -604,7 +553,13 @@ function highlightString(text: string, regex: RegExp | null): React.ReactNode {
     if (m[0].length === 0) regex.lastIndex += 1;
   }
   if (last < text.length) out.push(text.slice(last));
-  return <>{out.map((n, i) => <Fragment key={i}>{n}</Fragment>)}</>;
+  return (
+    <>
+      {out.map((n, i) => (
+        <Fragment key={i}>{n}</Fragment>
+      ))}
+    </>
+  );
 }
 
 function highlightChildren(children: React.ReactNode, regex: RegExp | null): React.ReactNode {
@@ -629,10 +584,7 @@ function buildSnippet(answer: string, regex: RegExp | null): string | null {
   const radius = 80;
   const start = Math.max(0, m.index - radius);
   const end = Math.min(answer.length, m.index + m[0].length + radius);
-  const slice = answer
-    .slice(start, end)
-    .replace(/\s+/g, " ")
-    .trim();
+  const slice = answer.slice(start, end).replace(/\s+/g, " ").trim();
   return `${start > 0 ? "…" : ""}${slice}${end < answer.length ? "…" : ""}`;
 }
 
@@ -726,7 +678,9 @@ const HistoryPanel = ({ entries, onReopen }: HistoryPanelProps) => {
   // Reset the window when the user changes the query or reopens the sheet
   // — but NOT when `entries` changes, otherwise an incoming realtime row
   // would collapse the user's scroll position back to the first page.
-  useEffect(() => { setVisibleCount(PAGE_SIZE); }, [query, open]);
+  useEffect(() => {
+    setVisibleCount(PAGE_SIZE);
+  }, [query, open]);
   useEffect(() => {
     if (scrollRef.current) scrollRef.current.scrollTop = 0;
   }, [query]);
@@ -765,14 +719,14 @@ const HistoryPanel = ({ entries, onReopen }: HistoryPanelProps) => {
     return () => io.disconnect();
   }, [open, hasMore, ranked.length]);
 
-
   const handleReopen = (entry: QAEntry) => {
     onReopen(entry);
     setOpen(false);
   };
 
   const markdownComponents = useMemo(() => {
-    const wrap = (Tag: keyof JSX.IntrinsicElements) =>
+    const wrap =
+      (Tag: keyof JSX.IntrinsicElements) =>
       ({ children, ...rest }: { children?: React.ReactNode }) => {
         const Comp = Tag as React.ElementType;
         return <Comp {...rest}>{highlightChildren(children, regex)}</Comp>;
@@ -824,7 +778,10 @@ const HistoryPanel = ({ entries, onReopen }: HistoryPanelProps) => {
 
         <div className="p-3 border-b border-border space-y-2">
           <div className="relative">
-            <Search className="absolute left-2.5 top-1/2 -translate-y-1/2 h-3.5 w-3.5 text-muted-foreground" aria-hidden />
+            <Search
+              className="absolute left-2.5 top-1/2 -translate-y-1/2 h-3.5 w-3.5 text-muted-foreground"
+              aria-hidden
+            />
             <Input
               value={query}
               onChange={(e) => setQuery(e.target.value)}
@@ -852,7 +809,6 @@ const HistoryPanel = ({ entries, onReopen }: HistoryPanelProps) => {
         </div>
 
         <div ref={scrollRef} className="flex-1 overflow-y-auto">
-
           {entries.length === 0 ? (
             <div className="p-8 text-center text-sm text-muted-foreground">
               <MessageSquare className="h-8 w-8 mx-auto mb-3 opacity-40" aria-hidden />
@@ -879,13 +835,16 @@ const HistoryPanel = ({ entries, onReopen }: HistoryPanelProps) => {
                       <div className="mt-1 flex flex-wrap items-center gap-x-2 gap-y-0.5 text-[11px] text-muted-foreground">
                         <span>
                           {new Date(entry.updatedAt).toLocaleString(undefined, {
-                            day: "numeric", month: "short", year: "numeric",
-                            hour: "2-digit", minute: "2-digit",
+                            day: "numeric",
+                            month: "short",
+                            year: "numeric",
+                            hour: "2-digit",
+                            minute: "2-digit",
                           })}
                         </span>
                         <span aria-hidden>·</span>
                         <span>asked {entry.askCount}×</span>
-                        {regex && (questionHits + answerHits) > 0 && (
+                        {regex && questionHits + answerHits > 0 && (
                           <>
                             <span aria-hidden>·</span>
                             <span>
@@ -901,9 +860,7 @@ const HistoryPanel = ({ entries, onReopen }: HistoryPanelProps) => {
                       )}
                       {isOpen && (
                         <div className="mt-2 rounded-md border border-border bg-muted/30 p-3 prose prose-sm max-w-none dark:prose-invert prose-headings:font-serif prose-a:text-primary">
-                          <ReactMarkdown components={markdownComponents}>
-                            {entry.answer}
-                          </ReactMarkdown>
+                          <ReactMarkdown components={markdownComponents}>{entry.answer}</ReactMarkdown>
                         </div>
                       )}
                       <div className="mt-2">
@@ -923,10 +880,7 @@ const HistoryPanel = ({ entries, onReopen }: HistoryPanelProps) => {
                 })}
               </ul>
               {hasMore ? (
-                <div
-                  ref={sentinelRef}
-                  className="flex items-center justify-center p-4"
-                >
+                <div ref={sentinelRef} className="flex items-center justify-center p-4">
                   <Button
                     type="button"
                     size="sm"
@@ -945,7 +899,6 @@ const HistoryPanel = ({ entries, onReopen }: HistoryPanelProps) => {
               ) : null}
             </>
           )}
-
         </div>
       </SheetContent>
     </Sheet>
