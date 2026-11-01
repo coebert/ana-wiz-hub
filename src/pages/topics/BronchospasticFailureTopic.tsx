@@ -361,7 +361,7 @@ const BronchospasticFailureTopic = () => {
             <li><strong>Airway:</strong> high-flow oxygen; secure the airway early if angioedema or stridor — expect a difficult intubation.</li>
             <li><strong>Circulation:</strong> rapid crystalloid boluses (500–1000 mL, repeated) for hypotension; adrenaline infusion if refractory after two IM doses.</li>
             <li><strong>Refractory bronchospasm:</strong> once adrenaline has been given, add nebulised or IV salbutamol, ipratropium, magnesium or aminophylline as for severe asthma.</li>
-            <li><strong>After stabilisation:</strong> corticosteroids are not routine anaphylaxis treatment and do not prevent biphasic reactions. Antihistamines treat residual skin symptoms, not airway, breathing or circulatory compromise; prefer a non-sedating oral agent where appropriate. Steroids may be considered for persistent asthma or refractory shock after initial resuscitation, never instead of adrenaline. Send mast-cell tryptase and refer to an allergy clinic <InlineRef topicId="bronchospastic-failure" refLabel="RCUK Anaphylaxis 2021" />.</li>
+            <li><strong>After stabilisation:</strong> corticosteroids are not routine anaphylaxis treatment and have not been shown to prevent biphasic reactions. Antihistamines treat residual skin symptoms, not airway, breathing or circulatory compromise; prefer a non-sedating oral agent where appropriate. Steroids may be considered for persistent asthma or refractory shock after initial resuscitation, never instead of adrenaline. Send mast-cell tryptase and refer to an allergy clinic <InlineRef topicId="bronchospastic-failure" refLabel="RCUK Anaphylaxis 2021" />.</li>
           </ul>
         </CollapsibleSubsection>
 

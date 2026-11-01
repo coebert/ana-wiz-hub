@@ -59,7 +59,7 @@ const SuxVsRocComparisonTopic = () => {
         name: "What dose of sugammadex reverses rocuronium?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "Sugammadex reverses rocuronium in a dose-dependent manner: 2 mg/kg at reappearance of T2 for routine reversal; 4 mg/kg at recovery to 1–2 post-tetanic counts (PTC); and 16 mg/kg for adult immediate reversal approximately 3 minutes after rocuronium 1.2 mg/kg; paediatric immediate reversal has not been investigated. Counsel patients that sugammadex inactivates hormonal contraceptives for 7 days (Schaller & Fink, Anaesthesia 2013; Merck SmPC).",
+          text: "Sugammadex reverses rocuronium in a dose-dependent manner: 2 mg/kg at reappearance of T2 for routine reversal; 4 mg/kg at recovery to 1–2 post-tetanic counts (PTC); and 16 mg/kg for adult immediate reversal approximately 3 minutes after rocuronium 1.2 mg/kg; paediatric immediate reversal has not been investigated. Follow the named Bridion contraception advice: oral users follow their product’s missed-dose instructions; non-oral hormonal users add non-hormonal contraception for 7 days.",
         },
       },
       {
@@ -67,7 +67,7 @@ const SuxVsRocComparisonTopic = () => {
         name: "Can sugammadex reverse rocuronium fast enough to rescue a failed RSI?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "Sugammadex 16 mg/kg reverses a 1.2 mg/kg rocuronium block to a TOF ratio ≥0.9 in approximately 3 minutes — faster than spontaneous recovery from suxamethonium 1.0 mg/kg (~9–10 minutes). However, reversal does not restore upper-airway tone immediately, so it should never replace a proper difficult-airway plan (DAS 2015).",
+          text: "Adult immediate reversal is a specific Bridion regimen after rocuronium 1.2 mg/kg, not guaranteed airway rescue. Recovery time varies; continue oxygenation and the failed-airway plan even if neuromuscular recovery is demonstrated.",
         },
       },
       {
@@ -75,7 +75,7 @@ const SuxVsRocComparisonTopic = () => {
         name: "Can rocuronium be used for RSI if sugammadex is unavailable?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "Yes, but the clinical duration of rocuronium 1.2 mg/kg is 45–70 minutes without sugammadex. In this scenario neostigmine can only be given once four twitches have returned (T2), which may take 30–60 minutes. Suxamethonium remains an acceptable alternative when rapid spontaneous recovery is desired and there are no contraindications.",
+          text: "Rocuronium can be used without sugammadex where the patient-specific airway and ventilation plan accounts for prolonged paralysis. Four twitches are TOF count 4, not T2. ASA 2023 supports neostigmine as an alternative at minimal block (quantitative TOF ratio 0.4 to <0.9); deeper reversal is slower and less predictable. Choice of NMBA and reversal follows the clinical context, monitoring and available expertise.",
         },
       },
     ],
@@ -145,7 +145,7 @@ const SuxVsRocComparisonTopic = () => {
                 <tr>
                   <td className="font-medium">Clinical duration</td>
                   <td>~6–10 min (spontaneous offset)</td>
-                  <td>~45–70 min (or &lt;3 min with sugammadex 16 mg/kg)</td>
+                  <td>Often prolonged without reversal; depends on dose and patient. Sugammadex recovery time is variable.</td>
                 </tr>
                 <tr>
                   <td className="font-medium">Metabolism / elimination</td>
@@ -155,7 +155,7 @@ const SuxVsRocComparisonTopic = () => {
                 <tr>
                   <td className="font-medium">Reversal</td>
                   <td>None — wait for spontaneous recovery</td>
-                  <td>Sugammadex (2/4/16 mg/kg by depth) or neostigmine once T2</td>
+                  <td>Sugammadex according to the defined routine/immediate regimen; neostigmine requires adequate spontaneous recovery and quantitative monitoring.</td>
                 </tr>
                 <tr>
                   <td className="font-medium">MH trigger</td>
@@ -203,10 +203,10 @@ const SuxVsRocComparisonTopic = () => {
             practice, apnoea time on suxamethonium frequently exceeds safe
             apnoea time in obese, pregnant, or critically ill patients, so this
             "self-rescue" argument is weaker than traditionally taught.
-            Rocuronium's 45–70 min duration is irrelevant if sugammadex is
-            immediately available — a 16 mg/kg dose reverses a 1.2 mg/kg
-            rocuronium block to TOF ratio ≥0.9 in approximately 3 minutes,
-            faster than spontaneous suxamethonium recovery.
+            Rocuronium's prolonged action remains important even when sugammadex is
+            available. The adult immediate-reversal regimen has a specific
+            recent-rocuronium context and does not guarantee airway patency
+            or adequate breathing; ventilation and the failed-airway plan remain essential.
           </p>
         </section>
 
@@ -215,7 +215,7 @@ const SuxVsRocComparisonTopic = () => {
           <ul className="list-disc list-inside space-y-1 text-foreground/90">
             <li>
               <strong>Hyperkalaemia or risk of exaggerated K⁺ release</strong> —
-              extrajunctional nAChR upregulation in burns (&gt;24–72 h),
+              extrajunctional nAChR upregulation in burns (the adopted Salisbury protocol avoids suxamethonium after the initial 24 h),
               denervation injury, prolonged immobility, or critical illness can
               precipitate K⁺ rises of 5–10 mmol/L and cardiac arrest.
             </li>
@@ -246,9 +246,9 @@ const SuxVsRocComparisonTopic = () => {
           <h2 className="text-2xl font-serif font-bold text-foreground">Reversal strategy</h2>
           <p className="text-foreground/90 leading-relaxed">
             Suxamethonium has no pharmacological reversal — recovery depends on
-            plasma cholinesterase hydrolysis. Rocuronium can be reversed at any
-            depth by <strong>sugammadex</strong>, a modified γ-cyclodextrin that
-            encapsulates the molecule 1:1:
+            plasma cholinesterase hydrolysis. For rocuronium reversal, <strong>sugammadex</strong>
+            is selected according to the measured block and the specific licensed
+            routine or immediate-reversal context:
           </p>
           <ul className="list-disc list-inside space-y-1 text-foreground/90 mt-2">
             <li><strong>2 mg/kg</strong> — routine reversal at reappearance of T2.</li>
@@ -256,11 +256,12 @@ const SuxVsRocComparisonTopic = () => {
             <li><strong>16 mg/kg</strong> — adult immediate reversal, approximately 3 min after rocuronium 1.2 mg/kg; not any prolonged block or paediatric immediate reversal. Quantitative TOF ratio ≥0.9 remains the recovery target.</li>
           </ul>
           <p className="text-foreground/90 leading-relaxed mt-3">
-            Counsel patients that sugammadex inactivates hormonal contraceptives
-            for 7 days. Re-paralysis within 24 h needs a benzylisoquinolinium
-            (e.g. cisatracurium) or a much larger rocuronium dose. Reversal does
-            <em>not</em> restore upper-airway tone instantly and is never a
-            substitute for a proper failed-intubation plan (DAS 2015).
+            Use the Bridion missed-dose advice for oral contraception; add non-hormonal
+            contraception for 7 days with non-oral hormonal methods. Re-use of an
+            NMBA depends on the previous reversal dose, renal function and the
+            product waiting-time table; there is no universal 24-hour rule.
+            Reversal does <em>not</em> guarantee adequate breathing or replace the
+            failed-airway plan.
           </p>
         </section>
 
@@ -268,9 +269,9 @@ const SuxVsRocComparisonTopic = () => {
           <h2 className="text-2xl font-serif font-bold text-foreground">So which should I use?</h2>
           <div className="rounded-lg border border-pharmacology/30 bg-pharmacology/5 p-4 space-y-2 text-foreground/90">
             <p>
-              <strong>Default for modern RSI where sugammadex is immediately
-              available:</strong> rocuronium 1.0–1.2 mg/kg. Comparable intubating
-              conditions, no MH/hyperkalaemia risk, fully reversible.
+              <strong>Rocuronium is an RSI option:</strong> choose the drug and dose for
+              the patient, airway plan and available reversal/ventilation support.
+              Sugammadex availability does not guarantee rescue after failed intubation.
             </p>
             <p>
               <strong>Suxamethonium is still reasonable</strong> when sugammadex

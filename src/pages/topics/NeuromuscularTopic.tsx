@@ -60,7 +60,7 @@ const workedExamples: WorkedExample[] = [
             Each open channel allows K⁺ efflux → potassium release can be 2–5× the normal 0.5 mmol/L rise,
             triggering hyperkalaemic cardiac arrest.
           </li>
-          <li>Risk window: from ~24–48 h post-injury until full healing/rehabilitation (months).</li>
+          <li>Burns: the adopted Salisbury protocol avoids suxamethonium after the initial 24 h. Denervation and other injuries need their own risk assessment; there is no universal safe end date.</li>
         </ul>
       </>
     ),
@@ -93,7 +93,7 @@ const workedExamples: WorkedExample[] = [
             normally mobilises ACh during repetitive stimulation.
           </li>
           <li>
-            Neostigmine works only when TOFR ≥ 0.4 (≥2 twitches reliably present). Sugammadex encapsulates
+            ASA 2023 supports neostigmine as an alternative at minimal block (quantitative TOF ratio 0.4 to &lt;0.9); deeper reversal is slower and less predictable. T2 is the second twitch, not a TOF ratio. Sugammadex encapsulates
             rocuronium/vecuronium in adults: 2 mg/kg at reappearance of T2 (TOF count, not ratio), 4 mg/kg at PTC 1–2.
             Adult 16 mg/kg immediate reversal is the approximately 3-minute-after-rocuronium-1.2-mg/kg context, not any NMBA/depth or paediatric immediate reversal.
           </li>
@@ -102,12 +102,12 @@ const workedExamples: WorkedExample[] = [
     ),
     answer: (
       <>
-        <Link to="/pharmacology/muscle-relaxants" className="text-pharmacology underline">Sugammadex</Link> 2 mg/kg is the cleanest option — predictable, complete reversal within ~2 min. Aim for
-        TOFR &gt; 0.9 before extubation; residual block (TOFR 0.7–0.9) increases postoperative pulmonary
+        <Link to="/pharmacology/muscle-relaxants" className="text-pharmacology underline">Sugammadex</Link> is one option for the stated rocuronium block; the licensed dose depends on measured depth. Recovery time varies. Confirm
+        quantitative TOF ratio ≥0.9 before extubation and assess the airway and breathing separately; residual block increases postoperative pulmonary
         complications, hypoxaemia, and aspiration risk.
       </>
     ),
-    cites: ["Assoc Anaesth 2023 (NMB)", "BJA Educ 2018 (NMJ)"],
+    cites: ["ASA 2023 NMB", "Bridion SmPC", "BJA Educ 2018 (NMJ)"],
   },
 ];
 
@@ -131,7 +131,7 @@ const NeuromuscularTopic = () => {
       }}
       sectionSources={{
         objectives: ["BJA Educ 2018 (NMJ)", "Power & Kam Ch.15"],
-        workedExamples: ["BJA Educ 2018 (NMJ)", "Assoc Anaesth 2023 (NMB)", "Power & Kam Ch.15"],
+        workedExamples: ["BJA Educ 2018 (NMJ)", "ASA 2023 NMB", "Bridion SmPC", "Power & Kam Ch.15"],
         keyPoints: ["BJA Educ 2018 (NMJ)", "Ganong Ch.5", "Power & Kam Ch.15"],
       }}
       keyPoints={[
@@ -322,7 +322,7 @@ const NeuromuscularTopic = () => {
               <><strong>Suxamethonium hyperkalaemia</strong>: avoid in burns &gt;24 h, denervation, prolonged immobility, muscular dystrophy — extrajunctional receptor upregulation.</>,
               <><strong>Myasthenia gravis</strong>: sensitive to non-depolarisers, resistant to sux — titrate to TOF.</>,
               <><strong>Always reverse to TOF ratio ≥0.9</strong>: residual block at 0.7–0.9 is invisible clinically but doubles postoperative pulmonary complications.</>,
-              <><strong>Sugammadex</strong> chelates rocuronium/vecuronium in any depth of block — does not work for benzylisoquinoliniums; rebleed risk after 24 h with hormonal contraception.</>,
+              <><strong>Sugammadex</strong>: use the measured-depth and indication-specific regimen. It does not reverse benzylisoquinolinium blockade. Follow separate oral/non-oral contraception advice; contraception is not a delayed bleeding warning.</>,
               <><strong>Pseudocholinesterase deficiency</strong>: prolonged sux block — sedate and ventilate until block reverses; check dibucaine number postoperatively.</>,
             ]}
           />
