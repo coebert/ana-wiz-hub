@@ -14,13 +14,7 @@ export type AnaesthesiaDoseKind = "bolus" | "infusion" | "fixed";
 
 /** Native dosing unit for the entered dose. */
 export type AnaesthesiaDoseUnit =
-  | "mg/kg"
-  | "micrograms/kg"
-  | "mg"
-  | "micrograms"
-  | "mg/kg/h"
-  | "micrograms/kg/min"
-  | "micrograms/kg/h";
+  "mg/kg" | "micrograms/kg" | "mg" | "micrograms" | "mg/kg/h" | "micrograms/kg/min" | "micrograms/kg/h";
 
 /** Unit the drug is presented (and therefore concentration) in. */
 export type AnaesthesiaAmountUnit = "mg" | "micrograms";
@@ -94,7 +88,8 @@ export const anaesthesiaCalcGroups: AnaesthesiaCalcGroup[] = [
   {
     id: "local-anaesthetics",
     title: "Local anaesthetic product limits",
-    blurb: "Adult product/route-specific limits, not patient-specific safe doses. Mixed-agent exposure and prior doses matter.",
+    blurb:
+      "Adult product/route-specific limits, not patient-specific safe doses. Mixed-agent exposure and prior doses matter.",
   },
 ];
 
@@ -447,17 +442,19 @@ export const anaesthesiaCalcDrugs: AnaesthesiaCalcDrug[] = [
     groupId: "reversal",
     kind: "fixed",
     unit: "micrograms",
-    startDose: 200,
-    minDose: 100,
-    maxDose: 1000,
+    // Inactive required-schema placeholders: this titrated regimen is lookup-only.
+    startDose: 0,
+    minDose: 0,
+    maxDose: 0,
+    lookupOnly: true,
     concentrationPerMl: 100,
     amountUnit: "micrograms",
-    concentrationLabel: "500 microgram in 5 mL = 100 microgram/mL",
-    maxSingleDose: 1000,
-    route: "IV, 200 microgram then 100 microgram every minute",
+    concentrationLabel: "hameln 100 micrograms/mL; 5 mL (500 micrograms) or 10 mL (1 mg) ampoule",
+    route: "IV; adult anaesthesia/sedation reversal reference",
     notes:
-      "Maximum ~1 mg. Avoid in benzodiazepine-dependent patients or mixed overdose with pro-convulsants — risk of seizures and re-sedation.",
-    topicPaths: ["/pharmacology/sedatives"],
+      "Named hameln SmPC: adult anaesthesia reversal starts with 200 micrograms over 15 seconds. Reassess after 60 seconds; if needed give 100-microgram increments at 60-second intervals, stopping at the required response or 1 mg cumulative. The 1 mg limit is a titrated course total, not one injection. Intensive-care and paediatric indications have different regimens; use their exact named guidance. Check contraindications and mixed-overdose/dependence risks, support ventilation, and monitor for re-sedation.",
+    sourceUrl: "https://www.medicines.org.uk/emc/product/6300/smpc",
+    topicPaths: ["/pharmacology/iv-anaesthetics"],
   },
 
   // ---------------- Opioids ----------------
@@ -569,7 +566,8 @@ export const anaesthesiaCalcDrugs: AnaesthesiaCalcDrug[] = [
     concentrationLabel: "1 g in 100 mL = 10 mg/mL",
     maxSingleDose: 1000,
     route: "IV product-specific lookup; no generic mg/kg output",
-    notes: "UK IV product emc 100803: ≤10 kg 7.5 mg/kg/dose, max 30 mg/kg/day; >10–33 kg 15 mg/kg/dose, max 60 mg/kg/day and 2 g; >33–50 kg 15 mg/kg/dose, max 60 mg/kg/day and 3 g; >50 kg 1 g/dose, max 3 g/day with hepatotoxicity risks or 4 g/day without. Follow product dose intervals; count all routes/products. No preterm dosing is established by this product. This lookup does not calculate a patient-specific dose.",
+    notes:
+      "UK IV product emc 100803: ≤10 kg 7.5 mg/kg/dose, max 30 mg/kg/day; >10–33 kg 15 mg/kg/dose, max 60 mg/kg/day and 2 g; >33–50 kg 15 mg/kg/dose, max 60 mg/kg/day and 3 g; >50 kg 1 g/dose, max 3 g/day with hepatotoxicity risks or 4 g/day without. Follow product dose intervals; count all routes/products. No preterm dosing is established by this product. This lookup does not calculate a patient-specific dose.",
     topicPaths: ["/pharmacology/analgesics"],
   },
   {
@@ -600,7 +598,8 @@ export const anaesthesiaCalcDrugs: AnaesthesiaCalcDrug[] = [
     amountUnit: "micrograms",
     concentrationLabel: "10 mg in 100 mL = 100 microgram/mL",
     route: "IV bolus",
-    notes: "Pure alpha-1 agonist — reflex bradycardia is expected. First-line for spinal-induced hypotension in obstetrics.",
+    notes:
+      "Pure alpha-1 agonist — reflex bradycardia is expected. First-line for spinal-induced hypotension in obstetrics.",
     topicPaths: ["/pharmacology/vasopressors"],
   },
   {
@@ -631,7 +630,8 @@ export const anaesthesiaCalcDrugs: AnaesthesiaCalcDrug[] = [
     concentrationLabel: "600 microgram/mL",
     maxSingleDose: 3000,
     route: "IV bolus",
-    notes: "For haemodynamically significant bradycardia; maximum ~3 mg total. Doses below 300 microgram may worsen bradycardia.",
+    notes:
+      "For haemodynamically significant bradycardia; maximum ~3 mg total. Doses below 300 microgram may worsen bradycardia.",
     topicPaths: ["/pharmacology/autonomic-drugs"],
   },
 
@@ -651,7 +651,8 @@ export const anaesthesiaCalcDrugs: AnaesthesiaCalcDrug[] = [
     amountUnit: "mg",
     concentrationLabel: "Named lidocaine 2% product = 20 mg/mL",
     route: "Adult local/regional anaesthesia; consult procedure-specific product table",
-    notes: "Named UK product emc 15150: single dose ≤4.5 mg/kg and ≤300 mg. This is a product upper limit, not a target or toxicity threshold; local policies may be more conservative. Prior doses, injection site, mixtures, illness and dosing weight require individual assessment; not IVRA or paediatric clearance.",
+    notes:
+      "Named UK product emc 15150: single dose ≤4.5 mg/kg and ≤300 mg. This is a product upper limit, not a target or toxicity threshold; local policies may be more conservative. Prior doses, injection site, mixtures, illness and dosing weight require individual assessment; not IVRA or paediatric clearance.",
     topicPaths: ["/pharmacology/local-anaesthetics"],
   },
   {
@@ -669,7 +670,8 @@ export const anaesthesiaCalcDrugs: AnaesthesiaCalcDrug[] = [
     amountUnit: "mg",
     concentrationLabel: "Lidocaine 1% with adrenaline = 10 mg/mL",
     route: "Infiltration or block",
-    notes: "Named Xylocaine 1% with adrenaline 1:200,000 (emc 2397): adult maximum single dose 500 mg; procedure-specific tables may require much less. The 7 mg/kg figure is a conservative teaching constraint, not permission to exceed a lower local limit or evidence of patient safety. Prior/mixed-agent exposure, site and vasoconstrictor suitability need review.",
+    notes:
+      "Named Xylocaine 1% with adrenaline 1:200,000 (emc 2397): adult maximum single dose 500 mg; procedure-specific tables may require much less. The 7 mg/kg figure is a conservative teaching constraint, not permission to exceed a lower local limit or evidence of patient safety. Prior/mixed-agent exposure, site and vasoconstrictor suitability need review.",
     topicPaths: ["/pharmacology/local-anaesthetics"],
   },
   {
@@ -687,7 +689,8 @@ export const anaesthesiaCalcDrugs: AnaesthesiaCalcDrug[] = [
     amountUnit: "mg",
     concentrationLabel: "0.25% = 2.5 mg/mL",
     route: "Adult field block / infiltration only",
-    notes: "Named product emc 11611: field-block/infiltration table limit 150 mg; no more than 2 mg/kg in any four-hour period, including prior doses. This is not a neuraxial or major-nerve-block dose. Reduce where indicated and account for all prior/mixed LA exposure. Highly cardiotoxic: never IV; lipid rescue available.",
+    notes:
+      "Named product emc 11611: field-block/infiltration table limit 150 mg; no more than 2 mg/kg in any four-hour period, including prior doses. This is not a neuraxial or major-nerve-block dose. Reduce where indicated and account for all prior/mixed LA exposure. Highly cardiotoxic: never IV; lipid rescue available.",
     topicPaths: ["/pharmacology/local-anaesthetics"],
   },
   {
@@ -705,7 +708,8 @@ export const anaesthesiaCalcDrugs: AnaesthesiaCalcDrug[] = [
     amountUnit: "mg",
     concentrationLabel: "Levobupivacaine 2.5 mg/mL",
     route: "Adult local infiltration only",
-    notes: "Named product emc 13644: adult infiltration/single-dose limit 150 mg; maximum 400 mg/24 h is not a repeat-dose prescription. Use the lowest effective dose, reduced in frail/acutely ill patients; account for prior doses and mixtures. Not a paediatric or intrathecal regimen.",
+    notes:
+      "Named product emc 13644: adult infiltration/single-dose limit 150 mg; maximum 400 mg/24 h is not a repeat-dose prescription. Use the lowest effective dose, reduced in frail/acutely ill patients; account for prior doses and mixtures. Not a paediatric or intrathecal regimen.",
     topicPaths: ["/pharmacology/local-anaesthetics"],
   },
   {
@@ -721,7 +725,8 @@ export const anaesthesiaCalcDrugs: AnaesthesiaCalcDrug[] = [
     amountUnit: "mg",
     concentrationLabel: "0.5% = 5 mg/mL",
     route: "Infiltration or block",
-    notes: "No universal maximum is calculated: route, product concentration and cumulative exposure determine recommendations. Select the exact product/procedure table; a generic 3 mg/kg or 200 mg limit cannot certify safety.",
+    notes:
+      "No universal maximum is calculated: route, product concentration and cumulative exposure determine recommendations. Select the exact product/procedure table; a generic 3 mg/kg or 200 mg limit cannot certify safety.",
     topicPaths: ["/pharmacology/local-anaesthetics"],
   },
   {
@@ -737,7 +742,8 @@ export const anaesthesiaCalcDrugs: AnaesthesiaCalcDrug[] = [
     amountUnit: "mg",
     concentrationLabel: "1% = 10 mg/mL",
     route: "Infiltration or IV regional anaesthesia",
-    notes: "No universal infiltration/IVRA maximum is calculated. IVRA requires its own route-specific product and tourniquet protocol; do not extrapolate infiltration doses. The o-toluidine metabolite can cause methaemoglobinaemia. Product/route adoption remains outstanding.",
+    notes:
+      "No universal infiltration/IVRA maximum is calculated. IVRA requires its own route-specific product and tourniquet protocol; do not extrapolate infiltration doses. The o-toluidine metabolite can cause methaemoglobinaemia. Product/route adoption remains outstanding.",
     topicPaths: ["/pharmacology/local-anaesthetics"],
   },
 ];
