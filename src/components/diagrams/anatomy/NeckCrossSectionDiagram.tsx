@@ -110,7 +110,7 @@ const NeckCrossSectionDiagram = () => {
             <p className="text-sm font-semibold text-foreground">Spatial relationships — C6 cross-section withdrawn</p>
             <p className="text-sm text-muted-foreground mt-2">{NECK_SPATIAL}</p>
             <p className="text-sm text-muted-foreground mt-2">{NECK_FASCIA_CONVENTION}</p>
-            <InlineRef topicId="head-neck-anatomy" refLabel="Michigan vertebral anatomy" /><InlineRef topicId="head-neck-anatomy" refLabel="UAMS neck fascia" /><InlineRef topicId="head-neck-anatomy" refLabel="Alar fascia review 2023" />
+            <InlineRef topicId="head-neck-anatomy" refLabel="Michigan vertebral anatomy" /><InlineRef topicId="head-neck-anatomy" refLabel="UAMS neck fascia" /><InlineRef topicId="head-neck-anatomy" refLabel="Alar fascia review 2022" />
           </div>
           {/* Legend / selection panel */}
           <div className="flex flex-col gap-1.5 min-w-[180px]">

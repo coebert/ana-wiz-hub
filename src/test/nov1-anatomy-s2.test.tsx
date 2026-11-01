@@ -26,9 +26,8 @@ describe("S2 limited anatomy corrections (not anatomical certification)", () => 
   });
   it("SCI053 catheter is withheld in epidural, needle, dura and CSF states", () => {
     const { container } = mount(Epidural);
-    for (const name of ["Epidural space (fat)", "Tuohy needle (16–18G)", "Dura mater", "CSF (subarachnoid)"]) {
-      const button = screen.queryByRole("button", { name });
-      if (button) fireEvent.click(button);
+    for (const name of ["Epidural space (fat)", "Tuohy needle (16–18G)", "Dura mater", "Subarachnoid space (CSF)"]) {
+      fireEvent.click(screen.getByRole("button", { name }));
       expect(container.textContent).toContain("misleading needle/catheter overlay is withdrawn");
       expect(container.querySelector('[id*="catheter"], [id*="needle"]')).toBeNull();
     }
@@ -109,7 +108,7 @@ describe("S2 limited anatomy corrections (not anatomical certification)", () => 
       "brachial-plexus": ["NICE HTG179 block", "RAUK needling", "SPA supraclavicular guide"],
       "thoracic-anatomy": ["WFSA thoracic PVB", "Intercostal anatomy", "Thoracic wall VAN", "BTS pleural procedures 2023", "ESRA Plan A ESP"],
       "spinal-anatomy": ["WFSA epidural", "RCoA epidural dura"],
-      "head-neck-anatomy": ["Michigan vertebral anatomy", "UAMS neck fascia", "Michigan laryngeal membranes", "Alar fascia review 2023", "Litman airway MRI 2003", "Dalal airway 2009", "Kwon airway 2018"],
+      "head-neck-anatomy": ["Michigan vertebral anatomy", "UAMS neck fascia", "Michigan laryngeal membranes", "Alar fascia review 2022", "Litman airway MRI 2003", "Dalal airway 2009", "Kwon airway 2018"],
     })) for (const label of labels) {
       const refs = topicReferences[topic].filter(r => r.label === label);
       expect(refs).toHaveLength(1);
