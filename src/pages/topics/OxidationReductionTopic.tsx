@@ -3,7 +3,7 @@ import { TopicFaqs } from "@/components/topic/TopicFaqs";
 
 const oxidationReductionFaqs: Array<[string, string]> = [
   ["Why is methaemoglobin clinically dangerous?", "In methaemoglobin the haem iron is oxidised from Fe²⁺ to Fe³⁺ and cannot bind oxygen, while remaining haems bind O₂ more tightly (left-shifted curve) — so tissue delivery falls. Levels >15% cause cyanosis unresponsive to oxygen; >50% cause coma; >70% are fatal. Treat with IV methylene blue 1–2 mg/kg, which regenerates Fe²⁺ via NADPH-methaemoglobin reductase."],
-  ["How does a fuel cell oxygen analyser work?", "A galvanic (fuel) cell consumes O₂ at a lead anode (Pb + 2OH⁻ → PbO + H₂O + 2e⁻), generating a current proportional to O₂ partial pressure at the gold cathode (O₂ + 2H₂O + 4e⁻ → 4OH⁻). It is self-powered, accurate to ±3%, and lasts typically 1–2 years because the anode is consumed."],
+  ["How does a fuel cell oxygen analyser work?", "In a lead/gold galvanic (fuel) oxygen cell, oxygen is reduced at the gold cathode (O₂ + 2H₂O + 4e⁻ → 4OH⁻), while lead is oxidised at the anode (Pb + 2OH⁻ → PbO + H₂O + 2e⁻). The resulting current is proportional to O₂ partial pressure. It is self-powered, accurate to ±3%, and lasts typically 1–2 years because the anode is consumed."],
   ["Which inhaled anaesthetics are degraded by CO₂ absorbents?", "Sevoflurane reacts with strong bases (KOH, NaOH) in soda-lime to form Compound A, a vinyl ether with renal toxicity in rats. Desflurane, enflurane and isoflurane (in descending order of risk; sevoflurane produces little) react with desiccated CO₂ absorbent to generate carbon monoxide. Both risks are mitigated by using KOH/NaOH-free absorbents (e.g. Amsorb Plus) and avoiding desiccated absorbent."],
 ];
 import { CollapsibleSubsection } from "@/components/topic/CollapsibleSubsection";
@@ -73,7 +73,7 @@ const OxidationReductionTopic = () => {
         { text: "Clark electrode (PO₂): amperometric — O₂ reduced at a platinum cathode; current ∝ PO₂", cites: ["Cross & Plunkett Ch.3"] },
         { text: "Severinghaus electrode (PCO₂): CO₂ diffuses through Teflon into NaHCO₃ → pH change measured", cites: ["Blood Gas Review 2025"] },
         { text: "Galvanic fuel cell: self-generating O₂ sensor (no external voltage); lead anode consumed over time", cites: ["Halliwell & Gutteridge"] },
-        { text: "Free radicals have unpaired electrons — superoxide, hydroxyl radical, peroxynitrite", cites: ["Wright 1999 (MetHb)"] },
+        { text: "Free radicals have unpaired electrons: superoxide, hydroxyl radical and nitric oxide. Hydrogen peroxide and peroxynitrite are nonradical oxidants; ONOO⁻ is a reactive nitrogen species", cites: ["Pacher 2007 Peroxynitrite"] },
         { text: "Ischaemia–reperfusion generates ROS via xanthine oxidase — major cause of post-ROSC organ damage", cites: ["Cross & Plunkett Ch.3"] },
         { text: "N-acetylcysteine replenishes glutathione — treats paracetamol toxicity by neutralising NAPQI", cites: ["Freo 2021 Paracetamol"] },
       ]}
@@ -183,7 +183,7 @@ const OxidationReductionTopic = () => {
                 O₂ alarm on the anaesthetic machine backbar. It generates a current proportional to pO₂ without needing any
                 external polarising voltage — the chemical reaction itself is the power source. A <strong>lead anode</strong>
                 and <strong>gold cathode</strong> sit in a <strong>potassium hydroxide (KOH)</strong> electrolyte: at the anode,
-                Pb + 2OH⁻ → PbO + H₂O + 2e⁻; at the cathode, O₂ + 2H₂O + 4e⁻ → 4OH⁻. Because the lead anode is progressively
+                Pb + 2OH⁻ → PbO + H₂O + 2e⁻ (lead oxidation); at the cathode, O₂ + 2H₂O + 4e⁻ → 4OH⁻ (oxygen reduction). <InlineRef topicId="oxidation-reduction" refLabel="Lead Gold Oxygen Sensor" /> Because the lead anode is progressively
                 consumed, cell lifespan is finite — typically <strong>1–2 years</strong>, and cells are rated in
                 <strong> ampere-hours (or "oxygen-hours")</strong> of remaining life. Response is relatively slow
                 (~<strong>20 s</strong>), but there is no calibration drift over the short term, making it well suited to
@@ -221,8 +221,7 @@ const OxidationReductionTopic = () => {
             <CollapsibleSubsection title="Free Radicals & Ischaemia–Reperfusion">
             <div className="text-muted-foreground leading-relaxed space-y-3">
               <p>
-                Free radicals contain an unpaired electron and are highly reactive. Reactive oxygen species (ROS) include
-                <strong> superoxide (O₂⁻·), hydroxyl radical (OH·) and peroxynitrite (ONOO⁻)</strong>. Endogenous antioxidants —
+                Free radicals contain an unpaired electron: examples are <strong>superoxide (O₂⁻·), hydroxyl radical (OH·) and nitric oxide (NO·)</strong>. Hydrogen peroxide (H₂O₂) is a nonradical reactive oxygen species; <strong>peroxynitrite (ONOO⁻) is a nonradical reactive nitrogen species</strong>, although its reactions can generate radicals. <InlineRef topicId="oxidation-reduction" refLabel="Pacher 2007 Peroxynitrite" /> Endogenous antioxidants —
                 superoxide dismutase, catalase, glutathione, and dietary vitamins C and E — keep ROS in check.
               </p>
 
@@ -298,6 +297,7 @@ const OxidationReductionTopic = () => {
             </CollapsibleSubsection>
           </ExamSection>
           <TopicFaqs faqs={oxidationReductionFaqs} />
+          <p className="text-xs text-muted-foreground">Fuel-cell electrode chemistry: <InlineRef topicId="oxidation-reduction" refLabel="Lead Gold Oxygen Sensor" />; radical/nonradical distinction: <InlineRef topicId="oxidation-reduction" refLabel="Pacher 2007 Peroxynitrite" /></p>
         </>
       }
     />

@@ -56,3 +56,5 @@
 - Paediatric sepsis summaries share local source-scoped constants across keypoints/body/take-home; FAQ literals are checked against them so extraction stays compatible without treatment shortcuts drifting.
 
 - PostArrestReviewedFacts and NeuroIcuReviewedFacts keep current post-arrest and contextual neuro-ICU duplicates aligned; complete FAQ literals are equality-tested so extraction stays intact without turning prognostic entry or monitoring warnings into clinical clearance.
+
+- Chemistry ester/name teaching shares small production constants; ketamine illustrations preserve PubChem heavy-atom connection records and source-directed stereobonds with independently checked configurations, rather than assuming a stereocentre array position.

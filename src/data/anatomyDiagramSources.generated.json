@@ -1327,6 +1327,33 @@
       "status": "cited"
     },
     {
+      "id": "RelationshipSchematics",
+      "title": "Relationship Schematics",
+      "group": "Anatomy & applied diagrams",
+      "kind": "Labelled schematic",
+      "sources": [],
+      "credit": "Custom teaching schematic; original image/geometry provenance not separately recorded.",
+      "uncertainty": [
+        "No diagram-specific bibliographic source is recorded. Topic reading lists do not establish artwork provenance."
+      ],
+      "topicLinks": [
+        {
+          "path": "/anatomy/spinal-anatomy",
+          "title": "spinal anatomy"
+        },
+        {
+          "path": "/anatomy/thoracic-anatomy",
+          "title": "thoracic anatomy"
+        },
+        {
+          "path": "/anatomy/head-neck-anatomy",
+          "title": "head neck anatomy"
+        }
+      ],
+      "sourceFile": "src/components/diagrams/anatomy/RelationshipSchematics.tsx",
+      "status": "needs-review"
+    },
+    {
       "id": "SkullBaseDiagram",
       "title": "Skull base",
       "group": "Anatomy & applied diagrams",

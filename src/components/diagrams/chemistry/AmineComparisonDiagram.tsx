@@ -3,8 +3,10 @@ import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { DiagramFigure } from "../_shared/DiagramFigure";
+import { InlineRef } from "@/components/references/InlineRef";
+import { unchargedWeakBaseFraction } from "@/lib/teaching-chemistry";
 
-type Mode = "tertiary" | "quaternary";
+type Mode = "secondary" | "tertiary" | "quaternary";
 
 interface DrugRow {
   name: string;
@@ -20,8 +22,8 @@ const drugs: DrugRow[] = [
   { name: "Morphine", type: "tertiary", use: "Opioid", pKa: "8.0", note: "Crosses BBB (slowly — relatively hydrophilic) and placenta. Active metabolite M6G also crosses." },
   { name: "Fentanyl", type: "tertiary", use: "Opioid", pKa: "8.4", note: "Highly lipid-soluble tertiary amine → rapid CNS penetration despite >90% ionised at pH 7.4." },
   { name: "Atropine", type: "tertiary", use: "Antimuscarinic", pKa: "9.8", note: "Crosses BBB → central anticholinergic effects (sedation, delirium, mydriasis from systemic absorption)." },
-  { name: "Ephedrine", type: "tertiary", use: "Vasopressor", pKa: "9.6", note: "Crosses BBB → CNS stimulation; crosses placenta → safe in obstetrics for maternal hypotension (now superseded by phenylephrine)." },
-  { name: "Ketamine", type: "tertiary", use: "IV anaesthetic", pKa: "7.5", note: "Largely unionised at physiological pH → rapid BBB crossing → fast onset of dissociative anaesthesia." },
+  { name: "Ephedrine", type: "secondary", use: "Vasopressor", pKa: "9.6", note: "Two carbon substituents and one hydrogen on the amino nitrogen. Placental transfer does not establish fetal safety; selection requires clinical evidence and context." },
+  { name: "Ketamine", type: "secondary", use: "IV anaesthetic", pKa: "7.5", note: `Methylamino group: two carbon substituents and one hydrogen on nitrogen. Assuming pH 7.4 and pKa 7.5, uncharged fraction = 1/(1+10^0.1) = ${unchargedWeakBaseFraction(7.4, 7.5)?.toFixed(10)} (about 44%). This is not mostly uncharged and does not alone determine onset or fetal safety.` },
 
   { name: "Glycopyrrolate", type: "quaternary", use: "Antimuscarinic", note: "Permanent +ve charge → poorly penetrates BBB and crosses placenta to a limited extent (glycopyrronium SmPC). First-line antisialagogue and pairing for neostigmine reversal." },
   { name: "Neostigmine", type: "quaternary", use: "Anticholinesterase", note: "Charged → confined to NMJ; cannot reverse central anticholinergic syndrome (use physostigmine, a tertiary amine, for that)." },
@@ -68,7 +70,7 @@ const AmineSVG = ({ mode }: { mode: Mode }) => {
 
       {/* R3 */}
       <line x1="142" y1="125" x2="180" y2="160" stroke="hsl(var(--foreground))" strokeWidth="1.5" />
-      <RGroup cx={190} cy={170} label="R₃" />
+      <RGroup cx={190} cy={170} label={mode === "secondary" ? "H" : "R₃"} />
 
       {/* R4 (only in quaternary) or lone pair (in tertiary) */}
       {isQuat ? (
@@ -141,25 +143,26 @@ export const AmineComparisonDiagram = () => {
               <Card className="p-6 bg-gradient-to-br from-background to-muted/20">
         <div className="flex flex-col gap-1 mb-4">
           <h3 className="text-xl font-serif font-bold text-foreground">
-            Tertiary vs Quaternary Amines
+            Secondary, Tertiary and Quaternary Amines
           </h3>
           <p className="text-sm text-muted-foreground">
-            Why one nitrogen substitution determines whether a drug crosses the blood–brain barrier, the placenta, and the cell membrane.
+            Nitrogen substitution and charge affect passive transfer; amine class alone does not establish onset or fetal safety.
           </p>
         </div>
   
-        <div className="flex gap-2 mb-4">
+        <div className="flex flex-wrap gap-2 mb-4">
+          <Button variant={mode === "secondary" ? "default" : "outline"} onClick={() => setMode("secondary")} className="flex-1 min-w-40">Secondary amine (R₂NH)</Button>
           <Button
             variant={mode === "tertiary" ? "default" : "outline"}
             onClick={() => setMode("tertiary")}
-            className="flex-1"
+            className="flex-1 min-w-40"
           >
             Tertiary amine (R₃N)
           </Button>
           <Button
             variant={mode === "quaternary" ? "default" : "outline"}
             onClick={() => setMode("quaternary")}
-            className="flex-1"
+            className="flex-1 min-w-40"
           >
             Quaternary amine (R₄N⁺)
           </Button>
@@ -173,13 +176,13 @@ export const AmineComparisonDiagram = () => {
             </div>
   
             <div className="rounded-lg border border-border bg-card/50 p-3 space-y-2 text-xs">
-              <Property label="Charge" value={mode === "tertiary" ? "Variable — depends on pKa & pH (Henderson–Hasselbalch)" : "Permanent positive (+1)"} />
-              <Property label="Water solubility" value={mode === "tertiary" ? "Moderate — increases when protonated" : "High (always charged)"} />
-              <Property label="Lipid solubility" value={mode === "tertiary" ? "Unionised form is highly lipid-soluble" : "Very low — cannot dissolve in lipid bilayer"} />
-              <Property label="BBB penetration" value={mode === "tertiary" ? "Yes (via unionised form)" : "No"} />
-              <Property label="Placental crossing" value={mode === "tertiary" ? "Yes" : "Limited; not necessarily zero"} />
-              <Property label="GI absorption" value={mode === "tertiary" ? "Generally good (oral bioavailability variable)" : "Poor — must be given parenterally"} />
-              <Property label="Vd" value={mode === "tertiary" ? "Often large — distributes into tissue" : "Small — confined to extracellular fluid"} />
+              <Property label="Charge" value={mode !== "quaternary" ? "Variable — depends on pKa & pH (Henderson–Hasselbalch)" : "Permanent positive (+1)"} />
+              <Property label="Water solubility" value={mode !== "quaternary" ? "Moderate — increases when protonated" : "High (always charged)"} />
+              <Property label="Lipid solubility" value={mode !== "quaternary" ? "Depends on the whole molecule; neutral form favours passive transfer" : "Very low — cannot dissolve in lipid bilayer"} />
+              <Property label="BBB penetration" value={mode !== "quaternary" ? "Depends on molecule and ionisation" : "No"} />
+              <Property label="Placental crossing" value={mode !== "quaternary" ? "Yes" : "Limited; not necessarily zero"} />
+              <Property label="GI absorption" value={mode !== "quaternary" ? "Generally good (oral bioavailability variable)" : "Often poor; route is drug-specific"} />
+              <Property label="Vd" value={mode !== "quaternary" ? "Often large — distributes into tissue" : "Small — confined to extracellular fluid"} />
             </div>
           </div>
   
@@ -187,14 +190,14 @@ export const AmineComparisonDiagram = () => {
           <div className="lg:col-span-3 rounded-lg border border-border bg-card/50 overflow-hidden">
             <div className="px-3 py-2 bg-muted/40 border-b border-border flex items-center justify-between">
               <span className="text-[11px] font-semibold uppercase tracking-wide text-muted-foreground">
-                {mode === "tertiary" ? "Tertiary-amine drugs in anaesthesia" : "Quaternary-amine drugs in anaesthesia"}
+                {`${mode[0].toUpperCase()}${mode.slice(1)}-amine drugs in anaesthesia`}
               </span>
               <Badge variant="outline" className="text-[10px]">{filtered.length} drugs</Badge>
             </div>
             <div className="max-h-[420px] overflow-y-auto divide-y divide-border">
               {filtered.map((d) => (
                 <div key={d.name} className="px-3 py-2.5">
-                  <div className="flex items-baseline justify-between gap-2 mb-0.5">
+                  <div className="flex flex-wrap items-baseline justify-between gap-2 mb-0.5">
                     <span className="font-medium text-foreground text-sm">{d.name}</span>
                     <span className="text-[10px] text-muted-foreground uppercase tracking-wide">{d.use}{d.pKa && ` · pKa ${d.pKa}`}</span>
                   </div>
@@ -202,6 +205,7 @@ export const AmineComparisonDiagram = () => {
                 </div>
               ))}
             </div>
+            {mode === "secondary" && <p className="text-xs text-muted-foreground mt-2">Secondary amino-group identities: <InlineRef topicId="organic-chemistry" refLabel="PubChem Ketamine Structures" /><InlineRef topicId="organic-chemistry" refLabel="PubChem Ephedrine Structure" /></p>}
           </div>
         </div>
   
@@ -212,12 +216,12 @@ export const AmineComparisonDiagram = () => {
             body="Neostigmine (quaternary, can't cross BBB) is paired with glycopyrrolate (also quaternary) so neither produces central effects. If you used atropine (tertiary), you'd risk central anticholinergic syndrome — useful in elderly only when avoiding bradycardia matters more."
           />
           <Pearl
-            title="Obstetric vasopressor"
-            body="Phenylephrine (a tertiary amine, but at physiological pH largely ionised) crosses placenta minimally and is now first-line for spinal hypotension at caesarean section over ephedrine, which crossed more freely and caused foetal acidosis."
+            title="Amine class is not fetal safety"
+            body="Ephedrine and phenylephrine have secondary amino groups. Amine classification or placental transfer alone cannot establish fetal safety or select an obstetric vasopressor."
           />
           <Pearl
             title="Local anaesthetic onset"
-            body="LAs are tertiary amines. Only the unionised base crosses the nerve membrane, then re-ionises in the axoplasm to block the Na⁺ channel from within. Higher pKa = more ionised at pH 7.4 = slower onset (bupivacaine 8.1 vs lidocaine 7.9)."
+            body="Many amide LAs have a tertiary amino group. Only the unionised base crosses the nerve membrane, then re-ionises in the axoplasm to block the Na⁺ channel from within. At a fixed pH, higher pKa increases protonation; onset also depends on the drug, concentration, site and formulation."
           />
         </div>
       </Card>

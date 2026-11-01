@@ -1,8 +1,8 @@
 # Admin metrics audit fixes
 
 ## S3 six-ID chemistry recovery
-- [ ] Reconcile SCI032 and SCI047–051 with verified source chemistry and direct matching topic/quiz copies.
-- [ ] Verify calculation/connectivity and actual selected render states; document status, source limitations and final checks. Preserve other work; no backend/database/audio/payments/publication.
+- [x] Reconcile SCI032 and SCI047–051 with verified source chemistry and direct matching topic/quiz copies.
+- [x] Verify calculation/connectivity and actual selected render states; document status, source limitations and final checks. Preserve other work; no backend/database/audio/payments/publication.
 
 ## CL91 / CL92 focused source-copy follow-up
 - [x] Reconcile reviewed current post-arrest and neuro-ICU claims, shared diagrams and direct quiz duplicates with scoped sources.
