@@ -1,5 +1,31 @@
+// Temporary approved source-review pause; kept local to this existing file.
+const SOURCE_UNAVAILABLE =
+  "Current source material is not yet available for reliable AI answers or clinical scoring. Please read the relevant topic and original guidance. Your saved history has been kept.";
+async function invokeViva(options: Parameters<typeof supabase.functions.invoke>[1]) {
+  const result = await supabase.functions.invoke("viva", options);
+  if (result.error?.context instanceof Response) {
+    const body = await result.error.context
+      .clone()
+      .json()
+      .catch(() => null);
+    if (body?.code === "SOURCE_UNAVAILABLE") return { ...result, data: null, error: new Error(SOURCE_UNAVAILABLE) };
+  }
+  return result;
+}
+
 import { useCallback, useEffect, useRef, useState } from "react";
-import { Mic, MicOff, Volume2, RotateCcw, Loader2, AlertCircle, Target, Sparkles, ChevronDown, ChevronUp } from "lucide-react";
+import {
+  Mic,
+  MicOff,
+  Volume2,
+  RotateCcw,
+  Loader2,
+  AlertCircle,
+  Target,
+  Sparkles,
+  ChevronDown,
+  ChevronUp,
+} from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { playVivaSpeech, isCancelled, VIVA_AUDIO_ERROR, type SpeechPlayback } from "@/lib/viva-audio";
 import { Button } from "@/components/ui/button";
@@ -41,13 +67,7 @@ interface Feedback {
   rubricBreakdown?: RubricBreakdownItem[];
 }
 
-type Phase =
-  | "loading-question"
-  | "ready-to-answer"
-  | "listening"
-  | "scoring"
-  | "feedback"
-  | "error";
+type Phase = "loading-question" | "ready-to-answer" | "listening" | "scoring" | "feedback" | "error";
 
 const examLabels: Record<Exam, string> = {
   primary: "FRCA Primary",
@@ -100,11 +120,10 @@ function loadAsked(topicId: string, exam: Exam): string[] {
 function saveAsked(topicId: string, exam: Exam, list: string[]) {
   if (typeof window === "undefined") return;
   try {
-    window.localStorage.setItem(
-      HISTORY_KEY(topicId, exam),
-      JSON.stringify(list.slice(-MAX_HISTORY)),
-    );
-  } catch { /* quota — ignore */ }
+    window.localStorage.setItem(HISTORY_KEY(topicId, exam), JSON.stringify(list.slice(-MAX_HISTORY)));
+  } catch {
+    /* quota — ignore */
+  }
 }
 
 type WeakStrictness = "lenient" | "balanced" | "strict";
@@ -116,29 +135,22 @@ function loadStrictness(topicId: string, exam: Exam, difficulty: Difficulty): We
   try {
     const raw = window.localStorage.getItem(STRICTNESS_KEY(topicId, exam, difficulty));
     if (raw === "lenient" || raw === "balanced" || raw === "strict") return raw;
-  } catch { /* ignore */ }
+  } catch {
+    /* ignore */
+  }
   return "balanced";
 }
 
-function saveStrictness(
-  topicId: string,
-  exam: Exam,
-  difficulty: Difficulty,
-  value: WeakStrictness,
-) {
+function saveStrictness(topicId: string, exam: Exam, difficulty: Difficulty, value: WeakStrictness) {
   if (typeof window === "undefined") return;
   try {
     window.localStorage.setItem(STRICTNESS_KEY(topicId, exam, difficulty), value);
-  } catch { /* quota — ignore */ }
+  } catch {
+    /* quota — ignore */
+  }
 }
 
-const VivaSession = ({
-  topicId,
-  topicTitle,
-  topicDescription,
-  exam,
-  onClose,
-}: VivaSessionProps) => {
+const VivaSession = ({ topicId, topicTitle, topicDescription, exam, onClose }: VivaSessionProps) => {
   const [phase, setPhase] = useState<Phase>("loading-question");
   const [question, setQuestion] = useState("");
   const [interim, setInterim] = useState("");
@@ -170,9 +182,7 @@ const VivaSession = ({
    * - balanced: below 50% (default — only clearly underperforming rows)
    * - strict: below 30% (only severe gaps trigger an emphasis retake)
    */
-  const [weakStrictness, setWeakStrictness] = useState<WeakStrictness>(() =>
-    loadStrictness(topicId, exam, "standard"),
-  );
+  const [weakStrictness, setWeakStrictness] = useState<WeakStrictness>(() => loadStrictness(topicId, exam, "standard"));
   const weakThreshold = weakStrictness === "lenient" ? 0.7 : weakStrictness === "strict" ? 0.3 : 0.5;
 
   // Reload the saved strictness whenever the (topic, exam, difficulty) tuple changes
@@ -298,14 +308,10 @@ const VivaSession = ({
 
   /** Low-level call — never touches phase. Returns the question or null on error. */
   const requestQuestion = useCallback(
-    async (
-      forDifficulty: Difficulty,
-      emphasise?: string[],
-      signal?: AbortSignal,
-    ): Promise<string | null> => {
+    async (forDifficulty: Difficulty, emphasise?: string[], signal?: AbortSignal): Promise<string | null> => {
       const avoid = avoidRepeats ? loadAsked(topicId, exam) : [];
       try {
-        const { data, error } = await supabase.functions.invoke("viva", {
+        const { data, error } = await invokeViva({
           body: {
             mode: "question",
             topicId,
@@ -360,7 +366,7 @@ const VivaSession = ({
     setQuestion("");
     const q = await requestQuestion(difficulty);
     if (!q) {
-      setErrorMsg("Could not load a question.");
+      setErrorMsg(SOURCE_UNAVAILABLE);
       setPhase("error");
       return;
     }
@@ -383,7 +389,7 @@ const VivaSession = ({
     setModelAnswerLoading(true);
     setModelAnswerOpen(true);
     try {
-      const { data, error } = await supabase.functions.invoke("viva", {
+      const { data, error } = await invokeViva({
         body: {
           mode: "model-answer",
           topicTitle,
@@ -469,7 +475,7 @@ const VivaSession = ({
 
     const q = await requestQuestion(difficulty, weak);
     if (!q) {
-      setErrorMsg("Could not load a question.");
+      setErrorMsg(SOURCE_UNAVAILABLE);
       setPhase("error");
       return;
     }
@@ -494,9 +500,7 @@ const VivaSession = ({
   const startListening = useCallback(() => {
     const Ctor = getSpeechRecognitionCtor();
     if (!Ctor) {
-      setErrorMsg(
-        "Your browser doesn't support live speech recognition. Try Chrome or Edge on desktop.",
-      );
+      setErrorMsg("Your browser doesn't support live speech recognition. Try Chrome or Edge on desktop.");
       setPhase("error");
       return;
     }
@@ -575,7 +579,7 @@ const VivaSession = ({
 
     const segments = segmentsRef.current.slice();
 
-    const { data, error } = await supabase.functions.invoke("viva", {
+    const { data, error } = await invokeViva({
       body: {
         mode: "feedback",
         topicTitle,
@@ -587,11 +591,7 @@ const VivaSession = ({
     });
 
     if (error || !data || (data as { error?: string }).error) {
-      setErrorMsg(
-        (data as { error?: string } | null)?.error ??
-          error?.message ??
-          "Could not score your answer.",
-      );
+      setErrorMsg((data as { error?: string } | null)?.error ?? error?.message ?? "Could not score your answer.");
       setPhase("error");
       return;
     }
@@ -606,7 +606,10 @@ const VivaSession = ({
   const saveAttempt = useCallback(async () => {
     if (!feedback) return;
     const { data: auth } = await supabase.auth.getUser();
-    if (!auth.user) { setSaveState("signin"); return; }
+    if (!auth.user) {
+      setSaveState("signin");
+      return;
+    }
     setSaveState("saving");
     const { error } = await supabase.from("viva_attempts").insert({
       user_id: auth.user.id,
@@ -636,9 +639,7 @@ const VivaSession = ({
           <p className="text-[10px] uppercase tracking-wider font-semibold text-muted-foreground">
             Viva voce · {examLabels[exam]}
           </p>
-          <h3 className="font-serif font-semibold text-foreground text-lg leading-tight truncate">
-            {topicTitle}
-          </h3>
+          <h3 className="font-serif font-semibold text-foreground text-lg leading-tight truncate">{topicTitle}</h3>
         </div>
         <div className="flex gap-2">
           <Button
@@ -691,7 +692,9 @@ const VivaSession = ({
             className="h-3.5 w-3.5 rounded border-border accent-primary"
           />
           <span>Avoid recent questions</span>
-          <span className="text-muted-foreground tabular-nums">({askedCount}/{MAX_HISTORY})</span>
+          <span className="text-muted-foreground tabular-nums">
+            ({askedCount}/{MAX_HISTORY})
+          </span>
           {askedCount > 0 && (
             <button
               type="button"
@@ -726,9 +729,7 @@ const VivaSession = ({
             </span>
           )}
           {prefetchEnabled && prefetchStatus === "ready" && (
-            <span className="text-[11px] text-emerald-700 dark:text-emerald-400 font-medium">
-              ready ✓
-            </span>
+            <span className="text-[11px] text-emerald-700 dark:text-emerald-400 font-medium">ready ✓</span>
           )}
           {prefetchEnabled && prefetchStatus === "error" && (
             <span className="text-[11px] text-amber-700 dark:text-amber-400">retry on next</span>
@@ -760,7 +761,9 @@ const VivaSession = ({
           <AlertCircle className="h-4 w-4 flex-shrink-0 mt-0.5" />
           <div>
             {!sttSupported && (
-              <p>Speech recognition isn't supported in this browser — try Chrome or Edge for the full viva experience.</p>
+              <p>
+                Speech recognition isn't supported in this browser — try Chrome or Edge for the full viva experience.
+              </p>
             )}
             {!ttsSupported && <p>Voice playback isn't supported — you'll see the question text only.</p>}
           </div>
@@ -768,10 +771,16 @@ const VivaSession = ({
       )}
 
       <MicHelpPanel />
-      {ttsError && <p role="alert" className="text-sm text-muted-foreground">{ttsError}</p>}
+      {ttsError && (
+        <p role="alert" className="text-sm text-muted-foreground">
+          {ttsError}
+        </p>
+      )}
       <div className="rounded-lg border border-border bg-card p-4 shadow-sm">
         <div className="flex items-start justify-between gap-2 mb-2">
-          <Badge variant="secondary" className="text-[10px]">Examiner</Badge>
+          <Badge variant="secondary" className="text-[10px]">
+            Examiner
+          </Badge>
           {ttsSupported && question && (
             <Button
               variant="ghost"
@@ -818,9 +827,7 @@ const VivaSession = ({
                     : "Show model answer"}
             </Button>
             {!modelAnswer && !modelAnswerLoading && !feedback && (
-              <span className="text-[11px] text-muted-foreground">
-                Skip the attempt — or try first, then compare.
-              </span>
+              <span className="text-[11px] text-muted-foreground">Skip the attempt — or try first, then compare.</span>
             )}
           </div>
         )}
@@ -833,9 +840,7 @@ const VivaSession = ({
           <div className="flex items-start justify-between gap-2 mb-2">
             <div className="flex items-center gap-2">
               <Sparkles className="h-4 w-4 text-primary" />
-              <p className="text-[11px] font-semibold uppercase tracking-wider text-primary">
-                Model answer
-              </p>
+              <p className="text-[11px] font-semibold uppercase tracking-wider text-primary">Model answer</p>
             </div>
             <div className="flex items-center gap-1">
               {modelAnswer && ttsSupported && (
@@ -859,25 +864,17 @@ const VivaSession = ({
                   onClick={() => setModelAnswerOpen((o) => !o)}
                   aria-label={modelAnswerOpen ? "Collapse model answer" : "Expand model answer"}
                 >
-                  {modelAnswerOpen ? (
-                    <ChevronUp className="h-3.5 w-3.5" />
-                  ) : (
-                    <ChevronDown className="h-3.5 w-3.5" />
-                  )}
+                  {modelAnswerOpen ? <ChevronUp className="h-3.5 w-3.5" /> : <ChevronDown className="h-3.5 w-3.5" />}
                 </Button>
               )}
             </div>
           </div>
 
-          {modelAnswerError && (
-            <p className="text-sm text-destructive">{modelAnswerError}</p>
-          )}
+          {modelAnswerError && <p className="text-sm text-destructive">{modelAnswerError}</p>}
 
           {modelAnswer && modelAnswerOpen && (
             <div className="space-y-3">
-              <p className="text-sm text-foreground leading-relaxed whitespace-pre-wrap">
-                {modelAnswer.modelAnswer}
-              </p>
+              <p className="text-sm text-foreground leading-relaxed whitespace-pre-wrap">{modelAnswer.modelAnswer}</p>
 
               {modelAnswer.highYieldPoints.length > 0 && (
                 <div>
@@ -919,7 +916,9 @@ const VivaSession = ({
       {(phase === "listening" || transcript || interim) && (
         <div className="rounded-lg border border-border bg-muted/30 p-4">
           <div className="flex items-center justify-between mb-2">
-            <Badge variant="outline" className="text-[10px]">Your answer</Badge>
+            <Badge variant="outline" className="text-[10px]">
+              Your answer
+            </Badge>
             {phase === "listening" && (
               <span className="inline-flex items-center gap-1.5 text-[11px] font-medium text-destructive">
                 <span className="relative flex h-2 w-2">
@@ -940,10 +939,7 @@ const VivaSession = ({
 
           {(phase === "listening" || confSegments.length > 0) && (
             <div className="mt-3">
-              <MicConfidenceMeter
-                segments={confSegments}
-                listening={phase === "listening"}
-              />
+              <MicConfidenceMeter segments={confSegments} listening={phase === "listening"} />
             </div>
           )}
         </div>
@@ -981,9 +977,7 @@ const VivaSession = ({
           <div className="flex items-baseline justify-between gap-3 flex-wrap">
             <p className="font-serif font-bold text-2xl text-foreground">
               {feedback.score}/10
-              <span className="ml-2 text-sm font-sans font-medium text-muted-foreground">
-                {feedback.verdict}
-              </span>
+              <span className="ml-2 text-sm font-sans font-medium text-muted-foreground">{feedback.verdict}</span>
             </p>
           </div>
 
@@ -993,7 +987,9 @@ const VivaSession = ({
                 Strengths
               </p>
               <ul className="text-sm space-y-0.5 list-disc pl-4 text-foreground">
-                {feedback.strengths.map((s, i) => <li key={i}>{s}</li>)}
+                {feedback.strengths.map((s, i) => (
+                  <li key={i}>{s}</li>
+                ))}
               </ul>
             </div>
           )}
@@ -1004,7 +1000,9 @@ const VivaSession = ({
                 Gaps to close
               </p>
               <ul className="text-sm space-y-0.5 list-disc pl-4 text-foreground">
-                {feedback.gaps.map((g, i) => <li key={i}>{g}</li>)}
+                {feedback.gaps.map((g, i) => (
+                  <li key={i}>{g}</li>
+                ))}
               </ul>
             </div>
           )}
@@ -1024,15 +1022,22 @@ const VivaSession = ({
           </div>
 
           <div className="flex justify-end gap-2 flex-wrap">
-            {(feedback.rubricBreakdown ?? []).some(
-              (b) => b.max > 0 && b.awarded / b.max < weakThreshold,
-            ) && (
+            {(feedback.rubricBreakdown ?? []).some((b) => b.max > 0 && b.awarded / b.max < weakThreshold) && (
               <Button onClick={retakeWithEmphasis} variant="default" size="sm">
                 <Target className="h-3.5 w-3.5 mr-1.5" /> Retake with different emphasis
               </Button>
             )}
-            <Button onClick={saveAttempt} variant="outline" size="sm" disabled={saveState === "saving" || saveState === "saved"}>
-              {saveState === "saved" ? "Saved to My viva scores" : saveState === "saving" ? "Saving…" : "Save this attempt"}
+            <Button
+              onClick={saveAttempt}
+              variant="outline"
+              size="sm"
+              disabled={saveState === "saving" || saveState === "saved"}
+            >
+              {saveState === "saved"
+                ? "Saved to My viva scores"
+                : saveState === "saving"
+                  ? "Saving…"
+                  : "Save this attempt"}
             </Button>
             <Button onClick={fetchQuestion} variant="outline" size="sm">
               <RotateCcw className="h-3.5 w-3.5 mr-1.5" /> Try another question
@@ -1041,15 +1046,12 @@ const VivaSession = ({
           <div className="text-right text-xs">
             {saveState === "signin" && <span className="text-muted-foreground">Sign in to save attempts. </span>}
             {saveState === "error" && <span className="text-destructive">Could not save — try again. </span>}
-            <a href="/viva/scores" className="text-primary underline">View my viva scores</a>
+            <a href="/viva/scores" className="text-primary underline">
+              View my viva scores
+            </a>
           </div>
 
-          <VivaRubric
-            exam={exam}
-            score={feedback.score}
-            gaps={feedback.gaps}
-            breakdown={feedback.rubricBreakdown}
-          />
+          <VivaRubric exam={exam} score={feedback.score} gaps={feedback.gaps} breakdown={feedback.rubricBreakdown} />
         </div>
       )}
 
@@ -1058,12 +1060,7 @@ const VivaSession = ({
           <AlertCircle className="h-4 w-4 flex-shrink-0 mt-0.5" />
           <div className="flex-1">
             <p>{errorMsg ?? "Something went wrong."}</p>
-            <Button
-              variant="outline"
-              size="sm"
-              className="mt-2"
-              onClick={fetchQuestion}
-            >
+            <Button variant="outline" size="sm" className="mt-2" onClick={fetchQuestion}>
               Try again
             </Button>
           </div>
