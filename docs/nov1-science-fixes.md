@@ -87,7 +87,7 @@ Owner baseline `fafdee92a329ee37cd1b520c35743ba272a3b14f`; start HEAD `e3df8aaa1
 | SCI069 | Mitigated, redraw pending | `src/components/diagrams/anatomy/NeckCrossSectionDiagram.tsx`: Malformed vertebra/cord/longus-colli artwork removed. Canal posterior to body, connected posterior arch and anterior/anterolateral longus colli described. |
 | SCI070 | Mitigated artwork; implemented wording, redraw pending | `src/components/diagrams/anatomy/NeckCrossSectionDiagram.tsx`: Malformed fascial envelopes removed. UAMS convention plus Phan2022 boundary review; oesophagus within visceral envelope and danger space between alar/prevertebral layers; nomenclature variation explicit. |
 | SCI071 | Implemented offered views and wording | `src/components/diagrams/anatomy/LaryngealCrossSectionDiagram.tsx`: Unavailable lateral tab removed without relabelling coronal art. Vestibular ligament inferior free edge corrected from Michigan source. Offered coronal, superior/axial and muscle table are nonempty; neutral heading no longer contradicts selected projection. |
-| SCI072 | Implemented qualifications | `src/components/diagrams/anatomy/LaryngealCrossSectionDiagram.tsx; PaediatricAnaesthesiaTopic.tsx; PaediatricIcuTopic.tsx; AirwayManagementTopic.tsx; anatomyFolios.ts`: All three laryngeal age-cutoff claims qualified; rigid-cricoid importance retained without universal glottis rule. Matching FAQ/body/table/historical-plate overlay notes reconciled. |
+| SCI072 | Implemented qualifications | `src/components/diagrams/anatomy/LaryngealCrossSectionDiagram.tsx`, `src/pages/topics/PaediatricAnaesthesiaTopic.tsx`, `src/pages/topics/PaediatricIcuTopic.tsx`, `src/pages/topics/AirwayManagementTopic.tsx`, `src/components/diagrams/anatomyFolios.ts`: All three laryngeal age-cutoff claims qualified; rigid-cricoid importance retained without universal glottis rule. Matching FAQ/body/table/historical-plate overlay notes reconciled. |
 
 Shared wording: `src/components/topic/AnatomySpatialTeaching.tsx`. Registry: `src/data/references.ts`. Tests: `src/test/nov1-anatomy-s2.test.tsx`. Architectural rule: `AGENTS.md`; task status: `roadmap.md`. Paediatric page paths are `src/pages/topics/PaediatricAnaesthesiaTopic.tsx`, `PaediatricIcuTopic.tsx`, `AirwayManagementTopic.tsx`; folio path `src/components/diagrams/anatomyFolios.ts`.
 
@@ -116,3 +116,7 @@ Project generators `gen:diagram-snapshots`, `gen:search-index`, `build:audit-cor
 ## Residual work
 
 Reviewed redraws remain pending for SCI052, SCI053, SCI056, SCI058, SCI067, SCI068, SCI069 and SCI070. They are mitigated, not fixed artwork. No whole-app anatomical/clinical approval, source completeness, treatment clearance or recording release claimed.
+
+### Final readback
+
+Final focused S2/FAQ/schema rerun: **21 passed**. Exam-tag checker passed1424 files; source-excerpt checker passed (coverage deficits remain explicit, not source certification). Existing donation-scroll regression rerun is recorded in the final response. Final automatic log read: **buildOK2026-11-01T14:20:19Z**. Resulting implementation/generator/report save observed: **`96aba5a4c15407431af96977839ca2f9a8365358`** (this final documentation readback may create a later automatic documentation-only save). No separate manual production-build/typecheck result.
