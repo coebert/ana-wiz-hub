@@ -1,8 +1,9 @@
 # Admin metrics audit fixes
 
 ## Consolidated residual copies and governance — 1 November 2026
-- [ ] Reconcile A10/B17/D4 source snippets and three checker/provenance defects on current HEAD; preserve unrelated work and historical baselines.
-- [ ] Verify negative CLI fixtures, source/operation rendering and accessibility, regenerate affected local outputs, run one final full suite and document exact validation limitations. No database/audio/publication.
+- [x] Reconcile A10/B17/D4 source snippets and three checker/provenance defects on current HEAD; preserve unrelated work and historical baselines.
+- [x] Negative CLI fixtures, nine affected browser routes, operation provenance/a11y and local outputs checked; one full suite3067 pass/3 fail/25 skipped, subsequent narrow reconciliation112 pass. Exact results/residuals in docs/consolidated-residuals-2026-11-01.md.
+- [ ] Explicit manual production build/semantic typecheck proof unavailable under governing environment restrictions. Two out-of-scope adrenal per-principle failures retained, no baseline refresh. No publication/audio/clinical database writes.
 
 ## Approved Phase A AI safety pause — 1 November 2026
 - [x] Prepared isolated current-source candidate; approved portable gate16/16 passed; metadata/count/held-fingerprint readback recorded in docs/phase-a-review/RESULTS.md.
