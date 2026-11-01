@@ -69,14 +69,14 @@ export function ParavertebralRelationships(props: Props & { boundaries?: boolean
     {props.labels !== false && <><Label x={168} y={277}>Paravertebral</Label><Label x={211} y={302}>space</Label></>}
   </Canvas>;
 }
-export function EpiduralCompartment(props: Props) {
+export function EpiduralCompartment(props: Props & { catheter?: boolean }) {
   return <Canvas title="Epidural catheter: conceptual sagittal compartment inset" description="Cranial up, caudal down. Illustrative catheter segment and cranial arrow remain wholly within epidural area outside dura and arachnoid. Inner region is subarachnoid CSF. No skin entry, Tuohy route or vertebral anatomy; catheter course is not predicted.">
     <Label x={140} y={28}>CRANIAL ↑</Label><Label x={140} y={434}>CAUDAL ↓</Label>
     <Pick id="epidural-fat" {...props}><rect data-part="epidural-compartment" x={70} y={60} width={160} height={330} fill={tone("fascia")} fillOpacity={0.4} /></Pick>
     <Pick id="dura" {...props}><rect data-part="dura" x={230} y={60} width={12} height={330} fill={tone("alar")} /></Pick>
     <rect data-part="arachnoid" x={245} y={60} width={5} height={330} fill={tone("parietal")} />
     <Pick id="csf" {...props}><rect data-part="subarachnoid-csf" x={250} y={60} width={235} height={330} fill={tone("csf")} fillOpacity={0.5} /></Pick>
-    <g data-part="catheter" stroke="hsl(var(--foreground))" strokeWidth={4} fill="none"><path data-part="catheter-segment" d="M147 350V180Q147 152 171 127" /><path data-part="cranial-arrow" d="M160 130L175 123L171 139" /></g>
-    {props.labels !== false && <g data-annotations="true"><Label x={84} y={87}>Epidural space</Label><Label x={275} y={87}>Subarachnoid CSF</Label><Label x={90} y={377}>Catheter segment</Label><Label x={350} y={185}>Dura</Label><Label x={350} y={217}>Arachnoid</Label><path d="M236 174H337M248 205H337" fill="none" stroke="hsl(var(--foreground))" /></g>}
+    {props.catheter !== false && <g data-part="catheter" stroke="hsl(var(--foreground))" strokeWidth={4} fill="none"><path data-part="catheter-segment" d="M147 350V180Q147 152 171 127" /><path data-part="cranial-arrow" d="M160 130L175 123L171 139" /></g>}
+    {props.labels !== false && <g data-annotations="true"><Label x={84} y={87}>Epidural space</Label><Label x={275} y={87}>Subarachnoid CSF</Label>{props.catheter !== false && <Label x={90} y={377}>Catheter segment</Label>}<Label x={350} y={185}>Dura</Label><Label x={350} y={217}>Arachnoid</Label><path d="M236 174H337M248 205H337" fill="none" stroke="hsl(var(--foreground))" /></g>}
   </Canvas>;
 }

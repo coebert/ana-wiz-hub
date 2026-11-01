@@ -1,5 +1,9 @@
 # Admin metrics audit fixes
 
+## Epidural compartment schematic
+- [x] Add independent inset labels, catheter visibility and compartment selections; preserve catheter topology and withdrawn routes.
+- [x] Verify three keyboard selections and both toggles on narrow/wide layouts; 26 focused tests passed, automatic validation OK.
+
 ## Intercostal relationship schematic
 - [x] Add matching label and neurovascular-detail controls without changing anatomical depth order or restoring procedural paths.
 - [x] Verify six keyboard layer selections, both toggles and narrow/wide layouts; focused anatomy regressions: 25 passed, automatic validation OK.

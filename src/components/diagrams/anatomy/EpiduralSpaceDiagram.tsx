@@ -178,6 +178,8 @@ const EpiduralSpaceDiagram = () => {
   const [selected, setSelected] = useState<StructureKey>("epidural-fat");
   const [showSutures, setShowSutures] = useState(true);
   const [showLabels, setShowLabels] = useState(true);
+  const [showCompartmentLabels, setShowCompartmentLabels] = useState(true);
+  const [showCompartmentCatheter, setShowCompartmentCatheter] = useState(true);
 
   const info = STRUCTURES[selected];
   const accent = REGION_COLOR[info.region];
@@ -522,8 +524,19 @@ const EpiduralSpaceDiagram = () => {
           POP — loss of resistance into epidural space.
         </p>
 
-        <h3 className="text-sm font-semibold mt-4">Epidural catheter — conceptual sagittal compartment inset</h3>
-        <EpiduralCompartment selected={selected} onSelect={key => handlePick(key as StructureKey)} labels={showLabels} />
+        <h3 className="text-lg font-serif font-bold mt-4">Epidural compartment schematic</h3>
+        <p className="text-xs text-muted-foreground mt-1">Conceptual sagittal compartments; procedural routes are not depicted.</p>
+        <div className="flex flex-wrap gap-2 my-3">
+          <Button variant="outline" size="sm" aria-pressed={showCompartmentCatheter} onClick={() => setShowCompartmentCatheter(v => !v)}>Catheter segment</Button>
+          <Button variant="outline" size="sm" aria-pressed={showCompartmentLabels} onClick={() => setShowCompartmentLabels(v => !v)}>Compartment labels</Button>
+        </div>
+        <div className="w-full max-w-3xl mx-auto">
+          <EpiduralCompartment selected={selected} onSelect={key => handlePick(key as StructureKey)} labels={showCompartmentLabels} catheter={showCompartmentCatheter} />
+        </div>
+        <div className="flex flex-wrap gap-2 my-3">
+          {(["epidural-fat", "dura", "csf"] as StructureKey[]).map(key => <Button key={key} variant="outline" className="h-auto min-h-11 whitespace-normal" aria-pressed={selected === key} onClick={() => handlePick(key)}>{key === "epidural-fat" ? "Epidural compartment" : key === "dura" ? "Dural boundary" : "Subarachnoid compartment"}</Button>)}
+        </div>
+        <p className="text-sm text-muted-foreground">The epidural compartment is outside dura and arachnoid; CSF is within the subarachnoid compartment. Arachnoid is shown separately. The illustrative catheter stays epidural, not within CSF.</p>
         <p className="text-sm text-muted-foreground">Illustrative segment stays outside dura and arachnoid, within the epidural compartment. Cranial direction does not predict catheter course. No skin entry, Tuohy route, lamina or disc is shown in this inset. The narrow interval between dura and arachnoid is exaggerated for distinction, not an open anatomical compartment.<InlineRef topicId="spinal-anatomy" refLabel="WFSA epidural" /><InlineRef topicId="spinal-anatomy" refLabel="RCoA epidural dura" /></p>
 
         {/* Detail panel */}
