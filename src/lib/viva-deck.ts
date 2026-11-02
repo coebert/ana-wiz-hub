@@ -15,7 +15,7 @@ export function nextCardIndex(index: number, length: number) {return length ? (i
 export async function verifyDeck(raw:unknown,topic:DeckTopic):Promise<TopicDeck> {
  const parsed=topicDeckSchema.safeParse(raw);
  if(!parsed.success)throw new DeckError('content','This practice deck is unavailable. Read the teaching page while it is rebuilt.');
- const {revision,...payload}=parsed.data;
+ const {revision,...payload}=raw as TopicDeck;
  const digest=await crypto.subtle.digest('SHA-256',new TextEncoder().encode(JSON.stringify(payload)));
  const actual=Array.from(new Uint8Array(digest),b=>b.toString(16).padStart(2,'0')).join('');
  if(actual!==revision || revision!==topic.revision || payload.topicId!==topic.id || payload.path!==topic.path || JSON.stringify(payload.exams)!==JSON.stringify(topic.exams))throw new DeckError('content','Practice content revision does not match. Refresh or use the teaching page.');
