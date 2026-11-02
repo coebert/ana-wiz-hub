@@ -1,5 +1,11 @@
 # Admin metrics audit fixes
 
+## Private support workflow
+- [ ] Persist feedback and private conversations with server-checked admin/owner access and idempotent writes.
+- [ ] Add admin Support inbox, outstanding count, reply/status controls and clinical-report access; signed-in My enquiries.
+- [ ] Verify validation, access isolation, outage persistence and duplicate/failure behaviour without sending real emails.
+- [ ] External delivery requires a verified sender in the existing email service; document deployment and configuration limits.
+
 ## Paid Apple App Store readiness
 - [x] Implement isolated Capacitor iOS source project, native entry/safe areas and guarded release/preview commands; existing-brand icon/splash, iPhone-only target. Four tests passed; simulated-native and web Chromium at 390/1280 widths passed entry, MRI selection and Ask-pause checks; automatic web build OK 21:52:36 UTC. Setup: docs/native-iphone-setup.md.
 - [ ] Native asset build/sync, Xcode compile/signing and real iPhone QA require local Mac/Xcode; native OAuth/account deletion/privacy, rights/clinical review and Apple listing/price remain release blockers. No upload/publication/backend/payment changes.
