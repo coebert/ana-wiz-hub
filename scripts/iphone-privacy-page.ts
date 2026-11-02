@@ -2,7 +2,8 @@ import { readFileSync } from "node:fs";
 import path from "node:path";
 import type { Plugin } from "vite";
 
-// The exact extensionless output is a real file, not a client-side SPA route.
+// Emitted as an .html directory index so hosting sends text/html (an extensionless
+// file was served as application/octet-stream). public/iphone/privacy.html also ships.
 export function iphonePrivacyPage(): Plugin {
   const sourcePath = path.resolve("public/iphone/privacy.html");
   const readPage = () => readFileSync(sourcePath, "utf8");
@@ -24,7 +25,7 @@ export function iphonePrivacyPage(): Plugin {
       });
     },
     generateBundle() {
-      this.emitFile({ type: "asset", fileName: "iphone/privacy", source: readPage() });
+      this.emitFile({ type: "asset", fileName: "iphone/privacy/index.html", source: readPage() });
     },
   };
 }

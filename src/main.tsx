@@ -11,18 +11,21 @@ import {
   unregisterPreviewServiceWorker,
 } from "./lib/stale-chunk-recovery";
 
-if (!isNativeApp()) {
+const standaloneRedirect = (window as { __AC_STANDALONE_REDIRECT__?: boolean }).__AC_STANDALONE_REDIRECT__ === true;
+
+if (standaloneRedirect) {
+  // index.html is loading the static iPhone privacy notice; start nothing here.
+} else if (!isNativeApp()) {
   unregisterPreviewServiceWorker();
   installStaleChunkRecovery();
   startVersionCheck();
 } else {
   document.documentElement.dataset.nativeApp = 'true';
 }
-startWebVitalsReporting();
-
 const root = document.getElementById('root');
 if (!root) throw new Error('Application root is missing');
-createRoot(root).render(
+if (!standaloneRedirect) startWebVitalsReporting();
+if (!standaloneRedirect) createRoot(root).render(
   <HelmetProvider>
     <ThemeProvider attribute="class" defaultTheme="light" enableSystem disableTransitionOnChange>
       <App />

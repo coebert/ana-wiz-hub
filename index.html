@@ -10,6 +10,7 @@
         if (p !== "/iphone/privacy" && p !== "/iphone/privacy.html" && p !== "/iphone/privacy/index.html") return;
         var key = "ac-iphone-privacy-retry";
         try { if (sessionStorage.getItem(key)) return; sessionStorage.setItem(key, "1"); } catch (e) {}
+        window.__AC_STANDALONE_REDIRECT__ = true;
         document.documentElement.style.display = "none";
         var go = function () { location.replace("/iphone/privacy.html" + location.hash); };
         var sw = navigator.serviceWorker;
@@ -17,7 +18,6 @@
         sw.getRegistrations().then(function (r) {
           return Promise.all(r.map(function (x) { return x.unregister(); }));
         }).then(go, go);
-        window.__AC_STANDALONE_REDIRECT__ = true;
       })();
     </script>
     <meta charset="UTF-8" />
