@@ -40,7 +40,7 @@ export async function handleSupport(req: Request, feedback = false) {
   const token = (req.headers.get('Authorization') ?? '').replace(/^Bearer\s+/i,'');
   let actor: Actor | null = null;
   // The public anon API key is not a user identity. Invalid session tokens fail closed.
-  if (token && token !== Deno.env.get('SUPABASE_ANON_KEY')) {
+  if (token && token !== Deno.env.get('SUPABASE_ANON_KEY') && token !== req.headers.get('apikey')) {
    const {data,error} = await db.auth.getUser(token);
    if (error || !data.user) return json({error:'Please sign in again before submitting.'},401);
    const {data:role,error:roleError} = await db.rpc('has_role',{_user_id:data.user.id,_role:'admin'});
