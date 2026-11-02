@@ -35,7 +35,7 @@ interface RouteMap {
   pathToFile: Record<string, string>;
 }
 
-function buildRouteMap(): RouteMap {
+export function buildRouteMap(): RouteMap {
   const src = readFileSync(APP_SRC, "utf8");
   const componentToFile: Record<string, string> = {};
 
