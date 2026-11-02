@@ -1148,6 +1148,95 @@ export type Database = {
         }
         Relationships: []
       }
+      support_messages: {
+        Row: {
+          author_id: string | null
+          author_kind: string
+          body: string
+          created_at: string
+          delivery_error: string | null
+          delivery_status: string
+          id: string
+          provider_id: string | null
+          request_id: string
+          ticket_id: string
+        }
+        Insert: {
+          author_id?: string | null
+          author_kind: string
+          body: string
+          created_at?: string
+          delivery_error?: string | null
+          delivery_status?: string
+          id?: string
+          provider_id?: string | null
+          request_id: string
+          ticket_id: string
+        }
+        Update: {
+          author_id?: string | null
+          author_kind?: string
+          body?: string
+          created_at?: string
+          delivery_error?: string | null
+          delivery_status?: string
+          id?: string
+          provider_id?: string | null
+          request_id?: string
+          ticket_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "support_messages_ticket_id_fkey"
+            columns: ["ticket_id"]
+            isOneToOne: false
+            referencedRelation: "support_tickets"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      support_tickets: {
+        Row: {
+          category: string
+          contact_name: string
+          created_at: string
+          id: string
+          owner_id: string | null
+          reply_email: string | null
+          request_id: string
+          status: string
+          subject: string
+          submitter_hash: string
+          updated_at: string
+        }
+        Insert: {
+          category: string
+          contact_name?: string
+          created_at?: string
+          id?: string
+          owner_id?: string | null
+          reply_email?: string | null
+          request_id: string
+          status?: string
+          subject: string
+          submitter_hash: string
+          updated_at?: string
+        }
+        Update: {
+          category?: string
+          contact_name?: string
+          created_at?: string
+          id?: string
+          owner_id?: string | null
+          reply_email?: string | null
+          request_id?: string
+          status?: string
+          subject?: string
+          submitter_hash?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
       topic_audit_findings: {
         Row: {
           category: string
@@ -1771,6 +1860,17 @@ export type Database = {
         Args: { _from?: string; _to?: string }
         Returns: Json
       }
+      append_support_message: {
+        Args: {
+          _actor_id: string
+          _admin: boolean
+          _body: string
+          _request_id: string
+          _status?: string
+          _ticket_id: string
+        }
+        Returns: Json
+      }
       claim_podcast_rerecord_item: {
         Args: {
           _job_id: string
@@ -1798,6 +1898,19 @@ export type Database = {
           isOneToOne: false
           isSetofReturn: true
         }
+      }
+      create_support_enquiry: {
+        Args: {
+          _body: string
+          _category: string
+          _email: string
+          _name: string
+          _owner_id: string
+          _request_id: string
+          _subject: string
+          _submitter_hash: string
+        }
+        Returns: Json
       }
       has_role: {
         Args: {
