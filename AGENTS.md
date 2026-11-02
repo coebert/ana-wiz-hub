@@ -65,3 +65,4 @@
 - SCI052 keeps its external diagram identity while importing exact original authored SVGs with equivalent HTML anatomy and native-image enlargement; sonographic/procedural geometry remains withheld so relationship teaching cannot imply procedural clearance.
 - Capacitor releases use the isolated native Vite target and bundled dist/native assets, without PWA workers or web version reloads; preview hot reload is explicit opt-in and never a release configuration.
 - Native entry opens the unified revision workspace while web entry remains unchanged; the Apple paid download requires no in-app checkout or subscription integration.
+- Keep the iPhone privacy/support notice standalone and script-free; emit its exact web path and exclude it from the web service-worker SPA fallback so it cannot become the homepage.

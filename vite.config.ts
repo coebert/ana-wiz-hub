@@ -3,6 +3,7 @@ import react from "@vitejs/plugin-react-swc";
 import path from "path";
 import { componentTagger } from "lovable-tagger";
 import { VitePWA } from "vite-plugin-pwa";
+import { iphonePrivacyPage } from "./scripts/iphone-privacy-page";
 
 // Stable per-build identifier — embedded into index.html and into the JS
 // bundle so the running app can detect when the deployed HTML has moved on.
@@ -27,6 +28,7 @@ export default defineConfig(({ mode }) => ({
     },
   },
   plugins: [
+    mode !== 'native' && iphonePrivacyPage(),
     react(),
     mode === "development" && componentTagger(),
     {
@@ -47,7 +49,7 @@ export default defineConfig(({ mode }) => ({
         enabled: false,
       },
       workbox: {
-        navigateFallbackDenylist: [/^\/~oauth/],
+        navigateFallbackDenylist: [/^\/~oauth/, /^\/iphone\/privacy(?:\/|$|\?)/],
         globPatterns: ["**/*.{js,css,html,ico,png,svg,jpg,jpeg,woff,woff2}"],
         maximumFileSizeToCacheInBytes: 5 * 1024 * 1024,
         runtimeCaching: [
