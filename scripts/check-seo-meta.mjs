@@ -149,7 +149,11 @@ function main() {
     console.warn("[check-seo-meta] dist/ not found — run `npm run build` first. Skipping.");
     return;
   }
-  const files = walkHtml(DIST);
+  // Standalone, script-free reviewed notices are served verbatim and are not
+  // prerendered SPA routes, so their exact reviewed HTML must not be altered
+  // to satisfy SPA social-meta requirements.
+  const STANDALONE_ROUTES = new Set(["/iphone/privacy"]);
+  const files = walkHtml(DIST).filter((f) => !STANDALONE_ROUTES.has(routeFromPath(f)));
   if (files.length === 0) {
     console.warn("[check-seo-meta] no index.html files under dist/. Skipping.");
     return;
