@@ -1,5 +1,10 @@
 # Admin metrics audit fixes
 
+## Versioned sourced viva restoration
+- [ ] Generate exact current canonical FAQ cards with curriculum exams/routes, topic references and content hashes; exclude legacy caches/corpora.
+- [ ] Restore hub/library/topic/voice entry points to shared sourced rehearsal, audio/typed/mic fallback and unscored self-review; retain legacy endpoint holds and score history.
+- [ ] Verify generation equality, all exams, active flows and failure states with focused tests and desktop/mobile preview; no records, real messages or publication.
+
 ## Private support workflow
 - [x] Persist feedback and private conversations with server-checked admin/owner access and idempotent writes; two additive migrations applied and support functions deployed.
 - [x] Add admin Support inbox, outstanding count, reply/status controls and clinical-report access; signed-in My enquiries.

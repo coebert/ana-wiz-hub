@@ -126,7 +126,7 @@ export const FinalFrcaExtras = () => (
       The 2026 Final FRCA sittings are set against the RCoA 2021 Curriculum for Anaesthetics
       Training (Stage 2). Each area below links to its revision notes and has model answers to
       common structured oral exam (SOE) questions. Say your answer out loud first, then compare,
-      or practise live with an AI examiner in{" "}
+      or rehearse current teaching FAQs with source answers and self-review in{" "}
       <Link to="/viva" className="underline">Viva Practice</Link>. Always check doses against
       current local and national guidance.
     </p>

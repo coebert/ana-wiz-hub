@@ -72,28 +72,28 @@ const VivaLauncher = ({
             <DialogHeader>
               <DialogTitle className="font-serif">Choose viva standard</DialogTitle>
               <DialogDescription>
-                {topicTitle} — pick the exam difficulty for this practice viva.
+                {topicTitle} — choose your curriculum exam for sourced rehearsal.
               </DialogDescription>
             </DialogHeader>
             <div className="grid sm:grid-cols-3 gap-2 mt-2">
               {exams.map((e) => {
                 const m = examMeta[e];
                 return (
-                  <button
+                  <Button
                     key={e}
                     type="button"
                     onClick={() => setExam(e)}
-                    className="rounded-lg border border-border bg-card hover:border-primary hover:bg-primary/5 transition-colors p-4 text-left focus:outline-none focus:ring-2 focus:ring-primary"
+                    variant="outline"
+                    className="h-auto min-h-11 flex-col items-start p-4 text-left whitespace-normal"
                   >
                     <p className="font-serif font-semibold text-foreground">{m.label}</p>
                     <p className="text-xs text-muted-foreground mt-0.5">{m.sub}</p>
-                  </button>
+                  </Button>
                 );
               })}
             </div>
             <p className="text-[11px] text-muted-foreground mt-3 leading-snug">
-              You'll be asked a single spoken question. Tap <span className="font-medium">Start answering</span>,
-              respond out loud, then submit for marking.
+              Current teaching questions and exact source answers, with spoken reading and unscored self-review.
             </p>
           </>
         ) : (

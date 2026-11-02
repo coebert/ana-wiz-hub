@@ -60,7 +60,7 @@ const Index = () => {
     : "AnaesthesiaCore – FRCA & FFICM Revision";
   const pageDescription = native ? 'AnaesthesiaCore: source-linked notes, diagrams and quizzes for FRCA Primary, Final and FFICM.' : isRevise
     ? "Revise FRCA Primary, Final and FFICM topics with notes, diagrams, quizzes and viva practice mapped to the curriculum."
-    : "FRCA Primary, Final and FFICM revision: structured notes, diagrams, quizzes, AI podcasts and an AI viva examiner.";
+    : "FRCA Primary, Final and FFICM revision: structured notes, diagrams, quizzes, AI podcasts and sourced viva rehearsal.";
 
   const visibleSections = sections.filter((s) => {
     const topics = topicsBySection[s.sectionKey] || [];
