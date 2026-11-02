@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
 import { enquirySchema } from "@/lib/support";
-import { Heart, MessageSquare, ExternalLink, X, Send, Loader2 } from "lucide-react";
+import { Heart, MessageSquare, ExternalLink, Send, Loader2 } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { toast } from "sonner";
 import { DONATION_CHOICES, STRIPE_CONTRIBUTE_URL, STRIPE_SOURCE, BUY_ME_A_COFFEE_URL, BUY_ME_A_COFFEE_SOURCE, logDonateClick } from "@/lib/donation";
@@ -189,12 +189,13 @@ export const SupportSection = () => {
                   onChange={(e) => setWebsite(e.target.value)}
                 />
               </div>
-              <div className="flex gap-2">
+              <div className="flex flex-wrap gap-2">
                 <Button type="button" variant={type === "support" ? "default" : "outline"} className="min-h-11" aria-pressed={type === "support"} onClick={() => setType("support")}>Support enquiry</Button>
                 <Button
                   type="button"
+                  aria-pressed={type === "topic"}
                   onClick={() => setType("topic")}
-                  className={`flex-1 px-3 py-1.5 rounded-md text-xs font-medium transition-colors ${
+                  className={`flex-1 min-h-11 px-3 py-1.5 rounded-md text-xs font-medium transition-colors ${
                     type === "topic"
                       ? "bg-primary text-primary-foreground"
                       : "bg-muted text-muted-foreground hover:text-foreground"
@@ -204,8 +205,9 @@ export const SupportSection = () => {
                 </Button>
                 <Button
                   type="button"
+                  aria-pressed={type === "error"}
                   onClick={() => setType("error")}
-                  className={`flex-1 px-3 py-1.5 rounded-md text-xs font-medium transition-colors ${
+                  className={`flex-1 min-h-11 px-3 py-1.5 rounded-md text-xs font-medium transition-colors ${
                     type === "error"
                       ? "bg-primary text-primary-foreground"
                       : "bg-muted text-muted-foreground hover:text-foreground"

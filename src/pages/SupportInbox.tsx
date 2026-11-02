@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import { Link, useNavigate, useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { useAuth } from '@/hooks/useAuth';
 import { supabase } from '@/integrations/supabase/client';
 import { Button } from '@/components/ui/button';
@@ -12,7 +12,7 @@ import { toast } from 'sonner';
 type Ticket = Tables<'support_tickets'>;
 type Message = Tables<'support_messages'>;
 export default function SupportInbox({admin = false}: {admin?: boolean}) {
- const {user,loading:authLoading} = useAuth(); const {ticketId} = useParams(); const navigate = useNavigate();
+ const {user,loading:authLoading} = useAuth(); const {ticketId} = useParams();
  const [tickets,setTickets] = useState<Ticket[]>([]); const [messages,setMessages] = useState<Message[]>([]);
  const [search,setSearch] = useState(''); const [status,setStatus] = useState(admin ? 'open' : 'all');
  const [error,setError] = useState(''); const [loading,setLoading] = useState(false); const [busy,setBusy] = useState(false);
