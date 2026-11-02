@@ -9,7 +9,7 @@ describe('standalone iPhone privacy delivery', () => {
     const hook = plugin.generateBundle;
     if (typeof hook !== 'function') throw new Error('Missing output hook');
     hook.call({ emitFile: (asset: { fileName: string; source: string }) => emitted.push(asset) } as never, {} as never, {}, false);
-    expect(emitted.map(asset => asset.fileName)).toEqual(['iphone/privacy']);
+    expect(emitted.map(asset => asset.fileName)).toEqual(['iphone/privacy/index.html']);
     expect(emitted[0]?.source).toBe(readFileSync('public/iphone/privacy.html', 'utf8'));
   });
   it('serves GET and HEAD without auth and leaves unrelated requests alone', () => {

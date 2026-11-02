@@ -1,6 +1,25 @@
 <!doctype html>
 <html lang="en">
   <head>
+    <script>
+      // The iPhone privacy notice is a standalone file. If an older offline cache
+      // served this app shell instead, drop that cache and load the static file
+      // before any app code, analytics or sign-in logic can start.
+      (function () {
+        var p = location.pathname.replace(/\/+$/, "");
+        if (p !== "/iphone/privacy" && p !== "/iphone/privacy.html" && p !== "/iphone/privacy/index.html") return;
+        var key = "ac-iphone-privacy-retry";
+        try { if (sessionStorage.getItem(key)) return; sessionStorage.setItem(key, "1"); } catch (e) {}
+        window.__AC_STANDALONE_REDIRECT__ = true;
+        document.documentElement.style.display = "none";
+        var go = function () { location.replace("/iphone/privacy.html" + location.hash); };
+        var sw = navigator.serviceWorker;
+        if (!sw || !sw.getRegistrations) return go();
+        sw.getRegistrations().then(function (r) {
+          return Promise.all(r.map(function (x) { return x.unregister(); }));
+        }).then(go, go);
+      })();
+    </script>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <meta name="google-site-verification" content="YS9vbu6_Wnw2VOjFVEahMAPF2I0e-4JoGh1hvEodk-o" />
