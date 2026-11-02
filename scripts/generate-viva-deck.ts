@@ -7,7 +7,7 @@ import { topicReferences } from '../src/data/references';
 import type { DeckManifest, TopicDeck, VivaExam } from '../src/lib/viva-deck';
 const hash=(data:unknown)=>createHash('sha256').update(JSON.stringify(data)).digest('hex');
 export function generateVivaDeck() {
- const faqs=extractFaqsByPath();const routes=buildRouteMap().pathToFile;
+ const faqs=extractFaqsByPath({strict:true});const routes=buildRouteMap().pathToFile;
  const entries:DeckManifest['topics']=[];const decks:TopicDeck[]=[];
  for(const topic of [...allTopics].filter(t=>t.available).sort((a,b)=>a.id.localeCompare(b.id))) {
   const path=`/${topic.section}/${topic.id}`;

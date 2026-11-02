@@ -94,7 +94,7 @@ function resolveSrc(rel: string): string {
  *
  * Pairs are deduped by question text in case a file mixes patterns.
  */
-function extractFaqsFromFile(file: string): FaqPair[] {
+function extractFaqsFromFile(file: string, strict = false): FaqPair[] {
   if (!existsSync(file)) return [];
   const src = readFileSync(file, "utf8");
   const pairs: FaqPair[] = [];
@@ -109,6 +109,7 @@ function extractFaqsFromFile(file: string): FaqPair[] {
         ? new Function("HYPERKALAEMIA_TEACHING", `return (${literal});`)(HYPERKALAEMIA_TEACHING)
         : new Function(`return (${literal});`)();
     } catch (err) {
+      if (strict) throw new Error(`[extract-faqs] unresolved FAQ literal in ${file}: ${(err as Error).message}`);
       console.warn(
         `[extract-faqs] failed to parse FAQ literal in ${file}: ${(err as Error).message}`,
       );
@@ -119,6 +120,8 @@ function extractFaqsFromFile(file: string): FaqPair[] {
   const pushIfPair = (q: unknown, a: unknown) => {
     if (typeof q === "string" && typeof a === "string" && q && a) {
       pairs.push([q, a]);
+    } else if (strict) {
+      throw new Error(`[extract-faqs] invalid FAQ pair in ${file}`);
     }
   };
 
@@ -170,10 +173,13 @@ function extractFaqsFromFile(file: string): FaqPair[] {
 
   // Dedupe by question (a file occasionally declares both a named const
   // AND inlines it inside the JSON-LD literal via .map()).
-  const seen = new Set<string>();
-  return pairs.filter(([q]) => {
-    if (seen.has(q)) return false;
-    seen.add(q);
+  const seen = new Map<string, string>();
+  return pairs.filter(([q, a]) => {
+    if (seen.has(q)) {
+      if (strict && seen.get(q) !== a) throw new Error(`[extract-faqs] conflicting duplicate question in ${file}: ${q}`);
+      return false;
+    }
+    seen.set(q, a);
     return true;
   });
 }
@@ -204,11 +210,11 @@ function sliceBalanced(src: string, openIdx: number): string | null {
   return null;
 }
 
-export function extractFaqsByPath(): FaqsByPath {
+export function extractFaqsByPath(options: { strict?: boolean } = {}): FaqsByPath {
   const { pathToFile } = buildRouteMap();
   const out: FaqsByPath = {};
   for (const [path, file] of Object.entries(pathToFile)) {
-    const faqs = extractFaqsFromFile(file);
+    const faqs = extractFaqsFromFile(file, options.strict);
     if (faqs.length > 0) out[path] = faqs;
   }
   return out;

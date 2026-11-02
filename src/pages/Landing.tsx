@@ -130,7 +130,7 @@ const tools: Tool[] = [
   },
   {
     title: "Viva Practice",
-    description: "Practise out loud with an AI examiner who gives rubric-based feedback on spoken answers.",
+    description: "Rehearse current teaching questions, reveal source answers and review your recall without AI clinical scoring.",
     icon: Mic,
     to: "/viva",
     dotClass: "bg-clinical",
@@ -185,8 +185,8 @@ const Landing = () => {
               <p className="lead mt-4 text-foreground/75">
                 A study companion for FRCA Primary, Final and FFICM trainees. Three tools in one place:{" "}
                 <strong className="font-semibold text-foreground">structured curriculum notes</strong>,{" "}
-                <strong className="font-semibold text-foreground">AI-generated topic podcasts</strong>, and an{" "}
-                <strong className="font-semibold text-foreground">AI viva examiner</strong> that gives rubric-based feedback on your spoken answers.
+                <strong className="font-semibold text-foreground">AI-generated topic podcasts</strong>, and{" "}
+                <strong className="font-semibold text-foreground">sourced viva rehearsal</strong> with current teaching answers and self-review.
               </p>
               <div className="mt-6 flex flex-wrap gap-3">
                 <Button asChild variant="cta" size="lg">
@@ -235,8 +235,8 @@ const Landing = () => {
                 <li className="flex items-start gap-3">
                   <Mic className="h-4 w-4 mt-0.5 shrink-0 text-clinical" aria-hidden />
                   <span className="text-foreground/85">
-                    <strong className="font-semibold text-foreground">AI viva examiner</strong>{" "}
-                    with structured, rubric-based feedback.
+                    <strong className="font-semibold text-foreground">Sourced viva rehearsal</strong>{" "}
+                    with exact teaching answers and unscored self-review.
                   </span>
                 </li>
               </ul>
@@ -345,11 +345,9 @@ const Landing = () => {
             </summary>
             <div className="px-5 pb-6 pt-2 md:px-6 border-t border-border">
               <p className="small mb-6 max-w-2xl mt-4">
-                A worked example: three viva questions, model candidate answers, and the kind of constructive feedback the AI examiner gives.
+                Practise current teaching questions with exact answers and self-review. Free-form AI marking remains under review.
               </p>
-              <Suspense fallback={null}>
-                <DemoVivaStepper questions={DEMO_QUESTIONS} />
-              </Suspense>
+              <Button asChild><Link to="/viva">Open sourced viva practice</Link></Button>
             </div>
           </details>
         </section>
