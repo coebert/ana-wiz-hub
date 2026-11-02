@@ -9,7 +9,7 @@ import {verifyDeck,nextCardIndex,EXAMS,type DeckManifest} from '@/lib/viva-deck'
 const generated=generateVivaDeck();
 describe('canonical versioned viva deck',()=>{
  it('matches every exact current canonical FAQ tuple, route, exam and topic reference record',()=>{
-  const faqs=extractFaqsByPath({strict:true});const routes=buildRouteMap().pathToFile;
+  const faqs=extractFaqsByPath({strict:true,paths:new Set(generated.decks.map(d=>d.path))});const routes=buildRouteMap().pathToFile;
   for(const deck of generated.decks){const topic=allTopics.find(t=>t.id===deck.topicId);expect(topic).toBeDefined();expect(deck.cards.map(c=>[c.question,c.answer])).toEqual(faqs[deck.path] ?? []);expect(routes[deck.path]).toBeDefined();expect(deck.exams).toEqual(topic?.examTags.filter(e=>EXAMS.includes(e as typeof EXAMS[number])));expect(deck.references).toEqual(topicReferences[deck.topicId] ?? []);for(const c of deck.cards){expect(routes[deck.path].endsWith(c.sourceFile)).toBe(true);expect(c.contentHash).toHaveLength(64);}}
  });
  it('has a reproducible revision and shipped content identical to fresh generation',()=>{

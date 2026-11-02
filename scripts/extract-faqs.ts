@@ -210,10 +210,11 @@ function sliceBalanced(src: string, openIdx: number): string | null {
   return null;
 }
 
-export function extractFaqsByPath(options: { strict?: boolean } = {}): FaqsByPath {
+export function extractFaqsByPath(options: { strict?: boolean; paths?: Set<string> } = {}): FaqsByPath {
   const { pathToFile } = buildRouteMap();
   const out: FaqsByPath = {};
   for (const [path, file] of Object.entries(pathToFile)) {
+    if (options.paths && !options.paths.has(path)) continue;
     const faqs = extractFaqsFromFile(file, options.strict);
     if (faqs.length > 0) out[path] = faqs;
   }
