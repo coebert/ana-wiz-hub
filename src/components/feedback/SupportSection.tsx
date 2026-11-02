@@ -1,10 +1,14 @@
-import { useState } from "react";
-import { Heart, MessageSquare, ExternalLink, X, Send, Loader2 } from "lucide-react";
+import { useRef, useState } from "react";
+import { Link } from "react-router-dom";
+import { Button } from "@/components/ui/button";
+import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
+import { enquirySchema } from "@/lib/support";
+import { Heart, MessageSquare, ExternalLink, Send, Loader2 } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { toast } from "sonner";
 import { DONATION_CHOICES, STRIPE_CONTRIBUTE_URL, STRIPE_SOURCE, BUY_ME_A_COFFEE_URL, BUY_ME_A_COFFEE_SOURCE, logDonateClick } from "@/lib/donation";
 
-type FormType = "topic" | "error";
+type FormType = "support" | "topic" | "error";
 
 export const SupportSection = () => {
   const [feedbackOpen, setFeedbackOpen] = useState(false);
@@ -13,38 +17,50 @@ export const SupportSection = () => {
   const [message, setMessage] = useState("");
   const [website, setWebsite] = useState(""); // honeypot — real users leave blank
   const [sending, setSending] = useState(false);
+  const [name, setName] = useState("");
+  const [replyEmail, setReplyEmail] = useState("");
+  const pending = useRef<{ key: string; id: string } | null>(null);
+  const sendLock = useRef(false);
 
   const resetForm = () => {
     setSubject("");
     setMessage("");
     setWebsite("");
     setType("topic");
+    setName("");
+    setReplyEmail("");
+    pending.current = null;
   };
 
   const handleSend = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (sending) return;
+    if (sendLock.current) return;
+    const parsed = enquirySchema.safeParse({ type, subject, message, name, replyEmail });
+    if (!parsed.success) { toast.error("Check your subject, message and reply email."); return; }
+    const key = JSON.stringify(parsed.data);
+    if (pending.current?.key !== key) pending.current = { key, id: crypto.randomUUID() };
+    sendLock.current = true;
     setSending(true);
     try {
       const { data, error } = await supabase.functions.invoke("send-feedback", {
-        body: { type, subject, message, website },
+        body: { ...parsed.data, website, requestId: pending.current.id },
       });
       if (error || (data as any)?.error) {
         throw new Error((data as any)?.error ?? error?.message ?? "Send failed");
       }
-      toast.success("Feedback sent — thank you!");
+      toast.success("Enquiry saved — thank you! The team can now find it in their support inbox.");
       resetForm();
       setFeedbackOpen(false);
     } catch (err) {
-      console.error(err);
       const msg = err instanceof Error ? err.message : "";
       if (msg.toLowerCase().includes("too many")) {
         toast.error("Too many submissions — please wait a few minutes.");
       } else {
-        toast.error("Couldn't send feedback. Please try again later.");
+        toast.error("Couldn't confirm your enquiry was saved. Retry without changing the message to avoid a duplicate.");
       }
     } finally {
       setSending(false);
+      sendLock.current = false;
     }
   };
 
@@ -131,37 +147,23 @@ export const SupportSection = () => {
 
         <div className="border-t border-border mt-6 pt-5 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
           <p className="text-sm text-muted-foreground">Feedback is welcome too.</p>
-          <button
+          <Button
             type="button"
             onClick={() => setFeedbackOpen(true)}
             className="min-h-11 inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-lg border border-border bg-background text-sm font-medium text-foreground hover:bg-muted transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
           >
             <MessageSquare className="h-4 w-4" aria-hidden />
-            Request a topic / report an error
-          </button>
+            Contact support / send feedback
+          </Button>
+          <Button asChild variant="outline" className="min-h-11"><Link to="/my-enquiries">My enquiries</Link></Button>
         </div>
       </div>
 
       {feedbackOpen && (
-        <div
-          className="fixed inset-0 z-50 flex items-center justify-center bg-background/80 backdrop-blur-sm p-4"
-          onClick={() => setFeedbackOpen(false)}
-        >
-          <div
-            className="w-full max-w-lg rounded-xl border border-border bg-card p-6 shadow-lg"
-            onClick={(e) => e.stopPropagation()}
-          >
+        <Dialog open={feedbackOpen} onOpenChange={setFeedbackOpen}>
+          <DialogContent className="max-w-lg max-h-[90dvh] overflow-y-auto" aria-describedby={undefined}>
             <div className="flex items-center justify-between mb-4">
-              <h3 className="text-base font-serif font-bold text-foreground">
-                Send feedback
-              </h3>
-              <button
-                onClick={() => setFeedbackOpen(false)}
-                className="p-1 rounded hover:bg-muted text-muted-foreground"
-                aria-label="Close"
-              >
-                <X className="h-4 w-4" />
-              </button>
+              <DialogTitle>Contact support / send feedback</DialogTitle>
             </div>
 
             <form onSubmit={handleSend} className="space-y-3">
@@ -187,36 +189,40 @@ export const SupportSection = () => {
                   onChange={(e) => setWebsite(e.target.value)}
                 />
               </div>
-              <div className="flex gap-2">
-                <button
+              <div className="flex flex-wrap gap-2">
+                <Button type="button" variant={type === "support" ? "default" : "outline"} className="min-h-11" aria-pressed={type === "support"} onClick={() => setType("support")}>Support enquiry</Button>
+                <Button
                   type="button"
+                  aria-pressed={type === "topic"}
                   onClick={() => setType("topic")}
-                  className={`flex-1 px-3 py-1.5 rounded-md text-xs font-medium transition-colors ${
+                  className={`flex-1 min-h-11 px-3 py-1.5 rounded-md text-xs font-medium transition-colors ${
                     type === "topic"
                       ? "bg-primary text-primary-foreground"
                       : "bg-muted text-muted-foreground hover:text-foreground"
                   }`}
                 >
                   Request a topic
-                </button>
-                <button
+                </Button>
+                <Button
                   type="button"
+                  aria-pressed={type === "error"}
                   onClick={() => setType("error")}
-                  className={`flex-1 px-3 py-1.5 rounded-md text-xs font-medium transition-colors ${
+                  className={`flex-1 min-h-11 px-3 py-1.5 rounded-md text-xs font-medium transition-colors ${
                     type === "error"
                       ? "bg-primary text-primary-foreground"
                       : "bg-muted text-muted-foreground hover:text-foreground"
                   }`}
                 >
                   Report an error
-                </button>
+                </Button>
               </div>
 
               <div>
-                <label className="block text-xs font-medium text-muted-foreground mb-1">
+                <label htmlFor="feedback-subject" className="block text-xs font-medium text-muted-foreground mb-1">
                   Subject
                 </label>
                 <input
+                  id="feedback-subject"
                   type="text"
                   required
                   maxLength={120}
@@ -232,10 +238,11 @@ export const SupportSection = () => {
               </div>
 
               <div>
-                <label className="block text-xs font-medium text-muted-foreground mb-1">
+                <label htmlFor="feedback-message" className="block text-xs font-medium text-muted-foreground mb-1">
                   Details
                 </label>
                 <textarea
+                  id="feedback-message"
                   required
                   maxLength={2000}
                   value={message}
@@ -250,12 +257,11 @@ export const SupportSection = () => {
                 />
               </div>
 
-              <p className="text-[11px] text-muted-foreground">
-                Your message is sent directly to the AnaesthesiaCore team — no
-                email app needed.
-              </p>
+              <div><label htmlFor="feedback-name" className="text-sm">Name (optional)</label><input id="feedback-name" className="w-full min-h-11 px-3 rounded-md border border-input bg-background" value={name} maxLength={100} onChange={e => setName(e.target.value)} autoComplete="name" /></div>
+              <div><label htmlFor="feedback-email" className="text-sm">Reply email (optional)</label><input id="feedback-email" type="email" className="w-full min-h-11 px-3 rounded-md border border-input bg-background" value={replyEmail} maxLength={254} onChange={e => setReplyEmail(e.target.value)} autoComplete="email" /></div>
+              <p className="text-xs text-muted-foreground">Saved privately for the team. When signed in, your account identifies your enquiry and its verified email is used for replies. A typed email never links an anonymous enquiry to an account. Without a reply email or signed-in account, the team cannot respond. Do not include patient-identifiable information.</p>
 
-              <button
+              <Button
                 type="submit"
                 disabled={sending}
                 className="w-full inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-lg bg-primary text-primary-foreground text-sm font-medium hover:bg-primary/90 transition-colors disabled:opacity-60 disabled:cursor-not-allowed"
@@ -271,10 +277,10 @@ export const SupportSection = () => {
                     Send feedback
                   </>
                 )}
-              </button>
+              </Button>
             </form>
-          </div>
-        </div>
+          </DialogContent>
+        </Dialog>
       )}
     </section>
   );

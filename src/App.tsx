@@ -16,6 +16,7 @@ import { isNativeApp } from "./lib/native-platform";
 const NotFound = lazy(() => import("./pages/NotFound"));
 const AdminLogin = lazy(() => import("./pages/AdminLogin"));
 const AdminDashboard = lazy(() => import("./pages/AdminDashboard"));
+const SupportInbox = lazy(() => import("./pages/SupportInbox"));
 const ContentAudit = lazy(() => import("./pages/ContentAudit"));
 const AuditDashboard = lazy(() => import("./pages/AuditDashboard"));
 const AuditReport = lazy(() => import("./pages/AuditReport"));
@@ -287,6 +288,10 @@ const App = () => (
           {/* Admin */}
           <Route path="/admin/login" element={<AdminLogin />} />
           <Route path="/admin" element={<RequireAdmin><AdminDashboard /></RequireAdmin>} />
+          <Route path="/admin/support" element={<RequireAdmin><SupportInbox admin /></RequireAdmin>} />
+          <Route path="/admin/support/:ticketId" element={<RequireAdmin><SupportInbox admin /></RequireAdmin>} />
+          <Route path="/my-enquiries" element={<SupportInbox />} />
+          <Route path="/my-enquiries/:ticketId" element={<SupportInbox />} />
           <Route path="/admin/audit" element={<RequireAdmin><ContentAudit /></RequireAdmin>} />
           <Route path="/admin/audit-dashboard" element={<RequireAdmin><AuditDashboard /></RequireAdmin>} />
           <Route path="/admin/audit-report" element={<RequireAdmin><AuditReport /></RequireAdmin>} />

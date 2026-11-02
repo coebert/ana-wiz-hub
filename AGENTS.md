@@ -66,3 +66,5 @@
 - Capacitor releases use the isolated native Vite target and bundled dist/native assets, without PWA workers or web version reloads; preview hot reload is explicit opt-in and never a release configuration.
 - Native entry opens the unified revision workspace while web entry remains unchanged; the Apple paid download requires no in-app checkout or subscription integration.
 - Keep the iPhone privacy/support notice standalone and script-free; emit its exact web path and exclude it from the web service-worker SPA fallback so it cannot become the homepage.
+- Support enquiries use service-only atomic/idempotent writes and owner/admin RLS reads; account identity comes only from validated sessions, never typed emails, so private conversations cannot be claimed by address.
+- Support email uses the existing Resend gateway only after live sender-domain verification; persist first and retain delivery outcomes, with no blind resend of duplicate requests or import of external email replies.
