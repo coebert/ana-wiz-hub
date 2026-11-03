@@ -642,6 +642,27 @@ export type Database = {
         }
         Relationships: []
       }
+      home_announcement: {
+        Row: {
+          enabled: boolean
+          id: boolean
+          message: string
+          updated_at: string
+        }
+        Insert: {
+          enabled?: boolean
+          id?: boolean
+          message?: string
+          updated_at?: string
+        }
+        Update: {
+          enabled?: boolean
+          id?: boolean
+          message?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
       inaccuracy_reports: {
         Row: {
           contact_email: string | null
@@ -1871,6 +1892,7 @@ export type Database = {
         }
         Returns: Json
       }
+      can_edit_home_announcement: { Args: never; Returns: boolean }
       claim_podcast_rerecord_item: {
         Args: {
           _job_id: string
@@ -1963,6 +1985,10 @@ export type Database = {
           isOneToOne: true
           isSetofReturn: false
         }
+      }
+      save_home_announcement: {
+        Args: { _enabled: boolean; _message: string }
+        Returns: undefined
       }
     }
     Enums: {

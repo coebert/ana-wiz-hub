@@ -21,6 +21,7 @@ import SearchVsReferrerPanel from "@/components/admin/SearchVsReferrerPanel";
 import LearningProgressPanel from "@/components/admin/LearningProgressPanel";
 import { VisitorSurveyPanel } from "@/components/admin/VisitorSurveyPanel";
 import SupportInboxLink from "@/components/admin/SupportInboxLink";
+import AnnouncementEditor from "@/components/admin/AnnouncementEditor";
 import { buildNonBotVisitorSet, classifyVisitors, type VisitorEvidence } from "@/lib/visitor-classification";
 
 /** Format a number of seconds as "Hh Mm" or "Mm Ss" for compact display. */
@@ -1031,6 +1032,7 @@ const AdminDashboard = () => {
         Skip to dashboard content
       </a>
       <div className="max-w-4xl mx-auto space-y-6">
+        <AnnouncementEditor />
         <SupportInboxLink />
         <header className="flex items-center justify-between flex-wrap gap-3">
           <div>
