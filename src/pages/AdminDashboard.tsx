@@ -19,7 +19,6 @@ import WebVitalsPanel from "@/components/admin/WebVitalsPanel";
 import JumpClicksPanel from "@/components/admin/JumpClicksPanel";
 import SearchVsReferrerPanel from "@/components/admin/SearchVsReferrerPanel";
 import LearningProgressPanel from "@/components/admin/LearningProgressPanel";
-import { VisitorSurveyPanel } from "@/components/admin/VisitorSurveyPanel";
 import SupportInboxLink from "@/components/admin/SupportInboxLink";
 import AnnouncementEditor from "@/components/admin/AnnouncementEditor";
 import { buildNonBotVisitorSet, classifyVisitors, type VisitorEvidence } from "@/lib/visitor-classification";
@@ -1269,7 +1268,6 @@ const AdminDashboard = () => {
               <p>{visitorClassification.interacted.size.toLocaleString()} likely-human visitor IDs have recorded interaction. Interaction collection starts with this update; older visits lack this evidence.</p>
               <p>Browser identification and interaction can be disguised. These are browser IDs, not verified people; one person may use several devices. Saved learning progress below is a separate, stronger usage signal.</p>
             </div>
-            <VisitorSurveyPanel visits={allVisits} />
             <div className="grid grid-cols-2 lg:grid-cols-6 gap-4" role="list" aria-label="Headline statistics">
               {[
                 { label: "All Visitor IDs", value: analytics.totalUniqueUsers, icon: Users, color: "text-blue-500", help: "Browser identifiers, not unique people" },
