@@ -69,3 +69,4 @@
 - Support enquiries use service-only atomic/idempotent writes and owner/admin RLS reads; account identity comes only from validated sessions, never typed emails, so private conversations cannot be claimed by address.
 - Support email uses the existing Resend gateway only after live sender-domain verification; persist first and retain delivery outcomes, with no blind resend of duplicate requests or import of external email replies.
 - Public viva rehearsal uses strict canonical FAQ extraction, hash-versioned per-topic assets and curriculum metadata; self-review never writes numerical attempts, while legacy unconstrained generation/realtime holds and score history remain intact.
+- Home announcements use a singleton public-active read table and an owner-plus-admin guarded save RPC; never rely on client admin flags for write authority, and reuse the same banner on web and native home routes.

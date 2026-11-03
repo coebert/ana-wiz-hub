@@ -6,6 +6,17 @@
 @tailwind components;
 @tailwind utilities;
 
+.announcement-strip { min-height: 3rem; }
+.announcement-track { display: flex; width: max-content; animation: announcement-scroll var(--announcement-duration, 45s) linear infinite; }
+.announcement-copy { flex: none; white-space: pre; padding-right: 4rem; }
+.announcement-paused, .announcement-strip:hover .announcement-track, .announcement-strip:focus-within .announcement-track { animation-play-state: paused; }
+@keyframes announcement-scroll { to { transform: translateX(-50%); } }
+@media (prefers-reduced-motion: reduce) {
+  .announcement-track { animation: none; width: auto; }
+  .announcement-copy { white-space: pre-wrap; overflow-wrap: anywhere; padding: .75rem 0; min-width: 0; }
+  .announcement-duplicate, .announcement-pause { display: none; }
+}
+
 /* Native only: preserve web layout and clear the iPhone home indicator. */
 html[data-native-app="true"] body {
   padding-bottom: env(safe-area-inset-bottom, 0px);

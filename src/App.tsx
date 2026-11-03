@@ -6,6 +6,7 @@ import { Toaster as Sonner } from "@/components/ui/sonner";
 import { Toaster } from "@/components/ui/toaster";
 import { Header } from "@/components/layout/Header";
 import { UpdateBanner } from "@/components/layout/UpdateBanner";
+import HomeAnnouncement from "@/components/layout/HomeAnnouncement";
 import { CascadePerfBadge } from "@/components/diagrams/_dev/CascadePerfBadge";
 import { PodcastJobsIndicator } from "@/components/topic/PodcastJobsIndicator";
 
@@ -159,6 +160,7 @@ const App = () => (
       <BrowserRouter>
         <Header />
         <UpdateBanner />
+        <HomeAnnouncement />
         <CascadePerfBadge />
         <PodcastJobsIndicator />
         <MiniPodcastPlayer />
