@@ -1,0 +1,13 @@
+# Home announcement validation — 3 November 2026
+
+- Owner established through requesting-user session (`auth-session --self`) and existing admin role. Editing requires that exact account AND a current database admin role; client flags do not authorize writes.
+- Additive migrations: `drizzle/migrations/0015_owner_home_announcement.sql`, `0016_announcement_explicit_write_revocation.sql`. Active text is publicly readable; disabled text owner-readable; all browser direct writes revoked. Guarded save RPC validates blank/enabled and 5,000-character rules.
+- Shared banner appears only on `/` and `/revise`, covering web landing and native revision home. Slow distance-adjusted horizontal motion, pause/resume, hover/focus pause, screen-reader single copy, reduced-motion wrapping. Home fetch on mount/focus and once per minute; offline fetch failure hides banner rather than breaking teaching.
+- Admin editor checks permission through server RPC, reads saved text, and saves text plus visibility together. Default is off/empty; no invented news published.
+- Tests: `bunx vitest run src/test/home-announcement.test.tsx src/test/support-form.test.tsx src/test/support-workflow.test.ts`: **22 passed**, 3 files. Eight announcement validation/editor cases; 14 support regressions.
+- Real owner session: saved a disabled test message through admin UI, refreshed, confirmed exact text and disabled switch. Anonymous save RPC **401**; owner direct table update **403** after explicit grant revocation. No second-user session created; denied-user editor covered with mocks, exact owner identity enforced in SQL.
+- Browser: `/` and `/revise` at 1280×1800 and 390×844. Enabled banner presentation used an isolated read-response mock to avoid exposing test news. Confirmed transform advances, pause/resume, reduced-motion wrapping and no horizontal overflow. **0 page errors**. Actual enabled public delivery and native-device rendering not exercised.
+- Automatic preview build: **OK at 10:31:36 UTC**. No manual build/typecheck run.
+- Disabled test row removed by exact ID/state/message guard. Existing support, viva, clinical and native source untouched. Database changes applied to shared Cloud; website not published.
+
+Changed source paths: `src/lib/home-announcement.ts`, `src/components/layout/HomeAnnouncement.tsx`, `src/components/admin/AnnouncementEditor.tsx`, `src/App.tsx`, `src/pages/AdminDashboard.tsx`, `src/index.css`, `src/test/home-announcement.test.tsx`, `AGENTS.md`, `roadmap.md`; generated database types refreshed by migration tooling.
