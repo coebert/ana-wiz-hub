@@ -113,6 +113,13 @@
       "when": 1793701766389,
       "tag": "0015_owner_home_announcement",
       "breakpoints": true
+    },
+    {
+      "idx": 16,
+      "version": "7",
+      "when": 1793701894423,
+      "tag": "0016_announcement_explicit_write_revocation",
+      "breakpoints": true
     }
   ]
 }
