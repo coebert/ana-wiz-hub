@@ -27,7 +27,7 @@
 - Keep NTS expansions in NTSEvidenceTeaching using topic-reference quotations; distinguish operational debriefs from psychological interventions and TeamSTEPPS tools from local adaptations to prevent unsafe conflation.
 
 - Admin learning aggregates require server-checked admin access and account-scoped study-time caches; saved progress is distinct from visitor estimates.
-- Visitor classification is shared; client evidence is not identity; interactions never inflate views. Surveys retain first answers per browser ID with admin-only reads; self-reports never override classification.
+- Visitor classification is shared; client evidence is not identity; interactions never inflate views. The visitor survey was removed (3 Nov 2026): no survey UI, collection function or admin panel remains; any existing visitor_survey_responses rows are historical and untouched, and self-reports never override classification.
 - Viva audio streams PCM via tts-demo, chunked client-side, no deadlines; errors keep retry.
 - Operations use operativeSteps, citations, search anchors and uncapped audits; staged diagrams reuse notes to prevent drift, with prefixed materials and explicit views.
 
