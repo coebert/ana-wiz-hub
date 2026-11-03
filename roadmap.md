@@ -1,5 +1,10 @@
 # Admin metrics audit fixes
 
+## Owner-only home announcement
+- [ ] Add shared home banner with slow horizontal scrolling, pause and reduced-motion support.
+- [ ] Add owner-only admin message editing and on/off control enforced by database permissions.
+- [ ] Verify access isolation, saving, banner visibility and narrow/wide layouts; do not publish.
+
 ## Versioned sourced viva restoration
 - [ ] Generate exact current canonical FAQ cards with curriculum exams/routes, topic references and content hashes; exclude legacy caches/corpora.
 - [ ] Restore hub/library/topic/voice entry points to shared sourced rehearsal, audio/typed/mic fallback and unscored self-review; retain legacy endpoint holds and score history.
