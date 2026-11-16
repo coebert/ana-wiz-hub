@@ -1,6 +1,6 @@
 import { createClient } from 'npm:@supabase/supabase-js@2';
 import { corsHeaders } from 'npm:@supabase/supabase-js@2/cors';
-import { z } from 'npm:zod@3';
+import { z } from 'npm:zod@4.6.7';
 import { canAccess, contactIdentity, persistThenNotify, verifiedSender, type Actor } from './rules.ts';
 const adminEmail = 'coebert@gmail.com';
 const site = 'https://anaesthesiacore.app';

@@ -1,6 +1,6 @@
 import { createClient } from "npm:@supabase/supabase-js@2";
 import { corsHeaders } from "npm:@supabase/supabase-js@2/cors";
-import { z } from "npm:zod@3.23.8";
+import { z } from "npm:zod@4.6.7";
 
 const ingestToken = Deno.env.get("LIGHTHOUSE_INGEST_TOKEN")!;
 const supabaseUrl = Deno.env.get("SUPABASE_URL")!;

@@ -4,7 +4,7 @@
 // from the client), so no rate limiting beyond gateway defaults.
 
 import { createClient } from "npm:@supabase/supabase-js@2";
-import { z } from "npm:zod@3.23.8";
+import { z } from "npm:zod@4.6.7";
 
 // sendBeacon uses credentials mode "include", so a wildcard
 // Access-Control-Allow-Origin is rejected by browsers. Echo the request

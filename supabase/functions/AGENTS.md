@@ -1,0 +1,1 @@
+- Import Zod as `npm:zod@<patched 4.x>` matching the web app; `_shared/test/zod4-runtime_test.ts` checks validation and role guards offline with stubbed fetch, so backend validation stays patched without reaching live services.
