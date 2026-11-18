@@ -8,6 +8,7 @@ import NeonSplash from "@/components/layout/NeonSplash";
 import type { DemoVivaQuestion } from "@/components/viva/DemoVivaStepper";
 import { ContinueBand } from "@/components/landing/ContinueBand";
 import { HomeDashboard } from "@/components/landing/HomeDashboard";
+import { AppStoreApps } from "@/components/landing/AppStoreApps";
 import { Button } from "@/components/ui/button";
 import { SiteFooter } from "@/components/layout/SiteFooter";
 import { PageContainer } from "@/components/layout/PageContainer";
@@ -249,6 +250,9 @@ const Landing = () => {
           </div>
         </PageContainer>
       </section>
+
+      {/* Both iOS apps, directly under the hero (web only; hidden in the native app) */}
+      <AppStoreApps />
 
       <PageSection spacing="default" width="full" className="flex-1">
         <div className="max-w-6xl mx-auto mb-8">
