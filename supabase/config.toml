@@ -17,3 +17,6 @@ verify_jwt = false
 
 [functions.paypal-webhook]
 verify_jwt = false
+
+[functions.ai-relay-jwks]
+verify_jwt = false

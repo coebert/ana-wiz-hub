@@ -1,1 +1,2 @@
 - Import Zod as `npm:zod@<patched 4.x>` matching the web app; `_shared/test/zod4-runtime_test.ts` checks validation and role guards offline with stubbed fetch, so backend validation stays patched without reaching live services.
+- Base44 AI relay: only deployed source functions sign short-lived single-use Ed25519 assertions (key derived from their runtime service credential); ai-relay-jwks publishes only the public JWK and reserves each jti in a service-only private replay table, and the Base44 destination stays pinned, so relay calls cannot be forged, replayed or redirected.

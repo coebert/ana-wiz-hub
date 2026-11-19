@@ -1986,6 +1986,10 @@ export type Database = {
           isSetofReturn: false
         }
       }
+      reserve_base44_ai_request: {
+        Args: { expires_at_s: number; kind: string; request_jti: string }
+        Returns: number
+      }
       save_home_announcement: {
         Args: { _enabled: boolean; _message: string }
         Returns: undefined
