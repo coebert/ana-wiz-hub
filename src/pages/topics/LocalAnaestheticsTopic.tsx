@@ -25,7 +25,7 @@ const localAnaestheticsFaqs: Array<[string, string]> = [
   ],
   [
     "Outline the management of local-anaesthetic systemic toxicity (LAST).",
-    "RCoA/Association of Anaesthetists 2024 algorithm: STOP injection, call for help, ABC (100 % O₂, secure airway, IV access). Manage seizures (small dose benzodiazepine or propofol). Treat arrhythmias (avoid lidocaine, calcium, vasopressin; use small adrenaline 1 µg/kg). Give 20 % Intralipid: 1.5 mL/kg bolus, then 15 mL/kg/h infusion, repeat bolus up to 3×, max 12 mL/kg total. Continue CPR — long resuscitation often successful. Refer to ITU and report to NPSA / Lipid Rescue registry."
+    "Association of Anaesthetists QRH 3-10 (2023) algorithm: STOP injection, call for help, ABC (100 % O₂, secure airway, IV access). Manage seizures with a small incremental benzodiazepine dose (thiopental or propofol only with caution because of negative inotropy). If arrest, give adrenaline ≤ 1 microgram/kg, avoid vasopressin and lidocaine, and use amiodarone for ventricular arrhythmias. Give 20 % lipid emulsion 1.5 mL/kg over 2–3 min, then 15 mL/kg/h; repeat the bolus at 5 and 10 min and double to 30 mL/kg/h if unstable; maximum cumulative 12 mL/kg. Continue CPR — long resuscitation is often successful. Refer to critical care and report the incident locally and nationally."
   ]
 ];
 
@@ -41,7 +41,7 @@ const workedExamples: WorkedExample[] = [
           <li>Call for help and the LAST trolley. Stop injecting LA immediately. Manage airway and ventilate with 100% O₂ — hypoxia and acidosis worsen toxicity.</li>
           <li>Terminate the seizure: small-dose benzodiazepine (midazolam 1–2 mg) preferred. Propofol is not recommended if there is any cardiovascular instability — it is a myocardial depressant and is not a substitute for lipid emulsion.</li>
           <li>Start ALS if pulseless. CPR may need to be prolonged (&gt;60 min) because bupivacaine binds avidly to sodium channels.</li>
-          <li>Give 20% lipid emulsion (Intralipid): 1.5 mL/kg bolus over 1 min then 15 mL/kg/h infusion. Repeat bolus every 5 min up to 3 times if circulation not restored; double the infusion rate if BP remains low. Max cumulative dose 12 mL/kg.</li>
+          <li>Give 20% lipid emulsion (Intralipid): 1.5 mL/kg over 2–3 min then 15 mL/kg/h infusion. Repeat the same bolus at 5 and 10 min if the circulation is not restored; double the infusion to 30 mL/kg/h if BP remains low. Max cumulative dose 12 mL/kg.</li>
           <li>Modify ALS drugs: reduce adrenaline to ≤1 µg/kg boluses; avoid vasopressin, calcium channel blockers, β-blockers, and lidocaine.</li>
           <li>Once stable, transfer to ICU for ≥12 h monitoring (delayed cardiotoxicity), serum amylase/lipase if propofol used, and report to NAP/LAST registry.</li>
         </ol>
@@ -55,8 +55,8 @@ const workedExamples: WorkedExample[] = [
         </div>
       </div>
     ),
-    answer: "Stop LA, secure airway with 100% O₂, suppress seizures with midazolam, start ALS (with reduced adrenaline ≤1 µg/kg, no lidocaine/vasopressin/calcium blockers), and give 20% lipid emulsion 1.5 mL/kg bolus then 15 mL/kg/h infusion. Continue CPR for ≥60 min if needed and admit to ICU for ≥12 h after ROSC.",
-    cites: ["AA LAST 2024","BJA Educ 2016"],
+    answer: "Stop LA, secure airway with 100% O₂, suppress seizures with midazolam, start ALS (adrenaline ≤1 µg/kg; avoid vasopressin and lidocaine; amiodarone for ventricular arrhythmias), and give 20% lipid emulsion 1.5 mL/kg over 2–3 min then 15 mL/kg/h, repeating the bolus at 5 and 10 min and doubling to 30 mL/kg/h if unstable (maximum 12 mL/kg). Continue CPR for ≥60 min if needed and admit to ICU for ≥12 h after ROSC.",
+    cites: ["AA LAST QRH 2023","BJA Educ 2016"],
   },
 ];
 const LocalAnaestheticsTopic = () => {
@@ -75,15 +75,15 @@ const LocalAnaestheticsTopic = () => {
         "Apply the Henderson–Hasselbalch equation and the concept of ion trapping to clinical scenarios (infected tissue, foetal acidosis)",
         "Distinguish ester from amide LAs by metabolism, allergy potential and clinical use",
         "Select product- and route-specific local-anaesthetic limits, accounting for prior and mixed-agent exposure",
-        "Recognise and manage local anaesthetic systemic toxicity (LAST) using the RCoA/Association of Anaesthetists 2024 guideline and 20% lipid emulsion",
+        "Recognise and manage local anaesthetic systemic toxicity (LAST) using the Association of Anaesthetists QRH 3-10 (2023) and 20% lipid emulsion",
       ]}
       keyPoints={[
         { text: "LAs are weak bases; the unionised form crosses the membrane, the ionised form blocks the Na⁺ channel intracellularly.", cites: ["Peck & Hill Ch.8"] },
         { text: "pKa determines onset speed: lower pKa → more unionised at pH 7.4 → faster onset (lidocaine pKa 7.9 > bupivacaine pKa 8.1).", cites: ["BJA Educ 2015"] },
-        { text: "Lipid solubility determines potency; protein binding determines duration of action.", cites: ["AA LAST 2024"] },
+        { text: "Lipid solubility determines potency; protein binding determines duration of action.", cites: ["AA LAST QRH 2023"] },
         { text: "Infected/acidotic tissue has more ionised drug → less membrane penetration → LA failure.", cites: ["Peck & Hill Ch.8"] },
         { text: "Amides (lidocaine, bupivacaine, ropivacaine) are hepatically metabolised; esters are hydrolysed by plasma cholinesterases.", cites: ["BJA Educ 2015"] },
-        { text: "Differential blockade: autonomic → pain/temperature → touch → motor. Recovery is in reverse.", cites: ["AA LAST 2024"] },
+        { text: "Differential blockade: autonomic → pain/temperature → touch → motor. Recovery is in reverse.", cites: ["AA LAST QRH 2023"] },
         { text: "LAST presents as CNS excitation then cardiovascular collapse. Treat with Intralipid 20% (1.5 mL/kg bolus then 15 mL/kg/h infusion).", cites: ["Peck & Hill Ch.8"] },
         { text: "Bupivacaine is most cardiotoxic due to slow dissociation from cardiac Na⁺ channels; ropivacaine is the safer S-enantiomer alternative.", cites: ["BJA Educ 2015"] },
       ]}
@@ -93,9 +93,9 @@ const LocalAnaestheticsTopic = () => {
         keyPoints: { exams: [Exam.PRIMARY], curriculumCodes: ["PR_BK_05"] },
       }}
       sectionSources={{
-        objectives: ["BJA Educ 2015", "Peck & Hill Ch.8", "AA LAST 2024"],
-        keyPoints: ["BJA Educ 2015", "Peck & Hill Ch.8", "AA LAST 2024"],
-        workedExamples: ["AA LAST 2024", "BJA Educ 2016"],
+        objectives: ["BJA Educ 2015", "Peck & Hill Ch.8", "AA LAST QRH 2023"],
+        keyPoints: ["BJA Educ 2015", "Peck & Hill Ch.8", "AA LAST QRH 2023"],
+        workedExamples: ["AA LAST QRH 2023", "BJA Educ 2016"],
       }}
       coreConcepts={
         <>
@@ -426,14 +426,15 @@ const LocalAnaestheticsTopic = () => {
             <div className="bg-accent/10 rounded-lg p-4 mt-3 border border-accent/30">
               <p className="text-sm font-semibold text-accent mb-2">Treatment: Intralipid (20% Lipid Emulsion)</p>
               <ul className="text-sm text-foreground/80 space-y-1">
-                <li>• Initial bolus: 1.5 mL/kg over 1 minute</li>
-                <li>• Infusion: 15 mL/kg/h (or 0.25 mL/kg/min)</li>
-                <li>• Repeat bolus after 5 min if cardiovascular instability persists (max 2 further boluses)</li>
-                <li>• Maximum cumulative dose: approximately 12 mL/kg (about 1000 mL in a 70 kg adult)</li>
-                <li>• Modify ALS: adrenaline boluses &lt;1 µg/kg; avoid vasopressin, calcium channel blockers, β-blockers and further local anaesthetic<InlineRef topicId="local-anaesthetics" refLabel="ASRA LAST 2020" /></li>
-                <li>• Paediatric doses are the same per kilogram; the 2020 update brought paediatric lipid resuscitation into the main guideline<InlineRef topicId="local-anaesthetics" refLabel="AA LAST 2020" /></li>
-                <li>• Post-event care: critical care for at least 12 h (delayed cardiotoxicity), check triglycerides/amylase, and report to the national registry<InlineRef topicId="local-anaesthetics" refLabel="AA LAST 2024" /></li>
-                <li>• The RCoA/Association of Anaesthetists 2024 guideline requires lipid emulsion to be immediately available wherever local anaesthetic is used, with a laminated checklist</li>
+                <li>• Initial bolus: 1.5 mL/kg over 2–3 min (~100 mL in a 70 kg adult)</li>
+                <li>• Infusion: 15 mL/kg/h</li>
+                <li>• Repeat the same bolus at 5 and 10 min if cardiovascular stability is not restored or the circulation deteriorates</li>
+                <li>• Double the infusion to 30 mL/kg/h at any time after 5 min if the circulation is not restored</li>
+                <li>• Maximum cumulative dose: 12 mL/kg (~840 mL in a 70 kg adult)</li>
+                <li>• Modify ALS: adrenaline ≤ 1 µg/kg instead of 1 mg; avoid vasopressin and lidocaine; amiodarone is used for ventricular arrhythmias<InlineRef topicId="local-anaesthetics" refLabel="AA LAST QRH 2023" /></li>
+                <li>• Paediatric doses use the same weight-based regimen; seek specialist paediatric/critical-care help<InlineRef topicId="local-anaesthetics" refLabel="AA LAST QRH 2023" /></li>
+                <li>• Post-event care: critical care for at least 12 h (delayed cardiotoxicity), check triglycerides/amylase, and report the incident locally and nationally<InlineRef topicId="local-anaesthetics" refLabel="AA LAST QRH 2023" /></li>
+                <li>• 20% lipid emulsion and the current QRH 3-10 page must be immediately available wherever local anaesthetic is used</li>
               </ul>
             </div>
           </section>
@@ -567,7 +568,7 @@ const LocalAnaestheticsTopic = () => {
               "Onset depends on pKa (closer to 7.4 = faster); duration depends on protein binding (higher = longer); potency depends on lipid solubility.",
               "Maximum safe doses: lidocaine 3 mg/kg (7 with adrenaline); bupivacaine 2 mg/kg; ropivacaine 3 mg/kg — body-weight ideal, not actual.",
               "LAST (local anaesthetic systemic toxicity): CNS first (perioral tingling, seizures), then cardiovascular collapse — bupivacaine is most cardiotoxic.",
-              "Treat LAST: stop injection, ABC, control seizures, then 20% Intralipid 1.5 mL/kg bolus + 0.25 mL/kg/min infusion (RCoA/Association of Anaesthetists 2024 guideline).",
+              "Treat LAST: stop injection, ABC, control seizures, then 20% lipid emulsion 1.5 mL/kg over 2–3 min followed by 15 mL/kg/h; repeat the bolus at 5 and 10 min and double to 30 mL/kg/h if unstable (maximum 12 mL/kg; Association of Anaesthetists QRH 3-10, 2023).",
               "Adrenaline-containing solutions prolong duration and reduce systemic absorption; avoid in end-arteries (digits, penis, nose).",
             ]}
           />

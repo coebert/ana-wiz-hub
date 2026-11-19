@@ -28,7 +28,7 @@ const pathologies: Record<Pathology, PathologyInfo> = {
   },
   oesophageal: {
     label: "Oesophageal Intubation",
-    description: "Brief diminishing waveforms (from swallowed gas in stomach) that rapidly fall to zero. No sustained EtCO₂ trace. Demands immediate reintubation.",
+    description: "Brief diminishing waveforms (from swallowed gas in stomach) that rapidly fall to zero. No sustained exhaled CO₂. Assume oesophageal placement until excluded: remove the tube by default and oxygenate by facemask or supraglottic airway. If removal is judged dangerous, urgently exclude oesophageal placement (repeat laryngoscopy, then bronchoscopy/ultrasound/oesophageal detector) and remove the tube if sustained CO₂ is not restored.",
     color: "hsl(0, 84%, 60%)",
   },
   "cardiac-oscillations": {

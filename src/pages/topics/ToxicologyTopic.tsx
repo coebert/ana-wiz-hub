@@ -13,7 +13,7 @@ import { ParacetamolTeaching } from "@/components/topic/ParacetamolTeaching";
 
 const toxicologyFaqs: Array<[string, string]> = [
   ["When is haemodialysis indicated in poisoning?", "For low-Vd, low-protein-bound, water-soluble toxins: salicylates (≥7.2 mmol/L or AKI), methanol/ethylene glycol, lithium (>4 mmol/L acute), valproate (severe), metformin-associated lactic acidosis, and theophylline."],
-  ["How is lipid emulsion used in local anaesthetic toxicity?", "Association of Anaesthetists 2023: give 20% lipid emulsion 1.5 mL/kg as an initial bolus (simplified to a fixed 100 mL bolus if >70 kg), then start an infusion of 0.25 mL/kg/min (equivalent to 15 mL/kg/h) — the same weight-based rate for every patient, which equates to about 1000 mL/h in an adult over 70 kg. Up to two further boluses at 5-minute intervals (three in total), and double the infusion to 0.5 mL/kg/min (30 mL/kg/h) if the circulation remains unstable; total maximum 12 mL/kg."],
+  ["How is lipid emulsion used in local anaesthetic toxicity?", "Association of Anaesthetists QRH 3-10 (2023): give 20% lipid emulsion 1.5 mL/kg over 2–3 min (~100 mL in a 70 kg adult), then an infusion at 15 mL/kg/h. Give the same bolus again at 5 and 10 min and double the infusion to 30 mL/kg/h if the circulation is not restored. Maximum cumulative dose 12 mL/kg (~840 mL in a 70 kg adult). Propofol is not a substitute."],
   ["What is the antidote and threshold for paracetamol overdose?", "N-acetylcysteine using the 21-h SNAP/IV regimen; treat if plasma paracetamol crosses the single 100 mg/L at 4 h treatment line, with staggered ingestion or unknown timing, or in established hepatotoxicity."],
 ];
 

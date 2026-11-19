@@ -9,7 +9,7 @@ const LocalAnaestheticToxicityNote = () => (
     description="Local anaesthetic systemic toxicity (LAST): recognition, AAGBI Safety Guideline management, Intralipid 20% dosing, and prevention strategies."
     datePublished="2026-06-18"
     examTags={["primary", "final"]}
-    lede="Local anaesthetic systemic toxicity (LAST) is a life-threatening complication of regional anaesthesia: CNS excitation followed by cardiovascular collapse from sodium-channel block in the myocardium. The 2010/2021 AAGBI Safety Guideline mandates immediate Intralipid 20% as part of the resuscitation."
+    lede="Local anaesthetic systemic toxicity (LAST) is a life-threatening complication of regional anaesthesia: CNS excitation followed by cardiovascular collapse from sodium-channel block in the myocardium. The Association of Anaesthetists Quick Reference Handbook (3-10, 2023) is the current UK reference and mandates immediate 20% lipid emulsion as part of resuscitation."
     faqs={[
       {
         q: "What is the maximum safe dose of lidocaine and bupivacaine?",
@@ -17,7 +17,7 @@ const LocalAnaestheticToxicityNote = () => (
       },
       {
         q: "What is the Intralipid 20% dose in LAST?",
-        a: "Bolus 1.5 mL/kg lean body weight over 1 minute (≈ 100 mL in a 70 kg adult), followed by an infusion of 15 mL/kg/h. If circulation is not restored after 5 minutes: repeat bolus up to twice (5-minute intervals) and double the infusion rate to 30 mL/kg/h. Maximum cumulative dose 12 mL/kg.",
+        a: "Bolus 1.5 mL/kg lean body weight over 2–3 minutes (≈ 100 mL in a 70 kg adult), followed by an infusion of 15 mL/kg/h. Give the same bolus again at 5 and 10 minutes and double the infusion rate to 30 mL/kg/h if the circulation is not restored. Maximum cumulative dose 12 mL/kg (≈ 840 mL in a 70 kg adult).",
       },
       {
         q: "What are the early warning signs of LAST?",
@@ -25,7 +25,7 @@ const LocalAnaestheticToxicityNote = () => (
       },
       {
         q: "How does LAST cardiac arrest differ from a standard arrest?",
-        a: "Bupivacaine-induced asystole is notoriously resistant to standard ALS. Adrenaline doses should be reduced to ≤ 1 µg/kg, vasopressin is not recommended, and lidocaine and other class I antiarrhythmics are contraindicated. Amiodarone is preferred for ventricular arrhythmias. Prolonged resuscitation (≥ 60 minutes) and consideration of VA-ECMO are justified.",
+        a: "Bupivacaine-induced asystole is notoriously resistant to standard ALS. Adrenaline doses should be reduced to ≤ 1 µg/kg, vasopressin is not recommended, and lidocaine is avoided. Amiodarone is used for ventricular arrhythmias. Prolonged resuscitation (at least 60 minutes) and consideration of VA-ECMO are justified.",
       },
     ]}
     related={[
@@ -45,15 +45,16 @@ const LocalAnaestheticToxicityNote = () => (
       Bier's blocks.
     </p>
 
-    <h2>Immediate management (AAGBI 2010, reaffirmed 2021)</h2>
+    <h2>Immediate management (Association of Anaesthetists QRH 3-10, 2023)</h2>
     <ol>
       <li>Stop injecting LA. Call for help. ABC, 100% O₂, secure the airway.</li>
       <li>Treat seizures with a small dose of benzodiazepine, thiopentone or propofol — avoid large propofol doses (cardiovascular depression).</li>
-      <li>If cardiac arrest: start CPR with reduced adrenaline (≤ 1 µg/kg), avoid lidocaine and vasopressin.</li>
+      <li>If cardiac arrest: start CPR with reduced adrenaline (≤ 1 µg/kg) and avoid vasopressin and lidocaine; amiodarone is used for ventricular arrhythmias.</li>
       <li>
-        <strong>Intralipid 20%</strong>: 1.5 mL/kg bolus over 1 min, then 15
-        mL/kg/h infusion. Repeat bolus up to twice and double the infusion
-        rate if circulation is not restored. Maximum 12 mL/kg.
+        <strong>20% lipid emulsion</strong>: 1.5 mL/kg over 2–3 min, then
+        15 mL/kg/h. Repeat the same bolus at 5 and 10 min and double the
+        infusion to 30 mL/kg/h if the circulation is not restored. Maximum
+        cumulative dose 12 mL/kg.
       </li>
       <li>Continue CPR throughout. Consider VA-ECMO early.</li>
       <li>Monitor in critical care for at least 12 hours — recurrence has been reported.</li>
@@ -65,7 +66,7 @@ const LocalAnaestheticToxicityNote = () => (
       <li>Use ultrasound guidance and incremental injection (3–5 mL aliquots) with intermittent aspiration — covered in the <Link to="/clinical/regional-anaesthesia">regional anaesthesia topic</Link>.</li>
       <li>Test dose with adrenaline-containing solution if not contraindicated.</li>
       <li>Continuous verbal contact with the patient to detect early CNS symptoms.</li>
-      <li>Display the AAGBI LAST guideline on every block trolley alongside Intralipid 20%. See <Link to="/pharmacology/local-anaesthetics">local anaesthetic pharmacology</Link> for agent-specific safety margins.</li>
+      <li>Display the Association of Anaesthetists QRH 3-10 LAST page on every block trolley alongside 20% lipid emulsion. See <Link to="/pharmacology/local-anaesthetics">local anaesthetic pharmacology</Link> for agent-specific safety margins.</li>
     </ul>
   </NoteLayout>
 );

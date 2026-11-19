@@ -330,7 +330,7 @@ const PainMedicineTopic = () => {
               <ul className="list-disc list-inside text-sm text-muted-foreground mt-2 space-y-1">
                 <li>Stop Before You Block, block-room checklist, and ultrasound visualisation of needle tip throughout</li>
                 <li>Calculate the maximum dose in mg/kg lean body weight (bupivacaine 2 mg/kg, ropivacaine 3 mg/kg, lidocaine with adrenaline 7 mg/kg) before drawing up</li>
-                <li>LAST: stop injection, 100% O₂, control seizures with benzodiazepine, ALS, and Intralipid 20% 1.5 ml/kg bolus then 15 ml/kg/h; prolonged CPR may be required</li>
+                <li>LAST: stop injection, 100% O₂, control seizures with benzodiazepine, ALS, and 20% lipid emulsion 1.5 ml/kg over 2–3 min then 15 ml/kg/h (repeat at 5 and 10 min, double to 30 ml/kg/h if unstable, maximum 12 ml/kg); prolonged CPR may be required</li>
                 <li>Regional block does not remove the need for observation of a compartment at risk — a dense block can mask compartment syndrome, so use low-concentration solutions and document neurovascular checks</li>
               </ul>
             </div>
@@ -1128,7 +1128,7 @@ const PainMedicineTopic = () => {
               <ul className="text-sm text-muted-foreground mt-1 space-y-1 list-disc list-inside">
                 <li><strong>Catastrophic but rare:</strong> spinal cord infarction from particulate steroid embolus into a radiculomedullary artery (artery of Adamkiewicz at L1–L2 typically), vertebral artery injection at cervical levels, epidural haematoma</li>
                 <li><strong>Nerve injury / dural puncture / post-dural-puncture headache</strong></li>
-                <li><strong>LAST</strong> (intravascular injection) — treat with 20 % Intralipid bolus 1.5 mL·kg⁻¹ then 0.25 mL·kg⁻¹·min⁻¹ per AAGBI 2010</li>
+                <li><strong>LAST</strong> (intravascular injection) — treat with 20 % lipid emulsion 1.5 mL·kg⁻¹ over 2–3 min then 15 mL·kg⁻¹·h⁻¹, repeating the bolus at 5 and 10 min and doubling to 30 mL·kg⁻¹·h⁻¹ if unstable (maximum 12 mL·kg⁻¹) per Association of Anaesthetists QRH 3-10 (2023)</li>
                 <li><strong>Vasovagal syncope</strong> — common; pre-warn the patient</li>
                 <li><strong>Steroid effects:</strong> facial flushing, transient hyperglycaemia (warn diabetics), HPA-axis suppression with repeat doses (limit to 3–4 per year), avascular necrosis of the femoral head (rare)</li>
                 <li><strong>Infection:</strong> superficial 0.1–0.5 %, epidural abscess and meningitis are rare but devastating</li>

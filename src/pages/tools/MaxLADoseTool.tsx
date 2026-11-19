@@ -58,8 +58,9 @@ export default function MaxLADoseTool() {
       references={
         <>
           <p>
-            AAGBI Safety Guideline: Management of severe local anaesthetic
-            toxicity, 2010 (reviewed).
+            Association of Anaesthetists Quick Reference Handbook 3-10:
+            local anaesthetic toxicity, version 2 (2023). The 2010 laminate
+            is withdrawn; the QRH is the current UK reference version.
           </p>
           <p>BNF / SPCs for each agent (current edition).</p>
         </>

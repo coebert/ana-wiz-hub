@@ -351,7 +351,7 @@ export const pharmacologyCaseBank: CaseBank = {
           answer: [
             "Stop injecting, call for help, secure the airway with 100% oxygen and avoid hypoxia, hypercapnia and acidosis, which all increase toxicity.",
             "Control seizures with a benzodiazepine — or small-dose propofol if that is what is available and cardiovascular stability allows — and start advanced life support if arrest occurs.",
-            "Give 20% lipid emulsion: an initial bolus of 1.5 mL/kg over one minute followed by an infusion of 15 mL/kg/hour, with up to two further boluses and doubling of the infusion rate for persistent instability, to a maximum of about 12 mL/kg.",
+            "Give 20% lipid emulsion: an initial bolus of 1.5 mL/kg over 2–3 minutes followed by an infusion of 15 mL/kg/hour; repeat the same bolus at 5 and 10 minutes and double the infusion to 30 mL/kg/hour for persistent instability, to a maximum cumulative dose of 12 mL/kg.",
           ],
         },
         {
@@ -1131,7 +1131,7 @@ export const pharmacologyCaseBank: CaseBank = {
           title: "Give lipid emulsion",
           prompt: "What dose and regimen of lipid emulsion do you give?",
           answer: [
-            "Give intravenous 20% lipid emulsion as an initial bolus of 1.5 mL/kg of ideal body weight over about a minute, which can be repeated up to twice more at five-minute intervals if cardiovascular stability has not been restored.",
+            "Give intravenous 20% lipid emulsion as an initial bolus of 1.5 mL/kg over 2–3 minutes, then an infusion at 15 mL/kg/hour. Repeat the same bolus at 5 and 10 minutes and double the infusion to 30 mL/kg/hour if cardiovascular stability has not been restored, to a maximum cumulative dose of 12 mL/kg.",
             "Start a continuous infusion at 15 mL/kg/hour, and if cardiovascular stability is still not restored, increase the infusion rate up to a maximum of 12 mL/kg (total dose, bolus plus infusion) within the first 30 minutes.",
             "Continue monitoring for at least 12 hours after a cardiovascular event or 4 hours after an isolated seizure, since local anaesthetic toxicity can recur (redistribution) after apparent recovery.",
           ],

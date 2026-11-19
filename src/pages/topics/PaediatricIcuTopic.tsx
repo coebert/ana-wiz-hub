@@ -1035,7 +1035,9 @@ const PaediatricIcuTopic = () => {
                       (term) and a compression-to-ventilation ratio of <strong>3:1</strong>, reflecting an
                       asphyxial cause; delayed cord clamping, thermal care and oxygen saturation targets
                       that rise over the first ten minutes are integral. Adrenaline and volume are late
-                      steps once ventilation is confirmed to be effective <InlineRef topicId="paediatric-icu" refLabel="RCUK NLS 2021" />.
+                      steps once ventilation is confirmed to be effective; IV/IO adrenaline is
+                      10–30 micrograms/kg (0.1–0.3 mL/kg of 1:10,000) and RCUK 2025 simplified repeat
+                      dosing to every 4 minutes <InlineRef topicId="paediatric-icu" refLabel="RCUK NLS 2025" />.
                     </p>
                   </div>
                   <div className="bg-card border border-border rounded-lg p-4">
