@@ -36,12 +36,12 @@ const keyPoints = [
   { text: "Thermocouples use the Seebeck effect — EMF generated at junction of two dissimilar metals proportional to temperature difference", cites: ["Cross & Plunkett Ch.11"] },
   { text: "Thermistors are NTC semiconductors — resistance falls exponentially with rising temperature; very sensitive but non-linear", cites: ["Cross & Plunkett Ch.11"] },
   { text: "Platinum RTDs have a positive temperature coefficient and stable calibrated response. Accuracy and speed depend on the complete probe and readout; they are not universally the slowest sensor.", cites: ["NIST Industrial Thermometer Calibration"] },
-  { text: "Handheld infrared ear thermometers use the Stefan–Boltzmann law (P ∝ T⁴) with a thermopile to estimate IR emission from the ear canal/tympanic region; they are indirect estimates, not a direct tympanic-membrane measurement", cites: ["BJA Educ Temperature 2020", "NICE CG65 Measurement Sites"] },
+  { text: "Handheld infrared ear thermometers use the Stefan–Boltzmann law (P ∝ T⁴) with a thermopile to estimate IR emission from the ear canal/tympanic region; they are indirect estimates, not a direct tympanic-membrane measurement", cites: ["Cross & Plunkett Ch.11", "NICE CG65 Measurement Sites"] },
   { text: "A contact tympanic-membrane probe lies close to the internal carotid supply to the hypothalamus and tracks core temperature; a handheld infrared ear device does not necessarily see the membrane and applies a correction algorithm", cites: ["Cross & Plunkett Ch.11", "NICE CG65 Measurement Sites"] },
   { text: "NICE CG65 recommendations 1.1.5–1.1.6: use a direct core site or a direct estimate shown to be accurate within 0.5 °C; do not use indirect infrared tympanic, temporal or forehead estimates in adults having surgery", cites: ["NICE CG65 Measurement Sites"] },
   { text: "Handheld infrared ear readings are error-prone: poor probe alignment, ear canal wax or narrowing, and a cooler canal wall cause under-reading. In critically ill adults they agreed poorly with pulmonary artery temperature, so they should not replace a core site when accuracy matters", cites: ["Moran 2007 (Tympanic ICU)"] },
   { text: "Thermocouples are self-generating (no battery needed); thermistors and RTDs require external power via a Wheatstone bridge", cites: ["Cross & Plunkett Ch.11"] },
-  { text: "PA catheter thermistor is the gold standard for core temperature; nasopharyngeal thermocouple best reflects brain temperature", cites: ["Intensive Care Med 2003", "Rumana 1998 Brain Temp"] },
+  { text: "A pulmonary artery thermistor measures core blood temperature. Brain and systemic temperatures can differ after head injury", cites: ["Intensive Care Med 2003", "Rumana 1998 Brain Temp"] },
 ];
 
 const TemperatureMeasurementTopicWorkedExamples: WorkedExample[] = [
@@ -62,14 +62,14 @@ const TemperatureMeasurementTopicWorkedExamples: WorkedExample[] = [
           <p className="text-xs font-semibold uppercase tracking-wide text-destructive mb-1">Common traps</p>
           <ul className="list-disc list-inside space-y-1 text-foreground">
           <li>Oesophageal probe in the upper third reads cooler due to airway gas — must be in the distal third</li>
-          <li>Ordinary skin-surface readings can diverge from core temperature. A validated zero-heat-flux forehead device measures deep tissue using a different technique.</li>
+          <li>Ordinary skin-surface readings can diverge from core temperature. A validated zero-heat-flux forehead device estimates deep-tissue temperature.</li>
           <li>Forced-air warmer set to default 38 °C without monitoring risks hyperthermia</li>
           </ul>
         </div>
       </div>
     ),
     answer: "Use a distal oesophageal probe with continuous display, target core ≥36.5 °C, pre-warm and forced-air warm intra-operatively per NICE CG65.",
-    cites: ["NICE CG65", "Cross & Plunkett Ch.11"],
+    cites: ["Bindu 2017 (Temperature)", "NICE CG65", "Cross & Plunkett Ch.11"],
   },
 ];
 
@@ -93,7 +93,7 @@ const TemperatureMeasurementTopic = () => {
       }}
       sectionSources={{
         objectives: ["Cross & Plunkett Ch.11", "NICE CG65"],
-        keyPoints: ["Bindu 2017 (Temperature)", "NICE CG65", "Cross & Plunkett Ch.11", "NICE CG65 Measurement Sites", "Kurz 1996 wound infection", "NICE NG125", "BJA Educ Temperature 2020", "SCCM IDSA Fever 2023"],
+        keyPoints: ["Bindu 2017 (Temperature)", "NICE CG65", "Cross & Plunkett Ch.11", "NICE CG65 Measurement Sites", "Kurz 1996 wound infection", "Eshraghi 2014 Zero Heat Flux", "NICE NG125", "BJA Educ Temperature 2020", "SCCM IDSA Fever 2023"],
       }}
       coreConcepts={
         <>
@@ -350,10 +350,10 @@ const TemperatureMeasurementTopic = () => {
                   a few minutes after application <InlineRef topicId="temperature-measurement" refLabel="Eshraghi 2014 Zero Heat Flux" />.
                 </p>
                 <p>
-                  <strong>Clinical use:</strong> continuous, non-invasive core temperature in theatre, recovery and ICU,
-                  including awake and regional cases; validation studies show bias within about 0.2 °C of oesophageal,
-                  bladder or pulmonary artery temperature with limits of agreement around ±0.5 °C
-                  <InlineRef topicId="temperature-measurement" refLabel="Intensive Care Med 2003" />.
+                  <strong>Clinical use:</strong> a forehead patch provides a continuous non-invasive estimate. In 105 cardiac
+                  surgical patients, the mean difference from pulmonary artery temperature was −0.23 °C overall
+                  (95% limits of agreement −1.06 to +0.60 °C)
+                  <InlineRef topicId="temperature-measurement" refLabel="Eshraghi 2014 Zero Heat Flux" />.
                 </p>
                 <p>
                   <strong>Advantages:</strong> non-invasive, continuous, no airway or urinary access needed, usable

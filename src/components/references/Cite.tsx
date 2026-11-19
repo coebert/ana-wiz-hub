@@ -58,7 +58,7 @@ export const Cite = ({ topicId, labels }: CiteProps) => {
         }
         return null;
       }
-      return { label, n: idx + 1, slug: slugify(label) };
+      return { label: refs[idx].displayLabel ?? label, n: idx + 1, slug: slugify(label) };
     })
     .filter((x): x is { label: string; n: number; slug: string } => x !== null);
 

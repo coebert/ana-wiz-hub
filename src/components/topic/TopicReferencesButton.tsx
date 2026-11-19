@@ -49,8 +49,7 @@ export const TopicReferencesButton = ({
         <SheetHeader>
           <SheetTitle className="font-display text-2xl">References</SheetTitle>
           <SheetDescription>
-            Sources used to write <span className="font-medium">{topicTitle}</span>.
-            Each is cited in the text where it supports a claim.
+            Sources for <span className="font-medium">{topicTitle}</span>. Citations under review are labelled.
           </SheetDescription>
         </SheetHeader>
         <div className="mt-6">

@@ -64,14 +64,14 @@ export const ReferencesList = ({ topicId }: ReferencesListProps) => {
                     rel="noopener noreferrer"
                     className="group/ref hover:underline"
                   >
-                    <span className="font-medium text-primary">{ref.label}</span>
+                    <span className="font-medium text-primary">{ref.displayLabel ?? ref.label}</span>
                     {" — "}
                     <span className="text-muted-foreground group-hover/ref:text-primary/80">{ref.citation}</span>
                     <ExternalLink className="inline h-3 w-3 ml-1 text-primary/60" />
                   </a>
                 ) : (
                   <>
-                    <span className="font-medium text-foreground">{ref.label}</span>
+                    <span className="font-medium text-foreground">{ref.displayLabel ?? ref.label}</span>
                     {" — "}
                     {ref.citation}
                   </>

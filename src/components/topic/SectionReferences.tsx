@@ -77,7 +77,7 @@ export const SectionReferences = ({
             {matched.map((ref) => (
               <li key={ref.label} className="text-muted-foreground flex items-start justify-between gap-2">
                 <div className="min-w-0">
-                  <span className="font-medium text-foreground">{ref.label}</span>
+                  <span className="font-medium text-foreground">{ref.displayLabel ?? ref.label}</span>
                   {" — "}
                   {ref.url || ref.pmid ? (
                     <a
@@ -114,7 +114,7 @@ export const SectionReferences = ({
                           className="inline-flex items-center gap-0.5 rounded px-1 py-0.5 text-[10px] font-semibold text-background hover:opacity-90 transition-opacity"
                           style={{ backgroundColor: "hsl(160 55% 35%)" }}
                         >
-                          DOI <ExternalLink className="h-2.5 w-2.5" />
+                          {ref.url.includes("doi.org/") ? "DOI" : "Source"} <ExternalLink className="h-2.5 w-2.5" />
                         </a>
                       )}
                     </span>
@@ -129,7 +129,7 @@ export const SectionReferences = ({
                   <a
                     href={`#${targetId}`}
                     className="shrink-0 inline-flex items-center gap-0.5 text-[10px] font-medium text-primary/80 hover:text-primary hover:underline"
-                    aria-label={`${targetLabel} — supports ${ref.label}`}
+                    aria-label={`${targetLabel} — ${ref.displayLabel ?? ref.label}`}
                     title={targetLabel}
                   >
                     <ArrowUpRight className="h-3 w-3" />

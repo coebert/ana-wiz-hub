@@ -62,6 +62,9 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the FAQ count p
   "/intensive-care/ecmo": 7,
   "/intensive-care/end-of-life-communication": 3,
   "/intensive-care/haematology-icu": 3,
+  "/intensive-care/haemorrhagic-shock": 2,
+  "/intensive-care/icu-anaphylaxis": 2,
+  "/intensive-care/icu-eclampsia": 2,
   "/intensive-care/icu-endocrine-emergencies": 3,
   "/intensive-care/icu-nutrition": 3,
   "/intensive-care/icu-sedation-delirium": 3,
@@ -1610,6 +1613,36 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the full FAQ co
     {
       "a": "MAHA + thrombocytopenia + organ dysfunction → urgent ADAMTS13 level; while awaiting, start plasma exchange (TTP), caplacizumab where available, and high-dose steroids; avoid platelet transfusion unless life-threatening bleed.",
       "q": "What is the approach to thrombotic microangiopathies (TTP/HUS) in ICU?",
+    },
+  ],
+  "/intensive-care/haemorrhagic-shock": [
+    {
+      "a": "Without clinical evidence of brain injury, use restricted volume replacement and aim for a systolic pressure of 80–90 mmHg until bleeding is controlled. With severe traumatic brain injury (GCS 8 or less), maintain a mean arterial pressure of at least 80 mmHg. Source: European trauma bleeding guideline, sixth edition, recommendation 13.",
+      "q": "In adult trauma with uncontrolled major bleeding, how does severe traumatic brain injury change the initial blood-pressure target?",
+    },
+    {
+      "a": "Start as soon as possible and within 3 hours of injury. Infuse 1 g IV over 10 minutes, followed by a second 1 g IV over 8 hours. Source: European trauma bleeding guideline, sixth edition, recommendation 23.",
+      "q": "An adult trauma patient is bleeding or at risk of significant bleeding. When and how should tranexamic acid be given?",
+    },
+  ],
+  "/intensive-care/icu-anaphylaxis": [
+    {
+      "a": "Stop the suspected trigger and give 500 micrograms of adrenaline intramuscularly into the outer mid-thigh (0.5 mL of 1 mg/mL). Repeat after 5 minutes if airway, breathing or circulation problems persist. Source: Resuscitation Council UK, Emergency treatment of anaphylaxis, section 5.",
+      "q": "An adult on a ward develops sudden stridor and hypotension during an antibiotic infusion. They have a pulse. What is the first adrenaline dose, and when should it be repeated?",
+    },
+    {
+      "a": "Call for expert help and give IV crystalloid. An experienced team should start a monitored, titrated IV adrenaline infusion. Continue IM adrenaline every 5 minutes while the infusion is being prepared if respiratory or cardiovascular problems persist. Source: Resuscitation Council UK, Emergency treatment of anaphylaxis, section 6.",
+      "q": "An adult with anaphylaxis still has respiratory or cardiovascular compromise after two appropriate IM doses of adrenaline. How should treatment change?",
+    },
+  ],
+  "/intensive-care/icu-eclampsia": [
+    {
+      "a": "Load with 4 g IV over 5–15 minutes, then infuse 1 g/hour. If a seizure recurs, give another 2–4 g IV over 5–15 minutes. Continue the maintenance infusion until 24 hours after the last seizure. Source: NICE NG133, recommendation 1.8.4.",
+      "q": "How is IV magnesium sulfate used after an eclamptic seizure, and what should be given if another seizure occurs during treatment?",
+    },
+    {
+      "a": "Limit maintenance fluids to 80 mL/hour in the absence of other ongoing losses. If the patient is losing fluid, for example through haemorrhage, reassess fluid replacement according to those losses. Source: NICE NG133, recommendation 1.8.12.",
+      "q": "What maintenance fluid limit applies in severe pre-eclampsia, and when does that limit need reassessment?",
     },
   ],
   "/intensive-care/icu-endocrine-emergencies": [
@@ -3631,6 +3664,9 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the pinned set 
   "/intensive-care/ecmo",
   "/intensive-care/end-of-life-communication",
   "/intensive-care/haematology-icu",
+  "/intensive-care/haemorrhagic-shock",
+  "/intensive-care/icu-anaphylaxis",
+  "/intensive-care/icu-eclampsia",
   "/intensive-care/icu-endocrine-emergencies",
   "/intensive-care/icu-nutrition",
   "/intensive-care/icu-sedation-delirium",
@@ -6730,6 +6766,72 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the synthesised
           "text": "MAHA + thrombocytopenia + organ dysfunction → urgent ADAMTS13 level; while awaiting, start plasma exchange (TTP), caplacizumab where available, and high-dose steroids; avoid platelet transfusion unless life-threatening bleed.",
         },
         "name": "What is the approach to thrombotic microangiopathies (TTP/HUS) in ICU?",
+      },
+    ],
+  },
+  "/intensive-care/haemorrhagic-shock": {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Without clinical evidence of brain injury, use restricted volume replacement and aim for a systolic pressure of 80–90 mmHg until bleeding is controlled. With severe traumatic brain injury (GCS 8 or less), maintain a mean arterial pressure of at least 80 mmHg. Source: European trauma bleeding guideline, sixth edition, recommendation 13.",
+        },
+        "name": "In adult trauma with uncontrolled major bleeding, how does severe traumatic brain injury change the initial blood-pressure target?",
+      },
+      {
+        "@type": "Question",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Start as soon as possible and within 3 hours of injury. Infuse 1 g IV over 10 minutes, followed by a second 1 g IV over 8 hours. Source: European trauma bleeding guideline, sixth edition, recommendation 23.",
+        },
+        "name": "An adult trauma patient is bleeding or at risk of significant bleeding. When and how should tranexamic acid be given?",
+      },
+    ],
+  },
+  "/intensive-care/icu-anaphylaxis": {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Stop the suspected trigger and give 500 micrograms of adrenaline intramuscularly into the outer mid-thigh (0.5 mL of 1 mg/mL). Repeat after 5 minutes if airway, breathing or circulation problems persist. Source: Resuscitation Council UK, Emergency treatment of anaphylaxis, section 5.",
+        },
+        "name": "An adult on a ward develops sudden stridor and hypotension during an antibiotic infusion. They have a pulse. What is the first adrenaline dose, and when should it be repeated?",
+      },
+      {
+        "@type": "Question",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Call for expert help and give IV crystalloid. An experienced team should start a monitored, titrated IV adrenaline infusion. Continue IM adrenaline every 5 minutes while the infusion is being prepared if respiratory or cardiovascular problems persist. Source: Resuscitation Council UK, Emergency treatment of anaphylaxis, section 6.",
+        },
+        "name": "An adult with anaphylaxis still has respiratory or cardiovascular compromise after two appropriate IM doses of adrenaline. How should treatment change?",
+      },
+    ],
+  },
+  "/intensive-care/icu-eclampsia": {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Load with 4 g IV over 5–15 minutes, then infuse 1 g/hour. If a seizure recurs, give another 2–4 g IV over 5–15 minutes. Continue the maintenance infusion until 24 hours after the last seizure. Source: NICE NG133, recommendation 1.8.4.",
+        },
+        "name": "How is IV magnesium sulfate used after an eclamptic seizure, and what should be given if another seizure occurs during treatment?",
+      },
+      {
+        "@type": "Question",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Limit maintenance fluids to 80 mL/hour in the absence of other ongoing losses. If the patient is losing fluid, for example through haemorrhage, reassess fluid replacement according to those losses. Source: NICE NG133, recommendation 1.8.12.",
+        },
+        "name": "What maintenance fluid limit applies in severe pre-eclampsia, and when does that limit need reassessment?",
       },
     ],
   },
