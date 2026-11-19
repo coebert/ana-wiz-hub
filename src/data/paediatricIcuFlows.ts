@@ -24,7 +24,7 @@ export const paediatricIcuFlows: ManagementFlow[] = [
     triggers: [
       "Suspected infection with fever or hypothermia, tachycardia for age, and altered perfusion, mental state or feeding",
       "Cold shock (poor perfusion, narrow pulse pressure) or warm shock (bounding pulses, flash refill) — both are septic shock in children",
-      "Fluid-refractory shock: persisting hypoperfusion after 40–60 mL/kg of balanced crystalloid",
+      "Fluid-refractory shock: persisting hypoperfusion despite reassessed fluid boluses",
     ],
     steps: [
       {
@@ -34,20 +34,20 @@ export const paediatricIcuFlows: ManagementFlow[] = [
           "High-flow oxygen; obtain IV/IO access within 5 minutes — intraosseous early if IV fails; do not delay antibiotics for access attempts.",
           "Blood cultures before antibiotics if this does not delay them; broad-spectrum antibiotics within 1 hour of recognition of shock (within 3 hours for sepsis without shock).",
           "Bedside glucose (treat hypoglycaemia — limited glycogen stores), ionised calcium, lactate, FBC, U&E, coagulation and blood gas.",
-          "Balanced crystalloid in 10–20 mL/kg boluses, reassessing after each for hepatomegaly, crackles and perfusion — up to 40–60 mL/kg in the first hour where intensive care is available.",
+          "Balanced crystalloid in 10 mL/kg boluses, reassessing after each for hepatomegaly, crackles and perfusion; stop when shock resolves or overload appears. Where intensive care is available, about 40–60 mL/kg is the upper limit in the first hour — not a target that must be reached.",
           "Consider early intubation with ketamine or a reduced-dose induction if work of breathing or coma threatens the airway — have a vasoactive infusion ready first.",
         ],
         drugs: ["Ceftriaxone", "Meropenem", "Vancomycin", "Piperacillin–tazobactam"],
         pitfall:
-          "Stopping fluid at 20 mL/kg out of pulmonary oedema fear — in septic shock with ICU backup the greater danger is under-resuscitation; reassess, don't ration.",
+          "Chasing a fixed 40–60 mL/kg total instead of reassessing — stop once shock resolves or hepatomegaly, crackles or rising oxygen requirement appear, and start vasoactives rather than giving more fluid.",
       },
       {
         title: "Treat fluid-refractory shock",
         timeframe: "First 1–3 h",
         actions: [
-          "Start a vasoactive infusion after 40–60 mL/kg if perfusion has not normalised — adrenaline for cold shock, noradrenaline for warm shock; peripheral or IO start is acceptable while central access is placed.",
+          "Start a vasoactive infusion as soon as perfusion has not normalised despite reassessed boluses — do not wait to reach 40–60 mL/kg. Adrenaline for cold shock, noradrenaline for warm shock; peripheral or IO start is acceptable while central access is placed.",
           "Target normal perfusion pressure for age, capillary refill < 2–3 s, warm extremities, improving mental state and urine output > 1 mL/kg/h.",
-          "Add hydrocortisone (2 mg/kg bolus then infusion, max 100 mg/dose) in catecholamine-resistant shock, especially with adrenal risk factors or purpura fulminans.",
+          "Hydrocortisone is not mandatory: consider stress-dose hydrocortisone (2 mg/kg bolus then infusion, max 100 mg/dose) only for suspected or documented adrenal insufficiency, with senior or PICU advice.",
           "Echo early: myocardial dysfunction is common and may need milrinone or dobutamine once the afterload is controlled.",
         ],
         drugs: ["Adrenaline", "Noradrenaline", "Hydrocortisone", "Milrinone"],
@@ -163,7 +163,7 @@ export const paediatricIcuFlows: ManagementFlow[] = [
         timeframe: "After 30 s of effective ventilation",
         actions: [
           "If HR < 60/min despite effective ventilation: compressions 3:1 at 120 events/min with oxygen increased to 100%.",
-          "Umbilical venous access; adrenaline 10–30 micrograms/kg IV (0.1–0.3 mL/kg of 1 in 10,000) if HR remains < 60/min — repeat every 3–5 min.",
+          "Umbilical venous access; adrenaline 20 micrograms/kg IV (0.2 mL/kg of 1 in 10,000) if HR remains < 60/min — repeat every 4 min.",
           "10 mL/kg sodium chloride 0.9% or O-negative blood for suspected hypovolaemia; sodium bicarbonate only for prolonged arrest with documented acidaemia.",
           "Check glucose and treat < 2.6 mmol/L with 2 mL/kg of 10% dextrose.",
         ],

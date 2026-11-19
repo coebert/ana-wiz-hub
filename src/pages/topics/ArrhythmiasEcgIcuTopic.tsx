@@ -58,7 +58,7 @@ const workedExamples: WorkedExample[] = [
     scenario:
       "Anuric AKI patient, K⁺ 7.4, ECG shows peaked symmetric T waves and broadening QRS. HR 48, BP 92/50.",
     working:
-      "Treat the rhythm, not the number. Step 1 — membrane stabilisation: 10 mL 10% calcium gluconate IV over 2–5 min (or CaCl₂ 10 mL centrally), repeat in 5 min if ECG unchanged. Step 2 — intracellular shift: 10 units actrapid in 50 mL 50% dextrose IV over 15 min; salbutamol 10–20 mg neb. Step 3 — removal: urgent RRT given anuria. Avoid sodium bicarbonate unless severely acidotic.",
+      "Treat the rhythm, not the number. Step 1 — membrane stabilisation: 30 mL 10% calcium gluconate IV over 10 min (or CaCl₂ 10 mL 10% over 5 min centrally if peri-arrest), repeat if ECG unchanged. Step 2 — intracellular shift: 10 units actrapid in 50 mL 50% dextrose IV over 15 min; salbutamol 10–20 mg neb. Step 3 — removal: urgent RRT given anuria. Avoid sodium bicarbonate unless severely acidotic.",
     answer:
       "Calcium first (cardio-protection within 1–3 min), then insulin–dextrose ± salbutamol to shift K⁺, then RRT for definitive removal. Re-check K⁺ at 30 min and 1 h.",
     cites: ["ESC AF 2020"],
@@ -146,7 +146,7 @@ const ArrhythmiasEcgIcuTopic = () => {
                 <li><span className="font-medium text-foreground">Wide-complex tachycardia</span> — assume VT until proven otherwise (especially with structural heart disease).</li>
                 <li><span className="font-medium text-foreground">New LBBB + chest pain or ROSC</span> — treat as STEMI equivalent; consider PPCI.</li>
                 <li><span className="font-medium text-foreground">QTc &gt; 500 ms</span> — stop QT-prolonging drugs, replete K⁺ &gt; 4.5 and Mg²⁺ &gt; 1.0 mmol/L.</li>
-                <li><span className="font-medium text-foreground">Peaked T waves + wide QRS</span> — hyperkalaemia, give 10 mL 10 % calcium gluconate <em>now</em>.</li>
+                <li><span className="font-medium text-foreground">Peaked T waves + wide QRS</span> — hyperkalaemia, give 30 mL 10% calcium gluconate over 10 min (or 10 mL 10% calcium chloride if peri-arrest) <em>now</em>.</li>
                 <li><span className="font-medium text-foreground">U waves + flat T + long QU</span> — hypokalaemia → torsades risk.</li>
               </ul>
             </div>
@@ -430,7 +430,7 @@ const ArrhythmiasEcgIcuTopic = () => {
             <CollapsibleSubsection title="Electrolyte & Drug-Induced Arrhythmias">
             <div className="space-y-2">
               {[
-                { label: "Hyperkalaemia (K⁺ > 6.0)", ecg: "Peaked T → loss of P → wide QRS → sine-wave → VF/asystole.", treatment: "10 mL 10 % calcium gluconate IV (membrane stabilisation), insulin–dextrose, salbutamol nebs, sodium bicarbonate (if acidotic), definitive removal (RRT)." },
+                { label: "Hyperkalaemia (K⁺ > 6.0)", ecg: "Peaked T → loss of P → wide QRS → sine-wave → VF/asystole.", treatment: "30 mL 10% calcium gluconate IV over 10 min (or 10 mL 10% calcium chloride peri-arrest) for membrane stabilisation, insulin–dextrose, salbutamol nebs, sodium bicarbonate (if acidotic), definitive removal (RRT)." },
                 { label: "Hypokalaemia (K⁺ < 3.5)", ecg: "Flat / inverted T, prominent U wave, prolonged QU, ST depression.", treatment: "Replace cautiously (max 20 mmol/h peripherally, 40 mmol/h centrally with monitoring). Always replace Mg²⁺ alongside." },
                 { label: "Hypomagnesaemia (Mg²⁺ < 0.7)", ecg: "Prolonged QT, torsades de pointes, refractory hypoK⁺.", treatment: "2 g IV Mg²⁺ over 10 min for torsades, then infusion." },
                 { label: "Hypocalcaemia (iCa²⁺ < 1.0)", ecg: "Prolonged QT (long ST segment), neuromuscular irritability.", treatment: "10 mL 10 % calcium gluconate IV (peripheral) or 10 mL 10 % calcium chloride centrally." },

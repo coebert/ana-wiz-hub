@@ -27,7 +27,7 @@ export function SepsisCriteriaTeaching() {
     <p>Hypotension alone, or a raised lactate alone, does not meet the definition. Both must persist after adequate volume resuscitation.</p>
     <H>Screening is not diagnosis</H>
     <Quote label="SSC 2026 qSOFA" />
-    <p>qSOFA (respiratory rate ≥22, altered mentation, systolic BP ≤100 mm Hg) identifies patients at risk of a poor outcome, but is too insensitive to rule sepsis out. UK hospitals typically screen with NEWS2 and the NICE NG51 risk criteria; that mapping is teaching synthesis, not a quoted recommendation.</p>
+    <p>qSOFA (respiratory rate ≥22, altered mentation, systolic BP ≤100 mm Hg) identifies patients at risk of a poor outcome, but is too insensitive to rule sepsis out. UK hospitals typically screen with NEWS2 and the NICE NG253 risk criteria; that mapping is teaching synthesis, not a quoted recommendation.</p>
     <Quote label="SSC 2026 lactate" />
     <Check question="a patient with pneumonia needs noradrenaline for a MAP of 65 mm Hg after fluids, but lactate is 1.6 mmol/L. Is this septic shock by Sepsis-3?">No. Sepsis-3 requires both vasopressor-dependent hypotension and lactate above 2 mmol/L after adequate fluid. This is sepsis with hypotension needing vasopressors; treat it with the same urgency.</Check>
     <LessonSources topicId={T} labels={["Sepsis-3 2016 organ dysfunction", "Sepsis-3 2016 septic shock", "SSC 2026 qSOFA", "SSC 2026 lactate"]} />
