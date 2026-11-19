@@ -127,6 +127,20 @@
       "when": 1795083288008,
       "tag": "0017_base44_ai_relay_replay",
       "breakpoints": true
+    },
+    {
+      "idx": 18,
+      "version": "7",
+      "when": 1795083790596,
+      "tag": "0018_temp_ai_relay_smoke_cde444d8_gate",
+      "breakpoints": true
+    },
+    {
+      "idx": 19,
+      "version": "7",
+      "when": 1795083983146,
+      "tag": "0019_retire_temp_ai_relay_smoke_cde444d8_gate",
+      "breakpoints": true
     }
   ]
 }
