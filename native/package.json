@@ -1,0 +1,13 @@
+{
+  "name": "@anaesthesiacore/native",
+  "private": true,
+  "version": "0.0.0",
+  "dependencies": {
+    "@capacitor/android": "^7",
+    "@capacitor/core": "^7",
+    "@capacitor/ios": "^7"
+  },
+  "devDependencies": {
+    "@capacitor/cli": "^7"
+  }
+}

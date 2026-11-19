@@ -7,9 +7,6 @@
       "dependencies": {
         "@ai-sdk/openai-compatible": "^2.0.51",
         "@ai-sdk/react": "^3.0.211",
-        "@capacitor/android": "^7",
-        "@capacitor/core": "^7",
-        "@capacitor/ios": "^7",
         "@hookform/resolvers": "^3.10.0",
         "@lovable.dev/cloud-auth-js": "^1.1.2",
         "@radix-ui/react-accordion": "^1.2.11",
@@ -79,7 +76,6 @@
         "zustand": "^5.0.14",
       },
       "devDependencies": {
-        "@capacitor/cli": "^7",
         "@eslint/js": "^9.32.0",
         "@gltf-transform/core": "^4.3.0",
         "@gltf-transform/extensions": "^4.3.0",
@@ -122,6 +118,18 @@
         "vitest": "^3.2.4",
       },
     },
+    "native": {
+      "name": "@anaesthesiacore/native",
+      "version": "0.0.0",
+      "dependencies": {
+        "@capacitor/android": "^7",
+        "@capacitor/core": "^7",
+        "@capacitor/ios": "^7",
+      },
+      "devDependencies": {
+        "@capacitor/cli": "^7",
+      },
+    },
   },
   "overrides": {
     "@babel/plugin-transform-modules-systemjs": "^7.26.0",
@@ -139,6 +147,8 @@
     "ws": "^8.18.0",
   },
   "packages": {
+    "@anaesthesiacore/native": ["@anaesthesiacore/native@workspace:native"],
+
     "@adobe/css-tools": ["@adobe/css-tools@4.5.0", "https://europe-west4-npm.pkg.dev/lovable-core-prod/sandbox-npm-cache/@adobe/css-tools/-/css-tools-4.5.0.tgz", {}, "sha512-6OzddxPio9UiWTCemp4N8cYLV2ZN1ncRnV1cVGtve7dhPOtRkleRyx32GQCYSwDYgaHU3USMm84tNsvKzRCa1Q=="],
 
     "@ai-sdk/gateway": ["@ai-sdk/gateway@3.0.139", "https://europe-west4-npm.pkg.dev/lovable-core-prod/sandbox-npm-cache/@ai-sdk/gateway/-/gateway-3.0.139.tgz", { "dependencies": { "@ai-sdk/provider": "3.0.12", "@ai-sdk/provider-utils": "4.0.33", "@vercel/oidc": "3.2.0" }, "peerDependencies": { "zod": "^3.25.76 || ^4.1.8" } }, "sha512-RFpxyh5j9g7ZMfKxhiwCcF7bGU872o3JvoiIqZbHOM4qkR4RCzeKJF+k+zHomcJYGeUabEbeMXTKNASzz4Toxw=="],
