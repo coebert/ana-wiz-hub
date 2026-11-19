@@ -1,3 +1,4 @@
+import { relayChat } from "../_shared/base44-ai.ts";
 import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2.45.0";
 
@@ -7,7 +8,7 @@ import { createClient } from "https://esm.sh/@supabase/supabase-js@2.45.0";
  * Given a candidate concept (what the author wants to add) and a set of
  * existing snippets (already-present blocks in the topic / related diagrams /
  * registry intents), ask the model to score conceptual overlap and return a
- * structured verdict. Uses Lovable AI tool-calling for reliable JSON output.
+ * structured verdict. Uses Base44 AI structured output for reliable JSON output.
  *
  * This is an internal authoring aid — not user-facing. It catches paraphrase
  * and synonym overlap that keyword search and the structural diagram registry
@@ -155,14 +156,6 @@ serve(async (req) => {
       );
     }
 
-    const LOVABLE_API_KEY = Deno.env.get("LOVABLE_API_KEY");
-    if (!LOVABLE_API_KEY) {
-      return new Response(JSON.stringify({ error: "LOVABLE_API_KEY not configured" }), {
-        status: 500,
-        headers: { ...corsHeaders, "Content-Type": "application/json" },
-      });
-    }
-
     const userPayload = {
       candidate: body.candidate,
       topicId: body.topicId ?? null,
@@ -174,26 +167,18 @@ serve(async (req) => {
       })),
     };
 
-    const resp = await fetch("https://ai.gateway.lovable.dev/v1/chat/completions", {
-      method: "POST",
-      headers: {
-        Authorization: `Bearer ${LOVABLE_API_KEY}`,
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        model: "google/gemini-3-flash-preview",
-        messages: [
-          { role: "system", content: SYSTEM_PROMPT },
-          {
-            role: "user",
-            content:
-              "Compare the CANDIDATE against each EXISTING snippet. Score conceptually, not lexically.\n\n" +
-              JSON.stringify(userPayload, null, 2),
-          },
-        ],
-        tools: [TOOL],
-        tool_choice: { type: "function", function: { name: "report_semantic_overlap" } },
-      }),
+    const resp = await relayChat({
+      messages: [
+        { role: "system", content: SYSTEM_PROMPT },
+        {
+          role: "user",
+          content:
+            "Compare the CANDIDATE against each EXISTING snippet. Score conceptually, not lexically.\n\n" +
+            JSON.stringify(userPayload, null, 2),
+        },
+      ],
+      tools: [TOOL],
+      tool_choice: { type: "function", function: { name: "report_semantic_overlap" } },
     });
 
     if (resp.status === 429) {
@@ -204,7 +189,7 @@ serve(async (req) => {
     }
     if (resp.status === 402) {
       return new Response(
-        JSON.stringify({ error: "Lovable AI credits exhausted — top up at Settings → Workspace → Usage." }),
+        JSON.stringify({ error: "Base44 AI credits are unavailable. Check the integration usage in Base44." }),
         { status: 402, headers: { ...corsHeaders, "Content-Type": "application/json" } }
       );
     }

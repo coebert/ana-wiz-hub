@@ -1,4 +1,5 @@
-// Auto-verify drug monographs against open reference sources using Lovable AI.
+import { relayChat } from "../_shared/base44-ai.ts";
+// Auto-verify drug monographs against open reference sources using Base44 AI.
 //
 // Runs in chunks so the worker never hits the edge-function wall-time limit:
 // each invocation processes up to CHUNK_SIZE drugs (skipping those already
@@ -12,7 +13,6 @@ const corsHeaders = {
     "authorization, x-client-info, apikey, content-type, x-internal-token",
 };
 
-const LOVABLE_API_KEY = Deno.env.get("LOVABLE_API_KEY")!;
 const SUPABASE_URL = Deno.env.get("SUPABASE_URL")!;
 const SUPABASE_SERVICE_ROLE_KEY = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")!;
 
@@ -100,41 +100,14 @@ async function callAI(drug: DrugRow): Promise<Partial<Record<Field, string>>> {
   };
 
   // Per-request timeout so a hung upstream doesn't burn the whole chunk budget.
-  const ctrl = new AbortController();
-  const t = setTimeout(() => ctrl.abort(), 45_000);
-  let res: Response;
-  try {
-    res = await fetch(
-      "https://ai.gateway.lovable.dev/v1/chat/completions",
-      {
-        method: "POST",
-        signal: ctrl.signal,
-        headers: {
-          Authorization: `Bearer ${LOVABLE_API_KEY}`,
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          model: "google/gemini-3.8-flash",
-          messages: [
-            { role: "system", content: SYSTEM_PROMPT },
-            {
-              role: "user",
-              content:
-                "Verify and correct this monograph against eMC SPC, NICE BNF, and AAGBI/ICS/RCoA guidelines. Return ONLY the tool call.\n\n" +
-                JSON.stringify(userPayload, null, 2),
-            },
-          ],
-          tools: [tool],
-          tool_choice: {
-            type: "function",
-            function: { name: "emit_corrected_monograph" },
-          },
-        }),
-      },
-    );
-  } finally {
-    clearTimeout(t);
-  }
+  const res = await relayChat({
+    messages: [
+      { role: "system", content: SYSTEM_PROMPT },
+      { role: "user", content: "Verify and correct this monograph against eMC SPC, NICE BNF, and AAGBI/ICS/RCoA guidelines. Return ONLY the tool call.\n\n" + JSON.stringify(userPayload, null, 2) },
+    ],
+    tools: [tool],
+    tool_choice: { type: "function", function: { name: "emit_corrected_monograph" } },
+  }, AbortSignal.timeout(45_000));
 
   if (!res.ok) {
     const body = await res.text();
@@ -142,10 +115,14 @@ async function callAI(drug: DrugRow): Promise<Partial<Record<Field, string>>> {
   }
   const json = await res.json();
   const call = json.choices?.[0]?.message?.tool_calls?.[0];
-  if (!call?.function?.arguments) {
-    throw new Error("No tool call in AI response");
+  if (call?.function?.name !== "emit_corrected_monograph" || typeof call.function.arguments !== "string") {
+    throw new Error("Invalid monograph tool response");
   }
-  return JSON.parse(call.function.arguments);
+  const corrected = JSON.parse(call.function.arguments);
+  if (!corrected || FIELDS.some(field => typeof corrected[field] !== "string")) {
+    throw new Error("Incomplete monograph response; retained the original record");
+  }
+  return corrected;
 }
 
 async function scheduleContinuation(jobId: string) {

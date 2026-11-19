@@ -12,20 +12,18 @@ Deno.serve(async (req) => {
   if (req.method === "OPTIONS") return new Response(null, { headers: corsHeaders });
   if (!(await getAuthedUserId(req))) return json({ error: "Please sign in to use this feature." }, 401);
 
-  const apiKey = Deno.env.get("LOVABLE_API_KEY");
-  if (!apiKey) return json({ error: "Service unavailable" }, 503);
-
   const { text, voice } = await req.json().catch(() => ({}));
   if (!text || typeof text !== "string" || !text.trim()) return json({ error: "Missing text" }, 400);
   if (text.length > MAX_CHARS) return json({ error: "Text too long for one segment" }, 400);
 
   try {
-    const upstream = await requestSpeechStream(apiKey, text, resolveVoice(voice), req.signal);
-    if (!upstream.ok || !upstream.body) {
-      const details = await upstream.text();
-      console.error(`[tts-demo] upstream ${upstream.status}: ${details}`);
+    const upstream = await requestSpeechStream(text, resolveVoice(voice), req.signal);
+    if (!upstream.ok) {
+      console.error(`[tts-demo] voice service returned ${upstream.status}`);
+      if (upstream.status === 422) return json({ error: "The selected voice is unavailable.", status: 422 }, 422);
       return json({ error: "Voice generation unavailable. Please try again.", status: upstream.status }, upstream.status);
     }
+    if (!upstream.body) return json({ error: "Voice generation returned no audio." }, 502);
     return new Response(upstream.body, {
       status: 200,
       headers: {

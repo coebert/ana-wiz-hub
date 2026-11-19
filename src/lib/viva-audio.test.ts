@@ -1,6 +1,10 @@
-import { describe, expect, it } from "vitest";
-import { resolveVoice, speechBody, SPEECH_MODEL } from "../../supabase/functions/tts-demo/request-audio";
+import { describe, expect, it, vi } from "vitest";
+import { relaySpeech } from "../../supabase/functions/_shared/base44-ai";
+import { requestSpeechStream, resolveVoice } from "../../supabase/functions/tts-demo/request-audio";
 import { chunkSpeechText, decodePCM, MAX_CHUNK_CHARS } from "./viva-audio";
+
+vi.mock("../../supabase/functions/_shared/base44-ai", () => ({ relaySpeech: vi.fn() }));
+vi.mock("@/integrations/supabase/client", () => ({ supabase: {} }));
 
 describe("streaming viva speech", () => {
   it("splits long text into short chunks without losing words", () => {
@@ -27,11 +31,23 @@ describe("streaming viva speech", () => {
     expect(second.pending.length).toBe(0);
   });
 
-  it("requests SSE streaming from the hosted voice engine and keeps examiner/candidate voices distinct", () => {
-    const body = speechBody("Question", resolveVoice("onyx"));
-    expect(body.model).toBe(SPEECH_MODEL);
-    expect(body.stream_format).toBe("sse");
-    expect(resolveVoice("onyx")).not.toBe(resolveVoice("nova"));
+  it("requests examiner speech as PCM events and forwards cancellation", async () => {
+    const response = new Response("data: [DONE]\n\n", { headers: { "Content-Type": "text/event-stream" } });
+    vi.mocked(relaySpeech).mockResolvedValueOnce(response);
+    const signal = new AbortController().signal;
+    expect(await requestSpeechStream("Question", resolveVoice("onyx"), signal)).toBe(response);
+    expect(relaySpeech).toHaveBeenCalledWith({
+      text: "Question",
+      voice: "onyx",
+      format: "pcm-sse",
+      instructions: "Read aloud in a clear, calm British examiner tone.",
+    }, signal);
+  });
+
+  it("keeps voice preferences distinct and uses the default for unknown names", () => {
+    expect(resolveVoice("nova")).toBe("nova");
+    expect(resolveVoice("Charon")).toBe("Charon");
     expect(resolveVoice("made-up")).toBe(resolveVoice(undefined));
+    expect(resolveVoice(undefined)).toBe("alloy");
   });
 });

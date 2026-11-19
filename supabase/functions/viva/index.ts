@@ -1,3 +1,4 @@
+import { relayChat } from "../_shared/base44-ai.ts";
 /** Containment only: no clinical generation until the versioned source pipeline is ready. */
 const SOURCE_UNAVAILABLE =
   "Current source material is not yet available for reliable AI answers or clinical scoring. Please read the relevant topic and original guidance. Your saved history has been kept.";
@@ -30,7 +31,7 @@ import { getAuthedUserId, isAdminUser } from "../_shared/require-user.ts";
 //                          candidate's spoken answer to a previously asked
 //                          question.
 //
-// All AI calls go through the Lovable AI Gateway (LOVABLE_API_KEY).
+// AI traffic uses the Base44 relay after source review allows the feature.
 
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2.45.0";
 
@@ -40,8 +41,6 @@ const corsHeaders = {
     "authorization, x-client-info, apikey, content-type, x-supabase-client-platform, x-supabase-client-platform-version, x-supabase-client-runtime, x-supabase-client-runtime-version",
 };
 
-const AI_URL = "https://ai.gateway.lovable.dev/v1/chat/completions";
-const MODEL = "google/gemini-3-flash-preview";
 
 /** Service-role Supabase client used only for the model-answer cache. */
 function getServiceClient() {
@@ -154,19 +153,6 @@ const SYSTEM = `You are an experienced UK examiner for the Royal College of Anae
 You ask one focused, exam-realistic opening question and then grade the candidate fairly.
 Always reflect the actual standard of the named exam (Primary vs Final vs FFICM) — the depth, breadth and language must match.`;
 
-async function callAI(body: Record<string, unknown>): Promise<Response> {
-  const key = Deno.env.get("LOVABLE_API_KEY");
-  if (!key) throw new Error("LOVABLE_API_KEY is not configured");
-  return fetch(AI_URL, {
-    method: "POST",
-    headers: {
-      Authorization: `Bearer ${key}`,
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(body),
-  });
-}
-
 function aiErrorResponse(status: number): Response | null {
   if (status === 429) {
     return new Response(JSON.stringify({ error: "Rate limit reached, please wait a moment and try again." }), {
@@ -177,7 +163,7 @@ function aiErrorResponse(status: number): Response | null {
   if (status === 402) {
     return new Response(
       JSON.stringify({
-        error: "Lovable AI credits exhausted. Add credits in Settings → Workspace → Usage.",
+        error: "Base44 AI credits are unavailable. Check the integration usage in Base44.",
       }),
       { status: 402, headers: { ...corsHeaders, "Content-Type": "application/json" } },
     );
@@ -221,8 +207,7 @@ Rules:
 - Do NOT include the answer.
 Return JSON only via the tool call.`;
 
-  const res = await callAI({
-    model: MODEL,
+  const res = await relayChat({
     messages: [
       { role: "system", content: SYSTEM },
       { role: "user", content: userPrompt },
@@ -339,8 +324,7 @@ Provide:
 
 Return JSON via the tool call only.`;
 
-  const res = await callAI({
-    model: MODEL,
+  const res = await relayChat({
     messages: [
       { role: "system", content: SYSTEM },
       { role: "user", content: userPrompt },
@@ -515,8 +499,7 @@ Produce TWO outputs:
 
 Return JSON via the tool call only.`;
 
-  const res = await callAI({
-    model: MODEL,
+  const res = await relayChat({
     messages: [
       { role: "system", content: SYSTEM },
       { role: "user", content: userPrompt },
@@ -729,8 +712,7 @@ Produce three outputs:
 
 Return JSON via the tool call only.`;
 
-    const res = await callAI({
-      model: MODEL,
+    const res = await relayChat({
       messages: [
         { role: "system", content: SYSTEM },
         { role: "user", content: userPrompt },
@@ -838,7 +820,7 @@ Deno.serve(async (req) => {
   }
 
   // Lightweight validation — keep it dependency-free.
-  if (!body || typeof body !== "object") {
+  if (!body || typeof body !== "object" || Array.isArray(body)) {
     return new Response(JSON.stringify({ error: "Missing body" }), {
       status: 400,
       headers: { ...corsHeaders, "Content-Type": "application/json" },

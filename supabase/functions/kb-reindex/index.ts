@@ -4,8 +4,7 @@
  * upserts them. Safe to re-run after a corpus rebuild — the unique
  * `content_hash` makes the operation idempotent.
  *
- * Auth: requires `Authorization: Bearer <REGENERATE_PASSWORD>` (same shared
- * secret the project uses for other regenerate-style admin endpoints).
+ * Auth: requires `Authorization: Bearer <KB_REINDEX_TOKEN>`.
  */
 import { createClient } from "npm:@supabase/supabase-js@2";
 import { corsHeaders } from "npm:@supabase/supabase-js@2/cors";
@@ -48,10 +47,9 @@ Deno.serve(async (req) => {
     });
   }
 
-  const lovableKey = Deno.env.get("LOVABLE_API_KEY");
   const supabaseUrl = Deno.env.get("SUPABASE_URL");
   const serviceKey = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY");
-  if (!lovableKey || !supabaseUrl || !serviceKey) {
+  if (!supabaseUrl || !serviceKey) {
     return new Response(JSON.stringify({ error: "Server misconfigured" }), {
       status: 500,
       headers: { ...corsHeaders, "Content-Type": "application/json" },
@@ -105,7 +103,16 @@ Deno.serve(async (req) => {
   let inserted = 0;
   for (let i = 0; i < todo.length; i += BATCH) {
     const batch = todo.slice(i, i + BATCH);
-    const embeddings = await embedTexts(lovableKey, batch.map((c) => c.content));
+    let embeddings: number[][];
+    try {
+      embeddings = await embedTexts(batch.map((chunk) => chunk.content));
+    } catch {
+      return Response.json({
+        ok: false, code: "EMBEDDINGS_UNAVAILABLE",
+        error: "The Base44 knowledge-base embedding service is unavailable.",
+        newly_embedded: inserted, remaining: allTodo.length - inserted,
+      }, { status: 503, headers: corsHeaders });
+    }
     const rows = batch.map((c, j) => ({
       topic_id: c.topic_id,
       topic_title: c.topic_title,

@@ -3,8 +3,8 @@ import { getAuthedUserId, isAdminUser } from "../_shared/require-user.ts";
 // Flow:
 //   1. Receives topicId, topicTitle, and extracted text content from the client.
 //   2. Looks up the existing podcast row; returns immediately if status === 'ready'.
-//   3. Otherwise: marks as 'generating', generates a ~6 min script via Lovable AI,
-//      synthesises audio via OpenAI TTS (chunked + concatenated as MP3),
+//   3. Otherwise: marks as 'generating', generates an exam script via Base44,
+//      synthesises narration via Base44 (chunked + concatenated as MP3),
 //      uploads to the 'podcasts' storage bucket, and updates the row to 'ready'.
 //
 // This is intentionally synchronous from the client's perspective — the first
@@ -13,7 +13,7 @@ import { getAuthedUserId, isAdminUser } from "../_shared/require-user.ts";
 
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2.45.0";
 import { TOPIC_ID_ALLOWLIST } from "./_topic-ids.ts";
-import { NATIVE_VOICE_IDS } from "./_native-voices.ts";
+import { relayChat, relaySpeech } from "../_shared/base44-ai.ts";
 
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
@@ -23,19 +23,8 @@ const corsHeaders = {
 
 const SUPABASE_URL = Deno.env.get("SUPABASE_URL")!;
 const SERVICE_ROLE = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")!;
-const LOVABLE_API_KEY = Deno.env.get("LOVABLE_API_KEY")!;
-const OPENAI_API_KEY = Deno.env.get("OPENAI_API_KEY")!;
-// Real regional voices (ElevenLabs). When the connection is available every
-// accent is narrated by a native speaker of that region; otherwise we fall back
-// to steered OpenAI TTS.
-const ELEVENLABS_API_KEY = Deno.env.get("ELEVENLABS_API_KEY");
-
-const TTS_MODEL = "gpt-4o-mini-tts";
-const ELEVEN_TTS_MODEL = "eleven_multilingual_v2";
-
 // Regional narrator bank. Mirrors ACCENT_BANK in src/lib/podcastVoices.ts —
-// keep ids, base voices and traits in sync. gpt-4o-mini-tts supports steerable
-// delivery, so the accent comes from the built `instructions` string.
+// keep IDs, base voices and regional delivery instructions in sync.
 interface AccentRow {
   id: string;
   voice: string;
@@ -46,8 +35,6 @@ interface AccentRow {
 interface VoicePreset {
   voice: string;
   instructions: string;
-  /** ElevenLabs voice id of a native speaker of this region, when available. */
-  nativeVoiceId?: string;
 }
 const BASE_STYLE =
   "Warm, confident and clear, like a senior anaesthetic trainee tutoring a peer. " +
@@ -1099,7 +1086,6 @@ const VOICE_PRESETS: Record<string, VoicePreset> = Object.fromEntries(
     {
       voice: row.voice,
       instructions: buildInstructions(row),
-      nativeVoiceId: NATIVE_VOICE_IDS[row.id],
     },
   ]),
 );
@@ -1115,9 +1101,7 @@ const MAX_TTS_CHARS = 2800;
 // Hard fallback: if a single sentence exceeds MAX_TTS_CHARS we still need to
 // split it. OpenAI rejects > 4096 chars per request.
 const HARD_TTS_LIMIT = 3900;
-// ElevenLabs currently permits three concurrent requests for this account.
-// Staying within that cap prevents regional chunks silently falling back to a
-// generic voice when a fourth native request is rate-limited.
+// Bound concurrent synthesis while preserving the order of all chunks.
 const TTS_CONCURRENCY = (() => {
   const raw = Deno.env.get("TTS_CONCURRENCY");
   if (!raw) return 3;
@@ -1219,20 +1203,11 @@ const failureResponse = (payload: FailurePayload, status = 200) => jsonResponse(
 const normaliseProviderError = (message: string): FailurePayload => {
   const lower = message.toLowerCase();
 
-  if (lower.includes("insufficient_quota") || lower.includes("exceeded your current quota")) {
+  if (lower.includes("insufficient_quota") || lower.includes("exceeded your current quota") || lower.includes("credits exhausted")) {
     return {
       status: "failed",
-      error: "OpenAI TTS credits exhausted. Add billing or switch to another TTS provider.",
-      code: "OPENAI_QUOTA_EXHAUSTED",
-      fallback: true,
-    };
-  }
-
-  if (lower.includes("lovable ai credits exhausted")) {
-    return {
-      status: "failed",
-      error: "Lovable AI credits exhausted. Add credits in Settings → Workspace → Usage.",
-      code: "LOVABLE_AI_CREDITS_EXHAUSTED",
+      error: "Base44 AI credits are exhausted. Please contact the app administrator.",
+      code: "BASE44_QUOTA_EXHAUSTED",
       fallback: true,
     };
   }
@@ -1306,25 +1281,17 @@ async function generateScript(topicTitle: string, content: string): Promise<stri
 
   console.log(`[script] target ~${minutes} min / ~${words} words from ${content.length} chars source`);
 
-  const response = await fetch("https://ai.gateway.lovable.dev/v1/chat/completions", {
-    method: "POST",
-    headers: {
-      Authorization: `Bearer ${LOVABLE_API_KEY}`,
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({
-      model: "google/gemini-3.1-pro-preview",
-      messages: [
-        { role: "system", content: systemPrompt },
-        { role: "user", content: userPrompt },
-      ],
-    }),
+  const response = await relayChat({
+    messages: [
+      { role: "system", content: systemPrompt },
+      { role: "user", content: userPrompt },
+    ],
   });
 
   if (!response.ok) {
     const text = await response.text();
     if (response.status === 429) throw new Error("Rate limit reached generating script. Try again in a moment.");
-    if (response.status === 402) throw new Error("Lovable AI credits exhausted. Add credits in Settings → Workspace → Usage.");
+    if (response.status === 402) throw new Error("Base44 AI credits exhausted.");
     throw new Error(`Script generation failed (${response.status}): ${text}`);
   }
 
@@ -1440,148 +1407,39 @@ const sleep = (ms: number) => new Promise((r) => setTimeout(r, ms));
 
 const TTS_REQUEST_TIMEOUT_MS = 60_000;
 
-/**
- * Narrate a chunk with the real regional voice for this accent. A failed native
- * request returns null so the whole episode can retry without mixing voices.
- */
-async function synthesiseChunkNative(
-  text: string,
-  nativeVoiceId: string,
-  attempt = 1,
-): Promise<Uint8Array | null> {
-  const controller = new AbortController();
-  const timeoutId = setTimeout(
-    () => controller.abort(new Error("native TTS timed out")),
-    TTS_REQUEST_TIMEOUT_MS,
-  );
-  try {
-    const response = await fetch(
-      `https://api.elevenlabs.io/v1/text-to-speech/${nativeVoiceId}?output_format=mp3_44100_128`,
-      {
-        method: "POST",
-        signal: controller.signal,
-        headers: {
-          "xi-api-key": ELEVENLABS_API_KEY!,
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          text,
-          model_id: ELEVEN_TTS_MODEL,
-          voice_settings: {
-            stability: 0.5,
-            similarity_boost: 0.85,
-            style: 0.15,
-            use_speaker_boost: true,
-          },
-        }),
-      },
-    );
-
-    if (!response.ok) {
-      const errText = await response.text();
-      // 409 = the shared voice is being provisioned by a parallel chunk; retry.
-      const isRetryable =
-        response.status === 429 || response.status === 409 || response.status >= 500;
-      if (isRetryable && attempt < TTS_MAX_RETRIES) {
-        const baseDelay = response.status === 429 ? 3_000 : 500;
-        await sleep(baseDelay * Math.pow(2, attempt - 1) + Math.random() * 500);
-        return synthesiseChunkNative(text, nativeVoiceId, attempt + 1);
-      }
-      console.error(`[tts] native voice failed (${response.status}): ${errText}`);
-      return null;
-    }
-
-    const bytes = new Uint8Array(await response.arrayBuffer());
-    if (bytes.length === 0) {
-      console.error("[tts] native voice returned empty audio");
-      return null;
-    }
-    return bytes;
-  } catch (err) {
-    const message = err instanceof Error ? err.message : String(err);
-    if (attempt < TTS_MAX_RETRIES) {
-      await sleep(500 * Math.pow(2, attempt - 1) + Math.random() * 250);
-      return synthesiseChunkNative(text, nativeVoiceId, attempt + 1);
-    }
-    console.error(`[tts] native voice error: ${message}`);
-    return null;
-  } finally {
-    clearTimeout(timeoutId);
-  }
-}
-
-async function synthesiseChunk(
-  text: string,
-  preset: VoicePreset,
-  attempt = 1,
-): Promise<Uint8Array> {
-  if (ELEVENLABS_API_KEY && preset.nativeVoiceId && attempt === 1) {
-    const native = await synthesiseChunkNative(text, preset.nativeVoiceId);
-    if (native) return native;
-    throw new Error("Native regional voice was temporarily unavailable; retrying the episode without substituting a generic voice.");
-  }
-  const controller = new AbortController();
-  const timeoutId = setTimeout(
-    () => controller.abort(new Error(`TTS request timed out after ${TTS_REQUEST_TIMEOUT_MS}ms`)),
-    TTS_REQUEST_TIMEOUT_MS,
-  );
-  try {
-    const response = await fetch("https://api.openai.com/v1/audio/speech", {
-      method: "POST",
-      signal: controller.signal,
-      headers: {
-        Authorization: `Bearer ${OPENAI_API_KEY}`,
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        model: TTS_MODEL,
+async function synthesiseChunk(text: string, preset: VoicePreset): Promise<Uint8Array> {
+  for (let attempt = 1; ; attempt++) {
+    const signal = AbortSignal.timeout(TTS_REQUEST_TIMEOUT_MS);
+    let retryDelay = 500;
+    let response: Response | undefined;
+    try {
+      response = await relaySpeech({
+        text,
         voice: preset.voice,
-        input: text,
-        response_format: "mp3",
-        speed: 1.0,
-        // gpt-4o-mini-tts supports steerable delivery — the selected preset
-        // carries the accent and delivery instructions.
         instructions: preset.instructions,
-      }),
-    });
-
-
-    if (!response.ok) {
-      const errText = await response.text();
-      // Retry transient errors (rate limits + 5xx). Quota/billing errors are
-      // permanent and bubble up immediately so the caller can surface them.
-      const isRetryable =
-        (response.status === 429 && !errText.toLowerCase().includes("insufficient_quota")) ||
-        response.status >= 500;
-      if (isRetryable && attempt < TTS_MAX_RETRIES) {
-        const backoff = 500 * Math.pow(2, attempt - 1) + Math.random() * 250;
-        console.warn(`[tts] chunk failed (${response.status}), retry ${attempt}/${TTS_MAX_RETRIES} in ${Math.round(backoff)}ms`);
-        await sleep(backoff);
-        return synthesiseChunk(text, preset, attempt + 1);
+        format: "mp3",
+      }, signal);
+      if (response.ok) {
+        const bytes = new Uint8Array(await response.arrayBuffer());
+        if (bytes.length) return bytes;
+        throw new Error("Narration returned empty audio.");
       }
-      throw new Error(`OpenAI TTS failed (${response.status}): ${errText}`);
+      const status = response.status;
+      await response.body?.cancel();
+      if (status === 402) throw new Error("Base44 AI credits exhausted.");
+      if (status === 429) {
+        retryDelay = 3000;
+        throw new Error("Rate limit reached while generating narration.");
+      }
+      if (status === 422) throw new Error("The selected narration voice is unavailable.");
+      throw new Error(`Narration failed (${status}).`);
+    } catch (error) {
+      const transient = !response || response.ok || response.status === 429 || response.status >= 500;
+      if (!transient || attempt >= TTS_MAX_RETRIES) throw error;
+      const delay = retryDelay * 2 ** (attempt - 1) + Math.random() * 250;
+      console.warn(`[tts] retrying narration after attempt ${attempt}`);
+      await sleep(delay);
     }
-
-    const buf = await response.arrayBuffer();
-    const bytes = new Uint8Array(buf);
-    if (bytes.length === 0) throw new Error("OpenAI TTS returned empty audio");
-    return bytes;
-  } catch (err) {
-    // Retry network errors and timeouts. Quota / explicit OpenAI failures bubble up.
-    const message = err instanceof Error ? err.message : String(err);
-    const isAbort = err instanceof Error && err.name === "AbortError";
-    const isNetwork = isAbort || !message.includes("OpenAI TTS");
-    if (isNetwork && attempt < TTS_MAX_RETRIES) {
-      const backoff = 500 * Math.pow(2, attempt - 1) + Math.random() * 250;
-      console.warn(
-        `[tts] ${isAbort ? "timeout" : "network error"}, retry ${attempt}/${TTS_MAX_RETRIES} in ${Math.round(backoff)}ms: ${message}`,
-      );
-      await sleep(backoff);
-      return synthesiseChunk(text, preset, attempt + 1);
-    }
-    throw err;
-  } finally {
-    clearTimeout(timeoutId);
   }
 }
 
