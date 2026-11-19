@@ -65,7 +65,7 @@ const paediatricFaqs: Array<[string, string]> = [
   ],
   [
     "What is propofol infusion syndrome (PRIS) and how do you prevent it?",
-    "Propofol infusion syndrome (PRIS) is a rare but potentially fatal metabolic complication of prolonged propofol infusion, characterised by metabolic acidosis, rhabdomyolysis, hyperkalaemia, lipaemia, cardiac arrhythmias and heart failure. Risk rises sharply with infusions >4 mg/kg/hr for >48 hours, particularly in critically ill, septic, or steroid/catecholamine-treated children. Prevention: keep propofol <4 mg/kg/hr, limit duration, avoid in septic or mitochondrial disorder patients, and monitor lactate, creatine kinase and triglycerides if infusion exceeds 24 hours. In PICU, use dexmedetomidine or midazolam-based sedation instead of prolonged propofol.",
+    "Propofol infusion syndrome (PRIS) is a rare but potentially fatal metabolic complication of prolonged propofol infusion, characterised by metabolic acidosis, rhabdomyolysis, hyperkalaemia, lipaemia, cardiac arrhythmias and heart failure. Risk rises with high cumulative dose and prolonged infusion, particularly in critically ill, septic, or steroid/catecholamine-treated children. The often-quoted 4 mg/kg/hr limit is an adult intensive-care sedation threshold, not a ceiling for paediatric general anaesthesia. For paediatric GA, induce and maintain propofol TIVA by titration to effect using the age-specific dosing in section 4.2 of the named UK product (Propofol 1% SmPC, emc 15152); there is no single mg/kg/hr cap for anaesthesia. Prevent PRIS by avoiding unnecessary prolongation, using the lowest effective infusion, monitoring lactate, creatine kinase, triglycerides and acid-base status during long infusions, and using dexmedetomidine or midazolam-based sedation instead of prolonged propofol in PICU.",
   ],
   [
     "How do you anaesthetise a child with pyloric stenosis?",
@@ -158,7 +158,7 @@ const PaediatricAnaesthesiaTopic = () => {
         { text: "ETT size: uncuffed = age/4 + 4; cuffed = age/4 + 3.5", cites: ["APAGBI 2020"] },
         { text: "Pyloric stenosis: correct the alkalosis first — it is a medical, not surgical, emergency", cites: ["Sury et al."] },
         { text: "Use isotonic balanced crystalloids for maintenance — never hypotonic solutions in children", cites: ["BJA Educ 2019"] },
-        { text: "'Remi-prop' TIVA is ideal for shared-airway, MRI and MH-susceptible children — keep propofol <4 mg/kg/hr to avoid PRIS", cites: ["APAGBI 2020"] },
+        { text: "'Remi-prop' TIVA is ideal for shared-airway, MRI and MH-susceptible children — titrate propofol to effect within the age-specific SmPC 15152 dosing, and watch for PRIS during long infusions", cites: ["APAGBI 2020", "Propofol 1% SmPC (emc 15152)"] },
         { text: "PCA from ~5 yr; below that use NCA. Never codeine <12 yr; never tramadol post-tonsillectomy for OSA", cites: ["Sury et al."] },
         { text: "Caudal block: Armitage 0.5/1.0/1.25 ml/kg of 0.25% bupivacaine for sacral/lumbar/thoracic spread; always test-dose for intravascular placement", cites: ["BJA Educ 2019"] },
       ]}

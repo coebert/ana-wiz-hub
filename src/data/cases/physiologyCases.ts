@@ -1,7 +1,7 @@
 import type { CaseBank } from "./types";
 
 const s = {
-  cardiacCycle: { label: "BJA Educ: the cardiac cycle", href: "https://doi.org/10.1093/bjaceaccp/mki024" },
+  cardiacCycle: { label: "BJA Educ: cardiac muscle physiology (2023)", href: "https://doi.org/10.1016/j.bjae.2023.05.004" },
   electrophysiology: { label: "BJA Educ: cardiac electrophysiology", href: "https://doi.org/10.1093/bjaceaccp/mkm013" },
   vaughanWilliams: { label: "Vaughan Williams classification", href: "https://doi.org/10.1016/0306-039X(75)90019-7" },
   vq: { label: "BJA Educ: ventilation–perfusion relationships", href: "https://doi.org/10.1183/09031936.00037014" },
@@ -12,8 +12,8 @@ const s = {
   aki: { label: "KDIGO AKI guideline", href: "https://kdigo.org/guidelines/acute-kidney-injury/" },
   nmj: { label: "BJA Educ: neuromuscular junction", href: "https://doi.org/10.1016/j.bjae.2018.02.003" },
   nmbGuideline: { label: "ASA 2023: neuromuscular blockade", href: "https://doi.org/10.1097/ALN.0000000000004379" },
-  autonomic: { label: "BJA Educ: autonomic nervous system", href: "https://doi.org/10.1093/bjaceaccp/mkm023" },
-  bradycardia: { label: "BJA Educ: perioperative bradycardia", href: "https://doi.org/10.1016/j.bjae.2021.05.001" },
+  autonomic: { label: "BJA Educ: autonomic nervous system (2016)", href: "https://doi.org/10.1093/bjaed/mkw011" },
+  bradycardia: { label: "BJA: perioperative bradycardia (2001)", href: "https://pubmed.ncbi.nlm.nih.gov/11878545/" },
   pericardial: { label: "ESC 2015 pericardial disease guideline", href: "https://doi.org/10.1093/eurheartj/ehv318" },
   odc: { label: "Severinghaus: oxyhaemoglobin dissociation equations", href: "https://doi.org/10.1152/jappl.1979.46.3.599" },
   able: { label: "ABLE trial: age of transfused red cells", href: "https://doi.org/10.1056/NEJMoa1500704" },

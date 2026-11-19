@@ -11,6 +11,7 @@ export interface QuizQuestion {
   options: string[];
   correctIndex: number;
   explanation: string;
+  sources?: { label: string; href: string }[];
 }
 
 export interface QuizSrsMeta {
@@ -248,6 +249,11 @@ export const QuizSection = ({ questions, srs }: QuizSectionProps) => {
         <div className="mt-4 p-4 rounded-lg bg-secondary/50 border border-border">
           <p className="text-sm font-semibold text-foreground mb-1">Explanation</p>
           <p className="text-sm text-muted-foreground leading-relaxed">{q.explanation}</p>
+          {q.sources?.map((source) => (
+            <a key={source.href} className="mt-2 block text-sm underline" href={source.href} target="_blank" rel="noopener noreferrer">
+              {source.label}
+            </a>
+          ))}
         </div>
       )}
 

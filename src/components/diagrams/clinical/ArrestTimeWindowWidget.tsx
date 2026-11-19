@@ -399,9 +399,10 @@ export default function ArrestTimeWindowWidget() {
         </div>
 
         <p className="text-[11px] text-muted-foreground italic mt-4">
-          Educational tool only — not for live clinical use. Thresholds follow
-          Resuscitation Council UK 2025 special-circumstances guidance and the
-          STS expert consensus on resuscitation after cardiac surgery.
+          Educational tool only — not for live clinical use. Thresholds follow{" "}
+          <a className="underline" href="https://www.resus.org.uk/professional-library/2025-resuscitation-guidelines/special-circumstances-guidelines">Resuscitation Council UK 2025 special-circumstances guidance</a>{" "}
+          and the{" "}
+          <a className="underline" href="https://www.sts.org/sites/default/files/documents/ExpertConsensus_ResuscitationAfterCardiacSurgery.pdf">STS expert consensus on resuscitation after cardiac surgery</a>.
         </p>
       </div>
     </DiagramFigure>

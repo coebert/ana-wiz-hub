@@ -17,7 +17,7 @@ import { InlineRef } from "@/components/references/InlineRef";
 const depthOfAnaesthesiaMonitoringFaqs: Array<[string, string]> = [
   [
     "What is the target BIS range for general anaesthesia and what is its evidence base?",
-    "BIS 40–60 corresponds to surgical anaesthesia. B-Aware and B-Unaware trials showed BIS-guided anaesthesia reduces awareness in high-risk patients (TIVA, paralysed, low-MAC techniques). NICE DG6 recommends DoA monitoring for TIVA and for any case where end-tidal volatile monitoring is unreliable. BIS values are derived from EEG but are not a direct EEG; they lag by 15–30 s."
+    "BIS 40–60 is the usual surgical target. B-Aware (PMID 15172773) showed BIS-guided anaesthesia reduced awareness in high-risk adults receiving relaxant general anaesthesia compared with routine care. B-Unaware (PMID 18337600) and BAG-RECALL (PMID 21848460) found no reduction compared with end-tidal anaesthetic gas (ETAG/ETAC) guidance in patients receiving volatile anaesthesia. NICE DG6 recommends DoA monitoring for TIVA and whenever end-tidal volatile monitoring is unreliable. BIS is derived from EEG but is not a direct EEG; values lag by 15–30 s."
   ],
   [
     "How does processed EEG differ from raw EEG?",
@@ -391,11 +391,15 @@ const DepthOfAnaesthesiaMonitoringTopic = () => {
               <tbody className="text-muted-foreground">
                 <tr className="border-b border-border">
                   <td className="py-2 font-medium text-foreground">B-Aware (2004)</td>
-                  <td className="py-2">BIS-guided anaesthesia reduced awareness by 82% in high-risk patients (NNT 138). First major RCT supporting processed EEG monitoring.</td>
+                  <td className="py-2">BIS-guided anaesthesia reduced awareness by 82% in high-risk adults having relaxant general anaesthesia compared with routine care (NNT 138). First major RCT supporting processed EEG monitoring.</td>
+                </tr>
+                <tr className="border-b border-border">
+                  <td className="py-2 font-medium text-foreground">B-Unaware (2008)</td>
+                  <td className="py-2">BIS-guided vs ETAG-guided anaesthesia in patients at increased risk: no significant difference in definite awareness (2 vs 2 cases). Did not support routine BIS monitoring when ETAG is used.</td>
                 </tr>
                 <tr className="border-b border-border">
                   <td className="py-2 font-medium text-foreground">BAG-RECALL (2011)</td>
-                  <td className="py-2">BIS vs ETAG-guided anaesthesia: no difference in awareness rates in unselected surgical patients. Suggested BIS not superior to careful ETAG monitoring for volatile anaesthesia.</td>
+                  <td className="py-2">BIS vs ETAG-guided anaesthesia in a high-risk population: superiority of BIS was not demonstrated (7 vs 2 definite awareness cases; difference not significant). ETAG guidance performed comparably for volatile anaesthesia.</td>
                 </tr>
                 <tr className="border-b border-border">
                   <td className="py-2 font-medium text-foreground">NAP5 (2014)</td>
