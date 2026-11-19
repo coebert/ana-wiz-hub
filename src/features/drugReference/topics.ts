@@ -82,7 +82,7 @@ export const referenceTopics: ReferenceTopic[] = [
     keyPoints: [
       "Calculate the maximum dose in mg/kg on lean body weight before drawing up, and say the number out loud during the block checklist.",
       "Aspirate and inject incrementally with continuous verbal contact; early signs are perioral tingling, tinnitus, metallic taste and agitation.",
-      "For local anaesthetic systemic toxicity, stop injecting, call for help, manage the airway and give lipid emulsion 20% 1.5 mL/kg over 1 minute then 15 mL/kg/h.",
+      "For local anaesthetic systemic toxicity, stop injecting, call for help, manage the airway and give lipid emulsion 20% 1.5 mL/kg over 2–3 minutes then 15 mL/kg/h.",
       "Continue resuscitation well beyond the usual duration — recovery after bupivacaine arrest can take over an hour.",
     ],
     patterns: ["local anaesthetic", "la toxicity rescue"],

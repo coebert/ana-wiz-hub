@@ -817,7 +817,7 @@
       "topicId": "arrhythmias-ecg-icu",
       "file": "src/pages/topics/ArrhythmiasEcgIcuTopic.tsx",
       "requiredLabels": [
-        "RCUK 2021 Tachycardia"
+        "RCUK Tachycardia March 2026"
       ]
     },
     {
@@ -825,7 +825,7 @@
       "topicId": "arrhythmias-ecg-icu",
       "file": "src/pages/topics/ArrhythmiasEcgIcuTopic.tsx",
       "requiredLabels": [
-        "RCUK 2021 Tachycardia"
+        "RCUK Tachycardia March 2026"
       ]
     },
     {
@@ -4763,7 +4763,7 @@
       "topicId": "organ-donation",
       "file": "src/pages/topics/OrganDonationTopic.tsx",
       "requiredLabels": [
-        "AoMRC 2008"
+        "AoMRC 2025"
       ]
     },
     {
@@ -4982,7 +4982,7 @@
       "topicId": "paediatric-icu",
       "file": "src/pages/topics/PaediatricIcuTopic.tsx",
       "requiredLabels": [
-        "SSC Paediatric 2020"
+        "RCUK PALS 2025 fluids"
       ]
     },
     {
@@ -5006,7 +5006,7 @@
       "topicId": "paediatric-icu",
       "file": "src/pages/topics/PaediatricIcuTopic.tsx",
       "requiredLabels": [
-        "SSC Paediatric 2020"
+        "SSC Children 2026 vasoactives"
       ]
     },
     {
@@ -5030,7 +5030,7 @@
       "topicId": "paediatric-icu",
       "file": "src/pages/topics/PaediatricIcuTopic.tsx",
       "requiredLabels": [
-        "SSC Paediatric 2020"
+        "RCUK PALS 2025 fluids"
       ]
     },
     {
@@ -5038,7 +5038,7 @@
       "topicId": "paediatric-icu",
       "file": "src/pages/topics/PaediatricIcuTopic.tsx",
       "requiredLabels": [
-        "SSC Paediatric 2020"
+        "RCUK PALS 2025 fluids"
       ]
     },
     {
@@ -5110,7 +5110,7 @@
       "topicId": "paediatric-icu",
       "file": "src/pages/topics/PaediatricIcuTopic.tsx",
       "requiredLabels": [
-        "SSC Paediatric 2020"
+        "RCUK PALS 2025 fluids"
       ]
     },
     {
@@ -5118,7 +5118,7 @@
       "topicId": "paediatric-icu",
       "file": "src/pages/topics/PaediatricIcuTopic.tsx",
       "requiredLabels": [
-        "SSC Paediatric 2020"
+        "SSC Children 2026 vasoactives"
       ]
     },
     {
@@ -6079,8 +6079,7 @@
       "topicId": "si-units-thermodynamics",
       "file": "src/pages/topics/SIUnitsThermodynamicsTopic.tsx",
       "requiredLabels": [
-        "BJA Educ 2016 (Thermo)",
-        "BJA Educ 2018 (Temperature)"
+        "Middleton Ch.8"
       ]
     },
     {
@@ -6121,7 +6120,7 @@
       "topicId": "si-units-thermodynamics",
       "file": "src/pages/topics/SIUnitsThermodynamicsTopic.tsx",
       "requiredLabels": [
-        "BJA Educ 2016 (Thermo)"
+        "Sessler 2008"
       ]
     },
     {
@@ -6137,7 +6136,7 @@
       "topicId": "si-units-thermodynamics",
       "file": "src/pages/topics/SIUnitsThermodynamicsTopic.tsx",
       "requiredLabels": [
-        "BJA Educ 2018 (Temperature)"
+        "NICE CG65"
       ]
     },
     {
@@ -6145,7 +6144,7 @@
       "topicId": "si-units-thermodynamics",
       "file": "src/pages/topics/SIUnitsThermodynamicsTopic.tsx",
       "requiredLabels": [
-        "BJA Educ 2017 (Gas Supply)"
+        "Middleton Ch.8"
       ]
     },
     {
@@ -6170,7 +6169,7 @@
       "topicId": "si-units-thermodynamics",
       "file": "src/pages/topics/SIUnitsThermodynamicsTopic.tsx",
       "requiredLabels": [
-        "BJA Educ 2017 (Gas Supply)"
+        "Middleton Ch.1"
       ]
     },
     {
@@ -6178,7 +6177,7 @@
       "topicId": "si-units-thermodynamics",
       "file": "src/pages/topics/SIUnitsThermodynamicsTopic.tsx",
       "requiredLabels": [
-        "BJA Educ 2018 (Temperature)"
+        "Sessler 2008"
       ]
     },
     {
@@ -6186,7 +6185,7 @@
       "topicId": "si-units-thermodynamics",
       "file": "src/pages/topics/SIUnitsThermodynamicsTopic.tsx",
       "requiredLabels": [
-        "BJA Educ 2017 (Gas Supply)"
+        "Middleton Ch.1"
       ]
     },
     {
@@ -6202,7 +6201,7 @@
       "topicId": "si-units-thermodynamics",
       "file": "src/pages/topics/SIUnitsThermodynamicsTopic.tsx",
       "requiredLabels": [
-        "BJA Educ 2017 (Gas Supply)"
+        "Middleton Ch.8"
       ]
     },
     {
@@ -6373,7 +6372,7 @@
       "topicId": "temperature-measurement",
       "file": "src/pages/topics/TemperatureMeasurementTopic.tsx",
       "requiredLabels": [
-        "NICE NG125"
+        "NICE CG65"
       ]
     },
     {
@@ -6381,7 +6380,7 @@
       "topicId": "temperature-measurement",
       "file": "src/pages/topics/TemperatureMeasurementTopic.tsx",
       "requiredLabels": [
-        "BJA Educ Temperature 2020"
+        "NICE CG65 Measurement Sites"
       ]
     },
     {
@@ -6415,7 +6414,7 @@
       "topicId": "temperature-measurement",
       "file": "src/pages/topics/TemperatureMeasurementTopic.tsx",
       "requiredLabels": [
-        "NICE NG125"
+        "NICE CG65"
       ]
     },
     {
@@ -6440,7 +6439,7 @@
       "topicId": "temperature-measurement",
       "file": "src/pages/topics/TemperatureMeasurementTopic.tsx",
       "requiredLabels": [
-        "NICE NG125"
+        "NIST Industrial Thermometer Calibration"
       ]
     },
     {

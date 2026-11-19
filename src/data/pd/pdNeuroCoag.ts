@@ -120,11 +120,11 @@ export const pdNeuroCoag: DrugPharmacodynamicsMap = {
 
   "tranexamic-acid": {
     doseResponse:
-      "Competitive inhibition of plasminogen binding to fibrin is saturable: plasma concentrations around 10 mg/L abolish fibrinolysis, which the standard 1 g IV load followed by 1 g over 8 h achieves comfortably. Higher doses do not improve haemostasis and increase seizure risk.",
+      "Competitive inhibition of plasminogen binding to fibrin is saturable: plasma concentrations around 10 mg/L abolish fibrinolysis, as targeted by the adult CRASH-2 trauma regimen. Dose and repeat schedule vary by indication; higher exposure increases seizure risk.",
     therapeuticWindow:
-      "Wide, but strictly time-dependent for benefit: given within 3 h of trauma or postpartum haemorrhage it reduces death from bleeding, and after 3 h it may increase it. Dose reduction is needed in renal impairment (renally cleared, 95% unchanged).",
+      "For major traumatic haemorrhage, start as soon as possible within 3 hours of injury. For diagnosed postpartum haemorrhage, give as soon as possible within 3 hours of birth (WHO). Dose reduction is needed in renal impairment (renally cleared, 95% unchanged).",
     titrationTarget:
-      "Not titrated to a laboratory value; give the fixed regimen early. Viscoelastic testing (maximum lysis) can confirm hyperfibrinolysis but should not delay administration.",
+      "Not titrated to a laboratory value; give the regimen for the indication promptly. Viscoelastic testing (maximum lysis) can confirm hyperfibrinolysis but should not delay administration.",
     doseRelatedEffects: [
       "Standard dose: nausea, vomiting, hypotension with rapid IV injection, visual disturbance.",
       "High dose or accumulation in renal failure: seizures (GABA_A antagonism, dose-dependent — notably after cardiac surgery), confusion.",

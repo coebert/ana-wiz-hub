@@ -180,12 +180,12 @@ const MajorHaemorrhageFlowchart = () => {
             Switch to goal-directed therapy (ROTEM/TEG)
           </text>
           {[
-            "FIBTEM A5 < 12 mm → fibrinogen concentrate / cryo",
-            "EXTEM CT > 80 s → plasma, or PCC if warfarinised",
-            "EXTEM A5 < 40 mm with normal FIBTEM → platelets",
-            "ML > 15% (lysis) → tranexamic acid",
-            "Targets: Hb 80 g/L · Plt > 50 (> 100 if CNS/eye)",
-            "Fibrinogen > 1.5 g/L (> 2 g/L obstetric) · PT ratio < 1.5",
+            "Functional fibrinogen deficit with major bleeding → replace",
+            "Long clotting time → assess factor or drug effect",
+            "Assess platelet count and whole-clot vs fibrin strength",
+            "Interpret lysis and treatment in the clinical context",
+            "Platelets: bleeding severity, site and procedure guide target",
+            "Use the assay- and indication-specific local algorithm",
           ].map((t, i) => (
             <text key={i} x={516} y={476 + i * 16} fontSize="9.5" fill="hsl(var(--muted-foreground))">
               {t}
@@ -277,7 +277,7 @@ const MajorHaemorrhageFlowchart = () => {
             <Cite topicId="transfusion-coagulation" labels={["Rossaint 2023 calcium"]} />
           </li>
           <li>
-            <span className="font-medium text-foreground">Viscoelastic triggers:</span> FIBTEM, EXTEM CT/A5 and lysis thresholds
+            <span className="font-medium text-foreground">Viscoelastic guidance:</span> interpret clot initiation, firmness and lysis in the clinical context. For critical-site bleeding NICE allows platelet thresholds up to 100 ×10⁹/L. For planned surgery at critical sites such as the posterior segment of the eye, consider raising platelets above 100 ×10⁹/L.
             <Cite topicId="transfusion-coagulation" labels={["Curr Opin Anaesthesiol 2013 VHA", "Anaesthesia 2017 TIC"]} />
           </li>
           <li>

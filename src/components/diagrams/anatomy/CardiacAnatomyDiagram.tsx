@@ -65,7 +65,7 @@ const structures: Record<StructureKey, Structure> = {
     clinicalNote: "Damage during valve surgery → complete heart block. His bundle pacing emerging alternative." },
   "left-bundle": { label: "Left Bundle Branch", color: "#80a030", category: "conduction",
     detail: "Broad sheet on left septal surface. Divides into anterior and posterior fascicles.",
-    clinicalNote: "LBBB: QRS >120ms. New LBBB + chest pain = STEMI equivalent." },
+    clinicalNote: "LBBB: QRS >120ms. New LBBB with ongoing ischaemia needs urgent assessment and Sgarbossa criteria; persistent ST elevation or high suspicion of occlusion, not new LBBB alone, drives immediate angiography." },
   "left-anterior-fascicle": { label: "Left Anterior Fascicle", color: "#70b040", category: "conduction",
     detail: "Thin fascicle to anterolateral papillary muscle. Single blood supply from LAD (septal perforators).",
     clinicalNote: "Most vulnerable fascicle. Left anterior hemiblock: LAD (−30° to −90°). Most common conduction defect." },

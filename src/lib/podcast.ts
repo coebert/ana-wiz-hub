@@ -1,4 +1,5 @@
 import { supabase } from "@/integrations/supabase/client";
+import { isHeldPodcastAudio } from "@/lib/podcast-audit-holds";
 import { DEFAULT_PODCAST_VOICE } from "@/lib/podcastVoices";
 
 export interface PodcastResult {
@@ -266,13 +267,14 @@ export const fetchPodcast = async (
 export const fetchRecordedVoices = async (topicId: string): Promise<string[]> => {
   const { data, error } = await supabase
     .from("podcasts")
-    .select("voice")
+    .select("voice, audio_path")
     .eq("topic_id", topicId)
     .eq("status", "ready")
     .eq("audit_hold", false)
     .not("audio_path", "is", null);
   if (error || !data) return [];
   const voices = data
+    .filter((r) => r.audio_path && !isHeldPodcastAudio(r.audio_path))
     .map((r) => r.voice ?? DEFAULT_PODCAST_VOICE)
     .filter((v): v is string => typeof v === "string" && v.length > 0);
   return Array.from(new Set(voices));

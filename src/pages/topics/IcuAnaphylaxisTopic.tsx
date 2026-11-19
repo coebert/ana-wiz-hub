@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { TopicFaqs } from "@/components/topic/TopicFaqs";
 import { TopicTemplate } from "@/components/topic/TopicTemplate";
 import { CollapsibleSubsection } from "@/components/topic/CollapsibleSubsection";
 import { ExamSection } from "@/components/exam/ExamSection";
@@ -6,6 +7,17 @@ import { Exam } from "@/data/curriculum";
 import { AnaphylaxisFirstDoseTeaching, AnaphylaxisRefractoryTeaching, AnaphylaxisAfterTeaching } from "@/components/topic/IcuEmergencyTeaching";
 
 const exams = [Exam.FINAL, Exam.FFICM, Exam.EDIC];
+const vivaFaqs: Array<[string, string]> = [
+  [
+    "An adult on a ward develops sudden stridor and hypotension during an antibiotic infusion. They have a pulse. What is the first adrenaline dose, and when should it be repeated?",
+    "Stop the suspected trigger and give 500 micrograms of adrenaline intramuscularly into the outer mid-thigh (0.5 mL of 1 mg/mL). Repeat after 5 minutes if airway, breathing or circulation problems persist. Source: Resuscitation Council UK, Emergency treatment of anaphylaxis, section 5.",
+  ],
+  [
+    "An adult with anaphylaxis still has respiratory or cardiovascular compromise after two appropriate IM doses of adrenaline. How should treatment change?",
+    "Call for expert help and give IV crystalloid. An experienced team should start a monitored, titrated IV adrenaline infusion. Continue IM adrenaline every 5 minutes while the infusion is being prepared if respiratory or cardiovascular problems persist. Source: Resuscitation Council UK, Emergency treatment of anaphylaxis, section 6.",
+  ],
+];
+
 const quiz = [
   { question: "RCUK 2021 IM adrenaline dose for an adult:", options: ["50 micrograms", "500 micrograms (0.5 mL of 1 mg/mL)", "1 mg (1 mL of 1 mg/mL)", "5 mg"], correctIndex: 1, explanation: "500 micrograms IM for adults and children over 12 years." },
   { question: "When should IM adrenaline be repeated?", options: ["After 1 minute", "After 5 minutes if ABC problems persist", "After 30 minutes", "Never"], correctIndex: 1, explanation: "Repeat after 5 minutes if Airway/Breathing/Circulation problems persist." },
@@ -31,6 +43,7 @@ export default function IcuAnaphylaxisTopic() {
       <ExamSection id="anaphylaxis-first" exams={exams}><CollapsibleSubsection title="1. Recognition and IM adrenaline" defaultOpen><AnaphylaxisFirstDoseTeaching /></CollapsibleSubsection></ExamSection>
       <ExamSection id="anaphylaxis-refractory" exams={exams}><CollapsibleSubsection title="2. Refractory anaphylaxis"><AnaphylaxisRefractoryTeaching /></CollapsibleSubsection></ExamSection>
       <ExamSection id="anaphylaxis-after" exams={exams}><CollapsibleSubsection title="3. After the reaction"><AnaphylaxisAfterTeaching /></CollapsibleSubsection></ExamSection>
+      <TopicFaqs faqs={vivaFaqs} heading="Viva practice" />
     </div>}
   />;
 }

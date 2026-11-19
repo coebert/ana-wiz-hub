@@ -106,7 +106,7 @@ const TACHYS: Record<TachyKey, TachyInfo> = {
     qrs: "narrow",
     ecg: "Regular narrow-complex tachycardia. P often buried in QRS or just after (pseudo-R' in V1, pseudo-S in II/III/aVF).",
     pathophysiology: "Re-entry within / around AV node using slow (α) and fast (β) pathways — typical (slow-fast) is most common.",
-    management: "Vagal manoeuvres → adenosine 6 mg → 12 mg. DCCV if unstable. Long-term: β-blocker, slow-pathway ablation.",
+    management: "Vagal manoeuvres → adenosine 6 mg → 12 mg → 18 mg. DCCV if unstable. Long-term: β-blocker, slow-pathway ablation.",
     adenosine: { response: "terminate", label: "Terminates abruptly", detail: "Blocks AV node → breaks the re-entry circuit. Diagnostic AND therapeutic — sudden return to sinus." },
   },
   avrt: {

@@ -26,17 +26,18 @@ import { WorkedExample } from "@/components/topic/WorkedExamples";
 import { Exam } from "@/data/curriculum";
 import { ExamPitfallsCallout } from "@/components/exam/ExamPitfallsCallout";
 import { InlineRef } from "@/components/references/InlineRef";
+import { HYPERKALAEMIA_CALCIUM_TEACHING } from "@/lib/clinical-audit-rules";
 
 const arrhythmiasEcgIcuFaqs: Array<[string, string]> = [
   ["How is new-onset AF in critical illness managed?", "Treat underlying sepsis/electrolytes; rate control with β-blocker (esmolol/metoprolol) or amiodarone if heart failure; DC cardioversion if haemodynamically unstable; anticoagulate per CHA₂DS₂-VASc balanced against bleeding risk."],
   ["What is the initial management of polymorphic VT (torsades)?", "IV magnesium 2 g, correct K⁺ and Ca²⁺, stop QT-prolonging drugs, overdrive pacing or isoprenaline if bradycardia-dependent; DC shock if unstable."],
-  ["How are wide-complex tachycardias approached when the diagnosis is uncertain?", "Assume VT until proven otherwise — particularly with structural heart disease; treat with synchronised DC if unstable, amiodarone 300 mg IV if stable, avoid verapamil which can collapse VT into VF."],
+  ["How are wide-complex tachycardias approached when the diagnosis is uncertain?", "Assume VT until proven otherwise — particularly with structural heart disease. For a stable regular broad-complex tachycardia, the default is synchronised cardioversion when VT is presumed; if sedation/anaesthesia risk is too high, the current RCUK algorithm offers procainamide 10–15 mg/kg over 20 min, or amiodarone 300 mg IV over 10–60 min then 900 mg/24 h if procainamide is unavailable or contraindicated. Avoid verapamil, which can collapse VT into VF."],
 ];
 
 const objectives = [
   "Apply a reproducible 8-step ECG analysis (rate, rhythm, P, PR, QRS, ST/T, QT, compare) to any ICU strip or 12-lead",
   "Localise STEMI to a coronary territory using the 12-lead and recognise STEMI mimics (LBBB, Wellens, posterior MI)",
-  "Differentiate the major brady- and tachyarrhythmias and apply the RCUK 2021 peri-arrest algorithms",
+  "Differentiate the major brady- and tachyarrhythmias and apply the current RCUK adult peri-arrest algorithms (tachyarrhythmia algorithm updated March 2026)",
   "Identify electrolyte- and drug-induced arrhythmias (hyperK⁺, hypoK⁺/Mg²⁺, digoxin, TCA, LAST) and initiate first-line treatment",
   "Recognise pacing/ICD device modes and manage CIED patients safely peri-procedurally",
   "Deliver post-ROSC care including 12-lead surveillance, electrolyte targeting and ICD referral",
@@ -57,11 +58,23 @@ const workedExamples: WorkedExample[] = [
     title: "Hyperkalaemia with peaked T waves",
     scenario:
       "Anuric AKI patient, K⁺ 7.4, ECG shows peaked symmetric T waves and broadening QRS. HR 48, BP 92/50.",
-    working:
-      "Treat the rhythm, not the number. Step 1 — membrane stabilisation: 10 mL 10% calcium gluconate IV over 2–5 min (or CaCl₂ 10 mL centrally), repeat in 5 min if ECG unchanged. Step 2 — intracellular shift: 10 units actrapid in 50 mL 50% dextrose IV over 15 min; salbutamol 10–20 mg neb. Step 3 — removal: urgent RRT given anuria. Avoid sodium bicarbonate unless severely acidotic.",
+    working: (
+      <>
+        <p>
+          Treat ECG toxicity and severe hyperkalaemia in parallel. Membrane stabilisation: {HYPERKALAEMIA_CALCIUM_TEACHING}{" "}
+          <InlineRef topicId="arrhythmias-ecg-icu" refLabel="MHRA NatPSA/2023/007" />
+          <InlineRef topicId="arrhythmias-ecg-icu" refLabel="UKKA Hyperkalaemia July 2026" />
+        </p>
+        <p>
+          Step 2 — intracellular shift: 10 units actrapid in 50 mL 50% dextrose IV over 15 min; salbutamol
+          10–20 mg neb. Step 3 — removal: urgent RRT given anuria. Avoid sodium bicarbonate unless
+          severely acidotic.
+        </p>
+      </>
+    ),
     answer:
-      "Calcium first (cardio-protection within 1–3 min), then insulin–dextrose ± salbutamol to shift K⁺, then RRT for definitive removal. Re-check K⁺ at 30 min and 1 h.",
-    cites: ["ESC AF 2020"],
+      "Give calcium for ECG toxicity and begin potassium-lowering treatment promptly. Arrange urgent dialysis for this anuric patient. Recheck potassium at least at 1, 2, 4, 6 and 24 hours and check blood glucose regularly for 6 hours after insulin–glucose.",
+    cites: ["MHRA NatPSA/2023/007", "UKKA Hyperkalaemia July 2026"],
   },
 ];
 
@@ -86,6 +99,7 @@ const ArrhythmiasEcgIcuTopic = () => {
       sectionSources={{
         objectives: [
           "Resuscitation Council UK 2021",
+          "RCUK Tachycardia March 2026",
           "ERC/ESICM 2021 Post-Resus",
           "ESC AF 2020",
           "BJA Educ 2018",
@@ -94,13 +108,14 @@ const ArrhythmiasEcgIcuTopic = () => {
         ],
         keyPoints: [
           "Resuscitation Council UK 2021",
+          "RCUK Tachycardia March 2026",
           "ERC/ESICM 2021 Post-Resus",
           "ESC AF 2020",
           "BJA Educ 2018",
           "TTM2 2021",
           "ACC/AHA/HRS 2017",
         ],
-        workedExamples: ["BJA Educ 2018", "ESC AF 2020"],
+        workedExamples: ["BJA Educ 2018", "ESC AF 2020", "MHRA NatPSA/2023/007", "UKKA Hyperkalaemia July 2026"],
       }}
       keyPoints={[
         { text: "Apply the same 8-step ECG analysis (rate · rhythm · P · PR · QRS · ST/T · QT · compare) to every strip — speed comes from consistency, not shortcuts", cites: ["ERC/ESICM 2021 Post-Resus"] },
@@ -109,7 +124,7 @@ const ArrhythmiasEcgIcuTopic = () => {
         { text: "Site of AV block predicts the device: nodal (1°/Mobitz I) tolerate observation; infranodal (Mobitz II/complete) need urgent pacing", cites: ["TTM2 2021"] },
         { text: "Adverse features (shock, syncope, ischaemia, heart failure) drive the algorithm: synchronised DCCV for unstable tachy, atropine → pacing for unstable brady", cites: ["BJA Educ 2018"] },
         { text: "Always replace magnesium when replacing potassium — refractory hypoK⁺ is often hypoMg²⁺", cites: ["ESC AF 2020"] },
-        { text: "Hyperkalaemia: treat the rhythm with calcium first, the number afterwards", cites: ["ERC/ESICM 2021 Post-Resus"] },
+        { text: "Give calcium for hyperkalaemic ECG toxicity and start potassium-lowering treatment promptly. Severe potassium elevation (≥6.5 mmol/L) requires urgent treatment even with a normal ECG.", cites: ["UKKA Hyperkalaemia July 2026"] },
         { text: "Post-ROSC: 12-lead within 10 min, MAP ≥ 65 mmHg, SpO₂ 94–98 %, normocapnia, fever avoidance for 72 h", cites: ["Resuscitation Council UK 2021"] },
       ]}
       coreConcepts={
@@ -144,9 +159,9 @@ const ArrhythmiasEcgIcuTopic = () => {
               <p className="text-sm font-semibold text-foreground mb-1">ICU red-flag patterns</p>
               <ul className="text-xs text-muted-foreground space-y-1">
                 <li><span className="font-medium text-foreground">Wide-complex tachycardia</span> — assume VT until proven otherwise (especially with structural heart disease).</li>
-                <li><span className="font-medium text-foreground">New LBBB + chest pain or ROSC</span> — treat as STEMI equivalent; consider PPCI.</li>
+                <li><span className="font-medium text-foreground">New LBBB + ongoing ischaemia</span> — investigate MI in context and apply Sgarbossa criteria; persistent ST elevation or high suspicion of coronary occlusion, not new LBBB alone, drives immediate angiography.</li>
                 <li><span className="font-medium text-foreground">QTc &gt; 500 ms</span> — stop QT-prolonging drugs, replete K⁺ &gt; 4.5 and Mg²⁺ &gt; 1.0 mmol/L.</li>
-                <li><span className="font-medium text-foreground">Peaked T waves + wide QRS</span> — hyperkalaemia, give 10 mL 10 % calcium gluconate <em>now</em>.</li>
+                <li><span className="font-medium text-foreground">Peaked T waves + wide QRS</span> — hyperkalaemia, give 30 mL 10% calcium gluconate IV over 10 min (or 10 mL 10% calcium chloride) <em>now</em>.</li>
                 <li><span className="font-medium text-foreground">U waves + flat T + long QU</span> — hypokalaemia → torsades risk.</li>
               </ul>
             </div>
@@ -347,7 +362,7 @@ const ArrhythmiasEcgIcuTopic = () => {
                 cardioversion</strong> under sedation/anaesthesia. If stable and expert help is available, a
                 pathway-blocking antiarrhythmic such as <strong>procainamide</strong>, ibutilide or amiodarone with
                 caution may be used, followed by early electrophysiology referral for pathway ablation, which is
-                definitive <InlineRef topicId="arrhythmias-ecg-icu" refLabel="RCUK 2021 Tachycardia" />. Orthodromic
+                definitive <InlineRef topicId="arrhythmias-ecg-icu" refLabel="RCUK Tachycardia March 2026" />. Orthodromic
                 (narrow-complex) AVRT may be terminated with vagal manoeuvres or adenosine, but have the
                 defibrillator attached in case AF is unmasked.
               </p>
@@ -395,9 +410,9 @@ const ArrhythmiasEcgIcuTopic = () => {
                 <p className="font-semibold text-foreground text-sm mb-2">Tachycardia algorithm</p>
                 <ul className="text-xs text-muted-foreground space-y-1">
                   <li>1. <span className="font-medium text-foreground">Adverse features?</span> Shock · Syncope · Myocardial ischaemia · Heart failure → <span className="font-medium text-foreground">synchronised DCCV ×3</span> (sedate / GA), then amiodarone 300 mg over 10–20 min and re-shock.</li>
-                  <li>2. Stable + <span className="font-medium text-foreground">narrow regular</span>: vagal manoeuvres → adenosine 6 mg, then 12 mg, then a further 12 mg if required (not 18 mg — the 2021 RCUK adult tachycardia algorithm caps escalation at 12 mg for the third dose) <InlineRef topicId="arrhythmias-ecg-icu" refLabel="RCUK 2021 Tachycardia" />.</li>
+                  <li>2. Stable + <span className="font-medium text-foreground">narrow regular</span>, no pre-excitation: vagal manoeuvres → adenosine 6 mg rapid IV bolus, then 12 mg, then 18 mg if required <InlineRef topicId="arrhythmias-ecg-icu" refLabel="RCUK Tachycardia March 2026" />.</li>
                   <li>3. Stable + <span className="font-medium text-foreground">narrow irregular</span>: probable AF → rate control (β-blocker / diltiazem; amiodarone if HF) ± anticoagulate.</li>
-                  <li>4. Stable + <span className="font-medium text-foreground">wide regular</span>: assume VT → amiodarone 300 mg IV over 20–60 min.</li>
+                  <li>4. Stable + <span className="font-medium text-foreground">wide regular</span>: assume VT → synchronised cardioversion is the default. If sedation/anaesthesia risk is too high, the algorithm offers procainamide 10–15 mg/kg over 20 min; if unavailable or contraindicated, amiodarone 300 mg IV over 10–60 min then 900 mg/24 h <InlineRef topicId="arrhythmias-ecg-icu" refLabel="RCUK Tachycardia March 2026" />.</li>
                   <li>5. Stable + <span className="font-medium text-foreground">wide irregular</span>: AF + BBB, polymorphic VT (Mg²⁺), pre-excited AF (DCCV — avoid AV nodal blockers).</li>
                 </ul>
               </div>
@@ -430,7 +445,7 @@ const ArrhythmiasEcgIcuTopic = () => {
             <CollapsibleSubsection title="Electrolyte & Drug-Induced Arrhythmias">
             <div className="space-y-2">
               {[
-                { label: "Hyperkalaemia (K⁺ > 6.0)", ecg: "Peaked T → loss of P → wide QRS → sine-wave → VF/asystole.", treatment: "10 mL 10 % calcium gluconate IV (membrane stabilisation), insulin–dextrose, salbutamol nebs, sodium bicarbonate (if acidotic), definitive removal (RRT)." },
+                { label: "Hyperkalaemia (K⁺ > 6.0)", ecg: "Peaked T → loss of P → wide QRS → sine-wave → VF/asystole.", treatment: "For adult non-arrest ECG toxicity, 30 mL 10% calcium gluconate IV over 10 min (or 10 mL 10% calcium chloride over 5 min, equivalent elemental calcium, preferred peri-arrest); give insulin–glucose and adjunctive nebulised salbutamol, and arrange potassium removal. IV bicarbonate is not routinely used to lower potassium. During CPR, calcium chloride follows the separate arrest protocol." },
                 { label: "Hypokalaemia (K⁺ < 3.5)", ecg: "Flat / inverted T, prominent U wave, prolonged QU, ST depression.", treatment: "Replace cautiously (max 20 mmol/h peripherally, 40 mmol/h centrally with monitoring). Always replace Mg²⁺ alongside." },
                 { label: "Hypomagnesaemia (Mg²⁺ < 0.7)", ecg: "Prolonged QT, torsades de pointes, refractory hypoK⁺.", treatment: "2 g IV Mg²⁺ over 10 min for torsades, then infusion." },
                 { label: "Hypocalcaemia (iCa²⁺ < 1.0)", ecg: "Prolonged QT (long ST segment), neuromuscular irritability.", treatment: "10 mL 10 % calcium gluconate IV (peripheral) or 10 mL 10 % calcium chloride centrally." },
@@ -543,7 +558,7 @@ const ArrhythmiasEcgIcuTopic = () => {
             <div className="grid sm:grid-cols-2 gap-3">
               <div className="p-4 rounded-lg border border-border">
                 <p className="font-semibold text-foreground text-sm">Immediate post-ROSC</p>
-                <p className="text-xs text-muted-foreground mt-1">12-lead within 10 min. STEMI / new LBBB → urgent PPCI. Aim SpO₂ 94–98 %, normocapnia (PaCO₂ 4.5–6.0 kPa), MAP ≥ 65 mmHg.</p>
+                <p className="text-xs text-muted-foreground mt-1">12-lead within 10 min. Immediate angiography for persistent ST elevation or high suspicion of coronary occlusion (including electrical/haemodynamic instability); new LBBB alone is not an automatic indication — investigate MI in context. Aim SpO₂ 94–98 %, normocapnia (PaCO₂ 4.5–6.0 kPa), MAP ≥ 65 mmHg.</p>
               </div>
               <div className="p-4 rounded-lg border border-border">
                 <p className="font-semibold text-foreground text-sm">Targeted temperature management</p>
@@ -564,7 +579,7 @@ const ArrhythmiasEcgIcuTopic = () => {
             accent="icu"
             pitfalls={[
               "Systematic ECG: rate, rhythm, axis, P-QRS-T morphology, intervals (PR <200, QRS <120, QTc <440 M / 460 F).",
-              "Narrow-complex tachy: vagal manoeuvres, adenosine 6 mg, then 12 mg, then a further 12 mg if required; AF/flutter — rate vs rhythm control + anticoagulation.",
+              "Narrow-complex regular tachy without pre-excitation: vagal manoeuvres, adenosine 6 mg, then 12 mg, then 18 mg if required; AF/flutter — rate vs rhythm control + anticoagulation.",
               "Broad-complex tachy: assume VT until proven otherwise; if unstable → synchronised DC shock.",
               "Bradyarrhythmia + adverse signs: atropine 500 mcg IV repeated every 3–5 min to a 3 mg maximum, escalating to transcutaneous pacing, isoprenaline or adrenaline infusion (RCUK 2021).",
               "Long QT predisposes to torsades — withdraw culprits, correct K⁺/Mg²⁺/Ca²⁺, IV magnesium 2 g, overdrive pacing if persistent.",

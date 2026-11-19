@@ -50,21 +50,21 @@ export const InlineRef = ({
     );
   }
 
-  const hasKeyPoints = keyPoints && keyPoints.length > 0;
+  const hasKeyPoints = !ref.underReview && keyPoints && keyPoints.length > 0;
 
   return (
     <Popover>
       <PopoverTrigger asChild>
         <button
           type="button"
-          aria-label={`Reference ${display}: ${ref.label}`}
+          aria-label={`Reference ${display}: ${ref.displayLabel ?? ref.label}`}
           className="align-super text-[0.65rem] font-semibold text-perioperative hover:text-perioperative/80 hover:underline ml-0.5 cursor-pointer focus:outline-none focus:ring-1 focus:ring-perioperative rounded px-0.5"
         >
           [{display}]
         </button>
       </PopoverTrigger>
       <PopoverContent className="w-96 max-w-[92vw] text-xs leading-relaxed max-h-[70vh] overflow-y-auto" side="top">
-        <p className="font-semibold text-foreground mb-1">{ref.label}</p>
+        <p className="font-semibold text-foreground mb-1">{ref.displayLabel ?? ref.label}</p>
         <p className="text-muted-foreground mb-2">{ref.citation}</p>
         {ref.reviewNote && <p className="text-muted-foreground mb-2">{ref.reviewNote}</p>}
         {ref.excerpt && (
@@ -99,7 +99,7 @@ export const InlineRef = ({
                 className="inline-flex items-center gap-1 rounded px-1.5 py-0.5 text-[11px] font-semibold text-background hover:opacity-90 transition-opacity"
                 style={{ backgroundColor: "hsl(160 55% 35%)" }}
               >
-                DOI <ExternalLink className="h-3 w-3" />
+                {ref.url.includes("doi.org/") ? "DOI" : "Source"} <ExternalLink className="h-3 w-3" />
               </a>
             )}
           </div>

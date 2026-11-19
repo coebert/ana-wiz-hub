@@ -16,7 +16,7 @@ const quiz = [
 
 export default function IcuDischargePlanningTopic() {
   return <TopicTemplate title="ICU Discharge Planning and Longer-Term Recovery" subtitle="Final / FFICM / EDIC — Intensive Care" backPath="/intensive-care/icu-inpatient-journey" backLabel="The ICU Inpatient Journey" accentColor="text-icu" topicId="icu-discharge-planning" topicTitle="ICU Discharge Planning and Longer-Term Recovery"
-    objectives={["Assess rehabilitation risk and start rehabilitation during the ICU stay", "Time and hand over ICU-to-ward transfer safely", "Prepare patients and families for home", "Plan the 2–3 month review and onward referral"]}
+    objectives={["Assess rehabilitation risk and start rehabilitation during the ICU stay", "Time and hand over ICU-to-ward transfer safely", "Prepare patients and families for home", "Plan the 2–3 month review and onward referral", "Test an improvement to how pending results are handed over and followed up after ICU discharge"]}
     sectionExamMapping={{ objectives: { exams }, keyPoints: { exams } }}
     sectionSources={{ objectives: ["NICE CG83 early assessment", "NICE CG50 night transfer", "NICE CG83 review"], keyPoints: ["NICE CG83 early assessment", "GPICS V3 discharge", "NICE CG50 shared handover", "NICE CG83 review"] }}
     keyPoints={[

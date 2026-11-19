@@ -18,8 +18,8 @@ import { InlineRef } from "@/components/references/InlineRef";
 
 const transfusionCoagulationFaqs: Array<[string, string]> = [
   ["What ratios are used in major haemorrhage protocols?", "PROPPR 2015 used plasma:platelet-equivalents:RBC 1:1:1 in severe trauma: 6 plasma units, 1 adult platelet dose (about 6 whole-blood-derived platelet units or 1 apheresis unit), and 6 RBC units, not one adult platelet dose per RBC. More achieved haemostasis and fewer died from exsanguination; 24-hour/30-day mortality differences were not statistically significant. NICE NG39 initial adult major-trauma plasma:RBC is 1:1; follow the local MHP and transition promptly to laboratory/viscoelastic-guided treatment. Activation uses physiology, bleeding and response, not predicted units alone. Measure ionised calcium frequently and replace by protocol to the normal range (approximately 1.1–1.3 mmol/L; laboratory/pH context). Ratios and targets are not universal across bleeding causes."],
-  ["When is prothrombin complex concentrate preferred over FFP?", "For warfarin reversal in major bleeding (25–50 U/kg with vitamin K, BSH 2018), or factor replacement in liver disease where volume load from FFP is harmful; PCC restores INR within minutes versus hours for FFP."],
-  ["How is ROTEM/TEG used to guide blood product use?", "FIBTEM A5 <12 mm → fibrinogen concentrate or cryoprecipitate; EXTEM CT >80 s → FFP or PCC; EXTEM A5 <40 mm with normal FIBTEM → platelets; ML >15% → tranexamic acid (ITACTIC trial)."],
+  ["When is prothrombin complex concentrate preferred over FFP?", "In major bleeding due to warfarin, give four-factor PCC with IV vitamin K under the local reversal protocol. In liver transplantation, a raised INR alone does not justify PCC or plasma. Guide factor replacement by clinical bleeding, viscoelastic findings and the transplant protocol."],
+  ["How is ROTEM/TEG used to guide blood product use?", "TEG reaction time (R) and ROTEM clotting time (CT) assess clot initiation. Fibrin-specific and whole-clot measurements help assess fibrinogen and platelet contributions. In active major bleeding, use the locally validated algorithm for the assay and indication, alongside clinical findings and conventional tests. A single result does not establish which product to give."],
 ];
 
 const objectives = [
@@ -333,7 +333,7 @@ const TransfusionCoagulationTopic = () => {
               </div>
               <div className="p-4 rounded-lg border border-border">
                 <p className="font-semibold text-foreground text-sm">Goal-Directed (ROTEM/TEG)</p>
-                <p className="text-sm text-muted-foreground mt-1">FIBTEM A5 &lt;12 → cryo/fibrinogen. EXTEM CT prolonged → FFP. Reduces blood product use 30–50%.</p>
+                <p className="text-sm text-muted-foreground mt-1">With ongoing bleeding, use viscoelastic measurements alongside conventional tests to guide targeted replacement. Thresholds depend on the assay, bleeding setting and local major haemorrhage protocol.</p>
               </div>
             </div>
             <div className="overflow-x-auto mb-4">
@@ -440,7 +440,7 @@ const TransfusionCoagulationTopic = () => {
                   <div className="p-3 rounded-md border border-border bg-card">
                     <p className="font-semibold text-foreground text-xs uppercase tracking-wider mb-1">Monitor</p>
                     <ul className="list-disc pl-4 space-y-0.5">
-                      <li><strong className="text-foreground">iCa²⁺ on ABG</strong> — every 30 min during high-volume salvage; target &gt; 1.0 mmol/L</li>
+                      <li><strong className="text-foreground">iCa²⁺ on ABG</strong> — every 30 min during high-volume salvage; in major bleeding, maintain the laboratory normal range (usually 1.1–1.3 mmol/L)</li>
                       <li>Continuous ECG (QTc trend)</li>
                       <li>Invasive BP if &gt; 1500 mL salvaged or rapid return</li>
                       <li>Lactate, pH, base excess (alkalosis trend)</li>
@@ -452,7 +452,7 @@ const TransfusionCoagulationTopic = () => {
                 <div className="p-3 rounded-md border border-amber-500/40 bg-amber-500/10">
                   <p className="font-semibold text-foreground text-xs uppercase tracking-wider mb-1">Treatment</p>
                   <p>
-                    <strong className="text-foreground">Calcium chloride 10% — 5–10 mL IV</strong> via a central line (provides ~3× the elemental Ca²⁺ of equivalent gluconate) <em>or</em> <strong className="text-foreground">calcium gluconate 10% — 10–20 mL IV</strong> peripherally. Repeat to iCa²⁺ &gt; 1.0 mmol/L. Slow the rate of unwashed return where possible; never co-administer with bicarbonate (precipitates CaCO₃).
+                    <strong className="text-foreground">Calcium chloride 10% — 5–10 mL IV</strong> via a central line (provides ~3× the elemental Ca²⁺ of equivalent gluconate) <em>or</em> <strong className="text-foreground">calcium gluconate 10% — 10–20 mL IV</strong> peripherally. During major bleeding, reassess ionised calcium and guide further replacement to the normal range. Slow the rate of unwashed return where possible; never co-administer with bicarbonate (precipitates CaCO₃).
                   </p>
                 </div>
 
@@ -544,11 +544,11 @@ const TransfusionCoagulationTopic = () => {
             <div className="grid sm:grid-cols-2 gap-3">
               <div className="p-4 rounded-lg border border-border">
                 <p className="font-semibold text-foreground text-sm">ROTEM Parameters</p>
-                <p className="text-sm text-muted-foreground mt-1">EXTEM CT: extrinsic pathway (FFP). FIBTEM A5/MCF: fibrinogen (cryo if &lt;12 mm). EXTEM MCF: platelet contribution. HEPTEM: heparin effect.</p>
+                <p className="text-sm text-muted-foreground mt-1">EXTEM CT assesses clot initiation. FIBTEM estimates fibrin-based clot strength. Compare it with EXTEM to assess the platelet contribution. Comparing INTEM with HEPTEM helps identify a heparin effect.</p>
               </div>
               <div className="p-4 rounded-lg border border-border">
                 <p className="font-semibold text-foreground text-sm">Goal-Directed Algorithm</p>
-                <p className="text-sm text-muted-foreground mt-1">FIBTEM low → cryo. EXTEM CT prolonged → FFP. EXTEM MCF low (FIBTEM normal) → platelets. HEPTEM shorter than INTEM → protamine.</p>
+                <p className="text-sm text-muted-foreground mt-1">In a bleeding patient, look for a functional fibrinogen deficit, low platelet contribution, factor deficiency or residual heparin. Interpret the pattern alongside the clinical setting and the local protocol before selecting treatment.</p>
               </div>
             </div>
             <p className="text-sm text-muted-foreground leading-relaxed mt-3">
@@ -606,7 +606,7 @@ const TransfusionCoagulationTopic = () => {
               <li><strong>Typical tests:</strong> prolonged PT/INR and low platelets, yet thrombin generation is often normal or even increased — so these patients still get portal vein thrombosis and VTE and still need thromboprophylaxis.</li>
               <li><strong>PT/INR predicts bleeding poorly</strong> in liver disease; do not give FFP just to "correct" an INR before a procedure. Viscoelastic tests (ROTEM/TEG) show the overall clot and guide targeted treatment.</li>
               <li><strong>Liver transplantation:</strong> the anhepatic phase brings loss of clotting-factor production and of clearance of tissue plasminogen activator, so hyperfibrinolysis can occur; after reperfusion (neohepatic phase) heparin-like effects, further fibrinolysis and platelet sequestration in the new liver add to bleeding. <InlineRef topicId="transfusion-coagulation" refLabel="Cleland WJT 2016" /></li>
-              <li><strong>Targeted treatment:</strong> fibrinogen concentrate or cryoprecipitate for a low FIBTEM; platelets for thrombocytopenia with bleeding; TXA if ROTEM shows hyperfibrinolysis; cautious FFP or PCC for low thrombin generation (prolonged EXTEM CT), remembering FFP's volume load raises portal pressure and PCC can cause clots.</li>
+              <li><strong>Targeted treatment:</strong> During liver transplantation, interpret TEG or ROTEM together with diffuse coagulopathic bleeding, the operative phase and the centre’s validated algorithm. A prolonged clotting time can reflect factor deficiency or a heparin-like effect. Weigh the volume load of plasma and the thrombotic risk of PCC when deciding on treatment. <a className="text-primary underline" href="https://pmc.ncbi.nlm.nih.gov/articles/PMC9128618/">Liver transplantation consensus, recommendations 3–4</a>.</li>
             </ul>
             </CollapsibleSubsection>
           </ExamSection>

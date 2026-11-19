@@ -52,12 +52,12 @@ const STEPS: AnimatedMechanismStep[] = [
     detail: (
       <>
         <strong>Rocuronium 1.2 mg/kg</strong> (3× ED95) — onset 45–60 s, comparable to suxamethonium.
-        Reversible with sugammadex 16 mg/kg if can't intubate / can't oxygenate. Suxamethonium
+        Reversible with sugammadex 16 mg/kg once the airway is secure — but sugammadex is not a CICO rescue: maintain paralysis and proceed to front-of-neck access (DAS 2025). Suxamethonium
         1.5 mg/kg remains an option if normokalaemic and no contraindications (burns &gt;24 h, denervation,
         crush, MH).
       </>
     ),
-    callout: <><strong>Have sugammadex 16 mg/kg drawn up</strong> for any rocuronium RSI.</>,
+    callout: <><strong>Have sugammadex 16 mg/kg drawn up</strong> for any rocuronium RSI, but do not delay front-of-neck access to give it.</>,
     sources: [{ label: "DAS 2015 RSI" }],
   },
   {

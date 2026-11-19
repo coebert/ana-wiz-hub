@@ -913,7 +913,7 @@ export const icuDrugSafetyGroups: DrugSafetyGroup[] = [
         contraindications: [
           "Active intravascular thrombosis, seizures (dose-related risk), and previous hypersensitivity.",
           "Subarachnoid haemorrhage with vasospasm risk (specialist decision); dose reduction in renal impairment.",
-          "Traumatic haemorrhage more than 3 h after injury — mortality benefit is lost and harm is possible.",
+          "Major trauma: do not start TXA more than 3 h after injury unless there is evidence of hyperfibrinolysis (NICE NG39). For diagnosed postpartum haemorrhage, the WHO 3-hour window starts at birth.",
         ],
         monitoring: [
           "Bleeding, transfusion requirement and any clinical thrombosis.",
@@ -930,7 +930,7 @@ export const icuDrugSafetyGroups: DrugSafetyGroup[] = [
         ],
         contraindications: [
           "Active major bleeding, platelets <50 ×10⁹/L, heparin-induced thrombocytopenia (current or historic).",
-          "Neuraxial procedure within 12 h of a prophylactic dose or 24 h of a treatment dose.",
+          "Before neuraxial puncture or catheter insertion/removal, allow at least 12 h after prophylactic enoxaparin or 24 h after a treatment dose. At creatinine clearance 15–30 mL/min, consider extending these intervals to at least 24 h and 48 h respectively (UK Inhixa SmPC, section 4.2, emc 785).",
           "Severe renal impairment (eGFR <30) — reduce the dose or use unfractionated heparin.",
         ],
         monitoring: [

@@ -28,7 +28,7 @@ const steps: CascadeStep[] = [
     detail: "NMBA / antibiotic / chlorhex",
     title: "Antigen contacts a sensitised host",
     body:
-      "NAP6: neuromuscular blockers (38 %, suxamethonium and rocuronium dominate), antibiotics (esp. teicoplanin, co-amoxiclav, 26 %) and chlorhexidine (9 %) account for most perioperative anaphylaxis. Latex now uncommon. Cross-reactivity between NMBAs is mediated by quaternary ammonium epitopes.",
+      "NAP6: among 199 identified culprit agents, antibiotics were 94 (47 %), neuromuscular blockers 65 (33 %) and chlorhexidine 18 (9 %). Suxamethonium and rocuronium dominate the NMBA group; latex is now uncommon. Cross-reactivity between NMBAs is mediated by quaternary ammonium epitopes.",
     sources: [NAP6],
   },
   {

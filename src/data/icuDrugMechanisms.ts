@@ -158,7 +158,7 @@ export const icuDrugMechanismGroups: DrugMechanismGroup[] = [
         metabolism:
           "Water soluble, Vd ~0.25 L/kg, ~30% protein bound. Largely unchanged hepatic uptake and biliary excretion (~70%), with 10–30% renal elimination and minor metabolism to 17-desacetylrocuronium (weakly active). Elimination half-life 1–2 h; accumulates in hepatic dysfunction and, to a lesser degree, renal failure. Fully and rapidly reversed by sugammadex (2 mg/kg at reappearance of T2, 4 mg/kg at post-tetanic count 1–2, 16 mg/kg for immediate reversal) which encapsulates the molecule in plasma.",
         adverseEffects:
-          "Awareness if given without adequate sedation; prolonged block and residual weakness (always monitor with a peripheral nerve stimulator and confirm TOF ratio >0.9 before extubation); anaphylaxis — rocuronium and suxamethonium are the commonest culprits in perioperative anaphylaxis; critical-illness-associated ICU-acquired weakness with prolonged infusion; corneal abrasion and pressure injury from loss of protective movement; masking of seizures and of pain/awareness. Contraindicated as the sole agent in the unsedated patient.",
+          "Awareness if given without adequate sedation; prolonged block and residual weakness (always monitor with a peripheral nerve stimulator and confirm TOF ratio >0.9 before extubation); anaphylaxis — UK NAP6 attributed 94 of 199 identified culprits to antibiotics and 65 to neuromuscular blockers collectively; critical-illness-associated ICU-acquired weakness with prolonged infusion; corneal abrasion and pressure injury from loss of protective movement; masking of seizures and of pain/awareness. Contraindicated as the sole agent in the unsedated patient.",
         topicIds: ["neuromuscular-blockers", "neuromuscular-junction"],
       },
       {
@@ -450,7 +450,7 @@ export const icuDrugMechanismGroups: DrugMechanismGroup[] = [
         slug: "tranexamic-acid",
         drugClass: "Synthetic lysine analogue antifibrinolytic",
         pharmacodynamics:
-          "Competitively blocks the lysine-binding (kringle) sites on plasminogen and plasmin, preventing their attachment to fibrin so fibrinolysis cannot proceed; clot is stabilised rather than newly formed. Mortality benefit in trauma (CRASH-2) and in post-partum haemorrhage (WOMAN) is time-critical — within 3 h of injury or bleeding onset — and it reduces surgical blood loss and mortality in isolated head injury given early (CRASH-3). No effect on platelet function or the coagulation factors themselves.",
+          "Competitively blocks the lysine-binding (kringle) sites on plasminogen and plasmin, preventing their attachment to fibrin so fibrinolysis cannot proceed; clot is stabilised rather than newly formed. In bleeding trauma, give TXA promptly within 3 hours of injury. For diagnosed postpartum haemorrhage, the WHO window is 3 hours from birth. In CRASH-3, overall head-injury death within the 3-hour treatment population had RR 0.94 (95% CI 0.86–1.02). The estimate was 0.78 (0.64–0.95) in mild-to-moderate injury and 0.99 (0.91–1.07) in severe injury. No effect on platelet function or the coagulation factors themselves.",
         metabolism:
           "Oral bioavailability ~45%; minimal protein binding (~3%, to plasminogen), Vd ~0.4 L/kg with good tissue penetration including CSF. Barely metabolised — more than 90% is excreted unchanged in the urine by glomerular filtration, so the dose must be reduced substantially in renal impairment. Half-life 2–3 h.",
         adverseEffects:

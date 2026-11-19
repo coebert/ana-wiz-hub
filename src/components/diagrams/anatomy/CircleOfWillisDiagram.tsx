@@ -13,7 +13,7 @@ interface Vessel {
   territory: string;
   paths: string[];
   labelPos: { x: number; y: number };
-  labelAnchor?: string;
+  labelAnchor?: "start" | "middle" | "end";
   group: "anterior" | "posterior" | "communicating" | "cerebellar" | "branch";
 }
 

@@ -74,7 +74,7 @@ const PaediatricIcuFlows = () => {
           <TriangleAlert className="mt-0.5 h-4 w-4 shrink-0 text-icu" aria-hidden />
           <p>
             Revision aid only, based on Surviving Sepsis (children), PALICC-2,
-            Resuscitation Council UK and BSUKED guidance. Children compensate
+            Resuscitation Council UK and NICE NG18 guidance. Children compensate
             late and decompensate fast — always follow local PICU protocols and
             involve the retrieval service early.
           </p>

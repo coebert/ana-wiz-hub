@@ -267,7 +267,7 @@ const PaediatricCoreTopic = () => {
               <p className="text-muted-foreground leading-relaxed mb-3">
                 <strong>Maintenance</strong> uses the Holliday-Segar formula: 100 mL/kg/day for the
                 first 10 kg, 50 mL/kg/day for the next 10 kg, 20 mL/kg/day thereafter (hourly
-                equivalent 4-2-1 mL/kg/hr). NICE NG29 mandates <strong>isotonic</strong> maintenance
+                approximate hourly 4-2-1 mL/kg/hr). NICE NG29 mandates <strong>isotonic</strong> maintenance
                 solutions (with glucose where needed) because routine hypotonic fluids caused fatal
                 hospital-acquired hyponatraemia; restrict to 50–70% of standard maintenance in
                 ventilated, head-injured or postoperative children at risk of SIADH.{" "}
@@ -276,7 +276,7 @@ const PaediatricCoreTopic = () => {
               <p className="text-muted-foreground leading-relaxed mb-3">
                 <strong>Resuscitation</strong>: give 10–20 mL/kg isotonic crystalloid boluses,
                 reassessing after each for overload (new hepatomegaly, crackles, rising oxygen
-                requirement). In DKA, NICE NG18 gives a 10 mL/kg 0.9% saline bolus (as soon as possible if shocked; over 30 minutes if dehydrated but not shocked) and asks for senior review before more than one; haemorrhagic trauma needs blood products and haemorrhage control; blood
+                requirement). In DKA, NICE NG18 gives a 10 mL/kg 0.9% saline bolus (as soon as possible if shocked; over 30 minutes if clinically dehydrated without shock). Before considering a second non-shock bolus, reassess perfusion and discuss with the senior paediatrician; haemorrhagic trauma needs blood products and haemorrhage control; blood
                 is given as 10–20 mL/kg. Hypoglycaemia is corrected with 2 mL/kg of 10% glucose —
                 never concentrated 50% dextrose.{" "}
                 <InlineRef topicId="paediatric-core" refLabel="APLS 2021" />
@@ -308,8 +308,8 @@ const PaediatricCoreTopic = () => {
                     </tr>
                     <tr className="border-b border-border/50">
                       <td className="py-2 pr-3 font-medium text-foreground">DKA</td>
-                      <td className="py-2 pr-3">10 mL/kg 0.9% saline bolus (NICE NG18); deficit over 48 h</td>
-                      <td className="py-2">Rapid fluids/insulin shifts → cerebral oedema</td>
+                      <td className="py-2 pr-3">10 mL/kg 0.9% saline as soon as possible in shock, or over 30 minutes for dehydration without shock. Subtract non-shock boluses from the 48-hour deficit; shock boluses are additional (NICE NG18)</td>
+                      <td className="py-2">Monitor neurological status. Treat suspected cerebral oedema immediately and seek paediatric critical-care advice.</td>
                     </tr>
                     <tr>
                       <td className="py-2 pr-3 font-medium text-foreground">Neonates</td>

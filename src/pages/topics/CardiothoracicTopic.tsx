@@ -64,7 +64,7 @@ const cardiothoracicFaqs: Array<[string, string]> = [
   ],
   [
     "How is cardiac arrest managed differently after cardiac surgery?",
-    "Cardiac arrest in the first 24–72 hours after cardiac surgery is managed with modified Cardiac Advanced Life Support (CALS), not standard ALS, because the arrest is witnessed, monitored, and usually has a surgically reversible cause. Key modifications: (1) deliver up to three stacked DC shocks (200 J biphasic) BEFORE starting chest compressions for VF/pVT — first-shock success is high and compressions may disrupt grafts; (2) withhold or minimise bolus adrenaline initially because it can cause catastrophic rebound hypertension after recent anastomoses — use pacing for asystole/PEA; (3) prepare for emergency re-sternotomy within 5 minutes (10-minute window from arrest) if no return of spontaneous circulation — internal cardiac massage is more effective and excludes tamponade or graft occlusion; (4) use epicardial pacing wires if available; (5) escalate to VA-ECMO or IABP early if ROSC is not achieved.",
+    "In a monitored cardiac surgical unit, confirm arrest by clinical signs and the pulseless pressure waveform, call for help and prepare for resternotomy. In PEA, start chest compressions immediately. In witnessed VF/pVT give up to three consecutive shocks if immediately available. In asystole or extreme bradycardia, briefly pause epicardial pacing to identify the underlying rhythm, then try maximum-output pacing when appropriate. If shocks or pacing are unavailable or fail, start compressions promptly, within the first minute. RCUK recommends 50–100 micrograms IV if adrenaline is used. In persistent arrest up to ten days after surgery, perform resternotomy within five minutes and start internal cardiac massage after reopening.",
   ],
   [
     "What are the physiological effects of cardiopulmonary bypass?",
@@ -104,10 +104,10 @@ const workedExamples: WorkedExample[] = [
     scenario:
       "A post-CABG patient in CICU develops VF four hours after sternal closure. How does your management differ from standard ALS?",
     working:
-      "Modified CALS (EACTS/STS):\n• Up to 3 stacked DC shocks (200 J biphasic) BEFORE chest compressions for VF/pVT — most arrests in this window are shockable and stacked shocks have higher first-shock success.\n• Withhold adrenaline initially (risk of severe rebound hypertension on ROSC) — pace if asystole/PEA with wires in situ.\n• Chest compressions only if shocks fail.\n• Prepare for emergency RE-STERNOTOMY within 5 minutes (10-minute window from arrest) if no ROSC — internal cardiac massage is more effective and excludes tamponade/graft occlusion.\n• Call cardiothoracic surgeon; activate ECPR if available.",
+      "In this monitored VF arrest, call the cardiac arrest and surgical teams and give up to three immediately available shocks. Start CPR promptly if they fail or are unavailable, within the first minute. PEA requires immediate compressions. Asystole or extreme bradycardia may respond to immediate maximum-output pacing. If adrenaline is used, RCUK advises 50–100 micrograms IV. Prepare from the outset for emergency resternotomy within five minutes if circulation does not return. Consider extracorporeal CPR with the specialist team.",
     answer:
-      "Up to 3 stacked DC shocks first, withhold adrenaline, pace if shockable rhythm absent, and prepare for emergency re-sternotomy within 5 minutes if not in ROSC.",
-    cites: ["BJA Educ 2015"],
+      "For witnessed monitored VF/pVT, deliver up to three immediate shocks, start compressions promptly if they fail and prepare for resternotomy within five minutes if arrest persists.",
+    cites: ["RCUK 2025 cardiac surgery", "STS 2017 post-cardiac-surgery arrest"],
   },
 ];
 
@@ -140,7 +140,7 @@ const CardiothoracicTopic = () => {
           "Kaplan's Cardiac",
           "BJA Educ 2015",
         ],
-        workedExamples: ["BJA Educ 2018", "BJA Educ 2015"],
+        workedExamples: ["BJA Educ 2018", "RCUK 2025 cardiac surgery", "STS 2017 post-cardiac-surgery arrest"],
       }}
       keyPoints={[
         { text: "CPB: heparin 300-400 u/kg, target ACT >480s, reverse with protamine 1mg:100u ratio", cites: ["Kaplan's Cardiac"] },
@@ -700,10 +700,10 @@ const CardiothoracicTopic = () => {
         {/* Cardiac arrest after cardiac surgery */}
         <CollapsibleSubsection title="Cardiac Arrest Following Cardiac Surgery">
           <p className="text-muted-foreground leading-relaxed mb-3">
-            Cardiac arrest in the first 24–72 hours after cardiac surgery is a uniquely manageable emergency: the patient is monitored, the team is on site, mechanical support and re-operation are immediately available, and the cause is usually one of a small list of surgically reversible problems (tamponade, bleeding, graft occlusion, severe arrhythmia, electrolyte derangement, pacing failure). Standard ALS — designed for the unwitnessed community arrest — is therefore <strong>modified</strong> by the EACTS/EACTA 2009 guideline (updated 2017), now adopted by the Resuscitation Council UK as the basis for cardiac advanced life support (CALS) in CICU.
+            Confirm arrest by clinical signs and pulseless pressure waveforms. Alert the cardiac and surgical teams and prepare for resternotomy immediately. Assess reversible causes including tamponade, bleeding and tension pneumothorax.
           </p>
           <p className="text-muted-foreground leading-relaxed mb-3">
-            Three principles drive every modification: (1) most arrests are witnessed and immediately shockable, so <strong>up to three stacked shocks come before chest compressions</strong>; (2) <strong>bolus adrenaline can be catastrophic</strong> after recent anastomoses, so it is withheld or titrated; and (3) <strong>emergency resternotomy within 5 minutes</strong> is the definitive intervention if the first-line steps fail. Every cardiac ICU keeps a sterile resternotomy set, a designated trained surgical responder, and pre-applied defibrillator pads at every bedside.
+            In PEA, start external chest compressions immediately. In witnessed monitored VF/pVT give up to three immediately available shocks. In asystole or extreme bradycardia try immediate maximum-output pacing when appropriate. Start CPR promptly if these measures are unavailable or fail, within the first minute. RCUK recommends 50–100 micrograms IV if adrenaline is used. In persistent arrest up to ten days after cardiac surgery, perform resternotomy within five minutes and start internal cardiac massage after reopening. <a className="underline" href="https://www.resus.org.uk/professional-library/2025-resuscitation-guidelines/special-circumstances-guidelines">RCUK 2025 cardiac surgery guidance</a> and <a className="underline" href="https://www.sts.org/sites/default/files/documents/ExpertConsensus_ResuscitationAfterCardiacSurgery.pdf">STS post-cardiac-surgery resuscitation consensus</a>.
           </p>
 
           <CardiacArrestPostCardiacSurgeryDiagram />

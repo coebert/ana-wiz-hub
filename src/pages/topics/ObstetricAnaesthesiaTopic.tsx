@@ -532,7 +532,7 @@ const ObstetricAnaesthesiaTopic = () => {
             </div>
             <div className="p-4 rounded-lg border border-border">
               <p className="font-semibold text-foreground text-sm">Post-partum haemorrhage (PPH)</p>
-              <p className="text-sm text-muted-foreground mt-1">≥500 ml vaginal / ≥1000 ml CS; major ≥1000 ml or ongoing. <strong>4 Ts</strong>: Tone (80%), Trauma, Tissue, Thrombin. Bundle: uterotonics ladder (oxytocin → ergometrine → carboprost → misoprostol), TXA 1 g within 3 h (WOMAN trial), bimanual compression, balloon tamponade, B-Lynch, IR embolisation, hysterectomy. Activate MHP; aim fibrinogen &gt;2 g/L (ROTEM-guided).</p>
+              <p className="text-sm text-muted-foreground mt-1">≥500 ml vaginal / ≥1000 ml CS; major ≥1000 ml or ongoing. <strong>4 Ts</strong>: Tone (80%), Trauma, Tissue, Thrombin. Bundle: uterotonics ladder (oxytocin → ergometrine → carboprost → misoprostol), TXA 1 g IV over 10 minutes as soon as possible within 3 h of birth (WOMAN; WHO), bimanual compression, balloon tamponade, B-Lynch, IR embolisation, hysterectomy. Activate MHP; aim fibrinogen &gt;2 g/L (ROTEM-guided).</p>
             </div>
             <div className="p-4 rounded-lg border border-border">
               <p className="font-semibold text-foreground text-sm">Immediate post-natal period</p>

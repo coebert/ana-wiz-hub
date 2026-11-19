@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { TopicFaqs } from "@/components/topic/TopicFaqs";
 import { TopicTemplate } from "@/components/topic/TopicTemplate";
 import { CollapsibleSubsection } from "@/components/topic/CollapsibleSubsection";
 import { ExamSection } from "@/components/exam/ExamSection";
@@ -6,6 +7,17 @@ import { Exam } from "@/data/curriculum";
 import { ShockRecognitionTeaching, BloodPressureMonitoringTeaching, TransfusionRatioTeaching } from "@/components/topic/HaemorrhagicShockTeaching";
 
 const exams = [Exam.FINAL, Exam.FFICM, Exam.EDIC];
+const vivaFaqs: Array<[string, string]> = [
+  [
+    "In adult trauma with uncontrolled major bleeding, how does severe traumatic brain injury change the initial blood-pressure target?",
+    "Without clinical evidence of brain injury, use restricted volume replacement and aim for a systolic pressure of 80–90 mmHg until bleeding is controlled. With severe traumatic brain injury (GCS 8 or less), maintain a mean arterial pressure of at least 80 mmHg. Source: European trauma bleeding guideline, sixth edition, recommendation 13.",
+  ],
+  [
+    "An adult trauma patient is bleeding or at risk of significant bleeding. When and how should tranexamic acid be given?",
+    "Start as soon as possible and within 3 hours of injury. Infuse 1 g IV over 10 minutes, followed by a second 1 g IV over 8 hours. Source: European trauma bleeding guideline, sixth edition, recommendation 23.",
+  ],
+];
+
 const quiz = [
   { question: "In the TraumaRegister DGU analysis, what proportion of trauma patients fitted an ATLS shock class?", options: ["9.3%", "35%", "62%", "90%"], correctIndex: 0, explanation: "Only 9.3% could be allocated to an ATLS class using heart rate, systolic BP and GCS together." },
   { question: "Heart rate 130, systolic BP 90 mmHg. Which shock index group?", options: ["Group I", "Group II", "Group III", "Group IV"], correctIndex: 3, explanation: "130 ÷ 90 ≈ 1.44, which is SI ≥1.4 (group IV); 57% of group IV needed ≥10 blood units before ICU." },
@@ -32,6 +44,7 @@ export default function HaemorrhagicShockTopic() {
       <ExamSection id="shock-recognition" exams={exams}><CollapsibleSubsection title="Recognising haemorrhagic shock" defaultOpen><ShockRecognitionTeaching /></CollapsibleSubsection></ExamSection>
       <ExamSection id="shock-bp-monitoring" exams={exams}><CollapsibleSubsection title="Blood pressure monitoring and targets in bleeding"><BloodPressureMonitoringTeaching /></CollapsibleSubsection></ExamSection>
       <ExamSection id="shock-transfusion" exams={exams}><CollapsibleSubsection title="Transfusion ratios, prehospital blood and tranexamic acid"><TransfusionRatioTeaching /></CollapsibleSubsection></ExamSection>
+      <TopicFaqs faqs={vivaFaqs} heading="Viva practice" />
     </div>}
   />;
 }

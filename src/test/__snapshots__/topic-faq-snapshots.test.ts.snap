@@ -62,6 +62,9 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the FAQ count p
   "/intensive-care/ecmo": 7,
   "/intensive-care/end-of-life-communication": 3,
   "/intensive-care/haematology-icu": 3,
+  "/intensive-care/haemorrhagic-shock": 2,
+  "/intensive-care/icu-anaphylaxis": 2,
+  "/intensive-care/icu-eclampsia": 2,
   "/intensive-care/icu-endocrine-emergencies": 3,
   "/intensive-care/icu-nutrition": 3,
   "/intensive-care/icu-sedation-delirium": 3,
@@ -190,7 +193,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the full FAQ co
       "q": "Which landmarks define the inguinal canal?",
     },
     {
-      "a": "The spleen lies under the 9th–11th left ribs in the left hypochondrium, behind the mid-axillary line. Left lower rib fractures (especially 9–11) are the commonest mechanism of blunt splenic injury — a high-energy mechanism with left flank tenderness mandates contrast CT to exclude haemorrhage from this highly vascular organ (~5% of cardiac output).",
+      "a": "The spleen lies under the 9th–11th left ribs in the left hypochondrium, behind the mid-axillary line. Left lower rib fractures are a marker of associated splenic injury and should raise suspicion, not a universal most-common causal mechanism. Assess mechanism, examination and haemodynamics. In stable or resuscitation-responsive major trauma with suspected injury, contrast CT is appropriate. Nonresponding haemodynamically unstable patients need only the minimum imaging necessary to direct urgent haemorrhage control; mandatory CT must not delay it.",
       "q": "Why is the spleen at risk from left-sided rib fractures?",
     },
   ],
@@ -204,14 +207,14 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the full FAQ co
       "q": "Which block reliably anaesthetises C8/T1 dermatomes for hand surgery?",
     },
     {
-      "a": "~100% incidence of ipsilateral phrenic nerve palsy (avoid in severe respiratory disease), recurrent laryngeal nerve block (hoarseness), Horner's syndrome (cervical sympathetic involvement), and rare but catastrophic intra-arterial (vertebral artery) injection causing immediate seizures. Pneumothorax risk is low compared with supraclavicular block.",
+      "a": "Substantial ipsilateral hemidiaphragmatic paresis risk, approaching 100% with traditional/high-volume approaches but varying with technique and volume; low-volume approaches do not eliminate risk. Assess respiratory reserve and appropriate monitoring, especially with limited pulmonary reserve or bilateral blocks. Other risks include, recurrent laryngeal nerve block (hoarseness), Horner's syndrome (cervical sympathetic involvement), and rare but catastrophic intra-arterial (vertebral artery) injection causing immediate seizures. Pneumothorax risk is low compared with supraclavicular block.",
       "q": "What is the risk profile of an interscalene block?",
     },
   ],
   "/anatomy/cardiac-anatomy": [
     {
-      "a": "In ~85% of patients (right-dominant circulation) the RCA gives the SA nodal artery and the AV nodal artery before becoming the posterior descending artery. This is why inferior MIs from RCA occlusion frequently cause bradycardia, AV block and right-ventricular involvement — and why right-sided ECG leads (V4R) should be recorded.",
-      "q": "Why does the right coronary artery supply the SA and AV nodes in most people?",
+      "a": "Coronary dominance is defined by posterior descending artery origin, not SA nodal artery origin. SA nodal supply varies: most often RCA, with LCx and other origins. AV nodal origin usually follows dominance. RCA occlusion can cause bradyarrhythmia depending on individual anatomy; dominance does not establish both nodal origins.",
+      "q": "How does coronary dominance differ from nodal artery supply?",
     },
     {
       "a": "Normally in the 5th left intercostal space, just medial to the mid-clavicular line, marking the LV apex. It shifts laterally and inferiorly with LV dilation (chronic AR, dilated cardiomyopathy), and laterally without inferior shift with mediastinal displacement (pneumothorax, large pleural effusion, lobectomy).",
@@ -242,11 +245,11 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the full FAQ co
       "q": "At the inguinal level, what is the order of structures from lateral to medial?",
     },
     {
-      "a": "It covers the anterior thigh (skin and quadriceps), medial leg (saphenous nerve below the knee) and periosteum of the femur — sufficient for analgesia after femoral neck or shaft fracture and for knee surgery in combination with a sciatic block. It misses the posterior thigh (sciatic), hip joint (obturator + sciatic + femoral all contribute), and lateral thigh (lateral cutaneous nerve of thigh).",
+      "a": "It covers the anterior thigh (skin and quadriceps), medial leg (saphenous nerve below the knee) and periosteum of the femur — sufficient for analgesia after femoral neck or shaft fracture and for knee surgery in combination with a sciatic block. It misses the posterior-thigh skin (principally posterior femoral cutaneous nerve, S1–S3; distinct from sciatic motor supply to posterior-thigh muscles), hip joint (obturator + sciatic + femoral all contribute), and lateral thigh (lateral cutaneous nerve of thigh).",
       "q": "What does a femoral nerve block cover, and what does it miss?",
     },
     {
-      "a": "The sciatic typically divides into tibial and common peroneal branches in the popliteal fossa, ~7 cm proximal to the popliteal crease. Ultrasound-guided popliteal block targets the nerve just proximal to the bifurcation so one injection captures both branches — block below the bifurcation may spare one division and leave the lateral foot (peroneal) or sole (tibial) unblocked.",
+      "a": "The sciatic typically divides into tibial and common peroneal branches in the popliteal fossa, ~7 cm proximal to the popliteal crease. Ultrasound-guided popliteal block targets the nerve just proximal to the bifurcation so one injection captures both branches — block below the bifurcation may spare one division and leave one division unblocked. The lateral border of the foot is sural territory, with variable tibial/common fibular contributions; most dorsum is superficial fibular/peroneal and the first web space deep fibular. An isolated peroneal block cannot be assumed to cover the lateral border.",
       "q": "Where does the sciatic nerve divide and why does that matter for popliteal block?",
     },
   ],
@@ -266,7 +269,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the full FAQ co
   ],
   "/anatomy/spinal-anatomy": [
     {
-      "a": "The conus medullaris ends at L1/L2 in adults (most commonly the lower border of L1). In neonates it extends to L3 and ascends with growth. Lumbar puncture and spinal anaesthesia are therefore performed at L3/4 or L4/5 — Tuffier's line (intercristal line) traditionally identifies L4 — to avoid cord injury.",
+      "a": "The conus medullaris ends at L1/L2 in adults (most commonly the lower border of L1). In neonates it extends to L3 and ascends with growth. Lumbar puncture and spinal anaesthesia are therefore performed at L3/4 or L4/5 — Tuffier's line (intercristal line) traditionally identifies L4 — as an initial estimate, not a guarantee: the traditional intercristal level is L4 or L4/5, and palpated levels can be more cephalad. Confirm anatomy with appropriate ultrasound when uncertain.",
       "q": "At what vertebral level does the adult spinal cord end?",
     },
     {
@@ -294,7 +297,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the full FAQ co
   ],
   "/anatomy/upper-limb-anatomy": [
     {
-      "a": "At the volar wrist between the tendon of flexor carpi radialis and the distal radius, where it lies most superficially with the bony radius supporting it for compression. Always confirm collateral palmar arch flow (modified Allen's test or Doppler of the ulnar artery) before cannulation.",
+      "a": "At the volar wrist between the tendon of flexor carpi radialis and the distal radius, where it lies most superficially with the bony radius supporting it for compression. Assess vascular history, hand perfusion and local vascular-access guidance. A normal modified Allen test does not guarantee freedom from ischaemia and has limited predictive performance. ESA 2020 conditionally suggests duplex/colour-Doppler collateral assessment with low-certainty evidence (2C); manual Allen testing is not universally mandatory or sufficient. Abnormal perfusion or vascular disease still requires assessment.",
       "q": "Where is the radial artery best palpated for arterial line insertion and why?",
     },
     {
@@ -354,7 +357,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the full FAQ co
       "q": "Why is methaemoglobin clinically dangerous?",
     },
     {
-      "a": "A galvanic (fuel) cell consumes O₂ at a lead anode (Pb + 2OH⁻ → PbO + H₂O + 2e⁻), generating a current proportional to O₂ partial pressure at the gold cathode (O₂ + 2H₂O + 4e⁻ → 4OH⁻). It is self-powered, accurate to ±3%, and lasts typically 1–2 years because the anode is consumed.",
+      "a": "In a lead/gold galvanic (fuel) oxygen cell, oxygen is reduced at the gold cathode (O₂ + 2H₂O + 4e⁻ → 4OH⁻), while lead is oxidised at the anode (Pb + 2OH⁻ → PbO + H₂O + 2e⁻). The resulting current is proportional to O₂ partial pressure. It is self-powered, accurate to ±3%, and lasts typically 1–2 years because the anode is consumed.",
       "q": "How does a fuel cell oxygen analyser work?",
     },
     {
@@ -420,7 +423,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the full FAQ co
   ],
   "/clinical/bariatric-anaesthesia": [
     {
-      "a": "Use ideal body weight (IBW) for propofol induction and remifentanil; lean body weight (LBW) for propofol maintenance and rocuronium; ideal body weight (IBW) for suxamethonium at 1–1.5 mg/kg; total body weight (TBW) for paracetamol (max 4 g/day), antibiotics and sugammadex; and adjusted body weight for aminoglycosides.",
+      "a": "Use lean body weight as a starting point for propofol induction, fentanyl and non-depolarising blockers such as rocuronium. Titrate anaesthesia and monitor neuromuscular block quantitatively. Use total body weight for suxamethonium. Dose sugammadex by actual body weight and measured depth of block. Propofol infusions and target-controlled models require model-specific dosing. Antimicrobial and paracetamol doses depend on the individual product and applicable maximum.",
       "q": "How are induction and maintenance drug doses calculated in obesity?",
     },
     {
@@ -500,7 +503,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the full FAQ co
       "q": "What is the difference between pH-stat and α-stat management during CPB?",
     },
     {
-      "a": "Cardiac arrest in the first 24–72 hours after cardiac surgery is managed with modified Cardiac Advanced Life Support (CALS), not standard ALS, because the arrest is witnessed, monitored, and usually has a surgically reversible cause. Key modifications: (1) deliver up to three stacked DC shocks (200 J biphasic) BEFORE starting chest compressions for VF/pVT — first-shock success is high and compressions may disrupt grafts; (2) withhold or minimise bolus adrenaline initially because it can cause catastrophic rebound hypertension after recent anastomoses — use pacing for asystole/PEA; (3) prepare for emergency re-sternotomy within 5 minutes (10-minute window from arrest) if no return of spontaneous circulation — internal cardiac massage is more effective and excludes tamponade or graft occlusion; (4) use epicardial pacing wires if available; (5) escalate to VA-ECMO or IABP early if ROSC is not achieved.",
+      "a": "In a monitored cardiac surgical unit, confirm arrest by clinical signs and the pulseless pressure waveform, call for help and prepare for resternotomy. In PEA, start chest compressions immediately. In witnessed VF/pVT give up to three consecutive shocks if immediately available. In asystole or extreme bradycardia, briefly pause epicardial pacing to identify the underlying rhythm, then try maximum-output pacing when appropriate. If shocks or pacing are unavailable or fail, start compressions promptly, within the first minute. RCUK recommends 50–100 micrograms IV if adrenaline is used. In persistent arrest up to ten days after surgery, perform resternotomy within five minutes and start internal cardiac massage after reopening.",
       "q": "How is cardiac arrest managed differently after cardiac surgery?",
     },
     {
@@ -1092,7 +1095,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the full FAQ co
       "q": "When is spinal anaesthesia contraindicated?",
     },
     {
-      "a": "Maximum safe doses: lidocaine 3 mg/kg plain (7 mg/kg with adrenaline); bupivacaine and levobupivacaine 2 mg/kg; ropivacaine 3 mg/kg. Always calculate by lean body weight. LAST presents with peri-oral tingling, agitation, seizures, then cardiovascular collapse. Management: stop injection, ABC, 20% Intralipid 1.5 ml/kg bolus then 0.25 ml/kg/min infusion (repeat bolus up to twice at 5-minute intervals, maximum cumulative 12 ml/kg — AAGBI LAST guideline). Treat arrhythmias without lidocaine; ASRA also advises avoiding vasopressin, calcium-channel and β-blockers and reducing adrenaline boluses to <1 µg/kg. Prolonged CPR may be needed.",
+      "a": "Calculate the total milligrams from all injections. Use the named product, route and procedure instructions, with reductions for relevant patient factors. If severe LAST develops, stop injecting, call for help, oxygenate and manage seizures. Association QRH 3-10 uses 20% lipid emulsion: 1.5 mL/kg over 2–3 minutes, then 15 mL/kg/h. If cardiovascular instability persists or recurs, repeat the bolus at 5 and 10 minutes (up to two repeats) and double the infusion after 5 minutes if indicated. Keep the total at or below 12 mL/kg.",
       "q": "How are local anaesthetics dosed safely to avoid toxicity (LAST)?",
     },
     {
@@ -1156,7 +1159,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the full FAQ co
       "q": "How does obesity affect TCI propofol dosing?",
     },
     {
-      "a": "Processed EEG monitoring (BIS, Entropy, or spectrogram) is essential during TIVA because there is no end-tidal volatile agent concentration to confirm drug delivery. NAP5 (the 5th National Audit Project of the Royal College of Anaesthetists) found that awareness with recall was approximately 5 times more common with TIVA than with volatile-based anaesthesia (1:8,000 vs 1:135,000). The highest-risk group was TIVA combined with neuromuscular blockade. Target BIS 40–60 or Entropy 40–60 for surgical anaesthesia. BIS values <20 indicate burst suppression and excessive depth; values >60 indicate inadequate hypnosis and increased awareness risk. In elderly patients, BIS monitoring is even more critical because pharmacokinetic models may over-predict drug concentrations, leading to excessive depth.",
+      "a": "Processed EEG monitoring (BIS, Entropy, or spectrogram) is essential during TIVA because there is no end-tidal volatile agent concentration to confirm drug delivery. NAP5 (the 5th National Audit Project of the Royal College of Anaesthetists) estimated awareness at about 1:19,000 overall; the incidence was about 1:8,200 when neuromuscular blockade was used versus about 1:135,900 without it. Those denominators describe blockade, not a like-for-like TIVA-versus-volatile comparison; NAP5 did identify TIVA combined with neuromuscular blockade as a high-risk combination. Target BIS 40–60 or Entropy 40–60 for surgical anaesthesia. BIS values <20 indicate burst suppression and excessive depth; values >60 indicate inadequate hypnosis and increased awareness risk. In elderly patients, BIS monitoring is even more critical because pharmacokinetic models may over-predict drug concentrations, leading to excessive depth.",
       "q": "What is the role of processed EEG monitoring during TIVA?",
     },
   ],
@@ -1176,15 +1179,15 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the full FAQ co
   ],
   "/clinical/trauma-emergency": [
     {
-      "a": "RSI in trauma follows the same core principles as standard RSI — pre-oxygenation, rapid induction, cricoid pressure (controversial), and intubation without bag-mask ventilation — but with critical modifications for the injured patient: (1) resuscitate before you intubate where possible; (2) choose ketamine 0.5–2 mg/kg as the induction agent because it preserves sympathetic tone and cardiac output; (3) avoid propofol or thiopentone in hypovolaemic patients as they cause catastrophic vasodilation; (4) use rocuronium 1.2 mg/kg for rapid paralysis with sugammadex rescue available; (5) maintain manual in-line stabilisation with the collar front removed; (6) have vasopressors drawn up before laryngoscopy because intubation can precipitate arrest in the shocked patient.",
+      "a": "Preoxygenate, prepare suction and rescue airway equipment, and resuscitate haemorrhagic shock alongside airway management. Choose the induction agent and dose for the patient’s physiology, with blood and vasopressor support available. Ketamine can still cause hypotension. Maintain oxygenation, including gentle low-pressure facemask ventilation when required. If intubation fails, progress through the DAS rescue oxygenation plans. Once CICO is declared, proceed immediately to emergency front-of-neck airway.",
       "q": "What is rapid sequence induction (RSI) in trauma?",
     },
     {
-      "a": "Damage control resuscitation (DCR) is a strategy for severe trauma that targets the 'lethal triad' of hypothermia, acidosis and coagulopathy. Its four pillars are: (1) permissive hypotension — allowing SBP 80–90 mmHg in bleeding trauma without TBI until surgical haemorrhage control, to reduce clot disruption; (2) haemostatic resuscitation — using 1:1:1 ratios of PRBC:FFP:platelets rather than crystalloid; (3) tranexamic acid 1 g IV within 3 hours of injury (CRASH-2); and (4) limiting crystalloid to prevent dilutional coagulopathy. Active warming and early surgical control of bleeding are simultaneous priorities.",
+      "a": "Control bleeding promptly, prevent heat loss, limit crystalloid and give tranexamic acid when indicated. In actively bleeding adults, start the local major haemorrhage protocol with plasma and red cells at 1:1, then use laboratory results and the local viscoelastic algorithm to guide further components. Until bleeding is controlled, the European guideline recommends SBP 80–90 mmHg if there is no clinical evidence of brain injury.",
       "q": "What is damage control resuscitation?",
     },
     {
-      "a": "Activate the MTP when any of the following are met: anticipated need for ≥10 units PRBC in 24 hours, >4 units PRBC in 1 hour, haemodynamic instability despite initial fluid resuscitation, ongoing uncontrolled surgical bleeding, or a base deficit >6 mmol/L with tachycardia suggesting significant occult haemorrhage. The protocol delivers pre-thawed blood products in fixed 1:1:1 ratios (PRBC:FFP:platelets) via a rapid infuser, with point-of-care viscoelastic testing (TEG/ROTEM) to guide individual component therapy once available.",
+      "a": "Activate the local major haemorrhage protocol promptly for suspected major bleeding, using haemodynamic status, response to resuscitation and expected ongoing blood loss. NICE NG39 starts plasma and red cells at 1:1 in adults with active bleeding. Give platelets under the local protocol and move to laboratory-guided replacement as early as possible.",
       "q": "When should a massive transfusion protocol (MTP) be activated?",
     },
     {
@@ -1192,15 +1195,15 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the full FAQ co
       "q": "What are the complications of massive transfusion?",
     },
     {
-      "a": "Permissive hypotension is the deliberate restriction of fluid resuscitation to maintain SBP 80–90 mmHg (or mean arterial pressure ~50–60 mmHg) in a bleeding trauma patient before definitive surgical haemorrhage control. The rationale is that restoring normal blood pressure in uncontrolled bleeding disrupts fragile clots and worsens haemorrhage. It is ABSOLUTELY CONTRAINDICATED in traumatic brain injury (TBI), where the injured brain has lost autoregulation and relies on adequate perfusion pressure — target SBP >110 mmHg or MAP ≥80 mmHg in TBI to maintain cerebral perfusion pressure and prevent secondary brain injury.",
+      "a": "Restrict volume replacement until bleeding is controlled. Without clinical evidence of brain injury, the European trauma guideline recommends an initial SBP of 80–90 mmHg. If haemorrhagic shock and TBI coexist, NICE NG39 recommends continuing a restrictive approach when haemorrhage dominates and a less restrictive approach to preserve cerebral perfusion when brain injury dominates. The European MAP target of at least 80 mmHg applies to severe TBI (GCS ≤8).",
       "q": "What is permissive hypotension and when is it contraindicated?",
     },
     {
-      "a": "Give TXA 1 g IV over 10 minutes as early as possible, and always within 3 hours of injury — the CRASH-2 mortality benefit is strongly time-dependent, and treatment started beyond 3 hours confers no benefit and may cause harm. The CRASH-2 regimen adds a second 1 g by infusion over 8 hours; neither CRASH-2 nor CRASH-3 tested the loading dose separately from the infusion, so give the full regimen unless your local major haemorrhage protocol specifies otherwise. CRASH-3 (isolated head injury) showed no significant overall reduction in head-injury death; benefit was confined to mild-to-moderate injury treated early. Follow your local major haemorrhage protocol. TXA inhibits fibrinolysis by blocking plasminogen activation and should be given to all trauma patients with significant bleeding or at risk of it, unless clearly contraindicated.",
+      "a": "For adult major trauma with active or suspected active bleeding, give TXA promptly, normally within 3 hours of injury: 1 g IV over 10 minutes then 1 g over 8 hours. NICE NG39 allows use after 3 hours only with evidence of hyperfibrinolysis. For head injury with GCS ≤12 and no suspected active extracranial bleeding, NICE NG232 advises considering a 2 g IV bolus in people aged 16 or over within 2 hours of injury, before imaging. CRASH-3 did not establish an overall reduction in head-injury death among patients treated within 3 hours (RR 0.94, 95% CI 0.86–1.02); the estimate favoured TXA in mild-to-moderate injury.",
       "q": "When should tranexamic acid (TXA) be given in trauma?",
     },
     {
-      "a": "TBI management follows the mantra 'avoid the secondary insults': (1) prevent hypoxia — target SpO₂ >94% with early definitive airway if GCS ≤8 or risk of aspiration; (2) prevent hypotension — maintain SBP >110 mmHg or MAP ≥80 mmHg at all times; (3) prevent hypercapnia and hypocapnia — target PaCO₂ 4.5–5.0 kPa (mild hypocapnia 4.0–4.5 kPa only if herniation suspected); (4) head-up 15–30° to reduce ICP; (5) osmotherapy with mannitol 0.25–1 g/kg or hypertonic saline 3% 250 mL for signs of raised ICP; (6) urgent CT imaging and neurosurgical consultation; (7) avoid hyperglycaemia and hyponatraemia; (8) seizure prophylaxis if indicated. Permissive hypotension is contraindicated in TBI.",
+      "a": "TBI management follows the mantra 'avoid the secondary insults': (1) prevent hypoxia — target SpO₂ >94% with early definitive airway if GCS ≤8 or risk of aspiration; (2) avoid hypotension and set a target appropriate to the severity of brain injury and the presence of haemorrhagic shock; (3) prevent hypercapnia and hypocapnia — initially target PaCO₂ 35–45 mmHg (4.7–6.0 kPa) when intracranial pressure is not elevated. Temporary controlled hyperventilation may bridge impending herniation to definitive treatment; (4) head-up 15–30° to reduce ICP; (5) if intracranial hypertension or herniation is suspected, use hyperosmolar therapy under the neurotrauma protocol, accounting for haemodynamics, sodium and renal function; (6) urgent CT imaging and neurosurgical consultation; (7) avoid hyperglycaemia and hyponatraemia; (8) seizure prophylaxis if indicated. In severe TBI, Brain Trauma Foundation systolic thresholds depend on age. In combined TBI and haemorrhagic shock, NICE NG39 bases fluid restriction on the dominant condition.",
       "q": "How do you manage a traumatic brain injury (TBI) patient?",
     },
     {
@@ -1208,11 +1211,11 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the full FAQ co
       "q": "What is the lethal triad in trauma?",
     },
     {
-      "a": "Ketamine is the agent of choice in haemodynamically unstable trauma patients. At doses of 0.5–2 mg/kg IV, it preserves sympathetic tone, maintains cardiac output and blood pressure, provides analgesia, and is a bronchodilator — all valuable in the shocked polytrauma patient. Etomidate 0.3 mg/kg is an acceptable alternative and is often preferred in TBI because it reduces cerebral metabolic rate and ICP, though it can cause adrenal suppression. Propofol and thiopentone should be AVOIDED in hypovolaemic trauma patients because they cause profound vasodilation and myocardial depression, potentially causing cardiovascular collapse on induction.",
+      "a": "Ketamine or etomidate can be used for emergency induction. Adjust the dose to consciousness, shock severity and preceding resuscitation. Both can be followed by cardiovascular collapse. Treat haemorrhage and prepare haemodynamic support before induction where time permits.",
       "q": "How do you choose an induction agent for a haemodynamically unstable trauma patient?",
     },
     {
-      "a": "Thromboelastography (TEG) and rotational thromboelastometry (ROTEM) are point-of-care viscoelastic coagulation tests that assess clot formation, stability and lysis in real time. In massive transfusion they enable goal-directed therapy: a flat r-time / CT suggests give FFP; low alpha-angle / low fibrinogen amplitude suggests give cryoprecipitate or fibrinogen concentrate; low maximum amplitude suggests give platelets; rapid lysis suggests give TXA. Using TEG/ROTEM reduces unnecessary blood product administration, identifies fibrinolysis, and allows individualised component therapy rather than blind fixed-ratio resuscitation alone.",
+      "a": "Viscoelastic testing can guide haemostatic treatment during major bleeding within a locally validated algorithm. TEG reports reaction time (R) and ROTEM reports clotting time (CT). Consider anticoagulant effects and factor deficiency if initiation is delayed. Interpret clot strength alongside fibrin-specific tests, platelet count, conventional laboratory results and the clinical bleeding. A single prolonged clotting time cannot determine a plasma prescription.",
       "q": "What is the role of TEG/ROTEM in massive transfusion?",
     },
     {
@@ -1220,7 +1223,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the full FAQ co
       "q": "When is spinal immobilisation needed in trauma?",
     },
     {
-      "a": "Blood and blood products, not crystalloid. NICE NG39 recommends blood products in a 1:1 plasma:red cell ratio for active bleeding and advises against crystalloid in hospital — large crystalloid volumes cause haemodilution, dilutional coagulopathy, hypothermia and acidosis, and worsen outcomes. Pre-hospital, if blood is unavailable, 250 mL crystalloid boluses titrated to a radial pulse may be used. Resuscitation targets are permissive hypotension (a palpable radial pulse or SBP ~80–90 mmHg) until haemorrhage is controlled, except in traumatic brain injury where cerebral perfusion must be maintained (Brain Trauma Foundation: SBP ≥100–110 mmHg depending on age). Once bleeding is controlled, restore normal perfusion.",
+      "a": "During active bleeding in hospital, NICE NG39 recommends blood components and advises against crystalloids. Use one plasma unit per red-cell unit initially in adults. Pre-hospital, when blood components are unavailable, titrate crystalloid to a palpable central pulse. If TBI coexists, balance restriction for bleeding against the need to maintain cerebral perfusion according to which injury dominates.",
       "q": "What fluid should be used for resuscitation in major trauma?",
     },
     {
@@ -1460,7 +1463,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the full FAQ co
       "q": "What is the initial management of polymorphic VT (torsades)?",
     },
     {
-      "a": "Assume VT until proven otherwise — particularly with structural heart disease; treat with synchronised DC if unstable, amiodarone 300 mg IV if stable, avoid verapamil which can collapse VT into VF.",
+      "a": "Assume VT until proven otherwise — particularly with structural heart disease. For a stable regular broad-complex tachycardia, the default is synchronised cardioversion when VT is presumed; if sedation/anaesthesia risk is too high, the current RCUK algorithm offers procainamide 10–15 mg/kg over 20 min, or amiodarone 300 mg IV over 10–60 min then 900 mg/24 h if procainamide is unavailable or contraindicated. Avoid verapamil, which can collapse VT into VF.",
       "q": "How are wide-complex tachycardias approached when the diagnosis is uncertain?",
     },
   ],
@@ -1514,15 +1517,15 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the full FAQ co
       "q": "Should I cool post-arrest patients to 33 °C or aim for active normothermia? What changed after TTM2?",
     },
     {
-      "a": "ARREST (Yannopoulos, Lancet 2020, n = 30, single-centre Minnesota) randomised refractory shockable OHCA and was stopped early for benefit — 43% vs 7% survival to discharge with eCPR. Prague OHCA (Belohlavek, JAMA 2022, n = 256) compared invasive (eCPR + cath lab) with standard advanced ALS and showed a non-significant trend to better 180-day favourable neurological outcome (31.5% vs 22.0%); subgroup analysis favoured the invasive strategy with longer arrest durations. INCEPTION (Suverein, NEJM 2023, n = 134) was a multicentre Dutch trial and was neutral — reflecting the impact of system speed and operator volume. Suitable candidates have: witnessed arrest, bystander CPR, initial shockable rhythm, age < 65–75, no major comorbidity, ETCO₂ > 10 mmHg sustained, and a realistic prospect of cannulation within 60 minutes of collapse. Outside high-volume eCPR centres with rapid pathways, benefit is unlikely.",
+      "a": "ARREST (2020) was a small single-centre trial in selected refractory shockable arrests, with survival to discharge 6/14 versus 1/15 and early stopping for benefit. Prague OHCA did not meet its primary 180-day favourable neurological-survival endpoint (31.5% versus 22.0%; P = 0.09); favourable secondary or subgroup signals are exploratory. INCEPTION also found no statistically significant primary benefit. These trials do not prove that speed or operator volume alone explains their differences. eCPR is a selected rescue strategy within an organised service; eligibility and time-to-flow goals are locally defined, not universal age/ETCO₂ cutoffs or guarantees of benefit.",
       "q": "Who is an appropriate candidate for eCPR and what does ARREST, Prague OHCA and INCEPTION tell us?",
     },
     {
-      "a": "Neuroprognostication is performed in the comatose post-cardiac-arrest patient at ≥ 72 hours after ROSC, only once confounders (sedation, NMBA, hypothermia, severe metabolic derangement, hypoglycaemia, hypotension, ongoing seizure activity) are excluded. The entry criterion is GCS motor ≤ 3 (abnormal flexion, extension, or no motor response) at ≥ 72 h. ERC/ESICM 2021 consider poor outcome likely when two or more of these are present: (1) bilaterally absent pupillary and corneal reflexes at ≥ 72 h (quantitative pupillometry may be used); (2) bilaterally absent N20 SSEP waves at ≥ 24 h; (3) highly malignant EEG (suppressed background or burst-suppression) at > 24 h; (4) NSE > 60 µg/L at 48 h and/or 72 h; (5) status myoclonus ≤ 72 h; (6) diffuse and extensive anoxic injury on CT or MRI. No single marker is sufficient on its own. Withdrawal of life-sustaining therapy in the first 72 hours risks self-fulfilling prophecy.",
+      "a": "Use current RCUK 2025 multimodal neuroprognostication in patients not awake and obeying commands (GCS motor < 6) at ≥ 72 h after ROSC, after excluding relevant confounders. Combine at least two concordant poor-outcome predictors at their specified times, and assess evidence supporting recovery as well as poor outcome. NSE > 60 µg/L at 48 h and/or 72 h is one specified marker; a rising trend alone is not an interchangeable threshold. EEG must be interpreted by pattern, timing and confounders. Technical quality matters for bilateral N20 absence, and neuromuscular blockade may improve recording quality. Indeterminate or discordant findings require further assessment. Prognosis informs shared decisions alongside patient wishes, overall illness and other factors; it is not an automatic withdrawal rule.",
       "q": "What is multimodal neuroprognostication and when do I perform it?",
     },
     {
-      "a": "Intubate if not already (or replace a supraglottic with a tracheal tube once stable). Set tidal volume 6–8 mL/kg predicted body weight, PEEP 5–10 cmH₂O, FiO₂ titrated to SpO₂ 94–98% (avoid hyperoxia — observational data link PaO₂ > 40 kPa to higher mortality; but the EXACT RCT found lower survival when pre-hospital SpO₂ was targeted at 90–94%, so avoid aiming below 94%). Set minute ventilation to PaCO₂ 4.5–6.0 kPa (avoid hypocapnia which causes cerebral vasoconstriction and is independently associated with worse neurological outcome — TAME trial 2023 found no benefit from mild hypercapnia 6.7–7.3 kPa over normocapnia). Use continuous waveform capnography. Sedate with short-acting agents (propofol + remifentanil or fentanyl ± dexmedetomidine) to facilitate later neuroprognostication. Avoid prolonged NMBA except briefly for shivering not controlled by sedation and counter-warming.",
+      "a": "Intubation is indicated for persistent coma or another need for ventilation; rapid normal neurological recovery with adequate breathing does not automatically require intubation. For ventilated patients use tidal volume 6–8 mL/kg predicted body weight, individualised PEEP and reliable oxygen measurement to titrate toward SpO₂ 94–98%, with arterial PaCO₂ 4.7–6.0 kPa and continuous waveform capnography. Avoid hypoxaemia, hyperoxaemia and hypocapnia; repeat arterial gases after adjustments. Use short-acting sedation where appropriate. Routine neuromuscular blockade is not recommended, but may be considered for critical hypoxaemia with ARDS and, when clinically indicated, refractory shivering despite adequate sedation and counter-warming; assess the individual patient.",
       "q": "How should I manage the airway and ventilator in the first 6 hours post-ROSC?",
     },
   ],
@@ -1610,6 +1613,36 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the full FAQ co
     {
       "a": "MAHA + thrombocytopenia + organ dysfunction → urgent ADAMTS13 level; while awaiting, start plasma exchange (TTP), caplacizumab where available, and high-dose steroids; avoid platelet transfusion unless life-threatening bleed.",
       "q": "What is the approach to thrombotic microangiopathies (TTP/HUS) in ICU?",
+    },
+  ],
+  "/intensive-care/haemorrhagic-shock": [
+    {
+      "a": "Without clinical evidence of brain injury, use restricted volume replacement and aim for a systolic pressure of 80–90 mmHg until bleeding is controlled. With severe traumatic brain injury (GCS 8 or less), maintain a mean arterial pressure of at least 80 mmHg. Source: European trauma bleeding guideline, sixth edition, recommendation 13.",
+      "q": "In adult trauma with uncontrolled major bleeding, how does severe traumatic brain injury change the initial blood-pressure target?",
+    },
+    {
+      "a": "Start as soon as possible and within 3 hours of injury. Infuse 1 g IV over 10 minutes, followed by a second 1 g IV over 8 hours. Source: European trauma bleeding guideline, sixth edition, recommendation 23.",
+      "q": "An adult trauma patient is bleeding or at risk of significant bleeding. When and how should tranexamic acid be given?",
+    },
+  ],
+  "/intensive-care/icu-anaphylaxis": [
+    {
+      "a": "Stop the suspected trigger and give 500 micrograms of adrenaline intramuscularly into the outer mid-thigh (0.5 mL of 1 mg/mL). Repeat after 5 minutes if airway, breathing or circulation problems persist. Source: Resuscitation Council UK, Emergency treatment of anaphylaxis, section 5.",
+      "q": "An adult on a ward develops sudden stridor and hypotension during an antibiotic infusion. They have a pulse. What is the first adrenaline dose, and when should it be repeated?",
+    },
+    {
+      "a": "Call for expert help and give IV crystalloid. An experienced team should start a monitored, titrated IV adrenaline infusion. Continue IM adrenaline every 5 minutes while the infusion is being prepared if respiratory or cardiovascular problems persist. Source: Resuscitation Council UK, Emergency treatment of anaphylaxis, section 6.",
+      "q": "An adult with anaphylaxis still has respiratory or cardiovascular compromise after two appropriate IM doses of adrenaline. How should treatment change?",
+    },
+  ],
+  "/intensive-care/icu-eclampsia": [
+    {
+      "a": "Load with 4 g IV over 5–15 minutes, then infuse 1 g/hour. If a seizure recurs, give another 2–4 g IV over 5–15 minutes. Continue the maintenance infusion until 24 hours after the last seizure. Source: NICE NG133, recommendation 1.8.4.",
+      "q": "How is IV magnesium sulfate used after an eclamptic seizure, and what should be given if another seizure occurs during treatment?",
+    },
+    {
+      "a": "Limit maintenance fluids to 80 mL/hour in the absence of other ongoing losses. If the patient is losing fluid, for example through haemorrhage, reassess fluid replacement according to those losses. Source: NICE NG133, recommendation 1.8.12.",
+      "q": "What maintenance fluid limit applies in severe pre-eclampsia, and when does that limit need reassessment?",
     },
   ],
   "/intensive-care/icu-endocrine-emergencies": [
@@ -1734,7 +1767,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the full FAQ co
       "q": "What physiological derangements occur after brainstem death?",
     },
     {
-      "a": "DCD (Maastricht III) occurs after planned withdrawal with death by circulatory criteria and a 5-minute 'no-touch' period; warm ischaemic time limits organ viability (typically <30 min for liver, <2 h for kidney) and outcomes are slightly inferior for some grafts but improve donor numbers.",
+      "a": "DCD (Maastricht III) follows planned withdrawal; confirm death only after the full continuous 5-minute assessment and required examination, when all circulatory criteria are satisfied (AoMRC 2025). BTS DCD 2023 defines fWIT from a sustained (at least 2-minute) fall in SBP below 50 mmHg to cold in-situ perfusion or NRP, not from withdrawal or arrest. Organ acceptance and stand-down depend on the actual organ, preservation method and current retrieval-team protocol; arithmetic alone cannot establish viability. With NRP, a long withdrawal phase alone is not an automatic liver exclusion.",
       "q": "How does DCD differ from DBD for donation?",
     },
   ],
@@ -1752,7 +1785,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the full FAQ co
       "q": "Which children with acute stroke are considered for thrombolysis or thrombectomy?",
     },
     {
-      "a": "10 mL/kg isotonic crystalloid boluses with reassessment after each; 20 mL/kg is reserved for specific situations (e.g. profound shock). DKA and trauma follow their own pathways: NICE NG18 uses a 10 mL/kg 0.9% saline bolus in DKA (given as soon as possible if shocked, over 30 minutes if dehydrated but not shocked), while haemorrhagic trauma needs early blood products and haemorrhage control. If shock persists after 1–2 boluses, move earlier to vasoactive infusions (adrenaline for cold shock, noradrenaline for warm) rather than escalating fluid further (SSC Paediatric 2020, APLS 2021; FEAST caution in resource-limited settings).",
+      "a": "SSC Children 2026: choose adrenaline or noradrenaline through repeated haemodynamic assessment, response, echo/cardiac and lung POCUS when expertise is available, and paediatric critical-care advice. Evidence does not establish one preferred first-line agent; cold/warm labels do not mandate drug selection. UK RCUK 2025 uses 10 mL/kg isotonic crystalloid boluses with reassessment of perfusion and overload after every bolus. New or increasing hepatomegaly is one sign of overload/cardiac failure, not an isolated diagnostic equality. Stop boluses if shock resolves or overload develops; do not require 40–60 mL/kg or a fixed fluid threshold before vasoactives. Peripheral vasoactive initiation can avoid delay for central access. DKA and haemorrhagic trauma follow their own pathways. NICE NG18 DKA uses a 10 mL/kg 0.9% saline bolus (as soon as possible if shocked, over 30 minutes if dehydrated but not shocked), with senior review before more than one; haemorrhagic trauma needs early blood products and haemorrhage control. Hydrocortisone is not routine paediatric septic-shock therapy. SSC Children 2026 suggests against IV hydrocortisone when fluids and vasoactive therapy restore haemodynamic stability; persistent instability despite adequate support has insufficient evidence for a recommendation either way. Give stress-dose corticosteroid replacement for suspected or documented adrenal insufficiency; this is separate from routine sepsis adjuncts and does not replace adrenal-crisis management. Suspected septic shock: start antibiotics as soon as possible, ideally within 1 hour of recognition. Probable sepsis without shock: undertake time-limited rapid investigation and, if concern is substantiated, start treatment as soon as possible after evaluation, ideally within 3 hours of recognition. If timely evaluation is difficult, consider antibiotics as soon as possible for probable bacterial sepsis.",
       "q": "What fluid resuscitation strategy is recommended for paediatric septic shock?",
     },
     {
@@ -1846,7 +1879,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the full FAQ co
       "q": "When is haemodialysis indicated in poisoning?",
     },
     {
-      "a": "Association of Anaesthetists 2023: give 20% lipid emulsion 1.5 mL/kg as an initial bolus (simplified to a fixed 100 mL bolus if >70 kg), then start an infusion of 0.25 mL/kg/min (equivalent to 15 mL/kg/h) — the same weight-based rate for every patient, which equates to about 1000 mL/h in an adult over 70 kg. Up to two further boluses at 5-minute intervals (three in total), and double the infusion to 0.5 mL/kg/min (30 mL/kg/h) if the circulation remains unstable; total maximum 12 mL/kg.",
+      "a": "The Association of Anaesthetists’ Quick Reference Handbook uses 20% lipid emulsion. Give 1.5 mL/kg IV over 2–3 minutes, then infuse 15 mL/kg/hour. If cardiovascular instability persists or recurs, a bolus may be repeated at 5 and 10 minutes and the infusion doubled after 5 minutes. The maximum cumulative dose is 12 mL/kg. Use the current checklist during resuscitation.",
       "q": "How is lipid emulsion used in local anaesthetic toxicity?",
     },
     {
@@ -1856,15 +1889,15 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the full FAQ co
   ],
   "/intensive-care/transfusion-coagulation": [
     {
-      "a": "Empirical 1:1:1 (RBC:FFP:platelets) until ROTEM/TEG-guided, based on PROPPR trial; activate at predicted 4+ units in 1 h, give TXA 1 g within 3 h (CRASH-2) and target ionised Ca²⁺ >1.0 mmol/L.",
+      "a": "PROPPR 2015 used plasma:platelet-equivalents:RBC 1:1:1 in severe trauma: 6 plasma units, 1 adult platelet dose (about 6 whole-blood-derived platelet units or 1 apheresis unit), and 6 RBC units, not one adult platelet dose per RBC. More achieved haemostasis and fewer died from exsanguination; 24-hour/30-day mortality differences were not statistically significant. NICE NG39 initial adult major-trauma plasma:RBC is 1:1; follow the local MHP and transition promptly to laboratory/viscoelastic-guided treatment. Activation uses physiology, bleeding and response, not predicted units alone. Measure ionised calcium frequently and replace by protocol to the normal range (approximately 1.1–1.3 mmol/L; laboratory/pH context). Ratios and targets are not universal across bleeding causes.",
       "q": "What ratios are used in major haemorrhage protocols?",
     },
     {
-      "a": "For warfarin reversal in major bleeding (25–50 U/kg with vitamin K, BSH 2018), or factor replacement in liver disease where volume load from FFP is harmful; PCC restores INR within minutes versus hours for FFP.",
+      "a": "In major bleeding due to warfarin, give four-factor PCC with IV vitamin K under the local reversal protocol. In liver transplantation, a raised INR alone does not justify PCC or plasma. Guide factor replacement by clinical bleeding, viscoelastic findings and the transplant protocol.",
       "q": "When is prothrombin complex concentrate preferred over FFP?",
     },
     {
-      "a": "FIBTEM A5 <12 mm → fibrinogen concentrate or cryoprecipitate; EXTEM CT >80 s → FFP or PCC; EXTEM A5 <40 mm with normal FIBTEM → platelets; ML >15% → tranexamic acid (ITACTIC trial).",
+      "a": "TEG reaction time (R) and ROTEM clotting time (CT) assess clot initiation. Fibrin-specific and whole-clot measurements help assess fibrinogen and platelet contributions. In active major bleeding, use the locally validated algorithm for the assay and indication, alongside clinical findings and conventional tests. A single result does not establish which product to give.",
       "q": "How is ROTEM/TEG used to guide blood product use?",
     },
   ],
@@ -2052,7 +2085,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the full FAQ co
   ],
   "/notes/how-sugammadex-reverses-rocuronium": [
     {
-      "a": "Yes. Sugammadex 16 mg/kg will reverse a 1.2 mg/kg rocuronium intubating dose within 2–3 minutes, even before twitches return (post-tetanic count of 0). This is the basis for using sugammadex as a rescue strategy after a failed RSI when rocuronium has been chosen instead of suxamethonium.",
+      "a": "In adults needing immediate reversal after rocuronium 1.2 mg/kg, the licensed sugammadex dose is 16 mg/kg. Reversal does not guarantee a patent airway. With declared CICO, maintain paralysis and proceed immediately to emergency front-of-neck airway.",
       "q": "Can sugammadex reverse rocuronium that has only just been given?",
     },
     {
@@ -2060,21 +2093,21 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the full FAQ co
       "q": "Why doesn't sugammadex reverse atracurium or cisatracurium?",
     },
     {
-      "a": "Sugammadex also binds progestogens. Manufacturers recommend treating a single dose as the equivalent of one missed combined or progestogen-only pill: continue the pill normally and use additional non-hormonal contraception for the next 7 days. Patients with an implant, depot injection or IUS only need additional precautions if the dose was within the relevant high-risk window.",
+      "a": "For oral hormonal contraception, follow the missed-dose instructions for that pill. With non-oral hormonal contraception, use an additional non-hormonal method for seven days and follow the advice in the contraceptive product leaflet.",
       "q": "How long does sugammadex affect hormonal contraception?",
     },
     {
-      "a": "Neostigmine remains appropriate for routine reversal of shallow non-depolarising block (TOF count ≥ 2, ideally ≥ 4) — particularly with benzylisoquinoliniums, in cost-sensitive settings, or where sugammadex is unavailable. Always co-administer an antimuscarinic (glycopyrrolate or atropine) and confirm reversal with quantitative TOF ≥ 0.9.",
+      "a": "For neostigmine reversal, ESAIC recommends waiting for advanced spontaneous recovery (quantitative TOF ratio above 0.2). Give an antimuscarinic and continue quantitative monitoring until the TOF ratio exceeds 0.9. Sugammadex does not reverse benzylisoquinolinium block.",
       "q": "When should I still use neostigmine?",
     },
   ],
   "/notes/local-anaesthetic-systemic-toxicity-management": [
     {
-      "a": "Lidocaine: 3 mg/kg plain, 7 mg/kg with adrenaline. Bupivacaine and levobupivacaine: 2 mg/kg (no adrenaline-enhanced dose). Ropivacaine: 3 mg/kg. Always calculate against lean body weight and use the lowest effective dose; reduce in the elderly, pregnant, and hepatically impaired.",
+      "a": "There is no single universal maximum across formulations and routes. Use the named product label and the procedure: for example, UK lidocaine 2% (emc 15150) limits a single adult dose to 4.5 mg/kg and 300 mg, while Xylocaine with adrenaline (emc 2397) has a 500 mg adult ceiling. Named bupivacaine field-block/infiltration (emc 11611) limits 150 mg. These are not interchangeable with spinal, major nerve block or IVRA doses. Calculate against the labelled weight basis, use the lowest effective dose, and reduce in the elderly, pregnant and hepatically impaired.",
       "q": "What is the maximum safe dose of lidocaine and bupivacaine?",
     },
     {
-      "a": "Bolus 1.5 mL/kg lean body weight over 1 minute (≈ 100 mL in a 70 kg adult), followed by an infusion of 15 mL/kg/h. If circulation is not restored after 5 minutes: repeat bolus up to twice (5-minute intervals) and double the infusion rate to 30 mL/kg/h. Maximum cumulative dose 12 mL/kg.",
+      "a": "Bolus 1.5 mL/kg over 2–3 minutes (≈ 100 mL in a 70 kg adult), followed by an infusion of 15 mL/kg/h. If circulation is not restored, give no more than two repeat boluses after 5 and 10 minutes; if instability persists or recurs after 5 minutes, double the infusion to 30 mL/kg/h. Maximum cumulative dose 12 mL/kg (840 mL at 70 kg).",
       "q": "What is the Intralipid 20% dose in LAST?",
     },
     {
@@ -2158,17 +2191,17 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the full FAQ co
       "q": "Which fluid should be used for paediatric maintenance?",
     },
     {
-      "a": "No. It is maintenance only. Deficit (fasting hours × maintenance rate), ongoing losses and blood loss are prescribed separately, though modern short fasting times and clear-fluid-until-1-hour regimens have made large calculated deficits largely obsolete.",
+      "a": "No. It is maintenance only. Assess any deficit from history, examination and measured losses. Prescribe replacement separately and avoid automatically multiplying fasting hours by the maintenance rate.",
       "q": "Does the 4-2-1 rule cover fasting and third-space losses?",
     },
   ],
   "/notes/rapid-sequence-induction-drug-doses": [
     {
-      "a": "Induction: thiopentone 3–7 mg/kg or propofol 1.5–2.5 mg/kg (ketamine 1–2 mg/kg in shock; etomidate 0.3 mg/kg historically). Neuromuscular blocker: suxamethonium 1.0–1.5 mg/kg, or rocuronium 1.0–1.2 mg/kg if sugammadex is immediately available for rescue.",
+      "a": "Induction: thiopentone 3–7 mg/kg or propofol 1.5–2.5 mg/kg (ketamine dosing must be adjusted to haemodynamic status; etomidate 0.3 mg/kg historically). Neuromuscular blocker: suxamethonium 1.0–1.5 mg/kg, or rocuronium 1.0–1.2 mg/kg. Sugammadex is a reversal option, not a substitute for front-of-neck access if intubation and oxygenation fail.",
       "q": "What are the standard adult RSI drugs?",
     },
     {
-      "a": "Sux contraindications: hyperkalaemia, major burns > 24 h old, prolonged immobility, denervation injury, neuromuscular disease (MG, myotonia), suspected MH, malignant pseudocholinesterase deficiency. Rocuronium 1.2 mg/kg gives comparable intubating conditions at 60 s with sugammadex 16 mg/kg as the rescue option for can't-intubate-can't-oxygenate.",
+      "a": "Rocuronium is an option when suxamethonium is unsuitable, including susceptibility to malignant hyperthermia or clinically important hyperkalaemia risk. If intubation fails, prioritise rescue oxygenation. Declared CICO requires immediate emergency front-of-neck airway. OAA/DAS supports gentle facemask ventilation when needed in obstetric RSI and early release of cricoid pressure if it impedes airway management.",
       "q": "When is rocuronium preferred over suxamethonium?",
     },
     {
@@ -2262,7 +2295,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the full FAQ co
       "q": "Why isn't clinical assessment enough?",
     },
     {
-      "a": "Neostigmine is effective from TOF count ≥ 2 (ideally ≥ 4) — i.e. only for shallow block. Give 50 µg/kg with glycopyrrolate 10 µg/kg. Allow 10 minutes for full effect and confirm TOF ratio ≥ 0.9 quantitatively before extubation. Deep block (TOF count 0–1) needs sugammadex 4 mg/kg (rocuronium/vecuronium) or further waiting.",
+      "a": "Use quantitative monitoring at the adductor pollicis. ESAIC recommends waiting for spontaneous recovery to a TOF ratio above 0.2 before starting neostigmine with an antimuscarinic. Two twitches indicate moderate block. For deeper rocuronium or vecuronium block, use sugammadex according to measured depth or allow further recovery. Continue monitoring until the TOF ratio exceeds 0.9 before extubation.",
       "q": "When can I rely on neostigmine?",
     },
     {
@@ -2696,7 +2729,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the full FAQ co
       "q": "How does pKa of a local anaesthetic relate to onset of action?",
     },
     {
-      "a": "RCoA/Association of Anaesthetists 2024 algorithm: STOP injection, call for help, ABC (100 % O₂, secure airway, IV access). Manage seizures (small dose benzodiazepine or propofol). Treat arrhythmias (avoid lidocaine, calcium, vasopressin; use small adrenaline 1 µg/kg). Give 20 % Intralipid: 1.5 mL/kg bolus, then 15 mL/kg/h infusion, repeat bolus up to 3×, max 12 mL/kg total. Continue CPR — long resuscitation often successful. Refer to ITU and report to NPSA / Lipid Rescue registry.",
+      "a": "Association QRH 3-10 v2: STOP injection, call for help, ABC (100 % O₂, secure airway, IV access). Manage seizures with a small dose of benzodiazepine; propofol is not recommended when there is cardiovascular instability. Treat arrhythmias (avoid lidocaine, calcium channel blockers and vasopressin; use small adrenaline ≤1 µg/kg). Give 20 % lipid emulsion 1.5 mL/kg over 2–3 min, then infuse 15 mL/kg/h. If instability persists, give no more than two repeat boluses after 5 and 10 min, if instability persists or recurs after 5 minutes, double the infusion to 30 mL/kg/h. Maximum total 12 mL/kg (840 mL at 70 kg). Continue CPR — prolonged resuscitation is often successful. Arrange monitored post-event care, assess for pancreatitis with clinical review and daily amylase or lipase, and report through the appropriate incident system.",
       "q": "Outline the management of local-anaesthetic systemic toxicity (LAST).",
     },
   ],
@@ -2804,7 +2837,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the full FAQ co
       "q": "How fast does rocuronium work?",
     },
     {
-      "a": "By sugammadex, a modified γ-cyclodextrin that encapsulates rocuronium 1:1 and removes it from plasma. Dosing depends on depth of block: 2 mg/kg at reappearance of T2 (routine reversal), 4 mg/kg at post-tetanic count 1–2 (deep block), 16 mg/kg for immediate reversal of a 1.2 mg/kg intubating dose (CICO rescue). Neostigmine 50 µg/kg with glycopyrrolate is an alternative but only when TOF count ≥2.",
+      "a": "Sugammadex dosing depends on the depth of rocuronium block. Use 2 mg/kg at reappearance of T2 or 4 mg/kg at a post-tetanic count of 1–2. For immediate reversal after rocuronium 1.2 mg/kg, the adult dose is 16 mg/kg. Failed oxygenation requires immediate emergency front-of-neck airway. For neostigmine, ESAIC recommends a quantitative TOF ratio above 0.2 before reversal and continued monitoring until the ratio exceeds 0.9.",
       "q": "How is rocuronium reversed?",
     },
     {
@@ -2924,11 +2957,11 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the full FAQ co
       "q": "What is a curare cleft on capnography?",
     },
     {
-      "a": "ETCO₂ reflects pulmonary blood flow during cardiac arrest, so it is a real-time index of chest-compression effectiveness and ROSC. RCUK/ERC guidance: aim for ETCO₂ > 1.3 kPa (10 mmHg) during good-quality CPR; a persistent ETCO₂ < 1.3 kPa after 20 minutes of advanced life support is associated with very low likelihood of survival. A sudden rise in ETCO₂ is one of the earliest signs of ROSC.",
+      "a": "During CPR, trend exhaled CO₂ to assess ventilation, pulmonary blood flow and compression quality. A rise may indicate return of spontaneous circulation. Continue compressions until other clinical or physiological findings justify a rhythm and pulse assessment. Use the full clinical picture when deciding whether to stop resuscitation. A low value alone cannot determine outcome.",
       "q": "Why is ETCO₂ used during CPR?",
     },
     {
-      "a": "ETCO₂ samples mixed alveolar gas, which is diluted by alveolar dead space (well-ventilated, poorly perfused units). In healthy lungs the PaCO₂–ETCO₂ gradient is ~0.5 kPa (4 mmHg). The gradient widens whenever alveolar dead space rises — pulmonary embolism (early sign), low cardiac output, COPD, ARDS, auto-PEEP and arrest (where ETCO₂ approaches zero despite a preserved PaCO₂).",
+      "a": "Alveolar dead space dilutes exhaled CO₂, so ETCO₂ is usually below PaCO₂. Pulmonary embolism, low cardiac output and severe lung disease can widen the gradient. A flat trace after intubation during effective CPR needs immediate exclusion of oesophageal placement and assessment of ventilation and equipment.",
       "q": "Why does ETCO₂ underestimate PaCO₂?",
     },
   ],
@@ -2938,7 +2971,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the full FAQ co
       "q": "What is the normal capnography waveform?",
     },
     {
-      "a": "Work through the trace in four steps. (1) Is there a waveform at all — sudden loss means oesophageal intubation, disconnection, complete obstruction or arrest. (2) Is the baseline at zero — a raised baseline is rebreathing. (3) Is the upstroke steep and the plateau flat — a sloping shark-fin is expiratory obstruction. (4) Is the plateau smooth — a downward notch is a curare cleft. Only after the shape is normal does the absolute ETCO₂ number become useful.",
+      "a": "First check for sustained exhaled CO₂. Following intubation, an absent or fading trace demands immediate exclusion of oesophageal placement, including during CPR. Then inspect the baseline for rebreathing, the upstroke and plateau for expiratory obstruction and the plateau for spontaneous effort.",
       "q": "How do you read a capnography waveform?",
     },
     {
@@ -2958,7 +2991,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the full FAQ co
       "q": "What is a normal ETCO₂ range?",
     },
     {
-      "a": "A complete loss of the capnograph waveform across all phases means no expired CO₂ is reaching the sensor. The differential is short: oesophageal intubation, accidental extubation, complete circuit disconnection, total airway obstruction, or cardiac arrest with no cardiac output. Treat as life-threatening — look at the patient and the airway, confirm tube position, check every connection from patient to machine, and palpate a central pulse.",
+      "a": "A complete loss of the capnograph waveform across all phases means no expired CO₂ is reaching the sensor. The differential is short: oesophageal intubation, accidental extubation, complete circuit disconnection, total airway obstruction, or cardiac arrest with no cardiac output. Treat as life-threatening. If the tube has just been placed, actively exclude oesophageal placement even in arrest: sustained exhaled CO₂ is the primary confirmation, and a flat trace is presumed oesophageal until proven otherwise. PUMA's default is to remove the tube and reoxygenate by mask or supraglottic airway unless removal is judged more dangerous; if removal is hazardous, obtain urgent valid independent confirmation. Check every connection from patient to machine and palpate a central pulse.",
       "q": "Why does ETCO₂ suddenly fall to zero?",
     },
     {
@@ -2976,7 +3009,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the full FAQ co
       "q": "What is the difference between a static and dynamic response of a measurement system?",
     },
     {
-      "a": "Zeroing — setting the output to 0 when input is at a reference value (e.g. arterial line transducer open to atmosphere at the phlebostatic axis). Calibration — applying a known input and adjusting gain so output matches (modern transducers are factory-calibrated and need only zeroing). Recalibrate after any disconnect or after large shifts in transducer height.",
+      "a": "Zero to atmospheric pressure and level the transducer to the chosen anatomical reference. Re-level after a change in patient or transducer height. Calibration compares readings with a known pressure standard. Most disposable transducers are factory calibrated.",
       "q": "What does it mean to 'zero' and 'calibrate' a transducer?",
     },
   ],
@@ -2996,7 +3029,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the full FAQ co
   ],
   "/physics/depth-of-anaesthesia": [
     {
-      "a": "BIS 40–60 corresponds to surgical anaesthesia. B-Aware and B-Unaware trials showed BIS-guided anaesthesia reduces awareness in high-risk patients (TIVA, paralysed, low-MAC techniques). NICE DG6 recommends DoA monitoring for TIVA and for any case where end-tidal volatile monitoring is unreliable. BIS values are derived from EEG but are not a direct EEG; they lag by 15–30 s.",
+      "a": "BIS 40–60 corresponds to surgical anaesthesia. B-Aware and B-Unaware trials showed BIS-guided anaesthesia reduces awareness in high-risk patients (TIVA, paralysed, low-MAC techniques). NICE DG6 recommends depth-of-anaesthesia monitoring for TIVA with neuromuscular blockade and for patients at higher risk of awareness; the Association of Anaesthetists 2021 states the same TIVA-plus-NMB recommendation and suggests considering pEEG more broadly. BIS values are derived from EEG but are not a direct EEG; they lag by 15–30 s.",
       "q": "What is the target BIS range for general anaesthesia and what is its evidence base?",
     },
     {
@@ -3266,11 +3299,11 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the full FAQ co
       "q": "Compare thermistors and thermocouples for clinical use.",
     },
     {
-      "a": "Pulmonary artery (gold standard — true core). Distal oesophagus (within 0.5 °C of PA; influenced by airway gas), nasopharynx (close to hypothalamus), tympanic membrane (good for brain temperature). Bladder and rectum lag behind. Skin and axilla underestimate core by 1–2 °C and are unreliable intra-operatively.",
+      "a": "Pulmonary artery blood temperature is a central reference. NICE accepts distal oesophageal or bladder measurement and validated direct estimates such as zero-heat-flux thermometry. Bladder and rectal readings may lag rapid changes. Axillary and sublingual estimates can be inaccurate outside normothermia. Handheld infrared ear thermometers are unsuitable for perioperative core-temperature decisions in adults.",
       "q": "Where are core temperature measurements taken and which is the gold standard?",
     },
     {
-      "a": "Triples wound infection, increases blood loss and transfusion requirements (impaired coagulation and platelet function), prolongs drug action (especially NMBAs and volatiles), causes shivering with ↑VO₂ up to 400 %, prolongs recovery and ICU stay, and increases cardiac events. NICE CG65 mandates active warming for any operation >30 min.",
+      "a": "Perioperative hypothermia impairs haemostasis and can prolong drug effects and recovery. In one colorectal surgery trial, wound infection developed in 18 of 96 patients receiving routine thermal care and 6 of 104 receiving extra warming. NICE recommends forced-air warming from induction for anaesthesia exceeding 30 minutes and for shorter cases in higher-risk adults.",
       "q": "What are the consequences of perioperative hypothermia (<36 °C)?",
     },
   ],
@@ -3348,7 +3381,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the full FAQ co
       "q": "What are the three principles of radiation protection?",
     },
     {
-      "a": "IRR 2017 (UK): whole-body effective dose 20 mSv/year (averaged over 5 years, max 50 mSv in any single year). Equivalent dose limits: lens 20 mSv/year, skin/extremities 500 mSv/year. Pregnant staff — fetal dose ≤1 mSv over the declared pregnancy. Wear film/TLD badges and review records with the RPS.",
+      "a": "IRR 2017 (UK): whole-body effective dose 20 mSv in any calendar year for adult workers; special arrangements under regulation 12(2)/Schedule 3 Part 2 are separate. Equivalent dose limits: lens 20 mSv/year, skin/extremities 500 mSv/year. Pregnant staff — fetal dose ≤1 mSv over the declared pregnancy. Wear film/TLD badges and review records with the RPS.",
       "q": "What is the annual dose limit for occupationally exposed staff?",
     },
     {
@@ -3404,7 +3437,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the full FAQ co
       "q": "Describe the hypothalamic–pituitary–adrenal axis response to surgical stress.",
     },
     {
-      "a": "Patients on >5 mg prednisolone/day for >3 weeks are at risk of HPA suppression. Replacement scaled to surgical stress: minor — usual dose + 25 mg hydrocortisone at induction. Moderate — 25 mg at induction + 100 mg/day for 24 h. Major — 100 mg at induction + 200 mg/day for 48–72 h, then taper. Avoid abrupt withdrawal — addisonian crisis is life-threatening.",
+      "a": "The 2020 UK guideline identifies adults taking at least 5 mg prednisolone daily or equivalent for a month or more as potentially at risk of adrenal suppression. For major or intermediate surgery in adults receiving adrenosuppressive treatment, its corrected Table 2 uses hydrocortisone 100 mg IV at induction followed immediately by 200 mg over 24 hours by infusion. After major surgery continue IV cover while nil by mouth. When oral therapy resumes, use double the usual oral dose for 48 hours after uncomplicated surgery, then resume baseline. Established adrenal insufficiency has a separate pathway.",
       "q": "What is the perioperative steroid replacement regimen for adrenal suppression?",
     },
     {
@@ -3414,7 +3447,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the full FAQ co
   ],
   "/physiology/foetal-circulation": [
     {
-      "a": "Ductus venosus — bypasses liver from umbilical vein to IVC; becomes ligamentum venosum. Foramen ovale — bypasses pulmonary circulation, RA → LA; becomes fossa ovalis (patent in 25 % of adults). Ductus arteriosus — bypasses lungs, pulmonary artery → aorta; becomes ligamentum arteriosum. All three shunt blood away from the non-functioning fetal lungs toward systemic circulation.",
+      "a": "Ductus venosus — bypasses part of the liver from umbilical vein to IVC; becomes ligamentum venosum. Foramen ovale — bypasses pulmonary circulation, RA → LA; becomes fossa ovalis (patent in 25 % of adults). Ductus arteriosus — bypasses lungs, pulmonary artery → aorta; becomes ligamentum arteriosum. The ductus venosus shunts umbilical venous blood past part of the liver into the IVC; the foramen ovale and ductus arteriosus divert blood away from fetal pulmonary circulation.",
       "q": "Describe the three fetal shunts and what they become postnatally.",
     },
     {
@@ -3428,7 +3461,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the full FAQ co
   ],
   "/physiology/gi-physiology": [
     {
-      "a": "Clear fluids — 2 h. Breast milk — 4 h. Infant formula and light meal (toast) — 6 h. Fatty meal — 8 h. Recent ESAIC and APAGBI guidance encourages clear-fluid intake up to 1 h pre-op in children and adults (1-2-6 rule), reducing dehydration and improving comfort without increasing aspiration risk.",
+      "a": "For healthy patients having elective procedures, the ASA framework uses 2 hours for clear liquids, 4 hours for breast milk, 6 hours for infant formula or a light meal, and 8 hours or longer for fatty meals. ESAIC paediatric guidance uses 1 hour for clear fluids and 3 hours for breast milk in suitable children. The 2026 international adult consensus encourages clear liquids until 2 hours before anaesthesia and allows shorter intervals under an agreed local protocol. Select the relevant age group and local pathway and assess individual aspiration risk.",
       "q": "What are the current ASA fasting guidelines?",
     },
     {
@@ -3540,15 +3573,15 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the full FAQ co
   ],
   "/physiology/starling-forces": [
     {
-      "a": "Jv = Kf × [(Pc − Pi) − σ(πp − πg)], where Jv = net filtration; Kf = filtration coefficient; Pc/Pi = capillary/interstitial hydrostatic pressure; πp/πg = plasma/subglycocalyx oncotic pressure; σ = reflection coefficient (1 = impermeable to protein, 0 = freely permeable). The endothelial glycocalyx is the true semi-permeable barrier — not the endothelial cell membrane (revised Starling principle, Levick & Michel 2010).",
+      "a": "Jv = Kf × [(Pc − Pi) − σ(πp − πg)], where Jv = net filtration; Kf = filtration coefficient; Pc/Pi = capillary/interstitial hydrostatic pressure; πp/πg = plasma/subglycocalyx oncotic pressure; σ = reflection coefficient (1 = impermeable to protein, 0 = freely permeable). The glycocalyx is an important macromolecular sieve acting with endothelial and intercellular pathways, not excluding junctions. Subglycocalyx oncotic pressure depends on flow and is not universally zero.",
       "q": "State the Starling equation in its modern form.",
     },
     {
-      "a": "Gel-like layer of proteoglycans and glycoproteins on the luminal endothelial surface, ~0.5–1 µm thick. Excludes plasma proteins from contact with the endothelial barrier, generates the effective oncotic gradient, regulates leucocyte adhesion and coagulation. Damaged by sepsis, hyperglycaemia, ischaemia–reperfusion, atrial natriuretic peptide (released by fluid loading). Glycocalyx loss → capillary leak — explains why fluid overload worsens oedema.",
+      "a": "Gel-like layer of proteoglycans and glycoproteins on the luminal endothelial surface, ~0.5–1 µm thick. Excludes plasma proteins from contact with the endothelial barrier, generates the effective oncotic gradient, regulates leucocyte adhesion and coagulation. Injury can impair barrier function. ANP-associated shedding has experimental support in guinea-pig hearts and small human volume-loading associations; this does not prove direct cleavage or clinical oedema after every bolus.",
       "q": "What is the endothelial glycocalyx and why is it clinically important?",
     },
     {
-      "a": "Compensatory mechanisms: increased lymphatic drainage, dilution of interstitial protein (reducing πi), and the glycocalyx-protected subglycocalyx space maintains a large oncotic gradient even at low plasma albumin. Oedema only becomes clinically apparent when these are overwhelmed (albumin typically <20 g/L plus increased capillary pressure or permeability).",
+      "a": "Compensatory mechanisms: increased lymphatic drainage, dilution of interstitial protein (reducing πi), while flow-dependent subglycocalyx protein concentration modifies the effective oncotic gradient. Oedema depends on filtration, lymphatic capacity and tissue context; there is no universal albumin threshold.",
       "q": "Why does hypoalbuminaemia cause oedema less than predicted by classical Starling?",
     },
   ],
@@ -3631,6 +3664,9 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the pinned set 
   "/intensive-care/ecmo",
   "/intensive-care/end-of-life-communication",
   "/intensive-care/haematology-icu",
+  "/intensive-care/haemorrhagic-shock",
+  "/intensive-care/icu-anaphylaxis",
+  "/intensive-care/icu-eclampsia",
   "/intensive-care/icu-endocrine-emergencies",
   "/intensive-care/icu-nutrition",
   "/intensive-care/icu-sedation-delirium",
@@ -3773,7 +3809,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the synthesised
         "@type": "Question",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "The spleen lies under the 9th–11th left ribs in the left hypochondrium, behind the mid-axillary line. Left lower rib fractures (especially 9–11) are the commonest mechanism of blunt splenic injury — a high-energy mechanism with left flank tenderness mandates contrast CT to exclude haemorrhage from this highly vascular organ (~5% of cardiac output).",
+          "text": "The spleen lies under the 9th–11th left ribs in the left hypochondrium, behind the mid-axillary line. Left lower rib fractures are a marker of associated splenic injury and should raise suspicion, not a universal most-common causal mechanism. Assess mechanism, examination and haemodynamics. In stable or resuscitation-responsive major trauma with suspected injury, contrast CT is appropriate. Nonresponding haemodynamically unstable patients need only the minimum imaging necessary to direct urgent haemorrhage control; mandatory CT must not delay it.",
         },
         "name": "Why is the spleen at risk from left-sided rib fractures?",
       },
@@ -3803,7 +3839,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the synthesised
         "@type": "Question",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "~100% incidence of ipsilateral phrenic nerve palsy (avoid in severe respiratory disease), recurrent laryngeal nerve block (hoarseness), Horner's syndrome (cervical sympathetic involvement), and rare but catastrophic intra-arterial (vertebral artery) injection causing immediate seizures. Pneumothorax risk is low compared with supraclavicular block.",
+          "text": "Substantial ipsilateral hemidiaphragmatic paresis risk, approaching 100% with traditional/high-volume approaches but varying with technique and volume; low-volume approaches do not eliminate risk. Assess respiratory reserve and appropriate monitoring, especially with limited pulmonary reserve or bilateral blocks. Other risks include, recurrent laryngeal nerve block (hoarseness), Horner's syndrome (cervical sympathetic involvement), and rare but catastrophic intra-arterial (vertebral artery) injection causing immediate seizures. Pneumothorax risk is low compared with supraclavicular block.",
         },
         "name": "What is the risk profile of an interscalene block?",
       },
@@ -3817,9 +3853,9 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the synthesised
         "@type": "Question",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "In ~85% of patients (right-dominant circulation) the RCA gives the SA nodal artery and the AV nodal artery before becoming the posterior descending artery. This is why inferior MIs from RCA occlusion frequently cause bradycardia, AV block and right-ventricular involvement — and why right-sided ECG leads (V4R) should be recorded.",
+          "text": "Coronary dominance is defined by posterior descending artery origin, not SA nodal artery origin. SA nodal supply varies: most often RCA, with LCx and other origins. AV nodal origin usually follows dominance. RCA occlusion can cause bradyarrhythmia depending on individual anatomy; dominance does not establish both nodal origins.",
         },
-        "name": "Why does the right coronary artery supply the SA and AV nodes in most people?",
+        "name": "How does coronary dominance differ from nodal artery supply?",
       },
       {
         "@type": "Question",
@@ -3885,7 +3921,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the synthesised
         "@type": "Question",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "It covers the anterior thigh (skin and quadriceps), medial leg (saphenous nerve below the knee) and periosteum of the femur — sufficient for analgesia after femoral neck or shaft fracture and for knee surgery in combination with a sciatic block. It misses the posterior thigh (sciatic), hip joint (obturator + sciatic + femoral all contribute), and lateral thigh (lateral cutaneous nerve of thigh).",
+          "text": "It covers the anterior thigh (skin and quadriceps), medial leg (saphenous nerve below the knee) and periosteum of the femur — sufficient for analgesia after femoral neck or shaft fracture and for knee surgery in combination with a sciatic block. It misses the posterior-thigh skin (principally posterior femoral cutaneous nerve, S1–S3; distinct from sciatic motor supply to posterior-thigh muscles), hip joint (obturator + sciatic + femoral all contribute), and lateral thigh (lateral cutaneous nerve of thigh).",
         },
         "name": "What does a femoral nerve block cover, and what does it miss?",
       },
@@ -3893,7 +3929,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the synthesised
         "@type": "Question",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "The sciatic typically divides into tibial and common peroneal branches in the popliteal fossa, ~7 cm proximal to the popliteal crease. Ultrasound-guided popliteal block targets the nerve just proximal to the bifurcation so one injection captures both branches — block below the bifurcation may spare one division and leave the lateral foot (peroneal) or sole (tibial) unblocked.",
+          "text": "The sciatic typically divides into tibial and common peroneal branches in the popliteal fossa, ~7 cm proximal to the popliteal crease. Ultrasound-guided popliteal block targets the nerve just proximal to the bifurcation so one injection captures both branches — block below the bifurcation may spare one division and leave one division unblocked. The lateral border of the foot is sural territory, with variable tibial/common fibular contributions; most dorsum is superficial fibular/peroneal and the first web space deep fibular. An isolated peroneal block cannot be assumed to cover the lateral border.",
         },
         "name": "Where does the sciatic nerve divide and why does that matter for popliteal block?",
       },
@@ -3937,7 +3973,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the synthesised
         "@type": "Question",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "The conus medullaris ends at L1/L2 in adults (most commonly the lower border of L1). In neonates it extends to L3 and ascends with growth. Lumbar puncture and spinal anaesthesia are therefore performed at L3/4 or L4/5 — Tuffier's line (intercristal line) traditionally identifies L4 — to avoid cord injury.",
+          "text": "The conus medullaris ends at L1/L2 in adults (most commonly the lower border of L1). In neonates it extends to L3 and ascends with growth. Lumbar puncture and spinal anaesthesia are therefore performed at L3/4 or L4/5 — Tuffier's line (intercristal line) traditionally identifies L4 — as an initial estimate, not a guarantee: the traditional intercristal level is L4 or L4/5, and palpated levels can be more cephalad. Confirm anatomy with appropriate ultrasound when uncertain.",
         },
         "name": "At what vertebral level does the adult spinal cord end?",
       },
@@ -3997,7 +4033,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the synthesised
         "@type": "Question",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "At the volar wrist between the tendon of flexor carpi radialis and the distal radius, where it lies most superficially with the bony radius supporting it for compression. Always confirm collateral palmar arch flow (modified Allen's test or Doppler of the ulnar artery) before cannulation.",
+          "text": "At the volar wrist between the tendon of flexor carpi radialis and the distal radius, where it lies most superficially with the bony radius supporting it for compression. Assess vascular history, hand perfusion and local vascular-access guidance. A normal modified Allen test does not guarantee freedom from ischaemia and has limited predictive performance. ESA 2020 conditionally suggests duplex/colour-Doppler collateral assessment with low-certainty evidence (2C); manual Allen testing is not universally mandatory or sufficient. Abnormal perfusion or vascular disease still requires assessment.",
         },
         "name": "Where is the radial artery best palpated for arterial line insertion and why?",
       },
@@ -4125,7 +4161,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the synthesised
         "@type": "Question",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "A galvanic (fuel) cell consumes O₂ at a lead anode (Pb + 2OH⁻ → PbO + H₂O + 2e⁻), generating a current proportional to O₂ partial pressure at the gold cathode (O₂ + 2H₂O + 4e⁻ → 4OH⁻). It is self-powered, accurate to ±3%, and lasts typically 1–2 years because the anode is consumed.",
+          "text": "In a lead/gold galvanic (fuel) oxygen cell, oxygen is reduced at the gold cathode (O₂ + 2H₂O + 4e⁻ → 4OH⁻), while lead is oxidised at the anode (Pb + 2OH⁻ → PbO + H₂O + 2e⁻). The resulting current is proportional to O₂ partial pressure. It is self-powered, accurate to ±3%, and lasts typically 1–2 years because the anode is consumed.",
         },
         "name": "How does a fuel cell oxygen analyser work?",
       },
@@ -4263,7 +4299,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the synthesised
         "@type": "Question",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Use ideal body weight (IBW) for propofol induction and remifentanil; lean body weight (LBW) for propofol maintenance and rocuronium; ideal body weight (IBW) for suxamethonium at 1–1.5 mg/kg; total body weight (TBW) for paracetamol (max 4 g/day), antibiotics and sugammadex; and adjusted body weight for aminoglycosides.",
+          "text": "Use lean body weight as a starting point for propofol induction, fentanyl and non-depolarising blockers such as rocuronium. Titrate anaesthesia and monitor neuromuscular block quantitatively. Use total body weight for suxamethonium. Dose sugammadex by actual body weight and measured depth of block. Propofol infusions and target-controlled models require model-specific dosing. Antimicrobial and paracetamol doses depend on the individual product and applicable maximum.",
         },
         "name": "How are induction and maintenance drug doses calculated in obesity?",
       },
@@ -4427,7 +4463,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the synthesised
         "@type": "Question",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Cardiac arrest in the first 24–72 hours after cardiac surgery is managed with modified Cardiac Advanced Life Support (CALS), not standard ALS, because the arrest is witnessed, monitored, and usually has a surgically reversible cause. Key modifications: (1) deliver up to three stacked DC shocks (200 J biphasic) BEFORE starting chest compressions for VF/pVT — first-shock success is high and compressions may disrupt grafts; (2) withhold or minimise bolus adrenaline initially because it can cause catastrophic rebound hypertension after recent anastomoses — use pacing for asystole/PEA; (3) prepare for emergency re-sternotomy within 5 minutes (10-minute window from arrest) if no return of spontaneous circulation — internal cardiac massage is more effective and excludes tamponade or graft occlusion; (4) use epicardial pacing wires if available; (5) escalate to VA-ECMO or IABP early if ROSC is not achieved.",
+          "text": "In a monitored cardiac surgical unit, confirm arrest by clinical signs and the pulseless pressure waveform, call for help and prepare for resternotomy. In PEA, start chest compressions immediately. In witnessed VF/pVT give up to three consecutive shocks if immediately available. In asystole or extreme bradycardia, briefly pause epicardial pacing to identify the underlying rhythm, then try maximum-output pacing when appropriate. If shocks or pacing are unavailable or fail, start compressions promptly, within the first minute. RCUK recommends 50–100 micrograms IV if adrenaline is used. In persistent arrest up to ten days after surgery, perform resternotomy within five minutes and start internal cardiac massage after reopening.",
         },
         "name": "How is cardiac arrest managed differently after cardiac surgery?",
       },
@@ -5651,7 +5687,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the synthesised
         "@type": "Question",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Maximum safe doses: lidocaine 3 mg/kg plain (7 mg/kg with adrenaline); bupivacaine and levobupivacaine 2 mg/kg; ropivacaine 3 mg/kg. Always calculate by lean body weight. LAST presents with peri-oral tingling, agitation, seizures, then cardiovascular collapse. Management: stop injection, ABC, 20% Intralipid 1.5 ml/kg bolus then 0.25 ml/kg/min infusion (repeat bolus up to twice at 5-minute intervals, maximum cumulative 12 ml/kg — AAGBI LAST guideline). Treat arrhythmias without lidocaine; ASRA also advises avoiding vasopressin, calcium-channel and β-blockers and reducing adrenaline boluses to <1 µg/kg. Prolonged CPR may be needed.",
+          "text": "Calculate the total milligrams from all injections. Use the named product, route and procedure instructions, with reductions for relevant patient factors. If severe LAST develops, stop injecting, call for help, oxygenate and manage seizures. Association QRH 3-10 uses 20% lipid emulsion: 1.5 mL/kg over 2–3 minutes, then 15 mL/kg/h. If cardiovascular instability persists or recurs, repeat the bolus at 5 and 10 minutes (up to two repeats) and double the infusion after 5 minutes if indicated. Keep the total at or below 12 mL/kg.",
         },
         "name": "How are local anaesthetics dosed safely to avoid toxicity (LAST)?",
       },
@@ -5783,7 +5819,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the synthesised
         "@type": "Question",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Processed EEG monitoring (BIS, Entropy, or spectrogram) is essential during TIVA because there is no end-tidal volatile agent concentration to confirm drug delivery. NAP5 (the 5th National Audit Project of the Royal College of Anaesthetists) found that awareness with recall was approximately 5 times more common with TIVA than with volatile-based anaesthesia (1:8,000 vs 1:135,000). The highest-risk group was TIVA combined with neuromuscular blockade. Target BIS 40–60 or Entropy 40–60 for surgical anaesthesia. BIS values <20 indicate burst suppression and excessive depth; values >60 indicate inadequate hypnosis and increased awareness risk. In elderly patients, BIS monitoring is even more critical because pharmacokinetic models may over-predict drug concentrations, leading to excessive depth.",
+          "text": "Processed EEG monitoring (BIS, Entropy, or spectrogram) is essential during TIVA because there is no end-tidal volatile agent concentration to confirm drug delivery. NAP5 (the 5th National Audit Project of the Royal College of Anaesthetists) estimated awareness at about 1:19,000 overall; the incidence was about 1:8,200 when neuromuscular blockade was used versus about 1:135,900 without it. Those denominators describe blockade, not a like-for-like TIVA-versus-volatile comparison; NAP5 did identify TIVA combined with neuromuscular blockade as a high-risk combination. Target BIS 40–60 or Entropy 40–60 for surgical anaesthesia. BIS values <20 indicate burst suppression and excessive depth; values >60 indicate inadequate hypnosis and increased awareness risk. In elderly patients, BIS monitoring is even more critical because pharmacokinetic models may over-predict drug concentrations, leading to excessive depth.",
         },
         "name": "What is the role of processed EEG monitoring during TIVA?",
       },
@@ -5827,7 +5863,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the synthesised
         "@type": "Question",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "RSI in trauma follows the same core principles as standard RSI — pre-oxygenation, rapid induction, cricoid pressure (controversial), and intubation without bag-mask ventilation — but with critical modifications for the injured patient: (1) resuscitate before you intubate where possible; (2) choose ketamine 0.5–2 mg/kg as the induction agent because it preserves sympathetic tone and cardiac output; (3) avoid propofol or thiopentone in hypovolaemic patients as they cause catastrophic vasodilation; (4) use rocuronium 1.2 mg/kg for rapid paralysis with sugammadex rescue available; (5) maintain manual in-line stabilisation with the collar front removed; (6) have vasopressors drawn up before laryngoscopy because intubation can precipitate arrest in the shocked patient.",
+          "text": "Preoxygenate, prepare suction and rescue airway equipment, and resuscitate haemorrhagic shock alongside airway management. Choose the induction agent and dose for the patient’s physiology, with blood and vasopressor support available. Ketamine can still cause hypotension. Maintain oxygenation, including gentle low-pressure facemask ventilation when required. If intubation fails, progress through the DAS rescue oxygenation plans. Once CICO is declared, proceed immediately to emergency front-of-neck airway.",
         },
         "name": "What is rapid sequence induction (RSI) in trauma?",
       },
@@ -5835,7 +5871,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the synthesised
         "@type": "Question",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Damage control resuscitation (DCR) is a strategy for severe trauma that targets the 'lethal triad' of hypothermia, acidosis and coagulopathy. Its four pillars are: (1) permissive hypotension — allowing SBP 80–90 mmHg in bleeding trauma without TBI until surgical haemorrhage control, to reduce clot disruption; (2) haemostatic resuscitation — using 1:1:1 ratios of PRBC:FFP:platelets rather than crystalloid; (3) tranexamic acid 1 g IV within 3 hours of injury (CRASH-2); and (4) limiting crystalloid to prevent dilutional coagulopathy. Active warming and early surgical control of bleeding are simultaneous priorities.",
+          "text": "Control bleeding promptly, prevent heat loss, limit crystalloid and give tranexamic acid when indicated. In actively bleeding adults, start the local major haemorrhage protocol with plasma and red cells at 1:1, then use laboratory results and the local viscoelastic algorithm to guide further components. Until bleeding is controlled, the European guideline recommends SBP 80–90 mmHg if there is no clinical evidence of brain injury.",
         },
         "name": "What is damage control resuscitation?",
       },
@@ -5843,7 +5879,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the synthesised
         "@type": "Question",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Activate the MTP when any of the following are met: anticipated need for ≥10 units PRBC in 24 hours, >4 units PRBC in 1 hour, haemodynamic instability despite initial fluid resuscitation, ongoing uncontrolled surgical bleeding, or a base deficit >6 mmol/L with tachycardia suggesting significant occult haemorrhage. The protocol delivers pre-thawed blood products in fixed 1:1:1 ratios (PRBC:FFP:platelets) via a rapid infuser, with point-of-care viscoelastic testing (TEG/ROTEM) to guide individual component therapy once available.",
+          "text": "Activate the local major haemorrhage protocol promptly for suspected major bleeding, using haemodynamic status, response to resuscitation and expected ongoing blood loss. NICE NG39 starts plasma and red cells at 1:1 in adults with active bleeding. Give platelets under the local protocol and move to laboratory-guided replacement as early as possible.",
         },
         "name": "When should a massive transfusion protocol (MTP) be activated?",
       },
@@ -5859,7 +5895,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the synthesised
         "@type": "Question",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Permissive hypotension is the deliberate restriction of fluid resuscitation to maintain SBP 80–90 mmHg (or mean arterial pressure ~50–60 mmHg) in a bleeding trauma patient before definitive surgical haemorrhage control. The rationale is that restoring normal blood pressure in uncontrolled bleeding disrupts fragile clots and worsens haemorrhage. It is ABSOLUTELY CONTRAINDICATED in traumatic brain injury (TBI), where the injured brain has lost autoregulation and relies on adequate perfusion pressure — target SBP >110 mmHg or MAP ≥80 mmHg in TBI to maintain cerebral perfusion pressure and prevent secondary brain injury.",
+          "text": "Restrict volume replacement until bleeding is controlled. Without clinical evidence of brain injury, the European trauma guideline recommends an initial SBP of 80–90 mmHg. If haemorrhagic shock and TBI coexist, NICE NG39 recommends continuing a restrictive approach when haemorrhage dominates and a less restrictive approach to preserve cerebral perfusion when brain injury dominates. The European MAP target of at least 80 mmHg applies to severe TBI (GCS ≤8).",
         },
         "name": "What is permissive hypotension and when is it contraindicated?",
       },
@@ -5867,7 +5903,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the synthesised
         "@type": "Question",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Give TXA 1 g IV over 10 minutes as early as possible, and always within 3 hours of injury — the CRASH-2 mortality benefit is strongly time-dependent, and treatment started beyond 3 hours confers no benefit and may cause harm. The CRASH-2 regimen adds a second 1 g by infusion over 8 hours; neither CRASH-2 nor CRASH-3 tested the loading dose separately from the infusion, so give the full regimen unless your local major haemorrhage protocol specifies otherwise. CRASH-3 (isolated head injury) showed no significant overall reduction in head-injury death; benefit was confined to mild-to-moderate injury treated early. Follow your local major haemorrhage protocol. TXA inhibits fibrinolysis by blocking plasminogen activation and should be given to all trauma patients with significant bleeding or at risk of it, unless clearly contraindicated.",
+          "text": "For adult major trauma with active or suspected active bleeding, give TXA promptly, normally within 3 hours of injury: 1 g IV over 10 minutes then 1 g over 8 hours. NICE NG39 allows use after 3 hours only with evidence of hyperfibrinolysis. For head injury with GCS ≤12 and no suspected active extracranial bleeding, NICE NG232 advises considering a 2 g IV bolus in people aged 16 or over within 2 hours of injury, before imaging. CRASH-3 did not establish an overall reduction in head-injury death among patients treated within 3 hours (RR 0.94, 95% CI 0.86–1.02); the estimate favoured TXA in mild-to-moderate injury.",
         },
         "name": "When should tranexamic acid (TXA) be given in trauma?",
       },
@@ -5875,7 +5911,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the synthesised
         "@type": "Question",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "TBI management follows the mantra 'avoid the secondary insults': (1) prevent hypoxia — target SpO₂ >94% with early definitive airway if GCS ≤8 or risk of aspiration; (2) prevent hypotension — maintain SBP >110 mmHg or MAP ≥80 mmHg at all times; (3) prevent hypercapnia and hypocapnia — target PaCO₂ 4.5–5.0 kPa (mild hypocapnia 4.0–4.5 kPa only if herniation suspected); (4) head-up 15–30° to reduce ICP; (5) osmotherapy with mannitol 0.25–1 g/kg or hypertonic saline 3% 250 mL for signs of raised ICP; (6) urgent CT imaging and neurosurgical consultation; (7) avoid hyperglycaemia and hyponatraemia; (8) seizure prophylaxis if indicated. Permissive hypotension is contraindicated in TBI.",
+          "text": "TBI management follows the mantra 'avoid the secondary insults': (1) prevent hypoxia — target SpO₂ >94% with early definitive airway if GCS ≤8 or risk of aspiration; (2) avoid hypotension and set a target appropriate to the severity of brain injury and the presence of haemorrhagic shock; (3) prevent hypercapnia and hypocapnia — initially target PaCO₂ 35–45 mmHg (4.7–6.0 kPa) when intracranial pressure is not elevated. Temporary controlled hyperventilation may bridge impending herniation to definitive treatment; (4) head-up 15–30° to reduce ICP; (5) if intracranial hypertension or herniation is suspected, use hyperosmolar therapy under the neurotrauma protocol, accounting for haemodynamics, sodium and renal function; (6) urgent CT imaging and neurosurgical consultation; (7) avoid hyperglycaemia and hyponatraemia; (8) seizure prophylaxis if indicated. In severe TBI, Brain Trauma Foundation systolic thresholds depend on age. In combined TBI and haemorrhagic shock, NICE NG39 bases fluid restriction on the dominant condition.",
         },
         "name": "How do you manage a traumatic brain injury (TBI) patient?",
       },
@@ -5891,7 +5927,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the synthesised
         "@type": "Question",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Ketamine is the agent of choice in haemodynamically unstable trauma patients. At doses of 0.5–2 mg/kg IV, it preserves sympathetic tone, maintains cardiac output and blood pressure, provides analgesia, and is a bronchodilator — all valuable in the shocked polytrauma patient. Etomidate 0.3 mg/kg is an acceptable alternative and is often preferred in TBI because it reduces cerebral metabolic rate and ICP, though it can cause adrenal suppression. Propofol and thiopentone should be AVOIDED in hypovolaemic trauma patients because they cause profound vasodilation and myocardial depression, potentially causing cardiovascular collapse on induction.",
+          "text": "Ketamine or etomidate can be used for emergency induction. Adjust the dose to consciousness, shock severity and preceding resuscitation. Both can be followed by cardiovascular collapse. Treat haemorrhage and prepare haemodynamic support before induction where time permits.",
         },
         "name": "How do you choose an induction agent for a haemodynamically unstable trauma patient?",
       },
@@ -5899,7 +5935,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the synthesised
         "@type": "Question",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Thromboelastography (TEG) and rotational thromboelastometry (ROTEM) are point-of-care viscoelastic coagulation tests that assess clot formation, stability and lysis in real time. In massive transfusion they enable goal-directed therapy: a flat r-time / CT suggests give FFP; low alpha-angle / low fibrinogen amplitude suggests give cryoprecipitate or fibrinogen concentrate; low maximum amplitude suggests give platelets; rapid lysis suggests give TXA. Using TEG/ROTEM reduces unnecessary blood product administration, identifies fibrinolysis, and allows individualised component therapy rather than blind fixed-ratio resuscitation alone.",
+          "text": "Viscoelastic testing can guide haemostatic treatment during major bleeding within a locally validated algorithm. TEG reports reaction time (R) and ROTEM reports clotting time (CT). Consider anticoagulant effects and factor deficiency if initiation is delayed. Interpret clot strength alongside fibrin-specific tests, platelet count, conventional laboratory results and the clinical bleeding. A single prolonged clotting time cannot determine a plasma prescription.",
         },
         "name": "What is the role of TEG/ROTEM in massive transfusion?",
       },
@@ -5915,7 +5951,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the synthesised
         "@type": "Question",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Blood and blood products, not crystalloid. NICE NG39 recommends blood products in a 1:1 plasma:red cell ratio for active bleeding and advises against crystalloid in hospital — large crystalloid volumes cause haemodilution, dilutional coagulopathy, hypothermia and acidosis, and worsen outcomes. Pre-hospital, if blood is unavailable, 250 mL crystalloid boluses titrated to a radial pulse may be used. Resuscitation targets are permissive hypotension (a palpable radial pulse or SBP ~80–90 mmHg) until haemorrhage is controlled, except in traumatic brain injury where cerebral perfusion must be maintained (Brain Trauma Foundation: SBP ≥100–110 mmHg depending on age). Once bleeding is controlled, restore normal perfusion.",
+          "text": "During active bleeding in hospital, NICE NG39 recommends blood components and advises against crystalloids. Use one plasma unit per red-cell unit initially in adults. Pre-hospital, when blood components are unavailable, titrate crystalloid to a palpable central pulse. If TBI coexists, balance restriction for bleeding against the need to maintain cerebral perfusion according to which injury dominates.",
         },
         "name": "What fluid should be used for resuscitation in major trauma?",
       },
@@ -6415,7 +6451,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the synthesised
         "@type": "Question",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Assume VT until proven otherwise — particularly with structural heart disease; treat with synchronised DC if unstable, amiodarone 300 mg IV if stable, avoid verapamil which can collapse VT into VF.",
+          "text": "Assume VT until proven otherwise — particularly with structural heart disease. For a stable regular broad-complex tachycardia, the default is synchronised cardioversion when VT is presumed; if sedation/anaesthesia risk is too high, the current RCUK algorithm offers procainamide 10–15 mg/kg over 20 min, or amiodarone 300 mg IV over 10–60 min then 900 mg/24 h if procainamide is unavailable or contraindicated. Avoid verapamil, which can collapse VT into VF.",
         },
         "name": "How are wide-complex tachycardias approached when the diagnosis is uncertain?",
       },
@@ -6529,7 +6565,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the synthesised
         "@type": "Question",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "ARREST (Yannopoulos, Lancet 2020, n = 30, single-centre Minnesota) randomised refractory shockable OHCA and was stopped early for benefit — 43% vs 7% survival to discharge with eCPR. Prague OHCA (Belohlavek, JAMA 2022, n = 256) compared invasive (eCPR + cath lab) with standard advanced ALS and showed a non-significant trend to better 180-day favourable neurological outcome (31.5% vs 22.0%); subgroup analysis favoured the invasive strategy with longer arrest durations. INCEPTION (Suverein, NEJM 2023, n = 134) was a multicentre Dutch trial and was neutral — reflecting the impact of system speed and operator volume. Suitable candidates have: witnessed arrest, bystander CPR, initial shockable rhythm, age < 65–75, no major comorbidity, ETCO₂ > 10 mmHg sustained, and a realistic prospect of cannulation within 60 minutes of collapse. Outside high-volume eCPR centres with rapid pathways, benefit is unlikely.",
+          "text": "ARREST (2020) was a small single-centre trial in selected refractory shockable arrests, with survival to discharge 6/14 versus 1/15 and early stopping for benefit. Prague OHCA did not meet its primary 180-day favourable neurological-survival endpoint (31.5% versus 22.0%; P = 0.09); favourable secondary or subgroup signals are exploratory. INCEPTION also found no statistically significant primary benefit. These trials do not prove that speed or operator volume alone explains their differences. eCPR is a selected rescue strategy within an organised service; eligibility and time-to-flow goals are locally defined, not universal age/ETCO₂ cutoffs or guarantees of benefit.",
         },
         "name": "Who is an appropriate candidate for eCPR and what does ARREST, Prague OHCA and INCEPTION tell us?",
       },
@@ -6537,7 +6573,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the synthesised
         "@type": "Question",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Neuroprognostication is performed in the comatose post-cardiac-arrest patient at ≥ 72 hours after ROSC, only once confounders (sedation, NMBA, hypothermia, severe metabolic derangement, hypoglycaemia, hypotension, ongoing seizure activity) are excluded. The entry criterion is GCS motor ≤ 3 (abnormal flexion, extension, or no motor response) at ≥ 72 h. ERC/ESICM 2021 consider poor outcome likely when two or more of these are present: (1) bilaterally absent pupillary and corneal reflexes at ≥ 72 h (quantitative pupillometry may be used); (2) bilaterally absent N20 SSEP waves at ≥ 24 h; (3) highly malignant EEG (suppressed background or burst-suppression) at > 24 h; (4) NSE > 60 µg/L at 48 h and/or 72 h; (5) status myoclonus ≤ 72 h; (6) diffuse and extensive anoxic injury on CT or MRI. No single marker is sufficient on its own. Withdrawal of life-sustaining therapy in the first 72 hours risks self-fulfilling prophecy.",
+          "text": "Use current RCUK 2025 multimodal neuroprognostication in patients not awake and obeying commands (GCS motor < 6) at ≥ 72 h after ROSC, after excluding relevant confounders. Combine at least two concordant poor-outcome predictors at their specified times, and assess evidence supporting recovery as well as poor outcome. NSE > 60 µg/L at 48 h and/or 72 h is one specified marker; a rising trend alone is not an interchangeable threshold. EEG must be interpreted by pattern, timing and confounders. Technical quality matters for bilateral N20 absence, and neuromuscular blockade may improve recording quality. Indeterminate or discordant findings require further assessment. Prognosis informs shared decisions alongside patient wishes, overall illness and other factors; it is not an automatic withdrawal rule.",
         },
         "name": "What is multimodal neuroprognostication and when do I perform it?",
       },
@@ -6545,7 +6581,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the synthesised
         "@type": "Question",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Intubate if not already (or replace a supraglottic with a tracheal tube once stable). Set tidal volume 6–8 mL/kg predicted body weight, PEEP 5–10 cmH₂O, FiO₂ titrated to SpO₂ 94–98% (avoid hyperoxia — observational data link PaO₂ > 40 kPa to higher mortality; but the EXACT RCT found lower survival when pre-hospital SpO₂ was targeted at 90–94%, so avoid aiming below 94%). Set minute ventilation to PaCO₂ 4.5–6.0 kPa (avoid hypocapnia which causes cerebral vasoconstriction and is independently associated with worse neurological outcome — TAME trial 2023 found no benefit from mild hypercapnia 6.7–7.3 kPa over normocapnia). Use continuous waveform capnography. Sedate with short-acting agents (propofol + remifentanil or fentanyl ± dexmedetomidine) to facilitate later neuroprognostication. Avoid prolonged NMBA except briefly for shivering not controlled by sedation and counter-warming.",
+          "text": "Intubation is indicated for persistent coma or another need for ventilation; rapid normal neurological recovery with adequate breathing does not automatically require intubation. For ventilated patients use tidal volume 6–8 mL/kg predicted body weight, individualised PEEP and reliable oxygen measurement to titrate toward SpO₂ 94–98%, with arterial PaCO₂ 4.7–6.0 kPa and continuous waveform capnography. Avoid hypoxaemia, hyperoxaemia and hypocapnia; repeat arterial gases after adjustments. Use short-acting sedation where appropriate. Routine neuromuscular blockade is not recommended, but may be considered for critical hypoxaemia with ARDS and, when clinically indicated, refractory shivering despite adequate sedation and counter-warming; assess the individual patient.",
         },
         "name": "How should I manage the airway and ventilator in the first 6 hours post-ROSC?",
       },
@@ -6730,6 +6766,72 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the synthesised
           "text": "MAHA + thrombocytopenia + organ dysfunction → urgent ADAMTS13 level; while awaiting, start plasma exchange (TTP), caplacizumab where available, and high-dose steroids; avoid platelet transfusion unless life-threatening bleed.",
         },
         "name": "What is the approach to thrombotic microangiopathies (TTP/HUS) in ICU?",
+      },
+    ],
+  },
+  "/intensive-care/haemorrhagic-shock": {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Without clinical evidence of brain injury, use restricted volume replacement and aim for a systolic pressure of 80–90 mmHg until bleeding is controlled. With severe traumatic brain injury (GCS 8 or less), maintain a mean arterial pressure of at least 80 mmHg. Source: European trauma bleeding guideline, sixth edition, recommendation 13.",
+        },
+        "name": "In adult trauma with uncontrolled major bleeding, how does severe traumatic brain injury change the initial blood-pressure target?",
+      },
+      {
+        "@type": "Question",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Start as soon as possible and within 3 hours of injury. Infuse 1 g IV over 10 minutes, followed by a second 1 g IV over 8 hours. Source: European trauma bleeding guideline, sixth edition, recommendation 23.",
+        },
+        "name": "An adult trauma patient is bleeding or at risk of significant bleeding. When and how should tranexamic acid be given?",
+      },
+    ],
+  },
+  "/intensive-care/icu-anaphylaxis": {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Stop the suspected trigger and give 500 micrograms of adrenaline intramuscularly into the outer mid-thigh (0.5 mL of 1 mg/mL). Repeat after 5 minutes if airway, breathing or circulation problems persist. Source: Resuscitation Council UK, Emergency treatment of anaphylaxis, section 5.",
+        },
+        "name": "An adult on a ward develops sudden stridor and hypotension during an antibiotic infusion. They have a pulse. What is the first adrenaline dose, and when should it be repeated?",
+      },
+      {
+        "@type": "Question",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Call for expert help and give IV crystalloid. An experienced team should start a monitored, titrated IV adrenaline infusion. Continue IM adrenaline every 5 minutes while the infusion is being prepared if respiratory or cardiovascular problems persist. Source: Resuscitation Council UK, Emergency treatment of anaphylaxis, section 6.",
+        },
+        "name": "An adult with anaphylaxis still has respiratory or cardiovascular compromise after two appropriate IM doses of adrenaline. How should treatment change?",
+      },
+    ],
+  },
+  "/intensive-care/icu-eclampsia": {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Load with 4 g IV over 5–15 minutes, then infuse 1 g/hour. If a seizure recurs, give another 2–4 g IV over 5–15 minutes. Continue the maintenance infusion until 24 hours after the last seizure. Source: NICE NG133, recommendation 1.8.4.",
+        },
+        "name": "How is IV magnesium sulfate used after an eclamptic seizure, and what should be given if another seizure occurs during treatment?",
+      },
+      {
+        "@type": "Question",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Limit maintenance fluids to 80 mL/hour in the absence of other ongoing losses. If the patient is losing fluid, for example through haemorrhage, reassess fluid replacement according to those losses. Source: NICE NG133, recommendation 1.8.12.",
+        },
+        "name": "What maintenance fluid limit applies in severe pre-eclampsia, and when does that limit need reassessment?",
       },
     ],
   },
@@ -6997,7 +7099,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the synthesised
         "@type": "Question",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "DCD (Maastricht III) occurs after planned withdrawal with death by circulatory criteria and a 5-minute 'no-touch' period; warm ischaemic time limits organ viability (typically <30 min for liver, <2 h for kidney) and outcomes are slightly inferior for some grafts but improve donor numbers.",
+          "text": "DCD (Maastricht III) follows planned withdrawal; confirm death only after the full continuous 5-minute assessment and required examination, when all circulatory criteria are satisfied (AoMRC 2025). BTS DCD 2023 defines fWIT from a sustained (at least 2-minute) fall in SBP below 50 mmHg to cold in-situ perfusion or NRP, not from withdrawal or arrest. Organ acceptance and stand-down depend on the actual organ, preservation method and current retrieval-team protocol; arithmetic alone cannot establish viability. With NRP, a long withdrawal phase alone is not an automatic liver exclusion.",
         },
         "name": "How does DCD differ from DBD for donation?",
       },
@@ -7035,7 +7137,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the synthesised
         "@type": "Question",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "10 mL/kg isotonic crystalloid boluses with reassessment after each; 20 mL/kg is reserved for specific situations (e.g. profound shock). DKA and trauma follow their own pathways: NICE NG18 uses a 10 mL/kg 0.9% saline bolus in DKA (given as soon as possible if shocked, over 30 minutes if dehydrated but not shocked), while haemorrhagic trauma needs early blood products and haemorrhage control. If shock persists after 1–2 boluses, move earlier to vasoactive infusions (adrenaline for cold shock, noradrenaline for warm) rather than escalating fluid further (SSC Paediatric 2020, APLS 2021; FEAST caution in resource-limited settings).",
+          "text": "SSC Children 2026: choose adrenaline or noradrenaline through repeated haemodynamic assessment, response, echo/cardiac and lung POCUS when expertise is available, and paediatric critical-care advice. Evidence does not establish one preferred first-line agent; cold/warm labels do not mandate drug selection. UK RCUK 2025 uses 10 mL/kg isotonic crystalloid boluses with reassessment of perfusion and overload after every bolus. New or increasing hepatomegaly is one sign of overload/cardiac failure, not an isolated diagnostic equality. Stop boluses if shock resolves or overload develops; do not require 40–60 mL/kg or a fixed fluid threshold before vasoactives. Peripheral vasoactive initiation can avoid delay for central access. DKA and haemorrhagic trauma follow their own pathways. NICE NG18 DKA uses a 10 mL/kg 0.9% saline bolus (as soon as possible if shocked, over 30 minutes if dehydrated but not shocked), with senior review before more than one; haemorrhagic trauma needs early blood products and haemorrhage control. Hydrocortisone is not routine paediatric septic-shock therapy. SSC Children 2026 suggests against IV hydrocortisone when fluids and vasoactive therapy restore haemodynamic stability; persistent instability despite adequate support has insufficient evidence for a recommendation either way. Give stress-dose corticosteroid replacement for suspected or documented adrenal insufficiency; this is separate from routine sepsis adjuncts and does not replace adrenal-crisis management. Suspected septic shock: start antibiotics as soon as possible, ideally within 1 hour of recognition. Probable sepsis without shock: undertake time-limited rapid investigation and, if concern is substantiated, start treatment as soon as possible after evaluation, ideally within 3 hours of recognition. If timely evaluation is difficult, consider antibiotics as soon as possible for probable bacterial sepsis.",
         },
         "name": "What fluid resuscitation strategy is recommended for paediatric septic shock?",
       },
@@ -7233,7 +7335,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the synthesised
         "@type": "Question",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Association of Anaesthetists 2023: give 20% lipid emulsion 1.5 mL/kg as an initial bolus (simplified to a fixed 100 mL bolus if >70 kg), then start an infusion of 0.25 mL/kg/min (equivalent to 15 mL/kg/h) — the same weight-based rate for every patient, which equates to about 1000 mL/h in an adult over 70 kg. Up to two further boluses at 5-minute intervals (three in total), and double the infusion to 0.5 mL/kg/min (30 mL/kg/h) if the circulation remains unstable; total maximum 12 mL/kg.",
+          "text": "The Association of Anaesthetists’ Quick Reference Handbook uses 20% lipid emulsion. Give 1.5 mL/kg IV over 2–3 minutes, then infuse 15 mL/kg/hour. If cardiovascular instability persists or recurs, a bolus may be repeated at 5 and 10 minutes and the infusion doubled after 5 minutes. The maximum cumulative dose is 12 mL/kg. Use the current checklist during resuscitation.",
         },
         "name": "How is lipid emulsion used in local anaesthetic toxicity?",
       },
@@ -7255,7 +7357,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the synthesised
         "@type": "Question",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Empirical 1:1:1 (RBC:FFP:platelets) until ROTEM/TEG-guided, based on PROPPR trial; activate at predicted 4+ units in 1 h, give TXA 1 g within 3 h (CRASH-2) and target ionised Ca²⁺ >1.0 mmol/L.",
+          "text": "PROPPR 2015 used plasma:platelet-equivalents:RBC 1:1:1 in severe trauma: 6 plasma units, 1 adult platelet dose (about 6 whole-blood-derived platelet units or 1 apheresis unit), and 6 RBC units, not one adult platelet dose per RBC. More achieved haemostasis and fewer died from exsanguination; 24-hour/30-day mortality differences were not statistically significant. NICE NG39 initial adult major-trauma plasma:RBC is 1:1; follow the local MHP and transition promptly to laboratory/viscoelastic-guided treatment. Activation uses physiology, bleeding and response, not predicted units alone. Measure ionised calcium frequently and replace by protocol to the normal range (approximately 1.1–1.3 mmol/L; laboratory/pH context). Ratios and targets are not universal across bleeding causes.",
         },
         "name": "What ratios are used in major haemorrhage protocols?",
       },
@@ -7263,7 +7365,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the synthesised
         "@type": "Question",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "For warfarin reversal in major bleeding (25–50 U/kg with vitamin K, BSH 2018), or factor replacement in liver disease where volume load from FFP is harmful; PCC restores INR within minutes versus hours for FFP.",
+          "text": "In major bleeding due to warfarin, give four-factor PCC with IV vitamin K under the local reversal protocol. In liver transplantation, a raised INR alone does not justify PCC or plasma. Guide factor replacement by clinical bleeding, viscoelastic findings and the transplant protocol.",
         },
         "name": "When is prothrombin complex concentrate preferred over FFP?",
       },
@@ -7271,7 +7373,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the synthesised
         "@type": "Question",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "FIBTEM A5 <12 mm → fibrinogen concentrate or cryoprecipitate; EXTEM CT >80 s → FFP or PCC; EXTEM A5 <40 mm with normal FIBTEM → platelets; ML >15% → tranexamic acid (ITACTIC trial).",
+          "text": "TEG reaction time (R) and ROTEM clotting time (CT) assess clot initiation. Fibrin-specific and whole-clot measurements help assess fibrinogen and platelet contributions. In active major bleeding, use the locally validated algorithm for the assay and indication, alongside clinical findings and conventional tests. A single result does not establish which product to give.",
         },
         "name": "How is ROTEM/TEG used to guide blood product use?",
       },
@@ -7667,7 +7769,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the synthesised
         "@type": "Question",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Yes. Sugammadex 16 mg/kg will reverse a 1.2 mg/kg rocuronium intubating dose within 2–3 minutes, even before twitches return (post-tetanic count of 0). This is the basis for using sugammadex as a rescue strategy after a failed RSI when rocuronium has been chosen instead of suxamethonium.",
+          "text": "In adults needing immediate reversal after rocuronium 1.2 mg/kg, the licensed sugammadex dose is 16 mg/kg. Reversal does not guarantee a patent airway. With declared CICO, maintain paralysis and proceed immediately to emergency front-of-neck airway.",
         },
         "name": "Can sugammadex reverse rocuronium that has only just been given?",
       },
@@ -7683,7 +7785,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the synthesised
         "@type": "Question",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Sugammadex also binds progestogens. Manufacturers recommend treating a single dose as the equivalent of one missed combined or progestogen-only pill: continue the pill normally and use additional non-hormonal contraception for the next 7 days. Patients with an implant, depot injection or IUS only need additional precautions if the dose was within the relevant high-risk window.",
+          "text": "For oral hormonal contraception, follow the missed-dose instructions for that pill. With non-oral hormonal contraception, use an additional non-hormonal method for seven days and follow the advice in the contraceptive product leaflet.",
         },
         "name": "How long does sugammadex affect hormonal contraception?",
       },
@@ -7691,7 +7793,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the synthesised
         "@type": "Question",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Neostigmine remains appropriate for routine reversal of shallow non-depolarising block (TOF count ≥ 2, ideally ≥ 4) — particularly with benzylisoquinoliniums, in cost-sensitive settings, or where sugammadex is unavailable. Always co-administer an antimuscarinic (glycopyrrolate or atropine) and confirm reversal with quantitative TOF ≥ 0.9.",
+          "text": "For neostigmine reversal, ESAIC recommends waiting for advanced spontaneous recovery (quantitative TOF ratio above 0.2). Give an antimuscarinic and continue quantitative monitoring until the TOF ratio exceeds 0.9. Sugammadex does not reverse benzylisoquinolinium block.",
         },
         "name": "When should I still use neostigmine?",
       },
@@ -7705,7 +7807,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the synthesised
         "@type": "Question",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Lidocaine: 3 mg/kg plain, 7 mg/kg with adrenaline. Bupivacaine and levobupivacaine: 2 mg/kg (no adrenaline-enhanced dose). Ropivacaine: 3 mg/kg. Always calculate against lean body weight and use the lowest effective dose; reduce in the elderly, pregnant, and hepatically impaired.",
+          "text": "There is no single universal maximum across formulations and routes. Use the named product label and the procedure: for example, UK lidocaine 2% (emc 15150) limits a single adult dose to 4.5 mg/kg and 300 mg, while Xylocaine with adrenaline (emc 2397) has a 500 mg adult ceiling. Named bupivacaine field-block/infiltration (emc 11611) limits 150 mg. These are not interchangeable with spinal, major nerve block or IVRA doses. Calculate against the labelled weight basis, use the lowest effective dose, and reduce in the elderly, pregnant and hepatically impaired.",
         },
         "name": "What is the maximum safe dose of lidocaine and bupivacaine?",
       },
@@ -7713,7 +7815,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the synthesised
         "@type": "Question",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Bolus 1.5 mL/kg lean body weight over 1 minute (≈ 100 mL in a 70 kg adult), followed by an infusion of 15 mL/kg/h. If circulation is not restored after 5 minutes: repeat bolus up to twice (5-minute intervals) and double the infusion rate to 30 mL/kg/h. Maximum cumulative dose 12 mL/kg.",
+          "text": "Bolus 1.5 mL/kg over 2–3 minutes (≈ 100 mL in a 70 kg adult), followed by an infusion of 15 mL/kg/h. If circulation is not restored, give no more than two repeat boluses after 5 and 10 minutes; if instability persists or recurs after 5 minutes, double the infusion to 30 mL/kg/h. Maximum cumulative dose 12 mL/kg (840 mL at 70 kg).",
         },
         "name": "What is the Intralipid 20% dose in LAST?",
       },
@@ -7889,7 +7991,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the synthesised
         "@type": "Question",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "No. It is maintenance only. Deficit (fasting hours × maintenance rate), ongoing losses and blood loss are prescribed separately, though modern short fasting times and clear-fluid-until-1-hour regimens have made large calculated deficits largely obsolete.",
+          "text": "No. It is maintenance only. Assess any deficit from history, examination and measured losses. Prescribe replacement separately and avoid automatically multiplying fasting hours by the maintenance rate.",
         },
         "name": "Does the 4-2-1 rule cover fasting and third-space losses?",
       },
@@ -7903,7 +8005,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the synthesised
         "@type": "Question",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Induction: thiopentone 3–7 mg/kg or propofol 1.5–2.5 mg/kg (ketamine 1–2 mg/kg in shock; etomidate 0.3 mg/kg historically). Neuromuscular blocker: suxamethonium 1.0–1.5 mg/kg, or rocuronium 1.0–1.2 mg/kg if sugammadex is immediately available for rescue.",
+          "text": "Induction: thiopentone 3–7 mg/kg or propofol 1.5–2.5 mg/kg (ketamine dosing must be adjusted to haemodynamic status; etomidate 0.3 mg/kg historically). Neuromuscular blocker: suxamethonium 1.0–1.5 mg/kg, or rocuronium 1.0–1.2 mg/kg. Sugammadex is a reversal option, not a substitute for front-of-neck access if intubation and oxygenation fail.",
         },
         "name": "What are the standard adult RSI drugs?",
       },
@@ -7911,7 +8013,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the synthesised
         "@type": "Question",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Sux contraindications: hyperkalaemia, major burns > 24 h old, prolonged immobility, denervation injury, neuromuscular disease (MG, myotonia), suspected MH, malignant pseudocholinesterase deficiency. Rocuronium 1.2 mg/kg gives comparable intubating conditions at 60 s with sugammadex 16 mg/kg as the rescue option for can't-intubate-can't-oxygenate.",
+          "text": "Rocuronium is an option when suxamethonium is unsuitable, including susceptibility to malignant hyperthermia or clinically important hyperkalaemia risk. If intubation fails, prioritise rescue oxygenation. Declared CICO requires immediate emergency front-of-neck airway. OAA/DAS supports gentle facemask ventilation when needed in obstetric RSI and early release of cricoid pressure if it impedes airway management.",
         },
         "name": "When is rocuronium preferred over suxamethonium?",
       },
@@ -8109,7 +8211,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the synthesised
         "@type": "Question",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Neostigmine is effective from TOF count ≥ 2 (ideally ≥ 4) — i.e. only for shallow block. Give 50 µg/kg with glycopyrrolate 10 µg/kg. Allow 10 minutes for full effect and confirm TOF ratio ≥ 0.9 quantitatively before extubation. Deep block (TOF count 0–1) needs sugammadex 4 mg/kg (rocuronium/vecuronium) or further waiting.",
+          "text": "Use quantitative monitoring at the adductor pollicis. ESAIC recommends waiting for spontaneous recovery to a TOF ratio above 0.2 before starting neostigmine with an antimuscarinic. Two twitches indicate moderate block. For deeper rocuronium or vecuronium block, use sugammadex according to measured depth or allow further recovery. Continue monitoring until the TOF ratio exceeds 0.9 before extubation.",
         },
         "name": "When can I rely on neostigmine?",
       },
@@ -9027,7 +9129,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the synthesised
         "@type": "Question",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "RCoA/Association of Anaesthetists 2024 algorithm: STOP injection, call for help, ABC (100 % O₂, secure airway, IV access). Manage seizures (small dose benzodiazepine or propofol). Treat arrhythmias (avoid lidocaine, calcium, vasopressin; use small adrenaline 1 µg/kg). Give 20 % Intralipid: 1.5 mL/kg bolus, then 15 mL/kg/h infusion, repeat bolus up to 3×, max 12 mL/kg total. Continue CPR — long resuscitation often successful. Refer to ITU and report to NPSA / Lipid Rescue registry.",
+          "text": "Association QRH 3-10 v2: STOP injection, call for help, ABC (100 % O₂, secure airway, IV access). Manage seizures with a small dose of benzodiazepine; propofol is not recommended when there is cardiovascular instability. Treat arrhythmias (avoid lidocaine, calcium channel blockers and vasopressin; use small adrenaline ≤1 µg/kg). Give 20 % lipid emulsion 1.5 mL/kg over 2–3 min, then infuse 15 mL/kg/h. If instability persists, give no more than two repeat boluses after 5 and 10 min, if instability persists or recurs after 5 minutes, double the infusion to 30 mL/kg/h. Maximum total 12 mL/kg (840 mL at 70 kg). Continue CPR — prolonged resuscitation is often successful. Arrange monitored post-event care, assess for pancreatitis with clinical review and daily amylase or lipase, and report through the appropriate incident system.",
         },
         "name": "Outline the management of local-anaesthetic systemic toxicity (LAST).",
       },
@@ -9255,7 +9357,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the synthesised
         "@type": "Question",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "By sugammadex, a modified γ-cyclodextrin that encapsulates rocuronium 1:1 and removes it from plasma. Dosing depends on depth of block: 2 mg/kg at reappearance of T2 (routine reversal), 4 mg/kg at post-tetanic count 1–2 (deep block), 16 mg/kg for immediate reversal of a 1.2 mg/kg intubating dose (CICO rescue). Neostigmine 50 µg/kg with glycopyrrolate is an alternative but only when TOF count ≥2.",
+          "text": "Sugammadex dosing depends on the depth of rocuronium block. Use 2 mg/kg at reappearance of T2 or 4 mg/kg at a post-tetanic count of 1–2. For immediate reversal after rocuronium 1.2 mg/kg, the adult dose is 16 mg/kg. Failed oxygenation requires immediate emergency front-of-neck airway. For neostigmine, ESAIC recommends a quantitative TOF ratio above 0.2 before reversal and continued monitoring until the ratio exceeds 0.9.",
         },
         "name": "How is rocuronium reversed?",
       },
@@ -9507,7 +9609,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the synthesised
         "@type": "Question",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "ETCO₂ reflects pulmonary blood flow during cardiac arrest, so it is a real-time index of chest-compression effectiveness and ROSC. RCUK/ERC guidance: aim for ETCO₂ > 1.3 kPa (10 mmHg) during good-quality CPR; a persistent ETCO₂ < 1.3 kPa after 20 minutes of advanced life support is associated with very low likelihood of survival. A sudden rise in ETCO₂ is one of the earliest signs of ROSC.",
+          "text": "During CPR, trend exhaled CO₂ to assess ventilation, pulmonary blood flow and compression quality. A rise may indicate return of spontaneous circulation. Continue compressions until other clinical or physiological findings justify a rhythm and pulse assessment. Use the full clinical picture when deciding whether to stop resuscitation. A low value alone cannot determine outcome.",
         },
         "name": "Why is ETCO₂ used during CPR?",
       },
@@ -9515,7 +9617,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the synthesised
         "@type": "Question",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "ETCO₂ samples mixed alveolar gas, which is diluted by alveolar dead space (well-ventilated, poorly perfused units). In healthy lungs the PaCO₂–ETCO₂ gradient is ~0.5 kPa (4 mmHg). The gradient widens whenever alveolar dead space rises — pulmonary embolism (early sign), low cardiac output, COPD, ARDS, auto-PEEP and arrest (where ETCO₂ approaches zero despite a preserved PaCO₂).",
+          "text": "Alveolar dead space dilutes exhaled CO₂, so ETCO₂ is usually below PaCO₂. Pulmonary embolism, low cardiac output and severe lung disease can widen the gradient. A flat trace after intubation during effective CPR needs immediate exclusion of oesophageal placement and assessment of ventilation and equipment.",
         },
         "name": "Why does ETCO₂ underestimate PaCO₂?",
       },
@@ -9537,7 +9639,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the synthesised
         "@type": "Question",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Work through the trace in four steps. (1) Is there a waveform at all — sudden loss means oesophageal intubation, disconnection, complete obstruction or arrest. (2) Is the baseline at zero — a raised baseline is rebreathing. (3) Is the upstroke steep and the plateau flat — a sloping shark-fin is expiratory obstruction. (4) Is the plateau smooth — a downward notch is a curare cleft. Only after the shape is normal does the absolute ETCO₂ number become useful.",
+          "text": "First check for sustained exhaled CO₂. Following intubation, an absent or fading trace demands immediate exclusion of oesophageal placement, including during CPR. Then inspect the baseline for rebreathing, the upstroke and plateau for expiratory obstruction and the plateau for spontaneous effort.",
         },
         "name": "How do you read a capnography waveform?",
       },
@@ -9577,7 +9679,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the synthesised
         "@type": "Question",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "A complete loss of the capnograph waveform across all phases means no expired CO₂ is reaching the sensor. The differential is short: oesophageal intubation, accidental extubation, complete circuit disconnection, total airway obstruction, or cardiac arrest with no cardiac output. Treat as life-threatening — look at the patient and the airway, confirm tube position, check every connection from patient to machine, and palpate a central pulse.",
+          "text": "A complete loss of the capnograph waveform across all phases means no expired CO₂ is reaching the sensor. The differential is short: oesophageal intubation, accidental extubation, complete circuit disconnection, total airway obstruction, or cardiac arrest with no cardiac output. Treat as life-threatening. If the tube has just been placed, actively exclude oesophageal placement even in arrest: sustained exhaled CO₂ is the primary confirmation, and a flat trace is presumed oesophageal until proven otherwise. PUMA's default is to remove the tube and reoxygenate by mask or supraglottic airway unless removal is judged more dangerous; if removal is hazardous, obtain urgent valid independent confirmation. Check every connection from patient to machine and palpate a central pulse.",
         },
         "name": "Why does ETCO₂ suddenly fall to zero?",
       },
@@ -9615,7 +9717,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the synthesised
         "@type": "Question",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Zeroing — setting the output to 0 when input is at a reference value (e.g. arterial line transducer open to atmosphere at the phlebostatic axis). Calibration — applying a known input and adjusting gain so output matches (modern transducers are factory-calibrated and need only zeroing). Recalibrate after any disconnect or after large shifts in transducer height.",
+          "text": "Zero to atmospheric pressure and level the transducer to the chosen anatomical reference. Re-level after a change in patient or transducer height. Calibration compares readings with a known pressure standard. Most disposable transducers are factory calibrated.",
         },
         "name": "What does it mean to 'zero' and 'calibrate' a transducer?",
       },
@@ -9659,7 +9761,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the synthesised
         "@type": "Question",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "BIS 40–60 corresponds to surgical anaesthesia. B-Aware and B-Unaware trials showed BIS-guided anaesthesia reduces awareness in high-risk patients (TIVA, paralysed, low-MAC techniques). NICE DG6 recommends DoA monitoring for TIVA and for any case where end-tidal volatile monitoring is unreliable. BIS values are derived from EEG but are not a direct EEG; they lag by 15–30 s.",
+          "text": "BIS 40–60 corresponds to surgical anaesthesia. B-Aware and B-Unaware trials showed BIS-guided anaesthesia reduces awareness in high-risk patients (TIVA, paralysed, low-MAC techniques). NICE DG6 recommends depth-of-anaesthesia monitoring for TIVA with neuromuscular blockade and for patients at higher risk of awareness; the Association of Anaesthetists 2021 states the same TIVA-plus-NMB recommendation and suggests considering pEEG more broadly. BIS values are derived from EEG but are not a direct EEG; they lag by 15–30 s.",
         },
         "name": "What is the target BIS range for general anaesthesia and what is its evidence base?",
       },
@@ -10229,7 +10331,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the synthesised
         "@type": "Question",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Pulmonary artery (gold standard — true core). Distal oesophagus (within 0.5 °C of PA; influenced by airway gas), nasopharynx (close to hypothalamus), tympanic membrane (good for brain temperature). Bladder and rectum lag behind. Skin and axilla underestimate core by 1–2 °C and are unreliable intra-operatively.",
+          "text": "Pulmonary artery blood temperature is a central reference. NICE accepts distal oesophageal or bladder measurement and validated direct estimates such as zero-heat-flux thermometry. Bladder and rectal readings may lag rapid changes. Axillary and sublingual estimates can be inaccurate outside normothermia. Handheld infrared ear thermometers are unsuitable for perioperative core-temperature decisions in adults.",
         },
         "name": "Where are core temperature measurements taken and which is the gold standard?",
       },
@@ -10237,7 +10339,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the synthesised
         "@type": "Question",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Triples wound infection, increases blood loss and transfusion requirements (impaired coagulation and platelet function), prolongs drug action (especially NMBAs and volatiles), causes shivering with ↑VO₂ up to 400 %, prolongs recovery and ICU stay, and increases cardiac events. NICE CG65 mandates active warming for any operation >30 min.",
+          "text": "Perioperative hypothermia impairs haemostasis and can prolong drug effects and recovery. In one colorectal surgery trial, wound infection developed in 18 of 96 patients receiving routine thermal care and 6 of 104 receiving extra warming. NICE recommends forced-air warming from induction for anaesthesia exceeding 30 minutes and for shorter cases in higher-risk adults.",
         },
         "name": "What are the consequences of perioperative hypothermia (<36 °C)?",
       },
@@ -10403,7 +10505,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the synthesised
         "@type": "Question",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "IRR 2017 (UK): whole-body effective dose 20 mSv/year (averaged over 5 years, max 50 mSv in any single year). Equivalent dose limits: lens 20 mSv/year, skin/extremities 500 mSv/year. Pregnant staff — fetal dose ≤1 mSv over the declared pregnancy. Wear film/TLD badges and review records with the RPS.",
+          "text": "IRR 2017 (UK): whole-body effective dose 20 mSv in any calendar year for adult workers; special arrangements under regulation 12(2)/Schedule 3 Part 2 are separate. Equivalent dose limits: lens 20 mSv/year, skin/extremities 500 mSv/year. Pregnant staff — fetal dose ≤1 mSv over the declared pregnancy. Wear film/TLD badges and review records with the RPS.",
         },
         "name": "What is the annual dose limit for occupationally exposed staff?",
       },
@@ -10523,7 +10625,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the synthesised
         "@type": "Question",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Patients on >5 mg prednisolone/day for >3 weeks are at risk of HPA suppression. Replacement scaled to surgical stress: minor — usual dose + 25 mg hydrocortisone at induction. Moderate — 25 mg at induction + 100 mg/day for 24 h. Major — 100 mg at induction + 200 mg/day for 48–72 h, then taper. Avoid abrupt withdrawal — addisonian crisis is life-threatening.",
+          "text": "The 2020 UK guideline identifies adults taking at least 5 mg prednisolone daily or equivalent for a month or more as potentially at risk of adrenal suppression. For major or intermediate surgery in adults receiving adrenosuppressive treatment, its corrected Table 2 uses hydrocortisone 100 mg IV at induction followed immediately by 200 mg over 24 hours by infusion. After major surgery continue IV cover while nil by mouth. When oral therapy resumes, use double the usual oral dose for 48 hours after uncomplicated surgery, then resume baseline. Established adrenal insufficiency has a separate pathway.",
         },
         "name": "What is the perioperative steroid replacement regimen for adrenal suppression?",
       },
@@ -10545,7 +10647,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the synthesised
         "@type": "Question",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Ductus venosus — bypasses liver from umbilical vein to IVC; becomes ligamentum venosum. Foramen ovale — bypasses pulmonary circulation, RA → LA; becomes fossa ovalis (patent in 25 % of adults). Ductus arteriosus — bypasses lungs, pulmonary artery → aorta; becomes ligamentum arteriosum. All three shunt blood away from the non-functioning fetal lungs toward systemic circulation.",
+          "text": "Ductus venosus — bypasses part of the liver from umbilical vein to IVC; becomes ligamentum venosum. Foramen ovale — bypasses pulmonary circulation, RA → LA; becomes fossa ovalis (patent in 25 % of adults). Ductus arteriosus — bypasses lungs, pulmonary artery → aorta; becomes ligamentum arteriosum. The ductus venosus shunts umbilical venous blood past part of the liver into the IVC; the foramen ovale and ductus arteriosus divert blood away from fetal pulmonary circulation.",
         },
         "name": "Describe the three fetal shunts and what they become postnatally.",
       },
@@ -10575,7 +10677,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the synthesised
         "@type": "Question",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Clear fluids — 2 h. Breast milk — 4 h. Infant formula and light meal (toast) — 6 h. Fatty meal — 8 h. Recent ESAIC and APAGBI guidance encourages clear-fluid intake up to 1 h pre-op in children and adults (1-2-6 rule), reducing dehydration and improving comfort without increasing aspiration risk.",
+          "text": "For healthy patients having elective procedures, the ASA framework uses 2 hours for clear liquids, 4 hours for breast milk, 6 hours for infant formula or a light meal, and 8 hours or longer for fatty meals. ESAIC paediatric guidance uses 1 hour for clear fluids and 3 hours for breast milk in suitable children. The 2026 international adult consensus encourages clear liquids until 2 hours before anaesthesia and allows shorter intervals under an agreed local protocol. Select the relevant age group and local pathway and assess individual aspiration risk.",
         },
         "name": "What are the current ASA fasting guidelines?",
       },
@@ -10815,7 +10917,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the synthesised
         "@type": "Question",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Jv = Kf × [(Pc − Pi) − σ(πp − πg)], where Jv = net filtration; Kf = filtration coefficient; Pc/Pi = capillary/interstitial hydrostatic pressure; πp/πg = plasma/subglycocalyx oncotic pressure; σ = reflection coefficient (1 = impermeable to protein, 0 = freely permeable). The endothelial glycocalyx is the true semi-permeable barrier — not the endothelial cell membrane (revised Starling principle, Levick & Michel 2010).",
+          "text": "Jv = Kf × [(Pc − Pi) − σ(πp − πg)], where Jv = net filtration; Kf = filtration coefficient; Pc/Pi = capillary/interstitial hydrostatic pressure; πp/πg = plasma/subglycocalyx oncotic pressure; σ = reflection coefficient (1 = impermeable to protein, 0 = freely permeable). The glycocalyx is an important macromolecular sieve acting with endothelial and intercellular pathways, not excluding junctions. Subglycocalyx oncotic pressure depends on flow and is not universally zero.",
         },
         "name": "State the Starling equation in its modern form.",
       },
@@ -10823,7 +10925,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the synthesised
         "@type": "Question",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Gel-like layer of proteoglycans and glycoproteins on the luminal endothelial surface, ~0.5–1 µm thick. Excludes plasma proteins from contact with the endothelial barrier, generates the effective oncotic gradient, regulates leucocyte adhesion and coagulation. Damaged by sepsis, hyperglycaemia, ischaemia–reperfusion, atrial natriuretic peptide (released by fluid loading). Glycocalyx loss → capillary leak — explains why fluid overload worsens oedema.",
+          "text": "Gel-like layer of proteoglycans and glycoproteins on the luminal endothelial surface, ~0.5–1 µm thick. Excludes plasma proteins from contact with the endothelial barrier, generates the effective oncotic gradient, regulates leucocyte adhesion and coagulation. Injury can impair barrier function. ANP-associated shedding has experimental support in guinea-pig hearts and small human volume-loading associations; this does not prove direct cleavage or clinical oedema after every bolus.",
         },
         "name": "What is the endothelial glycocalyx and why is it clinically important?",
       },
@@ -10831,7 +10933,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the synthesised
         "@type": "Question",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Compensatory mechanisms: increased lymphatic drainage, dilution of interstitial protein (reducing πi), and the glycocalyx-protected subglycocalyx space maintains a large oncotic gradient even at low plasma albumin. Oedema only becomes clinically apparent when these are overwhelmed (albumin typically <20 g/L plus increased capillary pressure or permeability).",
+          "text": "Compensatory mechanisms: increased lymphatic drainage, dilution of interstitial protein (reducing πi), while flow-dependent subglycocalyx protein concentration modifies the effective oncotic gradient. Oedema depends on filtration, lymphatic capacity and tissue context; there is no universal albumin threshold.",
         },
         "name": "Why does hypoalbuminaemia cause oedema less than predicted by classical Starling?",
       },

@@ -75,7 +75,7 @@ export const heartBlockContent: EcgExpandedContent = {
   ],
   vignettes: [
     { scenario: "Post-TAVI day 1, patient becomes pre-syncopal on standing.", ecgFinding: "Pre-existing RBBB now with new LAFD and PR 280 ms.", diagnosis: "Trifascicular block — high risk of CHB.", management: "Continuous monitoring, pads on; cardiology review for permanent pacemaker." },
-    { scenario: "Septic patient, K⁺ 6.4, HR 35, BP 80/45.", ecgFinding: "Wide QRS, slow regular escape, no clear P waves.", diagnosis: "Hyperkalaemic conduction block masquerading as CHB.", management: "10 mL 10% calcium gluconate IV STAT, insulin–dextrose, salbutamol; recheck rhythm in 5 min before pacing." },
+    { scenario: "Septic patient, K⁺ 6.4, HR 35, BP 80/45.", ecgFinding: "Wide QRS, slow regular escape, no clear P waves.", diagnosis: "Hyperkalaemic conduction block masquerading as CHB.", management: "30 mL 10% calcium gluconate IV over 10 min (or 10 mL 10% calcium chloride) STAT, insulin–dextrose, salbutamol; recheck rhythm before pacing." },
   ],
 };
 
@@ -120,7 +120,7 @@ export const tachyContent: EcgExpandedContent = {
     "Bedside split: width separates SVT from VT, regularity narrows the differential further. RCUK 2021 algorithm.",
   annotations: [
     { label: "Sinus tachycardia", value: "100–180", description: "Upright P before every QRS, normal PR, narrow QRS. Always look for the cause: pain, hypovolaemia, sepsis, PE, hyperthyroid, drugs." },
-    { label: "AVNRT", value: "150–220", description: "Narrow regular, no clear P (often buried, retrograde 'pseudo-R' in V1). Vagal then adenosine 6 → 12 → 12 mg (RCUK 2021)." },
+    { label: "AVNRT", value: "150–220", description: "Narrow regular, no clear P (often buried, retrograde 'pseudo-R' in V1). Vagal then adenosine 6 → 12 → 18 mg (RCUK March 2026)." },
     { label: "Atrial flutter", value: "Atrial 250–350, vent 150 (2:1)", description: "Sawtooth flutter waves best seen in II, III, aVF. Suspect when narrow regular tachy is exactly 150 bpm — look for Ps in the ST segments." },
     { label: "Atrial fibrillation", value: "Irregularly irregular", description: "No P waves, fibrillatory baseline, irregular RR. Most common ICU arrhythmia. Treat trigger first (sepsis, electrolytes, fluid balance)." },
     { label: "Monomorphic VT", value: "Wide regular", description: "QRS >120 ms, identical morphology, AV dissociation, fusion / capture beats. Assume VT in any wide-complex tachy with structural heart disease." },

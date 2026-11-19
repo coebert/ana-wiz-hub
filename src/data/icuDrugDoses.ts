@@ -332,8 +332,8 @@ export const icuDrugDoseGroups: DrugDoseGroup[] = [
         dose: "50 microgram/kg (usually 2.5 mg) with glycopyrronium 200 microgram per 1 mg neostigmine; 2 mg by slow IV infusion over 60 min in acute colonic pseudo-obstruction",
         route: "IV",
         frequency: "Single dose, repeatable",
-        indications: "Reversal of non-depolarising block at train-of-four count ≥2; acute colonic pseudo-obstruction (Ogilvie syndrome)",
-        notes: "Anticholinesterase — always pair with an antimuscarinic or expect bradycardia, salivation and bronchospasm. It cannot reverse a deep block: wait for twitches. Continuous cardiac monitoring and atropine at the bedside are mandatory for the pseudo-obstruction indication.",
+        indications: "Reversal of non-depolarising block after advanced spontaneous recovery; acute colonic pseudo-obstruction (Ogilvie syndrome)",
+        notes: "For reversal, give neostigmine with an antimuscarinic. ESAIC recommends a quantitative TOF ratio above 0.2 before administration and monitoring until the ratio exceeds 0.9. For colonic pseudo-obstruction, use continuous cardiac monitoring with atropine available.",
         topicIds: ["neuromuscular-blockers", "gastrointestinal-physiology"],
         paediatricDose: "Reversal 50 microgram/kg with glycopyrronium 10 microgram/kg",
         neonatalDose: "Reversal 50 microgram/kg with glycopyrronium 10 microgram/kg",
@@ -597,9 +597,9 @@ export const icuDrugDoseGroups: DrugDoseGroup[] = [
     drugs: [
       {
         drug: "Tranexamic acid",
-        dose: "1 g over 10 min then 1 g over 8 h (trauma, within 3 h of injury)",
+        dose: "Adult bleeding trauma: 1 g IV over 10 min then 1 g over 8 h, started within 3 h of injury. Postpartum haemorrhage: 1 g IV over 10 min as soon as possible within 3 h of birth.",
         route: "IV",
-        frequency: "Load then infusion",
+        frequency: "Trauma: loading dose and infusion. PPH: second 1 g IV if bleeding continues after 30 min or restarts within 24 h.",
         indications: "Trauma haemorrhage, obstetric haemorrhage, surgical bleeding, hyperfibrinolysis",
         notes: "Give as early as possible; benefit lost and possible harm after 3 h in trauma.",
         topicIds: ["transfusion-coagulation", "trauma-resuscitation"],

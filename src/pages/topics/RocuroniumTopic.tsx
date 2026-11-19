@@ -16,7 +16,7 @@ const workedExamples: WorkedExample[] = [
   {
     title: "Rocuronium dosing for modified RSI in a patient with full stomach",
     scenario:
-      "70 kg adult requiring emergency laparotomy. You plan a rocuronium-based RSI with sugammadex immediately available. Calculate the intubating dose, expected onset and the rescue reversal dose if intubation fails.",
+      "70 kg adult requiring emergency laparotomy. You plan a rocuronium-based RSI with sugammadex immediately available. Calculate the intubating dose, expected onset and the immediate-reversal dose once the airway is secured.",
     working: (
       <div className="space-y-2">
         <p className="font-semibold text-foreground">Step-by-step reasoning</p>
@@ -24,12 +24,12 @@ const workedExamples: WorkedExample[] = [
           <li>RSI dose = 0.9–1.2 mg/kg (3–4× ED₉₅ of ~0.3 mg/kg for rapid onset); at the top of the range: 70 × 1.2 = <strong>84 mg IV</strong> <InlineRef topicId="rocuronium" refLabel="ESAIC 2023 NMB Guideline" />.</li>
           <li>Onset to intubating conditions ≈ 45–60 s (comparable to suxamethonium 1.5 mg/kg).</li>
           <li>Clinical duration of a 1.2 mg/kg dose: ~45–70 min (vs ~30–45 min after 0.6 mg/kg).</li>
-          <li>Rescue reversal if "can't intubate": sugammadex 16 mg/kg = 70 × 16 = <strong>1120 mg IV</strong> — restores TOF to ≥0.9 within ~2–3 min regardless of depth.</li>
+          <li>If oxygenation is maintained and a decision is made to wake the patient, the adult immediate-reversal dose after rocuronium 1.2 mg/kg is 16 mg/kg (1120 mg for 70 kg). If intubation, supraglottic and facemask oxygenation fail, declare CICO, maintain paralysis and proceed immediately to emergency front-of-neck airway.</li>
           <li>Have sugammadex drawn up and labelled before induction; confirm reversal with quantitative TOF before extubation.</li>
         </ol>
       </div>
     ),
-    answer: "Rocuronium 84 mg IV (1.2 mg/kg) gives intubating conditions in ~60 s with ~45–70 min duration. Sugammadex 1120 mg (16 mg/kg) is the immediate rescue reversal dose.",
+    answer: "Rocuronium 84 mg IV (1.2 mg/kg) gives intubating conditions in ~60 s with ~45–70 min duration. Sugammadex 1120 mg (16 mg/kg) is the immediate-reversal dose once the airway is secure; it is not a CICO rescue.",
     cites: ["Peck & Hill Ch.10", "BJA Educ 2015"],
   },
 ];
@@ -57,7 +57,7 @@ const RocuroniumTopic = () => {
         { text: "Doses: 0.6 mg/kg intubation (onset 60–90 s, 30–45 min); 0.9–1.2 mg/kg for RSI, with 1.2 mg/kg giving intubating conditions in 45–60 s and duration 60–70 min; infusion 5–10 µg/kg/min.", cites: ["BJA Educ 2015", "ESAIC 2023 NMB Guideline"] },
         { text: "Elimination: hepatic uptake and biliary excretion (~70%), renal (~30%) — duration prolonged in hepatic/renal failure.", cites: ["Peck & Hill Ch.10"] },
         { text: "Monitor with quantitative TOF at the adductor pollicis; ratio ≥0.9 required before extubation.", cites: ["BJA Educ 2015"] },
-        { text: "Sugammadex (γ-cyclodextrin) reverses rocuronium 1:1 at any depth. 2 / 4 / 16 mg/kg by depth of block.", cites: ["Fourth National Audit Project"] },
+        { text: "For adult routine reversal, give sugammadex 2 mg/kg at reappearance of T2 or 4 mg/kg at a post-tetanic count of 1–2. For adult immediate reversal, 16 mg/kg was studied approximately three minutes after rocuronium 1.2 mg/kg.", cites: ["Bridion SmPC"] },
         { text: "Minimal cardiovascular and histamine effects. Anaphylaxis ~1:2500–1:5000 — the second commonest NMBA cause after suxamethonium.", cites: ["Fourth National Audit Project"] },
       ]}
       workedExamples={workedExamples}
@@ -67,7 +67,7 @@ const RocuroniumTopic = () => {
       }}
       sectionSources={{
         objectives: ["BJA Educ 2015", "Peck & Hill Ch.10"],
-        keyPoints: ["BJA Educ 2015", "Peck & Hill Ch.10", "Fourth National Audit Project"],
+        keyPoints: ["BJA Educ 2015", "Peck & Hill Ch.10", "Fourth National Audit Project", "Bridion SmPC"],
         workedExamples: ["Peck & Hill Ch.10", "BJA Educ 2015"],
       }}
       coreConcepts={
@@ -93,7 +93,7 @@ const RocuroniumTopic = () => {
               mainEntity: [
                 ["What is the dose of rocuronium for intubation?", "Standard intubating dose is 0.6 mg/kg IV (2× ED₉₅), giving onset 60–90 s and clinical duration 30–45 min. For rapid sequence induction the dose is increased to 0.9–1.2 mg/kg IV, giving onset 45–60 s — comparable to suxamethonium 1.5 mg/kg — and duration 60–70 min. Maintenance infusion is 5–10 µg/kg/min titrated to TOF."],
                 ["How fast does rocuronium work?", "At 0.6 mg/kg, intubating conditions are achieved in 60–90 s. At the 1.2 mg/kg RSI dose, intubating conditions occur in 45–60 s — the only non-depolarising NMBA with onset comparable to suxamethonium. The faster onset at higher dose reflects rocuronium's relatively low potency: a larger absolute dose creates a steeper plasma-to-effect-site concentration gradient and faster receptor occupancy."],
-                ["How is rocuronium reversed?", "By sugammadex, a modified γ-cyclodextrin that encapsulates rocuronium 1:1 and removes it from plasma. Dosing depends on depth of block: 2 mg/kg at reappearance of T2 (routine reversal), 4 mg/kg at post-tetanic count 1–2 (deep block), 16 mg/kg for immediate reversal of a 1.2 mg/kg intubating dose (CICO rescue). Neostigmine 50 µg/kg with glycopyrrolate is an alternative but only when TOF count ≥2."],
+                ["How is rocuronium reversed?", "Sugammadex dosing depends on the depth of rocuronium block. Use 2 mg/kg at reappearance of T2 or 4 mg/kg at a post-tetanic count of 1–2. For immediate reversal after rocuronium 1.2 mg/kg, the adult dose is 16 mg/kg. Failed oxygenation requires immediate emergency front-of-neck airway. For neostigmine, ESAIC recommends a quantitative TOF ratio above 0.2 before reversal and continued monitoring until the ratio exceeds 0.9."],
                 ["What is the TOF target before extubation after rocuronium?", "A quantitative train-of-four ratio of ≥0.9 at the adductor pollicis. Below 0.9 there is clinically significant residual neuromuscular block even when the patient appears awake, with risk of airway obstruction, aspiration and hypoxaemia. Clinical signs such as head-lift and grip are insensitive to residual block; quantitative monitoring (acceleromyography, electromyography) is the standard of care."],
                 ["When should rocuronium be avoided?", "Avoid in known hypersensitivity to rocuronium or other aminosteroid NMBAs. Use with caution and a reduced or titrated dose in severe hepatic failure (prolonged duration), severe renal impairment (eGFR <30, where sugammadex data are also limited), and myasthenia gravis (use one-tenth dose and titrate to TOF). It is not a malignant hyperthermia trigger and is safe in plasma cholinesterase deficiency."],
                 ["Is rocuronium safe in pregnancy?", "Rocuronium is the preferred non-depolarising NMBA for obstetric general anaesthesia when suxamethonium is contraindicated, given the availability of sugammadex for emergency reversal. Like other quaternary ammonium NMBAs it does not cross the placenta in clinically significant amounts. Sugammadex is generally considered safe in pregnancy but may transiently lower hormonal contraceptive efficacy for 7 days post-dose."],
@@ -202,7 +202,7 @@ const RocuroniumTopic = () => {
                   <ul className="text-xs text-muted-foreground list-disc list-inside space-y-0.5">
                     <li>4 supramaximal stimuli at 2 Hz over 2 s</li>
                     <li>TOF count = number of palpable twitches (0–4)</li>
-                    <li>TOF ratio = T4/T1; ≥0.9 = safe extubation</li>
+                    <li>TOF ratio = T4/T1. Document quantitative recovery and assess clinical readiness for extubation.</li>
                     <li>Best for moderate–light block titration and reversal</li>
                   </ul>
                 </div>
@@ -227,9 +227,8 @@ const RocuroniumTopic = () => {
                   <p className="text-sm font-semibold text-foreground mb-1">Depth-of-block reference</p>
                   <ul className="text-xs text-muted-foreground list-disc list-inside space-y-0.5">
                     <li>Intense: PTC 0 — no neostigmine</li>
-                    <li>Deep: PTC ≥1, TOF 0 — sugammadex 4 mg/kg</li>
-                    <li>Moderate: TOF 1–3 — sugammadex 2 mg/kg at T2 or neostigmine</li>
-                    <li>Recovery: TOF ratio ≥0.9 required to extubate</li>
+                    <li>For adult rocuronium block, give sugammadex 4 mg/kg at recovery to 1–2 post-tetanic counts, or 2 mg/kg once T2 reappears. <InlineRef topicId="rocuronium" refLabel="Bridion SmPC" /></li>
+                    <li>For neostigmine, wait for spontaneous recovery to a quantitative TOF ratio above 0.2. Give an antimuscarinic and monitor at the adductor pollicis until the ratio exceeds 0.9 before assessing readiness for extubation. <InlineRef topicId="rocuronium" refLabel="ESAIC 2023 NMB Guideline" /></li>
                   </ul>
                 </div>
               </div>
@@ -308,7 +307,7 @@ const RocuroniumTopic = () => {
                     <li>Complete apnoea from diaphragmatic and intercostal paralysis — ventilation must always be controlled.</li>
                     <li>Bronchospasm is uncommon as a direct effect (minimal histamine release) but is a leading feature of rocuronium anaphylaxis; consider it in the differential for high airway pressures after induction.</li>
                     <li>Residual block (TOF ratio &lt;0.9) causes pharyngeal dysfunction, impaired airway protection, hypoxaemia and post-operative pulmonary complications — quantitative monitoring and full reversal are mandatory.</li>
-                    <li>Rapid loss of upper airway tone contributes to airway collapse if mask ventilation is difficult; a plan for failed intubation (including sugammadex 16 mg/kg for immediate reversal) is essential.</li>
+                    <li>Plan for failed intubation before induction. If facemask and supraglottic rescue oxygenation fail, declare CICO, call for help and proceed immediately to emergency front-of-neck airway.</li>
                   </ul>
                 </div>
               </div>
@@ -356,7 +355,7 @@ const RocuroniumTopic = () => {
                 <li><strong>Evidence for infusions in ARDS:</strong> the ROSE trial found no mortality benefit from early continuous neuromuscular blockade with a high-PEEP strategy compared with lighter sedation, so infusions are now reserved for specific indications rather than routine use<InlineRef topicId="rocuronium" refLabel="ROSE 2019" />.</li>
                 <li><strong>Mandatory co-interventions:</strong> deep sedation and analgesia (a paralysed patient cannot signal awareness), eye care, pressure area and thromboprophylaxis, and secure ventilator alarms — accidental disconnection is rapidly fatal.</li>
                 <li><strong>Monitoring:</strong> daily interruption and quantitative TOF (target 1–2 twitches) to use the minimum effective dose; deep prolonged block increases the risk of ICU-acquired weakness and critical illness neuromyopathy, especially with corticosteroids and hyperglycaemia.</li>
-                <li><strong>Reversal:</strong> sugammadex 16 mg/kg reverses profound block within 3 min and is the rescue option in a can't intubate, can't oxygenate scenario; standard reversal doses are 2 mg/kg (TOF count ≥2) and 4 mg/kg (post-tetanic count 1–2). Sugammadex is renally excreted and is not recommended in eGFR &lt;30 mL/min, so in dialysis-dependent or severe renal failure plan for spontaneous recovery with quantitative monitoring instead.</li>
+                <li><strong>Reversal:</strong> In adults, sugammadex 16 mg/kg can provide immediate pharmacological reversal after rocuronium 1.2 mg/kg. CICO requires immediate emergency front-of-neck airway and adequate neuromuscular block. For routine reversal use 2 mg/kg at reappearance of T2 or 4 mg/kg at post-tetanic count 1–2. The product information advises against use in severe renal impairment (creatinine clearance below 30 mL/min).</li>
                 <li><strong>Infusion practicalities:</strong> a typical adult ICU infusion is 5–12 µg/kg/min (about 0.3–0.7 mg/kg/h), titrated to the minimum dose achieving the therapeutic goal. Use a daily &ldquo;drug holiday&rdquo; — stop the infusion, allow return of twitches, reassess ventilator synchrony and neurology, and restart only if still indicated<InlineRef topicId="rocuronium" refLabel="ESAIC 2023 NMB Guideline" />.</li>
                 <li><strong>Limitations of peripheral TOF in ICU:</strong> oedema, hypothermia, vasoconstriction, immobility-related receptor changes and electrode/limb access problems make adductor pollicis TOF unreliable; correlate with clinical goals (absence of dyssynchrony, tolerance of prone position) and use post-tetanic count for deep block.</li>
                 <li><strong>Acute quadriplegic myopathy:</strong> prolonged aminosteroid blockade, especially with corticosteroids, sepsis, hyperglycaemia and immobility, is associated with acute quadriplegic myopathy and ICU-acquired weakness — flaccid weakness with raised creatine kinase and prolonged ventilator dependence after paralysis is stopped. Limit duration, avoid unnecessary depth, and prefer cisatracurium for infusions beyond a few hours.</li>
@@ -393,7 +392,7 @@ const RocuroniumTopic = () => {
                 {[
                   { q: "What is the dose of rocuronium for intubation?", a: "0.6 mg/kg IV (2× ED₉₅) for routine intubation: onset 60–90 s, duration 30–45 min. For rapid sequence induction the dose is 0.9–1.2 mg/kg: onset 45–60 s, duration 60–70 min. Maintenance infusion is 5–10 µg/kg/min titrated to TOF." },
                   { q: "How fast does rocuronium work?", a: "At 0.6 mg/kg, intubating conditions occur in 60–90 s. At the 1.2 mg/kg RSI dose, intubating conditions occur in 45–60 s — comparable to suxamethonium 1.5 mg/kg, and the only non-depolarising NMBA fast enough for true RSI. The faster onset at higher dose reflects rocuronium's relatively low potency, which creates a steep plasma-to-effect-site gradient." },
-                  { q: "How is rocuronium reversed?", a: "By sugammadex, a modified γ-cyclodextrin that encapsulates rocuronium 1:1. Dose by depth: 2 mg/kg at reappearance of T2 (routine), 4 mg/kg at PTC 1–2 (deep block), 16 mg/kg for immediate reversal of a 1.2 mg/kg intubating dose. Neostigmine 50 µg/kg with glycopyrrolate is an alternative only at TOF count ≥2." },
+                  { q: "How is rocuronium reversed?", a: "Sugammadex dosing depends on the depth of rocuronium block. Use 2 mg/kg at reappearance of T2 or 4 mg/kg at a post-tetanic count of 1–2. For immediate reversal after rocuronium 1.2 mg/kg, the adult dose is 16 mg/kg. Failed oxygenation requires immediate emergency front-of-neck airway. For neostigmine, ESAIC recommends a quantitative TOF ratio above 0.2 before reversal and continued monitoring until the ratio exceeds 0.9." },
                   { q: "What is the TOF target before extubation after rocuronium?", a: "A quantitative train-of-four ratio of ≥0.9 at the adductor pollicis. Below 0.9 there is clinically significant residual block despite an apparently awake patient. Clinical signs like head-lift and grip are insensitive to residual paralysis; quantitative monitoring is the standard of care." },
                   { q: "When should rocuronium be avoided?", a: "Avoid in known aminosteroid hypersensitivity. Use with caution and titrate in severe hepatic failure, severe renal impairment (eGFR <30, where sugammadex is also limited) and myasthenia gravis (use ~10% of normal dose). Rocuronium is not an MH trigger and is safe in plasma cholinesterase deficiency." },
                   { q: "Is rocuronium safe in pregnancy?", a: "Yes. Rocuronium is the preferred non-depolarising NMBA for obstetric general anaesthesia when suxamethonium is contraindicated, because sugammadex is available for immediate reversal. It does not cross the placenta in clinically significant amounts. Sugammadex may transiently lower hormonal contraceptive efficacy for 7 days post-dose." },
@@ -409,7 +408,7 @@ const RocuroniumTopic = () => {
             <ExamPitfallsCallout
               accent="pharmacology"
               pitfalls={[
-                "Don't give neostigmine at TOF count 0 — it cannot reverse deep block and risks recurarisation.",
+                  "For neostigmine, wait for adequate spontaneous recovery, give an antimuscarinic and confirm quantitative recovery before extubation.",
                 "Confirm reversal with quantitative TOF ≥0.9; clinical signs miss residual paralysis.",
                 "After sugammadex, re-paralysis within 24 h requires cisatracurium (or much larger rocuronium dose).",
                 "Sugammadex inactivates hormonal contraceptives for 7 days — counsel and document.",

@@ -211,7 +211,7 @@ const NeuromuscularMonitoringDiagram = () => {
                   {[
                     { dose: "2 mg/kg", indication: "Moderate block (TOF count ≥2)", onset: "~2 min to TOF ≥0.9" },
                     { dose: "4 mg/kg", indication: "Deep block (PTC ≥1, TOF = 0)", onset: "~3 min to TOF ≥0.9" },
-                    { dose: "16 mg/kg", indication: "Immediate reversal (can't intubate, can't oxygenate)", onset: "~1.5 min from 1.2 mg/kg rocuronium" },
+                    { dose: "16 mg/kg", indication: "Immediate reversal after 1.2 mg/kg rocuronium (not a CICO rescue)", onset: "~1.5 min from 1.2 mg/kg rocuronium" },
                   ].map((r) => (
                     <div key={r.dose} className="flex gap-2 p-2 rounded bg-muted/50 text-xs">
                       <span className="font-bold text-primary whitespace-nowrap">{r.dose}</span>

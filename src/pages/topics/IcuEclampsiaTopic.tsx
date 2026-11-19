@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { TopicFaqs } from "@/components/topic/TopicFaqs";
 import { TopicTemplate } from "@/components/topic/TopicTemplate";
 import { CollapsibleSubsection } from "@/components/topic/CollapsibleSubsection";
 import { ExamSection } from "@/components/exam/ExamSection";
@@ -6,6 +7,17 @@ import { Exam } from "@/data/curriculum";
 import { EclampsiaMagnesiumTeaching, EclampsiaHypertensionTeaching, EclampsiaFluidTeaching } from "@/components/topic/IcuEmergencyTeaching";
 
 const exams = [Exam.FINAL, Exam.FFICM, Exam.EDIC];
+const vivaFaqs: Array<[string, string]> = [
+  [
+    "How is IV magnesium sulfate used after an eclamptic seizure, and what should be given if another seizure occurs during treatment?",
+    "Load with 4 g IV over 5–15 minutes, then infuse 1 g/hour. If a seizure recurs, give another 2–4 g IV over 5–15 minutes. Continue the maintenance infusion until 24 hours after the last seizure. Source: NICE NG133, recommendation 1.8.4.",
+  ],
+  [
+    "What maintenance fluid limit applies in severe pre-eclampsia, and when does that limit need reassessment?",
+    "Limit maintenance fluids to 80 mL/hour in the absence of other ongoing losses. If the patient is losing fluid, for example through haemorrhage, reassess fluid replacement according to those losses. Source: NICE NG133, recommendation 1.8.12.",
+  ],
+];
+
 const quiz = [
   { question: "NICE NG133 magnesium sulfate loading dose:", options: ["2 g IV over 1 hour", "4 g IV over 5–15 minutes", "10 g IM", "1 g IV bolus"], correctIndex: 1, explanation: "Collaborative Eclampsia Trial regimen: 4 g IV over 5–15 minutes, then 1 g/hour for 24 hours." },
   { question: "After an eclamptic fit, the magnesium infusion continues for:", options: ["6 hours", "12 hours", "24 hours after the last fit", "Until delivery only"], correctIndex: 2, explanation: "24 hours after the last fit." },
@@ -32,6 +44,7 @@ export default function IcuEclampsiaTopic() {
       <ExamSection id="eclampsia-magnesium" exams={exams}><CollapsibleSubsection title="1. Magnesium sulfate" defaultOpen><EclampsiaMagnesiumTeaching /></CollapsibleSubsection></ExamSection>
       <ExamSection id="eclampsia-hypertension" exams={exams}><CollapsibleSubsection title="2. Severe hypertension"><EclampsiaHypertensionTeaching /></CollapsibleSubsection></ExamSection>
       <ExamSection id="eclampsia-fluids" exams={exams}><CollapsibleSubsection title="3. Fluids"><EclampsiaFluidTeaching /></CollapsibleSubsection></ExamSection>
+      <TopicFaqs faqs={vivaFaqs} heading="Viva practice" />
     </div>}
   />;
 }

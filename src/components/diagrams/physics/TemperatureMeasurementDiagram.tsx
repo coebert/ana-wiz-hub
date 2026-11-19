@@ -211,7 +211,7 @@ const InfraredTab = () => (
   <div className="space-y-4">
     <h3 className="text-lg font-semibold text-foreground">Infrared Tympanic Thermometry</h3>
     <p className="text-sm text-muted-foreground">
-      Detects infrared radiation emitted from the tympanic membrane — a non-contact measure of core temperature.
+      Detects radiation from the ear and estimates temperature. NICE excludes handheld infrared estimates when measuring core temperature in adults having surgery.
     </p>
     <svg viewBox="0 0 400 300" className="w-full max-w-md mx-auto">
       {/* Ear canal */}
@@ -271,7 +271,7 @@ const InfraredTab = () => (
       <ul className="text-sm text-muted-foreground space-y-1 list-disc pl-4">
         <li><strong>Stefan-Boltzmann law</strong>: all objects emit IR radiation proportional to T⁴</li>
         <li><strong>Thermopile</strong>: multiple thermocouples in series detecting IR radiation → voltage</li>
-        <li>Tympanic membrane shares blood supply with <strong>hypothalamus</strong> (internal carotid) — reflects core temperature</li>
+        <li>Canal wall radiation, angle and the device’s correction algorithm affect the estimate.</li>
         <li><strong>Advantages</strong>: non-invasive, rapid (1–2 seconds), easy to use</li>
         <li><strong>Sources of error</strong>: cerumen (wax), otitis media, poor probe positioning, cold ear canal</li>
         <li>Measures radiation at <strong>~10 μm wavelength</strong> (far infrared)</li>

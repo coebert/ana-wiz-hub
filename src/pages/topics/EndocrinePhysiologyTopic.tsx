@@ -16,7 +16,7 @@ const endocrinePhysiologyFaqs: Array<[string, string]> = [
   ],
   [
     "What is the perioperative steroid replacement regimen for adrenal suppression?",
-    "Patients on >5 mg prednisolone/day for >3 weeks are at risk of HPA suppression. Replacement scaled to surgical stress: minor — usual dose + 25 mg hydrocortisone at induction. Moderate — 25 mg at induction + 100 mg/day for 24 h. Major — 100 mg at induction + 200 mg/day for 48–72 h, then taper. Avoid abrupt withdrawal — addisonian crisis is life-threatening."
+    "The 2020 UK guideline identifies adults taking at least 5 mg prednisolone daily or equivalent for a month or more as potentially at risk of adrenal suppression. For major or intermediate surgery in adults receiving adrenosuppressive treatment, its corrected Table 2 uses hydrocortisone 100 mg IV at induction followed immediately by 200 mg over 24 hours by infusion. After major surgery continue IV cover while nil by mouth. When oral therapy resumes, use double the usual oral dose for 48 hours after uncomplicated surgery, then resume baseline. Established adrenal insufficiency has a separate pathway."
   ],
   [
     "What are the perioperative implications of thyroid disease?",
@@ -43,24 +43,21 @@ const workedExamples: WorkedExample[] = [
     ),
     working: (
       <>
-        Prednisolone &gt;5 mg/day for &gt;3 weeks is assumed to suppress the HPA axis. The physiological cortisol output
-        rises with surgical magnitude (Salem &amp; Kehlet):
-        <ul className="list-disc list-inside mt-2 space-y-1">
-          <li><strong>Minor</strong> (e.g. inguinal hernia): equivalent to ~25 mg cortisol over 24 h.</li>
-          <li><strong>Moderate</strong> (e.g. THR/TKR, cholecystectomy): ~50–75 mg over 24 h.</li>
-          <li><strong>Major</strong> (e.g. cardiac, oesophagectomy): ~75–150 mg over 24 h.</li>
-        </ul>
-        Standard UK guidance (AAGBI 2020): continue usual oral dose AND give hydrocortisone 100 mg IV at induction, then
-        50 mg IV 8-hourly for 24 h for moderate surgery. Reduce by 50% per day until back on baseline.
+        Six months of prednisolone 10 mg/day puts this patient at risk of HPA-axis suppression.
+        Agree an intermediate-surgery plan with the perioperative team. Continue the usual glucocorticoid;
+        include parenteral cover when the oral route is unavailable. The corrected UK guideline Table 2
+        specifies the initial cover and subsequent oral regimen for this patient group.
       </>
     ),
     answer: (
       <>
-        Continue oral prednisolone, hydrocortisone 100 mg IV at induction, then 50 mg IV 8-hourly for 24 h, then taper
-        over 48 h back to baseline. Monitor BP and glucose.
+        Give hydrocortisone 100 mg IV at induction and immediately start a continuous infusion delivering
+        200 mg over 24 hours. After uncomplicated intermediate surgery, give double her regular oral
+        glucocorticoid dose for 48 hours when oral treatment is possible, then resume baseline. Review the
+        plan if oral absorption or recovery is delayed. Monitor glucose and blood pressure.
       </>
     ),
-    cites: ["BJA Educ 2015"],
+    cites: ["AAGBI Steroid Cover", "UK steroid cover Table 2 correction"],
   },
   {
     title: "Phaeochromocytoma preparation",
@@ -384,18 +381,12 @@ const EndocrinePhysiologyTopic = () => {
 
           <ExamSection id="steroid-cover" exams={[Exam.FINAL, Exam.FFICM]} curriculumCodes={["CR_BK_07"]}>
             <CollapsibleSubsection title="Perioperative Steroid Cover">
-              <p className="text-sm text-muted-foreground leading-relaxed mb-3">Aim to match, not exceed, the physiological cortisol response — normal output is ~5–10 mg/m²/day of cortisol, rising to 75–150 mg/day after major surgery. Continue the patient's usual glucocorticoid and add supplementation according to risk and surgical stress <InlineRef topicId="endocrine-physiology" refLabel="AAGBI Steroid Cover" />.</p>
-              <p className="text-sm text-muted-foreground leading-relaxed mb-2"><strong>Risk stratification</strong></p>
-              <ul className="space-y-1 text-sm text-muted-foreground list-disc list-inside mb-3">
-                <li><strong>Assume adrenal suppression</strong>: prednisolone ≥5 mg/day (or equivalent) for &gt;4 weeks, any dose of long-term steroid within the past 3 months, known primary/secondary adrenal insufficiency, or high-dose inhaled/topical/intra-articular steroid exposure.</li>
-                <li><strong>Unlikely to be suppressed</strong>: &lt;5 mg/day prednisolone, or any dose for less than 3 weeks — usual dose alone is sufficient.</li>
-                <li><strong>Uncertain</strong>: consider a short Synacthen test if surgery is elective and time allows; otherwise treat as suppressed.</li>
-              </ul>
-              <p className="text-sm text-muted-foreground leading-relaxed mb-2"><strong>Matching cover to surgical stress</strong> — minor = short, superficial or day-case procedures under local/brief general anaesthesia (e.g. hernia repair, cataract); moderate = intra-abdominal, joint replacement or laparoscopic surgery of 1–2 hours; major = prolonged, cardiothoracic, major bowel, obstetric or emergency surgery and critical illness.</p>
-              <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside"><li><strong>Minor:</strong> take the usual morning dose — this is often sufficient; hydrocortisone 25 mg IV at induction if in doubt or the patient is fasted.</li><li><strong>Moderate:</strong> usual dose, hydrocortisone 25–50 mg at induction, then 100 mg over 24 h for 24–48 h.</li><li><strong>Major:</strong> usual dose, hydrocortisone 100 mg at induction, then 200 mg per 24 h by infusion for 48–72 h.</li></ul>
-              <ul className="mt-3 space-y-2 text-sm text-muted-foreground list-disc list-inside">
-                <li><strong>Avoid routine high-dose regimens</strong> — supraphysiological steroid worsens hyperglycaemia, wound healing and infection risk without benefit.</li>
-                <li><strong>Postoperatively</strong>: continue supplementation until oral intake and normal physiology resume, then halve the daily dose each day back to the baseline oral regimen; double the usual oral dose for 24–48 h after discharge-level stress or intercurrent illness (sick-day rules), and issue a steroid emergency card.</li>
+              <p className="text-sm text-muted-foreground leading-relaxed mb-3">Identify established adrenal insufficiency separately from possible suppression by prescribed glucocorticoids. In adults, a daily dose equivalent to at least 5 mg prednisolone for a month or more may suppress the axis. Consider previous exposure, route, individual risk and the steroid emergency plan <InlineRef topicId="endocrine-physiology" refLabel="AAGBI Steroid Cover" />.</p>
+              <p className="text-sm text-muted-foreground mb-2"><strong>Adults on adrenosuppressive treatment.</strong> The corrected UK Table 2 gives the same initial hydrocortisone cover for intermediate and major surgery. Continue usual glucocorticoid treatment and account for inability to take it orally.</p>
+              <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside">
+                <li>Give 100 mg hydrocortisone IV at induction and immediately begin an infusion delivering 200 mg over 24 hours.</li>
+                <li>After major surgery, continue IV hydrocortisone at 200 mg per 24 hours while nil by mouth. Once oral treatment is possible after uncomplicated intermediate or major surgery, double the usual oral dose for 48 hours, then resume baseline. A complicated recovery requires an individual plan <InlineRef topicId="endocrine-physiology" refLabel="UK steroid cover Table 2 correction" />.</li>
+                <li>For established primary or secondary adrenal insufficiency, use the guideline’s dedicated Table 1 and the patient’s endocrine plan. Agree cover separately for other procedures and for prolonged vomiting or fasting.</li>
                 <li><strong>Watch for addisonian crisis</strong>: unexplained hypotension unresponsive to fluid and vasopressors, tachycardia, nausea and vomiting, abdominal pain, hypoglycaemia, hyponatraemia with hyperkalaemia, confusion or fever. Treat immediately with hydrocortisone 100 mg IV, 0.9% saline and glucose — do not wait for cortisol results.</li>
               </ul>
             </CollapsibleSubsection>
@@ -453,7 +444,7 @@ const EndocrinePhysiologyTopic = () => {
 
           <ExamPitfallsCallout
             pitfalls={[
-              <><strong>Steroid cover</strong>: any patient on ≥5 mg prednisolone for ≥3 weeks within the last year is at risk of adrenal suppression — give hydrocortisone supplementation matched to surgical severity.</>,
+              <><strong>Steroid cover</strong>: review the steroid dose, route, duration, diagnosis and procedure. Use the appropriate UK guideline table and plan for a period without oral absorption.</>,
               <><strong>Phaeochromocytoma</strong>: α-block first (phenoxybenzamine/doxazosin) THEN β-block — reverse sequence precipitates hypertensive crisis.</>,
               <><strong>Thyroid storm</strong>: postoperative tachycardia + fever + agitation. Treat with β-blockade, propylthiouracil, iodine (≥1 h after PTU), steroids, cooling.</>,
               <><strong>Diabetic patient</strong>: variable-rate insulin infusion only if &gt;1 missed meal; otherwise omit short-acting + half long-acting on day of surgery and check CBG hourly.</>,

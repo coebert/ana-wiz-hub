@@ -14,7 +14,7 @@ import { BariatricEvidenceTeaching } from "@/components/topic/BariatricEvidenceT
 const bariatricAnaesthesiaFaqs: Array<[string, string]> = [
   [
     "How are induction and maintenance drug doses calculated in obesity?",
-    "Use ideal body weight (IBW) for propofol induction and remifentanil; lean body weight (LBW) for propofol maintenance and rocuronium; ideal body weight (IBW) for suxamethonium at 1–1.5 mg/kg; total body weight (TBW) for paracetamol (max 4 g/day), antibiotics and sugammadex; and adjusted body weight for aminoglycosides."
+    "Use lean body weight as a starting point for propofol induction, fentanyl and non-depolarising blockers such as rocuronium. Titrate anaesthesia and monitor neuromuscular block quantitatively. Use total body weight for suxamethonium. Dose sugammadex by actual body weight and measured depth of block. Propofol infusions and target-controlled models require model-specific dosing. Antimicrobial and paracetamol doses depend on the individual product and applicable maximum."
   ],
   [
     "What is the recommended pre-oxygenation and intubation position for the obese patient?",
@@ -29,30 +29,30 @@ const bariatricAnaesthesiaFaqs: Array<[string, string]> = [
 const BariatricAnaesthesiaTopicWorkedExamples: WorkedExample[] = [
   {
     title: "Drug dosing in the morbidly obese patient",
-    scenario: "A 145 kg (BMI 48) woman for laparoscopic sleeve gastrectomy. Calculate induction doses for propofol, fentanyl, rocuronium and suxamethonium, and explain the scalar used for each.",
+    scenario: "A woman weighing 145 kg with BMI 48 is having laparoscopic sleeve gastrectomy. Which weight should guide induction and neuromuscular block, and what would an adult intubating dose of suxamethonium be at 1 mg/kg?",
     working: (
       <div className="space-y-2">
         <p className="font-semibold text-foreground">Step-by-step reasoning</p>
         <ol className="list-decimal list-inside space-y-1">
-          <li>Compute weights: TBW 145, IBW ≈ 60 kg (female), LBW ≈ 75 kg (Janmahasatian), ABW = IBW + 0.4(TBW−IBW) ≈ 94 kg</li>
-          <li>Propofol induction by LBW (reduces overdose); maintenance by ABW</li>
+          <li>At 145 kg and BMI 48, estimated height is 1.74 m. Female Janmahasatian lean body weight is about 66 kg.</li>
+          <li>Use lean body weight as an initial guide for propofol induction and titrate to effect. Apply the chosen model’s validated inputs for target-controlled maintenance.</li>
           <li>Fentanyl by LBW (lipophilic but distribution well predicted by LBW)</li>
-          <li>Rocuronium by IBW (hydrophilic, distributes to lean mass) — TBW dosing prolongs duration</li>
-          <li>Suxamethonium 1–1.5 mg/kg <strong>IBW</strong> — although plasma cholinesterase activity and extracellular fluid rise in obesity, TBW dosing gives an unnecessarily large dose with more myalgia, hyperkalaemia and prolonged apnoea; 1–1.5 mg/kg IBW reliably provides intubating conditions</li>
+          <li>Use lean body weight for rocuronium and choose the dose for the intended onset and depth of block. Monitor the response quantitatively.</li>
+          <li>For suxamethonium, use <strong>total body weight</strong>. At 1 mg/kg the dose is 145 mg. Check contraindications and the specific product information.</li>
           <li>Sugammadex 2–4 mg/kg <strong>TBW</strong> — the dose must match the amount of rocuronium in the body, and TBW is the recommended scalar for reliable, complete reversal</li>
         </ol>
         <div className="mt-2 rounded-md border border-destructive/30 bg-destructive/5 p-2">
           <p className="text-xs font-semibold uppercase tracking-wide text-destructive mb-1">Common traps</p>
           <ul className="list-disc list-inside space-y-1 text-foreground">
           <li>Using TBW for rocuronium → markedly prolonged paralysis</li>
-          <li>Dosing suxamethonium on TBW → excessive dose, myalgia and prolonged apnoea; dose on IBW instead</li>
+          <li>Dosing suxamethonium on ideal body weight can give inadequate intubating conditions.</li>
           <li>Dosing sugammadex on IBW or ABW → incomplete reversal and recurarisation</li>
           <li>Ramped position not used → failed mask ventilation and intubation</li>
           </ul>
         </div>
       </div>
     ),
-    answer: "Propofol/LBW (~150 mg), fentanyl/LBW, rocuronium/IBW (~60 mg), suxamethonium 1–1.5 mg/kg IBW (~60–90 mg), sugammadex on TBW. Position ramped, pre-oxygenate with CPAP/PEEP.",
+    answer: "Start propofol and fentanyl using lean body weight and titrate to effect. Use lean body weight for rocuronium and total body weight for suxamethonium (145 mg at 1 mg/kg). Dose sugammadex on actual body weight according to quantitative block depth. Position the patient head-up and preoxygenate.",
 
     cites: ["BJA Educ Bariatric 2015", "AAGBI Obesity 2015", "STOP-BANG"],
   },
@@ -80,7 +80,7 @@ const BariatricAnaesthesiaTopic = () => {
       keyPoints={[
         { text: "FRC falls dramatically in obesity — may fall below closing capacity causing shunt even during tidal breathing", cites: ["BJA Educ Bariatric 2015"] },
         { text: "Ramped position + head-up tilt + apnoeic oxygenation are essential for safe airway management", cites: ["SOBA 2022"] },
-        { text: "Drug dosing: LBW for propofol/remifentanil, IBW for rocuronium and suxamethonium (1–1.5 mg/kg IBW), TBW for sugammadex", cites: ["AAGBI Obesity 2015"] },
+        { text: "Use lean body weight as an initial guide for propofol induction and rocuronium. Use total body weight for suxamethonium and actual body weight for sugammadex.", cites: ["SOBA Airway 2025", "AAGBI Obesity 2015", "Bridion SmPC"] },
         { text: "STOP-BANG ≥5 = high-risk OSA. Screen for OHS (daytime hypercapnia) if BMI ≥30 + OSA", cites: ["AAGBI Obesity 2015"] },
         { text: "Postoperative: head-up positioning, resume CPAP, continuous SpO₂, multimodal opioid-sparing analgesia", cites: ["BJA Educ Bariatric 2015"] },
       ]}
@@ -159,7 +159,7 @@ const BariatricAnaesthesiaTopic = () => {
                 <tr className="border-b border-border">
                   <td className="p-2.5">Propofol (TCI maintenance)</td>
                   <td className="p-2.5 font-medium text-foreground">Model-dependent</td>
-                  <td className="p-2.5">Schnider: enter age, height, sex and TBW — the model derives lean body mass internally, so do <strong>not</strong> substitute a lower weight. Marsh (weight-only) is <strong>not recommended</strong> in obesity because it grossly over-predicts required dose; if it is the only model available, enter LBW as the weight. Eleveld handles obesity best</td>
+                  <td className="p-2.5">Enter the covariates specified by the pump and pharmacokinetic model, within its validated limits for body size. If the patient lies outside those limits, select a suitable model or a manual infusion titrated to effect.</td>
                 </tr>
 
                 <tr className="border-b border-border">
@@ -176,54 +176,54 @@ const BariatricAnaesthesiaTopic = () => {
                 </tr>
                 <tr className="border-b border-border">
                   <td className="p-2.5">Fentanyl (bolus)</td>
-                  <td className="p-2.5 font-medium text-foreground">LBW / ABW</td>
-                  <td className="p-2.5">Lipophilic → large Vd but clearance unchanged. Titrate to effect</td>
+                  <td className="p-2.5 font-medium text-foreground">LBW</td>
+                  <td className="p-2.5">Use lean body weight as an initial guide and titrate to effect.</td>
                 </tr>
                 <tr className="border-b border-border">
                   <td className="p-2.5">Morphine</td>
-                  <td className="p-2.5 font-medium text-foreground">IBW</td>
-                  <td className="p-2.5">Hydrophilic; Vd does not increase proportionally with fat. Dose to IBW, titrate carefully</td>
+                  <td className="p-2.5 font-medium text-foreground">LBW</td>
+                  <td className="p-2.5">Titrate small increments to analgesia and respiratory response.</td>
                 </tr>
                 <tr className="border-b border-border">
                   <td className="p-2.5">Alfentanil</td>
-                  <td className="p-2.5 font-medium text-foreground">LBW</td>
-                  <td className="p-2.5">Moderately lipophilic; smaller Vd than fentanyl. Clearance correlates with lean mass</td>
+                  <td className="p-2.5 font-medium text-foreground">Adjusted body weight</td>
+                  <td className="p-2.5">The 2015 Association guideline suggests adjusted weight for initial dosing. Titrate to effect.</td>
                 </tr>
 
                 <tr className="border-b border-border"><td colSpan={3} className="p-2 font-semibold text-foreground bg-muted/30">Neuromuscular Blocking Agents</td></tr>
                 <tr className="border-b border-border">
                   <td className="p-2.5">Succinylcholine</td>
-                  <td className="p-2.5 font-medium text-foreground">IBW</td>
-                  <td className="p-2.5"><strong>1–1.5 mg/kg IBW</strong> gives reliable intubating conditions. Plasma cholinesterase activity and extracellular volume do rise in obesity, but TBW dosing produces an unnecessarily large dose with more myalgia, hyperkalaemia and prolonged apnoea<InlineRef topicId="bariatric-anaesthesia" refLabel="AAGBI Obesity 2015" /></td>
+                  <td className="p-2.5 font-medium text-foreground">TBW</td>
+                  <td className="p-2.5">Base the adult intubating dose on total body weight. Verify the dose and contraindications in the product information.<InlineRef topicId="bariatric-anaesthesia" refLabel="SOBA Airway 2025" /></td>
                 </tr>
 
                 <tr className="border-b border-border">
                   <td className="p-2.5">Rocuronium</td>
-                  <td className="p-2.5 font-medium text-foreground">IBW</td>
-                  <td className="p-2.5">Hydrophilic — Vd does not increase with fat mass. TBW dosing → prolonged block. 0.6–1.2 mg/kg IBW</td>
+                  <td className="p-2.5 font-medium text-foreground">LBW</td>
+                  <td className="p-2.5">Use lean body weight for initial dosing. Select the dose for the indication and titrate further doses to quantitative monitoring.<InlineRef topicId="bariatric-anaesthesia" refLabel="SOBA Airway 2025" /></td>
                 </tr>
                 <tr className="border-b border-border">
                   <td className="p-2.5">Atracurium / Cisatracurium</td>
-                  <td className="p-2.5 font-medium text-foreground">IBW</td>
-                  <td className="p-2.5">Hydrophilic with organ-independent elimination (Hofmann). Dose to IBW</td>
+                  <td className="p-2.5 font-medium text-foreground">LBW</td>
+                  <td className="p-2.5">Use lean body weight for initial dosing and monitor the depth of block.</td>
                 </tr>
                 <tr className="border-b border-border">
                   <td className="p-2.5">Vecuronium</td>
-                  <td className="p-2.5 font-medium text-foreground">IBW</td>
-                  <td className="p-2.5">Hydrophilic. Dose to IBW to avoid prolonged duration</td>
+                  <td className="p-2.5 font-medium text-foreground">LBW</td>
+                  <td className="p-2.5">Use lean body weight for initial dosing and monitor the depth of block.</td>
                 </tr>
 
                 <tr className="border-b border-border"><td colSpan={3} className="p-2 font-semibold text-foreground bg-muted/30">Reversal Agents</td></tr>
                 <tr className="border-b border-border">
                   <td className="p-2.5">Sugammadex</td>
                   <td className="p-2.5 font-medium text-foreground">TBW</td>
-                  <td className="p-2.5"><strong>TBW is the recommended scalar</strong> (2 mg/kg at TOF count ≥2, 4 mg/kg at post-tetanic count 1–2, 16 mg/kg for immediate reversal). The dose must encapsulate all the rocuronium in the body — IBW or ABW dosing risks incomplete reversal and recurarisation<InlineRef topicId="bariatric-anaesthesia" refLabel="AAGBI Obesity 2015" /></td>
+                  <td className="p-2.5">Dose on actual weight. For routine reversal give 2 mg/kg at reappearance of T2 or 4 mg/kg at a post-tetanic count of 1–2. The adult immediate-reversal dose after rocuronium 1.2 mg/kg is 16 mg/kg.<InlineRef topicId="bariatric-anaesthesia" refLabel="Bridion SmPC" /></td>
                 </tr>
 
                 <tr className="border-b border-border">
                   <td className="p-2.5">Neostigmine</td>
-                  <td className="p-2.5 font-medium text-foreground">IBW</td>
-                  <td className="p-2.5">Dose to IBW (max 70 µg/kg). Ceiling effect — higher doses ↑ muscarinic side effects</td>
+                  <td className="p-2.5 font-medium text-foreground">Adjusted body weight</td>
+                  <td className="p-2.5">The 2015 Association guideline suggests adjusted body weight with an adult maximum of 5 mg. Confirm appropriate spontaneous recovery and monitor quantitatively.</td>
                 </tr>
 
                 <tr className="border-b border-border"><td colSpan={3} className="p-2 font-semibold text-foreground bg-muted/30">Volatiles & Other Agents</td></tr>
@@ -266,10 +266,10 @@ const BariatricAnaesthesiaTopic = () => {
           <div className="mt-3 p-3 rounded-lg border border-border bg-secondary/20">
             <p className="text-xs font-semibold text-foreground mb-1">Key Principles</p>
             <ul className="text-xs text-muted-foreground leading-relaxed list-disc list-inside space-y-1">
-              <li><strong>Hydrophilic drugs</strong> (NMBAs, morphine): dose to IBW — they distribute in lean tissue/ECF, not fat</li>
+              <li><strong>Non-depolarising blockers:</strong> use lean body weight and quantitative neuromuscular monitoring. Suxamethonium is dosed on total body weight.</li>
               <li><strong>Lipophilic drugs</strong> (propofol, fentanyl, benzodiazepines): Vd ↑ but not linearly with fat — use LBW and titrate</li>
               <li><strong>Always titrate to effect</strong> — no single scalar is perfect. Use neuromuscular monitoring, BIS, and clinical endpoints</li>
-              <li><strong>TCI models</strong>: the <strong>Schnider</strong> model computes lean body mass from the covariates you enter (age, height, sex and total body weight) — enter the patient's actual TBW and let the model do the adjustment. The <strong>Marsh</strong> model is <em>not recommended</em> in obesity because it scales linearly with weight; if no alternative exists, enter LBW as the weight. The <strong>Eleveld</strong> model is validated across weight extremes and handles obesity best<InlineRef topicId="bariatric-anaesthesia" refLabel="BJA Educ Bariatric 2015" /></li>
+              <li><strong>TCI models:</strong> verify that the model and pump support the patient’s body size, and enter the covariates required by that model. Substituting a fictitious weight can distort delivery. Use an alternative validated model or a monitored manual infusion if necessary.<InlineRef topicId="bariatric-anaesthesia" refLabel="AAGBI Obesity 2015" /></li>
             </ul>
           </div>
         </div>
@@ -375,7 +375,7 @@ const BariatricAnaesthesiaTopic = () => {
               Extubation, not intubation, is when most obese patients come to harm — reduced FRC, upper-airway collapsibility, residual opioid and neuromuscular blockade all converge in recovery<InlineRef topicId="bariatric-anaesthesia" refLabel="AAGBI Obesity 2015" />.
             <InlineRef topicId="bariatric-anaesthesia" refLabel="SOBA Airway 2025" /></p>
             <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside leading-relaxed">
-              <li><strong>Criteria before extubation</strong>: fully awake and obeying commands, TOF ratio ≥0.9 confirmed by quantitative monitoring (reverse with sugammadex on TBW if any doubt), adequate tidal volumes with a regular respiratory pattern, normothermia, effective analgesia with minimal residual opioid, and haemodynamic stability</li>
+              <li><strong>Criteria before extubation</strong>: fully awake and obeying commands, TOF ratio ≥0.9 confirmed by quantitative monitoring (if rocuronium reversal is needed, dose sugammadex on actual weight according to the measured depth of block), adequate tidal volumes with a regular respiratory pattern, normothermia, effective analgesia with minimal residual opioid, and haemodynamic stability</li>
               <li><strong>Position</strong>: extubate in the sitting or 30–45° head-up (ramped) position — never supine; this preserves FRC and reduces the work of breathing</li>
               <li><strong>Technique</strong>: pre-oxygenate to EtO₂ &gt;90%, apply a recruitment manoeuvre then extubate on CPAP/PEEP to avoid derecruitment, and consider an <strong className="text-foreground">airway exchange catheter</strong> where intubation was difficult, the airway is oedematous, or re-intubation is anticipated (DAS extubation guidelines — "at-risk" extubation)</li>
               <li><strong>Immediate postoperative support</strong>: apply the patient's own CPAP or NIV promptly in known OSA/OHS, before hypoventilation develops; high-flow nasal oxygen is a useful alternative</li>
@@ -405,8 +405,8 @@ const BariatricAnaesthesiaTopic = () => {
             accent="clinical"
             pitfalls={[
               "Reduced FRC and rapid desaturation — pre-oxygenate ramped, head-up, with CPAP/NIV; consider apnoeic oxygenation.",
-              "Drug dosing: lipophilic drugs (fentanyl, midazolam) — total body weight for loading; lean body weight for maintenance; propofol induction by LBW.",
-              "Suxamethonium 1–1.5 mg/kg IBW; rocuronium by IBW; sugammadex by TBW.",
+              "Propofol induction and fentanyl boluses start from lean body weight and are titrated to the clinical response.",
+              "Suxamethonium is dosed on total body weight, rocuronium on lean body weight, and sugammadex on actual body weight according to the measured depth of block.",
               "High OSA/OHS prevalence — screen with STOP-BANG; postoperative CPAP and HDU monitoring after opioids.",
               "VTE risk is very high — combine mechanical and pharmacological prophylaxis and mobilise early.",
             ]}

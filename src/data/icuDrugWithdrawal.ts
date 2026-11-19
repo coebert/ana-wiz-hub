@@ -552,11 +552,11 @@ export const icuDrugWithdrawal: Record<string, DrugWithdrawal> = {
     slug: "enoxaparin",
     risk: "moderate",
     why: "No dependence, but stopping anticoagulation leaves a prothrombotic patient exposed, and the risk of thrombosis on interruption has to be balanced against bleeding and neuraxial procedures.",
-    offset: "Anti-Xa half-life 4–7 h subcutaneously, prolonged substantially in renal impairment — plan around 12 h (24 h for treatment dose) before a neuraxial procedure.",
+    offset: "The subcutaneous anti-Xa half-life is around 4–7 h and clearance is slower in renal impairment. Use the indication, last dose and creatinine clearance to plan the neuraxial interval.",
     taper: [
-      "Stop rather than taper, but plan the interruption: 12 h after a prophylactic dose and 24 h after a treatment dose before neuraxial block or high-risk surgery.",
+      "For neuraxial puncture, catheter placement or removal, wait at least 12 h after prophylactic enoxaparin or 24 h after treatment-dose enoxaparin. At creatinine clearance 15–30 mL/min, consider at least 24 h after prophylaxis or 48 h after treatment. Plan other high-risk operations under their own perioperative protocol (UK Inhixa SmPC, section 4.2, emc 785).",
       "Bridge with unfractionated heparin if the thrombotic risk is high and frequent interruptions are expected.",
-      "Restart at 4 h after catheter removal or as local guidance dictates, and document the restart time.",
+      "After neuraxial puncture or catheter removal, allow at least 4 h before considering enoxaparin. Base the actual restart time on haemostasis, bleeding and thrombosis risk, dose and local protocol. Document the plan.",
     ],
     monitoring: [
       "Platelets (HIT), haemoglobin, creatinine and anti-Xa level where indicated (renal failure, extremes of weight, pregnancy).",

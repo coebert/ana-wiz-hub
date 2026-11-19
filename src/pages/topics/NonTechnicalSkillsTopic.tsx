@@ -22,6 +22,8 @@ const objectives = [
   "Use structured tools (SBAR, CUS, two-challenge rule, PACE/CUSS, WHO checklist) to support safe communication and handover.",
   "Distinguish operational debriefing from psychologically-focused PTSD interventions, and apply TeamSTEPPS briefs, huddles and check-backs.",
   "Explain just culture, duty of candour and the NHS PSIRF approach to incident response.",
+  "Supervise an observed ICU handover and agree a specific action for the learner’s next practice.",
+  "Design a small quality-improvement test and select an outcome, process and balancing measure.",
 ];
 
 const quiz: QuizQuestion[] = [

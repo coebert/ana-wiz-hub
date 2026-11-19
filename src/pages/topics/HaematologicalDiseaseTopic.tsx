@@ -21,7 +21,7 @@ const keyPoints = [
   { text: "NICE NG24 restrictive threshold: transfuse stable adults at Hb <70 g/L (target 70–90 g/L); 80 g/L threshold (target 80–100 g/L) for ACS or chronic cardiovascular disease", cites: ["NICE NG24", "AAGBI PBM 2016"] },
   { text: "Platelet thresholds (BSH 2017): ≥50 ×10⁹/L for major surgery, ≥80 ×10⁹/L for neuraxial block, ≥100 ×10⁹/L for CNS/posterior-eye surgery; treat the cause, do not transfuse reflexively in ITP or TTP", cites: ["BSH Platelets 2017", "AAGBI Regional 2013"] },
   { text: "Neutropenic sepsis (neutrophils <0.5 ×10⁹/L with temperature ≥38°C or signs of sepsis) is a medical emergency — empirical piperacillin–tazobactam within 1 hour after cultures", cites: ["NICE NG141"] },
-  { text: "Tranexamic acid 1 g at induction and 1 g at end of surgery reduces major bleeding in non-cardiac surgery without significant excess of vascular events (POISE-3, 2022)", cites: ["POISE-3 TXA 2022", "BJA Educ Haem 2020"] },
+  { text: "Tranexamic acid 1 g at induction and 1 g at end of surgery reduced bleeding in selected non-cardiac surgery patients; non-inferiority for the composite cardiovascular outcome was not established (POISE-3, 2022)", cites: ["POISE-3 TXA 2022", "BJA Educ Haem 2020"] },
 ];
 
 const haematologicalDiseaseWorkedExamples: WorkedExample[] = [
@@ -153,7 +153,7 @@ const HaematologicalDiseaseTopic = () => {
                   <li>Do not delay life- or limb-saving surgery for elective optimisation</li>
                   <li>Activate major haemorrhage protocol early; aim Hb ≥70 g/L (≥80 g/L with ACS / chronic cardiovascular disease) — NICE NG24</li>
                   <li>Use a 1:1:1 ratio of red cells:FFP:platelets in massive transfusion; add cryoprecipitate if fibrinogen &lt;1.5 g/L (&lt;2 g/L in obstetrics)</li>
-                  <li>Give tranexamic acid 1 g IV at induction and 1 g at the end of surgery (POISE-3, 2022); within 3 hours of trauma (CRASH-2) or postpartum haemorrhage (WOMAN)</li>
+                  <li>POISE-3 studied 1 g IV at the start and end of non-cardiac surgery in selected patients. In major bleeding trauma, start TXA within 3 hours of injury. For diagnosed postpartum haemorrhage, give as soon as possible within 3 hours of birth (WHO).</li>
                   <li>Use intra-operative cell salvage where feasible (including obstetrics and cancer surgery with leucodepletion filter)</li>
                 </ul>
               </div>
@@ -651,7 +651,7 @@ const HaematologicalDiseaseTopic = () => {
               'Neuraxial block: platelets ≥80 ×10⁹/L (BSH 2017 / AAGBI 2013) and stable; never block in HIT/TTP.',
               'Suspected HIT: stop ALL heparin (including flushes), switch to argatroban/fondaparinux — do NOT transfuse platelets.',
               'Neutropenic sepsis: piperacillin–tazobactam within 1 hour of recognition, after cultures.',
-              'POISE-3 (2022): TXA 1 g at induction + 1 g at end reduces major bleeding in non-cardiac surgery without significant excess of vascular events.',
+              'POISE-3 (2022): TXA 1 g at induction + 1 g at end reduced bleeding in selected non-cardiac surgery patients; non-inferiority for the composite cardiovascular outcome was not established.',
               'Sickle cell disease: avoid the "five H" triggers — hypoxia, hypothermia, acidosis, dehydration and stasis — and transfuse to Hb ~100 g/L (simple) or HbS <30% (exchange) before major surgery.',
               'Desmopressin 0.3 microgram/kg works in mild haemophilia A and type 1 VWD but NOT haemophilia B or type 3 VWD — check the diagnosis before relying on it.',
               'DOAC reversal: idarucizumab 5 g IV for dabigatran; andexanet alfa or PCC 25–50 IU/kg for factor Xa inhibitors when andexanet unavailable.',

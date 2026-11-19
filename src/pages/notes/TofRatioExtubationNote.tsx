@@ -21,7 +21,7 @@ const TofRatioExtubationNote = () => (
       },
       {
         q: "When can I rely on neostigmine?",
-        a: "Neostigmine is effective from TOF count ≥ 2 (ideally ≥ 4) — i.e. only for shallow block. Give 50 µg/kg with glycopyrrolate 10 µg/kg. Allow 10 minutes for full effect and confirm TOF ratio ≥ 0.9 quantitatively before extubation. Deep block (TOF count 0–1) needs sugammadex 4 mg/kg (rocuronium/vecuronium) or further waiting.",
+        a: "Use quantitative monitoring at the adductor pollicis. ESAIC recommends waiting for spontaneous recovery to a TOF ratio above 0.2 before starting neostigmine with an antimuscarinic. Two twitches indicate moderate block. For deeper rocuronium or vecuronium block, use sugammadex according to measured depth or allow further recovery. Continue monitoring until the TOF ratio exceeds 0.9 before extubation.",
       },
       {
         q: "Does sugammadex remove the need for monitoring?",
@@ -71,6 +71,7 @@ const TofRatioExtubationNote = () => (
       the 0.9 threshold and why it matters is high-yield for both written
       and viva components.
     </p>
+    <p><a href="https://pubmed.ncbi.nlm.nih.gov/36377554/">ESAIC neuromuscular blockade guideline, recommendations 6–8</a></p>
   </NoteLayout>
 );
 

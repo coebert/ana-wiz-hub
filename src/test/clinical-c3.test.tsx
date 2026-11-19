@@ -45,7 +45,7 @@ describe("C3 clinical pathways and source mappings", () => {
     expect(screen.getByText(/default to a vertical midline skin incision/)).toBeTruthy();
     cleanup();
     const q = airwayManagementQuestions.find((q) => q.question.includes("attempt ceiling"));
-    expect(q?.options[q.correctIndex]).toBe("3+1");
+    expect(q?.options[q.correctIndex]).toMatch(/three plus one final attempt by a more experienced colleague/i);
     expect(q?.explanation).toContain("not a quota");
   });
   it("CL-20 all current airway copies distinguish unassessed anatomy and guided SAD intubation", () => {

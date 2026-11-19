@@ -77,9 +77,19 @@ const waveformPatterns: Array<{
     description:
       "Trace abruptly drops to zero across all phases. No upstroke, no plateau, no oscillation.",
     causes:
-      "Oesophageal intubation, accidental extubation, complete circuit disconnection, total airway obstruction, or cardiac arrest with no cardiac output.",
+      "Exclude oesophageal placement or displacement urgently. Also check for disconnection, sampling failure and obstruction. Low pulmonary flow can reduce CO₂, but a flat trace during high-quality CPR needs urgent airway reassessment.",
     action:
-      "Treat as a life-threatening event. Look at the patient and the airway: confirm tube position with direct laryngoscopy / videolaryngoscopy, check connections from patient to machine, palpate a central pulse. Call for help.",
+      "Treat as a life-threatening event. Check connections from patient to machine and palpate a central pulse. If the tube has just been placed, actively exclude oesophageal placement even in cardiac arrest: sustained exhaled CO₂ is the primary confirmation, and a flat trace is presumed oesophageal until proven otherwise. PUMA's default is to remove the tube and reoxygenate by mask or supraglottic airway unless removal is judged more dangerous; if removal is hazardous, obtain urgent valid independent confirmation. Call for help.",
+  },
+  {
+    id: "flat-after-intubation",
+    name: "Flat trace after intubation",
+    description:
+      "No sustained exhaled CO₂ after an intended tracheal intubation. A brief low-amplitude trace may come from gastric gas and must not be accepted as confirmation.",
+    causes:
+      "Oesophageal intubation is the default diagnosis until actively excluded. Also disconnection, complete obstruction, profound low cardiac output or cardiac arrest.",
+    action:
+      "Actively exclude oesophageal placement even in arrest. Sustained exhaled CO₂ across consecutive breaths is the primary confirmation. PUMA default: remove the tube and reoxygenate by mask or supraglottic airway unless removal is judged more dangerous; if removal is hazardous, obtain urgent valid independent confirmation (videolaryngoscopy, bronchoscopy or a second experienced operator). Do not accept misting, auscultation or chest rise as proof.",
   },
   {
     id: "exponential-decline",
@@ -130,7 +140,7 @@ const waveformFaqs: Array<[string, string]> = [
   ],
   [
     "How do you read a capnography waveform?",
-    "Work through the trace in four steps. (1) Is there a waveform at all — sudden loss means oesophageal intubation, disconnection, complete obstruction or arrest. (2) Is the baseline at zero — a raised baseline is rebreathing. (3) Is the upstroke steep and the plateau flat — a sloping shark-fin is expiratory obstruction. (4) Is the plateau smooth — a downward notch is a curare cleft. Only after the shape is normal does the absolute ETCO₂ number become useful.",
+    "First check for sustained exhaled CO₂. Following intubation, an absent or fading trace demands immediate exclusion of oesophageal placement, including during CPR. Then inspect the baseline for rebreathing, the upstroke and plateau for expiratory obstruction and the plateau for spontaneous effort.",
   ],
   [
     "What does a shark-fin capnography waveform mean?",
@@ -150,7 +160,7 @@ const waveformFaqs: Array<[string, string]> = [
   ],
   [
     "Why does ETCO₂ suddenly fall to zero?",
-    "A complete loss of the capnograph waveform across all phases means no expired CO₂ is reaching the sensor. The differential is short: oesophageal intubation, accidental extubation, complete circuit disconnection, total airway obstruction, or cardiac arrest with no cardiac output. Treat as life-threatening — look at the patient and the airway, confirm tube position, check every connection from patient to machine, and palpate a central pulse.",
+    "A complete loss of the capnograph waveform across all phases means no expired CO₂ is reaching the sensor. The differential is short: oesophageal intubation, accidental extubation, complete circuit disconnection, total airway obstruction, or cardiac arrest with no cardiac output. Treat as life-threatening. If the tube has just been placed, actively exclude oesophageal placement even in arrest: sustained exhaled CO₂ is the primary confirmation, and a flat trace is presumed oesophageal until proven otherwise. PUMA's default is to remove the tube and reoxygenate by mask or supraglottic airway unless removal is judged more dangerous; if removal is hazardous, obtain urgent valid independent confirmation. Check every connection from patient to machine and palpate a central pulse.",
   ],
   [
     "What is the α-angle on a capnograph?",
@@ -273,6 +283,12 @@ const CapnographyWaveformsTopic = () => {
                 </article>
               ))}
             </div>
+            <p className="text-xs text-muted-foreground leading-relaxed">
+              Oesophageal-intubation actions follow the PUMA consensus guideline: Chrimes N, Higgs A, Hagberg CA, et al.
+              Preventing unrecognised oesophageal intubation. <em>Anaesthesia</em>. 2022;77(12):1395–1415.
+              doi:10.1111/anae.15817. Sustained exhaled CO₂ is the primary confirmation; removal of the tube is the default
+              unless judged more dangerous, in which case urgent valid independent confirmation is required.
+            </p>
           </section>
 
           <section className="space-y-3">
@@ -282,8 +298,9 @@ const CapnographyWaveformsTopic = () => {
             <ol className="list-decimal list-inside text-sm text-muted-foreground space-y-2 leading-relaxed">
               <li>
                 <strong>Is there a waveform at all?</strong> No trace →
-                oesophageal intubation, disconnection, complete
-                obstruction or arrest.
+                actively exclude oesophageal intubation (PUMA default:
+                remove the tube and reoxygenate unless removal is more
+                dangerous), disconnection, complete obstruction or arrest.
               </li>
               <li>
                 <strong>Is the baseline at zero?</strong> Raised baseline
