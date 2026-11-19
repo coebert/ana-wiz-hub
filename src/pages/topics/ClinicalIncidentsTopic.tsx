@@ -160,7 +160,7 @@ const ClinicalIncidentsTopic = () => {
         { text: "Peri-operative anaphylaxis: titrated IV adrenaline 50 micrograms boluses (IM 10 micrograms/kg, max 500 micrograms, if no IV access) and rapid crystalloid — antihistamines and steroids do not treat ABC problems", cites: ["RCUK Periop Anaphylaxis 2024", "RCUK Anaphylaxis 2021"] },
         { text: "Tryptase: take at presentation, 1–2 h, and a baseline at ≥ 24 h — labelled with exact times", cites: ["AAGBI 2009"] },
         { text: "MH: rising EtCO₂ + tachycardia is the earliest sign. Dantrolene 2–2.5 mg/kg IV (max 300 mg per dose), repeated every 10 min to effect; 10 mg/kg is not an absolute ceiling", cites: ["EMHG 2024"] },
-        { text: "LAST: Intralipid 20% bolus 1.5 mL/kg, infusion 15 mL/kg/h (= 0.25 mL/kg/min). AVOID propofol, lidocaine, and amiodarone in arrest", cites: ["BJA Educ 2011"] },
+        { text: "LAST: Intralipid 20% bolus 1.5 mL/kg, infusion 15 mL/kg/h (= 0.25 mL/kg/min). Avoid lidocaine and vasopressin; amiodarone is the antiarrhythmic of choice for LAST ventricular arrhythmias (QRH/ASRA)", cites: ["AAGBI LAST 2010", "ASRA LAST 2020"] },
         { text: "Awareness: NAP5 incidence ~1:19,000. BIS 40-60 reduces risk in TIVA; document, acknowledge, and refer for psychological follow-up", cites: ["NAP Reports"] },
         { text: <>UK NAP6 2018: of 199 identified culprit agents, antibiotics 94 (47%), NMBAs 65 (33%), chlorhexidine 18 (9%) and Patent Blue 9 (5%) <InlineRef topicId="clinical-incidents" refLabel="NAP6 2018 (Triggers)" /></>, cites: ["NAP6 2018 (Triggers)"] },
       ]}
@@ -225,7 +225,7 @@ const ClinicalIncidentsTopic = () => {
                 <li>Stop injection, call for help</li>
                 <li>ABCDE, secure airway, 100% O₂</li>
                 <li>Seizures → benzodiazepine (avoid propofol in cardiac arrest)</li>
-                <li>If cardiac arrest → CPR, AVOID lidocaine/amiodarone/vasopressin</li>
+                <li>If cardiac arrest → CPR; avoid lidocaine and vasopressin. Amiodarone is the antiarrhythmic of choice for LAST ventricular arrhythmias — QRH and ASRA do not teach avoiding it.</li>
                 <li><strong>Intralipid 20%</strong>: 1.5 mL/kg bolus, then 15 mL/kg/h (0.25 mL/kg/min) infusion (max 12 mL/kg total)</li>
               </ul>
             </div>
@@ -316,7 +316,7 @@ const ClinicalIncidentsTopic = () => {
             <CollapsibleSubsection title="Death on the Table">
             <div className="text-muted-foreground leading-relaxed space-y-3">
               <p>
-                Intra-operative cardiac arrest occurs in ~5–7 per 10,000 anaesthetics; mortality of intra-operative arrest remains ~30–70% (NAP7, 2023). Most are anticipated in high-risk emergency surgery, but a minority are sudden and unexpected. Management has three parallel strands — <strong>resuscitation</strong>, <strong>communication / governance</strong>, and <strong>aftercare of staff and family</strong>.
+                Peri-operative cardiac arrest occurs in about 3 per 10,000 anaesthetics (NAP7 2023: 881 cases across 2.71 million anaesthetics); mortality after intra-operative arrest remains high. Most are anticipated in high-risk emergency surgery, but a minority are sudden and unexpected. Management has three parallel strands — <strong>resuscitation</strong>, <strong>communication / governance</strong>, and <strong>aftercare of staff and family</strong>.
               </p>
 
               <h3 className="text-base font-semibold text-foreground mt-2">1. Immediate clinical management</h3>

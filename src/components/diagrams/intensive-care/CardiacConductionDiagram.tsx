@@ -98,7 +98,7 @@ const STRUCTURES: Record<StructureKey, ConductionInfo> = {
     tier: "branch",
     velocity: "2–4 m/s",
     detail: "Short common stem (~10 mm) on left side of interventricular septum that fans into anterior and posterior fascicles, with a smaller septal branch to the mid-septum.",
-    clinical: "LBBB: broad notched R in I/V6, deep wide S in V1, QRS ≥120 ms. Almost always pathological — IHD, hypertensive heart disease, dilated cardiomyopathy, aortic stenosis. New LBBB with chest pain = STEMI equivalent (Sgarbossa criteria). CRT candidate when LVEF ≤35%.",
+    clinical: "LBBB: broad notched R in I/V6, deep wide S in V1, QRS ≥120 ms. Almost always pathological — IHD, hypertensive heart disease, dilated cardiomyopathy, aortic stenosis. New LBBB with ongoing ischaemia needs urgent assessment and Sgarbossa criteria; persistent ST elevation or high suspicion of coronary occlusion, not new LBBB alone, drives immediate angiography. CRT candidate when LVEF ≤35%.",
   },
   lafb: {
     label: "Left anterior fascicle",

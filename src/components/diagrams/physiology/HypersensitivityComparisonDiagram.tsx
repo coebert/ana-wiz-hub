@@ -42,7 +42,7 @@ const TYPES: HSData[] = [
       "Food and venom allergy",
     ],
     anaesthetic: [
-      "Perioperative anaphylaxis: NMBAs (rocuronium, suxamethonium) account for ~60% UK cases (NAP6)",
+      "Perioperative anaphylaxis (NAP6): among 199 identified culprit agents, antibiotics were 94 (47%), NMBAs 65 (33%) and chlorhexidine 18 (9%); do not quote a single '60% NMBA' figure",
       "Other triggers: chlorhexidine, antibiotics (teicoplanin, co-amoxiclav), patent blue dye, latex",
       "Treat: stop trigger, 100% O₂, IM/IV adrenaline (50 µg IV titrated under GA), fluids, airway",
       "Investigate: mast cell tryptase at 1–2 h, 4 h, and >24 h baseline; refer to allergy clinic for skin prick / specific IgE",

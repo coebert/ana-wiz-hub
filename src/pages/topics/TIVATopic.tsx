@@ -103,7 +103,7 @@ const tivaFaqs: Array<[string, string]> = [
   ],
   [
     "What is the role of processed EEG monitoring during TIVA?",
-    "Processed EEG monitoring (BIS, Entropy, or spectrogram) is essential during TIVA because there is no end-tidal volatile agent concentration to confirm drug delivery. NAP5 (the 5th National Audit Project of the Royal College of Anaesthetists) found that awareness with recall was approximately 5 times more common with TIVA than with volatile-based anaesthesia (1:8,000 vs 1:135,000). The highest-risk group was TIVA combined with neuromuscular blockade. Target BIS 40–60 or Entropy 40–60 for surgical anaesthesia. BIS values <20 indicate burst suppression and excessive depth; values >60 indicate inadequate hypnosis and increased awareness risk. In elderly patients, BIS monitoring is even more critical because pharmacokinetic models may over-predict drug concentrations, leading to excessive depth.",
+    "Processed EEG monitoring (BIS, Entropy, or spectrogram) is essential during TIVA because there is no end-tidal volatile agent concentration to confirm drug delivery. NAP5 (the 5th National Audit Project of the Royal College of Anaesthetists) estimated awareness at about 1:19,000 overall; the incidence was about 1:8,200 when neuromuscular blockade was used versus about 1:135,900 without it. Those denominators describe blockade, not a like-for-like TIVA-versus-volatile comparison; NAP5 did identify TIVA combined with neuromuscular blockade as a high-risk combination. Target BIS 40–60 or Entropy 40–60 for surgical anaesthesia. BIS values <20 indicate burst suppression and excessive depth; values >60 indicate inadequate hypnosis and increased awareness risk. In elderly patients, BIS monitoring is even more critical because pharmacokinetic models may over-predict drug concentrations, leading to excessive depth.",
   ],
 ];
 
@@ -278,7 +278,7 @@ const TIVATopic = () => {
           { text: "Eleveld: universal model (neonates to elderly), allometric scaling, accounts for opioid interaction — most modern", cites: ["BJA Educ 2016"] },
           { text: "Minto: standard remifentanil model. CSHT ~3–4 min regardless of duration. Ce targets: analgesia 2–4, surgery 4–8 ng/mL", cites: ["AAGBI TIVA"] },
           { text: "Effect-site targeting: pump overshoots Cp to fill effect site faster. Lower ke0 (Marsh) → larger overshoot → more haemodynamic instability", cites: ["Marsh 1991"] },
-          { text: "BIS/Entropy monitoring mandatory for TIVA (NAP5). Awareness risk 5× higher with TIVA vs volatile (1:8,000)", cites: ["Schnider 1998"] },
+          { text: "BIS/Entropy monitoring mandatory for TIVA (NAP5). Awareness ~1:8,200 with neuromuscular blockade vs ~1:135,900 without it — these are blockade denominators, not a TIVA-vs-volatile multiplier", cites: ["NAP5 2014"] },
           { text: "PRIS: propofol >4 mg/kg/hr for >48h → mitochondrial failure, metabolic acidosis, rhabdomyolysis. Stop propofol immediately", cites: ["BJA Educ 2016"] },
         ]}
         coreConcepts={
