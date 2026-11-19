@@ -31,9 +31,9 @@ export async function signRelayBody(operation: Operation, body: string, privateK
 }
 
 export async function callBase44Relay(operation: Operation, payload: Record<string, unknown>, signal?: AbortSignal): Promise<Response> {
-  const target = new URL(Deno.env.get("BASE44_AI_RELAY_URL") ?? "");
-  if (target.protocol !== "https:" || !/^[a-z0-9-]+\.base44\.app$/.test(target.hostname) ||
-      target.pathname !== "/functions/aiRelay" || target.search || target.hash || target.port || target.username || target.password) throw new Error("Invalid Base44 AI relay address");
+  const target = "https://ana-core-link.base44.app/api/aiRelay";
+  const configured = Deno.env.get("BASE44_AI_RELAY_URL");
+  if (configured && configured !== target) throw new Error("Unexpected Base44 AI relay address");
   const body = JSON.stringify({ operation, payload });
   const assertion = await signRelayBody(operation, body, (await sourceKeys()).privateKey);
   return fetch(target, {

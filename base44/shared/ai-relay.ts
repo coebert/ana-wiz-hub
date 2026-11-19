@@ -114,7 +114,7 @@ export async function relay(request: Request, services: Services): Promise<Respo
     });
     if (!upstream.ok || !upstream.body) {
       await upstream.body?.cancel();
-      const code = [400,402,413,422,429].includes(upstream.status) ? upstream.status : 502;
+      const code = [400,402,403,413,422,429].includes(upstream.status) ? upstream.status : 502;
       return error(code,"Base44 model request failed");
     }
     const stream = operation === "chat" && payload.stream === true;

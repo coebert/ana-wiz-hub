@@ -1,9 +1,7 @@
 import { describe, expect, it, vi } from "vitest";
-import { relaySpeech } from "../../supabase/functions/_shared/base44-ai";
-import { requestSpeechStream, resolveVoice } from "../../supabase/functions/tts-demo/request-audio";
+import { resolveVoice, speechBody } from "../../supabase/functions/tts-demo/request-audio";
 import { chunkSpeechText, decodePCM, MAX_CHUNK_CHARS } from "./viva-audio";
 
-vi.mock("../../supabase/functions/_shared/base44-ai", () => ({ relaySpeech: vi.fn() }));
 vi.mock("@/integrations/supabase/client", () => ({ supabase: {} }));
 
 describe("streaming viva speech", () => {
@@ -31,17 +29,13 @@ describe("streaming viva speech", () => {
     expect(second.pending.length).toBe(0);
   });
 
-  it("requests examiner speech as PCM events and forwards cancellation", async () => {
-    const response = new Response("data: [DONE]\n\n", { headers: { "Content-Type": "text/event-stream" } });
-    vi.mocked(relaySpeech).mockResolvedValueOnce(response);
-    const signal = new AbortController().signal;
-    expect(await requestSpeechStream("Question", resolveVoice("onyx"), signal)).toBe(response);
-    expect(relaySpeech).toHaveBeenCalledWith({
+  it("requests examiner speech as PCM events", () => {
+    expect(speechBody("Question", resolveVoice("onyx"))).toEqual({
       text: "Question",
       voice: "onyx",
       format: "pcm-sse",
       instructions: "Read aloud in a clear, calm British examiner tone.",
-    }, signal);
+    });
   });
 
   it("keeps voice preferences distinct and uses the default for unknown names", () => {

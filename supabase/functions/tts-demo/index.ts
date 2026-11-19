@@ -1,6 +1,7 @@
 import { getAuthedUserId } from "../_shared/require-user.ts";
 import { corsHeaders } from "npm:@supabase/supabase-js@2/cors";
-import { requestSpeechStream, resolveVoice } from "./request-audio.ts";
+import { relaySpeech } from "../_shared/base44-ai.ts";
+import { resolveVoice, speechBody } from "./request-audio.ts";
 // Streams viva speech (24 kHz PCM over SSE) from the hosted voice engine.
 // The browser chunks long text, so each request stays short and playback starts at once.
 
@@ -17,7 +18,7 @@ Deno.serve(async (req) => {
   if (text.length > MAX_CHARS) return json({ error: "Text too long for one segment" }, 400);
 
   try {
-    const upstream = await requestSpeechStream(text, resolveVoice(voice), req.signal);
+    const upstream = await relaySpeech(speechBody(text, resolveVoice(voice)), req.signal);
     if (!upstream.ok) {
       console.error(`[tts-demo] voice service returned ${upstream.status}`);
       if (upstream.status === 422) return json({ error: "The selected voice is unavailable.", status: 422 }, 422);
