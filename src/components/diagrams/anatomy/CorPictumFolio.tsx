@@ -56,7 +56,7 @@ export interface CorPictumLabel {
  * exam-filter chips in the header.
  */
 export interface CorPictumCurriculumLink {
-  /** RCoA curriculum code, e.g. "CR_BK_01" */
+  /** Local study tag, e.g. "CR_BK_01" — not a published RCoA code. */
   code: string;
   /** Which FRCA exam(s) this learning point belongs to */
   exams: ExamTag[];
@@ -1027,11 +1027,11 @@ const CorPictumFolio = ({ atlasTitle, atlasSubtitle, plates, className, enableRe
               </p>
             )}
   
-            {/* FRCA curriculum mapping chips — filtered by the exam header */}
+            {/* Local study-tag chips — filtered by the exam header */}
             {visibleCurriculumLinks.length > 0 ? (
               <div className="mt-4 flex flex-col items-center gap-2">
                 <p className="text-[10px] uppercase tracking-[0.2em] text-muted-foreground font-semibold">
-                  Mapped to FRCA curriculum
+                  Local study tags (app-mapped, not RCoA codes)
                 </p>
                 <div className="relative w-full max-w-2xl">
                   <div

@@ -21,9 +21,9 @@ const TOOLS = [
   },
   {
     slug: "maintenance-fluid",
-    title: "Maintenance fluid (4-2-1)",
+    title: "Maintenance fluids (adult, child, neonate)",
     blurb:
-      "Holliday–Segar hourly maintenance rate and 24-hour requirement by weight.",
+      "CG174 adult 25–30 mL/kg/day, NG29 exact child 100/50/20 mL/kg/day with the approximate 4-2-1 hourly figure, and NG29 neonatal age bands.",
     icon: Droplet,
   },
   {
@@ -76,7 +76,7 @@ export default function ToolsHub() {
         <title>Anaesthesia calculators & decision tools | Anaesthesia Core</title>
         <meta
           name="description"
-          content="Free anaesthesia calculators: MAC for age, paediatric emergency drug doses, 4-2-1 maintenance fluid, max local anaesthetic dose, ABG interpreter."
+          content="Free anaesthesia calculators: MAC for age, paediatric emergency drug doses, adult and paediatric maintenance fluids, max local anaesthetic dose, ABG interpreter."
         />
         <link rel="canonical" href={url} />
         <meta property="og:url" content={url} />

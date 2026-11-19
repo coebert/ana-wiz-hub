@@ -77,7 +77,7 @@ const paediatricFaqs: Array<[string, string]> = [
   ],
   [
     "What fluids should be used for paediatric maintenance and resuscitation?",
-    "For maintenance, use the Holliday-Segar 4-2-1 rule: 4 ml/kg/hr for the first 10 kg, 2 ml/kg/hr for the next 10 kg, and 1 ml/kg/hr for each kg thereafter. Use isotonic balanced crystalloids (Plasmalyte, Hartmann's) — AVOID hypotonic solutions (0.45% saline, 0.18% saline/4% glucose) because they carry a significant risk of iatrogenic hyponatraemia and cerebral oedema. For resuscitation, give 10 ml/kg boluses of warmed isotonic crystalloid and reassess after each bolus. For blood replacement, estimate maximum allowable blood loss (MABL) = EBV × (Hct_start − Hct_min) / Hct_start, where neonatal estimated blood volume = 80 ml/kg.",
+    "For maintenance, NICE NG29 gives the daily requirement as 100 ml/kg/day for the first 10 kg, 50 ml/kg/day for the next 10 kg and 20 ml/kg/day thereafter. The 4-2-1 rule (4 ml/kg/hr for the first 10 kg, 2 ml/kg/hr for the next 10 kg and 1 ml/kg/hr thereafter) is only an approximate hourly form of that daily figure. Term neonates are dosed by age under NG29, not by 4-2-1. Use isotonic balanced crystalloids (Plasmalyte, Hartmann's) — AVOID hypotonic solutions (0.45% saline, 0.18% saline/4% glucose) because they carry a significant risk of iatrogenic hyponatraemia and cerebral oedema. For resuscitation, give 10 ml/kg boluses of warmed isotonic crystalloid and reassess after each bolus. For blood replacement, estimate maximum allowable blood loss (MABL) = EBV × (Hct_start − Hct_min) / Hct_start, where neonatal estimated blood volume = 80 ml/kg.",
   ],
   [
     "What is the difference between PCA and NCA in children?",
@@ -604,7 +604,7 @@ const PaediatricAnaesthesiaTopic = () => {
             accent="clinical"
             pitfalls={[
               "Neonates are obligate nose-breathers, have a high O₂ consumption (~6 mL/kg/min), large head and short trachea — desaturate quickly.",
-              "Fluid maintenance (Holliday-Segar): 4-2-1 mL/kg/h; resuscitation bolus 10 mL/kg isotonic crystalloid.",
+              "Fluid maintenance (NG29): 100/50/20 mL/kg/day is the daily prescription; 4-2-1 mL/kg/h is an approximation. Resuscitation bolus 10 mL/kg isotonic crystalloid.",
               "Avoid hypotonic maintenance fluids in children — use 0.9% saline or balanced solution with 5% glucose where needed (NICE/APAGBI).",
               "ETT size: uncuffed = age/4 + 4; cuffed = age/4 + 3.5; length (oral) = age/2 + 12.",
               "Laryngospasm: 100% O₂, CPAP, deepen anaesthesia, Larson's manoeuvre, suxamethonium 1–2 mg/kg IV (or 4 mg/kg IM) if persistent.",

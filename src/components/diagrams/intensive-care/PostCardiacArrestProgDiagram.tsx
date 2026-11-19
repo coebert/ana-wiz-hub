@@ -77,7 +77,7 @@ const timelineSteps = [
     id: "pre72" as TimePoint,
     label: "0–72 h",
     title: "Stabilisation & Targeted Temperature Management",
-    content: "Use current RCUK 2025 stabilisation and active fever prevention targeting ≤ 37.5 °C in comatose patients for at least 72 h (March 2026 algorithm). Maintain reliable oxygenation and normocapnia, treat seizures and assess confounders. No routine hypothermic target. Formal prognostication at ≥ 72 h after ROSC requires exclusion of confounders; cooling and delayed drug clearance may require longer assessment.",
+    content: "Use current RCUK 2025 stabilisation and active fever prevention targeting ≤ 37.5 °C in comatose patients for 36–72 h. Maintain reliable oxygenation and normocapnia, treat seizures and assess confounders. No routine hypothermic target. Formal prognostication at ≥ 72 h after ROSC requires exclusion of confounders; cooling and delayed drug clearance may require longer assessment.",
     highlight: "Do NOT prognosticate during this period",
     color: "hsl(210, 75%, 55%)",
   },

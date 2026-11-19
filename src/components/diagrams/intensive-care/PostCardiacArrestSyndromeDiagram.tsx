@@ -50,7 +50,7 @@ const steps: CascadeStep[] = [
     node: "Brain injury",
     title: "Post-anoxic brain injury",
     body:
-      "Ischaemia-reperfusion of cerebral tissue triggers excitotoxicity (glutamate release), calcium influx, free-radical generation and delayed neuronal death over 24–72 h. Cerebral autoregulation is impaired, so MAP and PaCO₂ swings translate directly to CBF. This is the leading cause of death in OOHCA survivors. Current targets after reliable measurement: SpO₂ 94–98%, PaCO₂ 4.7–6.0 kPa; individual perfusion support, standard ICU glucose care and active fever prevention ≤ 37.5 °C for comatose patients (March 2026 algorithm: at least 72 h). EEG and seizure treatment as indicated, not routine seizure prophylaxis.",
+      "Ischaemia-reperfusion of cerebral tissue triggers excitotoxicity (glutamate release), calcium influx, free-radical generation and delayed neuronal death over 24–72 h. Cerebral autoregulation is impaired, so MAP and PaCO₂ swings translate directly to CBF. This is the leading cause of death in OOHCA survivors. Current targets after reliable measurement: SpO₂ 94–98%, PaCO₂ 4.7–6.0 kPa; individual perfusion support, standard ICU glucose care and active fever prevention ≤ 37.5 °C for comatose patients for 36–72 h. EEG and seizure treatment as indicated, not routine seizure prophylaxis.",
     sources: [RCUK_2025, TTM2, BJA_PCAS],
   },
   {

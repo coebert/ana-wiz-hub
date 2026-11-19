@@ -542,7 +542,7 @@ export const icuCaseBank: CaseBank = {
           answer: [
             "Oxygenation and ventilation: titrate to a saturation of 94–98% and avoid hyperoxia, and target normocapnia at 4.5–6.0 kPa.",
             "Circulation: mean arterial pressure sufficient for adequate urine output and falling lactate — usually above 65 mmHg — with early coronary angiography for ST elevation or ongoing ischaemia, and echocardiography for post-arrest myocardial dysfunction.",
-            "Temperature and metabolic control: actively prevent fever for at least 72 hours with a target at or below 37.5°C, treat seizures, control glucose, and avoid hypoglycaemia.",
+            "Temperature and metabolic control: actively prevent fever for 36–72 hours with a target at or below 37.5°C, treat seizures, control glucose, and avoid hypoglycaemia.",
           ],
         },
         {

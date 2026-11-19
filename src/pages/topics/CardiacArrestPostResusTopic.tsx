@@ -43,7 +43,7 @@ const arrestFaqs: Array<[string, string]> = [
   ],
   [
     "Should I cool post-arrest patients to 33 °C or aim for active normothermia? What changed after TTM2?",
-    "HACA (NEJM 2002) and Bernard (NEJM 2002) first showed benefit of 32–34 °C for 12–24 h after witnessed VF OHCA. TTM (Nielsen, NEJM 2013, n = 950) found no significant difference between 33 °C and 36 °C (no superiority shown; this is not proof of equivalence) — both were 'targeted temperature management' and both prevented fever. TTM2 (Dankiewicz, NEJM 2021, n = 1 850) compared 33 °C with normothermia targeting ≤ 37.5 °C, with device cooling triggered at ≥ 37.8 °C and found no difference in 6-month mortality (50% vs 48%) or neurological outcome. Current UK advice (RCUK / ERC–ESICM 2025) is to actively prevent fever by targeting ≤ 37.5 °C in patients who remain comatose after ROSC; the RCUK narrative gives 36–72 h, and its March 2026 algorithm states at least 72 h, which this page follows. The superseded 2022 update used > 37.7 °C. If a hypothermic target is used, rewarm slowly (TTM2 used about 0.33 °C/h).",
+    "HACA (NEJM 2002) and Bernard (NEJM 2002) first showed benefit of 32–34 °C for 12–24 h after witnessed VF OHCA. TTM (Nielsen, NEJM 2013, n = 950) found no significant difference between 33 °C and 36 °C (no superiority shown; this is not proof of equivalence) — both were 'targeted temperature management' and both prevented fever. TTM2 (Dankiewicz, NEJM 2021, n = 1 850) compared 33 °C with normothermia targeting ≤ 37.5 °C, with device cooling triggered at ≥ 37.8 °C and found no difference in 6-month mortality (50% vs 48%) or neurological outcome. Current UK advice (RCUK 2025) is to actively prevent fever by targeting ≤ 37.5 °C in patients who remain comatose after ROSC, for 36–72 h. The superseded 2022 update used > 37.7 °C. If a hypothermic target is used, rewarm slowly (TTM2 used about 0.33 °C/h).",
   ],
   [
     "Who is an appropriate candidate for eCPR and what does ARREST, Prague OHCA and INCEPTION tell us?",
@@ -78,7 +78,7 @@ const tocItems = [
 
 const objectives = [
   "Deliver the current RCUK 2025 post-ROSC bundle including airway, ventilation, haemodynamic and metabolic targets within the first 6 hours.",
-  "Explain why current UK guidance (RCUK 2025) targets ≤ 37.5 °C fever prevention for at least 72 h, noting that TTM2's normothermia arm also targeted ≤ 37.5 °C with a ≥ 37.8 °C device trigger.",
+  "Explain why current UK guidance (RCUK 2025) targets ≤ 37.5 °C fever prevention for 36–72 h, noting that TTM2's normothermia arm also targeted ≤ 37.5 °C with a ≥ 37.8 °C device trigger.",
   "Set evidence-based MAP, SpO₂, PaCO₂, glucose and Hb targets and justify each in terms of secondary brain injury.",
   "Perform multimodal neuroprognostication ≥ 72 h post-ROSC using clinical exam, NSE, EEG, SSEPs and imaging while excluding confounders.",
   "Identify suitable candidates for ECMO-CPR (eCPR) and outline the cannulation pathway, complications and Harlequin physiology.",
@@ -132,7 +132,7 @@ const workedExamples: WorkedExample[] = [
 const keyPoints = [
   { text: "Post-cardiac-arrest syndrome = brain injury + myocardial dysfunction + ischaemia–reperfusion + precipitating pathology — treat all four.", cites: ["TTM2 2021"] },
   { text: `After reliable measurement, target SpO₂ 94–98% and PaCO₂ ${POST_ARREST_CO2}. ${POST_ARREST_PERFUSION} Use standard ICU glucose care, avoiding hypoglycaemia.`, cites: ["RCUK PRC 2025", "RCUK PRC Algorithm March 2026"] },
-  { text: "Temperature: RCUK 2025 targets ≤ 37.5 °C fever prevention in comatose survivors for at least 72 h (algorithm); TTM2 (2021) normothermia arm targeted ≤ 37.5 °C (device trigger ≥ 37.8 °C) and found 33 °C no better.", cites: ["RCUK PRC 2025", "TTM2 2021"] },
+  { text: "Temperature: RCUK 2025 targets ≤ 37.5 °C fever prevention in comatose survivors for 36–72 h; TTM2 (2021) normothermia arm targeted ≤ 37.5 °C (device trigger ≥ 37.8 °C) and found 33 °C no better.", cites: ["RCUK PRC 2025", "TTM2 2021"] },
   { text: "Rewarm slowly (0.25–0.5 °C/h) — watch for hyperkalaemic rebound and prolonged drug clearance during cooling.", cites: ["ELSO Guidelines 2020"] },
   { text: "Neuroprognostication is multimodal, performed ≥ 72 h after ROSC, after confounders are excluded, and requires ≥ 2 concordant poor-outcome markers.", cites: ["RCUK PRC 2025", "RCUK PRC Algorithm March 2026"] },
   { text: "Specific markers: bilaterally absent pupil + corneal reflexes, bilaterally absent N20 SSEPs, NSE > 60 µg/L at 48 h and/or 72 h, highly malignant EEG after 24 h, status myoclonus ≤ 72 h, diffuse anoxic injury on CT or MRI.", cites: ["ERC/ESICM 2021 Post-Resus"] },
@@ -296,7 +296,7 @@ const coreConcepts = (
           <li><span className="font-medium text-foreground">Identify and treat the cause</span> — 12-lead ECG in all patients; immediate coronary angiography ± PCI for STEMI or ongoing myocardial ischaemia; CT pulmonary angiogram if PE is suspected as the precipitant.</li>
           <li><span className="font-medium text-foreground">Airway and breathing</span> — intubate for persistent coma or another ventilation indication, not automatically after rapid recovery with adequate breathing; lung-protective ventilation (6–8 mL/kg PBW); target SpO₂ 94–98 %; target PaCO₂ {POST_ARREST_CO2} (normocapnia).</li>
           <li><span className="font-medium text-foreground">Circulation</span> — {POST_ARREST_PERFUSION} Assess urine output &gt; 0.5 mL/kg/h and a normal or falling lactate; obtain early echocardiography to assess myocardial function; use fluids, vasopressors and inotropes as required, with mechanical circulatory support (IABP, Impella, VA-ECMO) considered for refractory cardiogenic shock.</li>
-          <li><span className="font-medium text-foreground">Disability / neuroprotection</span> — temperature control with active prevention of fever targeting ≤ 37.5 °C for at least 72 h; continuous EEG for seizure detection and prompt anticonvulsant treatment; a clear sedation strategy that permits later neuroprognostication.</li>
+          <li><span className="font-medium text-foreground">Disability / neuroprotection</span> — temperature control with active prevention of fever targeting ≤ 37.5 °C for 36–72 h; continuous EEG for seizure detection and prompt anticonvulsant treatment; a clear sedation strategy that permits later neuroprognostication.</li>
           <li><span className="font-medium text-foreground">Metabolic control</span> — avoid hypoglycaemia and manage glucose by standard ICU protocol (many units use about 6–10 mmol/L); correct potassium, magnesium and calcium.</li>
         </ol>
       </div>
@@ -343,7 +343,7 @@ const coreConcepts = (
           {
             title: "Temperature control",
             items: [
-              "Continuous core-temperature monitoring and active fever prevention targeting ≤ 37.5 °C for ≥ 72 h (RCUK / ERC–ESICM 2025)",
+              "Continuous core-temperature monitoring and active fever prevention targeting ≤ 37.5 °C for 36–72 h (RCUK 2025)",
               "No routine hypothermic target: TTM2 found 33 °C no better than normothermia with fever control",
               "Avoid fever in the comatose patient regardless of strategy chosen",
               "Active cooling device + core temperature feedback (oesophageal/bladder/intravascular)",
@@ -382,7 +382,7 @@ const coreConcepts = (
         independently worsens outcome. The 2022 ERC–ESICM update no longer recommends a routine hypothermic target;
         if a unit still cools to 33–36 °C, rewarm slowly
         (<span className="font-medium text-foreground">about 0.25–0.5 °C/h</span>), then maintain
-        <span className="font-medium text-foreground"> strict fever control to 72 h post-ROSC</span>.
+        <span className="font-medium text-foreground"> strict fever control to 36–72 h post-ROSC</span>.
       </p>
 
       <TtmTargetExplorerDiagram />

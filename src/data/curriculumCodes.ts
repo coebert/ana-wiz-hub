@@ -1,30 +1,32 @@
 /**
- * Centralized RCoA curriculum-code registry.
+ * Registry of the app's LOCAL study tags.
  *
- * Single source of truth for every `XX_BK_NN` curriculum code referenced
- * across the app — folio chips, topic-page learning-point callouts, the
- * Landing curriculum coverage strip, etc.
+ * These 59 tags (across 23 two-letter prefixes) are an AnaesthesiaCore
+ * navigational device for grouping learning points. They are NOT the
+ * published RCoA curriculum: the two-letter prefixes are not RCoA domains,
+ * the `_BK_` numbers are not RCoA unit/learning-point codes, and none of them
+ * is an RCoA stage or a FICM outcome. The published structure is separate and
+ * lives at the RCoA (see the 2021 curriculum structure). Learner-facing labels
+ * must say "local study tag" and must not imply formal curriculum mapping.
  *
- * Why this exists
- * ---------------
- * Codes were previously hard-coded in 30+ topic files and folio data.
- * That made it possible to:
- *   • introduce typos (`CR_BK_88`) that silently render dead chips,
- *   • drift away from the published RCoA 2021 curriculum domains,
- *   • lose human-readable titles for cross-references.
- *
- * One registry per code → one place to fix or extend.
+ * Single source of truth for every `XX_BK_NN` tag referenced across the app —
+ * folio chips, topic-page learning-point callouts, the Landing coverage
+ * strip, etc. Preserve the tag IDs: they are stable identifiers used in
+ * links, tests and the audit corpus.
  *
  * Format
  * ------
- *   `XX_BK_NN`  — two upper-case letters (domain), `_BK_`, two digits (unit)
+ *   `XX_BK_NN`  — two upper-case letters (local prefix), `_BK_`, two digits
  *
- * Domains follow the RCoA 2021 syllabus codes (see RCoA Curriculum 2021,
- * Annex C).  Add new codes here, then `import { isCurriculumCode }` or
+ * Add new tags here, then `import { isCurriculumCode }` or
  * `getCurriculumCode()` everywhere else.
  */
 
-/** RCoA curriculum domain prefix → human-readable label. */
+/** Wording every learner-facing tag label must carry. */
+export const LOCAL_STUDY_TAG_NOTICE =
+  "App-mapped study tag — not a verified reference to a published RCoA stage or domain, or to a FICM outcome.";
+
+/** Local two-letter prefix → human-readable label. Not RCoA domains. */
 export const CURRICULUM_DOMAINS = {
   AN: "Anatomy",
   CH: "Hepatobiliary",

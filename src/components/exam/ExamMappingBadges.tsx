@@ -1,6 +1,7 @@
 import { Badge } from "@/components/ui/badge";
 import { GraduationCap } from "lucide-react";
 import { ExamTag } from "@/data/curriculum";
+import { LOCAL_STUDY_TAG_NOTICE } from "@/data/curriculumCodes";
 import { useShouldRenderExamBadge } from "@/components/exam/ExamBadgeDedupeContext";
 
 
@@ -22,7 +23,7 @@ const EXAM_CLASSES: Record<ExamTag, string> = {
 interface ExamMappingBadgesProps {
   /** Which exams this subsection maps to. Order is preserved. */
   exams: ExamTag[];
-  /** Optional curriculum reference codes (e.g. "CC1.10", "11A04"). */
+  /** Optional app-mapped study tags (e.g. "PH_BK_01", "FFICM 2.4"). Not published RCoA/FICM codes. */
   curriculumCodes?: string[];
   /** Optional short label, defaults to "Maps to". */
   label?: string;
@@ -79,11 +80,16 @@ export const ExamMappingBadges = ({
           key={`code-${code}`}
           variant="outline"
           className="text-[10px] font-mono font-semibold border-border/70 text-muted-foreground bg-background"
-          title="Curriculum reference"
+          title={LOCAL_STUDY_TAG_NOTICE}
         >
           {code}
         </Badge>
       ))}
+      {curriculumCodes && curriculumCodes.length > 0 && (
+        <span className="text-[10px] italic text-muted-foreground">
+          app-mapped tags, not verified RCoA/FICM codes
+        </span>
+      )}
     </div>
   );
 };
