@@ -199,13 +199,13 @@ export const pdSedationNmb: DrugPharmacodynamicsMap = {
       "Train-of-four count 1–2 for ARDS/ventilator dyssynchrony indications; TOF ratio >0.9 before extubation. Never titrate against movement alone, and always ensure adequate sedation first — paralysis has no hypnotic or analgesic effect.",
     doseRelatedEffects: [
       "Low dose: partial blockade with weakness, upper-airway obstruction and aspiration risk if the patient is not ventilated.",
-      "Standard dose: complete blockade with abolished respiratory effort, cough and eye protection; anaphylaxis risk is dose-independent (commonest cause of perioperative anaphylaxis in the UK).",
+      "Standard dose: complete blockade abolishes respiratory effort, cough and eye protection. Anaphylaxis may occur. In UK NAP6, antibiotics were the most frequent identified culprit class, followed by neuromuscular blockers.",
       "Prolonged infusion: residual weakness, ICU-acquired weakness, corneal abrasion and pressure injury from immobility.",
     ],
     interactions: [
       "Potentiated by volatile agents, aminoglycosides, magnesium, hypothermia, hypokalaemia, respiratory acidosis and local anaesthetics.",
       "Antagonised by chronic phenytoin and carbamazepine (resistance) and by hypercalcaemia.",
-      "Reversed competitively by neostigmine (needs TOF count ≥2) or encapsulated by sugammadex (any depth; 16 mg/kg for immediate reversal).",
+      "For neostigmine, ESAIC recommends advanced spontaneous recovery (quantitative TOF ratio above 0.2) and monitoring until the ratio exceeds 0.9. For rocuronium, sugammadex dosing depends on depth and the urgency of reversal.",
       "Blocks the motor signs of seizures and of awareness — always pair with a sedation/analgesia plan and consider processed EEG.",
     ],
     tolerance: "Tachyphylaxis and up-regulated extrajunctional receptors after several days of infusion or immobility, increasing dose requirement and the risk of prolonged weakness.",

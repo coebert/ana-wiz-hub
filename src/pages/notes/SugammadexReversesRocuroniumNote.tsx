@@ -8,11 +8,11 @@ const SugammadexReversesRocuroniumNote = () => (
     shortTitle="Sugammadex reversal of rocuronium"
     description="How sugammadex encapsulates rocuronium: 1:1 cyclodextrin chemistry, dosing by TOF/PTC, contraceptive failure, and when to choose neostigmine instead."
     datePublished="2026-06-13"
-    lede="Sugammadex is a modified γ-cyclodextrin that wraps around rocuronium (and vecuronium) in a 1:1 inclusion complex, removing free drug from plasma and reversing neuromuscular block within 2–3 minutes — at any depth, including immediately after a 1.2 mg/kg RSI dose."
+    lede="Sugammadex binds rocuronium or vecuronium in a 1:1 complex. Dose depends on the drug, depth of block and urgency. Confirm recovery with quantitative monitoring and maintain ventilation until adequate breathing returns."
     faqs={[
       {
         q: "Can sugammadex reverse rocuronium that has only just been given?",
-        a: "Yes. Sugammadex 16 mg/kg will reverse a 1.2 mg/kg rocuronium intubating dose within 2–3 minutes, even before twitches return (post-tetanic count of 0). It is not, however, a reliable CICO rescue: DAS 2025 states sugammadex is not a reliable strategy in failed tracheal intubation, so maintain paralysis and proceed to front-of-neck access without delaying for reversal.",
+        a: "In adults needing immediate reversal after rocuronium 1.2 mg/kg, the licensed sugammadex dose is 16 mg/kg, which reverses even a post-tetanic count of 0 within about 2–3 minutes. Reversal does not guarantee a patent airway: DAS 2025 states sugammadex is not a reliable strategy in failed tracheal intubation, so with declared CICO maintain paralysis and proceed immediately to emergency front-of-neck airway.",
       },
       {
         q: "Why doesn't sugammadex reverse atracurium or cisatracurium?",
@@ -20,11 +20,11 @@ const SugammadexReversesRocuroniumNote = () => (
       },
       {
         q: "How long does sugammadex affect hormonal contraception?",
-        a: "Sugammadex also binds progestogens. Manufacturers recommend treating a single dose as the equivalent of one missed combined or progestogen-only pill: continue the pill normally and use additional non-hormonal contraception for the next 7 days. Patients with an implant, depot injection or IUS only need additional precautions if the dose was within the relevant high-risk window.",
+        a: "For oral hormonal contraception, follow the missed-dose instructions for that pill. With non-oral hormonal contraception, use an additional non-hormonal method for seven days and follow the advice in the contraceptive product leaflet.",
       },
       {
         q: "When should I still use neostigmine?",
-        a: "Neostigmine remains appropriate for routine reversal of shallow non-depolarising block (TOF count ≥ 2, ideally ≥ 4) — particularly with benzylisoquinoliniums, in cost-sensitive settings, or where sugammadex is unavailable. Always co-administer an antimuscarinic (glycopyrrolate or atropine) and confirm reversal with quantitative TOF ≥ 0.9.",
+        a: "For neostigmine reversal, ESAIC recommends waiting for advanced spontaneous recovery (quantitative TOF ratio above 0.2). Give an antimuscarinic and continue quantitative monitoring until the TOF ratio exceeds 0.9. Sugammadex does not reverse benzylisoquinolinium block.",
       },
     ]}
     related={[
@@ -71,11 +71,11 @@ const SugammadexReversesRocuroniumNote = () => (
         no TOF response.
       </li>
       <li>
-        <strong>16 mg/kg</strong> — immediate reversal after a 1.2 mg/kg
-        rocuronium intubating dose. This is not a CICO rescue: DAS 2025 states
-        sugammadex is not a reliable strategy in failed tracheal intubation, so
-        maintain paralysis and proceed to front-of-neck access without delaying
-        for reversal.
+        <strong>16 mg/kg</strong> — adult immediate reversal after rocuronium
+        1.2 mg/kg. This is not a CICO rescue: DAS 2025 states sugammadex is not a
+        reliable strategy in failed tracheal intubation, so in declared CICO
+        maintain paralysis and proceed immediately to emergency front-of-neck
+        airway.
       </li>
     </ul>
     <p>
@@ -89,20 +89,16 @@ const SugammadexReversesRocuroniumNote = () => (
     <p>
       Onset of effect is essentially as fast as the circulation time — typically
       90–120 seconds to TOF ratio ≥ 0.9. The complex is renally cleared, so
-      caution is warranted in severe renal impairment (eGFR &lt; 30) where
-      manufacturer data are limited. If re-paralysis is needed within 24 hours,
-      use a non-aminosteroid (cisatracurium or atracurium — see the <Link to="/pharmacology/muscle-relaxants">muscle relaxants topic</Link>) or a much larger
-      <Link to="/pharmacology/rocuronium"> rocuronium</Link> dose (1.2 mg/kg).
+      the manufacturer advises against use in severe renal impairment (creatinine clearance below 30 mL/min). The interval before repeat rocuronium or vecuronium depends on the preceding sugammadex dose, renal function and the planned blocker dose. Follow the product information. If a blocker is needed before the recommended interval, use an appropriate non-steroidal agent.
     </p>
 
     <h2>Safety profile</h2>
     <p>
       The most clinically important adverse effects are anaphylaxis (~1:2 500,
       typically within 5 minutes of dosing) and bradycardia (rare but reported
-      including cardiac arrest). Sugammadex also binds hormonal contraceptive
-      progestogens; counsel patients to treat a dose as one missed pill and use
-      additional non-hormonal precautions for seven days.
+      including cardiac arrest). For oral hormonal contraception follow the pill’s missed-dose guidance. For non-oral hormonal methods, use additional non-hormonal contraception for seven days.
     </p>
+    <p><a href="https://www.medicines.org.uk/emc/product/100033/smpc">UK sugammadex SmPC</a> · <a href="https://doi.org/10.1016/j.bja.2025.10.006">DAS adult airway guideline</a> · <a href="https://pubmed.ncbi.nlm.nih.gov/36377554/">ESAIC neuromuscular blockade guideline</a></p>
   </NoteLayout>
 );
 

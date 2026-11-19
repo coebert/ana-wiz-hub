@@ -16,11 +16,11 @@ const temperatureMeasurementFaqs: Array<[string, string]> = [
   ],
   [
     "Where are core temperature measurements taken and which is the gold standard?",
-    "Pulmonary artery (gold standard — true core). Distal oesophagus (within 0.5 °C of PA; influenced by airway gas), nasopharynx (close to the hypothalamus), and a contact tympanic-membrane probe (close to the carotid supply to the hypothalamus). A handheld infrared ear thermometer is a different measurement: it estimates canal/tympanic radiation after a correction factor, and NICE CG65 recommendation 1.1.6 advises against indirect infrared tympanic estimates in adults having surgery. Bladder and rectum lag behind. Skin and axilla underestimate core by 1–2 °C and are unreliable intra-operatively."
+    "Pulmonary artery blood temperature is a central reference. NICE accepts distal oesophageal or bladder measurement and validated direct estimates such as zero-heat-flux thermometry. Bladder and rectal readings may lag rapid changes. Axillary and sublingual estimates can be inaccurate outside normothermia. Handheld infrared ear thermometers are unsuitable for perioperative core-temperature decisions in adults."
   ],
   [
     "What are the consequences of perioperative hypothermia (<36 °C)?",
-    "Triples wound infection, increases blood loss and transfusion requirements (impaired coagulation and platelet function), prolongs drug action (especially NMBAs and volatiles), causes shivering with ↑VO₂ up to 400 %, prolongs recovery and ICU stay, and increases cardiac events. NICE CG65 mandates active warming for any operation >30 min."
+    "Perioperative hypothermia impairs haemostasis and can prolong drug effects and recovery. In one colorectal surgery trial, wound infection developed in 18 of 96 patients receiving routine thermal care and 6 of 104 receiving extra warming. NICE recommends forced-air warming from induction for anaesthesia exceeding 30 minutes and for shorter cases in higher-risk adults."
   ]
 ];
 
@@ -55,14 +55,14 @@ const TemperatureMeasurementTopicWorkedExamples: WorkedExample[] = [
           <li>NICE CG65 (Hypothermia: prevention and management in adults having surgery, 2008, last updated December 2016) requires temperature measurement before induction and every 30 minutes intra-operatively, with forced-air warming set to maintain at least 36.5 °C. NG180 (Perioperative care in adults, 2020) cross-refers to CG65 rather than replacing it</li>
           <li>Distal oesophageal probe (lower third) tracks cardiac/aortic blood temperature accurately — first choice in intubated abdominal surgery</li>
           <li>Nasopharyngeal probe approximates brain temperature; risk of epistaxis with coagulopathy</li>
-          <li>Tympanic infrared is intermittent and operator-dependent — unsuitable for continuous monitoring</li>
+          <li>NICE excludes handheld infrared ear thermometry for perioperative core-temperature measurement. A direct-contact membrane probe uses a different method.</li>
           <li>Bladder temperature lags during rapid changes (e.g., CPB rewarming) and is unreliable with low urine flow</li>
         </ol>
         <div className="mt-2 rounded-md border border-destructive/30 bg-destructive/5 p-2">
           <p className="text-xs font-semibold uppercase tracking-wide text-destructive mb-1">Common traps</p>
           <ul className="list-disc list-inside space-y-1 text-foreground">
           <li>Oesophageal probe in the upper third reads cooler due to airway gas — must be in the distal third</li>
-          <li>Skin temperature is not core — useful only for gradient monitoring</li>
+          <li>Ordinary skin-surface readings can diverge from core temperature. A validated zero-heat-flux forehead device measures deep tissue using a different technique.</li>
           <li>Forced-air warmer set to default 38 °C without monitoring risks hyperthermia</li>
           </ul>
         </div>
@@ -93,7 +93,7 @@ const TemperatureMeasurementTopic = () => {
       }}
       sectionSources={{
         objectives: ["Cross & Plunkett Ch.11", "NICE CG65"],
-        keyPoints: ["NICE CG65", "Cross & Plunkett Ch.11", "NICE NG125", "BJA Educ Temperature 2020", "SCCM IDSA Fever 2023"],
+        keyPoints: ["Bindu 2017 (Temperature)", "NICE CG65", "Cross & Plunkett Ch.11", "NICE CG65 Measurement Sites", "Kurz 1996 wound infection", "NICE NG125", "BJA Educ Temperature 2020", "SCCM IDSA Fever 2023"],
       }}
       coreConcepts={
         <>
@@ -347,7 +347,7 @@ const TemperatureMeasurementTopic = () => {
                   temperature, i.e. there is no temperature gradient and therefore <strong>zero heat flux</strong>
                   between deep tissue and the skin surface. With heat loss abolished, the skin surface temperature
                   equilibrates with, and so reports, the underlying deep-tissue (core) temperature. Equilibration takes
-                  a few minutes after application <InlineRef topicId="temperature-measurement" refLabel="BJA Educ Temperature 2020" />.
+                  a few minutes after application <InlineRef topicId="temperature-measurement" refLabel="Eshraghi 2014 Zero Heat Flux" />.
                 </p>
                 <p>
                   <strong>Clinical use:</strong> continuous, non-invasive core temperature in theatre, recovery and ICU,

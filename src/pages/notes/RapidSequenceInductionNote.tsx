@@ -9,11 +9,11 @@ const RapidSequenceInductionNote = () => (
     description="Rapid sequence induction: adult and paediatric drug doses, modifications for instability, sepsis, head injury and obstetrics, and modern cricoid pressure."
     datePublished="2026-06-18"
     examTags={["primary", "final"]}
-    lede="Rapid sequence induction is the standard technique for protecting the airway in any patient at increased aspiration risk: pre-oxygenation, a rapid-onset induction agent, a rapid-onset neuromuscular blocker, no positive-pressure ventilation until the tube is in place, and confirmation with capnography."
+    lede="Rapid sequence induction aims to minimise time to a protected airway while maintaining oxygenation. Preoxygenate, give a suitable induction agent and rapid-onset neuromuscular blocker, and confirm tracheal placement with sustained exhaled CO₂. Use gentle low-pressure mask ventilation if needed for oxygenation."
     faqs={[
       {
         q: "What are the standard adult RSI drugs?",
-        a: "Induction: thiopentone 3–7 mg/kg or propofol 1.5–2.5 mg/kg (ketamine 1–2 mg/kg in shock; etomidate 0.3 mg/kg historically). Neuromuscular blocker: suxamethonium 1.0–1.5 mg/kg, or rocuronium 1.0–1.2 mg/kg if sugammadex is immediately available. Sugammadex is a reversal option, not a substitute for front-of-neck access if intubation and oxygenation fail.",
+        a: "Induction: thiopentone 3–7 mg/kg or propofol 1.5–2.5 mg/kg (ketamine 1–2 mg/kg in shock; etomidate 0.3 mg/kg historically). Neuromuscular blocker: suxamethonium 1.0–1.5 mg/kg, or rocuronium 1.0–1.2 mg/kg. Sugammadex is a reversal option, not a substitute for front-of-neck access if intubation and oxygenation fail.",
       },
       {
         q: "When is rocuronium preferred over suxamethonium?",
@@ -40,11 +40,11 @@ const RapidSequenceInductionNote = () => (
     <h2>The canonical sequence</h2>
     <ol>
       <li><strong>Plan and prepare</strong> — assess airway, suction on, tilt available, drugs drawn up, monitoring attached, second IV access if possible, end-tidal CO₂ ready.</li>
-      <li><strong>Pre-oxygenate</strong> — 3 minutes of tidal-volume breathing or 8 vital-capacity breaths on 100% O₂ with a tight-fitting mask. Aim FetO₂ &gt; 0.85. Consider apnoeic oxygenation with nasal O₂ at 15 L/min.</li>
+      <li><strong>Pre-oxygenate</strong> — 3 minutes of tidal-volume breathing or 8 vital-capacity breaths on 100% O₂ with a tight-fitting mask. Aim for end-tidal oxygen ≥0.90 where possible. Consider apnoeic oxygenation with nasal O₂ at 15 L/min.</li>
       <li><strong>Position</strong> — ear-to-sternal-notch (ramped if obese), 20–30° head-up to reduce reflux.</li>
       <li><strong>Induction agent + <Link to="/pharmacology/muscle-relaxants">neuromuscular blocker</Link></strong> in immediate succession.</li>
       <li><strong>Apply cricoid pressure</strong> — 10 N awake, 30 N once asleep (or omit if departmental policy).</li>
-      <li><strong>Intubate</strong>, confirm with <Link to="/physics/capnography">capnography</Link>, inflate cuff, secure. DAS 2025 allows gentle low-pressure mask ventilation if required rather than prolonged apnoea; avoid high-pressure or large-volume ventilation that inflates the stomach. If intubation fails, progress to the <Link to="/notes/das-difficult-airway-algorithm">DAS difficult airway algorithm</Link>.</li>
+      <li><strong>Maintain oxygenation.</strong> Use gentle low-pressure mask ventilation when needed rather than prolonged apnoea, avoiding high-pressure or large-volume ventilation that inflates the stomach. Intubate, inflate the cuff and confirm placement with sustained <Link to="/physics/capnography">waveform capnography</Link>. Follow the <Link to="/notes/das-difficult-airway-algorithm">DAS algorithm</Link> if intubation fails.</li>
       <li><strong>Release cricoid</strong> after tube confirmed and cuff up.</li>
     </ol>
 
@@ -67,9 +67,10 @@ const RapidSequenceInductionNote = () => (
     <ul>
       <li><strong>Shocked patient:</strong> ketamine + rocuronium + reduced doses + vasopressor pre-drawn.</li>
       <li><strong>Head injury:</strong> thiopentone or propofol with fentanyl 2 µg/kg to obtund pressor response; maintain MAP &gt; 80 mmHg.</li>
-      <li><strong>Obstetric:</strong> as above; antacid (ranitidine + sodium citrate); left lateral tilt 15°.</li>
+      <li><strong>Caesarean birth:</strong> offer antacid prophylaxis and an acid-reducing medicine in accordance with NICE NG192 and local obstetric policy. Apply left uterine displacement when appropriate.</li>
       <li><strong>Paediatric:</strong> atropine 20 µg/kg pre-treatment in &lt; 1 y to blunt vagal response; suxamethonium 2 mg/kg in infants.</li>
     </ul>
+    <p><a href="https://doi.org/10.1016/j.bja.2025.10.006">DAS 2025 adult intubation guideline, table 1</a> · <a href="https://www.nice.org.uk/guidance/ng192">NICE NG192</a></p>
   </NoteLayout>
 );
 

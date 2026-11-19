@@ -20,7 +20,7 @@ const clinicalMeasurementFaqs: Array<[string, string]> = [
   ],
   [
     "What does it mean to 'zero' and 'calibrate' a transducer?",
-    "Zeroing — setting the output to 0 when input is at a reference value (e.g. arterial line transducer open to atmosphere at the phlebostatic axis). Calibration — applying a known input and adjusting gain so output matches (modern transducers are factory-calibrated and need only zeroing). Recalibrate after any disconnect or after large shifts in transducer height."
+    "Zero to atmospheric pressure and level the transducer to the chosen anatomical reference. Re-level after a change in patient or transducer height. Calibration compares readings with a known pressure standard. Most disposable transducers are factory calibrated."
   ]
 ];
 

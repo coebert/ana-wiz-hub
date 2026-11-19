@@ -26,11 +26,11 @@ const capnographyFaqs: Array<[string, string]> = [
   ],
   [
     "Why is ETCO₂ used during CPR?",
-    "ETCO₂ reflects pulmonary blood flow during cardiac arrest, so it is a real-time index of chest-compression effectiveness and ROSC. RCUK/ERC guidance: aim for ETCO₂ > 1.3 kPa (10 mmHg) during good-quality CPR; a persistent ETCO₂ < 1.3 kPa after 20 minutes of advanced life support is associated with very low likelihood of survival. A sudden rise in ETCO₂ is one of the earliest signs of ROSC.",
+    "During CPR, trend exhaled CO₂ to assess ventilation, pulmonary blood flow and compression quality. A rise may indicate return of spontaneous circulation. Continue compressions until other clinical or physiological findings justify a rhythm and pulse assessment. Use the full clinical picture when deciding whether to stop resuscitation. A low value alone cannot determine outcome.",
   ],
   [
     "Why does ETCO₂ underestimate PaCO₂?",
-    "ETCO₂ samples mixed alveolar gas, which is diluted by alveolar dead space (well-ventilated, poorly perfused units). In healthy lungs the PaCO₂–ETCO₂ gradient is ~0.5 kPa (4 mmHg). The gradient widens whenever alveolar dead space rises — pulmonary embolism (early sign), low cardiac output, COPD, ARDS, auto-PEEP and arrest (where ETCO₂ approaches zero despite a preserved PaCO₂).",
+    "Alveolar dead space dilutes exhaled CO₂, so ETCO₂ is usually below PaCO₂. Pulmonary embolism, low cardiac output and severe lung disease can widen the gradient. A flat trace after intubation during effective CPR needs immediate exclusion of oesophageal placement and assessment of ventilation and equipment.",
   ],
 ];
 
@@ -86,7 +86,7 @@ const workedExamples: WorkedExample[] = [
         haemodynamically and consider TOE / CT once stabilised.
       </>
     ),
-    cites: ["BJA Educ 2017 Capnography", "Association of Anaesthetists 2021"],
+    cites: ["Kodali 2013 Capnography", "Association of Anaesthetists 2021"],
   },
   {
     title: "Confirming tracheal intubation in an obese patient",
@@ -136,29 +136,24 @@ const workedExamples: WorkedExample[] = [
     ),
     working: (
       <>
-        RCUK 2021 cites EtCO₂ as the most useful prognostic monitor during
-        resuscitation. An EtCO₂ persistently &lt; 1.3 kPa (10 mmHg) after
-        20 minutes of optimal CPR is associated with near-zero survival in
-        adult cardiac arrest, particularly in non-shockable rhythms. A
-        sudden rise of &gt; 1 kPa typically heralds ROSC.
+        Check tube placement, effective ventilation and the quality of chest compressions. Evaluate reversible
+        causes of low pulmonary blood flow. A sudden rise in EtCO₂ can indicate ROSC. Continue compressions
+        until clinical and physiological signs together justify a rhythm and pulse assessment.
       </>
     ),
     answer: (
       <>
-        A sustained EtCO₂ &lt; 1.3 kPa after 20 minutes of optimal CPR in
-        PEA is one of several criteria supporting termination of
-        resuscitation. Decision must integrate downtime, reversible
-        causes, ultrasound findings, and family wishes — not EtCO₂ alone.
+        Continue high-quality CPR and follow the ALS algorithm. A low EtCO₂ alone cannot determine whether to stop resuscitation.
       </>
     ),
-    cites: ["RCUK 2021 ALS"],
+    cites: ["RCUK 2025 ALS", "PUMA 2022"],
   },
 ];
 
 const keyPoints = [
   {
     text: "Capnography measures CO₂ continuously throughout the respiratory cycle and displays it as a waveform; capnometry shows only a number. Both use infrared absorption at the 4.26 μm CO₂ band (Beer-Lambert law: A = ε·c·l).",
-    cites: ["BJA Educ 2017 Capnography"],
+    cites: ["Kodali 2013 Capnography"],
   },
   {
     text: "Sidestream analyser aspirates ~50–200 mL/min from a Luer port at the patient end; introduces a 2–4 s delay and a sampling-line water trap. Mainstream analyser sits inline at the airway with no delay but adds bulk, heat (39 °C to prevent condensation) and dead space — used in MRI, neonates, transport.",
@@ -170,11 +165,11 @@ const keyPoints = [
   },
   {
     text: "EtCO₂ ≈ PaCO₂ − 0.5 kPa (4 mmHg) in healthy lungs; gradient widens in any condition that increases alveolar dead space (PE, low CO, COPD, ARDS, high airway pressures). A widening gradient is a sensitive marker of evolving V/Q mismatch.",
-    cites: ["BJA Educ 2017 Capnography"],
+    cites: ["Kodali 2013 Capnography"],
   },
   {
     text: "Shark-fin (sloping II, no clear III, prolonged): bronchospasm, COPD, kinked/partly obstructed ETT. Slope of phase III tracks severity and resolves with effective bronchodilator therapy.",
-    cites: ["BJA Educ 2017 Capnography"],
+    cites: ["Kodali 2013 Capnography"],
   },
   {
     text: "Curare cleft: a notch in the alveolar plateau caused by a returning diaphragmatic effort during IPPV — reflects wearing-off of neuromuscular blockade or light anaesthesia. Confirm with PNS train-of-four.",
@@ -182,15 +177,15 @@ const keyPoints = [
   },
   {
     text: "Raised baseline = patient is inspiring CO₂ (rebreathing). Causes: exhausted soda lime, faulty expiratory unidirectional valve, inadequate FGF in a Mapleson D or coaxial inner-tube disconnection (Bain — positive Pethick's test). Sort causes by breathing system. Circle: exhausted soda lime (most common — check colour change); incompetent expiratory valve (exhaled gas re-enters the inspiratory side: raised baseline with a slurred inspiratory downstroke/widened β angle); incompetent inspiratory valve (exhaled gas pushed back up the inspiratory limb). Mapleson A/D/Bain: FGF too low for the minute ventilation; for a Bain also do Pethick's test (flush with the patient port occluded then released — the bag should collapse via the Venturi effect if the inner tube is intact). Troubleshooting: (1) raise FGF immediately to wash out CO₂; (2) check soda lime colour; (3) watch the valve discs move; (4) if unresolved, switch to a self-inflating bag or a fresh circuit and change the absorber.",
-    cites: ["BJA Educ 2017 Capnography"],
+    cites: ["Kodali 2013 Capnography"],
   },
   {
-    text: "Sudden loss of trace is a never-event signal — work through tube position (oesophageal, dislodged), circuit (disconnection, sample-line failure) and circulation (arrest) in that order. Oesophageal CO₂ from a stomach full of carbonated fluid is the classic trap — it dies away within ~6 breaths. If the tube has just been placed, actively exclude oesophageal placement even in arrest; PUMA's default is to remove the tube and reoxygenate unless removal is judged more dangerous, then obtain urgent valid independent confirmation.",
-    cites: ["NAP4", "DAS 2025"],
+    text: "After intubation, absence of sustained exhaled CO₂ requires active exclusion of oesophageal placement. Default to removing the tube and reoxygenating. If removal is dangerous, check placement urgently using a valid alternative while assessing the circuit and ventilation. Oesophageal CO₂ from a stomach full of carbonated fluid is the classic trap — it dies away within ~6 breaths.",
+    cites: ["PUMA 2022"],
   },
   {
-    text: "EtCO₂ in CPR: < 1.3 kPa (10 mmHg) after 20 min of optimal compressions predicts non-survival in adult cardiac arrest; an abrupt rise of > 1 kPa heralds ROSC and should not be misinterpreted as a need for more compressions.",
-    cites: ["RCUK 2021 ALS"],
+    text: "During CPR, use waveform capnography to check tube placement and assess compression quality. Low EtCO₂ alone cannot determine survival or when to stop. A rise may accompany ROSC and should be assessed alongside other clinical signs.",
+    cites: ["RCUK 2025 ALS"],
   },
   {
     text: "Cardiac oscillations: small ripples on the descending limb at heart rate — benign, but the ventilator may auto-trigger off them in PSV. Reduce trigger sensitivity to abolish.",
@@ -226,9 +221,9 @@ const CapnographyTopic = () => {
         keyPoints: { exams: [Exam.PRIMARY, Exam.FINAL, Exam.FFICM] },
       }}
       sectionSources={{
-        objectives: ["BJA Educ 2017 Capnography", "Association of Anaesthetists 2021"],
-        keyPoints: ["BJA Educ 2017 Capnography", "Bhavani-Shankar & Philip 2000", "Al-Shaikh & Stacey Ch.10-11"],
-        workedExamples: ["BJA Educ 2017 Capnography", "NAP4", "RCUK 2021 ALS"],
+        objectives: ["Kodali 2013 Capnography", "Association of Anaesthetists 2021"],
+        keyPoints: ["Kodali 2013 Capnography", "Bhavani-Shankar & Philip 2000", "Al-Shaikh & Stacey Ch.10-11"],
+        workedExamples: ["Kodali 2013 Capnography", "NAP4", "RCUK 2021 ALS"],
       }}
       coreConcepts={
         <ExamSection exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]} className="scroll-mt-24">
@@ -370,8 +365,8 @@ const CapnographyTopic = () => {
                 Anaphylaxis has a dual capnographic presentation. Where mediator release causes
                 bronchospasm, the trace becomes obstructive — a sloping phase II with no true plateau
                 (shark-fin) and an obtuse α-angle. Where the dominant problem is circulatory, EtCO₂
-                falls abruptly or disappears as pulmonary blood flow collapses, culminating in PEA
-                arrest with a flat trace despite a correctly placed tube. In NAP6, the presenting features included
+                may fall sharply as pulmonary blood flow falls. A flat trace during effective CPR requires urgent
+                exclusion of oesophageal placement and equipment failure. In NAP6, the presenting features included
                 <strong> hypotension in 46%</strong>, <strong>bronchospasm in 18%</strong>, and a reduced or absent capnography
                 trace in <strong>2.3%</strong>; all patients became hypotensive during the episode. Therefore, during suspected
                 anaphylaxis, a falling or absent EtCO₂ may be a marker of profound circulatory failure rather than simply airway
@@ -436,7 +431,7 @@ const CapnographyTopic = () => {
                 capnography (VCap, the single-breath test for CO₂) plots CO₂ against
                 <strong> expired volume</strong>, so the area under the curve is the volume of
                 CO₂ eliminated per breath (VCO₂) and dead space can be quantified rather than
-                inferred <InlineRef topicId="capnography" refLabel="BJA Educ 2017 Capnography" />.
+                inferred <InlineRef topicId="capnography" refLabel="Kodali 2013 Capnography" />.
               </p>
               <div className="grid sm:grid-cols-3 gap-3 mb-3">
                 {[
@@ -471,7 +466,7 @@ const CapnographyTopic = () => {
                 Common exam pitfalls
               </h2>
               <ul className="list-disc list-inside text-sm text-muted-foreground space-y-1">
-                <li>Confirming tracheal intubation on a single breath — confirm across ≥ 7 sustained, normal-shaped waveforms.</li>
+                <li>Look for a clinically appropriate waveform that rises on expiration and falls on inspiration, peaks more than 1 kPa above baseline, and remains stable or rises over at least seven breaths.</li>
                 <li><strong>Never use clinical signs to confirm tracheal placement when sustained capnography is absent.</strong> Tube misting has a false-positive rate up to 69%; ordinary auscultation about 14%, and even five-point auscultation about 18%. Chest rise is also unreliable. False reassurance from these signs recurs in fatal unrecognised oesophageal intubation: if sustained exhaled CO₂ is absent, actively exclude oesophageal placement even in cardiac arrest. PUMA's default is to remove the tube and reoxygenate by mask or supraglottic airway unless removal is judged more dangerous; if removal is hazardous, obtain urgent valid independent confirmation. <InlineRef topicId="capnography" refLabel="Anaesthesia 2023 Intubation Tests" /><InlineRef topicId="capnography" refLabel="PUMA 2022" /></li>
                 <li>Quoting EtCO₂ alone for adequacy of ventilation in COPD or PE — the PaCO₂–EtCO₂ gradient is what matters.</li>
                 <li>Calling a raised baseline "ventilator artefact" — it is rebreathing; check absorber and valves.</li>

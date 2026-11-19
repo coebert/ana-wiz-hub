@@ -140,7 +140,7 @@ const waveformFaqs: Array<[string, string]> = [
   ],
   [
     "How do you read a capnography waveform?",
-    "Work through the trace in four steps. (1) Is there a waveform at all — sudden loss means oesophageal intubation, disconnection, complete obstruction or arrest. (2) Is the baseline at zero — a raised baseline is rebreathing. (3) Is the upstroke steep and the plateau flat — a sloping shark-fin is expiratory obstruction. (4) Is the plateau smooth — a downward notch is a curare cleft. Only after the shape is normal does the absolute ETCO₂ number become useful.",
+    "First check for sustained exhaled CO₂. Following intubation, an absent or fading trace demands immediate exclusion of oesophageal placement, including during CPR. Then inspect the baseline for rebreathing, the upstroke and plateau for expiratory obstruction and the plateau for spontaneous effort.",
   ],
   [
     "What does a shark-fin capnography waveform mean?",

@@ -8,11 +8,11 @@ const s = {
   ketamine: { label: "Ketamine and opioid tolerance", href: "https://doi.org/10.1097/ALN.0000000000002238" },
   pd: { label: "BJA Educ: pharmacodynamics", href: "https://doi.org/10.1093/bjaceaccp/mkm016" },
   volatiles: { label: "BJA Educ: inhalational agents", href: "https://doi.org/10.1093/bjaceaccp/mkg002" },
-  mh: { label: "AAGBI/MHAUS malignant hyperthermia guideline", href: "https://associationofanaesthetists-publications.onlinelibrary.wiley.com/doi/10.1111/anae.14257" },
+  mh: { label: "European Malignant Hyperthermia Group: treating an MH crisis (2024)", href: "https://www.emhg.org/recommendations-1/2024/11/4/recognising-and-managing-a-malignant-hyperthermia-crisis-v2024" },
   nmbGuideline: { label: "ASA 2023: neuromuscular blockade", href: "https://doi.org/10.1097/ALN.0000000000004379" },
   vasopressor: { label: "BJA Educ: vasoactive drugs", href: "https://doi.org/10.1093/bjaed/mkw066" },
   antimicrobial: { label: "Antimicrobial PK/PD in critical illness", href: "https://doi.org/10.1007/s00134-020-06050-1" },
-  last: { label: "Assoc Anaesth: management of severe local anaesthetic toxicity", href: "https://anaesthetists.org/Home/Resources-publications/Guidelines/Management-of-severe-local-anaesthetic-toxicity" },
+  last: { label: "Association of Anaesthetists: Quick Reference Handbook 3-10, local anaesthetic toxicity (2023)", href: "https://anaesthetists.org/Guidelines-and-publications/Quick-reference-handbook/PDF-version" },
   la: { label: "BJA Educ: local anaesthetic pharmacology", href: "https://doi.org/10.1093/bjaceaccp/mkl001" },
   bnfSux: { label: "BNF: suxamethonium chloride", href: "https://bnf.nice.org.uk/drugs/suxamethonium-chloride/" },
   als: { label: "Resuscitation Council UK: adult advanced life support", href: "https://www.resus.org.uk/library/2021-resuscitation-guidelines/adult-advanced-life-support" },
@@ -157,7 +157,7 @@ export const pharmacologyCaseBank: CaseBank = {
           prompt: "What is happening and what are the first actions?",
           answer: [
             "This is malignant hyperthermia: unregulated calcium release through a defective skeletal muscle ryanodine receptor causes sustained contracture, hypermetabolism and heat production.",
-            "Declare the emergency, call for help and the MH kit, stop all volatile agent and suxamethonium, and switch to a clean circuit with high-flow oxygen and total intravenous anaesthesia.",
+            "Declare malignant hyperthermia, call for help and dantrolene, stop triggering agents, remove the vaporiser and hyperventilate with 100% oxygen at high flow. If available, place activated charcoal filters on both limbs. Continue with trigger-free intravenous anaesthesia if needed. Do not delay treatment to exchange the circuit or machine.",
             "Ask the surgeon to stop or expedite closure, and hyperventilate to manage CO₂.",
           ],
         },
@@ -165,7 +165,7 @@ export const pharmacologyCaseBank: CaseBank = {
           title: "Give definitive treatment",
           prompt: "What drug and dose?",
           answer: [
-            "Dantrolene 2.5 mg/kg intravenously, repeated as needed up to about 10 mg/kg, with several people reconstituting vials because preparation is the rate-limiting step.",
+            "Give IV dantrolene 2–2.5 mg/kg actual body weight, maximum 300 mg per dose. Repeat about every 10 minutes while signs persist. A total above 10 mg/kg may be needed. Reconsider alternative diagnoses if response is poor. Allocate staff to prepare further doses.",
             "Cool actively, treat hyperkalaemia, acidosis and arrhythmias, and expect myoglobinuria requiring fluid to maintain urine output.",
             "Avoid calcium channel blockers with dantrolene, and continue monitoring in critical care for recrudescence and compartment syndrome.",
           ],
@@ -183,9 +183,9 @@ export const pharmacologyCaseBank: CaseBank = {
       detailedAnswer: [
         { title: "Clinical reasoning", content: "Volatile agents and suxamethonium trigger uncontrolled sarcoplasmic calcium release in susceptible individuals, usually through RYR1 variants. Sustained actin–myosin activity and futile ATP consumption produce CO₂ generation, heat, oxygen debt, lactic acidosis, hyperkalaemia and rhabdomyolysis. The earliest and most sensitive sign is an unexplained rise in end-tidal CO₂ despite adequate ventilation; temperature rise is a later feature." },
         { title: "Management and monitoring", content: "Treatment is simultaneous rather than sequential: remove triggers, give dantrolene early, cool, and correct metabolic derangement while a dedicated person manages drug preparation. Monitor invasive pressure, core temperature, gases, potassium, creatine kinase and urine output. Distinguish MH from thyroid storm, sepsis, neuroleptic malignant syndrome, phaeochromocytoma and inadequate anaesthesia — all of which raise CO₂ or temperature but need different treatment." },
-        { title: "Exam pitfall", content: "Do not wait for pyrexia before treating, and do not forget that masseter spasm after suxamethonium is a warning sign. Quote the dantrolene dose and state that vapour must be removed with a clean circuit, not just switched off." },
+        { title: "Exam pitfall", content: "Do not wait for pyrexia before treating, and do not forget that masseter spasm after suxamethonium is a warning sign. Give dantrolene immediately and describe how to stop volatile delivery without delaying treatment to exchange the circuit or machine." },
       ],
-      takeHome: "Unexplained rising CO₂ with rigidity is malignant hyperthermia until proven otherwise: remove triggers, give dantrolene 2.5 mg/kg early and cool aggressively.",
+      takeHome: "Unexplained rising CO₂ with rigidity is malignant hyperthermia until proven otherwise: remove triggers, give IV dantrolene 2–2.5 mg/kg (maximum 300 mg per dose) promptly and actively cool hyperthermia.",
       sourceLinks: [s.volatiles, s.mh],
     },
     {
@@ -340,7 +340,7 @@ export const pharmacologyCaseBank: CaseBank = {
           title: "Recognise the toxicity",
           prompt: "Why is this local anaesthetic systemic toxicity, and what dose was given?",
           answer: [
-            "30 mL of 0.5% solution is 150 mg, which is 2.5 mg/kg — within usual limits, so the pattern points to intravascular injection or rapid vascular uptake in a highly vascular neck.",
+            "The patient received 150 mg (2.5 mg/kg), the UK product’s maximum recommended single adult dose. An individual patient may need less. The rapid onset raises concern for intravascular injection or rapid vascular uptake.",
             "Progression from tongue tingling, tinnitus and agitation to seizure then cardiovascular collapse is the classic sequence; bupivacaine and levobupivacaine cause cardiotoxicity early because of avid, slowly dissociating sodium-channel binding.",
             "Cardiac features include conduction delay, broad complexes, refractory ventricular arrhythmias and asystole; hypoxia and acidosis worsen toxicity.",
           ],
@@ -351,7 +351,7 @@ export const pharmacologyCaseBank: CaseBank = {
           answer: [
             "Stop injecting, call for help, secure the airway with 100% oxygen and avoid hypoxia, hypercapnia and acidosis, which all increase toxicity.",
             "Control seizures with a benzodiazepine — or small-dose propofol if that is what is available and cardiovascular stability allows — and start advanced life support if arrest occurs.",
-            "Give 20% lipid emulsion: an initial bolus of 1.5 mL/kg over 2–3 minutes followed by an infusion of 15 mL/kg/hour, with up to two further boluses and doubling of the infusion rate for persistent instability, to a maximum of about 12 mL/kg.",
+            "Start 20% IV lipid with 1.5 mL/kg over 2–3 minutes and infuse at 15 mL/kg/h. If circulation remains unstable or deteriorates, repeat the bolus at 5 and 10 minutes as needed and double the infusion to 30 mL/kg/h after 5 minutes. Limit all boluses plus infusion to 12 mL/kg.",
           ],
         },
         {
@@ -369,8 +369,8 @@ export const pharmacologyCaseBank: CaseBank = {
         { title: "Management and monitoring", content: "Prevention is the priority: lowest effective dose, ultrasound guidance, incremental injection with intermittent aspiration, and awareness of higher risk at vascular sites and in the elderly, cachectic, pregnant or those with cardiac or hepatic disease. Rescue depends on immediate lipid emulsion available in every block area, an airway and oxygenation strategy, and prolonged resuscitation. Monitor rhythm, gases and glucose during recovery, and admit for observation because late deterioration can occur as tissue depots release drug." },
         { title: "Exam pitfall", content: "Do not quote a single milligram-per-kilogram limit as guaranteeing safety, and do not delay lipid emulsion until arrest. State the bolus and infusion doses and the maximum cumulative dose." },
       ],
-      takeHome: "Suspect systemic toxicity from any progressive neurological then cardiac deterioration after a block: oxygenate, control seizures, give 1.5 mL/kg of 20% lipid emulsion early and resuscitate for a long time.",
-      sourceLinks: [s.last, s.la],
+      takeHome: "Suspect systemic toxicity from any progressive neurological then cardiac deterioration after a block: oxygenate, control seizures, give 20% lipid emulsion 1.5 mL/kg over 2–3 minutes followed by 15 mL/kg/h and resuscitate for a long time.",
+      sourceLinks: [s.last, s.la , { label: "UK levobupivacaine 5 mg/mL SmPC", href: "https://www.medicines.org.uk/emc/product/13644/smpc" }],
     },
     {
       id: "pharmacology-sux-apnoea",
@@ -441,7 +441,7 @@ export const pharmacologyCaseBank: CaseBank = {
           title: "Reverse the direct oral anticoagulant",
           prompt: "What are the options for apixaban and for dabigatran?",
           answer: [
-            "For factor Xa inhibitors, use a specific agent (andexanet alfa) where available and indicated, or prothrombin complex concentrate at around 50 units/kg as an alternative.",
+            "For apixaban-associated intracerebral haemorrhage, stop apixaban and obtain immediate stroke and haematology advice on reversal, including four-factor PCC under the local pathway. NICE could not make a recommendation for andexanet in intracranial haemorrhage. Its positive TA697 recommendation applies to gastrointestinal tract bleeding.",
             "For dabigatran, idarucizumab 5 g intravenously provides rapid, near-complete reversal; dabigatran is also dialysable because of low protein binding.",
             "Establish the timing of the last dose and renal function, since a dose taken more than 24–48 hours earlier in normal renal function may need no reversal, and send anti-Xa or thrombin time assays where available.",
           ],
@@ -462,7 +462,7 @@ export const pharmacologyCaseBank: CaseBank = {
         { title: "Exam pitfall", content: "Do not offer plasma as the primary warfarin reversal in intracranial bleeding, do not omit vitamin K, and do not claim protamine fully reverses low molecular weight heparin." },
       ],
       takeHome: "Match reversal to mechanism: prothrombin complex concentrate plus vitamin K for warfarin, specific antidotes or factor concentrate for direct oral anticoagulants, and protamine only partially for low molecular weight heparin.",
-      sourceLinks: [s.andexanet, s.vasopressor],
+      sourceLinks: [s.andexanet, s.vasopressor , { label: "NICE: andexanet for intracranial haemorrhage, terminated appraisal", href: "https://www.nice.org.uk/guidance/ta1029" }],
     },
     {
       id: "pharmacology-arrhythmia-drugs",
@@ -479,7 +479,7 @@ export const pharmacologyCaseBank: CaseBank = {
           prompt: "Rate control, rhythm control or electricity?",
           answer: [
             "There are adverse features — hypotension, ischaemic chest pain and evidence of poor perfusion — so synchronised cardioversion under sedation or anaesthesia is the treatment of choice, with up to three attempts.",
-            "Amiodarone 300 mg intravenously over 10–20 minutes then 900 mg over 24 hours is the drug of choice if cardioversion fails or as adjunct.",
+            "If up to three synchronised shocks fail and instability persists, give amiodarone 300 mg IV over 10–20 minutes or procainamide 10–15 mg/kg (maximum 1 g) over 20 minutes, then repeat synchronised cardioversion. Seek expert help and treat the cause.",
             "Simultaneously correct the drivers: potassium and magnesium replacement, analgesia, volume and haemoglobin assessment, sepsis screen and review for pneumothorax or bleeding.",
           ],
         },
@@ -504,11 +504,11 @@ export const pharmacologyCaseBank: CaseBank = {
       ],
       detailedAnswer: [
         { title: "Clinical reasoning", content: "Postoperative atrial fibrillation after thoracic surgery is usually a symptom of something else: catecholamines, pain, hypovolaemia, electrolyte depletion, hypoxia, sepsis, atrial stretch or pericardial irritation. Rate is tolerated poorly when preload is low and the ventricle is dependent on atrial filling, since loss of the atrial contribution reduces stroke volume by up to a fifth. The presence of adverse features moves treatment from pharmacology to synchronised cardioversion." },
-        { title: "Management and monitoring", content: "Follow the algorithm: assess for adverse features, cardiovert if present, otherwise correct precipitants and use rate or rhythm control. Replace potassium to above 4.0 mmol/L and magnesium to above 0.8 mmol/L, provide effective analgesia including regional techniques, and reassess volume status. Monitor rhythm, pressure, lactate and urine output; if the arrhythmia persists beyond 48 hours, address thromboembolic risk with anticoagulation weighed against surgical bleeding." },
+        { title: "Management and monitoring", content: "Follow the algorithm: assess for adverse features, cardiovert if present, otherwise correct precipitants and use rate or rhythm control. Replace potassium to above 4.0 mmol/L and magnesium to above 0.8 mmol/L, provide effective analgesia including regional techniques, and reassess volume status. Monitor rhythm, pressure, lactate and urine output; assess thromboembolic and surgical bleeding risks promptly. The RCUK stable AF pathway advises anticoagulation if duration exceeds 24 hours. Active drain bleeding requires an individual plan with surgery and cardiology. Do not delay emergency cardioversion for anticoagulation." },
         { title: "Exam pitfall", content: "Do not give a beta-blocker or verapamil reflexively to a hypotensive patient with fixed stroke volume, and do not treat the rhythm while ignoring hypokalaemia, hypomagnesaemia, pain and hypovolaemia." },
       ],
       takeHome: "Unstable fast atrial fibrillation needs synchronised cardioversion, amiodarone as backup, and simultaneous correction of electrolytes, pain and volume.",
-      sourceLinks: [s.als, s.vasopressor],
+      sourceLinks: [s.als, s.vasopressor , { label: "RCUK: adult tachyarrhythmia, March 2026", href: "https://www.resus.org.uk/sites/default/files/2026-03/Adult%20tachyarrhythmia%20algorithm%20V3%20March%202026.pdf" }],
     },
     {
       id: "pharmacology-paediatric-analgesia",
@@ -708,18 +708,18 @@ export const pharmacologyCaseBank: CaseBank = {
           title: "Recognise and treat immediately",
           prompt: "What is the diagnosis and immediate management?",
           answer: [
-            "This is grade III/IV perioperative anaphylaxis, most commonly due to neuromuscular blocking drugs, which account for the largest single group of triggers, often through IgE sensitisation to quaternary ammonium ions present in many household and cosmetic products.",
-            "Call for help, stop the likely trigger and any colloid or antibiotic running, give 100% oxygen, lay the patient flat with legs raised, and give intramuscular adrenaline 0.5 mg (repeated every 5 minutes) or titrated intravenous boluses of 50 microgram increments if experienced and monitored.",
-            "Give a rapid intravenous fluid bolus (10–20 mL/kg crystalloid), and proceed to advanced life support if cardiac arrest occurs, following the Resuscitation Council UK and Association of Anaesthetists algorithm.",
+            "This is severe perioperative anaphylaxis. Rocuronium is a possible trigger given the timing. In UK NAP6, antibiotics accounted for 46% and neuromuscular blockers for 33% of reactions with an identified culprit. Review every exposure before attributing causation.",
+            "Call for help, stop suspected triggers, give 100% oxygen and lie the patient flat with legs raised if appropriate. In this monitored adult with IV access, an experienced anaesthetist gives 50 micrograms IV adrenaline, titrating further doses to response. If there is no IV access, give 10 micrograms/kg IM (maximum 500 micrograms) and secure IV or IO access.",
+            "Give a rapid 500–1,000 mL crystalloid bolus, reassess and repeat as needed. Start CPR if systolic pressure falls below 50 mmHg or cardiac arrest occurs. Follow ALS for arrest.",
           ],
         },
         {
           title: "Support and refine treatment",
           prompt: "What second-line measures might be needed?",
           answer: [
-            "Refractory bronchospasm may need salbutamol, and refractory hypotension may need a noradrenaline or vasopressin infusion and additional fluid; glucagon is useful if the patient is on a beta-blocker and unresponsive to adrenaline.",
+            "If the response to adrenaline boluses is poor, start a monitored IV adrenaline infusion and obtain intensive care help. For shock refractory to the infusion, add noradrenaline or vasopressin and consider glucagon in adults on beta-blockers. Give inhaled bronchodilators for persistent bronchospasm.",
             "Antihistamines and corticosteroids are not useful for immediate ABC treatment; corticosteroids are not routine and have no established biphasic-prevention benefit. After stabilisation, a non-sedating oral antihistamine may relieve persistent skin symptoms (RCUK 2021/2024).",
-            "Take a timed mast cell tryptase sample as soon as feasible after resuscitation, then at 1–2 hours and at 24 hours or convalescence for a baseline, since tryptase rises acutely and falls over hours.",
+            "Once stable, take serum tryptase, with further samples 1–4 hours after symptom onset and at least 24 hours later for baseline. Document symptom onset and sampling times.",
           ],
         },
         {
@@ -734,11 +734,11 @@ export const pharmacologyCaseBank: CaseBank = {
       ],
       detailedAnswer: [
         { title: "Clinical reasoning", content: "Perioperative anaphylaxis is a type I, IgE-mediated hypersensitivity causing mast cell and basophil degranulation with histamine, tryptase and other mediator release, producing vasodilation, capillary leak, bronchospasm and cardiovascular collapse within minutes of exposure. Neuromuscular blocking drugs are implicated in a large proportion of severe perioperative reactions, and sensitisation can occur without previous anaesthetic exposure because quaternary and tertiary ammonium epitopes are present in many everyday products, explaining reactions on first exposure to a relaxant." },
-        { title: "Management and monitoring", content: "Adrenaline is the definitive treatment and should not be delayed for diagnostic certainty; intramuscular dosing is appropriate for less experienced responders while trained anaesthetists may titrate small intravenous boluses with full monitoring. Fluid resuscitation addresses profound capillary leak, and second-line therapies address ongoing bronchospasm or refractory shock. Timed tryptase sampling is essential to confirm the diagnosis retrospectively and distinguish it from other causes of intraoperative collapse; a normal tryptase does not exclude anaphylaxis, particularly if not sampled at the ideal time." },
+        { title: "Management and monitoring", content: "In this monitored operating theatre, give IV adrenaline promptly and titrate to response with rapid crystalloid. Use IM adrenaline while obtaining access if none is available. A poor response to boluses warrants an IV adrenaline infusion. Serial tryptase supports the subsequent allergy assessment. A normal value does not exclude anaphylaxis." },
         { title: "Exam pitfall", content: "Do not give antihistamine or hydrocortisone as first-line treatment, and do not omit the timed tryptase samples. State that testing should include all relaxants because of cross-reactivity, not just the one given." },
       ],
       takeHome: "Treat suspected NMB anaphylaxis with immediate adrenaline and fluid, take serial timed tryptase samples, and refer for allergy testing against all neuromuscular blocking drugs because of cross-reactivity.",
-      sourceLinks: [s.allergy, s.als],
+      sourceLinks: [s.allergy, s.als , { label: "RCUK: perioperative anaphylaxis algorithm", href: "https://www.resus.org.uk/sites/default/files/2024-01/2526%20AAP%20RCUK%20periop%20anaphylaxis-8C.pdf" }],
     },
     {
       id: "pharmacology-hepatic-drug-handling",
@@ -947,8 +947,8 @@ export const pharmacologyCaseBank: CaseBank = {
           title: "Choose the reversal strategy",
           prompt: "What do you give for life-threatening bleeding on apixaban?",
           answer: [
-            "Andexanet alfa, a modified recombinant factor Xa decoy protein, directly reverses apixaban and rivaroxaban; it is given as a bolus followed by a two-hour infusion, with the bolus/infusion rate tiered to the dose and timing of the last DOAC dose (low-dose regimen for apixaban ≤5 mg or >8 hours since last dose, high-dose regimen otherwise).",
-            "Where andexanet alfa is unavailable, unaffordable or contraindicated, four-factor prothrombin complex concentrate 25–50 units/kg is used off-label; it does not directly reverse the drug but replaces clotting factors to overwhelm the anticoagulant effect.",
+            "Stop apixaban, identify the bleeding site and involve haematology immediately. Andexanet is licensed for life-threatening or uncontrolled bleeding on apixaban or rivaroxaban. NICE TA697 recommends it as an option specifically for gastrointestinal tract bleeding. A perforated viscus with intra-abdominal bleeding does not by itself establish that indication. Emergency surgery alone is not an indication for andexanet.",
+            "For this actively bleeding patient, proceed to definitive haemorrhage control and discuss four-factor PCC with the consultant haematologist if diffuse coagulopathic bleeding warrants it. Follow the local major haemorrhage protocol, balancing limited evidence for efficacy against thrombosis.",
             "Tranexamic acid, correction of hypothermia, acidosis and hypocalcaemia, and standard massive transfusion practice should run in parallel; do not delay life-saving surgery solely to await a specific reversal agent if bleeding is catastrophic.",
           ],
         },
@@ -963,12 +963,12 @@ export const pharmacologyCaseBank: CaseBank = {
         },
       ],
       detailedAnswer: [
-        { title: "Clinical reasoning", content: "Direct oral factor Xa inhibitors such as apixaban are not reliably assessed by routine coagulation tests, so clinical urgency often outweighs waiting for confirmatory anti-Xa assay in true emergencies. Andexanet alfa offers targeted reversal by acting as a decoy substrate for the drug, while prothrombin complex concentrate provides non-specific factor replacement; both are reasonable depending on availability, cost and local protocol, and neither should delay definitive haemorrhage control (surgery, embolisation) when bleeding is life-threatening." },
-        { title: "Management and monitoring", content: "Give tranexamic acid early, correct the lethal triad (hypothermia, acidosis, hypocalcaemia), and involve haematology for a coordinated reversal strategy alongside massive transfusion. Choose andexanet alfa dosing tier based on which DOAC, its dose, and time since last intake; monitor for post-reversal thrombosis and restart thromboprophylaxis as soon as haemostasis allows. Document clearly which reversal agent was given and why, since this affects subsequent anticoagulation choices." },
+        { title: "Clinical reasoning", content: "Routine coagulation tests can be normal with residual apixaban. Establish the last dose, renal function and bleeding site. Prioritise surgery and major haemorrhage resuscitation. An operation on the gastrointestinal tract is distinct from bleeding into that tract when assessing NICE eligibility for andexanet." },
+        { title: "Management and monitoring", content: "Give tranexamic acid early, correct the lethal triad (hypothermia, acidosis, hypocalcaemia), and involve haematology for a coordinated reversal strategy alongside massive transfusion. If andexanet is indicated for the bleeding site, check the product regimen against the last dose and timing. After reversal monitor for post-reversal thrombosis and restart thromboprophylaxis as soon as haemostasis allows. Document clearly which reversal agent was given and why, since this affects subsequent anticoagulation choices." },
         { title: "Exam pitfall", content: "Do not say vitamin K or fresh frozen plasma reverses a DOAC — they do not meaningfully affect factor Xa inhibitors. Be specific that andexanet alfa also inactivates unfractionated and low molecular weight heparin, which matters if bypass is anticipated." },
       ],
-      takeHome: "Routine clotting tests do not exclude significant apixaban effect: for life-threatening bleeding give andexanet alfa (dose tiered to DOAC dose/timing) or 4-factor PCC 25–50 units/kg, alongside tranexamic acid and correction of the lethal triad, without delaying surgical control of bleeding.",
-      sourceLinks: [s.doacReversal, s.andexanet, s.andexanetTrial],
+      takeHome: "Stop apixaban, involve haematology and control the source urgently. Confirm the bleeding site before considering andexanet under NICE guidance. Assess whether four-factor PCC is appropriate for ongoing major bleeding with specialist input.",
+      sourceLinks: [s.doacReversal, s.andexanet, s.andexanetTrial , { label: "UKCPA: perioperative apixaban and emergency surgery", href: "https://periop-handbook.ukclinicalpharmacy.org/drug/apixaban-2/" }],
     },
     {
       id: "pharmacology-vasoplegic-shock",
@@ -1131,8 +1131,8 @@ export const pharmacologyCaseBank: CaseBank = {
           title: "Give lipid emulsion",
           prompt: "What dose and regimen of lipid emulsion do you give?",
           answer: [
-            "Give intravenous 20% lipid emulsion as an initial bolus of 1.5 mL/kg of ideal body weight over about a minute, which can be repeated up to twice more at five-minute intervals if cardiovascular stability has not been restored.",
-            "Start a continuous infusion at 15 mL/kg/hour, and if cardiovascular stability is still not restored, increase the infusion rate up to a maximum of 12 mL/kg (total dose, bolus plus infusion) within the first 30 minutes.",
+            "Give 20% lipid emulsion 1.5 mL/kg IV over 2–3 minutes. If circulation remains unstable or subsequently deteriorates, repeat this bolus at 5 and 10 minutes as needed.",
+            "Start the infusion at 15 mL/kg/h. After 5 minutes, double it to 30 mL/kg/h if circulation remains unstable or deteriorates. The 12 mL/kg ceiling is cumulative across all boluses and infused lipid.",
             "Continue monitoring for at least 12 hours after a cardiovascular event or 4 hours after an isolated seizure, since local anaesthetic toxicity can recur (redistribution) after apparent recovery.",
           ],
         },
@@ -1151,7 +1151,7 @@ export const pharmacologyCaseBank: CaseBank = {
         { title: "Management and monitoring", content: "Follow the published sequence: stop injecting, call for help, secure the airway and give 100% oxygen, control seizures with benzodiazepines, and give lipid emulsion early rather than as a last resort once significant cardiovascular or persistent central nervous system toxicity is present. Use modified resuscitation drug doses if cardiac arrest occurs, and prolong monitoring afterwards given the risk of recurrence. Prevent toxicity in the first place through dose calculation, incremental injection, aspiration and ultrasound guidance." },
         { title: "Exam pitfall", content: "Do not confuse the initial bolus (1.5 mL/kg) with the infusion rate (15 mL/kg/h) or the maximum total dose (12 mL/kg) — examiners frequently test precise recall of all three numbers. State clearly that propofol is not a substitute for lipid emulsion and that standard-dose adrenaline may worsen outcomes in this specific arrest scenario." },
       ],
-      takeHome: "Treat local anaesthetic systemic toxicity with airway control, benzodiazepine for seizures, and early lipid emulsion (1.5 mL/kg bolus, 15 mL/kg/h infusion, max 12 mL/kg) — and prevent it by respecting per-kilogram maximum doses and using incremental, ultrasound-guided injection.",
+      takeHome: "Treat local anaesthetic systemic toxicity with airway control, benzodiazepine for seizures, and early lipid emulsion (1.5 mL/kg over 2–3 minutes, 15 mL/kg/h infusion, max 12 mL/kg) — and prevent it by respecting per-kilogram maximum doses and using incremental, ultrasound-guided injection.",
       sourceLinks: [s.last, s.la],
     },
     {
@@ -1407,8 +1407,8 @@ export const pharmacologyCaseBank: CaseBank = {
           title: "Give lipid emulsion",
           prompt: "Prescribe the antidote for this baby.",
           answer: [
-            "Give 20% lipid emulsion 1.5 mL/kg (9 mL) as a bolus over about 1 minute, then an infusion of 15 mL/kg/h (90 mL/h).",
-            "Repeat the bolus up to twice at 5-minute intervals and double the infusion rate if instability persists, to a maximum cumulative dose of 12 mL/kg.",
+            "Give 20% lipid emulsion 1.5 mL/kg (9 mL) as a bolus over 2–3 minutes, then an infusion of 15 mL/kg/h (90 mL/h).",
+            "If circulation stays unstable or deteriorates, repeat the 9 mL bolus at 5 and 10 minutes as needed. After 5 minutes the infusion can be doubled to 180 mL/h. For this 6 kg infant, stop at 72 mL total across boluses and infusion.",
             "Propofol is not a substitute for lipid emulsion, which must be immediately available wherever local anaesthetic is given.",
           ],
         },
@@ -1424,10 +1424,10 @@ export const pharmacologyCaseBank: CaseBank = {
       ],
       detailedAnswer: [
         { title: "Clinical reasoning", content: "Infants are especially vulnerable to local anaesthetic systemic toxicity: alpha-1-acid glycoprotein and albumin are low so the unbound fraction is higher, hepatic clearance pathways are immature, and injected volumes are large relative to body size. Because blocks are placed under general anaesthesia the usual central nervous system warning signs are absent and toxicity presents as conduction delay, bradycardia and collapse. Lipid emulsion works partly as a lipid sink and partly through direct cardiac metabolic and channel effects." },
-        { title: "Management and monitoring", content: "Stop injection, secure the airway with 100% oxygen, start CPR where output is inadequate, and give 20% lipid emulsion 1.5 mL/kg then 15 mL/kg/h, repeating boluses and doubling the rate as needed to a 12 mL/kg maximum. Use reduced-dose incremental adrenaline and benzodiazepines for seizures, and avoid lidocaine, vasopressin and calcium-channel blockers. Continue critical-care monitoring for 6-12 hours for recurrence, check triglycerides and pancreatic function after large lipid doses, and complete a critical-incident report with dose documentation." },
+        { title: "Management and monitoring", content: "Stop injection, secure the airway with 100% oxygen, start CPR where output is inadequate, and give 20% lipid emulsion 1.5 mL/kg over 2–3 minutes then 15 mL/kg/h, repeating boluses and doubling the rate as needed to a 12 mL/kg maximum. Use reduced-dose incremental adrenaline and benzodiazepines for seizures, and avoid lidocaine, vasopressin and calcium-channel blockers. Continue critical-care monitoring for 6-12 hours for recurrence, check triglycerides and pancreatic function after large lipid doses, and complete a critical-incident report with dose documentation." },
         { title: "Exam pitfall", content: "Do not give a standard 10 microgram/kg adrenaline dose, do not confuse the 1.5 mL/kg bolus with the 15 mL/kg/h infusion or the 12 mL/kg maximum, and remember that dilute solutions still exceed limits when volumes are calculated carelessly in infants." },
       ],
-      takeHome: "Calculate infant local anaesthetic doses in mg/kg before injecting; if toxicity occurs give 20% lipid emulsion 1.5 mL/kg then 15 mL/kg/h (max 12 mL/kg), use reduced-dose adrenaline, and monitor for recurrence.",
+      takeHome: "Calculate infant local anaesthetic doses in mg/kg before injecting; if toxicity occurs give 20% lipid emulsion 1.5 mL/kg over 2–3 minutes then 15 mL/kg/h (max 12 mL/kg), use reduced-dose adrenaline, and monitor for recurrence.",
       sourceLinks: [s.last, s.la, s.pals],
     },
   ],

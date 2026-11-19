@@ -3,7 +3,7 @@ import type { CaseBank } from "./types";
 const s = {
   oximetryPigment: { label: "Physiol Meas 2023 (skin pigmentation)", href: "https://doi.org/10.1088/1361-6579/acd51a" },
   oximetryPrinciples: { label: "BJA Educ: pulse oximetry", href: "https://doi.org/10.1093/bjaceaccp/mkg038" },
-  capnography: { label: "Anesthesiology 2013: capnography", href: "https://doi.org/10.1097/ALN.0b013e318278c8b6" },
+  capnography: { label: "Kodali: capnography outside the operating rooms", href: "https://doi.org/10.1097/ALN.0b013e318278c8b6" },
   capnoShape: { label: "Bhavani-Shankar & Philip 2000", href: "https://doi.org/10.1097/00000539-200010000-00038" },
   monitoring: { label: "Association of Anaesthetists Standards of Monitoring 2021", href: "https://doi.org/10.1111/anae.15501" },
   electrical: { label: "BJA Educ: electrical safety", href: "https://doi.org/10.1093/bjaed/mkx035" },
@@ -596,7 +596,7 @@ export const physicsCaseBank: CaseBank = {
       difficulty: "Intermediate",
       summary: "Andrews' isotherms, critical temperature and why cylinder contents gauges mislead for liquefied gases.",
       topicIds: ["gas-laws", "si-units-thermodynamics", "equipment-monitoring"],
-      patient: "A nitrous oxide cylinder is in use on an obstetric unit for Entonox-style analgesia support. Its pressure gauge reads a steady 4400 kPa for hours of use, then suddenly falls to near zero within minutes.",
+      patient: "A cylinder of pure medical nitrous oxide supplies a theatre anaesthetic machine, where the gas is mixed with oxygen. Its gauge remains nearly steady while liquid is present, then falls as the remaining vapour is used.",
       presentation: "Staff assumed the cylinder was 'nearly full' throughout because the pressure gauge did not fall progressively.",
       stages: [
         {
@@ -623,17 +623,17 @@ export const physicsCaseBank: CaseBank = {
           answer: [
             "Weigh nitrous oxide cylinders (tare weight is stamped on the cylinder) rather than relying on the pressure gauge to estimate remaining content.",
             "Keep a spare, checked cylinder available for any procedure or list using nitrous oxide, especially away from piped supply.",
-            "Recognise the same principle applies to entonox, where separation (lamination) of oxygen and nitrous oxide can occur if a cylinder has been stored cold below -6°C — invert the cylinder before use.",
+            "Entonox is a separate compressed 50:50 gas mixture. Cold exposure can cause separation. Follow the instructions for the exact cylinder before use.",
           ],
         },
       ],
       detailedAnswer: [
         { title: "Clinical reasoning", content: "Andrews' isotherms describe the pressure-volume relationship of a substance across temperatures, showing that below the critical temperature a gas can be liquefied by pressure and coexists with vapour at a temperature-dependent saturated vapour pressure. This underlies why liquefied-gas cylinders (nitrous oxide, CO₂) give a false sense of security from pressure gauge readings alone." },
-        { title: "Management and monitoring", content: "Institute weighing checks for nitrous oxide and CO₂ cylinders in departmental equipment checklists, and educate staff that pressure gauges are only informative once all liquid has vaporised. For Entonox, apply the cold-storage/lamination precaution by storing horizontally above -6°C and inverting or warming before use if cold exposure is suspected." },
+        { title: "Management and monitoring", content: "Check the mass of a pure nitrous oxide cylinder against its tare. For BOC Entonox, maintain the cylinder above 10°C for at least 24 hours before use. Storage position and any accelerated remix method must follow the specific cylinder instructions." },
         { title: "Exam pitfall", content: "Do not answer with a generic Boyle's law explanation for nitrous oxide; the key concept is critical temperature and the liquid-vapour equilibrium, and the correct practical answer is weighing, not reading the gauge." },
       ],
       takeHome: "For liquefied gases like nitrous oxide, cylinder pressure stays constant until the liquid is used up, then falls rapidly; weigh the cylinder, don't trust the gauge, to know how much remains.",
-      sourceLinks: [s.gasLaws, s.monitoring],
+      sourceLinks: [s.gasLaws, s.monitoring, { label: "BOC Entonox cylinder instructions", href: "https://www.bocgases.co.uk/files/entonox_integral_valve_cylinder.pdf" }],
     },
     {
       id: "physics-perioperative-hypothermia",
