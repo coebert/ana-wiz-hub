@@ -14,7 +14,7 @@ let cached: { value: Promise<CryptoKey>; until: number } | undefined;
 export function trustedKey(): Promise<CryptoKey> {
   if (cached && cached.until > Date.now()) return cached.value;
   const value = (async () => {
-    const response = await fetch(AUTHORITY, { redirect: "error", signal: AbortSignal.timeout(5000) });
+    const response = await fetch(AUTHORITY, { redirect: "manual", signal: AbortSignal.timeout(5000) });
     if (!response.ok) throw new Error("Relay verification unavailable");
     const { keys } = await response.json();
     const key = Array.isArray(keys) && keys.find(k => k?.kid === KEY_ID && k?.alg === "EdDSA" && k?.kty === "OKP" && k?.crv === "Ed25519" && k?.use === "sig");
@@ -27,7 +27,7 @@ export function trustedKey(): Promise<CryptoKey> {
 }
 export async function reserve(token: string): Promise<number> {
   // Atomic across all Base44 isolates. The issuer only sees its own signed assertion.
-  const response = await fetch(AUTHORITY, {method:"POST", headers:{[ASSERTION]:token}, redirect:"error",signal:AbortSignal.timeout(5000)});
+  const response = await fetch(AUTHORITY, {method:"POST", headers:{[ASSERTION]:token}, redirect:"manual",signal:AbortSignal.timeout(5000)});
   await response.body?.cancel();
   return response.status;
 }
@@ -53,7 +53,7 @@ async function embeddings(request: Request, texts: string[], services: Services)
   const key = services.embeddingsKey?.();
   if (!key) return error(503, "Embeddings are not configured on the Base44 backend");
   const response = await services.fetcher("https://api.openai.com/v1/embeddings", {
-    method:"POST", redirect:"error", headers:{"Content-Type":"application/json",Authorization:"Bearer " + key},
+    method:"POST", redirect:"manual", headers:{"Content-Type":"application/json",Authorization:"Bearer " + key},
     signal:AbortSignal.any([request.signal,AbortSignal.timeout(40000)]),
     body:JSON.stringify({model:"text-embedding-3-small",input:texts,dimensions:1536,encoding_format:"float"}),
   });
@@ -109,7 +109,7 @@ export async function relay(request: Request, services: Services): Promise<Respo
     headers.set("Content-Type","application/json");
     const endpoint = operation === "chat" ? "chat/completions" : "audio/speech";
     const upstream = await services.fetcher(provider.baseURL.replace(/\/$/,"") + "/" + endpoint, {
-      method:"POST", headers, body:JSON.stringify(payload), redirect:"error",
+      method:"POST", headers, body:JSON.stringify(payload), redirect:"manual",
       signal:AbortSignal.any([request.signal,AbortSignal.timeout(240000)]),
     });
     if (!upstream.ok || !upstream.body) {

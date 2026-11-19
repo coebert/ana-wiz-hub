@@ -1,3 +1,4 @@
+import { vivaVoicePreset } from "./viva-voice-presets.ts";
 import { callBase44Relay } from "./base44-assertion.ts";
 
 function unavailable(status: number, code: string, message: string): Response {
@@ -31,7 +32,6 @@ type SpeechRequest = {
   instructions?: string;
 };
 
-const roles = new Map([["Kore", "alloy"], ["Charon", "onyx"], ["Aoede", "nova"]]);
 const voices = new Set(["alloy", "ash", "ballad", "coral", "echo", "fable", "nova", "onyx", "sage", "shimmer", "verse", "marin", "cedar"]);
 
 function pcmEvents(bytes: Uint8Array, signal?: AbortSignal): Response {
@@ -65,7 +65,7 @@ export async function relaySpeech(request: SpeechRequest, signal?: AbortSignal):
       (request.instructions !== undefined && (typeof request.instructions !== "string" || request.instructions.length > 2_000))) {
     return unavailable(400, "INVALID_SPEECH_REQUEST", "Invalid speech request.");
   }
-  const voice = roles.get(request.voice) ?? request.voice;
+  const voice = vivaVoicePreset(request.voice) ?? request.voice;
   if (!voices.has(voice)) return unavailable(422, "UNSUPPORTED_VOICE", "The selected voice is unavailable.");
   const pcm = request.format === "pcm-sse";
   const response = await dispatch("speech", {

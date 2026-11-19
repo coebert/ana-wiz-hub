@@ -1,3 +1,4 @@
+import { compareSnippets, SemanticError, type RequestBody } from "./batches.ts";
 import { relayChat } from "../_shared/base44-ai.ts";
 import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2.45.0";
@@ -21,22 +22,6 @@ const corsHeaders = {
   "Access-Control-Allow-Headers":
     "authorization, x-client-info, apikey, content-type, x-supabase-client-platform, x-supabase-client-platform-version, x-supabase-client-runtime, x-supabase-client-runtime-version",
 };
-
-interface Snippet {
-  id: string;
-  source: string; // e.g. "coreConcepts:cardiac-cycle" or "diagram:aortic-dichrotic-notch"
-  text: string; // prose / intent / label
-}
-
-interface RequestBody {
-  candidate: {
-    label: string;
-    intent: string; // 1-2 sentence description of what the author wants to add
-    contentType?: string; // e.g. "diagram", "prose", "calculator"
-  };
-  snippets: Snippet[]; // existing material to compare against
-  topicId?: string;
-}
 
 const SYSTEM_PROMPT = `You are an editorial deduplication assistant for a medical curriculum (anaesthesia + intensive care).
 Your only job: decide whether a CANDIDATE addition is conceptually duplicative, overlapping, adjacent, or novel relative to a list of EXISTING snippets already in the same topic.
@@ -137,101 +122,15 @@ serve(async (req) => {
     }
 
     const body = (await req.json()) as RequestBody;
-    if (!body?.candidate?.intent || !Array.isArray(body?.snippets)) {
-      return new Response(
-        JSON.stringify({ error: "Body must include {candidate:{label,intent}, snippets:[]}" }),
-        { status: 400, headers: { ...corsHeaders, "Content-Type": "application/json" } }
-      );
-    }
-
-    if (body.snippets.length === 0) {
-      return new Response(
-        JSON.stringify({
-          matches: [],
-          topMatchId: "",
-          overallRecommendation: "novel",
-          verdictLine: "Semantic dedupe: no existing snippets supplied — treat as novel.",
-        }),
-        { headers: { ...corsHeaders, "Content-Type": "application/json" } }
-      );
-    }
-
-    const userPayload = {
-      candidate: body.candidate,
-      topicId: body.topicId ?? null,
-      snippets: body.snippets.map((s) => ({
-        id: s.id,
-        source: s.source,
-        // truncate to keep prompts tight
-        text: s.text.length > 800 ? s.text.slice(0, 800) + "…" : s.text,
-      })),
-    };
-
-    const resp = await relayChat({
-      messages: [
-        { role: "system", content: SYSTEM_PROMPT },
-        {
-          role: "user",
-          content:
-            "Compare the CANDIDATE against each EXISTING snippet. Score conceptually, not lexically.\n\n" +
-            JSON.stringify(userPayload, null, 2),
-        },
-      ],
-      tools: [TOOL],
-      tool_choice: { type: "function", function: { name: "report_semantic_overlap" } },
-    });
-
-    if (resp.status === 429) {
-      return new Response(
-        JSON.stringify({ error: "Rate limit exceeded — try again shortly." }),
-        { status: 429, headers: { ...corsHeaders, "Content-Type": "application/json" } }
-      );
-    }
-    if (resp.status === 402) {
-      return new Response(
-        JSON.stringify({ error: "Base44 AI credits are unavailable. Check the integration usage in Base44." }),
-        { status: 402, headers: { ...corsHeaders, "Content-Type": "application/json" } }
-      );
-    }
-    if (!resp.ok) {
-      const errText = await resp.text();
-      console.error("AI gateway error", resp.status, errText);
-      return new Response(JSON.stringify({ error: "AI gateway error" }), {
-        status: 500,
-        headers: { ...corsHeaders, "Content-Type": "application/json" },
-      });
-    }
-
-    const data = await resp.json();
-    const toolCall = data?.choices?.[0]?.message?.tool_calls?.[0];
-    const argsRaw = toolCall?.function?.arguments;
-    if (!argsRaw) {
-      console.error("Model did not return a tool call", data);
-      return new Response(
-        JSON.stringify({ error: "Model did not return a tool call" }),
-        { status: 502, headers: { ...corsHeaders, "Content-Type": "application/json" } }
-      );
-    }
-
-    let parsed: unknown;
-    try {
-      parsed = JSON.parse(argsRaw);
-    } catch (_e) {
-      console.error("Failed to parse tool arguments", argsRaw);
-      return new Response(
-        JSON.stringify({ error: "Failed to parse tool arguments" }),
-        { status: 502, headers: { ...corsHeaders, "Content-Type": "application/json" } }
-      );
-    }
-
-    return new Response(JSON.stringify(parsed), {
+    const verdict = await compareSnippets(body, SYSTEM_PROMPT, TOOL, relayChat);
+    return new Response(JSON.stringify(verdict), {
       headers: { ...corsHeaders, "Content-Type": "application/json" },
     });
   } catch (e) {
     console.error("semantic-dedupe error", e);
     return new Response(
       JSON.stringify({ error: e instanceof Error ? e.message : "Unknown error" }),
-      { status: 500, headers: { ...corsHeaders, "Content-Type": "application/json" } }
+      { status: e instanceof SemanticError ? e.status : 500, headers: { ...corsHeaders, "Content-Type": "application/json" } }
     );
   }
 });

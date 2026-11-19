@@ -38,9 +38,16 @@ describe("streaming viva speech", () => {
     });
   });
 
-  it("keeps voice preferences distinct and uses the default for unknown names", () => {
-    expect(resolveVoice("nova")).toBe("nova");
-    expect(resolveVoice("Charon")).toBe("Charon");
+  it.each([
+    ["Kore", "alloy"], ["Charon", "onyx"], ["Aoede", "nova"],
+    ["Puck", "verse"], ["Fenrir", "ash"], ["Leda", "shimmer"],
+    ["Orus", "cedar"], ["Zephyr", "coral"],
+  ])("restores the saved %s preset using %s", (saved, expected) => {
+    expect(speechBody("Question", resolveVoice(saved)).voice).toBe(expected);
+  });
+
+  it("retains installed role selections and defaults unknown names", () => {
+    for (const role of ["alloy", "onyx", "nova"]) expect(resolveVoice(role)).toBe(role);
     expect(resolveVoice("made-up")).toBe(resolveVoice(undefined));
     expect(resolveVoice(undefined)).toBe("alloy");
   });

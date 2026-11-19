@@ -14,6 +14,7 @@ import { getAuthedUserId, isAdminUser } from "../_shared/require-user.ts";
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2.45.0";
 import { TOPIC_ID_ALLOWLIST } from "./_topic-ids.ts";
 import { relayChat, relaySpeech } from "../_shared/base44-ai.ts";
+import { generatePodcastScript } from "./script.ts";
 
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
@@ -1262,79 +1263,6 @@ Tone: warm, confident, like a senior trainee tutoring a peer. Not lecturing.
 
 Output ONLY the spoken script. No preamble, no title, no "Welcome back to…", no metadata.`;
 
-// Scale the target podcast length to the source content. No upper cap —
-// long topics produce long episodes. Word-rate assumption: ~150 wpm.
-function deriveTargetLength(content: string): { minutes: number; words: number } {
-  const sourceWords = content.trim().split(/\s+/).length;
-  // Aim for ~35% of source word count, with a minimum of 900 words (~6 min)
-  // so very short topics still get a substantive episode. No maximum.
-  const target = Math.round(sourceWords * 0.35);
-  const words = Math.max(900, target);
-  const minutes = Math.max(6, Math.round(words / 150));
-  return { minutes, words };
-}
-
-async function generateScript(topicTitle: string, content: string): Promise<string> {
-  const { minutes, words } = deriveTargetLength(content);
-  const systemPrompt = buildSystemPrompt(minutes, words);
-  const userPrompt = `Topic: ${topicTitle}\n\n--- SOURCE CONTENT (use only this) ---\n\n${content}\n\n--- END SOURCE ---\n\nWrite the approximately ${minutes}-minute (~${words} word) exam-focused podcast script now. Use the full target length to cover the source material thoroughly.`;
-
-  console.log(`[script] target ~${minutes} min / ~${words} words from ${content.length} chars source`);
-
-  const response = await relayChat({
-    messages: [
-      { role: "system", content: systemPrompt },
-      { role: "user", content: userPrompt },
-    ],
-  });
-
-  if (!response.ok) {
-    const text = await response.text();
-    if (response.status === 429) throw new Error("Rate limit reached generating script. Try again in a moment.");
-    if (response.status === 402) throw new Error("Base44 AI credits exhausted.");
-    throw new Error(`Script generation failed (${response.status}): ${text}`);
-  }
-
-  const data = await response.json();
-  const rawContent = data?.choices?.[0]?.message?.content;
-  const script = (() => {
-    if (typeof rawContent === "string") return rawContent.trim();
-    if (Array.isArray(rawContent)) {
-      return rawContent
-        .map((part) => {
-          if (typeof part === "string") return part;
-          if (part && typeof part === "object") {
-            if (typeof (part as { text?: unknown }).text === "string") {
-              return (part as { text: string }).text;
-            }
-            const nestedText = (part as { content?: { text?: string } }).content?.text;
-            if (typeof nestedText === "string") return nestedText;
-          }
-          return "";
-        })
-        .join("\n")
-        .trim();
-    }
-    if (rawContent && typeof rawContent === "object") {
-      if (typeof (rawContent as { text?: unknown }).text === "string") {
-        return (rawContent as { text: string }).text.trim();
-      }
-      const nestedText = (rawContent as { content?: { text?: string } }).content?.text;
-      if (typeof nestedText === "string") return nestedText.trim();
-    }
-    return "";
-  })();
-  if (!script) {
-    const message = data?.choices?.[0]?.message;
-    console.warn("[script] AI response did not contain parsable text content", {
-      messageKeys: message && typeof message === "object" ? Object.keys(message) : [],
-      rawContentType: Array.isArray(rawContent) ? "array" : typeof rawContent,
-    });
-  }
-  if (!script) throw new Error("Script generation returned empty content");
-  return script;
-}
-
 // Split script at sentence boundaries into chunks <= MAX_TTS_CHARS
 // Split script into TTS-safe chunks. Strategy:
 //   1. Prefer paragraph boundaries (double newline) — keeps natural pauses.
@@ -1700,7 +1628,7 @@ Deno.serve(async (req) => {
       try {
         const script = reusedScript ?? await (async () => {
           console.log(`[${topicId}] Generating script...`);
-          return generateScript(topicTitle, content);
+          return generatePodcastScript(topicTitle, content, buildSystemPrompt, relayChat);
         })();
         console.log(`[${topicId}] Script length: ${script.length} chars`);
 
