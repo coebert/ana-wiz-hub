@@ -2,7 +2,7 @@
 export const FAULTY_PODCAST_AUDIO_PATHS = [
   "neurointensive-care.mp3", "neuroanatomy.mp3", "organ-donation.mp3",
   "paediatric-icu.mp3", "paediatric-icu--british-west-country.mp3", "paediatric-icu--british-geordie.mp3",
-  "toxicology.mp3", "local-anaesthetics.mp3",
+  "toxicology.mp3", "local-anaesthetics.mp3", "pain-medicine.mp3",
 ] as const;
 export const isHeldPodcastAudio = (url: string): boolean => {
   try {

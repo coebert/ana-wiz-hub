@@ -57,7 +57,7 @@ Coverage means substantive source-led teaching added and checked; it does not ce
 
 ## Clinical/ICU continuation batches
 - Elderly anaesthesia: RAGA/REGAIN lesson added — spinal vs general anaesthesia for hip fracture showed no difference in 30-day mortality (6.2% vs 7.5%) or delirium (20.5% vs 19.7%). The page's prior claim that NICE-recommended spinal anaesthesia is "associated with reduced 30-day mortality" was corrected. Topic remains in progress.
-- ICU nutrition: protein/calorie trials lesson added (EFFORT Protein 2023, NUTRIREA-2 2018, NUTRIREA-3 2022, TARGET 2019). The existing trial list was corrected (TARGET mis-dated 2018, NUTRIREA-2/3 conflated into one entry) and three cross-wired key-point citations (NICE-SUGAR/EPaNIC/TARGET) fixed. Topic remains in progress.
+- ICU nutrition: protein/calorie trials lesson added (EFFORT Protein 2023, NUTRIREA-2 2018, NUTRIREA-3 2023, TARGET 2019). The existing trial list was corrected (TARGET mis-dated 2018, NUTRIREA-2/3 conflated into one entry) and three cross-wired key-point citations (NICE-SUGAR/EPaNIC/TARGET) fixed. Topic remains in progress.
 - Operating theatre environment: laminar-flow evidence lesson added (Lidwell 1982 vs Brandt 2008 KISS surveillance and WHO 2016 conditional recommendation against laminar flow for arthroplasty). Topic remains in progress.
 
 ## Acceptance criteria for each batch

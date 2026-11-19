@@ -86,7 +86,7 @@ const painFaqs: Array<[string, string]> = [
   ],
   [
     "What is the evidence for IV lidocaine in perioperative analgesia?",
-    "IV lidocaine blocks voltage-gated sodium channels, inhibits pro-inflammatory cytokines, and has weak NMDA antagonism and glycinergic potentiation. The Weibel 2018 Cochrane review (68 RCTs, 4,525 patients) found IV lidocaine reduced opioid consumption, PONV, ileus duration and hospital length of stay — but primarily in open abdominal surgery. The LOLIPOP trial (2024), a large multicentre RCT in laparoscopic surgery, found no significant benefit over placebo. The consensus is that IV lidocaine has strongest evidence in open abdominal and colorectal surgery (where ERAS protocols include it when epidural is not feasible), but its role in minimally invasive surgery is less convincing. Dosing: 1–1.5 mg/kg bolus then 1–2 mg/kg/hr infusion.",
+    "IV lidocaine blocks voltage-gated sodium channels, inhibits pro-inflammatory cytokines, and has weak NMDA antagonism and glycinergic potentiation. The 2018 Cochrane review (Weibel, CD009642.pub3; 68 RCTs, 4,525 patients) was uncertain whether IV lidocaine improves early (1–4 h) pain, gastrointestinal recovery or opioid consumption, because the evidence was of very low certainty; it probably has no clinically relevant effect on pain after 24 h, and the 2018 update found no significant difference by surgical procedure. In minimally invasive colonic surgery the ALLEGRO trial (2025; 557 analysed) found no improvement in return of gut function at 72 h with IV lidocaine versus placebo (57.3% vs 59.0%; adjusted absolute difference −1.9%, 95% CI −8.0% to 4.2%), with no difference in any secondary outcome. IV lidocaine remains an option in ERAS pathways where epidural analgesia is unsuitable, but the evidence for benefit is weaker than commonly taught. Dosing: 1–1.5 mg/kg bolus then 1–2 mg/kg/hr infusion.",
   ],
   [
     "What are the Budapest criteria for CRPS?",
@@ -166,7 +166,7 @@ const PainMedicineTopic = () => {
           "NICE CG173",
           "NICE TA159",
           "Weibel 2018",
-          "LOLIPOP 2024",
+          "ALLEGRO 2025",
           "Albrecht 2013",
           "Wong 2004",
           "Smith 2002",
@@ -176,7 +176,7 @@ const PainMedicineTopic = () => {
       }}
       keyPoints={[
         { text: "Multimodal analgesia reduces opioid consumption — paracetamol, NSAIDs, gabapentinoids, ketamine, magnesium, IV lidocaine", cites: ["BJA Educ 2018"] },
-        { text: "IV magnesium reduces 24-h opioid use ~25% (Albrecht 2013); IV lidocaine — strongest evidence in open abdominal surgery (Weibel 2018), LOLIPOP 2024 questioned benefit in laparoscopic surgery", cites: ["Albrecht 2013", "Weibel 2018", "LOLIPOP 2024"] },
+        { text: "IV magnesium reduces 24-h opioid use ~25% (Albrecht 2013); IV lidocaine — Cochrane 2018 uncertain about early pain, gut recovery and opioid consumption, with no gut-function benefit in minimally invasive colonic surgery (ALLEGRO 2025)", cites: ["Albrecht 2013", "Weibel 2018", "ALLEGRO 2025"] },
         { text: "Neuropathic pain first-line: amitriptyline, duloxetine, pregabalin or gabapentin (NICE CG173)", cites: ["NICE CG173"] },
         { text: "NICE NG193 (2021): chronic primary pain — do NOT offer paracetamol, NSAIDs, opioids, gabapentinoids; offer exercise, CBT/ACT, acupuncture, certain antidepressants", cites: ["NICE NG193"] },
         { text: "Specialist pain MDT (physician, psychologist, physio, OT, nurse, pharmacist) + Pain Management Programmes — strongest evidence base for restored function", cites: ["Faculty of Pain Medicine"] },
@@ -440,10 +440,10 @@ const PainMedicineTopic = () => {
           <div className="p-4 rounded-lg border border-border bg-card">
             <p className="font-semibold text-foreground text-sm mb-1">Evidence Summary</p>
             <ul className="text-sm text-muted-foreground space-y-1 list-disc list-inside">
-              <li><strong className="text-foreground">Weibel et al. (2018) — Cochrane Review:</strong> 68 RCTs (4525 patients). IV lidocaine reduced pain scores at 1–4h (low-certainty evidence), reduced opioid consumption, reduced ileus duration, and shortened hospital stay — primarily in open abdominal surgery.</li>
-              <li><strong className="text-foreground">LOLIPOP trial (2024):</strong> Large multicentre RCT (n=562) found no significant benefit of IV lidocaine over placebo for quality of recovery after laparoscopic surgery. Questioned the role in minimally invasive surgery.</li>
-              <li><strong className="text-foreground">Vigneault et al. (2011) — Meta-analysis:</strong> Demonstrated significant reductions in pain, opioid consumption, PONV, ileus, and length of stay in abdominal surgery.</li>
-              <li><strong className="text-foreground">Consensus:</strong> Strongest evidence in open abdominal surgery. Less convincing for laparoscopic, orthopaedic, or breast surgery. ERAS protocols include IV lidocaine as an option when epidural not feasible.</li>
+              <li><strong className="text-foreground">Weibel et al. (2018) — Cochrane review (CD009642.pub3):</strong> 68 RCTs (4,525 patients). The review was uncertain whether IV lidocaine improves early (1–4 h) pain, gastrointestinal recovery, PONV or opioid consumption, because the evidence was of very low certainty; it probably has no clinically relevant effect on pain beyond 24 h, and the 2018 update found no significant difference by surgical procedure.</li>
+              <li><strong className="text-foreground">ALLEGRO trial (2025) — JAMA:</strong> 590 adults randomised to IV lidocaine or placebo for minimally invasive colon resection. Return of gut function at 72 h did not differ (57.3% vs 59.0%; adjusted absolute difference −1.9%, 95% CI −8.0% to 4.2%), with no difference in any of 11 secondary outcomes.</li>
+              <li><strong className="text-foreground">Vigneault et al. (2011) — Meta-analysis:</strong> Predating the 2018 Cochrane review, reported reductions in pain, opioid consumption, PONV, ileus and length of stay in abdominal surgery.</li>
+              <li><strong className="text-foreground">Consensus:</strong> The 2018 Cochrane review did not find that any benefit was confined to open surgery, and the best randomised evidence in minimally invasive colonic surgery (ALLEGRO) is negative for gut-function recovery. ERAS protocols still list IV lidocaine as an option when epidural analgesia is unsuitable.</li>
             </ul>
           </div>
         </CollapsibleSubsection>

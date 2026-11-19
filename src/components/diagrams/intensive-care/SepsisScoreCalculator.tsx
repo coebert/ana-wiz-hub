@@ -142,7 +142,7 @@ const SepsisScoreCalculator = () => {
             band={n.notApplicable ? "Not applicable — Scale 2 prescribed; this tool cannot calculate NEWS2 for this patient." : n.response ? NEWS2_RESPONSE_TEXT[n.response] : "Incomplete — no response category."} />
           <ScoreCard name="qSOFA" testId="qsofa" r={q} max={3}
             band="Not a diagnostic test. A low score does not rule out sepsis; SSC 2026 advises against qSOFA alone for screening." />
-          <ScoreCard name="SOFA" testId="sofa" r={s} max={24}
+          <ScoreCard name="SOFA (original 1996)" testId="sofa" r={s} max={24}
             band="Organ-dysfunction score. Sepsis-3 uses an acute change of ≥2 from baseline in suspected infection, not the absolute value." />
         </div>
 
@@ -150,6 +150,7 @@ const SepsisScoreCalculator = () => {
           <p className="text-sm font-semibold text-foreground">Sepsis-3 (Singer 2016) — explanation, not a calculated diagnosis</p>
           <p>Sepsis is life-threatening organ dysfunction caused by a dysregulated host response to infection. In practice, organ dysfunction means an acute rise in SOFA of ≥2 points linked to suspected or documented infection. Baseline SOFA is assumed to be 0 only when pre-existing dysfunction is not known. A positive qSOFA or NEWS2 is not required, and a low score does not exclude sepsis.</p>
           <p><strong>Purposes:</strong> NEWS2 is a track-and-trigger system for detecting and responding to deterioration in adults (RCP 2017). qSOFA is a bedside prompt for higher risk outside the ICU (Seymour 2016). SOFA describes organ dysfunction (Vincent 1996).</p>
+          <p><strong>Score version:</strong> the SOFA card calculates the original 1996 SOFA (Vincent 1996), the instrument that Sepsis-3 (2016) refers to. A separately developed and validated revision, <a className="underline" href="https://doi.org/10.1001/jama.2025.20516" target="_blank" rel="noreferrer">SOFA-2 (JAMA 2025)</a>, adds new variables and revised thresholds; this tool does not implement SOFA-2 and its score arithmetic is unchanged. SOFA-2 does not itself redefine Sepsis-3.</p>
         </div>
 
         <div className="rounded-lg border border-border p-3 text-xs text-muted-foreground space-y-2">
@@ -162,7 +163,7 @@ const SepsisScoreCalculator = () => {
         </div>
 
         <p className="text-[10px] text-muted-foreground mt-3 italic">
-          Refs: Singer M et al. JAMA 2016;315:801–10 (Table 1 SOFA, SI units). Vincent JL et al. Intensive Care Med 1996;22:707–10. Seymour CW et al. JAMA 2016;315:762–74. RCP NEWS2 Charts 1 and 4 (2017). NICE NG253. SSC 2026.
+          Refs: Singer M et al. JAMA 2016;315:801–10 (Table 1 SOFA, SI units). Vincent JL et al. Intensive Care Med 1996;22:707–10 (original SOFA). Ranzani OT et al. JAMA 2025;334:2090–103 (SOFA-2, not implemented here). Seymour CW et al. JAMA 2016;315:762–74. RCP NEWS2 Charts 1 and 4 (2017). NICE NG253. SSC 2026.
         </p>
       </div>
     </DiagramFigure>

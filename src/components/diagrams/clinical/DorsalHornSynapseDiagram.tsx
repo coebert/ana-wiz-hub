@@ -50,7 +50,7 @@ const agents: Agent[] = [
     location: "channel",
     mechanism: "Blocks Na⁺ channels on peripheral and central neurons → ↓ ectopic firing. Potentiates inhibitory glycine receptors. Anti-inflammatory (↓ IL-6, TNF-α). Weak NMDA antagonism.",
     effect: "Reduces nociceptive transmission, anti-inflammatory, prokinetic (anti-ileus)",
-    evidence: "Weibel 2018 Cochrane: benefit in open abdominal surgery. LOLIPOP 2024: no benefit in laparoscopic surgery.",
+    evidence: "Weibel 2018 Cochrane: uncertain benefit on early pain, gut recovery and opioid use. ALLEGRO 2025: no improvement in return of gut function at 72 h after minimally invasive colonic surgery.",
     color: "hsl(45 85% 50%)",
   },
   {

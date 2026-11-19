@@ -31,13 +31,13 @@ export function ProteinCalorieTrialsTeaching() {
       </p>
     </div>
     <div className="bg-card border border-border rounded-lg p-4">
-      <h3 className="font-semibold text-foreground mb-2">NUTRIREA-3 (Lancet 2022) — less may be more in the acute phase</h3>
+      <h3 className="font-semibold text-foreground mb-2">NUTRIREA-3 (Lancet Respir Med 2023) — less may be more in the acute phase</h3>
       <p className="text-sm mb-2">
         3,044 ventilated patients with shock were randomised to low (≈6 kcal/kg/day) or standard (≈25 kcal/kg/day) calorie
-        delivery. There was <strong className="text-foreground">no difference in 28-day mortality (27.9% vs 28.9%)</strong>, but
-        more patients in the low-calorie group were alive and discharged from ICU by day 8 (72.9% vs 66.3%; P &lt; 0.0001), with
-        fewer digestive complications and less insulin requirement. The trial concluded that calorie restriction should be
-        considered during the acute phase of critical illness.<R label="NUTRIREA-3 2022" />
+        and protein delivery. There was <strong className="text-foreground">no difference in day-90 mortality (41.3% vs 42.8%;
+        P = 0.41)</strong>, but median time to readiness for ICU discharge was shorter in the low-intake group (8 vs 9 days;
+        P = 0.015), with less vomiting, diarrhoea, bowel ischaemia and liver dysfunction. The trial concluded that calorie
+        restriction should be considered during the acute phase of critical illness.<R label="NUTRIREA-3 2023" />
       </p>
     </div>
     <div className="bg-card border border-border rounded-lg p-4">
@@ -54,6 +54,6 @@ export function ProteinCalorieTrialsTeaching() {
       <li><strong className="text-foreground">Exam framing:</strong> protein remains the most important macronutrient to <em>monitor and aim to deliver</em> — but EFFORT Protein shows that exceeding usual targets by protocol is not the answer. The target range (1.2–2.0 g/kg/day) is a range to track towards, not a threshold to overshoot.</li>
     </ul>
     <details className="border-l-2 border-primary pl-4"><summary className="cursor-pointer font-semibold text-foreground">Learning check: what did EFFORT Protein show about higher protein dosing?</summary><p className="mt-2">High protein (≥2.2 g/kg/day) did not improve time to discharge alive, with 90-day mortality 34.6% vs 32.1% (not significant) and fewer patients discharged alive by day 60; the trial was stopped early for a harm signal.</p></details>
-    <LessonSources topicId="icu-nutrition" labels={["EFFORT Protein 2023", "NUTRIREA-2 2018", "NUTRIREA-3 2022", "TARGET 2019"]} />
+    <LessonSources topicId="icu-nutrition" labels={["EFFORT Protein 2023", "NUTRIREA-2 2018", "NUTRIREA-3 2023", "TARGET 2019"]} />
   </div>;
 }

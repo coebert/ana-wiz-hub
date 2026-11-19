@@ -223,7 +223,7 @@ const RegionalAnaesthesiaTopic = () => {
         <div id="upper-limb" className="scroll-mt-24">
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Peripheral Nerve Blocks</h2>
           <p className="text-muted-foreground leading-relaxed mb-3">
-            Ultrasound-guided blocks have revolutionised regional anaesthesia, improving success, onset and LA dose requirements and reducing LAST and vascular puncture — though it has not been shown to reduce nerve injury.
+            Ultrasound-guided blocks have become routine in regional anaesthesia: real-time visualisation of needle position and local anaesthetic spread improves block quality and avoids some complications of conventional nerve stimulation and loss-of-resistance techniques — though it has not been shown to reduce nerve injury.<InlineRef topicId="regional-anaesthesia" refLabel="Marhofer 2005 Ultrasound RA" />
           </p>
           <div className="my-4">
             <RegionalBlocksDiagram />

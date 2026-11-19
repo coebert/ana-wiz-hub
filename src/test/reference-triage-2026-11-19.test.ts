@@ -16,14 +16,15 @@ type Corrected = { topic: string; label: string; url: string; titleFragment: str
 const CORRECTED: Corrected[] = [
   { topic: "equipment-monitoring", label: "McCoy & Mirakhur 1993", url: "https://doi.org/10.1111/j.1365-2044.1993.tb07075.x", titleFragment: "The levering laryngoscope. Anaesthesia. 1993;48(6):516-519." },
   { topic: "equipment-monitoring", label: "BJA Educ 2017 (Medical gases)", url: "https://doi.org/10.4103/0019-5049.120145", titleFragment: "The anaesthesia gas supply system. Indian Journal of Anaesth" },
-  { topic: "oxygen-haemoglobin", label: "BJA Educ 2018 (CO)", url: "https://doi.org/10.1164/rccm.201606-1275ci", titleFragment: "Carbon Monoxide Poisoning: Pathogenesis, Management, and Fut" },
+  { topic: "oxygen-haemoglobin", label: "Rose 2017 CO", url: "https://doi.org/10.1164/rccm.201606-1275ci", titleFragment: "Carbon Monoxide Poisoning: Pathogenesis, Management, and Fut" },
+  { topic: "regional-anaesthesia", label: "Marhofer 2005 Ultrasound RA", url: "https://doi.org/10.1093/bja/aei002", titleFragment: "Ultrasound guidance in regional anaesthesia. Br J Anaesth. 2005;94(1):7-17" },
   { topic: "haematology-immunity", label: "BJA Educ 2017", url: "https://doi.org/10.1111/j.1365-2044.2010.06538.x", titleFragment: "Blood transfusion and the anaesthetist: management of massiv" },
   { topic: "regional-anaesthesia", label: "OAA PDPH 2023", url: "https://doi.org/10.1016/j.ijoa.2018.12.006", titleFragment: "Treatment of obstetric post-dural puncture headache. Part 1:" },
   { topic: "obstetric-anaesthesia", label: "OAA PDPH 2023", url: "https://doi.org/10.1016/j.ijoa.2018.12.006", titleFragment: "Treatment of obstetric post-dural puncture headache. Part 1:" },
   { topic: "ent-anaesthesia", label: "Iliff 2022 Haematoma", url: "https://doi.org/10.1111/anae.15585", titleFragment: "Management of haematoma after thyroid surgery: systematic re" },
   { topic: "ent-anaesthesia", label: "BJA Educ Maxillofacial 2018", url: "https://doi.org/10.1055/s-0028-1098962", titleFragment: "Comprehensive Airway Management of Patients with Maxillofaci" },
   { topic: "general-colorectal-surgery", label: "Zhuang Early Feeding 2013", url: "https://doi.org/10.1159/000353136", titleFragment: "Early versus Traditional Postoperative Oral Feeding in Patie" },
-  { topic: "icu-nutrition", label: "NUTRIREA-3 2022", url: "https://doi.org/10.1016/s2213-2600(23)00092-9", titleFragment: "Low versus standard calorie and protein feeding in ventilate" },
+  { topic: "icu-nutrition", label: "NUTRIREA-3 2023", url: "https://doi.org/10.1016/S2213-2600(23)00092-9", titleFragment: "Low versus standard calorie and protein feeding in ventilate" },
   { topic: "respiratory-disease", label: "Anaesthesia PHTN 2015", url: "https://doi.org/10.1111/anae.12831", titleFragment: "Pulmonary hypertension and its management in patients underg" },
 ];
 
@@ -43,7 +44,6 @@ const WITHHELD: Array<[string, string]> = [
   ["rocuronium", "BJA 2008 NMB Factors"],
   ["operating-theatre-environment", "BJA Educ 2020 Electrical Safety"],
   ["airway-management", "BJA Educ 2017"],
-  ["regional-anaesthesia", "BJA Educ 2018"],
   ["regional-anaesthesia", "SFAR 2019 Antithrombotics & RA"],
   ["pain-medicine", "LOLIPOP 2024"],
   ["obstetric-anaesthesia", "BJA Educ 2019"],
