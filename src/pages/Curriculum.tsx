@@ -57,7 +57,7 @@ const Curriculum = () => {
         <title>Curriculum Map – FRCA Primary & Final | AnaesthesiaCore</title>
         <meta
           name="description"
-          content="Every AnaesthesiaCore topic mapped to the FRCA Primary and Final curricula, organised by section."
+          content="Every AnaesthesiaCore topic grouped by FRCA Primary and Final exam relevance using the app's own local study tags, organised by section."
         />
         <link rel="canonical" href="https://anaesthesiacore.app/curriculum" />
         <meta property="og:url" content="https://anaesthesiacore.app/curriculum" />
@@ -69,8 +69,11 @@ const Curriculum = () => {
             Curriculum Map
           </h1>
           <p className="mt-2 text-sm md:text-base text-muted-foreground max-w-2xl">
-            Every topic in AnaesthesiaCore mapped to the FRCA Primary and Final
-            curricula. Ticks show topics you've marked as complete.
+            Every topic in AnaesthesiaCore grouped by its FRCA Primary and Final
+            exam tags. These tags, and the code chips shown on topic pages, are
+            AnaesthesiaCore's own app-mapped study tags. They are not verified
+            against the published RCoA stages or domains, and they are not
+            published FICM outcomes. Ticks show topics you've marked as complete.
           </p>
           <p className="mt-2 text-sm">
             <Link

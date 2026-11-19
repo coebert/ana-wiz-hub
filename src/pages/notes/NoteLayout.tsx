@@ -5,6 +5,7 @@ import { Helmet } from "react-helmet-async";
 import { ChevronLeft, Atom, HeartPulse, FlaskConical, Stethoscope, Activity, ClipboardList, ArrowRight } from "lucide-react";
 import { Header } from "@/components/layout/Header";
 import { supabase } from "@/integrations/supabase/client";
+import { LOCAL_STUDY_TAG_NOTICE } from "@/data/curriculumCodes";
 
 /**
  * Fire-and-forget log of a "Jump to related topic" card click into
@@ -84,7 +85,7 @@ interface NoteLayoutProps {
   lede: string;
   /** Exam curriculum mapping shown as small chips under the lede. */
   examTags?: NoteExamTag[];
-  /** Optional curriculum-reference codes (e.g. RCoA "PO_BK_03"). */
+  /** Optional app-mapped study tags (e.g. "PO_BK_03"). Not published RCoA/FICM codes. */
   curriculumCodes?: string[];
   /** Main long-form body. */
   children: ReactNode;
@@ -239,7 +240,7 @@ export const NoteLayout = ({
             {examTags && examTags.length > 0 && (
               <div className="mt-3 flex flex-wrap items-center gap-1.5">
                 <span className="text-[10px] uppercase tracking-wider font-semibold text-muted-foreground mr-1">
-                  Curriculum:
+                  Exams &amp; local study tags:
                 </span>
                 {examTags.map((t) => (
                   <span
@@ -252,6 +253,7 @@ export const NoteLayout = ({
                 {curriculumCodes?.map((c) => (
                   <span
                     key={c}
+                    title={LOCAL_STUDY_TAG_NOTICE}
                     className="text-[10px] font-mono px-2 py-0.5 rounded-full border border-border bg-muted/40 text-muted-foreground"
                   >
                     {c}

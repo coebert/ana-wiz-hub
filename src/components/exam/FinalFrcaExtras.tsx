@@ -31,8 +31,8 @@ const VIVAS: { q: string; answer: string[] }[] = [
     q: "A patient becomes agitated then arrests during a regional block. Discuss local anaesthetic systemic toxicity.",
     answer: [
       "Stop injecting, call for help, maintain the airway with 100% oxygen, and control seizures with a benzodiazepine, thiopental or propofol.",
-      "In cardiac arrest, start ALS and expect a prolonged resuscitation (recovery may take over an hour); use reduced adrenaline doses (1 microgram/kg or less), avoid vasopressin, and do not use lidocaine as an antiarrhythmic.",
-      "Lipid emulsion 20% (propofol is not a substitute): 1.5 ml/kg bolus over 2–3 minutes, then an infusion at 15 ml/kg/h. Repeat the bolus at 5 and 10 minutes, and double the infusion to 30 ml/kg/h, if the circulation is not restored. Maximum cumulative dose 12 ml/kg (Association of Anaesthetists Quick Reference Handbook 3-10, 2023).",
+      "In cardiac arrest, start ALS and expect a prolonged resuscitation (recovery may take over an hour); use reduced adrenaline doses (1 microgram/kg or less), avoid vasopressin, and do not use lidocaine as an antiarrhythmic. Amiodarone is appropriate for ventricular arrhythmias.",
+      "20% lipid emulsion (propofol is not a substitute): 1.5 ml/kg over 2–3 minutes, then an infusion at 15 ml/kg/h. Repeat the same bolus at 5 and 10 minutes, and double the infusion to 30 ml/kg/h, if the circulation is not restored. Maximum cumulative dose 12 ml/kg (Association of Anaesthetists Quick Reference Handbook 3-10, version 2, 2023).",
       "Consider cardiopulmonary bypass or ECMO if available. Afterwards: monitor for pancreatitis (daily amylase or lipase) and report the incident; prevent recurrence with ultrasound guidance, dose calculation and incremental injection.",
     ],
   },

@@ -1124,7 +1124,7 @@ export const icuDrugSafetyGroups: DrugSafetyGroup[] = [
         drug: "Thiamine (Pabrinex)",
         slug: "thiamine",
         interactions: [
-          "Glucose administration before thiamine can precipitate Wernicke's encephalopathy — give thiamine first or concurrently.",
+          "In at-risk patients give thiamine with or immediately after glucose — never delay urgent treatment of hypoglycaemia to give thiamine first.",
           "Chronic loop diuretic therapy and renal replacement increase losses and requirement.",
         ],
         contraindications: [

@@ -29,10 +29,23 @@ describe("D30 source provenance", () => {
     expect(sources[0].provenance).toEqual([first, other]);
     expect(normaliseDrugSources([first, { ...other, url: "https://example.test/smpc#4.2" }])).toHaveLength(2);
   });
-  it("labels searches without promoting them to product labels", () => {
-    const sources = normaliseDrugSources([{ title: "BNF monograph", url: "https://bnf.nice.org.uk/search/?q=x" }, { title: "Exact label", url: "https://www.medicines.org.uk/emc/product/6409/smpc" }]);
-    expect(sources.map(s => s.search)).toEqual([false, true]);
-    expect(sources[1].title).toBe("bnf.nice.org.uk — search tool");
+  it("labels BNF, BNFC and emc searches as indexes without promoting them to product labels", () => {
+    const sources = normaliseDrugSources([
+      { title: "BNF monograph", url: "https://bnf.nice.org.uk/search/?q=x" },
+      { title: "BNFC monograph", url: "https://bnfc.nice.org.uk/search/?q=x" },
+      { title: "emc product", url: "https://www.medicines.org.uk/emc/search?q=x" },
+      { title: "Exact label", url: "https://www.medicines.org.uk/emc/product/6409/smpc" },
+    ]);
+    expect(sources.map(s => s.search)).toEqual([false, true, true, true]);
+    expect(sources.slice(1).map(s => s.title)).toEqual([
+      "bnf.nice.org.uk — search index",
+      "bnfc.nice.org.uk — search index",
+      "medicines.org.uk — search index",
+    ]);
+    // The supplied title is retained as claim provenance even though the link is only an index.
+    expect(sources[1].provenance[0].title).toBe("BNF monograph");
+    expect(sources[2].provenance[0].title).toBe("BNFC monograph");
+    expect(sources[3].provenance[0].title).toBe("emc product");
   });
   it("renders accessible safe links, recorded scope and missing-link metadata", () => {
     render(<DrugSources sources={[{ title: "Exact product ".repeat(30), url: "https://example.test/label", publisher: "Manufacturer", scope: "Composition only", reviewNote: "Not dose certification", sections: ["2", "3"] }, { title: "Historical record", url: "javascript:alert(1)" }]} />);
@@ -43,5 +56,17 @@ describe("D30 source provenance", () => {
     expect(screen.getByText("Scope: Composition only")).toBeTruthy();
     expect(screen.getByText("Sections: 2; 3")).toBeTruthy();
     expect(screen.getByText("Historical record — link unavailable")).toBeTruthy();
+  });
+
+  it("renders search indexes as indexes and keeps the recorded citation", () => {
+    render(<DrugSources sources={[
+      { title: "Hypertonic saline — BNF monograph", url: "https://bnf.nice.org.uk/search/?q=hypertonic+saline", publisher: "British National Formulary (NICE)", accessed: "2026-09-13", scope: "Adult hyponatraemia" },
+      { title: "Exact label", url: "https://www.medicines.org.uk/emc/product/6409/smpc" },
+    ]} />);
+    expect(screen.getByText("Find a source — search indexes")).toBeTruthy();
+    expect(screen.getByText("These are search indexes only — not monographs, product labels or prescribing sources.")).toBeTruthy();
+    expect(screen.getByText("Recorded as: Hypertonic saline — BNF monograph")).toBeTruthy();
+    expect(screen.getByText("Scope: Adult hyponatraemia")).toBeTruthy();
+    expect(screen.getByText("Recorded search access: 2026-09-13")).toBeTruthy();
   });
 });

@@ -31,7 +31,7 @@ const clinicalIncidentsFaqs: Array<[string, string]> = [
 const objectives = [
   "Recognise and manage perioperative anaphylaxis using the AAGBI/RCoA algorithm (adrenaline first)",
   "Identify the early features of malignant hyperthermia and initiate dantrolene-based treatment",
-  "Apply the AAGBI LAST protocol including Intralipid 20% rescue therapy",
+  "Apply the Association of Anaesthetists QRH 3-10 LAST protocol including 20% lipid emulsion rescue therapy",
   "Counsel a patient and arrange follow-up after suspected accidental awareness (NAP5 framework)",
   "Investigate suspected anaphylaxis correctly (timed mast-cell tryptase + allergy clinic referral)",
 ];
@@ -149,18 +149,18 @@ const ClinicalIncidentsTopic = () => {
           "NAP Reports",
         ],
         keyPoints: [
-          "AAGBI 2011",
-          "BJA Educ 2011",
-        
+          "RCUK Periop Anaphylaxis 2024",
+          "EMHG 2024",
+          "AA LAST QRH 2023",
           "NAP Reports",
-          "AAGBI 2009",
+          "NAP6 2018 (Triggers)",
         ],
       }}
       keyPoints={[
         { text: "Peri-operative anaphylaxis: titrated IV adrenaline 50 micrograms boluses (IM 10 micrograms/kg, max 500 micrograms, if no IV access) and rapid crystalloid — antihistamines and steroids do not treat ABC problems", cites: ["RCUK Periop Anaphylaxis 2024", "RCUK Anaphylaxis 2021"] },
         { text: "Tryptase: take at presentation, 1–2 h, and a baseline at ≥ 24 h — labelled with exact times", cites: ["AAGBI 2009"] },
         { text: "MH: rising EtCO₂ + tachycardia is the earliest sign. Dantrolene 2–2.5 mg/kg IV (max 300 mg per dose), repeated every 10 min to effect; 10 mg/kg is not an absolute ceiling", cites: ["EMHG 2024"] },
-        { text: "LAST: Intralipid 20% bolus 1.5 mL/kg, infusion 15 mL/kg/h (= 0.25 mL/kg/min). AVOID propofol, lidocaine, and amiodarone in arrest", cites: ["BJA Educ 2011"] },
+        { text: "LAST: 20% lipid emulsion 1.5 mL/kg over 2–3 min, then 15 mL/kg/h; repeat the bolus at 5 and 10 min and double the infusion to 30 mL/kg/h if the circulation is not restored; maximum cumulative dose 12 mL/kg. Use adrenaline ≤ 1 microgram/kg, avoid vasopressin and lidocaine; amiodarone is used for ventricular arrhythmias. Propofol is not a substitute for lipid emulsion", cites: ["AA LAST QRH 2023"] },
         { text: "Awareness: NAP5 incidence ~1:19,000. BIS 40-60 reduces risk in TIVA; document, acknowledge, and refer for psychological follow-up", cites: ["NAP Reports"] },
         { text: <>UK NAP6 2018: of 199 identified culprit agents, antibiotics 94 (47%), NMBAs 65 (33%), chlorhexidine 18 (9%) and Patent Blue 9 (5%) <InlineRef topicId="clinical-incidents" refLabel="NAP6 2018 (Triggers)" /></>, cites: ["NAP6 2018 (Triggers)"] },
       ]}
@@ -217,16 +217,17 @@ const ClinicalIncidentsTopic = () => {
           <ExamSection id="section-last" className="scroll-mt-24" exams={[Exam.FINAL, Exam.FFICM]}>
             <CollapsibleSubsection title="Local Anaesthetic Systemic Toxicity (LAST)">
             <p className="text-muted-foreground leading-relaxed mb-3">
-              CNS toxicity precedes cardiac toxicity (except with bupivacaine which can cause simultaneous cardiac arrest). Maximum doses: lidocaine 3 mg/kg (7 with adrenaline), bupivacaine 2 mg/kg.
+              CNS toxicity precedes cardiac toxicity (except with bupivacaine which can cause simultaneous cardiac arrest). Use the named product table rather than an agent-wide maximum: lidocaine 1% plain ≤4.5 mg/kg and ≤300 mg, with adrenaline ≤7 mg/kg and ≤500 mg; bupivacaine field block 2 mg/kg and ≤150 mg.
             </p>
             <div className="p-4 rounded-lg border border-border">
-              <p className="font-semibold text-foreground text-sm mb-2">AAGBI LAST Protocol</p>
+              <p className="font-semibold text-foreground text-sm mb-2">Association of Anaesthetists QRH 3-10 (2023) LAST protocol</p>
               <ul className="space-y-1 text-sm text-muted-foreground list-disc list-inside">
-                <li>Stop injection, call for help</li>
-                <li>ABCDE, secure airway, 100% O₂</li>
-                <li>Seizures → benzodiazepine (avoid propofol in cardiac arrest)</li>
-                <li>If cardiac arrest → CPR, AVOID lidocaine/amiodarone/vasopressin</li>
-                <li><strong>Intralipid 20%</strong>: 1.5 mL/kg bolus, then 15 mL/kg/h (0.25 mL/kg/min) infusion (max 12 mL/kg total)</li>
+                <li>Stop injecting local anaesthetic (including infusion pumps), call for help, and fetch the cardiac arrest trolley and lipid rescue pack</li>
+                <li>ABCDE, 100% O₂, maintain the airway and avoid hypercarbia; control seizures with a small incremental benzodiazepine dose (thiopental or propofol only with caution because of negative inotropy)</li>
+                <li>If cardiac arrest → start CPR, give <strong>adrenaline ≤ 1 microgram/kg</strong> rather than 1 mg, and <strong>avoid vasopressin</strong>; continue CPR for at least an hour and consider cardiopulmonary bypass</li>
+                <li>If no arrest → conventional treatment of hypotension and brady-/tachyarrhythmia; <strong>avoid lidocaine</strong>; amiodarone is appropriate for ventricular arrhythmias</li>
+                <li><strong>20% lipid emulsion</strong>: 1.5 mL/kg over 2–3 min (~100 mL in a 70 kg adult), then 15 mL/kg/h. Repeat the same bolus at 5 and 10 min and double the infusion to 30 mL/kg/h if the circulation is not restored. Maximum cumulative dose 12 mL/kg (~840 mL in a 70 kg adult). Propofol is not a substitute</li>
+                <li>Afterwards: critical care, monitor for pancreatitis (daily amylase/lipase), and report the incident locally and nationally <InlineRef topicId="clinical-incidents" refLabel="AA LAST QRH 2023" /></li>
               </ul>
             </div>
             </CollapsibleSubsection>
@@ -323,7 +324,7 @@ const ClinicalIncidentsTopic = () => {
               <ul className="list-disc list-inside space-y-1 text-sm">
                 <li><strong>Call for help early</strong> — declare "cardiac arrest" out loud; activate theatre arrest call; second anaesthetist + ODP/anaesthetic assistant to the head; runner for drugs/blood.</li>
                 <li><strong>ALS algorithm adapted to theatre</strong>: turn off volatile/TIVA, FiO₂ 1.0, confirm ETT position with ETCO₂ (a sudden ETCO₂ drop is often the first sign), high-quality CPR — surgeons stop and step back from the field; consider open chest cardiac massage in cardiothoracic / abdominal surgery already opened.</li>
-                <li><strong>Reversible causes (4 Hs &amp; 4 Ts) with anaesthesia-specific add-ons</strong>: anaphylaxis (give IM/IV adrenaline early), LAST (Intralipid 20% 1.5 mL/kg bolus then 15 mL/kg/h, i.e. 0.25 mL/kg/min), MH (stop trigger, dantrolene), high spinal, gas embolism, haemorrhage, vagal reflex (e.g. peritoneal traction), tension pneumothorax (especially after CVC, brachial plexus, intercostal block), tamponade.</li>
+                <li><strong>Reversible causes (4 Hs &amp; 4 Ts) with anaesthesia-specific add-ons</strong>: anaphylaxis (give IM/IV adrenaline early), LAST (20% lipid emulsion 1.5 mL/kg over 2–3 min then 15 mL/kg/h; repeat at 5 and 10 min and double to 30 mL/kg/h if unstable; maximum 12 mL/kg), MH (stop trigger, dantrolene), high spinal, gas embolism, haemorrhage, vagal reflex (e.g. peritoneal traction), tension pneumothorax (especially after CVC, brachial plexus, intercostal block), tamponade.</li>
                 <li><strong>Surgical control of haemorrhage</strong> takes priority alongside resuscitation — activate major haemorrhage protocol, give TXA, use cell salvage, accept permissive hypotension until source controlled.</li>
                 <li><strong>Decision to stop</strong>: by consensus of the senior anaesthetist and senior surgeon, after exclusion of reversible causes and an adequate ALS effort. Document time of death, rhythm, and last interventions.</li>
               </ul>
@@ -440,7 +441,7 @@ const ClinicalIncidentsTopic = () => {
               "Anaphylaxis (UK NAP6 2018): of 199 identified culprit agents, antibiotics 94 (47%), NMBAs 65 (33%), chlorhexidine 18 (9%) and Patent Blue 9 (5%) — adrenaline is first line (titrated IV 50 micrograms boluses in the monitored peri-operative setting).",
               <>Tryptase sampling: ASAP after resuscitation, at 1–2 h, and a baseline at ≥ 24 h — an uninterpretable acute value without the 24 h baseline is a common exam trap <InlineRef topicId="clinical-incidents" refLabel="RCUK Anaphylaxis 2021" /></>,
               "Malignant hyperthermia: stop trigger, hyperventilate 100% O₂ high flows, dantrolene 2–2.5 mg/kg (max 300 mg per dose) every 10 min to effect — no fixed 10 mg/kg ceiling, cool, treat hyperkalaemia.",
-              <>LAST: stop injection, ABC, manage seizures, 20% Intralipid 1.5 mL/kg bolus then 15 mL/kg/h (0.25 mL/kg/min) infusion (max cumulative 12 mL/kg) <InlineRef topicId="clinical-incidents" refLabel="AAGBI LAST 2010" /></>,
+              <>LAST: stop injection, ABC, manage seizures, 20% lipid emulsion 1.5 mL/kg over 2–3 min then 15 mL/kg/h (repeat at 5 and 10 min, double to 30 mL/kg/h if unstable, max cumulative 12 mL/kg); adrenaline ≤ 1 microgram/kg, avoid vasopressin and lidocaine — amiodarone is used for ventricular arrhythmias <InlineRef topicId="clinical-incidents" refLabel="AA LAST QRH 2023" /></>,
               "Accidental awareness (NAP5): risk highest with TIVA + NMB; use processed EEG; debrief and refer for psychological support.",
               "Cannot intubate, cannot oxygenate: declare CICO, call for help, scalpel-bougie-tube cricothyroidotomy without delay.",
             ]}

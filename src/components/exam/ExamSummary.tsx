@@ -2,6 +2,7 @@ import { useMemo } from "react";
 import { GraduationCap, ArrowUpRight, CheckCircle2 } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Exam, ExamTag } from "@/data/curriculum";
+import { LOCAL_STUDY_TAG_NOTICE } from "@/data/curriculumCodes";
 import { useExamFilter } from "@/contexts/ExamFilterContext";
 import { cn } from "@/lib/utils";
 
@@ -263,13 +264,14 @@ const ExamPanel = ({
           </p>
         </div>
         {codes.length > 0 && (
-          <div className="flex flex-wrap gap-1 max-w-[55%] justify-end">
+          <div className="flex flex-wrap items-center gap-1 max-w-[55%] justify-end">
+            <span className="text-[10px] italic text-muted-foreground">app-mapped tags:</span>
             {codes.map((code) => (
               <Badge
                 key={code}
                 variant="outline"
                 className="text-[10px] font-mono font-semibold border-border/70 text-muted-foreground bg-background"
-                title="Curriculum reference"
+                title={LOCAL_STUDY_TAG_NOTICE}
               >
                 {code}
               </Badge>

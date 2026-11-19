@@ -177,7 +177,7 @@ const DemoVivaStepper = ({ questions }: DemoVivaStepperProps) => {
           <div className="flex items-center gap-2 mb-2">
             <BookMarked className="h-3.5 w-3.5 text-primary" />
             <span className="text-[11px] font-semibold uppercase tracking-wider text-muted-foreground">
-              FRCA curriculum mapping
+              Local study tags
             </span>
           </div>
           <ul className="space-y-1.5 text-sm text-foreground/90">

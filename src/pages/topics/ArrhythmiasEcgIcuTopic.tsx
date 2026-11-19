@@ -58,7 +58,7 @@ const workedExamples: WorkedExample[] = [
     scenario:
       "Anuric AKI patient, K⁺ 7.4, ECG shows peaked symmetric T waves and broadening QRS. HR 48, BP 92/50.",
     working:
-      "Treat the rhythm, not the number. Step 1 — membrane stabilisation: 10 mL 10% calcium gluconate IV over 2–5 min (or CaCl₂ 10 mL centrally), repeat in 5 min if ECG unchanged. Step 2 — intracellular shift: 10 units actrapid in 50 mL 50% dextrose IV over 15 min; salbutamol 10–20 mg neb. Step 3 — removal: urgent RRT given anuria. Avoid sodium bicarbonate unless severely acidotic.",
+      "Treat the rhythm, not the number. Step 1 — membrane stabilisation: 30 mL 10% calcium gluconate IV over 10 min (or CaCl₂ 10 mL 10% over 5 min centrally if peri-arrest), repeat if ECG unchanged. Step 2 — intracellular shift: 10 units actrapid in 50 mL 50% dextrose IV over 15 min; salbutamol 10–20 mg neb. Step 3 — removal: urgent RRT given anuria. Avoid sodium bicarbonate unless severely acidotic.",
     answer:
       "Calcium first (cardio-protection within 1–3 min), then insulin–dextrose ± salbutamol to shift K⁺, then RRT for definitive removal. Re-check K⁺ at 30 min and 1 h.",
     cites: ["ESC AF 2020"],
@@ -146,7 +146,7 @@ const ArrhythmiasEcgIcuTopic = () => {
                 <li><span className="font-medium text-foreground">Wide-complex tachycardia</span> — assume VT until proven otherwise (especially with structural heart disease).</li>
                 <li><span className="font-medium text-foreground">New LBBB + chest pain or ROSC</span> — treat as STEMI equivalent; consider PPCI.</li>
                 <li><span className="font-medium text-foreground">QTc &gt; 500 ms</span> — stop QT-prolonging drugs, replete K⁺ &gt; 4.5 and Mg²⁺ &gt; 1.0 mmol/L.</li>
-                <li><span className="font-medium text-foreground">Peaked T waves + wide QRS</span> — hyperkalaemia, give 10 mL 10 % calcium gluconate <em>now</em>.</li>
+                <li><span className="font-medium text-foreground">Peaked T waves + wide QRS</span> — hyperkalaemia, give 30 mL 10% calcium gluconate over 10 min (or 10 mL 10% calcium chloride if peri-arrest) <em>now</em>.</li>
                 <li><span className="font-medium text-foreground">U waves + flat T + long QU</span> — hypokalaemia → torsades risk.</li>
               </ul>
             </div>
@@ -430,13 +430,13 @@ const ArrhythmiasEcgIcuTopic = () => {
             <CollapsibleSubsection title="Electrolyte & Drug-Induced Arrhythmias">
             <div className="space-y-2">
               {[
-                { label: "Hyperkalaemia (K⁺ > 6.0)", ecg: "Peaked T → loss of P → wide QRS → sine-wave → VF/asystole.", treatment: "10 mL 10 % calcium gluconate IV (membrane stabilisation), insulin–dextrose, salbutamol nebs, sodium bicarbonate (if acidotic), definitive removal (RRT)." },
+                { label: "Hyperkalaemia (K⁺ > 6.0)", ecg: "Peaked T → loss of P → wide QRS → sine-wave → VF/asystole.", treatment: "30 mL 10% calcium gluconate IV over 10 min (or 10 mL 10% calcium chloride peri-arrest) for membrane stabilisation, insulin–dextrose, salbutamol nebs, sodium bicarbonate (if acidotic), definitive removal (RRT)." },
                 { label: "Hypokalaemia (K⁺ < 3.5)", ecg: "Flat / inverted T, prominent U wave, prolonged QU, ST depression.", treatment: "Replace cautiously (max 20 mmol/h peripherally, 40 mmol/h centrally with monitoring). Always replace Mg²⁺ alongside." },
                 { label: "Hypomagnesaemia (Mg²⁺ < 0.7)", ecg: "Prolonged QT, torsades de pointes, refractory hypoK⁺.", treatment: "2 g IV Mg²⁺ over 10 min for torsades, then infusion." },
                 { label: "Hypocalcaemia (iCa²⁺ < 1.0)", ecg: "Prolonged QT (long ST segment), neuromuscular irritability.", treatment: "10 mL 10 % calcium gluconate IV (peripheral) or 10 mL 10 % calcium chloride centrally." },
                 { label: "Digoxin toxicity", ecg: "Reverse-tick ST depression, frequent VEs, slow AF, atrial tachycardia with block, bidirectional VT.", treatment: "Stop digoxin; continuous ECG; correct hypokalaemia and hypomagnesaemia, avoid hypercalcaemia. Bradycardia/AV block: atropine (often ineffective) or pacing. Ventricular arrhythmias: magnesium or lidocaine; avoid amiodarone and use DC shock only at low energy as last resort. Digoxin-specific Fab (DigiFab) for life-threatening arrhythmia, end-organ hypoperfusion, K⁺ > 5–6 mmol/L in acute poisoning, or very high levels — dose from amount ingested or steady-state level (or empirical vials per TOXBASE). After Fab: rapid hypokalaemia (monitor K⁺), recurrent AF/heart failure, and total digoxin levels become uninterpretable." },
                 { label: "Tricyclic / Na⁺-channel blocker overdose", ecg: "Wide QRS, R wave in aVR > 3 mm, terminal R aVR, sinus tachycardia, VT.", treatment: "Sodium bicarbonate 8.4% 1–2 mmol/kg IV bolus, repeated until the QRS narrows, targeting arterial pH 7.50–7.55 — alkalinisation raises protein binding and the sodium load overcomes Na⁺-channel blockade. Seizures: benzodiazepines (they worsen acidosis). Hypotension: fluids then noradrenaline. Refractory arrhythmias: hypertonic saline as a second-line sodium load; lidocaine is a controversial option; avoid class Ia, Ic and III antiarrhythmics (and physostigmine/flumazenil). Lipid emulsion for refractory collapse or arrest; consider ECMO." },
-                { label: "Local anaesthetic systemic toxicity (LAST)", ecg: "Widening QRS, bradycardia, asystole, refractory VT/VF.", treatment: "Stop injection, 100 % O₂, 20 % Intralipid 1.5 mL/kg bolus then 0.25 mL/kg/min infusion, prolonged CPR." },
+                { label: "Local anaesthetic systemic toxicity (LAST)", ecg: "Widening QRS, bradycardia, asystole, refractory VT/VF.", treatment: "Stop injection, 100 % O₂, 20 % lipid emulsion 1.5 mL/kg over 2–3 min then 15 mL/kg/h (repeat at 5 and 10 min, double to 30 mL/kg/h if unstable, max 12 mL/kg); adrenaline ≤ 1 microgram/kg, avoid vasopressin and lidocaine; prolonged CPR." },
               ].map((e) => (
                 <div key={e.label} className="p-3 rounded-lg border border-border bg-card">
                   <p className="font-semibold text-foreground text-sm">{e.label}</p>
@@ -547,7 +547,7 @@ const ArrhythmiasEcgIcuTopic = () => {
               </div>
               <div className="p-4 rounded-lg border border-border">
                 <p className="font-semibold text-foreground text-sm">Targeted temperature management</p>
-                <p className="text-xs text-muted-foreground mt-1">Routine therapeutic hypothermia is <strong>no longer recommended</strong>: TTM2 (2021) found no mortality or functional benefit from targeting 33 °C compared with strict normothermia. The current RCUK algorithm (March 2026, implementing 2025 guidance) uses continuous core-temperature monitoring with <strong>active fever prevention targeting ≤ 37.5 °C for at least 72 h</strong> in patients who remain comatose after ROSC, using surface or intravascular devices with feedback control if simple measures fail. The 2025 narrative guideline specifies 36–72 h; the current algorithm specifies ≥72 h <InlineRef topicId="arrhythmias-ecg-icu" refLabel="RCUK PRC 2025" /><InlineRef topicId="arrhythmias-ecg-icu" refLabel="RCUK PRC Algorithm March 2026" />.</p>
+                <p className="text-xs text-muted-foreground mt-1">Routine therapeutic hypothermia is <strong>no longer recommended</strong>: TTM2 (2021) found no mortality or functional benefit from targeting 33 °C compared with strict normothermia. RCUK 2025 uses continuous core-temperature monitoring with <strong>active fever prevention targeting ≤ 37.5 °C for 36–72 h</strong> in patients who remain comatose after ROSC, using surface or intravascular devices with feedback control if simple measures fail <InlineRef topicId="arrhythmias-ecg-icu" refLabel="RCUK PRC 2025" />.</p>
               </div>
               <div className="p-4 rounded-lg border border-border">
                 <p className="font-semibold text-foreground text-sm">Recurrent arrhythmia prevention</p>

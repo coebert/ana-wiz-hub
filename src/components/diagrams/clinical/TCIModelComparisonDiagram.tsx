@@ -75,12 +75,18 @@ const schnider = (p: Patient): ParamSet => {
 };
 
 const paedfusor = (p: Patient): ParamSet => {
-  const V1 = 0.4584 * p.weight;
+  // Absalom and Kenny, BJA 2005, table 1 (V1 converted from mL to L).
+  const ageBand = Math.floor(p.age);
+  const adolescent = [
+    { v1PerKg: 0.400, k10: 0.0678 }, { v1PerKg: 0.342, k10: 0.0792 },
+    { v1PerKg: 0.284, k10: 0.0954 }, { v1PerKg: 0.22857, k10: 0.119 },
+  ][ageBand - 13];
+  const V1 = (adolescent?.v1PerKg ?? 0.4584) * p.weight;
   return {
     V1,
-    V2: 0.9542 * p.weight,
-    V3: 5.9647 * p.weight,
-    k10: 0.1527 * p.weight ** -0.3,
+    V2: V1 * 0.114 / 0.055,
+    V3: V1 * 0.0419 / 0.0033,
+    k10: adolescent?.k10 ?? 0.1527 * p.weight ** -0.3,
     k12: 0.114,
     k21: 0.055,
     k13: 0.0419,
@@ -141,23 +147,31 @@ function simulateBolus(ps: ParamSet, minutes = 20, dt = 0.005) {
 const tPeak = (curve: Array<{ t: number; ce: number }>) =>
   curve.reduce((best, pt) => (pt.ce > best.ce ? pt : best), curve[0]).t;
 
+function withinTeachingRange(id: ModelId, patient: Patient) {
+  const { age, weight, height } = patient;
+  if (![age, weight, height].every(Number.isFinite) || !Number.isInteger(age) || weight <= 0 || height <= 0) return false;
+  if (id === "paedfusor") return age >= 1 && age <= 16 && weight >= 5 && weight <= 61;
+  const bmi = weight / (height / 100) ** 2;
+  return age >= 25 && age <= 80 && weight >= 50 && weight <= 100 && height >= 155 && height <= 190 && bmi >= 18.5 && bmi <= 30;
+}
+
 const TCIModelComparisonDiagram = () => {
   const [patient, setPatient] = useState<Patient>({ age: 40, weight: 70, height: 170, sex: "male" });
-  const [active, setActive] = useState<ModelId[]>(["marsh", "modmarsh", "schnider"]);
-  const [target, setTarget] = useState(4);
-
+  const [active, setActive] = useState<ModelId[]>(["marsh", "modmarsh", "schnider", "paedfusor"]);
   const rows = useMemo(() => {
-    return (Object.keys(modelMeta) as ModelId[]).map((id) => {
+    return (Object.keys(modelMeta) as ModelId[]).flatMap((id) => {
+      if (!withinTeachingRange(id, patient)) return [];
       const ps = modelMeta[id].build(patient);
+      if (!Object.values(ps).every(value => value === null || (Number.isFinite(value) && value > 0))) return [];
       const curve = simulateBolus(ps);
-      return {
+      return [{
         id,
         ...modelMeta[id],
         ps,
         curve,
         tpeak: ps.ke0 ? tPeak(curve) : null,
         clearance: ps.k10 * ps.V1,
-      };
+      }];
     });
   }, [patient]);
 
@@ -173,8 +187,8 @@ const TCIModelComparisonDiagram = () => {
   return (
     <DiagramFigure
       id="tci-model-comparison"
-      title="Model-to-model comparison: computed parameters, bolus dose and effect-site kinetics for the same patient"
-      description="Interactive comparison. Entering age, weight, height and sex computes the published parameters of the Marsh, modified Marsh, Schnider, Paedfusor and Minto models. The graph shows plasma and effect-site concentrations after an identical 1 mg bolus, so differences reflect only the models' volumes and rate constants. Marsh scales the central volume with total body weight and therefore predicts a much lower peak concentration and demands a much larger induction dose than Schnider, whose central volume is fixed at 4.27 litres. Modified Marsh keeps Marsh volumes but raises ke0 to 1.2 per minute, shortening time to peak effect from about 4.5 minutes to about 1.6 minutes."
+      title="Population pharmacokinetic models and bolus responses"
+      description="Compare model parameters and the theoretical response to an instantaneous unit propofol bolus. Plasma concentration changes immediately; effect-site concentration rises subsequently. No effect-site target or pump dose is calculated."
       showCaption
       className="rounded-lg border border-border p-4"
     >
@@ -193,7 +207,7 @@ const TCIModelComparisonDiagram = () => {
               max={max}
               value={patient[key]}
               onChange={(e) =>
-                setPatient((p) => ({ ...p, [key]: Math.min(max, Math.max(min, Number(e.target.value) || min)) }))
+                setPatient((p) => ({ ...p, [key]: Number(e.target.value) }))
               }
               className="mt-1 w-full rounded-md border border-border bg-background px-2 py-1 text-foreground"
             />
@@ -271,7 +285,7 @@ const TCIModelComparisonDiagram = () => {
               <th className="text-left py-2 font-semibold">CL (L·min⁻¹)</th>
               <th className="text-left py-2 font-semibold">ke0 (min⁻¹)</th>
               <th className="text-left py-2 font-semibold">t-peak (min)</th>
-              <th className="text-left py-2 font-semibold">Bolus for Cp {target}</th>
+
             </tr>
           </thead>
           <tbody className="text-muted-foreground">
@@ -284,25 +298,16 @@ const TCIModelComparisonDiagram = () => {
                 <td>{r.clearance.toFixed(2)}</td>
                 <td>{r.ps.ke0 !== null ? r.ps.ke0.toFixed(3) : "—"}</td>
                 <td>{r.tpeak !== null ? r.tpeak.toFixed(1) : "—"}</td>
-                <td>
-                  {r.drug === "Remifentanil"
-                    ? `${(r.ps.V1 * 4).toFixed(0)} µg for Ce 4 ng·ml⁻¹`
-                    : `${(r.ps.V1 * target).toFixed(0)} mg (${(r.ps.V1 * target / patient.weight).toFixed(2)} mg·kg⁻¹)`}
-                </td>
+
               </tr>
             ))}
           </tbody>
         </table>
       </div>
-      <label className="block text-xs text-muted-foreground mt-3">
-        Propofol target Cp/Ce: <strong className="text-foreground">{target} µg·ml⁻¹</strong>
-        <input type="range" min={1} max={8} step={0.5} value={target} onChange={(e) => setTarget(Number(e.target.value))} className="w-full mt-1" />
-      </label>
-      <p className="text-[11px] text-muted-foreground mt-3">
-        Paedfusor parameters are only valid for children of 1–16 years, and Schnider's lean-body-mass term (James equation) fails at extremes of body
-        habitus — the table will still compute values outside those ranges, so read them as an illustration of model behaviour rather than as a dosing
-        recommendation. Always titrate to processed EEG and clinical response.
-      </p>
+      <p className="text-xs mt-3">The curve shows an illustrative 1 mg propofol bolus in the central compartment. Plasma concentration is dose/V1 at time zero; effect-site concentration starts at zero. V1 multiplied by a target effect-site concentration cannot determine an induction dose. Remifentanil parameters are listed separately and have no propofol curve.</p>
+      <p className="text-xs mt-2">The adult comparison is restricted to illustrative inputs of 25–80 years, 50–100 kg, 155–190 cm and BMI 18.5–30. The Paedfusor teaching range is ages 1–16 completed years and 5–61 kg. These input limits constrain this illustration and do not confer validation for an individual patient.</p>
+      {!rows.length && <p role="status">The entered values are outside the teaching ranges. No model outputs are displayed.</p>}
+      <p className="text-xs mt-2"><a className="underline" href="https://doi.org/10.1093/bja/aei567">Paedfusor parameter table</a> · <a className="underline" href="https://pubmed.ncbi.nlm.nih.gov/9605675/">Schnider PK</a> · <a className="underline" href="https://pubmed.ncbi.nlm.nih.gov/9009935/">Minto model</a> · <a className="underline" href="https://doi.org/10.1093/bja/aep143">Model comparison and limitations</a></p>
     </DiagramFigure>
   );
 };

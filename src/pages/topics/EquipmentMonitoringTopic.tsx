@@ -46,17 +46,17 @@ const objectives = [
 
 const keyPoints = [
   { text: "Pipeline 400 kPa via NIST/Schrader; O₂ stored in VIE as liquid at ~−160 °C and ~10 bar (boiling point rises with pressure above the 1 atm value of −183 °C); cylinders sized A–J with PISS and colour codes.", cites: ["BJA Educ 2017 (Medical gases)"] },
-  { text: "N₂O cylinders contain liquid — pressure constant at 44 bar until exhausted; assess contents by weight; UK filling ratio 0.75.", cites: ["Macintosh 1943"] },
+  { text: "N₂O cylinders contain liquid — pressure constant at 44 bar until exhausted; assess contents by weight; UK filling ratio 0.75.", cites: ["BJA Educ 2017 (Medical gases)"] },
   { text: "Pressure regulators reduce 137 bar → 400 kPa (spring-diaphragm); two-stage minimises seat effect.", cites: ["AAGBI Standards 2015"] },
   { text: "Rotameters: laminar (low flow) viscosity-dependent; turbulent (high) density-dependent; gas-specific; O₂ downstream.", cites: ["Weiss & Engelhardt 2010"] },
   { text: "SVP depends only on agent + temperature; desflurane (BP 22.8 °C) needs heated TEC 6.", cites: ["BJA Educ 2017 (Medical gases)"] },
-  { text: "Mapleson A best for SV (FGF ≈ MV); D best for IPPV (FGF 70 mL/kg/min).", cites: ["Cochrane VL 2022"] },
-  { text: "Circle system enables low-flow anaesthesia; soda lime exothermic; desiccation → compound A (sevo) and CO (des).", cites: ["BJA Educ Videolaryngoscopy 2016"] },
+  { text: "Mapleson A best for SV (FGF ≈ MV); D best for IPPV (FGF 70 mL/kg/min)." },
+  { text: "Circle system enables low-flow anaesthesia; soda lime exothermic; desiccation → compound A (sevo) and CO (des)." },
   { text: "Ascending bellows fail to rise on disconnect — primary visual alarm.", cites: ["NAP4 2011"] },
-  { text: "Manley MVD: VT = FGF ÷ RR. Modern piston ventilators decouple FGF for fixed VT.", cites: ["DAS 2015"] },
-  { text: "Ritchie whistle is gas-powered (Venturi/Bernoulli) — sounds even during power failure.", cites: ["Cormack & Lehane 1984"] },
-  { text: "AAGBI minimum monitoring: SpO₂, ECG, NIBP, EtCO₂, FiO₂, agent, airway pressure, temperature; TOF if NMBs.", cites: ["McCoy & Mirakhur 1993"] },
-  { text: "Pencil-point spinal needles (Whitacre/Sprotte) reduce PDPH vs Quincke; Tuohy directs epidural catheter via Huber tip.", cites: ["Miller 1941"] },
+  { text: "Manley MVD: VT = FGF ÷ RR. Modern piston ventilators decouple FGF for fixed VT." },
+  { text: "Ritchie whistle is gas-powered (Venturi/Bernoulli) — sounds even during power failure.", cites: ["BJA Educ 2017 (Medical gases)"] },
+  { text: "AAGBI minimum monitoring: SpO₂, ECG, NIBP, EtCO₂, FiO₂, agent, airway pressure, temperature; TOF if NMBs.", cites: ["AoA Standards of Monitoring 2021"] },
+  { text: "Pencil-point spinal needles (Whitacre/Sprotte) reduce PDPH vs Quincke; Tuohy directs epidural catheter via Huber tip.", cites: ["Cochrane Spinal Needles"] },
   { text: "Pre-use machine check per the AoA/RCoA 2024 guideline ('Anaesthesia, anaesthetic machines and patient safety'): full check at the start of every session with an upstream-to-downstream sequence, two-bag test for circuit integrity, self-inflating bag immediately available, and a recorded, signed checklist — repeated after any change to the equipment configuration.", cites: ["RCoA/AoA 2024 Machine Check", "AAGBI Check 2023"] },
 ];
 
@@ -194,7 +194,7 @@ const EquipmentMonitoringTopicWorkedExamples: WorkedExample[] = [
       </div>
     ),
     answer: "Sudden ETCO₂ drop with laparoscopy → high suspicion of CO₂ embolism. Stop insufflation, desufflate, head-down left lateral, 100% O₂, supportive ALS.",
-    cites: ["Macintosh 1943", "Miller 1941", "McCoy & Mirakhur 1993"],
+    cites: ["AoA Standards of Monitoring 2021"],
   },
 ];
 

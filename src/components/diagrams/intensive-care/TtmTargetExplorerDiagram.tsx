@@ -95,7 +95,7 @@ const targets: Record<Target, TargetMeta> = {
       "Less protection if ROSC is delayed and severe ischaemic injury already established",
     ],
     whoBenefits:
-      "Default strategy for comatose adult survivors per RCUK / ERC–ESICM 2025. Maintain ≤37.5 °C for at least 72 h post-ROSC.",
+      "Default strategy for comatose adult survivors per RCUK 2025. Maintain ≤37.5 °C for 36–72 h post-ROSC.",
   },
   fever: {
     label: "Fever control only",
@@ -117,7 +117,7 @@ const targets: Record<Target, TargetMeta> = {
       "Shivering on aggressive surface cooling without sedation",
     ],
     whoBenefits:
-      "For patients who remain unconscious after ROSC: actively prevent fever at ≤37.5 °C for ≥72 h under the RCUK March 2026 algorithm. The 2025 narrative guideline says 36–72 h. This is not a mandate for active temperature control in awake survivors.",
+      "For patients who remain unconscious after ROSC: actively prevent fever at ≤37.5 °C for 36–72 h (RCUK 2025). This is not a mandate for active temperature control in awake survivors.",
   },
 };
 
@@ -125,7 +125,7 @@ const phaseSpec = [
   { key: "induction", label: "Induction", durationH: 4, color: "hsl(210, 70%, 60%)" },
   { key: "maintenance", label: "Maintenance (24 h)", durationH: 24, color: "hsl(180, 55%, 50%)" },
   { key: "rewarm", label: "Controlled rewarm (0.25–0.5 °C/h)", durationH: 12, color: "hsl(45, 75%, 55%)" },
-  { key: "fever", label: "Fever prevention (≤37.5 °C, ≥72 h)", durationH: 32, color: "hsl(20, 75%, 55%)" },
+  { key: "fever", label: "Fever prevention (≤37.5 °C, 36–72 h)", durationH: 32, color: "hsl(20, 75%, 55%)" },
 ];
 
 const totalH = phaseSpec.reduce((s, p) => s + p.durationH, 0); // 72 h
@@ -338,7 +338,7 @@ const TtmTargetExplorerDiagram = () => {
           </div>
   
           <p className="text-[11px] text-muted-foreground mt-2 italic text-center">
-            Tip: TTM2 (2021) is the largest contemporary RCT — found 33 °C no better than normothermia ≤ 37.5 °C (device trigger ≥ 37.8 °C). RCUK / ERC–ESICM 2025 now target ≤ 37.5 °C fever prevention in comatose survivors (≥ 72 h in the RCUK algorithm).
+            Tip: TTM2 (2021) is the largest contemporary RCT — found 33 °C no better than normothermia ≤ 37.5 °C (device trigger ≥ 37.8 °C). RCUK 2025 now targets ≤ 37.5 °C fever prevention in comatose survivors for 36–72 h.
           </p>
         </div>
       </div>

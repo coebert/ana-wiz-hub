@@ -24,7 +24,7 @@ export const pdMetabolicInfection: DrugPharmacodynamicsMap = {
 
   "calcium-gluconate": {
     doseResponse:
-      "Direct membrane-stabilising effect that is immediate but short-lived: 10 mL of 10% calcium gluconate (2.26 mmol Ca²⁺) improves ECG changes of hyperkalaemia within 1–3 min for 30–60 min, and raises ionised calcium by roughly 0.1–0.2 mmol/L. It does not lower potassium at all.",
+      "Direct membrane-stabilising effect that is immediate but short-lived: for ECG-toxic hyperkalaemia give 30 mL of 10% calcium gluconate (about 6.8 mmol Ca²⁺) IV over 10 minutes; 10 mL is the underdosing error MHRA warns against because 10 mL of 10% calcium gluconate contains only 2.2 mmol calcium, about one-third of 10 mL of 10% calcium chloride. Effect begins within 1–3 min and lasts 30–60 min, raising ionised calcium by roughly 0.1–0.2 mmol/L. It does not lower potassium at all.",
     therapeuticWindow:
       "Wide for a single dose but bounded by hypercalcaemia with repeated dosing; calcium chloride 10% contains three times more calcium per mL (6.8 mmol per 10 mL) — a common and dangerous confusion between preparations.",
     titrationTarget:
@@ -131,7 +131,7 @@ export const pdMetabolicInfection: DrugPharmacodynamicsMap = {
       "No cumulative toxicity: excess is renally excreted.",
     ],
     interactions: [
-      "Glucose administration before thiamine precipitates or worsens Wernicke's encephalopathy — always give thiamine first or simultaneously.",
+      "A carbohydrate load can precipitate or worsen Wernicke's encephalopathy in a thiamine-deplete patient — give thiamine with or immediately after glucose, without delaying urgent treatment of hypoglycaemia.",
       "Requirement increased by refeeding, continuous renal replacement therapy (water-soluble vitamin losses), diuretics and alcohol dependence.",
       "No significant drug–drug interactions, which is why empirical replacement in at-risk patients is safe.",
     ],

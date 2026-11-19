@@ -65,7 +65,7 @@ const paediatricFaqs: Array<[string, string]> = [
   ],
   [
     "What is propofol infusion syndrome (PRIS) and how do you prevent it?",
-    "Propofol infusion syndrome (PRIS) is a rare but potentially fatal metabolic complication of prolonged propofol infusion, characterised by metabolic acidosis, rhabdomyolysis, hyperkalaemia, lipaemia, cardiac arrhythmias and heart failure. Risk rises sharply with infusions >4 mg/kg/hr for >48 hours, particularly in critically ill, septic, or steroid/catecholamine-treated children. Prevention: keep propofol <4 mg/kg/hr, limit duration, avoid in septic or mitochondrial disorder patients, and monitor lactate, creatine kinase and triglycerides if infusion exceeds 24 hours. In PICU, use dexmedetomidine or midazolam-based sedation instead of prolonged propofol.",
+    "Propofol infusion syndrome (PRIS) is a rare but potentially fatal metabolic complication of prolonged propofol infusion, characterised by metabolic acidosis, rhabdomyolysis, hyperkalaemia, lipaemia, cardiac arrhythmias and heart failure. Risk rises with high cumulative dose and prolonged infusion, particularly in critically ill, septic, or steroid/catecholamine-treated children. The often-quoted 4 mg/kg/hr limit is an adult intensive-care sedation threshold, not a ceiling for paediatric general anaesthesia. For paediatric GA, induce and maintain propofol TIVA by titration to effect using the age-specific dosing in section 4.2 of the named UK product (Propofol 1% SmPC, emc 15152); there is no single mg/kg/hr cap for anaesthesia. Prevent PRIS by avoiding unnecessary prolongation, using the lowest effective infusion, monitoring lactate, creatine kinase, triglycerides and acid-base status during long infusions, and using dexmedetomidine or midazolam-based sedation instead of prolonged propofol in PICU.",
   ],
   [
     "How do you anaesthetise a child with pyloric stenosis?",
@@ -77,7 +77,7 @@ const paediatricFaqs: Array<[string, string]> = [
   ],
   [
     "What fluids should be used for paediatric maintenance and resuscitation?",
-    "For maintenance, use the Holliday-Segar 4-2-1 rule: 4 ml/kg/hr for the first 10 kg, 2 ml/kg/hr for the next 10 kg, and 1 ml/kg/hr for each kg thereafter. Use isotonic balanced crystalloids (Plasmalyte, Hartmann's) — AVOID hypotonic solutions (0.45% saline, 0.18% saline/4% glucose) because they carry a significant risk of iatrogenic hyponatraemia and cerebral oedema. For resuscitation, give 10 ml/kg boluses of warmed isotonic crystalloid and reassess after each bolus. For blood replacement, estimate maximum allowable blood loss (MABL) = EBV × (Hct_start − Hct_min) / Hct_start, where neonatal estimated blood volume = 80 ml/kg.",
+    "For maintenance, NICE NG29 gives the daily requirement as 100 ml/kg/day for the first 10 kg, 50 ml/kg/day for the next 10 kg and 20 ml/kg/day thereafter. The 4-2-1 rule (4 ml/kg/hr for the first 10 kg, 2 ml/kg/hr for the next 10 kg and 1 ml/kg/hr thereafter) is only an approximate hourly form of that daily figure. Term neonates are dosed by age under NG29, not by 4-2-1. Use isotonic balanced crystalloids (Plasmalyte, Hartmann's) — AVOID hypotonic solutions (0.45% saline, 0.18% saline/4% glucose) because they carry a significant risk of iatrogenic hyponatraemia and cerebral oedema. For resuscitation, give 10 ml/kg boluses of warmed isotonic crystalloid and reassess after each bolus. For blood replacement, estimate maximum allowable blood loss (MABL) = EBV × (Hct_start − Hct_min) / Hct_start, where neonatal estimated blood volume = 80 ml/kg.",
   ],
   [
     "What is the difference between PCA and NCA in children?",
@@ -158,7 +158,7 @@ const PaediatricAnaesthesiaTopic = () => {
         { text: "ETT size: uncuffed = age/4 + 4; cuffed = age/4 + 3.5", cites: ["APAGBI 2020"] },
         { text: "Pyloric stenosis: correct the alkalosis first — it is a medical, not surgical, emergency", cites: ["Sury et al."] },
         { text: "Use isotonic balanced crystalloids for maintenance — never hypotonic solutions in children", cites: ["BJA Educ 2019"] },
-        { text: "'Remi-prop' TIVA is ideal for shared-airway, MRI and MH-susceptible children — keep propofol <4 mg/kg/hr to avoid PRIS", cites: ["APAGBI 2020"] },
+        { text: "'Remi-prop' TIVA is ideal for shared-airway, MRI and MH-susceptible children — titrate propofol to effect within the age-specific SmPC 15152 dosing, and watch for PRIS during long infusions", cites: ["APAGBI 2020", "Propofol 1% SmPC (emc 15152)"] },
         { text: "PCA from ~5 yr; below that use NCA. Never codeine <12 yr; never tramadol post-tonsillectomy for OSA", cites: ["Sury et al."] },
         { text: "Caudal block: Armitage 0.5/1.0/1.25 ml/kg of 0.25% bupivacaine for sacral/lumbar/thoracic spread; always test-dose for intravascular placement", cites: ["BJA Educ 2019"] },
       ]}
@@ -604,7 +604,7 @@ const PaediatricAnaesthesiaTopic = () => {
             accent="clinical"
             pitfalls={[
               "Neonates are obligate nose-breathers, have a high O₂ consumption (~6 mL/kg/min), large head and short trachea — desaturate quickly.",
-              "Fluid maintenance (Holliday-Segar): 4-2-1 mL/kg/h; resuscitation bolus 10 mL/kg isotonic crystalloid.",
+              "Fluid maintenance (NG29): 100/50/20 mL/kg/day is the daily prescription; 4-2-1 mL/kg/h is an approximation. Resuscitation bolus 10 mL/kg isotonic crystalloid.",
               "Avoid hypotonic maintenance fluids in children — use 0.9% saline or balanced solution with 5% glucose where needed (NICE/APAGBI).",
               "ETT size: uncuffed = age/4 + 4; cuffed = age/4 + 3.5; length (oral) = age/2 + 12.",
               "Laryngospasm: 100% O₂, CPAP, deepen anaesthesia, Larson's manoeuvre, suxamethonium 1–2 mg/kg IV (or 4 mg/kg IM) if persistent.",

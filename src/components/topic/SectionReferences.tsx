@@ -22,11 +22,13 @@ export const SectionReferences = ({
 }: SectionReferencesProps) => {
   const all = topicReferences[topicId] ?? [];
   const matched: Reference[] = [];
+  const gaps: Reference[] = [];
   const missing: string[] = [];
 
   for (const label of refLabels) {
     const found = all.find((r) => r.label === label);
-    if (found) matched.push(found);
+    if (found?.withheld) gaps.push(found);
+    else if (found) matched.push(found);
     else missing.push(label);
   }
 
@@ -39,7 +41,7 @@ export const SectionReferences = ({
 
   const [open, setOpen] = useState(false);
 
-  if (matched.length === 0) return null;
+  if (matched.length === 0 && gaps.length === 0) return null;
 
   return (
     <Collapsible
@@ -138,6 +140,17 @@ export const SectionReferences = ({
               </li>
             ))}
           </ul>
+          {gaps.length > 0 && (
+            <ul className="space-y-1 mt-2 text-[11px] leading-relaxed">
+              {gaps.map((ref) => (
+                <li key={ref.label} className="text-muted-foreground">
+                  <span className="font-medium text-foreground">Source gap</span>
+                  {" — "}
+                  {ref.gapNote}
+                </li>
+              ))}
+            </ul>
+          )}
         </CollapsibleContent>
       </aside>
     </Collapsible>

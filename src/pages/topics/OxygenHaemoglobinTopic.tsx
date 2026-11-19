@@ -87,11 +87,11 @@ const workedExamples: WorkedExample[] = [
     answer: (
       <>
         Use co-oximetry, not SpO₂. Treat with high-FiO₂ (reduces CO half-life from ~5 h on air to ~80 min on FiO₂ 1.0).
-        Per the BJA Education review on CO poisoning, consider hyperbaric O₂ for COHb &gt;25%, loss of consciousness or
+        Per the Rose et al. review on CO poisoning (Am J Respir Crit Care Med 2017), consider hyperbaric O₂ for COHb &gt;25%, loss of consciousness or
         neurological signs, pregnancy, or persistent symptoms (further reduces half-life to ~20 min).
       </>
     ),
-    cites: ["Power & Kam Ch.7", "BJA Educ 2018 (CO)"],
+    cites: ["Power & Kam Ch.7", "Rose 2017 CO"],
   },
 ];
 
@@ -116,7 +116,7 @@ const OxygenHaemoglobinTopic = () => {
       }}
       sectionSources={{
         objectives: ["West Ch.6"],
-        workedExamples: ["BJA Educ 2004", "Power & Kam Ch.7", "BJA Educ 2018 (CO)", "BNF Methylthioninium"],
+        workedExamples: ["BJA Educ 2004", "Power & Kam Ch.7", "Rose 2017 CO", "BNF Methylthioninium"],
         keyPoints: ["BJA Educ 2016 (O2 transport)", "West Ch.6", "BJA Educ 2004", "Power & Kam Ch.7"],
       }}
       keyPoints={[

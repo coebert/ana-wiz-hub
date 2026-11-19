@@ -74,7 +74,7 @@ const InfectiousDiseaseIcuTopic = () => {
           "epic4 2023",
           "IDSA HAP/VAP 2016",
           "BJA Educ Sepsis 2017",
-          "NICE NG51",
+          "NICE NG253",
         ],
         keyPoints: [
           "SSC 2021",
@@ -82,16 +82,16 @@ const InfectiousDiseaseIcuTopic = () => {
           "epic4 2023",
           "IDSA HAP/VAP 2016",
           "BJA Educ Sepsis 2017",
-          "NICE NG51",
+          "NICE NG253",
         ],
         workedExamples: ["IDSA HAP/VAP 2016", "NICE NG191", "SSC 2021"],
       }}
       keyPoints={[
-        { text: "Pneumonia is the commonest infection requiring ICU admission — categorise CAP/HAP/VAP and tailor empirical cover to local antibiogram", cites: ["NICE NG51"] },
+        { text: "Pneumonia is the commonest infection requiring ICU admission — categorise CAP/HAP/VAP and tailor empirical cover to local antibiogram", cites: ["NICE NG253"] },
         { text: "Legionella: hyponatraemia + dry cough + GI symptoms + raised CK — treat with macrolide or fluoroquinolone (β-lactams ineffective)", cites: ["BJA Educ Sepsis 2017"] },
         { text: "PVL-positive S. aureus necrotising pneumonia: leucopenia + haemoptysis in young patient → linezolid + clindamycin + IVIG, consider VV-ECMO", cites: ["IDSA HAP/VAP 2016"] },
         { text: "Source control (drainage/debridement) is paramount in intra-abdominal sepsis and necrotising fasciitis — antibiotics alone are insufficient", cites: ["SSC 2021"] },
-        { text: "S. aureus bacteraemia always requires echocardiography, repeat cultures at 48–72 h, and minimum 2 weeks IV therapy", cites: ["NICE NG51"] },
+        { text: "S. aureus bacteraemia always requires echocardiography, repeat cultures at 48–72 h, and minimum 2 weeks IV therapy", cites: ["NICE NG253"] },
         { text: "ESBL bacteraemia: meropenem first-line — MERINO showed pip-tazo inferior", cites: ["BJA Educ Sepsis 2017"] },
         { text: "C. difficile: oral vancomycin first-line; fidaxomicin for recurrence; FMT for refractory disease", cites: ["IDSA HAP/VAP 2016"] },
         { text: "Antimicrobial stewardship: start smart, then focus — de-escalate at 48–72 h; procalcitonin can shorten duration", cites: ["SSC 2021"] },

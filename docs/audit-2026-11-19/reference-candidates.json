@@ -1,0 +1,1055 @@
+[
+  {
+    "topic": "si-units-thermodynamics",
+    "label": "BJA Educ 2017 (Pressure)",
+    "doi": "10.1093/bjaed/mkx019",
+    "bibliography": "Hutchinson J, Whittaker M. Pressure measurement. BJA Education. 2017;17(9):316-21. (1 atm ≈ 1033 cmH₂O.)",
+    "locatedTitle": "Error and Root Cause Analysis",
+    "locatedRecord": "https://academic.oup.com/bjaed/issue/17/10",
+    "purpose": "Publisher record checked. Not a source for the cited physical claim."
+  },
+  {
+    "topic": "si-units-thermodynamics",
+    "label": "BJA Educ 2016 (Thermo)",
+    "doi": "10.1093/bjaed/mkw013",
+    "bibliography": "Sessler DI; adapted in Torossian A et al. Peri-operative thermoregulation and temperature monitoring. BJA Education. 2016;16(9):304-308. (UK-focused review: heat loss ≈40–60% radiation, ~30% convection, up to 20% evaporation.)",
+    "locatedTitle": "Implications of complexity theory for clinical practice and healthcare organization",
+    "locatedRecord": "https://academic.oup.com/bjaed/article-abstract/16/10/349/2288640",
+    "purpose": "Publisher record checked. Not a source for the cited physical claim."
+  },
+  {
+    "topic": "si-units-thermodynamics",
+    "label": "BJA Educ 2018 (Temperature)",
+    "bibliography": "Temperature monitoring. BJA Education. 2018;18(1):13-17. (Sites, devices and the physiological basis of core temperature estimation; heat-loss proportions under general anaesthesia.)",
+    "doi": "10.1016/j.bjae.2017.11.003",
+    "locatedTitle": "Anaesthesia and analgesia for knee joint arthroplasty",
+    "locatedRecord": "https://pubmed.ncbi.nlm.nih.gov/33456789/",
+    "purpose": "Editorial triage only. Verify the identifier on the primary record, then match each clinical claim."
+  },
+  {
+    "topic": "electricity-magnetism",
+    "label": "Assoc Anaesth CIED 2022",
+    "bibliography": "Association of Anaesthetists. Peri-operative management of patients with cardiac implantable electronic devices. Anaesthesia. 2022.",
+    "doi": "10.1111/anae.15728",
+    "locatedTitle": "Guidelines for the peri-operative management of people with cardiac implantable electronic devices: Guidelines from the British Heart Rhythm Society",
+    "locatedRecord": "https://pubmed.ncbi.nlm.nih.gov/35429334/",
+    "purpose": "Editorial triage only. Verify the identifier on the primary record, then match each clinical claim."
+  },
+  {
+    "topic": "electrical-safety",
+    "label": "BJA Educ 2019 (MRI)",
+    "bibliography": "Reddy U, Chowdhury T, Bhatt H. MRI for the anaesthetist. BJA Education. 2019;19(8):235-241.",
+    "doi": "10.1016/j.bjae.2019.04.004",
+    "locatedTitle": "Anaesthesia for pneumonectomy",
+    "locatedRecord": "https://pubmed.ncbi.nlm.nih.gov/33456906/",
+    "purpose": "Editorial triage only. Verify the identifier on the primary record, then match each clinical claim."
+  },
+  {
+    "topic": "electrical-safety",
+    "label": "Assoc Anaesth CIED 2022",
+    "bibliography": "Association of Anaesthetists. Peri-operative management of patients with cardiac implantable electronic devices (pacemakers and ICDs). Anaesthesia. 2022.",
+    "doi": "10.1111/anae.15728",
+    "locatedTitle": "Guidelines for the peri-operative management of people with cardiac implantable electronic devices: Guidelines from the British Heart Rhythm Society",
+    "locatedRecord": "https://pubmed.ncbi.nlm.nih.gov/35429334/",
+    "purpose": "Editorial triage only. Verify the identifier on the primary record, then match each clinical claim."
+  },
+  {
+    "topic": "defibrillation-pacing",
+    "label": "Assoc Anaesth CIED 2022",
+    "bibliography": "Association of Anaesthetists. Peri-operative management of patients with cardiac implantable electronic devices. Anaesthesia. 2022.",
+    "doi": "10.1111/anae.15728",
+    "locatedTitle": "Guidelines for the peri-operative management of people with cardiac implantable electronic devices: Guidelines from the British Heart Rhythm Society",
+    "locatedRecord": "https://pubmed.ncbi.nlm.nih.gov/35429334/",
+    "purpose": "Editorial triage only. Verify the identifier on the primary record, then match each clinical claim."
+  },
+  {
+    "topic": "defibrillation-pacing",
+    "label": "ESC 2024 AF",
+    "bibliography": "Van Gelder IC, Rienstra M, Bunting KV, et al. 2024 ESC Guidelines for the management of atrial fibrillation. Eur Heart J. 2024;45(36):3314-3414.",
+    "doi": "10.1093/eurheartj/ehae176",
+    "locatedTitle": "2024 ESC Guidelines for the management of atrial fibrillation developed in collaboration with the European Association for Cardio-Thoracic Surgery (EACTS)",
+    "locatedRecord": "https://pubmed.ncbi.nlm.nih.gov/39210723/?fc=None&ff=20250603170410&v=2.18.0.post9+e462414",
+    "purpose": "Editorial triage only. Verify the identifier on the primary record, then match each clinical claim."
+  },
+  {
+    "topic": "pressure-measurement",
+    "label": "BJA Educ 2018 (Physics)",
+    "bibliography": "Magee P. Physics for anaesthesia. BJA Education. 2018;18(4):102-108.",
+    "doi": "10.1016/j.bjae.2017.12.004",
+    "locatedTitle": "Physics for anaesthesia: Magnetic resonance imaging; depth of anaesthesia monitoring; LASER; and light spectroscopy",
+    "locatedRecord": "https://pubmed.ncbi.nlm.nih.gov/33456818/",
+    "purpose": "Editorial triage only. Verify the identifier on the primary record, then match each clinical claim."
+  },
+  {
+    "topic": "pressure-measurement",
+    "label": "Crit Care Med 2011 Osmotherapy",
+    "bibliography": "Mangat HS, Härtl R. Hypertonic saline for the management of raised intracranial pressure after severe traumatic brain injury. Crit Care Med. 2011;39(3):554-559.",
+    "doi": "10.1097/ccm.0b013e318206b9be",
+    "locatedTitle": "Hypertonic saline versus mannitol for the treatment of elevated intracranial pressure: a meta-analysis of randomized clinical trials",
+    "locatedRecord": "https://pubmed.ncbi.nlm.nih.gov/21242790/",
+    "purpose": "Editorial triage only. Verify the identifier on the primary record, then match each clinical claim."
+  },
+  {
+    "topic": "pressure-measurement",
+    "label": "Hypertension 2023 Aurora",
+    "bibliography": "Mukkamala R, Yavarimanesh M, Natarajan K, et al. Evaluation of the accuracy of cuffless blood pressure measurement devices: challenges and proposals. Hypertension. 2023;80(10):e179-e193.",
+    "doi": "10.1161/hypertensionaha.122.20410",
+    "locatedTitle": "The Microsoft Research Aurora Project: Important Findings on Cuffless Blood Pressure Measurement",
+    "locatedRecord": "https://pubmed.ncbi.nlm.nih.gov/36458550/",
+    "purpose": "Editorial triage only. Verify the identifier on the primary record, then match each clinical claim."
+  },
+  {
+    "topic": "flow-measurement",
+    "label": "BJA Educ 2018 (Physics)",
+    "bibliography": "Magee P. Physics for anaesthesia. BJA Education. 2018;18(4):102-108.",
+    "doi": "10.1016/j.bjae.2017.12.004",
+    "locatedTitle": "Physics for anaesthesia: Magnetic resonance imaging; depth of anaesthesia monitoring; LASER; and light spectroscopy",
+    "locatedRecord": "https://pubmed.ncbi.nlm.nih.gov/33456818/",
+    "purpose": "Editorial triage only. Verify the identifier on the primary record, then match each clinical claim."
+  },
+  {
+    "topic": "humidity-gas-sampling",
+    "label": "BJA 1983 Pneumotachography",
+    "bibliography": "Principles of pneumotachography and the Fleisch capillary resistance. British Journal of Anaesthesia. 1983.",
+    "doi": "10.1093/bja/55.12.1239",
+    "locatedTitle": "Change in the work of breathing imposed by five anaesthetic breathing systems",
+    "locatedRecord": "https://pubmed.ncbi.nlm.nih.gov/6580908/",
+    "purpose": "Editorial triage only. Verify the identifier on the primary record, then match each clinical claim."
+  },
+  {
+    "topic": "mri-physics",
+    "label": "BJA Educ 2019",
+    "bibliography": "Reddy U, Chowdhury T, Bhatt H. MRI for the anaesthetist. BJA Education. 2019;19(8):235-241.",
+    "doi": "10.1016/j.bjae.2019.04.004",
+    "locatedTitle": "Anaesthesia for pneumonectomy",
+    "locatedRecord": "https://pubmed.ncbi.nlm.nih.gov/33456906/",
+    "purpose": "Editorial triage only. Verify the identifier on the primary record, then match each clinical claim."
+  },
+  {
+    "topic": "xray-radiation-safety",
+    "label": "BJA Educ 2019 (CT)",
+    "bibliography": "Kearns C, Sood B. Computed tomography for the anaesthetist. BJA Education. 2019;19(9):290-296.",
+    "doi": "10.1016/j.bjae.2019.05.003",
+    "locatedTitle": "Venous thromboembolism in paediatrics",
+    "locatedRecord": "https://pubmed.ncbi.nlm.nih.gov/33456907/",
+    "purpose": "Editorial triage only. Verify the identifier on the primary record, then match each clinical claim."
+  },
+  {
+    "topic": "equipment-monitoring",
+    "label": "McCoy & Mirakhur 1993",
+    "bibliography": "McCoy EP, Mirakhur RK. The levering laryngoscope. Anaesthesia. 1993;48(6):516-519.",
+    "doi": "10.1111/j.1365-2044.1993.tb07073.x",
+    "locatedTitle": "Fresh frozen plasma and edrophonium in a patient with a plasma cholinesterase deficiency",
+    "locatedRecord": "https://pubmed.ncbi.nlm.nih.gov/8391759/",
+    "purpose": "Editorial triage only. Verify the identifier on the primary record, then match each clinical claim."
+  },
+  {
+    "topic": "equipment-monitoring",
+    "label": "NAP4 2011",
+    "bibliography": "Cook TM, Woodall N, Frerk C. Major complications of airway management in the UK (NAP4). Br J Anaesth. 2011;106(5):617-631.",
+    "doi": "10.1093/bja/aer058",
+    "locatedTitle": "Major complications of airway management in the UK: results of the Fourth National Audit Project of the Royal College of Anaesthetists and the Difficult Airway Society. Part 1: anaesthesia",
+    "locatedRecord": "https://pubmed.ncbi.nlm.nih.gov/21447488/",
+    "purpose": "Editorial triage only. Verify the identifier on the primary record, then match each clinical claim."
+  },
+  {
+    "topic": "equipment-monitoring",
+    "label": "BJA Educ 2017 (Medical gases)",
+    "bibliography": "Das S, Chattopadhyay S, Bose P. The anaesthesia gas supply system. Indian J Anaesth. 2013;57(5):489-499. Covers pipeline pressures (400 kPa), VIE storage of liquid O₂ at ~−160 °C / ~10 bar, cylinder sizing (A–J), PISS, colour codes, the N₂O filling ratio (0.75 temperate, 0.67 tropical) and SVP-based vaporiser behaviour including desflurane TEC 6.",
+    "doi": "10.4103/0019-5049.120143",
+    "locatedTitle": "Safety features in anaesthesia machine",
+    "locatedRecord": "https://pubmed.ncbi.nlm.nih.gov/24249880/",
+    "purpose": "Editorial triage only. Verify the identifier on the primary record, then match each clinical claim."
+  },
+  {
+    "topic": "ventilator-modes",
+    "label": "Intensive Care Med 2012 NIV",
+    "bibliography": "Carteaux G, Lyazidi A, Cordoba-Izquierdo A, et al. Patient-ventilator asynchrony during noninvasive ventilation. Intensive Care Med. 2012.",
+    "doi": "10.1007/s00134-011-2416-9",
+    "locatedTitle": "Bench studies evaluating devices for non-invasive ventilation: critical analysis and future perspectives",
+    "locatedRecord": "https://pubmed.ncbi.nlm.nih.gov/22124770/",
+    "purpose": "Editorial triage only. Verify the identifier on the primary record, then match each clinical claim."
+  },
+  {
+    "topic": "depth-of-anaesthesia",
+    "label": "Purdon et al. 2015",
+    "bibliography": "Purdon PL, Sampson A, Pavone KJ, Brown EN. Clinical electroencephalography for anesthesiologists. Anesthesiology. 2015;123(4):937-960.",
+    "doi": "10.1097/aln.0000000000000841",
+    "locatedTitle": "Clinical Electroencephalography for Anesthesiologists: Part I: Background and Basic Signatures",
+    "locatedRecord": "https://pubmed.ncbi.nlm.nih.gov/26275092/",
+    "purpose": "Editorial triage only. Verify the identifier on the primary record, then match each clinical claim."
+  },
+  {
+    "topic": "oxygen-haemoglobin",
+    "label": "BJA Educ 2018 (CO)",
+    "bibliography": "Rose JJ, Wang L, Xu Q, et al. Carbon monoxide poisoning: pathogenesis, management and future directions of therapy. BJA Education. 2018;18(2):46-52. Indications for hyperbaric oxygen include COHb >25%, loss of consciousness, neurological signs, pregnancy and persistent symptoms.",
+    "doi": "10.1016/j.bjae.2017.12.001",
+    "locatedTitle": "Complex pain in children and young people; part 2: management",
+    "locatedRecord": "https://pubmed.ncbi.nlm.nih.gov/33456815/",
+    "purpose": "Editorial triage only. Verify the identifier on the primary record, then match each clinical claim."
+  },
+  {
+    "topic": "autonomic-nervous",
+    "label": "BJA Educ 2021 (Bradycardia)",
+    "bibliography": "Management of intraoperative bradycardia. BJA Education. 2021. Doses of atropine (10–20 µg/kg IV) and glycopyrrolate (4–8 µg/kg IV) for perioperative bradycardia.",
+    "doi": "10.1016/j.bjae.2021.05.001",
+    "locatedTitle": "Breathing in the prone position in health and disease",
+    "locatedRecord": "https://pubmed.ncbi.nlm.nih.gov/34306728/",
+    "purpose": "Editorial triage only. Verify the identifier on the primary record, then match each clinical claim."
+  },
+  {
+    "topic": "endocrine-physiology",
+    "label": "ATA Hypothyroidism 2014",
+    "bibliography": "Jonklaas J, Bianco AC, Bauer AJ, et al. Guidelines for the treatment of hypothyroidism. Thyroid. 2014;24(12):1670-1751.",
+    "doi": "10.1089/thy.2014.0028",
+    "locatedTitle": "Guidelines for the treatment of hypothyroidism: prepared by the american thyroid association task force on thyroid hormone replacement",
+    "locatedRecord": "https://pubmed.ncbi.nlm.nih.gov/25266247/?dopt=Abstract",
+    "purpose": "Editorial triage only. Verify the identifier on the primary record, then match each clinical claim."
+  },
+  {
+    "topic": "endocrine-physiology",
+    "label": "AAGBI Steroid Cover",
+    "bibliography": "Woodcock T, Barker P, Daniel S, et al. Guidelines for the management of glucocorticoids during the peri-operative period. Anaesthesia. 2020;75:654-663.",
+    "doi": "10.1111/anae.14963",
+    "locatedTitle": "Guidelines for the management of glucocorticoids during the peri-operative period for patients with adrenal insufficiency: Guidelines from the Association of Anaesthetists, the Royal College of Physicians and the Society for Endocrinology UK",
+    "locatedRecord": "https://pubmed.ncbi.nlm.nih.gov/32017012/",
+    "purpose": "Editorial triage only. Verify the identifier on the primary record, then match each clinical claim."
+  },
+  {
+    "topic": "haematology-immunity",
+    "label": "BJA Educ 2017",
+    "bibliography": "Thomas D, Wee M, Clyburn P, et al. Blood transfusion and the anaesthetist. Anaesthesia. 2010;65(11):1153-1161.",
+    "doi": "10.1111/j.1365-2044.2010.06550.x",
+    "locatedTitle": "Aspiration testing and epidural filters",
+    "locatedRecord": "https://pubmed.ncbi.nlm.nih.gov/21182611/",
+    "purpose": "Editorial triage only. Verify the identifier on the primary record, then match each clinical claim."
+  },
+  {
+    "topic": "haematology-immunity",
+    "label": "AAGBI Anaphylaxis 2021",
+    "bibliography": "Association of Anaesthetists. Suspected anaphylaxis during anaesthesia. Anaesthesia. 2021;76(2):235-248.",
+    "doi": "10.1111/anae.15180",
+    "locatedTitle": "Resilience strategies to manage psychological distress among healthcare workers during the COVID-19 pandemic: a narrative review",
+    "locatedRecord": "https://pubmed.ncbi.nlm.nih.gov/32534465/",
+    "purpose": "Editorial triage only. Verify the identifier on the primary record, then match each clinical claim."
+  },
+  {
+    "topic": "haematology-immunity",
+    "label": "BJA Educ Adaptive 2019",
+    "bibliography": "Plant TD, Smith LJ. Adaptive immunity. BJA Education. 2019;19(2):44-49.",
+    "doi": "10.1016/j.bjae.2018.11.005",
+    "locatedTitle": "Why do patients need extra oxygen during a general anaesthetic?",
+    "locatedRecord": "https://pubmed.ncbi.nlm.nih.gov/33456867/",
+    "purpose": "Editorial triage only. Verify the identifier on the primary record, then match each clinical claim."
+  },
+  {
+    "topic": "haematology-immunity",
+    "label": "BJA Educ Eosinophil 2020",
+    "bibliography": "Yates DRA, Davies SJ, Milner QJW. Eosinophilia and the anaesthetist. BJA Education. 2020;20(2):54-60.",
+    "doi": "10.1016/j.bjae.2019.11.001",
+    "locatedTitle": "Drug reactions with eosinophilia and systemic symptoms",
+    "locatedRecord": "https://pubmed.ncbi.nlm.nih.gov/33456932/",
+    "purpose": "Editorial triage only. Verify the identifier on the primary record, then match each clinical claim."
+  },
+  {
+    "topic": "haematology-immunity",
+    "label": "ISTH Rebalanced Haemostasis 2021",
+    "bibliography": "Lisman T, Hernandez-Gea V, Magnusson M, et al. The concept of rebalanced hemostasis in patients with liver disease. J Thromb Haemost. 2021;19(4):1116-1124.",
+    "doi": "10.1111/jth.15239",
+    "locatedTitle": "The concept of rebalanced hemostasis in patients with liver disease: Communication from the ISTH SSC working group on hemostatic management of patients with liver disease",
+    "locatedRecord": "https://pubmed.ncbi.nlm.nih.gov/33792172/",
+    "purpose": "Editorial triage only. Verify the identifier on the primary record, then match each clinical claim."
+  },
+  {
+    "topic": "maternal-physiology",
+    "label": "BJA Educ 2020",
+    "bibliography": "Carvalho B, Butwick AJ. Cardiovascular changes in pregnancy. BJA Education. 2017;17(5):151-156.",
+    "doi": "10.1093/bjaed/mkw068",
+    "locatedTitle": "Novel psychoactive substances: a practical approach to dealing with toxicity from legal highs",
+    "locatedRecord": "https://doi.org/10.1093/bjaed/mkw068",
+    "purpose": "Editorial triage only. Verify the identifier on the primary record, then match each clinical claim."
+  },
+  {
+    "topic": "volatile-agents",
+    "label": "BJA Open Sustainability 2024",
+    "bibliography": "White SM, Shelton CL, Gelb AW, et al. Principles of environmentally-sustainable anaesthesia. Anaesthesia. 2022;77(2):201-212.",
+    "doi": "10.1111/anae.15598",
+    "locatedTitle": "Principles of environmentally-sustainable anaesthesia: a global consensus statement from the World Federation of Societies of Anaesthesiologists",
+    "locatedRecord": "https://pubmed.ncbi.nlm.nih.gov/34724710/",
+    "purpose": "Editorial triage only. Verify the identifier on the primary record, then match each clinical claim."
+  },
+  {
+    "topic": "muscle-relaxants",
+    "label": "AAS 2023 Novel NMBA",
+    "bibliography": "Review of novel neuromuscular blocking and reversal agents. Acta Anaesthesiol Scand. 2023.",
+    "doi": "10.1111/aas.14279",
+    "locatedTitle": "Good clinical research practice (GCRP) in pharmacodynamic studies of neuromuscular blocking agents III: The 2023 Geneva revision",
+    "locatedRecord": "https://pubmed.ncbi.nlm.nih.gov/37345870/",
+    "purpose": "Editorial triage only. Verify the identifier on the primary record, then match each clinical claim."
+  },
+  {
+    "topic": "muscle-relaxants",
+    "label": "Fourth National Audit Project",
+    "bibliography": "Harper NJN et al. Sugammadex and rocuronium. Anaesthesia. 2009;64 Suppl 1:16-21.",
+    "doi": "10.1111/j.1365-2044.2008.05866.x",
+    "locatedTitle": "The undesirable effects of neuromuscular blocking drugs",
+    "locatedRecord": "https://pubmed.ncbi.nlm.nih.gov/19222427/",
+    "purpose": "Editorial triage only. Verify the identifier on the primary record, then match each clinical claim."
+  },
+  {
+    "topic": "muscle-relaxants",
+    "label": "BJA Educ 2019",
+    "bibliography": "Reddy U, Chowdhury T, Bhatt H. MRI for the anaesthetist. BJA Education. 2019;19(8):235-241.",
+    "doi": "10.1016/j.bjae.2019.04.004",
+    "locatedTitle": "Anaesthesia for pneumonectomy",
+    "locatedRecord": "https://pubmed.ncbi.nlm.nih.gov/33456906/",
+    "purpose": "Editorial triage only. Verify the identifier on the primary record, then match each clinical claim."
+  },
+  {
+    "topic": "rocuronium",
+    "label": "BJA 2008 NMB Factors",
+    "bibliography": "Review: factors influencing the onset, depth and duration of neuromuscular blockade. British Journal of Anaesthesia. 2008.",
+    "doi": "10.1093/bja/aem407",
+    "locatedTitle": "Effects of magnesium sulphate on intraoperative anaesthetic requirements and postoperative analgesia in gynaecology patients receiving total intravenous anaesthesia",
+    "locatedRecord": "https://pubmed.ncbi.nlm.nih.gov/18276652/",
+    "purpose": "Editorial triage only. Verify the identifier on the primary record, then match each clinical claim."
+  },
+  {
+    "topic": "antimicrobials-pharm",
+    "label": "IDSA Stewardship 2016",
+    "bibliography": "Barlam TF, Cosgrove SE, Abbo LM, et al. Implementing an antibiotic stewardship program: guidelines by the IDSA and SHEA. Clin Infect Dis. 2016;62(10):e51-e77.",
+    "doi": "10.1093/cid/ciw118",
+    "locatedTitle": "Implementing an Antibiotic Stewardship Program: Guidelines by the Infectious Diseases Society of America and the Society for Healthcare Epidemiology of America",
+    "locatedRecord": "https://pubmed.ncbi.nlm.nih.gov/27080992/",
+    "purpose": "Editorial triage only. Verify the identifier on the primary record, then match each clinical claim."
+  },
+  {
+    "topic": "antiemetics",
+    "label": "A&A 2022 PONV Rescue",
+    "bibliography": "Weibel S, Schaefer MS, Raj D, et al. Drugs for preventing and treating postoperative nausea and vomiting in adults: an updated evidence synthesis. Anesth Analg. 2022;135(6):1226-1240.",
+    "doi": "10.1213/ane.0000000000006126",
+    "locatedTitle": "Rescue Treatment of Postoperative Nausea and Vomiting: A Systematic Review of Current Clinical Evidence",
+    "locatedRecord": "https://pubmed.ncbi.nlm.nih.gov/36048730/",
+    "purpose": "Editorial triage only. Verify the identifier on the primary record, then match each clinical claim."
+  },
+  {
+    "topic": "corticosteroids",
+    "label": "AAGBI Steroid Cover",
+    "bibliography": "Association of Anaesthetists. Peri-operative management of the surgical patient on glucocorticoids. Anaesthesia. 2020.",
+    "doi": "10.1111/anae.14963",
+    "locatedTitle": "Guidelines for the management of glucocorticoids during the peri-operative period for patients with adrenal insufficiency: Guidelines from the Association of Anaesthetists, the Royal College of Physicians and the Society for Endocrinology UK",
+    "locatedRecord": "https://pubmed.ncbi.nlm.nih.gov/32017012/",
+    "purpose": "Editorial triage only. Verify the identifier on the primary record, then match each clinical claim."
+  },
+  {
+    "topic": "operating-theatre-environment",
+    "label": "BJA Educ 2020 Electrical Safety",
+    "bibliography": "Rajagopalan S, Sim NLW. Electrical safety in the operating theatre and intensive care unit. BJA Education. 2020;20(6):200-207.",
+    "doi": "10.1016/j.bjae.2020.02.005",
+    "locatedTitle": "Spinal cord stimulators and implications for anaesthesia",
+    "locatedRecord": "https://pubmed.ncbi.nlm.nih.gov/33456948/",
+    "purpose": "Editorial triage only. Verify the identifier on the primary record, then match each clinical claim."
+  },
+  {
+    "topic": "airway-management",
+    "label": "NAP4 2011",
+    "bibliography": "Cook TM et al. Major complications of airway management in the UK (NAP4). Br J Anaesth. 2011;106(5):617-631.",
+    "doi": "10.1093/bja/aer058",
+    "locatedTitle": "Major complications of airway management in the UK: results of the Fourth National Audit Project of the Royal College of Anaesthetists and the Difficult Airway Society. Part 1: anaesthesia",
+    "locatedRecord": "https://pubmed.ncbi.nlm.nih.gov/21447488/",
+    "purpose": "Editorial triage only. Verify the identifier on the primary record, then match each clinical claim."
+  },
+  {
+    "topic": "airway-management",
+    "label": "BJA Educ 2017",
+    "bibliography": "Ahmad I, El-Boghdadly K. Difficult airway management. BJA Education. 2019;19(7):215-221.",
+    "doi": "10.1016/j.bjae.2019.03.002",
+    "locatedTitle": "Scoring systems in the critically ill: uses, cautions, and future directions",
+    "locatedRecord": "https://pubmed.ncbi.nlm.nih.gov/33456893/",
+    "purpose": "Editorial triage only. Verify the identifier on the primary record, then match each clinical claim."
+  },
+  {
+    "topic": "regional-anaesthesia",
+    "label": "AAGBI Coagulation 2013",
+    "bibliography": "Harrop-Griffiths W, Cook T, Gill H, et al. Regional anaesthesia and patients with abnormalities of coagulation. Anaesthesia. 2013;68(9):966-972.",
+    "doi": "10.1111/anae.12359",
+    "locatedTitle": "Regional anaesthesia and patients with abnormalities of coagulation: the Association of Anaesthetists of Great Britain & Ireland The Obstetric Anaesthetists' Association Regional Anaesthesia UK",
+    "locatedRecord": "https://pubmed.ncbi.nlm.nih.gov/23905877/",
+    "purpose": "Editorial triage only. Verify the identifier on the primary record, then match each clinical claim."
+  },
+  {
+    "topic": "regional-anaesthesia",
+    "label": "OAA PDPH 2023",
+    "bibliography": "Russell R, Laxton C, Lucas DN, Niewiarowski J, Scrutton M, Stocks G. Treatment of obstetric post-dural puncture headache. Part 1: conservative and pharmacological management. Anaesthesia. 2019;74:61-77 (updated OAA guidance 2023).",
+    "doi": "10.1111/anae.14464",
+    "locatedTitle": "Association of Anaesthetists guidelines on cell salvage - a backward step for obstetric practice?",
+    "locatedRecord": "https://pubmed.ncbi.nlm.nih.gov/30412294/",
+    "purpose": "Editorial triage only. Verify the identifier on the primary record, then match each clinical claim."
+  },
+  {
+    "topic": "regional-anaesthesia",
+    "label": "BJA Educ 2018",
+    "bibliography": "Marhofer P, Greher M, Kapral S. Ultrasound guidance in regional anaesthesia. BJA Education. 2005;95(2):129-131.",
+    "doi": "10.1093/bja/aei172",
+    "locatedTitle": "Effect of clonidine pre-medication on propofol requirements during lower extremity vascular surgery: a randomized controlled trial",
+    "locatedRecord": "https://pubmed.ncbi.nlm.nih.gov/15951325/",
+    "purpose": "Editorial triage only. Verify the identifier on the primary record, then match each clinical claim."
+  },
+  {
+    "topic": "regional-anaesthesia",
+    "label": "BJA Educ 2018b",
+    "bibliography": "Tsui BCH, Suresh S. Ultrasound imaging for regional anaesthesia in infants, children and adolescents. Anesthesiology. 2010;112(2):473-492.",
+    "doi": "10.1097/aln.0b013e3181c5dfd7",
+    "locatedTitle": "Ultrasound imaging for regional anesthesia in infants, children, and adolescents: a review of current literature and its application in the practice of extremity and trunk blocks",
+    "locatedRecord": "https://pubmed.ncbi.nlm.nih.gov/20068455/",
+    "purpose": "Editorial triage only. Verify the identifier on the primary record, then match each clinical claim."
+  },
+  {
+    "topic": "regional-anaesthesia",
+    "label": "SFAR 2019 Antithrombotics & RA",
+    "bibliography": "Regional anaesthesia in patients on antithrombotic drugs: joint ESAIC/ESRA guidance summarised in Anaesth Crit Care Pain Med. 2019;38(5):507-529.",
+    "doi": "10.1016/j.accpm.2018.12.009",
+    "locatedTitle": "Bleeding complications following peripheral regional anaesthesia in patients treated with anticoagulants or antiplatelet agents: A systematic review",
+    "locatedRecord": "https://pubmed.ncbi.nlm.nih.gov/30586601/",
+    "purpose": "Editorial triage only. Verify the identifier on the primary record, then match each clinical claim."
+  },
+  {
+    "topic": "tiva",
+    "label": "J Clin Med 2023 Immunomodulation",
+    "bibliography": "Immunomodulatory effects of general anaesthetics and their relevance to cancer outcome. J Clin Med. 2023;12(18):6027.",
+    "doi": "10.3390/jcm12186027",
+    "locatedTitle": "The Immunomodulatory Effect of Various Anaesthetic Practices in Patients Undergoing Gastric or Colon Cancer Surgery: A Systematic Review and Meta-Analysis of Randomized Clinical Trials",
+    "locatedRecord": "https://pubmed.ncbi.nlm.nih.gov/37762967/",
+    "purpose": "Editorial triage only. Verify the identifier on the primary record, then match each clinical claim."
+  },
+  {
+    "topic": "anaesthesia-basics",
+    "label": "NAP5 2014 risk factors",
+    "bibliography": "Pandit JJ, Andrade J, Bogod DG, et al. NAP5: summary of main findings and risk factors. Br J Anaesth. 2014;113(4):549-559.",
+    "doi": "10.1093/bja/aeu313",
+    "locatedTitle": "5th National Audit Project (NAP5) on accidental awareness during general anaesthesia: summary of main findings and risk factors",
+    "locatedRecord": "https://pubmed.ncbi.nlm.nih.gov/25204697/",
+    "purpose": "Editorial triage only. Verify the identifier on the primary record, then match each clinical claim."
+  },
+  {
+    "topic": "pain-medicine",
+    "label": "LOLIPOP 2024",
+    "bibliography": "Weinberg L, Yu J, Ho KM, et al. Effect of intravenous lidocaine infusion on postoperative quality of recovery after laparoscopic abdominal surgery (LOLIPOP): a multicentre randomised controlled trial. Br J Anaesth. 2024;132(6):1336-1345.",
+    "doi": "10.1016/j.bja.2024.02.029",
+    "locatedTitle": "Repurposing nonrecyclable single-use plastics into a sustainable bitumen substitute in Singapore",
+    "locatedRecord": "https://pubmed.ncbi.nlm.nih.gov/38553311/",
+    "purpose": "Editorial triage only. Verify the identifier on the primary record, then match each clinical claim."
+  },
+  {
+    "topic": "pain-medicine",
+    "label": "BJA 2023 Cancer Pain Phenotypes",
+    "bibliography": "Pain phenotyping after cancer treatment: recognising the nociplastic dimension. Br J Anaesth. 2023;130(3):e1-e4.",
+    "doi": "10.1016/j.bja.2022.12.013",
+    "locatedTitle": "Towards precision pain medicine for pain after cancer: the Cancer Pain Phenotyping Network multidisciplinary international guidelines for pain phenotyping using nociplastic pain criteria",
+    "locatedRecord": "https://pubmed.ncbi.nlm.nih.gov/36702650/",
+    "purpose": "Editorial triage only. Verify the identifier on the primary record, then match each clinical claim."
+  },
+  {
+    "topic": "pain-medicine",
+    "label": "Anaesthesia 2012 Pharmacogenetics",
+    "bibliography": "Pharmacogenetics and its relevance to anaesthesia and analgesia. Anaesthesia. 2012;67(2):149-158.",
+    "doi": "10.1111/j.1365-2044.2011.06918.x",
+    "locatedTitle": "Pharmacogenetics and anaesthesia: the value of genetic profiling",
+    "locatedRecord": "https://pubmed.ncbi.nlm.nih.gov/22251108/",
+    "purpose": "Editorial triage only. Verify the identifier on the primary record, then match each clinical claim."
+  },
+  {
+    "topic": "obstetric-anaesthesia",
+    "label": "BJA Educ 2019",
+    "bibliography": "Kinsella SM et al. Anaesthesia for caesarean section. BJA Education. 2019;19(9):299-305.",
+    "doi": "10.1016/j.bjae.2019.05.003",
+    "locatedTitle": "Venous thromboembolism in paediatrics",
+    "locatedRecord": "https://pubmed.ncbi.nlm.nih.gov/33456907/",
+    "purpose": "Editorial triage only. Verify the identifier on the primary record, then match each clinical claim."
+  },
+  {
+    "topic": "obstetric-anaesthesia",
+    "label": "OAA PDPH 2023",
+    "bibliography": "Russell R, Laxton C, Lucas DN, Niewiarowski J, Scrutton M, Stocks G. Treatment of obstetric post-dural puncture headache. Part 1: conservative and pharmacological management. Anaesthesia. 2019;74:61-77 (updated OAA guidance 2023).",
+    "doi": "10.1111/anae.14464",
+    "locatedTitle": "Association of Anaesthetists guidelines on cell salvage - a backward step for obstetric practice?",
+    "locatedRecord": "https://pubmed.ncbi.nlm.nih.gov/30412294/",
+    "purpose": "Editorial triage only. Verify the identifier on the primary record, then match each clinical claim."
+  },
+  {
+    "topic": "obstetric-anaesthesia",
+    "label": "Anaesthesia 2025 Maternity Disparities",
+    "bibliography": "Racial, ethnic and socioeconomic disparities in maternity and obstetric anaesthetic care. Anaesthesia. 2025.",
+    "doi": "10.1111/anae.16581",
+    "locatedTitle": "Racial and ethnic disparity in obstetric anaesthesia: a systematic review and meta-analysis",
+    "locatedRecord": "https://pubmed.ncbi.nlm.nih.gov/40050931/",
+    "purpose": "Editorial triage only. Verify the identifier on the primary record, then match each clinical claim."
+  },
+  {
+    "topic": "obstetric-anaesthesia",
+    "label": "AAGBI Coagulation 2013",
+    "bibliography": "Harrop-Griffiths W, Cook T, Gill H, et al. Regional anaesthesia and patients with abnormalities of coagulation. Anaesthesia. 2013;68(9):966-972.",
+    "doi": "10.1111/anae.12359",
+    "locatedTitle": "Regional anaesthesia and patients with abnormalities of coagulation: the Association of Anaesthetists of Great Britain & Ireland The Obstetric Anaesthetists' Association Regional Anaesthesia UK",
+    "locatedRecord": "https://pubmed.ncbi.nlm.nih.gov/23905877/",
+    "purpose": "Editorial triage only. Verify the identifier on the primary record, then match each clinical claim."
+  },
+  {
+    "topic": "paediatric-anaesthesia",
+    "label": "BJA Educ 2019",
+    "bibliography": "Engelhardt T. Paediatric anaesthesia. BJA Education. 2019;19(2):47-53.",
+    "doi": "10.1016/j.bjae.2018.11.004",
+    "locatedTitle": "Essential notes for continuing professional development",
+    "locatedRecord": "https://pubmed.ncbi.nlm.nih.gov/33456866/",
+    "purpose": "Editorial triage only. Verify the identifier on the primary record, then match each clinical claim."
+  },
+  {
+    "topic": "paediatric-core",
+    "label": "BJA Educ Paeds 2018",
+    "bibliography": "Crawford E, Brooks D. Neonatal and paediatric pharmacology: principles of therapeutics. BJA Education. 2018. Neonatal total body water 75–80%, reduced protein binding, immature glucuronidation and GFR 20–30% of adult values.",
+    "doi": "10.1016/j.bjae.2018.03.003",
+    "locatedTitle": "Prehospital emergency medicine - UK military experience",
+    "locatedRecord": "https://pubmed.ncbi.nlm.nih.gov/33456831/",
+    "purpose": "Editorial triage only. Verify the identifier on the primary record, then match each clinical claim."
+  },
+  {
+    "topic": "cardiothoracic",
+    "label": "POAF JCVA 2024",
+    "bibliography": "Postoperative atrial fibrillation after cardiac surgery: mechanisms, prophylaxis and management. J Cardiothorac Vasc Anesth. 2024.",
+    "doi": "10.1053/j.jvca.2024.07.043",
+    "locatedTitle": "An Update on Guidelines to Prevent and Manage Atrial Fibrillation After Cardiac Surgery and a Survey of Practice in the UK",
+    "locatedRecord": "https://pubmed.ncbi.nlm.nih.gov/39122642/",
+    "purpose": "Editorial triage only. Verify the identifier on the primary record, then match each clinical claim."
+  },
+  {
+    "topic": "cardiothoracic",
+    "label": "ACTACC TOE Audit 2019",
+    "bibliography": "Purza R, et al. Transoesophageal echocardiography complications in adult cardiac surgery: a national audit. Anaesthesia. 2019.",
+    "doi": "10.1111/anae.14734",
+    "locatedTitle": "Complications related to peri-operative transoesophageal echocardiography - a one-year prospective national audit by the Association of Cardiothoracic Anaesthesia and Critical Care",
+    "locatedRecord": "https://pubmed.ncbi.nlm.nih.gov/31236918/",
+    "purpose": "Editorial triage only. Verify the identifier on the primary record, then match each clinical claim."
+  },
+  {
+    "topic": "cardiothoracic",
+    "label": "Resternotomy Audit 2021",
+    "bibliography": "Resternotomy for bleeding after adult cardiac surgery: a UK multicentre audit. Anaesthesia. 2021;76(2):199-207.",
+    "doi": "10.1111/anae.15070",
+    "locatedTitle": "The incidence and effect of resternotomy following cardiac surgery on morbidity and mortality: a 1-year national audit on behalf of the Association of Cardiothoracic Anaesthesia and Critical Care",
+    "locatedRecord": "https://pubmed.ncbi.nlm.nih.gov/32406071/",
+    "purpose": "Editorial triage only. Verify the identifier on the primary record, then match each clinical claim."
+  },
+  {
+    "topic": "cardiothoracic",
+    "label": "ACTACC TIVA 2019",
+    "bibliography": "Anaesthetic technique and outcome after lung resection: ACTACC national thoracic anaesthesia audit. Anaesthesia. 2019.",
+    "doi": "10.1111/anae.14649",
+    "locatedTitle": "Association between anaesthetic technique and unplanned admission to intensive care after thoracic lung resection surgery: the second Association of Cardiothoracic Anaesthesia and Critical Care (ACTACC) National Audit†",
+    "locatedRecord": "https://associationofanaesthetists-publications.onlinelibrary.wiley.com/doi/10.1111/anae.14649",
+    "purpose": "Editorial triage only. Verify the identifier on the primary record, then match each clinical claim."
+  },
+  {
+    "topic": "orthopaedic-anaesthesia",
+    "label": "AAGBI Tourniquet",
+    "bibliography": "Association of Anaesthetists. Recommendations for the safe use of tourniquets in limb surgery. Anaesthesia. 2021;76(11):1531-1539.",
+    "doi": "10.1111/anae.15345",
+    "locatedTitle": "A quantitative evaluation of aerosol generation during tracheal intubation and extubation: a reply",
+    "locatedRecord": "https://pubmed.ncbi.nlm.nih.gov/33368170/",
+    "purpose": "Editorial triage only. Verify the identifier on the primary record, then match each clinical claim."
+  },
+  {
+    "topic": "orthopaedic-anaesthesia",
+    "label": "AAGBI BCIS 2015",
+    "bibliography": "Griffiths R, White SM, Moppett IK, et al. Safety guideline: reducing the risk from cemented hemiarthroplasty for hip fracture. Anaesthesia. 2015;70(5):623-626.",
+    "doi": "10.1111/anae.13036",
+    "locatedTitle": "Safety guideline: reducing the risk from cemented hemiarthroplasty for hip fracture 2015: Association of Anaesthetists of Great Britain and Ireland British Orthopaedic Association British Geriatric Society",
+    "locatedRecord": "https://pubmed.ncbi.nlm.nih.gov/25866041/",
+    "purpose": "Editorial triage only. Verify the identifier on the primary record, then match each clinical claim."
+  },
+  {
+    "topic": "ent-anaesthesia",
+    "label": "NAP4 2011",
+    "bibliography": "Cook TM, Woodall N, Frerk C. Major complications of airway management in the UK (NAP4). Br J Anaesth. 2011;106(5):617-631.",
+    "doi": "10.1093/bja/aer058",
+    "locatedTitle": "Major complications of airway management in the UK: results of the Fourth National Audit Project of the Royal College of Anaesthetists and the Difficult Airway Society. Part 1: anaesthesia",
+    "locatedRecord": "https://pubmed.ncbi.nlm.nih.gov/21447488/",
+    "purpose": "Editorial triage only. Verify the identifier on the primary record, then match each clinical claim."
+  },
+  {
+    "topic": "ent-anaesthesia",
+    "label": "Iliff 2022 Haematoma",
+    "bibliography": "Iliff HA, El-Boghdadly K, Ahmad I, et al. Management of haematoma after thyroid surgery: systematic review and multidisciplinary consensus guidelines from the Difficult Airway Society, the British Association of Endocrine and Thyroid Surgeons and the British Association of Otorhinolaryngology, Head and Neck Surgery. Anaesthesia. 2022;77(1):82-95.",
+    "doi": "10.1111/anae.15654",
+    "locatedTitle": "Mirror, mirror, on the wall, which is the best videolaryngoscope of them all?",
+    "locatedRecord": "https://pubmed.ncbi.nlm.nih.gov/34957546/",
+    "purpose": "Editorial triage only. Verify the identifier on the primary record, then match each clinical claim."
+  },
+  {
+    "topic": "ent-anaesthesia",
+    "label": "BJA Educ Maxillofacial 2018",
+    "bibliography": "Kellman RM, Losquadro WD. Comprehensive airway management of patients with maxillofacial trauma. Craniomaxillofac Trauma Reconstr. 2008;1(1):39-47.",
+    "doi": "10.1055/s-0028-1098963",
+    "locatedTitle": "Craniofacial Bone Grafting: Wolff's Law Revisited",
+    "locatedRecord": "https://pubmed.ncbi.nlm.nih.gov/22110789/",
+    "purpose": "Editorial triage only. Verify the identifier on the primary record, then match each clinical claim."
+  },
+  {
+    "topic": "ophthalmic-anaesthesia",
+    "label": "Ambulatory Ophthalmic 2025",
+    "bibliography": "Current advances in ambulatory ophthalmic anaesthesia, including relaxation of routine preoperative fasting for local anaesthetic cataract surgery. Curr Opin Anaesthesiol. 2025.",
+    "doi": "10.1097/aco.0000000000001583",
+    "locatedTitle": "Ambulatory ophthalmic anesthesia: what is important",
+    "locatedRecord": "https://pubmed.ncbi.nlm.nih.gov/41182057/",
+    "purpose": "Editorial triage only. Verify the identifier on the primary record, then match each clinical claim."
+  },
+  {
+    "topic": "ophthalmic-anaesthesia",
+    "label": "OCR JAMC 2023",
+    "bibliography": "Sub-Tenon's bupivacaine reduces the incidence of bradycardia and oculocardiac reflex in squint surgery patients after general anaesthesia induction. J Ayub Med Coll Abbottabad. 2023;35(1).",
+    "doi": "10.55519/jamc-01-11512",
+    "locatedTitle": "Efficacy Of Sub-Tenon's Block In Paediatric Strabismus Surgery In Terms Of Reduction In Oculocardiac Reflex",
+    "locatedRecord": "https://pubmed.ncbi.nlm.nih.gov/36849367/",
+    "purpose": "Editorial triage only. Verify the identifier on the primary record, then match each clinical claim."
+  },
+  {
+    "topic": "general-colorectal-surgery",
+    "label": "Zhuang Early Feeding 2013",
+    "bibliography": "Zhuang CL, Ye XZ, Zhang CJ, Dong QT, Chen BC, Yu Z. Early versus traditional postoperative oral feeding in patients undergoing elective colorectal surgery: a meta-analysis of randomized clinical trials. Dig Surg. 2013;30(3):225-232.",
+    "doi": "10.1159/000351385",
+    "locatedTitle": "Diet, gut enterotypes and health: is there a link?",
+    "locatedRecord": "https://pubmed.ncbi.nlm.nih.gov/24107497/",
+    "purpose": "Editorial triage only. Verify the identifier on the primary record, then match each clinical claim."
+  },
+  {
+    "topic": "urological-anaesthesia",
+    "label": "Propofol Erection 2010",
+    "bibliography": "Management of propofol-induced penile erection. Anaesthesia. 2010;65(11):1130-1133.",
+    "doi": "10.1111/j.1365-2044.2010.06362.x",
+    "locatedTitle": "Thermal burn following combined use of forced air and fluid warming devices",
+    "locatedRecord": "https://pubmed.ncbi.nlm.nih.gov/20565410/",
+    "purpose": "Editorial triage only. Verify the identifier on the primary record, then match each clinical claim."
+  },
+  {
+    "topic": "urological-anaesthesia",
+    "label": "Positioning Review 2016",
+    "bibliography": "Knight DJW, Mahajan RP, et al. Patient positioning in anaesthesia. Anaesthesia. 2016;71(Suppl 1). Association of Anaesthetists guidance on safe patient positioning.",
+    "doi": "10.1111/anae.13243",
+    "locatedTitle": "Ongoing military evolution of Trauma Life Support",
+    "locatedRecord": "https://pubmed.ncbi.nlm.nih.gov/26449306/",
+    "purpose": "Editorial triage only. Verify the identifier on the primary record, then match each clinical claim."
+  },
+  {
+    "topic": "urological-anaesthesia",
+    "label": "BJA Educ Cystectomy 2017",
+    "bibliography": "Pillai P et al. Anaesthesia for radical cystectomy and urinary diversion. BJA Education. 2018;18(2):54-60.",
+    "doi": "10.1016/j.bjae.2017.11.005",
+    "locatedTitle": "Anaesthetic management of children with epidermolysis bullosa",
+    "locatedRecord": "https://pubmed.ncbi.nlm.nih.gov/33456808/",
+    "purpose": "Editorial triage only. Verify the identifier on the primary record, then match each clinical claim."
+  },
+  {
+    "topic": "urological-anaesthesia",
+    "label": "BJA Educ Cystectomy 2018",
+    "bibliography": "Anaesthesia for radical cystectomy and urinary diversion. BJA Education. 2018;18(2):51-57.",
+    "doi": "10.1016/j.bjae.2017.11.002",
+    "locatedTitle": "Management of cardiac arrest following cardiac surgery",
+    "locatedRecord": "https://pubmed.ncbi.nlm.nih.gov/33456790/",
+    "purpose": "Editorial triage only. Verify the identifier on the primary record, then match each clinical claim."
+  },
+  {
+    "topic": "urological-anaesthesia",
+    "label": "BJA Educ TURBT 2019",
+    "bibliography": "Anaesthesia for transurethral resection of bladder tumour and the obturator reflex. BJA Education. 2019;19(9):287-292.",
+    "doi": "10.1016/j.bjae.2019.05.002",
+    "locatedTitle": "Seven tips for giving an engaging and memorable presentation",
+    "locatedRecord": "https://pubmed.ncbi.nlm.nih.gov/33456902/",
+    "purpose": "Editorial triage only. Verify the identifier on the primary record, then match each clinical claim."
+  },
+  {
+    "topic": "elderly-anaesthesia",
+    "label": "AAGBI Elderly 2014",
+    "bibliography": "Griffiths R et al. AAGBI Guidelines: Peri-operative care of the elderly. Anaesthesia. 2014;69(s1):81-98.",
+    "doi": "10.1111/anae.12524",
+    "locatedTitle": "Peri-operative care of the elderly 2014: Association of Anaesthetists of Great Britain and Ireland",
+    "locatedRecord": "https://pubmed.ncbi.nlm.nih.gov/24303864/",
+    "purpose": "Editorial triage only. Verify the identifier on the primary record, then match each clinical claim."
+  },
+  {
+    "topic": "day-surgery",
+    "label": "PADSS Review 2023",
+    "bibliography": "Zhang J, Wang Y, Xu H, Yang J. Post-Anaesthetic Discharge Scoring System (PADSS) and modern ambulatory discharge criteria: a narrative review. Perioper Med (Lond). 2023;12:47.",
+    "doi": "10.1186/s13741-023-00335-x",
+    "locatedTitle": "Outpatient compared to inpatient thyroidectomy on 30-day postoperative outcomes: a national propensity matched analysis",
+    "locatedRecord": "https://pubmed.ncbi.nlm.nih.gov/37553707/",
+    "purpose": "Editorial triage only. Verify the identifier on the primary record, then match each clinical claim."
+  },
+  {
+    "topic": "procedural-sedation",
+    "label": "Remimazolam DDDT 2022",
+    "bibliography": "Lee A, Shirley M. Remimazolam: a review in procedural sedation. Drug Design, Development and Therapy. 2022;16:2521-2531.",
+    "doi": "10.2147/dddt.s384155",
+    "locatedTitle": "Remimazolam: An Updated Review of a New Sedative and Anaesthetic",
+    "locatedRecord": "https://pubmed.ncbi.nlm.nih.gov/36411859/",
+    "purpose": "Editorial triage only. Verify the identifier on the primary record, then match each clinical claim."
+  },
+  {
+    "topic": "interventional-radiology",
+    "label": "Assoc Anaesth MRI 2021",
+    "bibliography": "Association of Anaesthetists. Safety in magnetic resonance imaging. Anaesthesia. 2021;76(11):1533-1545.",
+    "doi": "10.1111/anae.15517",
+    "locatedTitle": "Self-citations and the quality of anaesthesia research",
+    "locatedRecord": "https://pubmed.ncbi.nlm.nih.gov/34061351/",
+    "purpose": "Editorial triage only. Verify the identifier on the primary record, then match each clinical claim."
+  },
+  {
+    "topic": "emergency-surgery",
+    "label": "P-POSSUM",
+    "bibliography": "Prytherch DR et al. POSSUM and Portsmouth POSSUM for predicting mortality. Br J Surg. 1998;85(9):1217-1220.",
+    "doi": "10.1046/j.1365-2168.1998.00840.x",
+    "locatedTitle": "POSSUM and Portsmouth POSSUM for predicting mortality. Physiological and Operative Severity Score for the enUmeration of Mortality and morbidity",
+    "locatedRecord": "https://pubmed.ncbi.nlm.nih.gov/9752863/",
+    "purpose": "Editorial triage only. Verify the identifier on the primary record, then match each clinical claim."
+  },
+  {
+    "topic": "clinical-incidents",
+    "label": "BJA Educ 2011",
+    "bibliography": "Harper NJN et al. Anaesthetic anaphylaxis — NAP6 report. Br J Anaesth. 2018;121(1):159-171.",
+    "doi": "10.1016/j.bja.2018.04.014",
+    "locatedTitle": "Anaesthesia, surgery, and life-threatening allergic reactions: epidemiology and clinical features of perioperative anaphylaxis in the 6th National Audit Project (NAP6)",
+    "locatedRecord": "https://pubmed.ncbi.nlm.nih.gov/29935567/",
+    "purpose": "Editorial triage only. Verify the identifier on the primary record, then match each clinical claim."
+  },
+  {
+    "topic": "mechanical-ventilation",
+    "label": "S3 Ventilation 2025 (adaptive recs)",
+    "bibliography": "Hohmann F, Fichtner F, Becher T, et al. Clinical guideline for treating acute respiratory insufficiency with invasive ventilation and ECMO. Respiration. 2025:1-17.",
+    "doi": "10.1159/000549732",
+    "locatedTitle": "Clinical Guideline for Treating Acute Respiratory Insufficiency with Invasive Ventilation and Extracorporeal Membrane Oxygenation: Updated Evidence-Based Recommendations for Choosing Modes and Setting Parameters of Mechanical Ventilation",
+    "locatedRecord": "https://pubmed.ncbi.nlm.nih.gov/41379760/",
+    "purpose": "Editorial triage only. Verify the identifier on the primary record, then match each clinical claim."
+  },
+  {
+    "topic": "mechanical-ventilation",
+    "label": "S3 Ventilation 2025 (PAV intolerance)",
+    "bibliography": "Hohmann F, Fichtner F, Becher T, et al. Clinical guideline for treating acute respiratory insufficiency with invasive ventilation and ECMO. Respiration. 2025:1-17.",
+    "doi": "10.1159/000549732",
+    "locatedTitle": "Clinical Guideline for Treating Acute Respiratory Insufficiency with Invasive Ventilation and Extracorporeal Membrane Oxygenation: Updated Evidence-Based Recommendations for Choosing Modes and Setting Parameters of Mechanical Ventilation",
+    "locatedRecord": "https://pubmed.ncbi.nlm.nih.gov/41379760/",
+    "purpose": "Editorial triage only. Verify the identifier on the primary record, then match each clinical claim."
+  },
+  {
+    "topic": "ards",
+    "label": "ATS ARDS 2024 PEEP",
+    "bibliography": "Qadir N, et al. ATS clinical practice guideline update on ARDS. Am J Respir Crit Care Med. 2024;209(1):24-36.",
+    "doi": "10.1164/rccm.202311-2011st",
+    "locatedTitle": "An Update on Management of Adult Patients with Acute Respiratory Distress Syndrome: An Official American Thoracic Society Clinical Practice Guideline",
+    "locatedRecord": "https://pubmed.ncbi.nlm.nih.gov/38032683/",
+    "purpose": "Editorial triage only. Verify the identifier on the primary record, then match each clinical claim."
+  },
+  {
+    "topic": "ards",
+    "label": "PROSEVA 2013",
+    "bibliography": "Guérin C et al. Prone positioning in severe ARDS. N Engl J Med. 2013;368:2159-2168.",
+    "doi": "10.1056/nejmoa1214103",
+    "locatedTitle": "Prone positioning in severe acute respiratory distress syndrome",
+    "locatedRecord": "https://pubmed.ncbi.nlm.nih.gov/23688302/",
+    "purpose": "Editorial triage only. Verify the identifier on the primary record, then match each clinical claim."
+  },
+  {
+    "topic": "ards",
+    "label": "ARDSNet 2000",
+    "bibliography": "ARDS Network. Ventilation with lower tidal volumes. N Engl J Med. 2000;342:1301-1308.",
+    "doi": "10.1056/nejm200005043421801",
+    "locatedTitle": "Ventilation with lower tidal volumes as compared with traditional tidal volumes for acute lung injury and the acute respiratory distress syndrome",
+    "locatedRecord": "https://pubmed.ncbi.nlm.nih.gov/10793162/",
+    "purpose": "Editorial triage only. Verify the identifier on the primary record, then match each clinical claim."
+  },
+  {
+    "topic": "ards",
+    "label": "BJA Educ 2018",
+    "bibliography": "Mart MF, Ware LB. Acute respiratory distress syndrome. BJA Education. 2020;20(3):83-89.",
+    "doi": "10.1016/j.bjae.2019.12.001",
+    "locatedTitle": "Airway pressure release ventilation",
+    "locatedRecord": "https://pubmed.ncbi.nlm.nih.gov/33456934/",
+    "purpose": "Editorial triage only. Verify the identifier on the primary record, then match each clinical claim."
+  },
+  {
+    "topic": "circulatory-failure",
+    "label": "BJA Educ ECMO Weaning 2019",
+    "bibliography": "Marasco SF, Bailey M, McGiffin D. Weaning from extracorporeal membrane oxygenation: practical guidance. BJA Education / Continuing Education in Anaesthesia Critical Care & Pain — stepwise flow reduction with echocardiographic assessment of native cardiac recovery.",
+    "doi": "10.1016/j.bjae.2019.10.001",
+    "locatedTitle": "Erratum to 'General principles of regional anaesthesia in children' [BJA Education 19 (2019) 342-348]",
+    "locatedRecord": "https://pubmed.ncbi.nlm.nih.gov/33465176/",
+    "purpose": "Editorial triage only. Verify the identifier on the primary record, then match each clinical claim."
+  },
+  {
+    "topic": "circulatory-failure",
+    "label": "Endocr Rev 2022 (Phaeochromocytoma)",
+    "bibliography": "Neumann HPH, Young WF, Eng C. Phaeochromocytoma and paraganglioma — catecholamine excess causing life-threatening haemodynamic instability; alpha-blockade must precede beta-blockade.",
+    "doi": "10.1056/nejmra1806651",
+    "locatedTitle": "Pheochromocytoma and Paraganglioma",
+    "locatedRecord": "https://pubmed.ncbi.nlm.nih.gov/31390501/",
+    "purpose": "Editorial triage only. Verify the identifier on the primary record, then match each clinical claim."
+  },
+  {
+    "topic": "circulatory-failure",
+    "label": "SHOCK trial",
+    "bibliography": "Hochman JS et al. Early revascularization in acute MI complicated by cardiogenic shock. NEJM. 1999;341:625-634.",
+    "doi": "10.1056/nejm199908263410901",
+    "locatedTitle": "Early revascularization in acute myocardial infarction complicated by cardiogenic shock. SHOCK Investigators. Should We Emergently Revascularize Occluded Coronaries for Cardiogenic Shock",
+    "locatedRecord": "https://pubmed.ncbi.nlm.nih.gov/10460813/?dopt=Abstract",
+    "purpose": "Editorial triage only. Verify the identifier on the primary record, then match each clinical claim."
+  },
+  {
+    "topic": "circulatory-failure",
+    "label": "IABP-SHOCK II",
+    "bibliography": "Thiele H et al. IABP in cardiogenic shock complicating acute MI. NEJM. 2012;367:1287-1296.",
+    "doi": "10.1056/nejmoa1208410",
+    "locatedTitle": "Intraaortic balloon support for myocardial infarction with cardiogenic shock",
+    "locatedRecord": "https://pubmed.ncbi.nlm.nih.gov/22920912",
+    "purpose": "Editorial triage only. Verify the identifier on the primary record, then match each clinical claim."
+  },
+  {
+    "topic": "cardiac-output-monitoring",
+    "label": "BJA Educ 2018",
+    "bibliography": "Saugel B, Vincent JL. Cardiac output monitoring. BJA Education. 2018;18(12):370-376.",
+    "doi": "10.1016/j.bjae.2018.09.004",
+    "locatedTitle": "Nerve injury after peripheral nerve blockade-current understanding and guidelines",
+    "locatedRecord": "https://pubmed.ncbi.nlm.nih.gov/33456806/",
+    "purpose": "Editorial triage only. Verify the identifier on the primary record, then match each clinical claim."
+  },
+  {
+    "topic": "arrhythmias-ecg-icu",
+    "label": "Sgarbossa 1996",
+    "bibliography": "Sgarbossa EB, Pinski SL, Barbagelata A, et al. Electrocardiographic diagnosis of evolving acute myocardial infarction in the presence of left bundle-branch block. N Engl J Med. 1996;334(8):481-487.",
+    "doi": "10.1056/nejm199602223340801",
+    "locatedTitle": "Electrocardiographic diagnosis of evolving acute myocardial infarction in the presence of left bundle-branch block. GUSTO-1 (Global Utilization of Streptokinase and Tissue Plasminogen Activator for Occluded Coronary Arteries) Investigators",
+    "locatedRecord": "https://pubmed.ncbi.nlm.nih.gov/8559200/",
+    "purpose": "Editorial triage only. Verify the identifier on the primary record, then match each clinical claim."
+  },
+  {
+    "topic": "arrhythmias-ecg-icu",
+    "label": "BJA Educ 2018",
+    "bibliography": "Bashir Y, Betts TR. Acute management of arrhythmias in the critically ill. BJA Education. 2018;18(7):207-213.",
+    "doi": "10.1016/j.bjae.2018.04.003",
+    "locatedTitle": "Anaesthesia for the management of traumatic pelvic fractures",
+    "locatedRecord": "https://pubmed.ncbi.nlm.nih.gov/33456834/",
+    "purpose": "Editorial triage only. Verify the identifier on the primary record, then match each clinical claim."
+  },
+  {
+    "topic": "arrhythmias-ecg-icu",
+    "label": "ACC/AHA/HRS 2017",
+    "bibliography": "Al-Khatib SM, Stevenson WG, Ackerman MJ, et al. 2017 AHA/ACC/HRS Guideline for Management of Patients With Ventricular Arrhythmias and the Prevention of Sudden Cardiac Death. Circulation. 2018;138(13):e272-e391.",
+    "doi": "10.1161/cir.0000000000000549",
+    "locatedTitle": "2017 AHA/ACC/HRS Guideline for Management of Patients With Ventricular Arrhythmias and the Prevention of Sudden Cardiac Death: A Report of the American College of Cardiology/American Heart Association Task Force on Clinical Practice Guidelines and the Heart Rhythm Society",
+    "locatedRecord": "https://pubmed.ncbi.nlm.nih.gov/29084731/",
+    "purpose": "Editorial triage only. Verify the identifier on the primary record, then match each clinical claim."
+  },
+  {
+    "topic": "ecmo",
+    "label": "ELSO Registry VV Conversion 2026",
+    "bibliography": "De Piero ME, Alessandri F, Mariani S, et al. Conversion from venovenous to venoarterial or hybrid ECMO: analysis from the ELSO Registry. Crit Care Med. 2026;54(3):532-547.",
+    "doi": "10.1097/ccm.0000000000007027",
+    "locatedTitle": "Conversion From Venovenous to Venoarterial or Hybrid Extracorporeal Membrane Oxygenation: Analysis From the Extracorporeal Life Support Organization Registry",
+    "locatedRecord": "https://pubmed.ncbi.nlm.nih.gov/41556746/",
+    "purpose": "Editorial triage only. Verify the identifier on the primary record, then match each clinical claim."
+  },
+  {
+    "topic": "sepsis",
+    "label": "SSC 2012 (Inotropes)",
+    "bibliography": "Dellinger RP, Levy MM, Rhodes A, et al. Surviving Sepsis Campaign: international guidelines for management of severe sepsis and septic shock, 2012. Intensive Care Med. 2013;39(2):165-228.",
+    "doi": "10.1007/s00134-012-2769-8",
+    "locatedTitle": "Special Article",
+    "locatedRecord": "https://link.springer.com/content/pdf/10.1007/s00134-012-2769-8.pdf",
+    "purpose": "Editorial triage only. Verify the identifier on the primary record, then match each clinical claim."
+  },
+  {
+    "topic": "acid-base",
+    "label": "BICAR-ICU 2018 methods",
+    "bibliography": "Jaber S, et al. BICAR-ICU. Lancet. 2018;392(10141):31-40 — inclusion criteria and adverse effects.",
+    "doi": "10.1016/s0140-6736(18)31080-8",
+    "locatedTitle": "Sodium bicarbonate therapy for patients with severe metabolic acidaemia in the intensive care unit (BICAR-ICU): a multicentre, open-label, randomised controlled, phase 3 trial",
+    "locatedRecord": "https://pubmed.ncbi.nlm.nih.gov/29910040/",
+    "purpose": "Editorial triage only. Verify the identifier on the primary record, then match each clinical claim."
+  },
+  {
+    "topic": "haemorrhagic-shock",
+    "label": "CRASH-2 late harm 2011",
+    "bibliography": "CRASH-2 collaborators; Roberts I, Shakur H, et al. Lancet. 2011;377(9771):1096-101.",
+    "doi": "10.1016/s0140-6736(11)60278-x",
+    "locatedTitle": "The importance of early treatment with tranexamic acid in bleeding trauma patients: an exploratory analysis of the CRASH-2 randomised controlled trial",
+    "locatedRecord": "https://pubmed.ncbi.nlm.nih.gov/21439633/",
+    "purpose": "Editorial triage only. Verify the identifier on the primary record, then match each clinical claim."
+  },
+  {
+    "topic": "icu-nutrition",
+    "label": "NUTRIREA-3 2022",
+    "bibliography": "Reignier J, Plantefeve G, Mira JP, et al. Low versus standard calorie and protein feeding in ventilated adults with shock: a randomised, controlled, multicentre, open-label, parallel-group study (NUTRIREA-3). Lancet. 2022;400(10363):1675-1684.",
+    "doi": "10.1016/s0140-6736(22)01885-2",
+    "locatedTitle": "Detection of poliovirus in London highlights the value of sewage surveillance",
+    "locatedRecord": "https://pubmed.ncbi.nlm.nih.gov/36243023/",
+    "purpose": "Editorial triage only. Verify the identifier on the primary record, then match each clinical claim."
+  },
+  {
+    "topic": "acute-liver-failure",
+    "label": "ADQI–ICA RRT 2024",
+    "bibliography": "Nadim MK, et al. ADQI–ICA consensus. J Hepatol. 2024. Renal replacement therapy section.",
+    "doi": "10.1016/j.jhep.2024.03.031",
+    "locatedTitle": "Acute kidney injury in patients with cirrhosis: Acute Disease Quality Initiative (ADQI) and International Club of Ascites (ICA) joint multidisciplinary consensus meeting",
+    "locatedRecord": "https://pubmed.ncbi.nlm.nih.gov/38527522/",
+    "purpose": "Editorial triage only. Verify the identifier on the primary record, then match each clinical claim."
+  },
+  {
+    "topic": "acute-pancreatitis",
+    "label": "UEG pain 2026",
+    "bibliography": "Pandanaboyana S, Knoph CS, Kuhlmann L, et al. European Interdisciplinary Guidelines on Pain Management in Acute Pancreatitis. United European Gastroenterol J. 2026;14(5):e70230.",
+    "doi": "10.1002/ueg2.70230",
+    "locatedTitle": "European Interdisciplinary Guidelines on Pain Management in Acute Pancreatitis: UEG, EPC, EDS, ESDO, EAGEN, ESPGHAN, ESGAR, and ESPCG Evidence-Based Recommendations",
+    "locatedRecord": "https://pubmed.ncbi.nlm.nih.gov/42299777/",
+    "purpose": "Editorial triage only. Verify the identifier on the primary record, then match each clinical claim."
+  },
+  {
+    "topic": "toxicology",
+    "label": "BJA Educ 2021 Cardiotox",
+    "bibliography": "Coppens M, et al. Management of cardiovascular drug toxicity. BJA Education. 2021;21(5):190-197. High-dose insulin euglycaemia therapy: 1 unit/kg short-acting insulin bolus followed by 0.5–2 units/kg/h with dextrose to maintain euglycaemia and close potassium monitoring.",
+    "doi": "10.1016/j.bjae.2021.01.004",
+    "locatedTitle": "Advances in transcatheter aortic valve implantation, part 1: patient selection and preparation",
+    "locatedRecord": "https://pubmed.ncbi.nlm.nih.gov/34026277/",
+    "purpose": "Editorial triage only. Verify the identifier on the primary record, then match each clinical claim."
+  },
+  {
+    "topic": "transfusion-coagulation",
+    "label": "Curr Opin Anaesthesiol 2013 VHA",
+    "bibliography": "Görlinger K, Dirkmann D, Hanke AA. Rotational thromboelastometry (ROTEM) and its role in goal-directed coagulation management. Curr Opin Anaesthesiol. 2013;26(2):203-13.",
+    "doi": "10.1097/aco.0b013e32835afd28",
+    "locatedTitle": "Perioperative coagulation management during cardiac surgery",
+    "locatedRecord": "https://pubmed.ncbi.nlm.nih.gov/23222215/",
+    "purpose": "Editorial triage only. Verify the identifier on the primary record, then match each clinical claim."
+  },
+  {
+    "topic": "immunology-intensivists",
+    "label": "BJA Educ Immunosuppression 2019",
+    "bibliography": "Immunosuppressive therapy and the critically ill patient — calcineurin inhibitors, mTOR inhibitors, antiproliferative agents and biologics. BJA Education.",
+    "doi": "10.1016/j.bjae.2019.07.003",
+    "locatedTitle": "Tetralogy of Fallot",
+    "locatedRecord": "https://pubmed.ncbi.nlm.nih.gov/33456859/",
+    "purpose": "Editorial triage only. Verify the identifier on the primary record, then match each clinical claim."
+  },
+  {
+    "topic": "paediatric-icu",
+    "label": "CDH EURO 2024",
+    "bibliography": "Vergouwe Y, Snoek KG, et al.; CDH EURO Consortium. Standardised postnatal management of infants with congenital diaphragmatic hernia in Europe: consortium consensus - 2024 update. Neonatology.",
+    "doi": "10.1159/000516396",
+    "locatedTitle": "Zuoguiwan Ameliorates Cognitive Deficits and Neuro-Inflammation in Streptozotocin-Induced Alzheimer's Disease Rats",
+    "locatedRecord": "https://pubmed.ncbi.nlm.nih.gov/34320500/",
+    "purpose": "Editorial triage only. Verify the identifier on the primary record, then match each clinical claim."
+  },
+  {
+    "topic": "paediatric-icu",
+    "label": "AHA/HRS ECG 2009",
+    "bibliography": "Rautaharju PM, Surawicz B, Gettes LS, et al. AHA/ACCF/HRS Recommendations for the Standardization and Interpretation of the Electrocardiogram, Part IV: the ST segment, T and U waves, and the QT interval. Circulation. 2009;119(10):e241-e250. QTc above 460 ms in children and above 450 ms in adolescent males is prolonged.",
+    "doi": "10.1161/circulationaha.108.191096",
+    "locatedTitle": "AHA/ACCF/HRS recommendations for the standardization and interpretation of the electrocardiogram: part IV: the ST segment, T and U waves, and the QT interval: a scientific statement from the American Heart Association Electrocardiography and Arrhythmias Committee, Council on Clinical Cardiology; the American College of Cardiology Foundation; and the Heart Rhythm Society: endorsed by the International Society for Computerized Electrocardiology",
+    "locatedRecord": "https://pubmed.ncbi.nlm.nih.gov/19228821/",
+    "purpose": "Editorial triage only. Verify the identifier on the primary record, then match each clinical claim."
+  },
+  {
+    "topic": "preoperative-assessment",
+    "label": "AoA Glucocorticoids 2024",
+    "bibliography": "Woodcock T, Barker P, Daniel S, et al. Perioperative management of the surgical patient on glucocorticoid therapy. Guidelines from the Association of Anaesthetists and the Society for Endocrinology. Anaesthesia. 2024;79(3):330-348.",
+    "doi": "10.1111/anae.16158",
+    "locatedTitle": "Potential for using simulated altitude as a means of prehabilitation: a physiology study",
+    "locatedRecord": "https://pubmed.ncbi.nlm.nih.gov/37877784/",
+    "purpose": "Editorial triage only. Verify the identifier on the primary record, then match each clinical claim."
+  },
+  {
+    "topic": "anaesthetic-risk",
+    "label": "NAP5 incidence",
+    "bibliography": "Pandit JJ, Andrade J, Bogod DG, et al. NAP5: summary of main findings and risk factors. Br J Anaesth. 2014;113:549–559.",
+    "doi": "10.1093/bja/aeu313",
+    "locatedTitle": "5th National Audit Project (NAP5) on accidental awareness during general anaesthesia: summary of main findings and risk factors",
+    "locatedRecord": "https://pubmed.ncbi.nlm.nih.gov/25204697/",
+    "purpose": "Editorial triage only. Verify the identifier on the primary record, then match each clinical claim."
+  },
+  {
+    "topic": "anaesthetic-risk",
+    "label": "NAP5 muscle relaxation",
+    "bibliography": "Pandit JJ, et al. NAP5: summary of main findings and risk factors. Br J Anaesth. 2014;113:549–559. Neuromuscular-block subgroup.",
+    "doi": "10.1093/bja/aeu313",
+    "locatedTitle": "5th National Audit Project (NAP5) on accidental awareness during general anaesthesia: summary of main findings and risk factors",
+    "locatedRecord": "https://pubmed.ncbi.nlm.nih.gov/25204697/",
+    "purpose": "Editorial triage only. Verify the identifier on the primary record, then match each clinical claim."
+  },
+  {
+    "topic": "enhanced-recovery",
+    "label": "Hughes 2014",
+    "bibliography": "Hughes MJ, Ventham NT, McNally S, Harrison E, Wigmore SJ. Anesthesia and enhanced recovery after surgery. Anesthesiology. 2014;120(4):842-856.",
+    "doi": "10.1097/aln.0000000000000145",
+    "locatedTitle": "Leading departmental change to advance perioperative quality",
+    "locatedRecord": "https://pubmed.ncbi.nlm.nih.gov/24487705/",
+    "purpose": "Editorial triage only. Verify the identifier on the primary record, then match each clinical claim."
+  },
+  {
+    "topic": "perioperative-fluids",
+    "label": "CCM Tetrastarch 2013",
+    "bibliography": "Base EM, Standl T, Lassnigg A, et al. Efficacy and safety of hydroxyethyl starch 6% 130/0.4 in a balanced electrolyte solution (Volulyte) during cardiac surgery. Crit Care Med. 2013;41(10):2308-2317. Synthetic colloids in cardiac surgery carry a higher risk of renal replacement therapy without greater efficacy than crystalloid alone.",
+    "doi": "10.1097/ccm.0b013e3182978fb6",
+    "locatedTitle": "Perioperative fluid therapy with tetrastarch and gelatin in cardiac surgery--a prospective sequential analysis*",
+    "locatedRecord": "https://pubmed.ncbi.nlm.nih.gov/23978813/",
+    "purpose": "Editorial triage only. Verify the identifier on the primary record, then match each clinical claim."
+  },
+  {
+    "topic": "vascular-access-devices",
+    "label": "BJA Educ 2016",
+    "bibliography": "Bodenham A, Babu S, Bennett J et al. AAGBI Safe vascular access 2016. Anaesthesia. 2016;71(5):573-585.",
+    "doi": "10.1111/anae.13360",
+    "locatedTitle": "Association of Anaesthetists of Great Britain and Ireland: Safe vascular access 2016",
+    "locatedRecord": "https://pubmed.ncbi.nlm.nih.gov/26888253/",
+    "purpose": "Editorial triage only. Verify the identifier on the primary record, then match each clinical claim."
+  },
+  {
+    "topic": "cardiovascular-disease",
+    "label": "AHA/ACC 2014",
+    "bibliography": "Fleisher LA et al. 2014 ACC/AHA Guideline on perioperative cardiovascular evaluation and management. J Am Coll Cardiol. 2014;64:e77-e137.",
+    "doi": "10.1016/j.jacc.2014.07.944",
+    "locatedTitle": "2014 ACC/AHA guideline on perioperative cardiovascular evaluation and management of patients undergoing noncardiac surgery: a report of the American College of Cardiology/American Heart Association Task Force on practice guidelines",
+    "locatedRecord": "https://pubmed.ncbi.nlm.nih.gov/25091544/",
+    "purpose": "Editorial triage only. Verify the identifier on the primary record, then match each clinical claim."
+  },
+  {
+    "topic": "respiratory-disease",
+    "label": "Anaesthesia PHTN 2015",
+    "bibliography": "Pilkington SA, Taboada D, Martinez G. Pulmonary hypertension and its management in patients undergoing non-cardiac surgery. Anaesthesia. 2015;70(1):56-70. Avoid factors that raise pulmonary vascular resistance — hypoxia, hypercarbia, acidosis and hypothermia — and maintain systemic pressure to preserve right ventricular perfusion.",
+    "doi": "10.1111/anae.12783",
+    "locatedTitle": "Continuous posterior TAP analgesia after laparoscopic colorectal surgery",
+    "locatedRecord": "https://pubmed.ncbi.nlm.nih.gov/25117015/",
+    "purpose": "Editorial triage only. Verify the identifier on the primary record, then match each clinical claim."
+  },
+  {
+    "topic": "immunosuppression-hiv",
+    "label": "BCSH Asplenia 2011",
+    "bibliography": "Davies JM, Lewis MPN, Wimperis J, et al. Review of guidelines for the prevention and treatment of infection in patients with an absent or dysfunctional spleen. Br J Haematol. 2011;155(3):308-317. Lifelong penicillin prophylaxis and pneumococcal, Hib and meningococcal immunisation.",
+    "doi": "10.1111/j.1365-2141.2011.08843.x",
+    "locatedTitle": "Review of guidelines for the prevention and treatment of infection in patients with an absent or dysfunctional spleen: prepared on behalf of the British Committee for Standards in Haematology by a working party of the Haemato-Oncology task force",
+    "locatedRecord": "https://pubmed.ncbi.nlm.nih.gov/21988145/",
+    "purpose": "Editorial triage only. Verify the identifier on the primary record, then match each clinical claim."
+  },
+  {
+    "topic": "genetic-syndromes",
+    "label": "BJA Educ Marfan 2016",
+    "bibliography": "Hindman BJ, Bert AA. Marfan syndrome: anaesthetic considerations. BJA Education. 2016;16(8):256-261.",
+    "doi": "10.1093/bjaed/mkv052",
+    "locatedTitle": "Severe community-acquired pneumonia",
+    "locatedRecord": "https://pubmed.ncbi.nlm.nih.gov/32288942/",
+    "purpose": "Editorial triage only. Verify the identifier on the primary record, then match each clinical claim."
+  },
+  {
+    "topic": "genetic-syndromes",
+    "label": "AAGBI Haemoglobinopathy 2021",
+    "bibliography": "Association of Anaesthetists. Peri-operative management of patients with haemoglobinopathies, including thalassaemia. Anaesthesia. 2021. A pre-operative haemoglobin of 100 g/L is the minimum acceptable value in beta-thalassaemia major, checked within 72 h; top-up transfusion below this, with daily checks maintaining >100 g/L for major surgery.",
+    "doi": "10.1111/anae.15349",
+    "locatedTitle": "Guideline on the peri-operative management of patients with sickle cell disease: Guideline from the Association of Anaesthetists",
+    "locatedRecord": "https://pubmed.ncbi.nlm.nih.gov/33533039/",
+    "purpose": "Editorial triage only. Verify the identifier on the primary record, then match each clinical claim."
+  }
+]

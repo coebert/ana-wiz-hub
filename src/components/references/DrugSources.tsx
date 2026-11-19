@@ -12,15 +12,15 @@ export function DrugSources({ sources }: { sources: unknown }) {
         const group = entries.filter(source => source.search === search);
         if (!group.length) return null;
         return <div key={String(search)} className="mt-4">
-          <h3 className="font-medium text-foreground">{search ? "Find a source — search tools" : "Product, guideline and other source records"}</h3>
-          {search && <p className="mt-1 text-muted-foreground">Search destinations are not monographs or product labels.</p>}
+          <h3 className="font-medium text-foreground">{search ? "Find a source — search indexes" : "Product, guideline and other source records"}</h3>
+          {search && <p className="mt-1 text-muted-foreground">These are search indexes only — not monographs, product labels or prescribing sources.</p>}
           <ul className="mt-2 divide-y divide-border">
             {group.map((source, index) => <li key={`${source.url}-${index}`} className="py-3 min-w-0 break-words [overflow-wrap:anywhere]">
               {source.url ? <a href={source.url} target="_blank" rel="noopener noreferrer" className="inline-flex min-h-11 items-center gap-2 text-primary underline underline-offset-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring rounded-sm">
                 <span>{source.title}</span><ExternalLink aria-hidden="true" className="h-4 w-4 shrink-0" /><span className="sr-only"> (opens in a new tab)</span>
               </a> : <p className="font-medium text-foreground">{source.title} — link unavailable</p>}
               {source.provenance.map((record, i) => <div key={i} className="mt-1 space-y-1 text-muted-foreground">
-                {!search && record.title && record.title !== source.title && <p className="font-medium">{record.title}</p>}
+                {record.title && record.title !== source.title && <p className="font-medium">{search ? "Recorded as: " : ""}{record.title}</p>}
                 {record.publisher && <p>{record.publisher}</p>}
                 {!search && (record.section || record.sections) && <p>Sections: {[record.section, record.sections].filter(Boolean).join("; ")}</p>}
                 {!search && record.revision && <p>Revision: {record.revision}</p>}

@@ -235,7 +235,7 @@ const PaediatricIcuTopic = () => {
   },
   {
     text: "Neonatal sepsis frequently presents without fever — poor feeding, lethargy, temperature instability, apnoea, grunting, jaundice, hypoglycaemia or an unexplained metabolic acidosis are the common presentations, and empirical cover must include Listeria and group B streptococcus.",
-    cites: ["NICE NG195", "NICE NG51"],
+    cites: ["NICE NG195", "NICE NG254"],
   },
   {
     text: "Any encephalopathic child with hypoglycaemia, hyperammonaemia or an unexplained acidosis needs the emergency metabolic screen taken during the crisis, stopping of protein and feed, and a glucose infusion delivering 8–10 mg/kg/min; ammonia-lowering therapy and specialist metabolic advice must not wait for a diagnosis.",
@@ -278,7 +278,7 @@ const PaediatricIcuTopic = () => {
         { text: "Isotonic maintenance fluids only — hypotonic fluids can cause fatal hyponatraemia in children", cites: ["NICE NG29"] },
         { text: "Paediatric cardiac arrest is usually respiratory in origin — 5 rescue breaths first, defibrillation 4 J/kg", cites: ["Resuscitation Council UK 2021"] },
         { text: PAEDIATRIC_DNC_2025_SUMMARY, cites: ["AoMRC 2025 Paediatric DNC"] },
-        { text: "FEAST (2011) found increased 48-hour mortality with boluses in enrolled children with severe febrile illness and impaired perfusion in hospitals in Uganda, Kenya and Tanzania. Population and setting affect applicability; do not dismiss the trial or prohibit all UK resuscitation fluids. RCUK 2025 uses reassessed small boluses, condition-specific pathways, overload surveillance and timely vasoactive support.", cites: ["FEAST 2011", "RCUK PALS 2025 fluids"] },
+        { text: "FEAST (2011) found increased 48-hour mortality with boluses in enrolled children with severe febrile illness and impaired perfusion in hospitals in Uganda, Kenya and Tanzania. Population and setting affect applicability; do not dismiss the trial or prohibit all UK resuscitation fluids. RCUK 2025 uses reassessed small boluses, condition-specific pathways, overload surveillance and timely vasoactive support. The 2020 SSC paediatric guideline recommended 10–20 mL/kg boluses where intensive care is available, and 10 mL/kg over 30–60 min for sepsis with hypotension.", cites: ["FEAST 2011", "RCUK PALS 2025 fluids", "SSC Paediatric 2020"] },
         { text: "Maintenance 4-2-1 (100/50/20 mL/kg/day) but restrict to 50–70% in ventilated or brain-injured children — cumulative positive balance >10% body weight tracks with mortality", cites: ["NICE NG29"] },
         { text: "Neonates need larger mg/kg loading doses (TBW 75–80%, ECF 40–45%) yet lower maintenance doses — immature glucuronidation, low protein binding and GFR 20–30% of adult", cites: ["BJA Educ 2010"] },
         { text: "Toddlers (1–6 y) clear many drugs faster per kg than adults — under-dosing is as common as over-dosing; always state a mg/kg dose with an adult-dose ceiling", cites: ["BJA Educ 2010"] },
@@ -616,7 +616,7 @@ const PaediatricIcuTopic = () => {
                     treated as meningococcal disease with immediate antibiotics and no waiting for
                     lumbar puncture; lumbar puncture is deferred in shock, coagulopathy, raised
                     intracranial pressure or focal signs{" "}
-                    <InlineRef topicId="paediatric-icu" refLabel="NICE NG51" />{" "}
+                    <InlineRef topicId="paediatric-icu" refLabel="NICE NG254" />{" "}
                     <InlineRef topicId="paediatric-icu" refLabel="NICE NG240" />.
                   </p>
                 </div>
@@ -660,7 +660,7 @@ const PaediatricIcuTopic = () => {
                 Practically it identifies the sick child who needs escalation rather than replacing the
                 clinical response: <strong>oxygen, cultures, antibiotics with shock-specific urgency, lactate,
                 fluid, early senior/PICU involvement</strong>. Score-based definitions are for
-                epidemiology and audit — treat the child in front of you <InlineRef topicId="paediatric-icu" refLabel="NICE NG51" />.
+                epidemiology and audit — treat the child in front of you <InlineRef topicId="paediatric-icu" refLabel="NICE NG254" />.
               </p>
             </div>
             <FeastTrialTeaching />
@@ -1035,7 +1035,10 @@ const PaediatricIcuTopic = () => {
                       (term) and a compression-to-ventilation ratio of <strong>3:1</strong>, reflecting an
                       asphyxial cause; delayed cord clamping, thermal care and oxygen saturation targets
                       that rise over the first ten minutes are integral. Adrenaline and volume are late
-                      steps once ventilation is confirmed to be effective <InlineRef topicId="paediatric-icu" refLabel="RCUK NLS 2021" />.
+                      steps once ventilation is confirmed to be effective; IV/IO adrenaline is
+                      20 micrograms/kg (0.2 mL/kg of 1:10,000), repeated every 4 minutes, and
+                      hypoglycaemia is treated with 10% glucose 2 mL/kg (200 mg/kg) only when the
+                      measured glucose is low — not 2.5 mL/kg empirically <InlineRef topicId="paediatric-icu" refLabel="RCUK NLS 2025" />.
                     </p>
                   </div>
                   <div className="bg-card border border-border rounded-lg p-4">
@@ -1478,9 +1481,10 @@ const PaediatricIcuTopic = () => {
               <p className="text-sm text-muted-foreground mt-1">
                 <strong>Bolus:</strong> 10 mL/kg isotonic crystalloid over 5–10 min with reassessment after each
                 (20 mL/kg only for profound shock; DKA uses 10 mL/kg per NICE NG18 and haemorrhagic trauma prioritises blood and haemorrhage control)
-                <InlineRef topicId="paediatric-icu" refLabel="APLS 2021" />. After 40–60 mL/kg without
-                improvement, start vasoactive support and re-examine for hepatomegaly, crepitations and rising
-                oxygen requirement — signs of fluid overload.
+                <InlineRef topicId="paediatric-icu" refLabel="APLS 2021" />. In septic shock, up to 40–60 mL/kg is
+                used only where intensive care is available, with serial reassessment after every bolus; if shock
+                persists, start vasoactive support and re-examine for hepatomegaly, crepitations and rising
+                oxygen requirement — signs of fluid overload<InlineRef topicId="paediatric-icu" refLabel="SSC Children 2026 vasoactives" />.
               </p>
               <p className="text-sm text-muted-foreground mt-1">
                 <strong>Estimating deficit:</strong> % dehydration × weight(kg) × 10 = mL deficit. Clinically 5%

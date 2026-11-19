@@ -98,7 +98,7 @@ const keyPoints = [
     cites: ["BJA Educ Paeds 2018"],
   },
   {
-    text: "Maximum local anaesthetic doses: bupivacaine/levobupivacaine 2 mg/kg, lidocaine 3 mg/kg plain (7 mg/kg with adrenaline); caudal 0.5 mL/kg (sacral) to 1.25 mL/kg (thoracic)",
+    text: "Commonly taught paediatric ceilings (check the named product table): bupivacaine/levobupivacaine 2 mg/kg, lidocaine 3 mg/kg plain (7 mg/kg with adrenaline; the named lidocaine product allows up to 5 mg/kg over 2 years); caudal 0.5 mL/kg (sacral) to 1.25 mL/kg (thoracic)",
     cites: ["ESPA Pain 2021"],
   },
   {

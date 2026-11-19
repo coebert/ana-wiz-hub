@@ -1,0 +1,207 @@
+{
+ "generated_at": "2026-11-19T12:30:00Z",
+ "method": "Each record below was opened and read on 19 November 2026 (publisher page, PMC full text, or official PDF). Title, population, scope and the recommendation relied on were compared with the text changed in this audit. Records not listed here were not independently re-verified in this audit and must not be treated as validated.",
+ "records": [
+  {
+   "id": "SRC-PUMA-2022",
+   "citation": "Chrimes N, Higgs A, Hagberg CA, et al. Preventing unrecognised oesophageal intubation: a consensus guideline from the Project for Universal Management of Airways and international airway societies. Anaesthesia. 2022;77(12):1395-1415.",
+   "doi": "10.1111/anae.15817",
+   "url": "https://doi.org/10.1111/anae.15817",
+   "access": "Open access; full text read via PMC9804892",
+   "title_match": true,
+   "population_scope": "All airway practitioners, all patient types, all locations; intended tracheal tube placement.",
+   "recommendation_verified": "Tube removal is the default response when sustained exhaled CO2 cannot be detected. If removal is considered dangerous (reasonable basis for believing the tube is tracheal plus likelihood of serious harm if removed), urgently exclude oesophageal intubation using valid alternative techniques (repeat laryngoscopy first, then flexible bronchoscopy, ultrasound or oesophageal detector device) in parallel with evaluating other causes; remove the tube if timely restoration of sustained exhaled CO2 cannot be achieved.",
+   "used_for": [
+    "CAP-01",
+    "CAP-02"
+   ],
+   "status": "verified"
+  },
+  {
+   "id": "SRC-RCOA-SUSTAINED-CO2",
+   "citation": "Royal College of Anaesthetists. Sustained exhaled CO2 (endorsing PUMA 2022). RCoA; page updated 2025.",
+   "url": "https://www.rcoa.ac.uk/safety-standards-quality/patient-safety/sustained-exhaled-co2",
+   "access": "Official college page read",
+   "title_match": true,
+   "population_scope": "UK practice; replaces the RCoA 'no trace, wrong place' message.",
+   "recommendation_verified": "Four criteria: rises with exhalation and falls during inspiration; consistent or increasing over at least seven breaths; peak > 1 kPa (7.5 mmHg) above baseline; clinically appropriate. If not met, teams are obliged to exclude oesophageal intubation.",
+   "used_for": [
+    "CAP-01",
+    "CAP-02"
+   ],
+   "status": "verified"
+  },
+  {
+   "id": "SRC-RCUK-NLS-2025",
+   "citation": "Resuscitation Council UK. Newborn resuscitation and support of transition of infants at birth: 2025 Resuscitation Guidelines.",
+   "url": "https://www.resus.org.uk/professional-library/2025-resuscitation-guidelines/newborn-resuscitation-and-support-transition-infants-birth",
+   "access": "Official RCUK guideline page read",
+   "title_match": true,
+   "population_scope": "Newborn infants at birth and in the immediate postnatal phase.",
+   "recommendation_verified": "Key point: the time intervals of intravenous or intraosseous adrenaline have been simplified to giving every 4 min. Adrenaline 10-30 micrograms/kg (0.1-0.3 mL/kg of 1:10,000) when the heart rate remains below 60/min despite effective ventilation and compressions.",
+   "used_for": [
+    "NEO-01"
+   ],
+   "status": "verified"
+  },
+  {
+   "id": "SRC-AA-QRH-3-10-2023",
+   "citation": "Association of Anaesthetists. Quick Reference Handbook: 3-10 Local anaesthetic toxicity, version 2. June 2023.",
+   "url": "https://anaesthetists.org/Home/Resources-publications/Safety-alerts/Anaesthesia-emergencies/Quick-Reference-Handbook",
+   "access": "Official QRH page read; section PDF read from a mirrored copy of the June 2023 QRH",
+   "title_match": true,
+   "population_scope": "Adult and paediatric patients with severe local anaesthetic toxicity; UK reference version.",
+   "recommendation_verified": "20% lipid emulsion 1.5 mL/kg over 2-3 min (~100 mL for 70 kg), then 15 mL/kg/h; repeat the same bolus at 5 and 10 min if cardiovascular stability is not restored; double the infusion to 30 mL/kg/h at any time after 5 min if the circulation is not restored; maximum cumulative dose 12 mL/kg (70 kg: 840 mL). In circulatory arrest use adrenaline <= 1 microgram/kg instead of 1 mg and avoid vasopressin. For arrhythmias, standard therapy and avoid lidocaine. Propofol is not a suitable substitute for lipid emulsion. The QRH does not instruct clinicians to avoid amiodarone.",
+   "used_for": [
+    "LAST-01",
+    "LAST-02",
+    "LAST-03"
+   ],
+   "status": "verified"
+  },
+  {
+   "id": "SRC-AA-LAST-2023-PAGE",
+   "citation": "Association of Anaesthetists. Management of severe local anaesthetic toxicity 2023.",
+   "url": "https://anaesthetists.org/Guidelines-and-publications/Guidelines/Management-of-severe-local-anaesthetic-toxicity-2023",
+   "access": "Official Association page read",
+   "title_match": true,
+   "population_scope": "UK guidance status.",
+   "recommendation_verified": "The 2010 laminate has been withdrawn. The relevant page (3-10) from the latest Quick Reference Handbook is the reference version. Principal changes include reduced adrenaline, avoidance of vasopressin, and slower administration of the initial lipid bolus.",
+   "used_for": [
+    "LAST-03"
+   ],
+   "status": "verified"
+  },
+  {
+   "id": "SRC-APAGBI-FASTING-2025",
+   "citation": "Association of Paediatric Anaesthetists of Great Britain and Ireland. Hot Topic: Should paediatric patients be allowed to 'sip til send' prior to elective surgery? November 2025 (summarising the 2018 APAGBI position statement).",
+   "url": "https://www.apagbi.org.uk/downloads/hottopic/40hot-topic-sts-final-nov25.pdf",
+   "access": "Official APAGBI PDF read",
+   "title_match": true,
+   "population_scope": "Healthy children undergoing elective surgery; individualised assessment for delayed gastric emptying, significant reflux, severe obesity, neurological impairment or emergency surgery.",
+   "recommendation_verified": "Minimum fasting interval of one hour for clear fluids (APAGBI 2018; ESAIC 2022), three hours for breast milk, six hours for infant formula (APAGBI; ESAIC suggested 4 h but did not reach full Delphi consensus). Sip til send: clear fluids at 3 mL/kg/hour up to a maximum of 150 mL/hour until call to theatre, within a structured local pathway.",
+   "used_for": [
+    "FAST-01"
+   ],
+   "status": "verified"
+  },
+  {
+   "id": "SRC-ESAIC-FASTING-2022",
+   "citation": "Frykholm P, Disma N, Andersson H, et al. Pre-operative fasting in children: a guideline from the European Society of Anaesthesiology and Intensive Care. Eur J Anaesthesiol. 2022;39(1):4-25.",
+   "url": "https://esaic.org/wp-content/uploads/2023/12/pre_operative_fasting_in_children__a_guidelin.pdf",
+   "access": "Guideline PDF read",
+   "title_match": true,
+   "population_scope": "Children undergoing elective anaesthesia.",
+   "recommendation_verified": "Clear fluids up to 1 h before induction (R2); breast milk until 3 h (R8); formula/non-human milk may be encouraged until 4 h (S10, suggestion without full consensus); solids until 6 h (R11).",
+   "used_for": [
+    "FAST-01"
+   ],
+   "status": "verified"
+  },
+  {
+   "id": "SRC-BIB-NUTRIREA3",
+   "citation": "Reignier J, Plantefeve G, Mira JP, et al. Low versus standard calorie and protein feeding in ventilated adults with shock: a randomised, controlled, multicentre, open-label, parallel-group trial (NUTRIREA-3). Lancet Respir Med. 2023;11(7):602-612.",
+   "doi": "10.1016/S2213-2600(23)00092-9",
+   "checked": "Publisher record read. The previously stored identifier 10.1016/S0140-6736(22)01885-2 resolves to a poliovirus surveillance correspondence, not this trial.",
+   "verified_on": "2026-11-19"
+  },
+  {
+   "id": "SRC-BIB-ILIFF",
+   "citation": "Iliff HA, El-Boghdadly K, Ahmad I, et al. Management of haematoma after thyroid surgery: systematic review and multidisciplinary consensus guidelines. Anaesthesia. 2022;77(1):82-95.",
+   "doi": "10.1111/anae.15585",
+   "checked": "Publisher record read. The previously stored identifier 10.1111/anae.15654 resolves to a videolaryngoscope editorial.",
+   "verified_on": "2026-11-19"
+  },
+  {
+   "id": "SRC-BIB-PDPH",
+   "citation": "Russell R, Laxton C, Lucas DN, et al. Treatment of obstetric post-dural puncture headache. Part 1: conservative and pharmacological management. Int J Obstet Anesth. 2019;38:93-103.",
+   "doi": "10.1016/j.ijoa.2018.12.006",
+   "checked": "Publisher record read. The previously stored identifier 10.1111/anae.14464 resolves to a cell-salvage editorial, and the stored journal/year were also wrong.",
+   "verified_on": "2026-11-19"
+  },
+  {
+   "id": "SRC-BIB-CO",
+   "citation": "Rose JJ, Wang L, Xu Q, et al. Carbon monoxide poisoning: pathogenesis, management, and future directions of therapy. Am J Respir Crit Care Med. 2017;195(5):596-606.",
+   "doi": "10.1164/rccm.201606-1275ci",
+   "checked": "Publisher record read. The previously stored identifier resolved to a paediatric complex-pain review.",
+   "verified_on": "2026-11-19"
+  },
+  {
+   "id": "SRC-BIB-MAXFAC",
+   "citation": "Kellman RM, Losquadro WD. Comprehensive airway management of patients with maxillofacial trauma. Craniomaxillofac Trauma Reconstr. 2008;1(1):39-47.",
+   "doi": "10.1055/s-0028-1098962",
+   "checked": "Publisher record read. The stored identifier differed by one digit and resolved to a Wolff's-law bone-grafting paper.",
+   "verified_on": "2026-11-19"
+  },
+  {
+   "id": "SRC-BIB-TRANSFUSION",
+   "citation": "Thomas D, Wee M, Clyburn P, et al. Blood transfusion and the anaesthetist: management of massive haemorrhage. Anaesthesia. 2010;65(11):1153-1161.",
+   "doi": "10.1111/j.1365-2044.2010.06538.x",
+   "checked": "Publisher record read. The stored identifier resolved to an aspiration-testing letter.",
+   "verified_on": "2026-11-19"
+  },
+  {
+   "id": "SRC-BIB-LEVERING",
+   "citation": "McCoy EP, Mirakhur RK. The levering laryngoscope. Anaesthesia. 1993;48(6):516-519.",
+   "doi": "10.1111/j.1365-2044.1993.tb07075.x",
+   "checked": "Publisher record read. The stored identifier resolved to a plasma-cholinesterase case report.",
+   "verified_on": "2026-11-19"
+  },
+  {
+   "id": "SRC-BIB-GASSUPPLY",
+   "citation": "Das S, Chattopadhyay S, Bose P. The anaesthesia gas supply system. Indian J Anaesth. 2013;57(5):489-499.",
+   "doi": "10.4103/0019-5049.120145",
+   "checked": "Publisher record read. The stored identifier resolved to a different article in the same issue ('Safety features in anaesthesia machine').",
+   "verified_on": "2026-11-19"
+  },
+  {
+   "id": "SRC-BIB-PHTN",
+   "citation": "Pulmonary hypertension and its management in patients undergoing non-cardiac surgery. Anaesthesia. 2014.",
+   "doi": "10.1111/anae.12831",
+   "checked": "Publisher record read. The stored identifier resolved to a TAP-block analgesia letter.",
+   "verified_on": "2026-11-19"
+  },
+  {
+   "id": "SRC-BIB-ZHUANG",
+   "citation": "Zhuang CL, Ye XZ, Zhang CJ, et al. Early versus traditional postoperative oral feeding in patients undergoing elective colorectal surgery: a meta-analysis of randomized clinical trials. Dig Surg. 2013;30(3):225-232.",
+   "doi": "10.1159/000353136",
+   "checked": "Publisher record read. The stored identifier resolved to a gut-enterotype review.",
+   "verified_on": "2026-11-19"
+  }
+ ],
+ "unverifiable_or_superseded": [
+  {
+   "id": "SRC-AA-LAST-2024",
+   "citation_as_stored": "Royal College of Anaesthetists & Association of Anaesthetists. Management of severe local anaesthetic toxicity: a joint guideline. 2024.",
+   "url_as_stored": "https://anaesthetists.org/Home/Resources-publications/Guidelines/Management-of-severe-local-anaesthetic-toxicity-2024",
+   "finding": "No distinct 2024 joint guideline could be located. The URL resolves to the generic Association guidelines listing, not a guideline page. The Association's own 2023 page names QRH 3-10 as the reference version. Replaced with SRC-AA-QRH-3-10-2023.",
+   "status": "unverifiable_as_stated; removed"
+  },
+  {
+   "id": "SRC-AA-LAST-2020",
+   "citation_as_stored": "Association of Anaesthetists. Management of severe local anaesthetic toxicity. 2020 update (safety guideline).",
+   "url_as_stored": "https://anaesthetists.org/Home/Resources-publications/Guidelines/Management-of-Severe-Local-Anaesthetic-Toxicity-2020",
+   "finding": "The URL resolves to the generic Association guidelines listing; no 2020 update page could be verified. Removed as an unused, unverifiable record.",
+   "status": "unverifiable_as_stated; removed"
+  },
+  {
+   "id": "SRC-AAGBI-LAST-2010",
+   "citation_as_stored": "Association of Anaesthetists. Management of severe local anaesthetic toxicity (safety guideline). AAGBI; 2010.",
+   "finding": "Historically real, but the Association states the 2010 laminate is withdrawn and QRH 3-10 is the current reference version. It used the 1-minute bolus that the 2023 QRH changed to 2-3 minutes. Replaced in teaching with SRC-AA-QRH-3-10-2023.",
+   "status": "superseded; replaced"
+  },
+  {
+   "id": "SRC-APAGBI-GUIDELINES-PAGE",
+   "citation_as_stored": "APAGBI guidelines and standards.",
+   "url_as_stored": "https://www.apagbi.org.uk/guidelines",
+   "finding": "Automated retrieval returned HTTP 403. Not used as evidence for the fasting recommendation; the November 2025 APAGBI PDF was used instead.",
+   "status": "inaccessible_to_automated_check"
+  }
+ ],
+ "coverage_of_this_verification": {
+  "reference_records_in_ledger": 3093,
+  "records_independently_verified_in_this_audit": 7,
+  "records_flagged_unverifiable_or_superseded": 4,
+  "note": "This audit did not re-verify every stored reference. Passing reference-integrity checks resolve DOI/PMID metadata; they do not establish that a citation supports the sentence it is attached to."
+ }
+}

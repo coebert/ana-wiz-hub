@@ -25,7 +25,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the FAQ count p
   "/clinical/elderly-anaesthesia": 3,
   "/clinical/emergency-surgery": 3,
   "/clinical/ent-anaesthesia": 10,
-  "/clinical/gynaecological-anaesthesia": 10,
+  "/clinical/gynaecological-anaesthesia": 11,
   "/clinical/hepatobiliary-transplant": 10,
   "/clinical/interventional-radiology": 3,
   "/clinical/mass-casualty-military": 3,
@@ -190,7 +190,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the full FAQ co
       "q": "Which landmarks define the inguinal canal?",
     },
     {
-      "a": "The spleen lies under the 9th–11th left ribs in the left hypochondrium, behind the mid-axillary line. Left lower rib fractures (especially 9–11) are the commonest mechanism of blunt splenic injury — a high-energy mechanism with left flank tenderness mandates contrast CT to exclude haemorrhage from this highly vascular organ (~5% of cardiac output).",
+      "a": "The spleen lies under the 9th–11th left ribs in the left hypochondrium, behind the mid-axillary line. Left lower rib fractures are a marker of associated splenic injury and should raise suspicion, not a universal most-common causal mechanism. Assess mechanism, examination and haemodynamics. In stable or resuscitation-responsive major trauma with suspected injury, contrast CT is appropriate. Nonresponding haemodynamically unstable patients need only the minimum imaging necessary to direct urgent haemorrhage control; mandatory CT must not delay it.",
       "q": "Why is the spleen at risk from left-sided rib fractures?",
     },
   ],
@@ -204,14 +204,14 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the full FAQ co
       "q": "Which block reliably anaesthetises C8/T1 dermatomes for hand surgery?",
     },
     {
-      "a": "~100% incidence of ipsilateral phrenic nerve palsy (avoid in severe respiratory disease), recurrent laryngeal nerve block (hoarseness), Horner's syndrome (cervical sympathetic involvement), and rare but catastrophic intra-arterial (vertebral artery) injection causing immediate seizures. Pneumothorax risk is low compared with supraclavicular block.",
+      "a": "Substantial ipsilateral hemidiaphragmatic paresis risk, approaching 100% with traditional/high-volume approaches but varying with technique and volume; low-volume approaches do not eliminate risk. Assess respiratory reserve and appropriate monitoring, especially with limited pulmonary reserve or bilateral blocks. Other risks include, recurrent laryngeal nerve block (hoarseness), Horner's syndrome (cervical sympathetic involvement), and rare but catastrophic intra-arterial (vertebral artery) injection causing immediate seizures. Pneumothorax risk is low compared with supraclavicular block.",
       "q": "What is the risk profile of an interscalene block?",
     },
   ],
   "/anatomy/cardiac-anatomy": [
     {
-      "a": "In ~85% of patients (right-dominant circulation) the RCA gives the SA nodal artery and the AV nodal artery before becoming the posterior descending artery. This is why inferior MIs from RCA occlusion frequently cause bradycardia, AV block and right-ventricular involvement — and why right-sided ECG leads (V4R) should be recorded.",
-      "q": "Why does the right coronary artery supply the SA and AV nodes in most people?",
+      "a": "Coronary dominance is defined by posterior descending artery origin, not SA nodal artery origin. SA nodal supply varies: most often RCA, with LCx and other origins. AV nodal origin usually follows dominance. RCA occlusion can cause bradyarrhythmia depending on individual anatomy; dominance does not establish both nodal origins.",
+      "q": "How does coronary dominance differ from nodal artery supply?",
     },
     {
       "a": "Normally in the 5th left intercostal space, just medial to the mid-clavicular line, marking the LV apex. It shifts laterally and inferiorly with LV dilation (chronic AR, dilated cardiomyopathy), and laterally without inferior shift with mediastinal displacement (pneumothorax, large pleural effusion, lobectomy).",
@@ -242,11 +242,11 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the full FAQ co
       "q": "At the inguinal level, what is the order of structures from lateral to medial?",
     },
     {
-      "a": "It covers the anterior thigh (skin and quadriceps), medial leg (saphenous nerve below the knee) and periosteum of the femur — sufficient for analgesia after femoral neck or shaft fracture and for knee surgery in combination with a sciatic block. It misses the posterior thigh (sciatic), hip joint (obturator + sciatic + femoral all contribute), and lateral thigh (lateral cutaneous nerve of thigh).",
+      "a": "It covers the anterior thigh (skin and quadriceps), medial leg (saphenous nerve below the knee) and periosteum of the femur — sufficient for analgesia after femoral neck or shaft fracture and for knee surgery in combination with a sciatic block. It misses the posterior-thigh skin (principally posterior femoral cutaneous nerve, S1–S3; distinct from sciatic motor supply to posterior-thigh muscles), hip joint (obturator + sciatic + femoral all contribute), and lateral thigh (lateral cutaneous nerve of thigh).",
       "q": "What does a femoral nerve block cover, and what does it miss?",
     },
     {
-      "a": "The sciatic typically divides into tibial and common peroneal branches in the popliteal fossa, ~7 cm proximal to the popliteal crease. Ultrasound-guided popliteal block targets the nerve just proximal to the bifurcation so one injection captures both branches — block below the bifurcation may spare one division and leave the lateral foot (peroneal) or sole (tibial) unblocked.",
+      "a": "The sciatic typically divides into tibial and common peroneal branches in the popliteal fossa, ~7 cm proximal to the popliteal crease. Ultrasound-guided popliteal block targets the nerve just proximal to the bifurcation so one injection captures both branches — block below the bifurcation may spare one division and leave one division unblocked. The lateral border of the foot is sural territory, with variable tibial/common fibular contributions; most dorsum is superficial fibular/peroneal and the first web space deep fibular. An isolated peroneal block cannot be assumed to cover the lateral border.",
       "q": "Where does the sciatic nerve divide and why does that matter for popliteal block?",
     },
   ],
@@ -266,7 +266,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the full FAQ co
   ],
   "/anatomy/spinal-anatomy": [
     {
-      "a": "The conus medullaris ends at L1/L2 in adults (most commonly the lower border of L1). In neonates it extends to L3 and ascends with growth. Lumbar puncture and spinal anaesthesia are therefore performed at L3/4 or L4/5 — Tuffier's line (intercristal line) traditionally identifies L4 — to avoid cord injury.",
+      "a": "The conus medullaris ends at L1/L2 in adults (most commonly the lower border of L1). In neonates it extends to L3 and ascends with growth. Lumbar puncture and spinal anaesthesia are therefore performed at L3/4 or L4/5 — Tuffier's line (intercristal line) traditionally identifies L4 — as an initial estimate, not a guarantee: the traditional intercristal level is L4 or L4/5, and palpated levels can be more cephalad. Confirm anatomy with appropriate ultrasound when uncertain.",
       "q": "At what vertebral level does the adult spinal cord end?",
     },
     {
@@ -294,7 +294,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the full FAQ co
   ],
   "/anatomy/upper-limb-anatomy": [
     {
-      "a": "At the volar wrist between the tendon of flexor carpi radialis and the distal radius, where it lies most superficially with the bony radius supporting it for compression. Always confirm collateral palmar arch flow (modified Allen's test or Doppler of the ulnar artery) before cannulation.",
+      "a": "At the volar wrist between the tendon of flexor carpi radialis and the distal radius, where it lies most superficially with the bony radius supporting it for compression. Assess vascular history, hand perfusion and local vascular-access guidance. A normal modified Allen test does not guarantee freedom from ischaemia and has limited predictive performance. ESA 2020 conditionally suggests duplex/colour-Doppler collateral assessment with low-certainty evidence (2C); manual Allen testing is not universally mandatory or sufficient. Abnormal perfusion or vascular disease still requires assessment.",
       "q": "Where is the radial artery best palpated for arterial line insertion and why?",
     },
     {
@@ -354,7 +354,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the full FAQ co
       "q": "Why is methaemoglobin clinically dangerous?",
     },
     {
-      "a": "A galvanic (fuel) cell consumes O₂ at a lead anode (Pb + 2OH⁻ → PbO + H₂O + 2e⁻), generating a current proportional to O₂ partial pressure at the gold cathode (O₂ + 2H₂O + 4e⁻ → 4OH⁻). It is self-powered, accurate to ±3%, and lasts typically 1–2 years because the anode is consumed.",
+      "a": "In a lead/gold galvanic (fuel) oxygen cell, oxygen is reduced at the gold cathode (O₂ + 2H₂O + 4e⁻ → 4OH⁻), while lead is oxidised at the anode (Pb + 2OH⁻ → PbO + H₂O + 2e⁻). The resulting current is proportional to O₂ partial pressure. It is self-powered, accurate to ±3%, and lasts typically 1–2 years because the anode is consumed.",
       "q": "How does a fuel cell oxygen analyser work?",
     },
     {
@@ -652,8 +652,12 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the full FAQ co
       "q": "What enhanced recovery (ERAS) principles apply to gynaecological surgery?",
     },
     {
-      "a": "Ruptured ectopic pregnancy is a surgical emergency with life-threatening intra-abdominal haemorrhage. Presentation ranges from haemodynamic stability to profound shock. Key anaesthetic considerations include: resuscitation with blood products (activate major haemorrhage protocol if indicated); rapid sequence induction with cricoid pressure (full stomach, pain, and opioids all increase aspiration risk); haemodynamic monitoring with arterial line and ideally cardiac output monitoring; crossmatch at least 4 units; cell salvage is appropriate (no malignancy risk); maintain normothermia and correct coagulopathy (1:1:1 transfusion ratio if massive); anti-D immunoglobulin for Rh-negative patients; and postoperative HDU/ICU for ongoing resuscitation. For unruptured ectopic managed laparoscopically, standard laparoscopic anaesthesia applies with awareness of haemorrhage risk and crossmatch availability.",
+      "a": "Ruptured ectopic pregnancy is a surgical emergency with life-threatening intra-abdominal haemorrhage. Presentation ranges from haemodynamic stability to profound shock. Key anaesthetic considerations include: resuscitation with blood products (activate major haemorrhage protocol if indicated); rapid sequence induction with cricoid pressure (full stomach, pain, and opioids all increase aspiration risk); haemodynamic monitoring with arterial line and ideally cardiac output monitoring; crossmatch at least 4 units; cell salvage is appropriate (no malignancy risk); maintain normothermia and correct coagulopathy (1:1:1 transfusion ratio if massive); gestation-appropriate anti-D only — none at or before 11+6 weeks, and at least 250 IU (50 µg) at 12+0–12+6 weeks in RhD-negative people having surgery (NICE NG126 2026); and postoperative HDU/ICU for ongoing resuscitation. For unruptured ectopic managed laparoscopically, standard laparoscopic anaesthesia applies with awareness of haemorrhage risk and crossmatch availability.",
       "q": "What are the anaesthetic considerations for ruptured ectopic pregnancy?",
+    },
+    {
+      "a": "NICE NG140 (updated 2025) follows the WHO abortion care guideline: for RhD-negative people having a medical or surgical abortion at 11+6 weeks' gestation or less, anti-D prophylaxis is not recommended. At 12 weeks or over, ensure RhD testing and anti-D prophylaxis supply do not delay the abortion and that anti-D is available at the time of the procedure. Ectopic pregnancy and miscarriage follow NICE NG126 (updated 2026), a separate pathway with the same 11+6-week threshold: no anti-D at 11+6 weeks or less, and at least 250 IU (50 µg) at 12+0–12+6 weeks for RhD-negative people having medical management or surgery. Molar pregnancy is managed as gestational trophoblastic disease under its own pathway, so do not extend the abortion or early-pregnancy anti-D rules to it.",
+      "q": "What anti-D prophylaxis is needed after abortion, and how does it differ from ectopic pregnancy and miscarriage?",
     },
   ],
   "/clinical/hepatobiliary-transplant": [
@@ -942,7 +946,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the full FAQ co
       "q": "What is a caudal block and when is it used in children?",
     },
     {
-      "a": "For maintenance, use the Holliday-Segar 4-2-1 rule: 4 ml/kg/hr for the first 10 kg, 2 ml/kg/hr for the next 10 kg, and 1 ml/kg/hr for each kg thereafter. Use isotonic balanced crystalloids (Plasmalyte, Hartmann's) — AVOID hypotonic solutions (0.45% saline, 0.18% saline/4% glucose) because they carry a significant risk of iatrogenic hyponatraemia and cerebral oedema. For resuscitation, give 10 ml/kg boluses of warmed isotonic crystalloid and reassess after each bolus. For blood replacement, estimate maximum allowable blood loss (MABL) = EBV × (Hct_start − Hct_min) / Hct_start, where neonatal estimated blood volume = 80 ml/kg.",
+      "a": "For maintenance, NICE NG29 gives the daily requirement as 100 ml/kg/day for the first 10 kg, 50 ml/kg/day for the next 10 kg and 20 ml/kg/day thereafter. The 4-2-1 rule (4 ml/kg/hr for the first 10 kg, 2 ml/kg/hr for the next 10 kg and 1 ml/kg/hr thereafter) is only an approximate hourly form of that daily figure. Term neonates are dosed by age under NG29, not by 4-2-1. Use isotonic balanced crystalloids (Plasmalyte, Hartmann's) — AVOID hypotonic solutions (0.45% saline, 0.18% saline/4% glucose) because they carry a significant risk of iatrogenic hyponatraemia and cerebral oedema. For resuscitation, give 10 ml/kg boluses of warmed isotonic crystalloid and reassess after each bolus. For blood replacement, estimate maximum allowable blood loss (MABL) = EBV × (Hct_start − Hct_min) / Hct_start, where neonatal estimated blood volume = 80 ml/kg.",
       "q": "What fluids should be used for paediatric maintenance and resuscitation?",
     },
     {
@@ -964,7 +968,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the full FAQ co
       "q": "How does IV magnesium work as an analgesic?",
     },
     {
-      "a": "IV lidocaine blocks voltage-gated sodium channels, inhibits pro-inflammatory cytokines, and has weak NMDA antagonism and glycinergic potentiation. The Weibel 2018 Cochrane review (68 RCTs, 4,525 patients) found IV lidocaine reduced opioid consumption, PONV, ileus duration and hospital length of stay — but primarily in open abdominal surgery. The LOLIPOP trial (2024), a large multicentre RCT in laparoscopic surgery, found no significant benefit over placebo. The consensus is that IV lidocaine has strongest evidence in open abdominal and colorectal surgery (where ERAS protocols include it when epidural is not feasible), but its role in minimally invasive surgery is less convincing. Dosing: 1–1.5 mg/kg bolus then 1–2 mg/kg/hr infusion.",
+      "a": "IV lidocaine blocks voltage-gated sodium channels, inhibits pro-inflammatory cytokines, and has weak NMDA antagonism and glycinergic potentiation. The 2018 Cochrane review (Weibel, CD009642.pub3; 68 RCTs, 4,525 patients) was uncertain whether IV lidocaine improves early (1–4 h) pain, gastrointestinal recovery or opioid consumption, because the evidence was of very low certainty; it probably has no clinically relevant effect on pain after 24 h, and the 2018 update found no significant difference by surgical procedure. In minimally invasive colonic surgery the ALLEGRO trial (2025; 557 analysed) found no improvement in return of gut function at 72 h with IV lidocaine versus placebo (57.3% vs 59.0%; adjusted absolute difference −1.9%, 95% CI −8.0% to 4.2%), with no difference in any secondary outcome. IV lidocaine remains an option in ERAS pathways where epidural analgesia is unsuitable, but the evidence for benefit is weaker than commonly taught. Dosing: 1–1.5 mg/kg bolus then 1–2 mg/kg/hr infusion.",
       "q": "What is the evidence for IV lidocaine in perioperative analgesia?",
     },
     {
@@ -1092,7 +1096,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the full FAQ co
       "q": "When is spinal anaesthesia contraindicated?",
     },
     {
-      "a": "Maximum safe doses: lidocaine 3 mg/kg plain (7 mg/kg with adrenaline); bupivacaine and levobupivacaine 2 mg/kg; ropivacaine 3 mg/kg. Always calculate by lean body weight. LAST presents with peri-oral tingling, agitation, seizures, then cardiovascular collapse. Management: stop injection, ABC, 20% Intralipid 1.5 ml/kg bolus then 0.25 ml/kg/min infusion (repeat bolus up to twice at 5-minute intervals, maximum cumulative 12 ml/kg — AAGBI LAST guideline). Treat arrhythmias without lidocaine; ASRA also advises avoiding vasopressin, calcium-channel and β-blockers and reducing adrenaline boluses to <1 µg/kg. Prolonged CPR may be needed.",
+      "a": "Use named product limits, not an agent-wide maximum: lidocaine 1% plain is limited to 4.5 mg/kg and 300 mg per single dose, and with a vasoconstrictor to 7 mg/kg and 500 mg; the bupivacaine field-block table limits 2 mg/kg and 150 mg, and the levobupivacaine infiltration table 150 mg; prilocaine 1% has a 400 mg adult maximum; no universal ropivacaine maximum is inferred. Check the exact product, technique and route table and calculate by lean body weight. LAST presents with peri-oral tingling, agitation, seizures, then cardiovascular collapse. Management: stop injection, ABC, 20% lipid emulsion 1.5 ml/kg over 2–3 min then 15 ml/kg/h; repeat the same bolus at 5 and 10 min and double the infusion to 30 ml/kg/h if the circulation is not restored; maximum cumulative 12 ml/kg (Association of Anaesthetists QRH 3-10, 2023). Use adrenaline ≤ 1 microgram/kg and avoid vasopressin; avoid lidocaine, and use amiodarone for ventricular arrhythmias. Prolonged CPR may be needed.",
       "q": "How are local anaesthetics dosed safely to avoid toxicity (LAST)?",
     },
     {
@@ -1510,19 +1514,19 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the full FAQ co
       "q": "Does adrenaline actually improve outcome — what did PARAMEDIC2 show?",
     },
     {
-      "a": "HACA (NEJM 2002) and Bernard (NEJM 2002) first showed benefit of 32–34 °C for 12–24 h after witnessed VF OHCA. TTM (Nielsen, NEJM 2013, n = 950) found no significant difference between 33 °C and 36 °C (no superiority shown; this is not proof of equivalence) — both were 'targeted temperature management' and both prevented fever. TTM2 (Dankiewicz, NEJM 2021, n = 1 850) compared 33 °C with normothermia targeting ≤ 37.5 °C, with device cooling triggered at ≥ 37.8 °C and found no difference in 6-month mortality (50% vs 48%) or neurological outcome. Current UK advice (RCUK / ERC–ESICM 2025) is to actively prevent fever by targeting ≤ 37.5 °C in patients who remain comatose after ROSC; the RCUK narrative gives 36–72 h, and its March 2026 algorithm states at least 72 h, which this page follows. The superseded 2022 update used > 37.7 °C. If a hypothermic target is used, rewarm slowly (TTM2 used about 0.33 °C/h).",
+      "a": "HACA (NEJM 2002) and Bernard (NEJM 2002) first showed benefit of 32–34 °C for 12–24 h after witnessed VF OHCA. TTM (Nielsen, NEJM 2013, n = 950) found no significant difference between 33 °C and 36 °C (no superiority shown; this is not proof of equivalence) — both were 'targeted temperature management' and both prevented fever. TTM2 (Dankiewicz, NEJM 2021, n = 1 850) compared 33 °C with normothermia targeting ≤ 37.5 °C, with device cooling triggered at ≥ 37.8 °C and found no difference in 6-month mortality (50% vs 48%) or neurological outcome. Current UK advice (RCUK 2025) is to actively prevent fever by targeting ≤ 37.5 °C in patients who remain comatose after ROSC, for 36–72 h. The superseded 2022 update used > 37.7 °C. If a hypothermic target is used, rewarm slowly (TTM2 used about 0.33 °C/h).",
       "q": "Should I cool post-arrest patients to 33 °C or aim for active normothermia? What changed after TTM2?",
     },
     {
-      "a": "ARREST (Yannopoulos, Lancet 2020, n = 30, single-centre Minnesota) randomised refractory shockable OHCA and was stopped early for benefit — 43% vs 7% survival to discharge with eCPR. Prague OHCA (Belohlavek, JAMA 2022, n = 256) compared invasive (eCPR + cath lab) with standard advanced ALS and showed a non-significant trend to better 180-day favourable neurological outcome (31.5% vs 22.0%); subgroup analysis favoured the invasive strategy with longer arrest durations. INCEPTION (Suverein, NEJM 2023, n = 134) was a multicentre Dutch trial and was neutral — reflecting the impact of system speed and operator volume. Suitable candidates have: witnessed arrest, bystander CPR, initial shockable rhythm, age < 65–75, no major comorbidity, ETCO₂ > 10 mmHg sustained, and a realistic prospect of cannulation within 60 minutes of collapse. Outside high-volume eCPR centres with rapid pathways, benefit is unlikely.",
+      "a": "ARREST (2020) was a small single-centre trial in selected refractory shockable arrests, with survival to discharge 6/14 versus 1/15 and early stopping for benefit. Prague OHCA did not meet its primary 180-day favourable neurological-survival endpoint (31.5% versus 22.0%; P = 0.09); favourable secondary or subgroup signals are exploratory. INCEPTION also found no statistically significant primary benefit. These trials do not prove that speed or operator volume alone explains their differences. eCPR is a selected rescue strategy within an organised service; eligibility and time-to-flow goals are locally defined, not universal age/ETCO₂ cutoffs or guarantees of benefit.",
       "q": "Who is an appropriate candidate for eCPR and what does ARREST, Prague OHCA and INCEPTION tell us?",
     },
     {
-      "a": "Neuroprognostication is performed in the comatose post-cardiac-arrest patient at ≥ 72 hours after ROSC, only once confounders (sedation, NMBA, hypothermia, severe metabolic derangement, hypoglycaemia, hypotension, ongoing seizure activity) are excluded. The entry criterion is GCS motor ≤ 3 (abnormal flexion, extension, or no motor response) at ≥ 72 h. ERC/ESICM 2021 consider poor outcome likely when two or more of these are present: (1) bilaterally absent pupillary and corneal reflexes at ≥ 72 h (quantitative pupillometry may be used); (2) bilaterally absent N20 SSEP waves at ≥ 24 h; (3) highly malignant EEG (suppressed background or burst-suppression) at > 24 h; (4) NSE > 60 µg/L at 48 h and/or 72 h; (5) status myoclonus ≤ 72 h; (6) diffuse and extensive anoxic injury on CT or MRI. No single marker is sufficient on its own. Withdrawal of life-sustaining therapy in the first 72 hours risks self-fulfilling prophecy.",
+      "a": "Use current RCUK 2025 multimodal neuroprognostication in patients not awake and obeying commands (GCS motor < 6) at ≥ 72 h after ROSC, after excluding relevant confounders. Combine at least two concordant poor-outcome predictors at their specified times, and assess evidence supporting recovery as well as poor outcome. NSE > 60 µg/L at 48 h and/or 72 h is one specified marker; a rising trend alone is not an interchangeable threshold. EEG must be interpreted by pattern, timing and confounders. Technical quality matters for bilateral N20 absence, and neuromuscular blockade may improve recording quality. Indeterminate or discordant findings require further assessment. Prognosis informs shared decisions alongside patient wishes, overall illness and other factors; it is not an automatic withdrawal rule.",
       "q": "What is multimodal neuroprognostication and when do I perform it?",
     },
     {
-      "a": "Intubate if not already (or replace a supraglottic with a tracheal tube once stable). Set tidal volume 6–8 mL/kg predicted body weight, PEEP 5–10 cmH₂O, FiO₂ titrated to SpO₂ 94–98% (avoid hyperoxia — observational data link PaO₂ > 40 kPa to higher mortality; but the EXACT RCT found lower survival when pre-hospital SpO₂ was targeted at 90–94%, so avoid aiming below 94%). Set minute ventilation to PaCO₂ 4.5–6.0 kPa (avoid hypocapnia which causes cerebral vasoconstriction and is independently associated with worse neurological outcome — TAME trial 2023 found no benefit from mild hypercapnia 6.7–7.3 kPa over normocapnia). Use continuous waveform capnography. Sedate with short-acting agents (propofol + remifentanil or fentanyl ± dexmedetomidine) to facilitate later neuroprognostication. Avoid prolonged NMBA except briefly for shivering not controlled by sedation and counter-warming.",
+      "a": "Intubation is indicated for persistent coma or another need for ventilation; rapid normal neurological recovery with adequate breathing does not automatically require intubation. For ventilated patients use tidal volume 6–8 mL/kg predicted body weight, individualised PEEP and reliable oxygen measurement to titrate toward SpO₂ 94–98%, with arterial PaCO₂ 4.7–6.0 kPa and continuous waveform capnography. Avoid hypoxaemia, hyperoxaemia and hypocapnia; repeat arterial gases after adjustments. Use short-acting sedation where appropriate. Routine neuromuscular blockade is not recommended, but may be considered for critical hypoxaemia with ARDS and, when clinically indicated, refractory shivering despite adequate sedation and counter-warming; assess the individual patient.",
       "q": "How should I manage the airway and ventilator in the first 6 hours post-ROSC?",
     },
   ],
@@ -1734,7 +1738,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the full FAQ co
       "q": "What physiological derangements occur after brainstem death?",
     },
     {
-      "a": "DCD (Maastricht III) occurs after planned withdrawal with death by circulatory criteria and a 5-minute 'no-touch' period; warm ischaemic time limits organ viability (typically <30 min for liver, <2 h for kidney) and outcomes are slightly inferior for some grafts but improve donor numbers.",
+      "a": "DCD (Maastricht III) follows planned withdrawal; confirm death only after the full continuous 5-minute assessment and required examination, when all circulatory criteria are satisfied (AoMRC 2025). BTS DCD 2023 defines fWIT from a sustained (at least 2-minute) fall in SBP below 50 mmHg to cold in-situ perfusion or NRP, not from withdrawal or arrest. Organ acceptance and stand-down depend on the actual organ, preservation method and current retrieval-team protocol; arithmetic alone cannot establish viability. With NRP, a long withdrawal phase alone is not an automatic liver exclusion.",
       "q": "How does DCD differ from DBD for donation?",
     },
   ],
@@ -1752,7 +1756,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the full FAQ co
       "q": "Which children with acute stroke are considered for thrombolysis or thrombectomy?",
     },
     {
-      "a": "10 mL/kg isotonic crystalloid boluses with reassessment after each; 20 mL/kg is reserved for specific situations (e.g. profound shock). DKA and trauma follow their own pathways: NICE NG18 uses a 10 mL/kg 0.9% saline bolus in DKA (given as soon as possible if shocked, over 30 minutes if dehydrated but not shocked), while haemorrhagic trauma needs early blood products and haemorrhage control. If shock persists after 1–2 boluses, move earlier to vasoactive infusions (adrenaline for cold shock, noradrenaline for warm) rather than escalating fluid further (SSC Paediatric 2020, APLS 2021; FEAST caution in resource-limited settings).",
+      "a": "SSC Children 2026: choose adrenaline or noradrenaline through repeated haemodynamic assessment, response, echo/cardiac and lung POCUS when expertise is available, and paediatric critical-care advice. Evidence does not establish one preferred first-line agent; cold/warm labels do not mandate drug selection. UK RCUK 2025 uses 10 mL/kg isotonic crystalloid boluses with reassessment of perfusion and overload after every bolus. New or increasing hepatomegaly is one sign of overload/cardiac failure, not an isolated diagnostic equality. Stop boluses if shock resolves or overload develops; do not require 40–60 mL/kg or a fixed fluid threshold before vasoactives. Peripheral vasoactive initiation can avoid delay for central access. DKA and haemorrhagic trauma follow their own pathways. NICE NG18 DKA uses a 10 mL/kg 0.9% saline bolus (as soon as possible if shocked, over 30 minutes if dehydrated but not shocked), with senior review before more than one; haemorrhagic trauma needs early blood products and haemorrhage control. Hydrocortisone is not routine paediatric septic-shock therapy. SSC Children 2026 suggests against IV hydrocortisone when fluids and vasoactive therapy restore haemodynamic stability; persistent instability despite adequate support has insufficient evidence for a recommendation either way. Give stress-dose corticosteroid replacement for suspected or documented adrenal insufficiency; this is separate from routine sepsis adjuncts and does not replace adrenal-crisis management. Suspected septic shock: start antibiotics as soon as possible, ideally within 1 hour of recognition. Probable sepsis without shock: undertake time-limited rapid investigation and, if concern is substantiated, start treatment as soon as possible after evaluation, ideally within 3 hours of recognition. If timely evaluation is difficult, consider antibiotics as soon as possible for probable bacterial sepsis.",
       "q": "What fluid resuscitation strategy is recommended for paediatric septic shock?",
     },
     {
@@ -1846,7 +1850,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the full FAQ co
       "q": "When is haemodialysis indicated in poisoning?",
     },
     {
-      "a": "Association of Anaesthetists 2023: give 20% lipid emulsion 1.5 mL/kg as an initial bolus (simplified to a fixed 100 mL bolus if >70 kg), then start an infusion of 0.25 mL/kg/min (equivalent to 15 mL/kg/h) — the same weight-based rate for every patient, which equates to about 1000 mL/h in an adult over 70 kg. Up to two further boluses at 5-minute intervals (three in total), and double the infusion to 0.5 mL/kg/min (30 mL/kg/h) if the circulation remains unstable; total maximum 12 mL/kg.",
+      "a": "Association of Anaesthetists QRH 3-10 (2023): give 20% lipid emulsion 1.5 mL/kg over 2–3 min (~100 mL in a 70 kg adult), then an infusion at 15 mL/kg/h. Give the same bolus again at 5 and 10 min and double the infusion to 30 mL/kg/h if the circulation is not restored. Maximum cumulative dose 12 mL/kg (~840 mL in a 70 kg adult). Propofol is not a substitute.",
       "q": "How is lipid emulsion used in local anaesthetic toxicity?",
     },
     {
@@ -1856,7 +1860,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the full FAQ co
   ],
   "/intensive-care/transfusion-coagulation": [
     {
-      "a": "Empirical 1:1:1 (RBC:FFP:platelets) until ROTEM/TEG-guided, based on PROPPR trial; activate at predicted 4+ units in 1 h, give TXA 1 g within 3 h (CRASH-2) and target ionised Ca²⁺ >1.0 mmol/L.",
+      "a": "PROPPR 2015 used plasma:platelet-equivalents:RBC 1:1:1 in severe trauma: 6 plasma units, 1 adult platelet dose (about 6 whole-blood-derived platelet units or 1 apheresis unit), and 6 RBC units, not one adult platelet dose per RBC. More achieved haemostasis and fewer died from exsanguination; 24-hour/30-day mortality differences were not statistically significant. NICE NG39 initial adult major-trauma plasma:RBC is 1:1; follow the local MHP and transition promptly to laboratory/viscoelastic-guided treatment. Activation uses physiology, bleeding and response, not predicted units alone. Measure ionised calcium frequently and replace by protocol to the normal range (approximately 1.1–1.3 mmol/L; laboratory/pH context). Ratios and targets are not universal across bleeding causes.",
       "q": "What ratios are used in major haemorrhage protocols?",
     },
     {
@@ -2070,11 +2074,11 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the full FAQ co
   ],
   "/notes/local-anaesthetic-systemic-toxicity-management": [
     {
-      "a": "Lidocaine: 3 mg/kg plain, 7 mg/kg with adrenaline. Bupivacaine and levobupivacaine: 2 mg/kg (no adrenaline-enhanced dose). Ropivacaine: 3 mg/kg. Always calculate against lean body weight and use the lowest effective dose; reduce in the elderly, pregnant, and hepatically impaired.",
-      "q": "What is the maximum safe dose of lidocaine and bupivacaine?",
+      "a": "There is no single agent-wide maximum — use the named product, technique and route table. For example, lidocaine 1% plain is limited to 4.5 mg/kg and 300 mg per single dose, and with a vasoconstrictor to 7 mg/kg and 500 mg; the named bupivacaine field-block table limits 2 mg/kg and 150 mg; levobupivacaine infiltration 150 mg; prilocaine 1% has a 400 mg adult maximum and no adult mg/kg figure. No universal ropivacaine maximum is inferred. Calculate against lean body weight, use the lowest effective dose, and reduce in the elderly, pregnant and hepatically impaired.",
+      "q": "What is the maximum dose of lidocaine and bupivacaine?",
     },
     {
-      "a": "Bolus 1.5 mL/kg lean body weight over 1 minute (≈ 100 mL in a 70 kg adult), followed by an infusion of 15 mL/kg/h. If circulation is not restored after 5 minutes: repeat bolus up to twice (5-minute intervals) and double the infusion rate to 30 mL/kg/h. Maximum cumulative dose 12 mL/kg.",
+      "a": "Bolus 1.5 mL/kg lean body weight over 2–3 minutes (≈ 100 mL in a 70 kg adult), followed by an infusion of 15 mL/kg/h. Give the same bolus again at 5 and 10 minutes and double the infusion rate to 30 mL/kg/h if the circulation is not restored. Maximum cumulative dose 12 mL/kg (≈ 840 mL in a 70 kg adult).",
       "q": "What is the Intralipid 20% dose in LAST?",
     },
     {
@@ -2082,7 +2086,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the full FAQ co
       "q": "What are the early warning signs of LAST?",
     },
     {
-      "a": "Bupivacaine-induced asystole is notoriously resistant to standard ALS. Adrenaline doses should be reduced to ≤ 1 µg/kg, vasopressin is not recommended, and lidocaine and other class I antiarrhythmics are contraindicated. Amiodarone is preferred for ventricular arrhythmias. Prolonged resuscitation (≥ 60 minutes) and consideration of VA-ECMO are justified.",
+      "a": "Bupivacaine-induced asystole is notoriously resistant to standard ALS. Adrenaline doses should be reduced to ≤ 1 µg/kg, vasopressin is not recommended, and lidocaine is avoided. Amiodarone is used for ventricular arrhythmias. Prolonged resuscitation (at least 60 minutes) and consideration of VA-ECMO are justified.",
       "q": "How does LAST cardiac arrest differ from a standard arrest?",
     },
   ],
@@ -2696,7 +2700,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the full FAQ co
       "q": "How does pKa of a local anaesthetic relate to onset of action?",
     },
     {
-      "a": "RCoA/Association of Anaesthetists 2024 algorithm: STOP injection, call for help, ABC (100 % O₂, secure airway, IV access). Manage seizures (small dose benzodiazepine or propofol). Treat arrhythmias (avoid lidocaine, calcium, vasopressin; use small adrenaline 1 µg/kg). Give 20 % Intralipid: 1.5 mL/kg bolus, then 15 mL/kg/h infusion, repeat bolus up to 3×, max 12 mL/kg total. Continue CPR — long resuscitation often successful. Refer to ITU and report to NPSA / Lipid Rescue registry.",
+      "a": "Association of Anaesthetists QRH 3-10 (2023) algorithm: STOP injection, call for help, ABC (100 % O₂, secure airway, IV access). Manage seizures with a small incremental benzodiazepine dose (thiopental or propofol only with caution because of negative inotropy). If arrest, give adrenaline ≤ 1 microgram/kg, avoid vasopressin and lidocaine, and use amiodarone for ventricular arrhythmias. Give 20 % lipid emulsion 1.5 mL/kg over 2–3 min, then 15 mL/kg/h; repeat the bolus at 5 and 10 min and double to 30 mL/kg/h if unstable; maximum cumulative 12 mL/kg. Continue CPR — long resuscitation is often successful. Refer to critical care and report the incident locally and nationally.",
       "q": "Outline the management of local-anaesthetic systemic toxicity (LAST).",
     },
   ],
@@ -2958,7 +2962,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the full FAQ co
       "q": "What is a normal ETCO₂ range?",
     },
     {
-      "a": "A complete loss of the capnograph waveform across all phases means no expired CO₂ is reaching the sensor. The differential is short: oesophageal intubation, accidental extubation, complete circuit disconnection, total airway obstruction, or cardiac arrest with no cardiac output. Treat as life-threatening — look at the patient and the airway, confirm tube position, check every connection from patient to machine, and palpate a central pulse.",
+      "a": "A complete loss of the capnograph waveform across all phases means no expired CO₂ is reaching the sensor. The differential is short: oesophageal intubation, accidental extubation, complete circuit disconnection, total airway obstruction, or cardiac arrest with no cardiac output. Treat as life-threatening — look at the patient and the airway, check every connection from patient to machine, and palpate a central pulse. If sustained exhaled CO₂ cannot be restored, assume oesophageal placement until excluded and remove the tube by default, then oxygenate by facemask or supraglottic airway. If removal is judged dangerous, urgently exclude oesophageal placement by repeat laryngoscopy supplemented by bronchoscopy, ultrasound or an oesophageal detector, and remove the tube if sustained CO₂ is not restored.",
       "q": "Why does ETCO₂ suddenly fall to zero?",
     },
     {
@@ -3348,7 +3352,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the full FAQ co
       "q": "What are the three principles of radiation protection?",
     },
     {
-      "a": "IRR 2017 (UK): whole-body effective dose 20 mSv/year (averaged over 5 years, max 50 mSv in any single year). Equivalent dose limits: lens 20 mSv/year, skin/extremities 500 mSv/year. Pregnant staff — fetal dose ≤1 mSv over the declared pregnancy. Wear film/TLD badges and review records with the RPS.",
+      "a": "IRR 2017 (UK): whole-body effective dose 20 mSv in any calendar year for adult workers; special arrangements under regulation 12(2)/Schedule 3 Part 2 are separate. Equivalent dose limits: lens 20 mSv/year, skin/extremities 500 mSv/year. Pregnant staff — fetal dose ≤1 mSv over the declared pregnancy. Wear film/TLD badges and review records with the RPS.",
       "q": "What is the annual dose limit for occupationally exposed staff?",
     },
     {
@@ -3414,7 +3418,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the full FAQ co
   ],
   "/physiology/foetal-circulation": [
     {
-      "a": "Ductus venosus — bypasses liver from umbilical vein to IVC; becomes ligamentum venosum. Foramen ovale — bypasses pulmonary circulation, RA → LA; becomes fossa ovalis (patent in 25 % of adults). Ductus arteriosus — bypasses lungs, pulmonary artery → aorta; becomes ligamentum arteriosum. All three shunt blood away from the non-functioning fetal lungs toward systemic circulation.",
+      "a": "Ductus venosus — bypasses part of the liver from umbilical vein to IVC; becomes ligamentum venosum. Foramen ovale — bypasses pulmonary circulation, RA → LA; becomes fossa ovalis (patent in 25 % of adults). Ductus arteriosus — bypasses lungs, pulmonary artery → aorta; becomes ligamentum arteriosum. The ductus venosus shunts umbilical venous blood past part of the liver into the IVC; the foramen ovale and ductus arteriosus divert blood away from fetal pulmonary circulation.",
       "q": "Describe the three fetal shunts and what they become postnatally.",
     },
     {
@@ -3540,15 +3544,15 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the full FAQ co
   ],
   "/physiology/starling-forces": [
     {
-      "a": "Jv = Kf × [(Pc − Pi) − σ(πp − πg)], where Jv = net filtration; Kf = filtration coefficient; Pc/Pi = capillary/interstitial hydrostatic pressure; πp/πg = plasma/subglycocalyx oncotic pressure; σ = reflection coefficient (1 = impermeable to protein, 0 = freely permeable). The endothelial glycocalyx is the true semi-permeable barrier — not the endothelial cell membrane (revised Starling principle, Levick & Michel 2010).",
+      "a": "Jv = Kf × [(Pc − Pi) − σ(πp − πg)], where Jv = net filtration; Kf = filtration coefficient; Pc/Pi = capillary/interstitial hydrostatic pressure; πp/πg = plasma/subglycocalyx oncotic pressure; σ = reflection coefficient (1 = impermeable to protein, 0 = freely permeable). The glycocalyx is an important macromolecular sieve acting with endothelial and intercellular pathways, not excluding junctions. Subglycocalyx oncotic pressure depends on flow and is not universally zero.",
       "q": "State the Starling equation in its modern form.",
     },
     {
-      "a": "Gel-like layer of proteoglycans and glycoproteins on the luminal endothelial surface, ~0.5–1 µm thick. Excludes plasma proteins from contact with the endothelial barrier, generates the effective oncotic gradient, regulates leucocyte adhesion and coagulation. Damaged by sepsis, hyperglycaemia, ischaemia–reperfusion, atrial natriuretic peptide (released by fluid loading). Glycocalyx loss → capillary leak — explains why fluid overload worsens oedema.",
+      "a": "Gel-like layer of proteoglycans and glycoproteins on the luminal endothelial surface, ~0.5–1 µm thick. Excludes plasma proteins from contact with the endothelial barrier, generates the effective oncotic gradient, regulates leucocyte adhesion and coagulation. Injury can impair barrier function. ANP-associated shedding has experimental support in guinea-pig hearts and small human volume-loading associations; this does not prove direct cleavage or clinical oedema after every bolus.",
       "q": "What is the endothelial glycocalyx and why is it clinically important?",
     },
     {
-      "a": "Compensatory mechanisms: increased lymphatic drainage, dilution of interstitial protein (reducing πi), and the glycocalyx-protected subglycocalyx space maintains a large oncotic gradient even at low plasma albumin. Oedema only becomes clinically apparent when these are overwhelmed (albumin typically <20 g/L plus increased capillary pressure or permeability).",
+      "a": "Compensatory mechanisms: increased lymphatic drainage, dilution of interstitial protein (reducing πi), while flow-dependent subglycocalyx protein concentration modifies the effective oncotic gradient. Oedema depends on filtration, lymphatic capacity and tissue context; there is no universal albumin threshold.",
       "q": "Why does hypoalbuminaemia cause oedema less than predicted by classical Starling?",
     },
   ],
@@ -3773,7 +3777,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the synthesised
         "@type": "Question",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "The spleen lies under the 9th–11th left ribs in the left hypochondrium, behind the mid-axillary line. Left lower rib fractures (especially 9–11) are the commonest mechanism of blunt splenic injury — a high-energy mechanism with left flank tenderness mandates contrast CT to exclude haemorrhage from this highly vascular organ (~5% of cardiac output).",
+          "text": "The spleen lies under the 9th–11th left ribs in the left hypochondrium, behind the mid-axillary line. Left lower rib fractures are a marker of associated splenic injury and should raise suspicion, not a universal most-common causal mechanism. Assess mechanism, examination and haemodynamics. In stable or resuscitation-responsive major trauma with suspected injury, contrast CT is appropriate. Nonresponding haemodynamically unstable patients need only the minimum imaging necessary to direct urgent haemorrhage control; mandatory CT must not delay it.",
         },
         "name": "Why is the spleen at risk from left-sided rib fractures?",
       },
@@ -3803,7 +3807,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the synthesised
         "@type": "Question",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "~100% incidence of ipsilateral phrenic nerve palsy (avoid in severe respiratory disease), recurrent laryngeal nerve block (hoarseness), Horner's syndrome (cervical sympathetic involvement), and rare but catastrophic intra-arterial (vertebral artery) injection causing immediate seizures. Pneumothorax risk is low compared with supraclavicular block.",
+          "text": "Substantial ipsilateral hemidiaphragmatic paresis risk, approaching 100% with traditional/high-volume approaches but varying with technique and volume; low-volume approaches do not eliminate risk. Assess respiratory reserve and appropriate monitoring, especially with limited pulmonary reserve or bilateral blocks. Other risks include, recurrent laryngeal nerve block (hoarseness), Horner's syndrome (cervical sympathetic involvement), and rare but catastrophic intra-arterial (vertebral artery) injection causing immediate seizures. Pneumothorax risk is low compared with supraclavicular block.",
         },
         "name": "What is the risk profile of an interscalene block?",
       },
@@ -3817,9 +3821,9 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the synthesised
         "@type": "Question",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "In ~85% of patients (right-dominant circulation) the RCA gives the SA nodal artery and the AV nodal artery before becoming the posterior descending artery. This is why inferior MIs from RCA occlusion frequently cause bradycardia, AV block and right-ventricular involvement — and why right-sided ECG leads (V4R) should be recorded.",
+          "text": "Coronary dominance is defined by posterior descending artery origin, not SA nodal artery origin. SA nodal supply varies: most often RCA, with LCx and other origins. AV nodal origin usually follows dominance. RCA occlusion can cause bradyarrhythmia depending on individual anatomy; dominance does not establish both nodal origins.",
         },
-        "name": "Why does the right coronary artery supply the SA and AV nodes in most people?",
+        "name": "How does coronary dominance differ from nodal artery supply?",
       },
       {
         "@type": "Question",
@@ -3885,7 +3889,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the synthesised
         "@type": "Question",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "It covers the anterior thigh (skin and quadriceps), medial leg (saphenous nerve below the knee) and periosteum of the femur — sufficient for analgesia after femoral neck or shaft fracture and for knee surgery in combination with a sciatic block. It misses the posterior thigh (sciatic), hip joint (obturator + sciatic + femoral all contribute), and lateral thigh (lateral cutaneous nerve of thigh).",
+          "text": "It covers the anterior thigh (skin and quadriceps), medial leg (saphenous nerve below the knee) and periosteum of the femur — sufficient for analgesia after femoral neck or shaft fracture and for knee surgery in combination with a sciatic block. It misses the posterior-thigh skin (principally posterior femoral cutaneous nerve, S1–S3; distinct from sciatic motor supply to posterior-thigh muscles), hip joint (obturator + sciatic + femoral all contribute), and lateral thigh (lateral cutaneous nerve of thigh).",
         },
         "name": "What does a femoral nerve block cover, and what does it miss?",
       },
@@ -3893,7 +3897,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the synthesised
         "@type": "Question",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "The sciatic typically divides into tibial and common peroneal branches in the popliteal fossa, ~7 cm proximal to the popliteal crease. Ultrasound-guided popliteal block targets the nerve just proximal to the bifurcation so one injection captures both branches — block below the bifurcation may spare one division and leave the lateral foot (peroneal) or sole (tibial) unblocked.",
+          "text": "The sciatic typically divides into tibial and common peroneal branches in the popliteal fossa, ~7 cm proximal to the popliteal crease. Ultrasound-guided popliteal block targets the nerve just proximal to the bifurcation so one injection captures both branches — block below the bifurcation may spare one division and leave one division unblocked. The lateral border of the foot is sural territory, with variable tibial/common fibular contributions; most dorsum is superficial fibular/peroneal and the first web space deep fibular. An isolated peroneal block cannot be assumed to cover the lateral border.",
         },
         "name": "Where does the sciatic nerve divide and why does that matter for popliteal block?",
       },
@@ -3937,7 +3941,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the synthesised
         "@type": "Question",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "The conus medullaris ends at L1/L2 in adults (most commonly the lower border of L1). In neonates it extends to L3 and ascends with growth. Lumbar puncture and spinal anaesthesia are therefore performed at L3/4 or L4/5 — Tuffier's line (intercristal line) traditionally identifies L4 — to avoid cord injury.",
+          "text": "The conus medullaris ends at L1/L2 in adults (most commonly the lower border of L1). In neonates it extends to L3 and ascends with growth. Lumbar puncture and spinal anaesthesia are therefore performed at L3/4 or L4/5 — Tuffier's line (intercristal line) traditionally identifies L4 — as an initial estimate, not a guarantee: the traditional intercristal level is L4 or L4/5, and palpated levels can be more cephalad. Confirm anatomy with appropriate ultrasound when uncertain.",
         },
         "name": "At what vertebral level does the adult spinal cord end?",
       },
@@ -3997,7 +4001,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the synthesised
         "@type": "Question",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "At the volar wrist between the tendon of flexor carpi radialis and the distal radius, where it lies most superficially with the bony radius supporting it for compression. Always confirm collateral palmar arch flow (modified Allen's test or Doppler of the ulnar artery) before cannulation.",
+          "text": "At the volar wrist between the tendon of flexor carpi radialis and the distal radius, where it lies most superficially with the bony radius supporting it for compression. Assess vascular history, hand perfusion and local vascular-access guidance. A normal modified Allen test does not guarantee freedom from ischaemia and has limited predictive performance. ESA 2020 conditionally suggests duplex/colour-Doppler collateral assessment with low-certainty evidence (2C); manual Allen testing is not universally mandatory or sufficient. Abnormal perfusion or vascular disease still requires assessment.",
         },
         "name": "Where is the radial artery best palpated for arterial line insertion and why?",
       },
@@ -4125,7 +4129,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the synthesised
         "@type": "Question",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "A galvanic (fuel) cell consumes O₂ at a lead anode (Pb + 2OH⁻ → PbO + H₂O + 2e⁻), generating a current proportional to O₂ partial pressure at the gold cathode (O₂ + 2H₂O + 4e⁻ → 4OH⁻). It is self-powered, accurate to ±3%, and lasts typically 1–2 years because the anode is consumed.",
+          "text": "In a lead/gold galvanic (fuel) oxygen cell, oxygen is reduced at the gold cathode (O₂ + 2H₂O + 4e⁻ → 4OH⁻), while lead is oxidised at the anode (Pb + 2OH⁻ → PbO + H₂O + 2e⁻). The resulting current is proportional to O₂ partial pressure. It is self-powered, accurate to ±3%, and lasts typically 1–2 years because the anode is consumed.",
         },
         "name": "How does a fuel cell oxygen analyser work?",
       },
@@ -4743,9 +4747,17 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the synthesised
         "@type": "Question",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Ruptured ectopic pregnancy is a surgical emergency with life-threatening intra-abdominal haemorrhage. Presentation ranges from haemodynamic stability to profound shock. Key anaesthetic considerations include: resuscitation with blood products (activate major haemorrhage protocol if indicated); rapid sequence induction with cricoid pressure (full stomach, pain, and opioids all increase aspiration risk); haemodynamic monitoring with arterial line and ideally cardiac output monitoring; crossmatch at least 4 units; cell salvage is appropriate (no malignancy risk); maintain normothermia and correct coagulopathy (1:1:1 transfusion ratio if massive); anti-D immunoglobulin for Rh-negative patients; and postoperative HDU/ICU for ongoing resuscitation. For unruptured ectopic managed laparoscopically, standard laparoscopic anaesthesia applies with awareness of haemorrhage risk and crossmatch availability.",
+          "text": "Ruptured ectopic pregnancy is a surgical emergency with life-threatening intra-abdominal haemorrhage. Presentation ranges from haemodynamic stability to profound shock. Key anaesthetic considerations include: resuscitation with blood products (activate major haemorrhage protocol if indicated); rapid sequence induction with cricoid pressure (full stomach, pain, and opioids all increase aspiration risk); haemodynamic monitoring with arterial line and ideally cardiac output monitoring; crossmatch at least 4 units; cell salvage is appropriate (no malignancy risk); maintain normothermia and correct coagulopathy (1:1:1 transfusion ratio if massive); gestation-appropriate anti-D only — none at or before 11+6 weeks, and at least 250 IU (50 µg) at 12+0–12+6 weeks in RhD-negative people having surgery (NICE NG126 2026); and postoperative HDU/ICU for ongoing resuscitation. For unruptured ectopic managed laparoscopically, standard laparoscopic anaesthesia applies with awareness of haemorrhage risk and crossmatch availability.",
         },
         "name": "What are the anaesthetic considerations for ruptured ectopic pregnancy?",
+      },
+      {
+        "@type": "Question",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "NICE NG140 (updated 2025) follows the WHO abortion care guideline: for RhD-negative people having a medical or surgical abortion at 11+6 weeks' gestation or less, anti-D prophylaxis is not recommended. At 12 weeks or over, ensure RhD testing and anti-D prophylaxis supply do not delay the abortion and that anti-D is available at the time of the procedure. Ectopic pregnancy and miscarriage follow NICE NG126 (updated 2026), a separate pathway with the same 11+6-week threshold: no anti-D at 11+6 weeks or less, and at least 250 IU (50 µg) at 12+0–12+6 weeks for RhD-negative people having medical management or surgery. Molar pregnancy is managed as gestational trophoblastic disease under its own pathway, so do not extend the abortion or early-pregnancy anti-D rules to it.",
+        },
+        "name": "What anti-D prophylaxis is needed after abortion, and how does it differ from ectopic pregnancy and miscarriage?",
       },
     ],
   },
@@ -5341,7 +5353,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the synthesised
         "@type": "Question",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "For maintenance, use the Holliday-Segar 4-2-1 rule: 4 ml/kg/hr for the first 10 kg, 2 ml/kg/hr for the next 10 kg, and 1 ml/kg/hr for each kg thereafter. Use isotonic balanced crystalloids (Plasmalyte, Hartmann's) — AVOID hypotonic solutions (0.45% saline, 0.18% saline/4% glucose) because they carry a significant risk of iatrogenic hyponatraemia and cerebral oedema. For resuscitation, give 10 ml/kg boluses of warmed isotonic crystalloid and reassess after each bolus. For blood replacement, estimate maximum allowable blood loss (MABL) = EBV × (Hct_start − Hct_min) / Hct_start, where neonatal estimated blood volume = 80 ml/kg.",
+          "text": "For maintenance, NICE NG29 gives the daily requirement as 100 ml/kg/day for the first 10 kg, 50 ml/kg/day for the next 10 kg and 20 ml/kg/day thereafter. The 4-2-1 rule (4 ml/kg/hr for the first 10 kg, 2 ml/kg/hr for the next 10 kg and 1 ml/kg/hr thereafter) is only an approximate hourly form of that daily figure. Term neonates are dosed by age under NG29, not by 4-2-1. Use isotonic balanced crystalloids (Plasmalyte, Hartmann's) — AVOID hypotonic solutions (0.45% saline, 0.18% saline/4% glucose) because they carry a significant risk of iatrogenic hyponatraemia and cerebral oedema. For resuscitation, give 10 ml/kg boluses of warmed isotonic crystalloid and reassess after each bolus. For blood replacement, estimate maximum allowable blood loss (MABL) = EBV × (Hct_start − Hct_min) / Hct_start, where neonatal estimated blood volume = 80 ml/kg.",
         },
         "name": "What fluids should be used for paediatric maintenance and resuscitation?",
       },
@@ -5387,7 +5399,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the synthesised
         "@type": "Question",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "IV lidocaine blocks voltage-gated sodium channels, inhibits pro-inflammatory cytokines, and has weak NMDA antagonism and glycinergic potentiation. The Weibel 2018 Cochrane review (68 RCTs, 4,525 patients) found IV lidocaine reduced opioid consumption, PONV, ileus duration and hospital length of stay — but primarily in open abdominal surgery. The LOLIPOP trial (2024), a large multicentre RCT in laparoscopic surgery, found no significant benefit over placebo. The consensus is that IV lidocaine has strongest evidence in open abdominal and colorectal surgery (where ERAS protocols include it when epidural is not feasible), but its role in minimally invasive surgery is less convincing. Dosing: 1–1.5 mg/kg bolus then 1–2 mg/kg/hr infusion.",
+          "text": "IV lidocaine blocks voltage-gated sodium channels, inhibits pro-inflammatory cytokines, and has weak NMDA antagonism and glycinergic potentiation. The 2018 Cochrane review (Weibel, CD009642.pub3; 68 RCTs, 4,525 patients) was uncertain whether IV lidocaine improves early (1–4 h) pain, gastrointestinal recovery or opioid consumption, because the evidence was of very low certainty; it probably has no clinically relevant effect on pain after 24 h, and the 2018 update found no significant difference by surgical procedure. In minimally invasive colonic surgery the ALLEGRO trial (2025; 557 analysed) found no improvement in return of gut function at 72 h with IV lidocaine versus placebo (57.3% vs 59.0%; adjusted absolute difference −1.9%, 95% CI −8.0% to 4.2%), with no difference in any secondary outcome. IV lidocaine remains an option in ERAS pathways where epidural analgesia is unsuitable, but the evidence for benefit is weaker than commonly taught. Dosing: 1–1.5 mg/kg bolus then 1–2 mg/kg/hr infusion.",
         },
         "name": "What is the evidence for IV lidocaine in perioperative analgesia?",
       },
@@ -5651,7 +5663,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the synthesised
         "@type": "Question",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Maximum safe doses: lidocaine 3 mg/kg plain (7 mg/kg with adrenaline); bupivacaine and levobupivacaine 2 mg/kg; ropivacaine 3 mg/kg. Always calculate by lean body weight. LAST presents with peri-oral tingling, agitation, seizures, then cardiovascular collapse. Management: stop injection, ABC, 20% Intralipid 1.5 ml/kg bolus then 0.25 ml/kg/min infusion (repeat bolus up to twice at 5-minute intervals, maximum cumulative 12 ml/kg — AAGBI LAST guideline). Treat arrhythmias without lidocaine; ASRA also advises avoiding vasopressin, calcium-channel and β-blockers and reducing adrenaline boluses to <1 µg/kg. Prolonged CPR may be needed.",
+          "text": "Use named product limits, not an agent-wide maximum: lidocaine 1% plain is limited to 4.5 mg/kg and 300 mg per single dose, and with a vasoconstrictor to 7 mg/kg and 500 mg; the bupivacaine field-block table limits 2 mg/kg and 150 mg, and the levobupivacaine infiltration table 150 mg; prilocaine 1% has a 400 mg adult maximum; no universal ropivacaine maximum is inferred. Check the exact product, technique and route table and calculate by lean body weight. LAST presents with peri-oral tingling, agitation, seizures, then cardiovascular collapse. Management: stop injection, ABC, 20% lipid emulsion 1.5 ml/kg over 2–3 min then 15 ml/kg/h; repeat the same bolus at 5 and 10 min and double the infusion to 30 ml/kg/h if the circulation is not restored; maximum cumulative 12 ml/kg (Association of Anaesthetists QRH 3-10, 2023). Use adrenaline ≤ 1 microgram/kg and avoid vasopressin; avoid lidocaine, and use amiodarone for ventricular arrhythmias. Prolonged CPR may be needed.",
         },
         "name": "How are local anaesthetics dosed safely to avoid toxicity (LAST)?",
       },
@@ -6521,7 +6533,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the synthesised
         "@type": "Question",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "HACA (NEJM 2002) and Bernard (NEJM 2002) first showed benefit of 32–34 °C for 12–24 h after witnessed VF OHCA. TTM (Nielsen, NEJM 2013, n = 950) found no significant difference between 33 °C and 36 °C (no superiority shown; this is not proof of equivalence) — both were 'targeted temperature management' and both prevented fever. TTM2 (Dankiewicz, NEJM 2021, n = 1 850) compared 33 °C with normothermia targeting ≤ 37.5 °C, with device cooling triggered at ≥ 37.8 °C and found no difference in 6-month mortality (50% vs 48%) or neurological outcome. Current UK advice (RCUK / ERC–ESICM 2025) is to actively prevent fever by targeting ≤ 37.5 °C in patients who remain comatose after ROSC; the RCUK narrative gives 36–72 h, and its March 2026 algorithm states at least 72 h, which this page follows. The superseded 2022 update used > 37.7 °C. If a hypothermic target is used, rewarm slowly (TTM2 used about 0.33 °C/h).",
+          "text": "HACA (NEJM 2002) and Bernard (NEJM 2002) first showed benefit of 32–34 °C for 12–24 h after witnessed VF OHCA. TTM (Nielsen, NEJM 2013, n = 950) found no significant difference between 33 °C and 36 °C (no superiority shown; this is not proof of equivalence) — both were 'targeted temperature management' and both prevented fever. TTM2 (Dankiewicz, NEJM 2021, n = 1 850) compared 33 °C with normothermia targeting ≤ 37.5 °C, with device cooling triggered at ≥ 37.8 °C and found no difference in 6-month mortality (50% vs 48%) or neurological outcome. Current UK advice (RCUK 2025) is to actively prevent fever by targeting ≤ 37.5 °C in patients who remain comatose after ROSC, for 36–72 h. The superseded 2022 update used > 37.7 °C. If a hypothermic target is used, rewarm slowly (TTM2 used about 0.33 °C/h).",
         },
         "name": "Should I cool post-arrest patients to 33 °C or aim for active normothermia? What changed after TTM2?",
       },
@@ -6529,7 +6541,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the synthesised
         "@type": "Question",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "ARREST (Yannopoulos, Lancet 2020, n = 30, single-centre Minnesota) randomised refractory shockable OHCA and was stopped early for benefit — 43% vs 7% survival to discharge with eCPR. Prague OHCA (Belohlavek, JAMA 2022, n = 256) compared invasive (eCPR + cath lab) with standard advanced ALS and showed a non-significant trend to better 180-day favourable neurological outcome (31.5% vs 22.0%); subgroup analysis favoured the invasive strategy with longer arrest durations. INCEPTION (Suverein, NEJM 2023, n = 134) was a multicentre Dutch trial and was neutral — reflecting the impact of system speed and operator volume. Suitable candidates have: witnessed arrest, bystander CPR, initial shockable rhythm, age < 65–75, no major comorbidity, ETCO₂ > 10 mmHg sustained, and a realistic prospect of cannulation within 60 minutes of collapse. Outside high-volume eCPR centres with rapid pathways, benefit is unlikely.",
+          "text": "ARREST (2020) was a small single-centre trial in selected refractory shockable arrests, with survival to discharge 6/14 versus 1/15 and early stopping for benefit. Prague OHCA did not meet its primary 180-day favourable neurological-survival endpoint (31.5% versus 22.0%; P = 0.09); favourable secondary or subgroup signals are exploratory. INCEPTION also found no statistically significant primary benefit. These trials do not prove that speed or operator volume alone explains their differences. eCPR is a selected rescue strategy within an organised service; eligibility and time-to-flow goals are locally defined, not universal age/ETCO₂ cutoffs or guarantees of benefit.",
         },
         "name": "Who is an appropriate candidate for eCPR and what does ARREST, Prague OHCA and INCEPTION tell us?",
       },
@@ -6537,7 +6549,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the synthesised
         "@type": "Question",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Neuroprognostication is performed in the comatose post-cardiac-arrest patient at ≥ 72 hours after ROSC, only once confounders (sedation, NMBA, hypothermia, severe metabolic derangement, hypoglycaemia, hypotension, ongoing seizure activity) are excluded. The entry criterion is GCS motor ≤ 3 (abnormal flexion, extension, or no motor response) at ≥ 72 h. ERC/ESICM 2021 consider poor outcome likely when two or more of these are present: (1) bilaterally absent pupillary and corneal reflexes at ≥ 72 h (quantitative pupillometry may be used); (2) bilaterally absent N20 SSEP waves at ≥ 24 h; (3) highly malignant EEG (suppressed background or burst-suppression) at > 24 h; (4) NSE > 60 µg/L at 48 h and/or 72 h; (5) status myoclonus ≤ 72 h; (6) diffuse and extensive anoxic injury on CT or MRI. No single marker is sufficient on its own. Withdrawal of life-sustaining therapy in the first 72 hours risks self-fulfilling prophecy.",
+          "text": "Use current RCUK 2025 multimodal neuroprognostication in patients not awake and obeying commands (GCS motor < 6) at ≥ 72 h after ROSC, after excluding relevant confounders. Combine at least two concordant poor-outcome predictors at their specified times, and assess evidence supporting recovery as well as poor outcome. NSE > 60 µg/L at 48 h and/or 72 h is one specified marker; a rising trend alone is not an interchangeable threshold. EEG must be interpreted by pattern, timing and confounders. Technical quality matters for bilateral N20 absence, and neuromuscular blockade may improve recording quality. Indeterminate or discordant findings require further assessment. Prognosis informs shared decisions alongside patient wishes, overall illness and other factors; it is not an automatic withdrawal rule.",
         },
         "name": "What is multimodal neuroprognostication and when do I perform it?",
       },
@@ -6545,7 +6557,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the synthesised
         "@type": "Question",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Intubate if not already (or replace a supraglottic with a tracheal tube once stable). Set tidal volume 6–8 mL/kg predicted body weight, PEEP 5–10 cmH₂O, FiO₂ titrated to SpO₂ 94–98% (avoid hyperoxia — observational data link PaO₂ > 40 kPa to higher mortality; but the EXACT RCT found lower survival when pre-hospital SpO₂ was targeted at 90–94%, so avoid aiming below 94%). Set minute ventilation to PaCO₂ 4.5–6.0 kPa (avoid hypocapnia which causes cerebral vasoconstriction and is independently associated with worse neurological outcome — TAME trial 2023 found no benefit from mild hypercapnia 6.7–7.3 kPa over normocapnia). Use continuous waveform capnography. Sedate with short-acting agents (propofol + remifentanil or fentanyl ± dexmedetomidine) to facilitate later neuroprognostication. Avoid prolonged NMBA except briefly for shivering not controlled by sedation and counter-warming.",
+          "text": "Intubation is indicated for persistent coma or another need for ventilation; rapid normal neurological recovery with adequate breathing does not automatically require intubation. For ventilated patients use tidal volume 6–8 mL/kg predicted body weight, individualised PEEP and reliable oxygen measurement to titrate toward SpO₂ 94–98%, with arterial PaCO₂ 4.7–6.0 kPa and continuous waveform capnography. Avoid hypoxaemia, hyperoxaemia and hypocapnia; repeat arterial gases after adjustments. Use short-acting sedation where appropriate. Routine neuromuscular blockade is not recommended, but may be considered for critical hypoxaemia with ARDS and, when clinically indicated, refractory shivering despite adequate sedation and counter-warming; assess the individual patient.",
         },
         "name": "How should I manage the airway and ventilator in the first 6 hours post-ROSC?",
       },
@@ -6997,7 +7009,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the synthesised
         "@type": "Question",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "DCD (Maastricht III) occurs after planned withdrawal with death by circulatory criteria and a 5-minute 'no-touch' period; warm ischaemic time limits organ viability (typically <30 min for liver, <2 h for kidney) and outcomes are slightly inferior for some grafts but improve donor numbers.",
+          "text": "DCD (Maastricht III) follows planned withdrawal; confirm death only after the full continuous 5-minute assessment and required examination, when all circulatory criteria are satisfied (AoMRC 2025). BTS DCD 2023 defines fWIT from a sustained (at least 2-minute) fall in SBP below 50 mmHg to cold in-situ perfusion or NRP, not from withdrawal or arrest. Organ acceptance and stand-down depend on the actual organ, preservation method and current retrieval-team protocol; arithmetic alone cannot establish viability. With NRP, a long withdrawal phase alone is not an automatic liver exclusion.",
         },
         "name": "How does DCD differ from DBD for donation?",
       },
@@ -7035,7 +7047,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the synthesised
         "@type": "Question",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "10 mL/kg isotonic crystalloid boluses with reassessment after each; 20 mL/kg is reserved for specific situations (e.g. profound shock). DKA and trauma follow their own pathways: NICE NG18 uses a 10 mL/kg 0.9% saline bolus in DKA (given as soon as possible if shocked, over 30 minutes if dehydrated but not shocked), while haemorrhagic trauma needs early blood products and haemorrhage control. If shock persists after 1–2 boluses, move earlier to vasoactive infusions (adrenaline for cold shock, noradrenaline for warm) rather than escalating fluid further (SSC Paediatric 2020, APLS 2021; FEAST caution in resource-limited settings).",
+          "text": "SSC Children 2026: choose adrenaline or noradrenaline through repeated haemodynamic assessment, response, echo/cardiac and lung POCUS when expertise is available, and paediatric critical-care advice. Evidence does not establish one preferred first-line agent; cold/warm labels do not mandate drug selection. UK RCUK 2025 uses 10 mL/kg isotonic crystalloid boluses with reassessment of perfusion and overload after every bolus. New or increasing hepatomegaly is one sign of overload/cardiac failure, not an isolated diagnostic equality. Stop boluses if shock resolves or overload develops; do not require 40–60 mL/kg or a fixed fluid threshold before vasoactives. Peripheral vasoactive initiation can avoid delay for central access. DKA and haemorrhagic trauma follow their own pathways. NICE NG18 DKA uses a 10 mL/kg 0.9% saline bolus (as soon as possible if shocked, over 30 minutes if dehydrated but not shocked), with senior review before more than one; haemorrhagic trauma needs early blood products and haemorrhage control. Hydrocortisone is not routine paediatric septic-shock therapy. SSC Children 2026 suggests against IV hydrocortisone when fluids and vasoactive therapy restore haemodynamic stability; persistent instability despite adequate support has insufficient evidence for a recommendation either way. Give stress-dose corticosteroid replacement for suspected or documented adrenal insufficiency; this is separate from routine sepsis adjuncts and does not replace adrenal-crisis management. Suspected septic shock: start antibiotics as soon as possible, ideally within 1 hour of recognition. Probable sepsis without shock: undertake time-limited rapid investigation and, if concern is substantiated, start treatment as soon as possible after evaluation, ideally within 3 hours of recognition. If timely evaluation is difficult, consider antibiotics as soon as possible for probable bacterial sepsis.",
         },
         "name": "What fluid resuscitation strategy is recommended for paediatric septic shock?",
       },
@@ -7233,7 +7245,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the synthesised
         "@type": "Question",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Association of Anaesthetists 2023: give 20% lipid emulsion 1.5 mL/kg as an initial bolus (simplified to a fixed 100 mL bolus if >70 kg), then start an infusion of 0.25 mL/kg/min (equivalent to 15 mL/kg/h) — the same weight-based rate for every patient, which equates to about 1000 mL/h in an adult over 70 kg. Up to two further boluses at 5-minute intervals (three in total), and double the infusion to 0.5 mL/kg/min (30 mL/kg/h) if the circulation remains unstable; total maximum 12 mL/kg.",
+          "text": "Association of Anaesthetists QRH 3-10 (2023): give 20% lipid emulsion 1.5 mL/kg over 2–3 min (~100 mL in a 70 kg adult), then an infusion at 15 mL/kg/h. Give the same bolus again at 5 and 10 min and double the infusion to 30 mL/kg/h if the circulation is not restored. Maximum cumulative dose 12 mL/kg (~840 mL in a 70 kg adult). Propofol is not a substitute.",
         },
         "name": "How is lipid emulsion used in local anaesthetic toxicity?",
       },
@@ -7255,7 +7267,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the synthesised
         "@type": "Question",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Empirical 1:1:1 (RBC:FFP:platelets) until ROTEM/TEG-guided, based on PROPPR trial; activate at predicted 4+ units in 1 h, give TXA 1 g within 3 h (CRASH-2) and target ionised Ca²⁺ >1.0 mmol/L.",
+          "text": "PROPPR 2015 used plasma:platelet-equivalents:RBC 1:1:1 in severe trauma: 6 plasma units, 1 adult platelet dose (about 6 whole-blood-derived platelet units or 1 apheresis unit), and 6 RBC units, not one adult platelet dose per RBC. More achieved haemostasis and fewer died from exsanguination; 24-hour/30-day mortality differences were not statistically significant. NICE NG39 initial adult major-trauma plasma:RBC is 1:1; follow the local MHP and transition promptly to laboratory/viscoelastic-guided treatment. Activation uses physiology, bleeding and response, not predicted units alone. Measure ionised calcium frequently and replace by protocol to the normal range (approximately 1.1–1.3 mmol/L; laboratory/pH context). Ratios and targets are not universal across bleeding causes.",
         },
         "name": "What ratios are used in major haemorrhage protocols?",
       },
@@ -7705,15 +7717,15 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the synthesised
         "@type": "Question",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Lidocaine: 3 mg/kg plain, 7 mg/kg with adrenaline. Bupivacaine and levobupivacaine: 2 mg/kg (no adrenaline-enhanced dose). Ropivacaine: 3 mg/kg. Always calculate against lean body weight and use the lowest effective dose; reduce in the elderly, pregnant, and hepatically impaired.",
+          "text": "There is no single agent-wide maximum — use the named product, technique and route table. For example, lidocaine 1% plain is limited to 4.5 mg/kg and 300 mg per single dose, and with a vasoconstrictor to 7 mg/kg and 500 mg; the named bupivacaine field-block table limits 2 mg/kg and 150 mg; levobupivacaine infiltration 150 mg; prilocaine 1% has a 400 mg adult maximum and no adult mg/kg figure. No universal ropivacaine maximum is inferred. Calculate against lean body weight, use the lowest effective dose, and reduce in the elderly, pregnant and hepatically impaired.",
         },
-        "name": "What is the maximum safe dose of lidocaine and bupivacaine?",
+        "name": "What is the maximum dose of lidocaine and bupivacaine?",
       },
       {
         "@type": "Question",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Bolus 1.5 mL/kg lean body weight over 1 minute (≈ 100 mL in a 70 kg adult), followed by an infusion of 15 mL/kg/h. If circulation is not restored after 5 minutes: repeat bolus up to twice (5-minute intervals) and double the infusion rate to 30 mL/kg/h. Maximum cumulative dose 12 mL/kg.",
+          "text": "Bolus 1.5 mL/kg lean body weight over 2–3 minutes (≈ 100 mL in a 70 kg adult), followed by an infusion of 15 mL/kg/h. Give the same bolus again at 5 and 10 minutes and double the infusion rate to 30 mL/kg/h if the circulation is not restored. Maximum cumulative dose 12 mL/kg (≈ 840 mL in a 70 kg adult).",
         },
         "name": "What is the Intralipid 20% dose in LAST?",
       },
@@ -7729,7 +7741,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the synthesised
         "@type": "Question",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Bupivacaine-induced asystole is notoriously resistant to standard ALS. Adrenaline doses should be reduced to ≤ 1 µg/kg, vasopressin is not recommended, and lidocaine and other class I antiarrhythmics are contraindicated. Amiodarone is preferred for ventricular arrhythmias. Prolonged resuscitation (≥ 60 minutes) and consideration of VA-ECMO are justified.",
+          "text": "Bupivacaine-induced asystole is notoriously resistant to standard ALS. Adrenaline doses should be reduced to ≤ 1 µg/kg, vasopressin is not recommended, and lidocaine is avoided. Amiodarone is used for ventricular arrhythmias. Prolonged resuscitation (at least 60 minutes) and consideration of VA-ECMO are justified.",
         },
         "name": "How does LAST cardiac arrest differ from a standard arrest?",
       },
@@ -9027,7 +9039,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the synthesised
         "@type": "Question",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "RCoA/Association of Anaesthetists 2024 algorithm: STOP injection, call for help, ABC (100 % O₂, secure airway, IV access). Manage seizures (small dose benzodiazepine or propofol). Treat arrhythmias (avoid lidocaine, calcium, vasopressin; use small adrenaline 1 µg/kg). Give 20 % Intralipid: 1.5 mL/kg bolus, then 15 mL/kg/h infusion, repeat bolus up to 3×, max 12 mL/kg total. Continue CPR — long resuscitation often successful. Refer to ITU and report to NPSA / Lipid Rescue registry.",
+          "text": "Association of Anaesthetists QRH 3-10 (2023) algorithm: STOP injection, call for help, ABC (100 % O₂, secure airway, IV access). Manage seizures with a small incremental benzodiazepine dose (thiopental or propofol only with caution because of negative inotropy). If arrest, give adrenaline ≤ 1 microgram/kg, avoid vasopressin and lidocaine, and use amiodarone for ventricular arrhythmias. Give 20 % lipid emulsion 1.5 mL/kg over 2–3 min, then 15 mL/kg/h; repeat the bolus at 5 and 10 min and double to 30 mL/kg/h if unstable; maximum cumulative 12 mL/kg. Continue CPR — long resuscitation is often successful. Refer to critical care and report the incident locally and nationally.",
         },
         "name": "Outline the management of local-anaesthetic systemic toxicity (LAST).",
       },
@@ -9577,7 +9589,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the synthesised
         "@type": "Question",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "A complete loss of the capnograph waveform across all phases means no expired CO₂ is reaching the sensor. The differential is short: oesophageal intubation, accidental extubation, complete circuit disconnection, total airway obstruction, or cardiac arrest with no cardiac output. Treat as life-threatening — look at the patient and the airway, confirm tube position, check every connection from patient to machine, and palpate a central pulse.",
+          "text": "A complete loss of the capnograph waveform across all phases means no expired CO₂ is reaching the sensor. The differential is short: oesophageal intubation, accidental extubation, complete circuit disconnection, total airway obstruction, or cardiac arrest with no cardiac output. Treat as life-threatening — look at the patient and the airway, check every connection from patient to machine, and palpate a central pulse. If sustained exhaled CO₂ cannot be restored, assume oesophageal placement until excluded and remove the tube by default, then oxygenate by facemask or supraglottic airway. If removal is judged dangerous, urgently exclude oesophageal placement by repeat laryngoscopy supplemented by bronchoscopy, ultrasound or an oesophageal detector, and remove the tube if sustained CO₂ is not restored.",
         },
         "name": "Why does ETCO₂ suddenly fall to zero?",
       },
@@ -10403,7 +10415,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the synthesised
         "@type": "Question",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "IRR 2017 (UK): whole-body effective dose 20 mSv/year (averaged over 5 years, max 50 mSv in any single year). Equivalent dose limits: lens 20 mSv/year, skin/extremities 500 mSv/year. Pregnant staff — fetal dose ≤1 mSv over the declared pregnancy. Wear film/TLD badges and review records with the RPS.",
+          "text": "IRR 2017 (UK): whole-body effective dose 20 mSv in any calendar year for adult workers; special arrangements under regulation 12(2)/Schedule 3 Part 2 are separate. Equivalent dose limits: lens 20 mSv/year, skin/extremities 500 mSv/year. Pregnant staff — fetal dose ≤1 mSv over the declared pregnancy. Wear film/TLD badges and review records with the RPS.",
         },
         "name": "What is the annual dose limit for occupationally exposed staff?",
       },
@@ -10545,7 +10557,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the synthesised
         "@type": "Question",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Ductus venosus — bypasses liver from umbilical vein to IVC; becomes ligamentum venosum. Foramen ovale — bypasses pulmonary circulation, RA → LA; becomes fossa ovalis (patent in 25 % of adults). Ductus arteriosus — bypasses lungs, pulmonary artery → aorta; becomes ligamentum arteriosum. All three shunt blood away from the non-functioning fetal lungs toward systemic circulation.",
+          "text": "Ductus venosus — bypasses part of the liver from umbilical vein to IVC; becomes ligamentum venosum. Foramen ovale — bypasses pulmonary circulation, RA → LA; becomes fossa ovalis (patent in 25 % of adults). Ductus arteriosus — bypasses lungs, pulmonary artery → aorta; becomes ligamentum arteriosum. The ductus venosus shunts umbilical venous blood past part of the liver into the IVC; the foramen ovale and ductus arteriosus divert blood away from fetal pulmonary circulation.",
         },
         "name": "Describe the three fetal shunts and what they become postnatally.",
       },
@@ -10815,7 +10827,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the synthesised
         "@type": "Question",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Jv = Kf × [(Pc − Pi) − σ(πp − πg)], where Jv = net filtration; Kf = filtration coefficient; Pc/Pi = capillary/interstitial hydrostatic pressure; πp/πg = plasma/subglycocalyx oncotic pressure; σ = reflection coefficient (1 = impermeable to protein, 0 = freely permeable). The endothelial glycocalyx is the true semi-permeable barrier — not the endothelial cell membrane (revised Starling principle, Levick & Michel 2010).",
+          "text": "Jv = Kf × [(Pc − Pi) − σ(πp − πg)], where Jv = net filtration; Kf = filtration coefficient; Pc/Pi = capillary/interstitial hydrostatic pressure; πp/πg = plasma/subglycocalyx oncotic pressure; σ = reflection coefficient (1 = impermeable to protein, 0 = freely permeable). The glycocalyx is an important macromolecular sieve acting with endothelial and intercellular pathways, not excluding junctions. Subglycocalyx oncotic pressure depends on flow and is not universally zero.",
         },
         "name": "State the Starling equation in its modern form.",
       },
@@ -10823,7 +10835,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the synthesised
         "@type": "Question",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Gel-like layer of proteoglycans and glycoproteins on the luminal endothelial surface, ~0.5–1 µm thick. Excludes plasma proteins from contact with the endothelial barrier, generates the effective oncotic gradient, regulates leucocyte adhesion and coagulation. Damaged by sepsis, hyperglycaemia, ischaemia–reperfusion, atrial natriuretic peptide (released by fluid loading). Glycocalyx loss → capillary leak — explains why fluid overload worsens oedema.",
+          "text": "Gel-like layer of proteoglycans and glycoproteins on the luminal endothelial surface, ~0.5–1 µm thick. Excludes plasma proteins from contact with the endothelial barrier, generates the effective oncotic gradient, regulates leucocyte adhesion and coagulation. Injury can impair barrier function. ANP-associated shedding has experimental support in guinea-pig hearts and small human volume-loading associations; this does not prove direct cleavage or clinical oedema after every bolus.",
         },
         "name": "What is the endothelial glycocalyx and why is it clinically important?",
       },
@@ -10831,7 +10843,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the synthesised
         "@type": "Question",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Compensatory mechanisms: increased lymphatic drainage, dilution of interstitial protein (reducing πi), and the glycocalyx-protected subglycocalyx space maintains a large oncotic gradient even at low plasma albumin. Oedema only becomes clinically apparent when these are overwhelmed (albumin typically <20 g/L plus increased capillary pressure or permeability).",
+          "text": "Compensatory mechanisms: increased lymphatic drainage, dilution of interstitial protein (reducing πi), while flow-dependent subglycocalyx protein concentration modifies the effective oncotic gradient. Oedema depends on filtration, lymphatic capacity and tissue context; there is no universal albumin threshold.",
         },
         "name": "Why does hypoalbuminaemia cause oedema less than predicted by classical Starling?",
       },

@@ -99,25 +99,39 @@ const workedExamples: WorkedExample[] = [
     ),
     working: (
       <>
-        A single squeeze is unreliable: oesophageal intubation produces
-        small CO₂ traces for up to <strong>6 breaths</strong> from gastric
-        CO₂ (carbonated drinks, mask ventilation pre-induction). Sustained
-        EtCO₂ of a normal shape and value across <strong>≥ 6 consecutive
-        breaths</strong> is the gold standard for tracheal placement
-        (NAP4; PUMA consensus 2022; DAS 2025). A flat or vanishing trace is presumed
-        oesophageal until proven otherwise.
+        A single squeeze is unreliable: oesophageal intubation can produce
+        small CO₂ traces for a few breaths from gastric CO₂ (carbonated
+        drinks, mask ventilation pre-induction). The PUMA/RCoA standard is
+        <strong>sustained exhaled CO₂</strong>, not a normal-looking trace:
+        a level that rises with exhalation and falls during inspiration,
+        is consistent or increasing over <strong>at least seven breaths</strong>,
+        peaks <strong>&gt; 1 kPa above baseline</strong>, and is clinically
+        appropriate (PUMA consensus 2022; RCoA sustained exhaled CO₂; DAS 2025).
+        A flat, diminishing or low-amplitude trace is presumed oesophageal
+        until actively excluded.
       </>
     ),
     answer: (
       <>
-        Continue to ventilate and observe at least six waveforms. If the
-        capnograph maintains a normal-shaped plateau, the tube is
-        tracheal. If the trace falls away, remove the tube and re-attempt
-        intubation; <em>do not</em> use auscultation as the sole
-        confirmation.
+        Continue to ventilate and assess all four criteria over at least
+        seven breaths. If they are met, the tube is tracheal. If they are
+        not met, assume oesophageal placement until excluded and
+        <strong>remove the tube by default</strong>, then oxygenate with
+        100% O₂ by facemask or supraglottic airway and re-enter the airway
+        plan. Removal is the default even when intubation seemed easy; an
+        extra laryngoscopy is not, by itself, a reason to keep the tube.
+        Only if removal is judged <em>dangerous</em> — a reasonable basis
+        for believing the tube is tracheal plus a likelihood of serious
+        harm if it is removed — declare that reasoning to the team, call
+        for help, confirm 100% O₂, and urgently exclude oesophageal
+        placement by valid alternative techniques: repeat laryngoscopy
+        first, supplemented where feasible by flexible bronchoscopy,
+        ultrasound or an oesophageal detector device. Remove the tube if
+        sustained exhaled CO₂ is not restored promptly. <em>Do not</em> use
+        auscultation, misting or chest rise as confirmation.
       </>
     ),
-    cites: ["NAP4", "PUMA 2022", "DAS 2025"],
+    cites: ["NAP4", "PUMA 2022", "RCoA Sustained Exhaled CO2", "DAS 2025"],
   },
   {
     title: "EtCO₂ as a CPR feedback monitor",
@@ -465,7 +479,7 @@ const CapnographyTopic = () => {
                 Common exam pitfalls
               </h2>
               <ul className="list-disc list-inside text-sm text-muted-foreground space-y-1">
-                <li>Confirming tracheal intubation on a single breath — confirm across ≥ 6 sustained, normal-shaped waveforms.</li>
+                <li>Confirming tracheal intubation on a single breath — confirm sustained exhaled CO₂ across at least seven breaths with all four PUMA criteria (rises with exhalation and falls with inspiration, consistent or increasing, peak &gt; 1 kPa above baseline, clinically appropriate).</li>
                 <li><strong>Never use clinical signs to confirm tracheal placement when sustained capnography is absent.</strong> Tube misting has a false-positive rate up to 69%; ordinary auscultation about 14%, and even five-point auscultation about 18%. Chest rise is also unreliable. False reassurance from these signs recurs in fatal unrecognised oesophageal intubation: if sustained exhaled CO₂ is absent, exclude oesophageal placement systematically rather than accepting clinical signs. <InlineRef topicId="capnography" refLabel="Anaesthesia 2023 Intubation Tests" /></li>
                 <li>Quoting EtCO₂ alone for adequacy of ventilation in COPD or PE — the PaCO₂–EtCO₂ gradient is what matters.</li>
                 <li>Calling a raised baseline "ventilator artefact" — it is rebreathing; check absorber and valves.</li>

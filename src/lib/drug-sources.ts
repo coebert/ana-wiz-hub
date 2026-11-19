@@ -17,7 +17,7 @@ export function safeSourceUrl(value: unknown): string | null {
 export function isSourceSearch(url: string): boolean {
   const parsed = new URL(url);
   return /^(?:www\.)?medicines\.org\.uk$|^bnfc?\.nice\.org\.uk$/i.test(parsed.hostname)
-    && /\/search(?:\/|$)/i.test(parsed.pathname);
+    && /(?:^|\/)search(?:\/|$)/i.test(parsed.pathname);
 }
 
 export function normaliseDrugSources(value: unknown): DisplayDrugSource[] {
@@ -33,7 +33,7 @@ export function normaliseDrugSources(value: unknown): DisplayDrugSource[] {
     const url = safeSourceUrl((item as Record<string, unknown>).url);
     if (!fields.title && !url) continue;
     const search = url ? isSourceSearch(url) : false;
-    const title = search ? `${new URL(url ?? "https://invalid.test").hostname.replace(/^www\./, "")} — search tool` : fields.title || "Source (title not recorded)";
+    const title = search ? `${new URL(url ?? "https://invalid.test").hostname.replace(/^www\./, "")} — search index` : fields.title || "Source (title not recorded)";
     // URL only grouping never discards distinct metadata, sections, or claim scope.
     const existing = url ? result.find(source => source.url === url) : undefined;
     if (existing) {

@@ -271,7 +271,7 @@ const PostopHighRiskIcuTopic = () => {
                 { target: "Renal", detail: "KDIGO bundle (PrevAKI 2017): avoid nephrotoxins, optimise volume + MAP, monitor creatinine + UO. Early consideration of RRT (STARRT-AKI: no benefit from accelerated initiation)." },
                 { target: "Haematology", detail: "Restrictive transfusion (TRICC: Hb 70 g/L, 80 g/L if cardiac disease). Continue VTE prophylaxis from 6 h postop unless contraindicated." },
                 { target: "Neurological", detail: "Apply ABCDEF bundle: daily SAT + SBT, light sedation (RASS 0 to −2), CAM-ICU screening; avoid benzodiazepines in elderly." },
-                { target: "Nutrition", detail: "Early enteral feed within 24–48 h (ESPEN 2019); consider hypocaloric in shock (NUTRIREA-2)." },
+                { target: "Nutrition", detail: "Early enteral feed within 24–48 h (ESPEN 2019); consider hypocaloric feeding in shock (NUTRIREA-3)." },
               ].map((t) => (
                 <div key={t.target} className="p-3 rounded-lg border border-border">
                   <p className="font-semibold text-foreground text-sm">{t.target}</p>

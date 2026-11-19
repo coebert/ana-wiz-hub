@@ -88,7 +88,7 @@ const labelledRegions: LabelledRegion[] = [
     name: "Mammillary body",
     note: "Part of the limbic Papez circuit. Atrophy is the pathological hallmark of Wernicke–Korsakoff syndrome (thiamine deficiency).",
     primaryFRCA: ["Identify mammillary bodies in the Papez circuit"],
-    finalFRCA: ["Prevent and treat Wernicke's encephalopathy peri-operatively (IV thiamine before glucose in at-risk patients)"],
+    finalFRCA: ["Prevent and treat Wernicke's encephalopathy peri-operatively (give IV thiamine with or immediately after glucose in at-risk patients)"],
   },
   {
     name: "Pituitary gland (in sella turcica)",
@@ -328,7 +328,7 @@ export const BrainMedialPlate = () => {
             <li>• <span className="font-semibold">Optic chiasm</span> → bitemporal hemianopia (pituitary macroadenoma)</li>
             <li>• <span className="font-semibold">Posterior pituitary / hypothalamus</span> → diabetes insipidus / SIADH</li>
             <li>• <span className="font-semibold">Thalamus</span> → contralateral sensory loss · Déjerine–Roussy central pain</li>
-            <li>• <span className="font-semibold">Mammillary bodies + fornix</span> → Wernicke–Korsakoff (give thiamine before glucose)</li>
+            <li>• <span className="font-semibold">Mammillary bodies + fornix</span> → Wernicke–Korsakoff (give thiamine with or immediately after glucose)</li>
             <li>• <span className="font-semibold">Corpus callosum</span> → disconnection / alien-hand syndrome</li>
             <li>• <span className="font-semibold">Cerebral aqueduct</span> → obstructive hydrocephalus (commonest narrow-point block)</li>
             <li>• <span className="font-semibold">Midbrain (CN III)</span> → uncal herniation: blown pupil + contralateral hemiparesis</li>

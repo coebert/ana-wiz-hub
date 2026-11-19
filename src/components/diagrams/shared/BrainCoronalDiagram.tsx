@@ -121,7 +121,7 @@ const labelledRegions: LabelledRegion[] = [
     name: "Optic tract / mammillary bodies",
     note: "Optic tract sweeps around the cerebral peduncle to the lateral geniculate body. Mammillary bodies sit immediately posterior — atrophy in Wernicke–Korsakoff.",
     primaryFRCA: ["Describe the visual pathway from retina to LGN"],
-    finalFRCA: ["Prevent Wernicke's encephalopathy peri-operatively (IV thiamine before glucose in at-risk patients)"],
+    finalFRCA: ["Prevent Wernicke's encephalopathy peri-operatively (give IV thiamine with or immediately after glucose in at-risk patients)"],
   },
 ];
 

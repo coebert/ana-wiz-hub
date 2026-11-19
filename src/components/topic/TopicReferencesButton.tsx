@@ -30,7 +30,9 @@ export const TopicReferencesButton = ({
   variant = "default",
 }: TopicReferencesButtonProps) => {
   const [open, setOpen] = useState(false);
-  const refs = topicReferences[topicId] ?? [];
+  const all = topicReferences[topicId] ?? [];
+  const refs = all.filter((r) => !r.withheld);
+  const gaps = all.filter((r) => r.withheld);
 
   return (
     <Sheet open={open} onOpenChange={setOpen}>
@@ -82,6 +84,17 @@ export const TopicReferencesButton = ({
                 );
               })}
             </ol>
+          )}
+          {gaps.length > 0 && (
+            <ul className="mt-4 space-y-2 text-xs text-muted-foreground">
+              {gaps.map((r) => (
+                <li key={r.label}>
+                  <span className="font-medium text-foreground">Source gap</span>
+                  {" — "}
+                  {r.gapNote}
+                </li>
+              ))}
+            </ul>
           )}
         </div>
       </SheetContent>

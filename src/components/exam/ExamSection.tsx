@@ -31,7 +31,7 @@ interface ExamSectionProps {
  *   can see what's been collapsed and immediately clear the filter if needed.
  *
  * Usage:
- *   <ExamSection exams={[Exam.FINAL, Exam.FFICM]} curriculumCodes={["CC1.4"]}>
+ *   <ExamSection exams={[Exam.FINAL, Exam.FFICM]} curriculumCodes={["CT_BK_22"]}>
  *     <h2>...</h2>
  *     ...content...
  *   </ExamSection>

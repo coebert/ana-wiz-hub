@@ -150,7 +150,7 @@ const waveformFaqs: Array<[string, string]> = [
   ],
   [
     "Why does ETCO₂ suddenly fall to zero?",
-    "A complete loss of the capnograph waveform across all phases means no expired CO₂ is reaching the sensor. The differential is short: oesophageal intubation, accidental extubation, complete circuit disconnection, total airway obstruction, or cardiac arrest with no cardiac output. Treat as life-threatening — look at the patient and the airway, confirm tube position, check every connection from patient to machine, and palpate a central pulse.",
+    "A complete loss of the capnograph waveform across all phases means no expired CO₂ is reaching the sensor. The differential is short: oesophageal intubation, accidental extubation, complete circuit disconnection, total airway obstruction, or cardiac arrest with no cardiac output. Treat as life-threatening — look at the patient and the airway, check every connection from patient to machine, and palpate a central pulse. If sustained exhaled CO₂ cannot be restored, assume oesophageal placement until excluded and remove the tube by default, then oxygenate by facemask or supraglottic airway. If removal is judged dangerous, urgently exclude oesophageal placement by repeat laryngoscopy supplemented by bronchoscopy, ultrasound or an oesophageal detector, and remove the tube if sustained CO₂ is not restored.",
   ],
   [
     "What is the α-angle on a capnograph?",

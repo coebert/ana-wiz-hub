@@ -75,7 +75,7 @@ export const heartBlockContent: EcgExpandedContent = {
   ],
   vignettes: [
     { scenario: "Post-TAVI day 1, patient becomes pre-syncopal on standing.", ecgFinding: "Pre-existing RBBB now with new LAFD and PR 280 ms.", diagnosis: "Trifascicular block — high risk of CHB.", management: "Continuous monitoring, pads on; cardiology review for permanent pacemaker." },
-    { scenario: "Septic patient, K⁺ 6.4, HR 35, BP 80/45.", ecgFinding: "Wide QRS, slow regular escape, no clear P waves.", diagnosis: "Hyperkalaemic conduction block masquerading as CHB.", management: "10 mL 10% calcium gluconate IV STAT, insulin–dextrose, salbutamol; recheck rhythm in 5 min before pacing." },
+    { scenario: "Septic patient, K⁺ 6.4, HR 35, BP 80/45.", ecgFinding: "Wide QRS, slow regular escape, no clear P waves.", diagnosis: "Hyperkalaemic conduction block masquerading as CHB.", management: "30 mL 10% calcium gluconate IV over 10 min (or 10 mL 10% calcium chloride if peri-arrest) for membrane stabilisation, then insulin–dextrose and salbutamol; recheck rhythm in 5 min before pacing." },
   ],
 };
 

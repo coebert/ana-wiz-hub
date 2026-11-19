@@ -1,16 +1,16 @@
 import type { CaseBank } from "./types";
 
 const s = {
-  acidBase: { label: "BJA Educ: acid–base interpretation", href: "https://doi.org/10.1093/bjaed/mkx008" },
-  stewart: { label: "Stewart approach to acid–base", href: "https://doi.org/10.1186/cc3927" },
+  acidBase: { label: "BJA Educ: acid–base balance — normal physiology (2022)", href: "https://doi.org/10.1016/j.bjae.2022.06.003" },
+  stewart: { label: "Traditional versus Stewart approach to acid–base disorders (2018)", href: "https://doi.org/10.1177/2050312118801255" },
   ards: { label: "Berlin definition of ARDS", href: "https://doi.org/10.1001/jama.2012.5669" },
   proseva: { label: "PROSEVA 2013", href: "https://doi.org/10.1056/NEJMoa1214103" },
   ardsnet: { label: "ARDSNet low tidal volume trial", href: "https://doi.org/10.1056/NEJM200005043421801" },
-  asthma: { label: "BJA Educ: severe asthma in critical care", href: "https://doi.org/10.1016/j.bjae.2019.10.004" },
+  asthma: { label: "Chest: management of life-threatening asthma (2022)", href: "https://doi.org/10.1016/j.chest.2022.02.029" },
   copd: { label: "BJA Educ: COPD and ventilation", href: "https://doi.org/10.1093/bjaed/mkr054" },
   sepsis3: { label: "Sepsis-3 definitions", href: "https://doi.org/10.1001/jama.2016.0287" },
   ssc: { label: "Surviving Sepsis Campaign 2021", href: "https://doi.org/10.1097/CCM.0000000000005337" },
-  immunology: { label: "BJA Educ: immunology for intensivists", href: "https://doi.org/10.1016/j.bjae.2020.02.003" },
+  immunology: { label: "Nat Rev Nephrol: the immunology of sepsis (2026)", href: "https://doi.org/10.1038/s41581-025-01004-6" },
   kdigo: { label: "KDIGO AKI guideline", href: "https://kdigo.org/guidelines/acute-kidney-injury/" },
   starrt: { label: "STARRT-AKI: timing of renal replacement therapy", href: "https://doi.org/10.1056/NEJMoa2000741" },
   ttm2: { label: "TTM2: hypothermia versus normothermia after cardiac arrest", href: "https://doi.org/10.1056/NEJMoa2100591" },
@@ -22,16 +22,16 @@ const s = {
   proppr: { label: "PROPPR trial: 1:1:1 versus 1:1:2 transfusion", href: "https://doi.org/10.1001/jama.2015.12" },
   crash2: { label: "CRASH-2: tranexamic acid in trauma", href: "https://doi.org/10.1016/S0140-6736(10)60835-5" },
   vap: { label: "IDSA/ATS 2016 hospital-acquired and ventilator-associated pneumonia guideline", href: "https://doi.org/10.1093/cid/ciw353" },
-  parkland: { label: "BJA Educ: burns resuscitation", href: "https://doi.org/10.1093/bjaceaccp/mkt062" },
+  parkland: { label: "BJA Educ: major burns — pathophysiology and initial management (2022)", href: "https://doi.org/10.1016/j.bjae.2021.10.001" },
   ibi: { label: "ISBI Practice Guidelines for Burn Care", href: "https://doi.org/10.1016/j.burns.2016.05.013" },
-  paedsepsis: { label: "Surviving Sepsis Campaign: paediatric guideline", href: "https://doi.org/10.1097/PCC.0000000000002198" },
-  pards: { label: "PALICC-2: paediatric ARDS definition", href: "https://doi.org/10.1097/PCC.0000000000002419" },
+  paedsepsis: { label: "Surviving Sepsis Campaign: paediatric guideline 2026", href: "https://doi.org/10.1097/PCC.0000000000003927" },
+  pards: { label: "PALICC-2: 2023 paediatric ARDS executive summary", href: "https://doi.org/10.1097/PCC.0000000000003147" },
   akademiy: { label: "AoMRC Code of Practice: diagnosis and confirmation of death", href: "https://www.aomrc.org.uk/reports-guidance/ukdec-reports-and-guidance/code-practice-diagnosis-confirmation-death/" },
   odt: { label: "NHS Blood and Transplant: donation after brainstem/circulatory death", href: "https://www.odt.nhs.uk/deceased-donation/best-practice-guidance/" },
-  pics: { label: "BJA Educ: immune dysfunction after critical illness", href: "https://doi.org/10.1016/j.bjae.2020.11.002" },
-  hladr: { label: "Monocyte HLA-DR and sepsis-induced immunosuppression", href: "https://doi.org/10.1186/cc12719" },
-  ttp: { label: "BSH guideline: diagnosis and management of TTP", href: "https://doi.org/10.1111/bjh.14459" },
-  plasmic: { label: "PLASMIC score validation", href: "https://doi.org/10.1016/S2352-3026(16)30018-7" },
+  pics: { label: "BJA: persistent inflammation, immunosuppression and catabolism syndrome (2024)", href: "https://doi.org/10.1016/j.bja.2023.11.052" },
+  hladr: { label: "Intensive Care Med: monocyte HLA-DR in septic shock (2025)", href: "https://doi.org/10.1007/s00134-025-08110-w" },
+  ttp: { label: "BSH 2023: diagnosis and management of TTP", href: "https://doi.org/10.1111/bjh.19026" },
+  plasmic: { label: "Thromb Res: validation of the PLASMIC score (2018)", href: "https://doi.org/10.1016/j.thromres.2018.10.010" },
   hercules: { label: "HERCULES: caplacizumab in acquired TTP", href: "https://doi.org/10.1056/NEJMoa1806311" },
   ercEsicm: { label: "ERC/ESICM 2021 neuroprognostication guideline", href: "https://doi.org/10.1007/s00134-021-06548-2" },
   bspedDka: { label: "BSPED interim guideline: management of DKA in children and young people", href: "https://www.bsped.org.uk/clinical-resources/guidelines/" },
@@ -43,14 +43,14 @@ const s = {
   pccsTransfer: { label: "PCCS standards for the care of critically ill children and retrieval", href: "https://pccsociety.uk/publications/" },
   meningococcal: { label: "NICE NG240: meningitis and meningococcal disease", href: "https://www.nice.org.uk/guidance/ng240" },
   nlsErc: { label: "ERC 2021: newborn resuscitation and support of transition at birth", href: "https://doi.org/10.1016/j.resuscitation.2021.02.014" },
-  rcukNls: { label: "Resuscitation Council UK: newborn life support guideline", href: "https://www.resus.org.uk/library/2021-resuscitation-guidelines/newborn-resuscitation-and-support-transition-infants-birth" },
+  rcukNls: { label: "RCUK 2025: newborn resuscitation at birth", href: "https://www.resus.org.uk/professional-library/2025-resuscitation-guidelines/newborn-resuscitation-and-support-transition-infants-birth" },
   paedTrauma: { label: "NICE NG39: major trauma assessment and initial management", href: "https://www.nice.org.uk/guidance/ng39" },
   crash3: { label: "CRASH-3: tranexamic acid in traumatic brain injury", href: "https://doi.org/10.1016/S0140-6736(19)32233-0" },
-  paedHaemorrhage: { label: "Paediatric major haemorrhage and damage control resuscitation review", href: "https://doi.org/10.1016/j.bjae.2019.09.004" },
+  paedHaemorrhage: { label: "Transfus Med: massive transfusion protocols in paediatric trauma (2020)", href: "https://doi.org/10.1111/tme.12701" },
   emsbBurns: { label: "Emergency Management of Severe Burns (EMSB) / British Burn Association referral criteria", href: "https://www.britishburnassociation.org/national-standards/" },
   neonatalSepsis: { label: "NICE NG195: neonatal infection — antibiotics for prevention and treatment", href: "https://www.nice.org.uk/guidance/ng195" },
   safeguarding: { label: "NICE NG76: child abuse and neglect — recognition and response", href: "https://www.nice.org.uk/guidance/ng76" },
-  squeeze: { label: "SQUEEZE: fluid sparing versus usual care in paediatric septic shock", href: "https://doi.org/10.1186/s13063-021-05892-4" },
+  squeeze: { label: "SQUEEZE pilot trial: feasibility of a paediatric fluid-sparing strategy", href: "https://pubmed.ncbi.nlm.nih.gov/41316443/" },
   paedEcmo: { label: "ELSO guidelines for paediatric respiratory failure", href: "https://www.elso.org/ecmo-resources/elso-guidelines.aspx" },
 };
 
@@ -73,42 +73,42 @@ export const icuCaseBank: CaseBank = {
       summary: "Anion gap, ketones versus lactate and the effect of large-volume saline on chloride.",
       topicIds: ["acid-base", "diabetes-emergencies", "abg-analysis", "perioperative-fluids", "aki-rrt"],
       patient: "A young adult presents with pH 7.08, bicarbonate 6 mmol/L, PaCO₂ 2.4 kPa, glucose 28 mmol/L, ketones 6.2 mmol/L, lactate 3.1 mmol/L, sodium 133 mmol/L, chloride 96 mmol/L.",
-      presentation: "After 4 L of 0.9% sodium chloride and an insulin infusion, ketones fall to 1.0 mmol/L but pH is still 7.20 with bicarbonate 14 mmol/L and chloride 116 mmol/L.",
+      presentation: "After 4 L of 0.9% sodium chloride and an insulin infusion, ketones are still 1.0 mmol/L (above the <0.6 mmol/L resolution threshold) and pH is 7.20 (below the >7.3 threshold), with bicarbonate 14 mmol/L and chloride 116 mmol/L. The repeat gas omits sodium, so the anion gap cannot be recalculated from it.",
       stages: [
         {
           title: "Interpret the first gas",
           prompt: "Describe the disorder quantitatively.",
           answer: [
-            "Severe metabolic acidosis with appropriate respiratory compensation: expected PaCO₂ is close to the measured value, so there is no additional respiratory disorder.",
+            "A bicarbonate of 6 mmol/L gives an expected PaCO₂ of approximately 17 ±2 mmHg by Winter’s formula. The measured 2.4 kPa is approximately 18 mmHg, consistent with respiratory compensation.",
             "Anion gap is raised at about 31 mmol/L, consistent with ketoacidosis; the modest lactate rise reflects hypovolaemia and catecholamine-driven glycolysis.",
-            "Delta ratio confirms a pure high anion gap picture rather than a mixed acidosis at presentation.",
+            "The delta ratio is approximately 1 using an anion gap reference of 12 and bicarbonate of 24. This is compatible with predominantly high anion gap acidosis; it cannot exclude a concurrent disturbance.",
           ],
         },
         {
           title: "Explain the second gas",
           prompt: "Why is the patient still acidotic after ketones have cleared?",
           answer: [
-            "The anion gap has normalised while a hyperchloraemic, normal anion gap acidosis has appeared from large-volume 0.9% sodium chloride.",
-            "In Stewart terms, the infused fluid has a strong ion difference of zero, so it reduces plasma strong ion difference and lowers pH independently of ketones.",
-            "Bicarbonate regeneration also lags behind ketone clearance because ketoanions were excreted rather than metabolised.",
+            "DKA is not yet biochemically resolved: JBDS 2023 defines resolution as ketones <0.6 mmol/L and venous pH >7.3 (with bicarbonate ≥15 mmol/L). Here ketones are 1.0 mmol/L and pH 7.20, so the diagnosis remains active.",
+            "A chloride of 116 mmol/L alongside bicarbonate 14 mmol/L suggests a hyperchloraemic component from 4 L of 0.9% sodium chloride, but the repeat gas omits sodium — the anion gap cannot be closed until it is measured. Do not attribute all residual acidosis to saline without it.",
+            "Continue the fixed-rate insulin infusion and fluid reassessment; ketone clearance, not pH alone, tracks resolution.",
           ],
         },
         {
           title: "Manage from here",
           prompt: "What do you change?",
           answer: [
-            "Switch to a balanced crystalloid, continue fixed-rate insulin with glucose-containing fluid once glucose falls below about 14 mmol/L, and replace potassium aggressively.",
+            "Switch to a balanced crystalloid, continue fixed-rate insulin with glucose-containing fluid once glucose falls below about 14 mmol/L, and replace potassium according to the measured value and patient factors (renal function, urine output, ongoing losses) rather than indiscriminately.",
             "Do not give bicarbonate for a resolving ketoacidosis; treat the cause and monitor ketone clearance rather than pH alone.",
             "Look for the precipitant — infection, non-adherence, myocardial infarction, pregnancy — and monitor for cerebral oedema in younger patients.",
           ],
         },
       ],
       detailedAnswer: [
-        { title: "Clinical reasoning", content: "Two acidoses appear in sequence here: an organic high anion gap acidosis from ketoacid production, then an iatrogenic hyperchloraemic acidosis from resuscitation with saline. Only anion gap and chloride tracking reveals the switch; following pH or bicarbonate alone suggests treatment failure and risks unnecessary bicarbonate or insulin escalation. Ketone measurement, not glucose, defines resolution." },
-        { title: "Management and monitoring", content: "Use fixed-rate weight-based insulin, balanced crystalloid, early and generous potassium replacement, hourly ketone and glucose measurement, and regular electrolyte and gas review. Add glucose-containing fluid to permit continued insulin. Watch for hypokalaemia, hypoglycaemia, hypophosphataemia, fluid overload and, especially in adolescents, cerebral oedema. Address the precipitant and involve the diabetes team before discharge." },
+        { title: "Clinical reasoning", content: "There is an organic high anion gap acidosis from ketoacid production, and a likely iatrogenic hyperchloraemic component from resuscitation with saline. The ketones have not yet reached the JBDS resolution threshold (<0.6 mmol/L) and the pH is still 7.20, so DKA is not resolved. Because the repeat gas omits sodium, the anion gap cannot be recalculated — request it before attributing the residual acidosis entirely to saline. Ketone measurement, not glucose, defines resolution." },
+        { title: "Management and monitoring", content: "Use fixed-rate weight-based insulin, balanced crystalloid, potassium replacement guided by the measured value and patient factors (JBDS 2023: add 40 mmol/L to the fluid when K⁺ 3.5–5.5 mmol/L, more if lower, none if >5.5, with renal function and urine output considered), hourly ketone and glucose measurement, and regular electrolyte and gas review. Add glucose-containing fluid to permit continued insulin. Watch for hypokalaemia, hypoglycaemia, hypophosphataemia, fluid overload and, especially in adolescents, cerebral oedema. Address the precipitant and involve the diabetes team before discharge." },
         { title: "Exam pitfall", content: "Do not attribute persistent acidosis to ongoing ketosis without recalculating the anion gap, and do not reach for bicarbonate. Show the compensation calculation and name hyperchloraemia explicitly." },
       ],
-      takeHome: "Recalculate the anion gap: persistent acidosis after ketone clearance is usually saline-induced hyperchloraemia, treated by changing fluid, not giving bicarbonate.",
+      takeHome: "DKA is not resolved until ketones are <0.6 mmol/L and venous pH >7.3. Before blaming saline-induced hyperchloraemia for persistent acidosis, measure sodium so the anion gap can be recalculated.",
       sourceLinks: [s.acidBase, s.stewart],
     },
     {
@@ -542,7 +542,7 @@ export const icuCaseBank: CaseBank = {
           answer: [
             "Oxygenation and ventilation: titrate to a saturation of 94–98% and avoid hyperoxia, and target normocapnia at 4.5–6.0 kPa.",
             "Circulation: mean arterial pressure sufficient for adequate urine output and falling lactate — usually above 65 mmHg — with early coronary angiography for ST elevation or ongoing ischaemia, and echocardiography for post-arrest myocardial dysfunction.",
-            "Temperature and metabolic control: actively prevent fever for at least 72 hours with a target at or below 37.5°C, treat seizures, control glucose, and avoid hypoglycaemia.",
+            "Temperature and metabolic control: actively prevent fever for 36–72 hours with a target at or below 37.5°C, treat seizures, control glucose, and avoid hypoglycaemia.",
           ],
         },
         {
@@ -687,9 +687,9 @@ export const icuCaseBank: CaseBank = {
           title: "Manage fluid-refractory shock",
           prompt: "What next if perfusion has not improved after further boluses?",
           answer: [
-            "Start adrenaline as first-line vasoactive support for fluid-refractory paediatric septic shock (rather than dopamine), via peripheral or intraosseous access while central access is obtained, titrated to perfusion and blood pressure.",
+            "Choose adrenaline or noradrenaline according to the haemodynamics and available expertise. Start through a suitable monitored peripheral vein if central access would delay treatment. Severe hypoperfusion can warrant starting alongside fluid; no fixed fluid volume must be reached first.",
             "Reassess for fluid overload — hepatomegaly, crepitations, worsening oxygenation — since children are also vulnerable to over-resuscitation, and stop boluses if these appear.",
-            "Involve paediatric intensive care early for ongoing vasoactive titration, invasive monitoring and consideration of hydrocortisone in catecholamine-resistant shock.",
+            "Involve paediatric intensive care early for ongoing vasoactive titration and invasive monitoring. Hydrocortisone is not routine: give stress-dose corticosteroid only for suspected or documented adrenal insufficiency, decided with senior or PICU advice.",
           ],
         },
         {
@@ -703,12 +703,12 @@ export const icuCaseBank: CaseBank = {
         },
       ],
       detailedAnswer: [
-        { title: "Clinical reasoning", content: "Children compensate for shock through tachycardia and vasoconstriction, maintaining blood pressure until a late, often precipitous, decompensation; hypotension is a late and ominous sign, not a threshold for starting treatment. Reassessment after every bolus, rather than a single large-volume bolus, balances early aggressive resuscitation against the real risk of fluid overload in fluid-refractory shock, and early adrenaline reflects evidence and consensus favouring it over dopamine in this population." },
-        { title: "Management and monitoring", content: "Use structured paediatric early warning scores to trigger escalation, give repeated reassessed boluses, start antibiotics within an hour, and move to adrenaline promptly for fluid-refractory shock via whatever vascular access is available. Monitor for signs of fluid overload throughout, involve paediatric intensive care and retrieval early, and consider hydrocortisone for catecholamine resistance. Watch for evolving PARDS and adapt ventilation and fluid targets accordingly." },
+        { title: "Clinical reasoning", content: "Tachycardia, capillary refill, pulse quality, perfusion, mental state and urine output can identify deterioration before hypotension. With intensive care available, use reassessed 10–20 mL/kg crystalloid boluses when indicated, up to 40–60 mL/kg in the first hour. Stop if perfusion recovers or overload develops. Select the dose and timing of vasoactive support from the clinical response." },
+        { title: "Management and monitoring", content: "Start antibiotics promptly in septic shock, with cultures first if this causes no delay. Choose adrenaline or noradrenaline according to the haemodynamics and available expertise. Start through a suitable monitored peripheral vein if central access would delay treatment. Severe hypoperfusion can warrant starting alongside fluid; no fixed fluid volume must be reached first. Reassess fluid balance, respiratory support and response with PICU." },
         { title: "Exam pitfall", content: "Do not wait for hypotension before escalating, do not choose dopamine as first-line vasoactive support, and do not apply the adult PaO₂/FiO₂ ARDS definition unmodified to children." },
       ],
-      takeHome: "Treat paediatric septic shock with reassessed fluid boluses, escalate to adrenaline early if fluid-refractory, and remember hypotension is a late sign in children.",
-      sourceLinks: [s.paedsepsis, s.pards, s.ssc],
+      takeHome: "Treat paediatric septic shock using reassessed boluses where appropriate and timely vasoactive therapy. Hypotension can be a late sign. Seek early PICU support.",
+      sourceLinks: [s.paedsepsis, s.pards],
     },
     {
       id: "icu-death-neuro-criteria-donation",
@@ -909,7 +909,7 @@ export const icuCaseBank: CaseBank = {
           prompt: "How is paediatric ARDS defined and graded here, and why is the adult P/F ratio not used?",
           answer: [
             "PALICC-2 requires new infiltrates from a non-cardiogenic cause within 7 days of a known insult, with hypoxaemia graded by oxygenation index (OI = mean airway pressure × FiO₂ × 100 / PaO₂ in mmHg) or oxygen saturation index (OSI) when no arterial line is present.",
-            "Invasively ventilated paediatric ARDS is mild-to-moderate at OI 4 to below 16 and severe at OI ≥16 (OSI ≥12.3); this child starts moderate (OI 14) and progresses to severe (OI 19).",
+            "Severity is stratified at least 4 hours after the initial diagnosis. Invasively ventilated paediatric ARDS is mild-to-moderate at OI 4 to below 16 (OSI below 12) and severe at OI ≥16 or OSI ≥12; this child starts moderate (OI 14) and progresses to severe (OI 19).",
             "Oxygenation index is preferred because it incorporates mean airway pressure, so it separates a child needing modest support from one with the same PaO₂/FiO₂ only achievable at very high pressures. Children on non-invasive support qualify with PaO₂/FiO₂ ≤300 mmHg or SpO₂/FiO₂ ≤250.",
           ],
         },
@@ -917,8 +917,8 @@ export const icuCaseBank: CaseBank = {
           title: "Set the ventilator",
           prompt: "What targets do you set, and how do they differ from adult practice?",
           answer: [
-            "Tidal volume 5–8 mL/kg predicted body weight, falling to 3–6 mL/kg when respiratory system compliance is poor; limit plateau pressure to 28 cmH₂O (up to 29–32 cmH₂O if chest wall compliance is reduced) and driving pressure to about 15 cmH₂O.",
-            "Titrate PEEP 10–15 cmH₂O in severe disease against oxygenation, haemodynamics and compliance; accept permissive hypercapnia with pH 7.15–7.30 and SpO₂ 88–92% once PEEP exceeds 10 cmH₂O, provided lactate, central venous saturation and perfusion are acceptable.",
+            "Tidal volume 6–8 mL/kg predicted body weight; use below 6 mL/kg if needed to stay below the pressure limits (below 4 mL/kg with caution). Limit plateau pressure to 28 cmH₂O (29–32 cmH₂O if chest wall compliance is reduced) and driving pressure to 15 cmH₂O.",
+            "Titrate PEEP to oxygenation, oxygen delivery, haemodynamics and compliance. When appropriate, permit hypercapnia to pH ≥7.20 to respect lung-protective limits. Individualise oxygen targets by severity and assess systemic oxygen delivery if accepting lower saturations.",
             "Sedate to a defined score with a morphine and midazolam infusion (adding clonidine or dexmedetomidine as an opioid- and benzodiazepine-sparing adjunct), use cuffed tubes with cuff pressure monitoring, avoid routine high-frequency oscillatory ventilation as a first-line rescue (no mortality benefit and possible harm), and reserve a rocuronium or cisatracurium infusion for children in whom sedation alone cannot achieve lung-protective settings.",
           ],
 
@@ -927,7 +927,7 @@ export const icuCaseBank: CaseBank = {
           title: "Escalate",
           prompt: "What rescue therapies and referral do you consider?",
           answer: [
-            "Prone positioning is a reasonable rescue in severe paediatric ARDS with a dedicated protocol for airway and line security, pressure area care and eye protection, although paediatric mortality evidence is weaker than the adult PROSEVA data.",
+            "PALICC-2 found insufficient data to recommend for or against prone positioning in paediatric ARDS. It may be considered when hypoxaemia is not responding to other interventions; if used, assess the oxygenation response in the prone position, run a dedicated protocol for airway and line security, pressure areas and eye protection, and note that no routine duration is established.",
             "A trial of inhaled nitric oxide may be used as a bridge in severe hypoxaemia or documented pulmonary hypertension and right ventricular dysfunction; continue only with an objective oxygenation response. Recruitment should be slow and stepwise rather than sustained high-pressure inflation.",
             "Refer early to a paediatric ECMO centre when hypoxaemia or hypercapnic acidosis persists despite optimised lung-protective ventilation and rescue measures, with a reversible cause and no major contraindication — refer before profound acidosis, high vasoactive requirement or barotrauma develop, and involve the regional retrieval service for transfer.",
           ],
@@ -935,10 +935,10 @@ export const icuCaseBank: CaseBank = {
       ],
       detailedAnswer: [
         { title: "Clinical reasoning", content: "PALICC-2 replaced adaptation of the adult Berlin definition because children are frequently ventilated without arterial access and because mean airway pressure strongly modifies the meaning of any given PaO₂/FiO₂. Grading by oxygenation index (or oxygen saturation index) identifies severe disease at OI ≥16, which flags a group with high mortality that warrants rescue therapy and early ECMO discussion. Progression from OI 14 to 19 in six hours is a trajectory finding, not a single number, and should trigger referral rather than further escalation in a non-ECMO centre." },
-        { title: "Management and monitoring", content: "Optimise lung-protective ventilation first: 5–8 mL/kg (3–6 mL/kg if compliance is poor), plateau ≤28 cmH₂O, driving pressure about 15 cmH₂O, PEEP 10–15 cmH₂O titrated to compliance and haemodynamics, permissive hypercapnia to pH 7.15–7.30 and SpO₂ 88–92%. Treat influenza with oseltamivir, cover bacterial co-infection, use conservative fluid balance after resuscitation, provide enteral nutrition, sedate to a defined target and add neuromuscular blockade only where necessary. Monitor compliance, driving pressure, lactate, echocardiographic right ventricular function and cumulative fluid balance, and escalate to prone positioning, nitric oxide and ECMO referral in that order." },
+        { title: "Management and monitoring", content: "Optimise lung-protective ventilation first: 6–8 mL/kg PBW (below 6 mL/kg if needed to stay below the pressure limits, below 4 mL/kg with caution), plateau ≤28 cmH₂O, driving pressure ≤15 cmH₂O, PEEP 10–15 cmH₂O titrated to compliance and haemodynamics, permissive hypercapnia to pH 7.15–7.30 and SpO₂ 88–92%. Treat influenza with oseltamivir, cover bacterial co-infection, use conservative fluid balance after resuscitation, provide enteral nutrition, sedate to a defined target and add neuromuscular blockade only where necessary. Monitor compliance, driving pressure, lactate, echocardiographic right ventricular function and cumulative fluid balance, and escalate to prone positioning, nitric oxide and ECMO referral in that order." },
         { title: "Exam pitfall", content: "Do not quote the Berlin definition or adult P/F thresholds for a child, do not offer HFOV as the standard rescue, and do not delay ECMO referral until the child is acidotic on maximal support." },
       ],
-      takeHome: "Paediatric ARDS is graded by oxygenation index (severe ≥16, or OSI ≥12.3), managed with 3–8 mL/kg tidal volumes, plateau ≤28 cmH₂O and permissive hypercapnia, with prone positioning and early ECMO referral for refractory disease.",
+      takeHome: "Paediatric ARDS is graded at least 4 hours after diagnosis by oxygenation index (severe OI ≥16 or OSI ≥12), managed with 6–8 mL/kg tidal volumes (lower only to respect pressure limits), plateau ≤28 cmH₂O and permissive hypercapnia, with prone positioning considered where hypoxaemia is refractory and early ECMO referral.",
       sourceLinks: [s.pards, s.ards, s.paedEcmo],
     },
     {
@@ -955,7 +955,7 @@ export const icuCaseBank: CaseBank = {
           title: "Resuscitate the first hour",
           prompt: "What do you give and in what quantities?",
           answer: [
-            "Give ceftriaxone (or cefotaxime) immediately — within one hour of recognition and ideally after but never delayed for cultures — plus balanced crystalloid 10–20 mL/kg boluses reassessed after each, with a total of up to 40–60 mL/kg in the first hour where a functioning intensive care service is available; use smaller 10 mL/kg boluses and earlier vasoactive support where it is not.",
+            "Give ceftriaxone (or cefotaxime) immediately — within one hour of recognition and ideally after but never delayed for cultures — plus balanced crystalloid 10 mL/kg boluses reassessed after each — stop once shock resolves or overload develops, and do not treat 40–60 mL/kg as a target that must be reached. Where intensive care and ventilatory support are available, up to about 40–60 mL/kg may be given in the first hour; use smaller boluses and earlier vasoactive support where they are not.",
             "Correct hypoglycaemia with 2 mL/kg of 10% glucose and recheck; correct ionised calcium, which is frequently low and impairs contractility and vasomotor tone.",
             "Reassess perfusion, conscious level, heart rate, capillary refill, urine output and lactate after every bolus, and stop fluid when there is hepatomegaly, new crackles or rising oxygen requirement rather than continuing to a fixed volume.",
           ],
@@ -964,9 +964,9 @@ export const icuCaseBank: CaseBank = {
           title: "Treat fluid-refractory shock",
           prompt: "Which vasoactive drug, by which route, and what else must be addressed?",
           answer: [
-            "Start adrenaline (or noradrenaline) once shock persists after 40–60 mL/kg; peripheral dilute infusion through a well-sited large cannula is acceptable while central access is obtained — do not delay vasoactive support for a central line. Adrenaline 0.05–0.3 microgram/kg/min suits cold shock with poor contractility; noradrenaline suits warm vasodilated shock.",
+            "Start adrenaline (or noradrenaline) as soon as shock persists despite reassessed boluses — do not wait to reach a fixed 40–60 mL/kg total. A peripheral dilute infusion through a well-sited large cannula is acceptable while central access is obtained; do not delay vasoactive support for a central line. Adrenaline 0.05–0.3 microgram/kg/min suits cold shock with poor contractility; noradrenaline suits warm vasodilated shock.",
             "Dobutamine or milrinone can be added for low cardiac output with adequate perfusion pressure, guided by echocardiography, which is the key bedside tool for distinguishing myocardial dysfunction from persistent hypovolaemia or vasoplegia.",
-            "Give hydrocortisone (about 1–2 mg/kg 6-hourly, or 50 mg/m²/day) for catecholamine-resistant shock or suspected adrenal insufficiency including purpura fulminans; correct coagulopathy, anaemia and acidosis, and intubate for escalating shock, exhaustion or reduced conscious level with a cardiostable induction (ketamine with fentanyl and rocuronium) rather than propofol.",
+            "Hydrocortisone is not mandatory in shock: give stress-dose corticosteroid (about 1–2 mg/kg 6-hourly, or 50 mg/m²/day) only for suspected or documented adrenal insufficiency, including purpura fulminans, with senior or PICU advice. Correct coagulopathy, anaemia and acidosis, and intubate for escalating shock, exhaustion or reduced conscious level with a cardiostable induction (ketamine with fentanyl and rocuronium) rather than propofol.",
           ],
         },
         {
@@ -980,11 +980,11 @@ export const icuCaseBank: CaseBank = {
         },
       ],
       detailedAnswer: [
-        { title: "Clinical reasoning", content: "Paediatric septic shock is recognised clinically rather than by blood pressure: hypotension is a late sign because children maintain pressure by tachycardia and vasoconstriction until decompensation. Tachycardia, prolonged capillary refill, cool peripheries, oliguria, altered conscious level and lactataemia define shock, and hypoglycaemia and hypocalcaemia are common reversible contributors. The Surviving Sepsis Campaign paediatric guideline recommends antimicrobials within one hour and 10–20 mL/kg boluses with reassessment, capped at 40–60 mL/kg where intensive care is available, because excessive fluid causes worsening oedema and respiratory failure — the point at which vasoactive drugs must start." },
+        { title: "Clinical reasoning", content: "Paediatric septic shock is recognised clinically rather than by blood pressure: hypotension is a late sign because children maintain pressure by tachycardia and vasoconstriction until decompensation. Tachycardia, prolonged capillary refill, cool peripheries, oliguria, altered conscious level and lactataemia define shock, and hypoglycaemia and hypocalcaemia are common reversible contributors. The Surviving Sepsis Campaign paediatric guideline recommends antimicrobials within one hour and 10–20 mL/kg boluses with reassessment after each, because excessive fluid causes worsening oedema and respiratory failure. Up to about 40–60 mL/kg may be given in the first hour where intensive care is available, but this is not a prerequisite: vasoactive drugs start as soon as shock persists despite reassessed boluses, and peripheral access is acceptable while central access is obtained." },
         { title: "Management and monitoring", content: "Antibiotics within the hour, weight-based fluid boluses with reassessment, glucose and calcium correction, then adrenaline or noradrenaline peripherally, echocardiography-guided inotrope selection and hydrocortisone for catecholamine-resistant shock. Intubate with a cardiostable technique where shock progresses. Monitor lactate clearance, perfusion, base deficit, urine output, coagulation, glucose, calcium and cumulative fluid balance. Involve retrieval early, and give public health notification and household prophylaxis for confirmed meningococcal disease." },
         { title: "Exam pitfall", content: "Do not wait for hypotension before diagnosing shock, do not give unlimited fluid boluses, and do not delay adrenaline while waiting for central access or transfer." },
       ],
-      takeHome: "In paediatric septic shock give antibiotics within an hour and 10–20 mL/kg fluid boluses to a maximum of 40–60 mL/kg, then start peripheral adrenaline or noradrenaline, correct glucose and calcium, and involve retrieval immediately.",
+      takeHome: "In paediatric septic shock give antibiotics within an hour and 10 mL/kg fluid boluses reassessed after each — 40–60 mL/kg is a ceiling, not a prerequisite for vasoactives. Start peripheral adrenaline or noradrenaline as soon as shock persists, correct glucose and calcium, and involve retrieval immediately.",
       sourceLinks: [s.paedsepsis, s.meningococcal, s.squeeze, s.pccsTransfer],
     },
     {
@@ -1195,15 +1195,15 @@ export const icuCaseBank: CaseBank = {
           prompt: "The heart rate remains 40/min despite confirmed chest movement. Set out your compression and drug plan with numbers.",
           answer: [
             "Begin chest compressions at a ratio of 3:1 with ventilation (about 90 compressions and 30 breaths per minute) over the lower third of the sternum using the two-thumb technique, compressing one third of the anteroposterior diameter. Increase oxygen towards 100% once compressions start and wean guided by pre-ductal saturations.",
-            "Secure access — umbilical venous catheter or intraosseous. Adrenaline 20 micrograms/kg IV/IO (0.2 mL/kg of 1:10,000) repeated every 3–5 minutes, i.e. 70 micrograms or 0.7 mL for this 3.5 kg baby; the tracheal route is no longer preferred and needs a much larger dose if used.",
-            "Consider glucose 2.5 mL/kg of 10% dextrose for documented or likely hypoglycaemia, volume 10 mL/kg of 0.9% sodium chloride or group O negative blood only where blood loss is suspected, and sodium bicarbonate 1–2 mmol/kg of 4.2% solution only in prolonged unresponsive arrest with confirmed metabolic acidosis and established ventilation.",
+            "Secure access — umbilical venous catheter or intraosseous. Adrenaline 20 micrograms/kg IV/IO (0.2 mL/kg of 1:10,000) repeated every 4 minutes, i.e. 70 micrograms or 0.7 mL for this 3.5 kg baby; the tracheal route is no longer preferred and needs a much larger dose if used.",
+            "Measure blood glucose if possible; if low, give 10% glucose 2 mL/kg (200 mg/kg, i.e. 7 mL for this 3.5 kg baby) — not 2.5 mL/kg empirically. Give volume 10 mL/kg of 0.9% sodium chloride or group O negative blood only where blood loss is suspected, and sodium bicarbonate 1–2 mmol/kg of 4.2% solution only in prolonged unresponsive arrest with confirmed metabolic acidosis and established ventilation.",
           ],
         },
         {
           title: "Post-resuscitation care",
           prompt: "Return of spontaneous circulation occurs at 8 minutes. What are the priorities now?",
           answer: [
-            "Target pre-ductal saturations along the reference range (about 65% at 2 minutes, 85% at 5 minutes, 90% at 10 minutes), avoid hyperoxia, and aim for normocarbia — hypocarbia reduces cerebral blood flow and worsens injury.",
+            "Use a right-hand pulse oximeter. At birth, titrate oxygen to the RCUK preductal saturation ranges: 70–75% at 3 minutes, 80–85% at 5 minutes and 85–95% at 10 minutes. Avoid hypoxia and hyperoxia after recovery, and aim for normocarbia — hypocarbia reduces cerebral blood flow and worsens injury.",
             "Assess for therapeutic hypothermia: term or near-term (≥36 weeks) infants with moderate-to-severe hypoxic-ischaemic encephalopathy should be cooled to 33–34 °C within 6 hours for 72 hours with slow rewarming, so avoid active warming above 37 °C and involve the neonatal unit early.",
             "Maintain glucose 3–8 mmol/L, treat seizures, monitor lactate, blood gas, coagulation and renal function, arrange amplitude-integrated EEG and cranial imaging, provide analgesia and sedation as needed, and debrief with the parents and team.",
           ],
@@ -1211,10 +1211,10 @@ export const icuCaseBank: CaseBank = {
       ],
       detailedAnswer: [
         { title: "Clinical reasoning", content: "Newborn resuscitation is a resuscitation of ventilation. The fluid-filled lung must be aerated before circulation improves, which is why five sustained inflation breaths precede everything else and why heart rate response is the primary measure of success. Compressions in a 3:1 ratio reflect the need for a high minute ventilation relative to a rate-dependent cardiac output — neonatal stroke volume is fixed at about 1.5 mL/kg, so bradycardia is effectively a cardiac output failure. Persistent bradycardia with no chest movement is an airway problem until proven otherwise." },
-        { title: "Management and monitoring", content: "Thermal care (delivery room 23–25 °C, dry, hat, plastic wrap if preterm), airway positioning, inflation breaths at 30 cmH₂O in air, then ventilation breaths; compressions 3:1 with escalation to 100% oxygen; UVC or intraosseous access; adrenaline 20 micrograms/kg (0.2 mL/kg 1:10,000), glucose 2.5 mL/kg 10%, volume 10 mL/kg only for blood loss. After ROSC: saturation targeting, normocarbia, glucose control, seizure treatment, assessment for therapeutic hypothermia at 33–34 °C for 72 hours, and transfer to neonatal intensive care." },
+        { title: "Management and monitoring", content: "Thermal care (delivery room 23–25 °C, dry, hat, plastic wrap if preterm), airway positioning, inflation breaths at 30 cmH₂O in air, then ventilation breaths; compressions 3:1 with escalation to 100% oxygen; UVC or intraosseous access; adrenaline 20 micrograms/kg (0.2 mL/kg 1:10,000) repeated every 4 minutes, 10% glucose 2 mL/kg (200 mg/kg) only if measured glucose is low, volume 10 mL/kg only for blood loss. After ROSC: saturation targeting, normocarbia, glucose control, seizure treatment, assessment for therapeutic hypothermia at 33–34 °C for 72 hours, and transfer to neonatal intensive care." },
         { title: "Exam pitfall", content: "Do not use the paediatric 15:2 ratio or the adult adrenaline dose of 10 micrograms/kg in the newborn, do not start with 100% oxygen in a term baby, and do not actively warm a baby who may be a candidate for therapeutic cooling." },
       ],
-      takeHome: "Newborn resuscitation is ventilation-led: dry and warm, five inflation breaths at 30 cmH₂O in air, escalate to 3:1 compressions with adrenaline 20 micrograms/kg IV/IO and 2.5 mL/kg of 10% glucose, then consider cooling to 33–34 °C for 72 hours after return of circulation.",
+      takeHome: "Newborn resuscitation is ventilation-led: dry and warm, five inflation breaths at 30 cmH₂O in air, escalate to 3:1 compressions with adrenaline 20 micrograms/kg IV/IO repeated every 4 minutes and 10% glucose 2 mL/kg (200 mg/kg) only if measured glucose is low, then consider cooling to 33–34 °C for 72 hours after return of circulation.",
       sourceLinks: [s.nlsErc, s.rcukNls, s.postResus],
     },
     {
@@ -1279,7 +1279,7 @@ export const icuCaseBank: CaseBank = {
           answer: [
             "Recognise shock clinically — normal blood pressure does not exclude it because children compensate with tachycardia and vasoconstriction until late decompensation; drowsiness, prolonged capillary refill and lactataemia are the alarm signs.",
             "Within one hour: high-flow oxygen, blood cultures then broad-spectrum antibiotics (for example ceftriaxone 80 mg/kg once daily, 2 g maximum, with the addition of clindamycin or vancomycin if toxic shock or staphylococcal infection is suspected), 10–20 mL/kg isotonic crystalloid boluses with reassessment after each, and correction of hypoglycaemia (2 mL/kg 10% glucose) and ionised hypocalcaemia.",
-            "Cap fluid at 40–60 mL/kg where intensive care is available and stop earlier if hepatomegaly, new crackles or a rising oxygen requirement appear — the appearance of these signs, as here, is the trigger to start vasoactive drugs, not to give more fluid.",
+            "Stop fluid as soon as shock resolves or overload appears (hepatomegaly, new crackles, rising oxygen requirement). Where intensive care is available, about 40–60 mL/kg is the upper limit — not a target that must be reached. The new hepatomegaly here is the trigger to start vasoactive drugs, not to give more fluid.",
           ],
         },
         {
@@ -1288,7 +1288,7 @@ export const icuCaseBank: CaseBank = {
           answer: [
             "Start adrenaline 0.05–0.3 micrograms/kg/min for cold shock with poor perfusion, or noradrenaline 0.05–0.3 micrograms/kg/min for warm vasodilated shock with a wide pulse pressure; both may be started via a dilute peripheral infusion with close site monitoring while central access is arranged, rather than delaying treatment.",
             "Insert arterial and central access when skills allow, target an age-appropriate mean arterial pressure (roughly the 5th centile, about 55–60 mmHg at this age), and use echocardiography or a cardiac output monitor to distinguish vasodilatation from myocardial dysfunction.",
-            "Add hydrocortisone 1–2 mg/kg (maximum 50 mg) 6-hourly for catecholamine-resistant shock, and consider milrinone or dobutamine where output is low despite adequate pressure and preload.",
+            "Hydrocortisone is not mandatory for refractory shock: consider stress-dose hydrocortisone 1–2 mg/kg (maximum 50 mg) 6-hourly only for suspected or documented adrenal insufficiency, with senior or PICU advice. Consider milrinone or dobutamine where output is low despite adequate pressure and preload.",
           ],
         },
         {
@@ -1302,11 +1302,11 @@ export const icuCaseBank: CaseBank = {
         },
       ],
       detailedAnswer: [
-        { title: "Clinical reasoning", content: "The Surviving Sepsis Campaign paediatric guideline is explicit that shock in children is a clinical diagnosis and that fluid should be given in 10–20 mL/kg aliquots with reassessment, capped at 40–60 mL/kg where critical care is available. The FEAST trial showed excess mortality with liberal bolus therapy in resource-limited settings without ventilatory support, and the appearance of hepatomegaly and pulmonary crackles marks the point at which further fluid becomes harmful. Vasoactive drugs are therefore started early and peripherally if necessary rather than after a third or fourth bolus." },
-        { title: "Management and monitoring", content: "Oxygen, cultures, antibiotics within one hour (ceftriaxone 80 mg/kg, adding antistaphylococcal or antitoxin cover as indicated), 10–20 mL/kg boluses with reassessment capped at 40–60 mL/kg, adrenaline or noradrenaline 0.05–0.3 micrograms/kg/min titrated to an age-appropriate mean arterial pressure, hydrocortisone for catecholamine resistance, correction of glucose and ionised calcium, source control, and cardiostable intubation with ketamine and rocuronium when required. Monitor perfusion, conscious level, urine output, lactate clearance, liver size, fluid balance and echocardiographic function, and involve the retrieval service early." },
-        { title: "Exam pitfall", content: "Do not wait for hypotension to diagnose shock, do not keep bolusing past 40–60 mL/kg in the face of hepatomegaly and crackles, and do not induce anaesthesia before the circulation is supported." },
+        { title: "Clinical reasoning", content: "The Surviving Sepsis Campaign paediatric guideline is explicit that shock in children is a clinical diagnosis and that fluid should be given in 10–20 mL/kg aliquots with reassessment after each. Where critical care is available, about 40–60 mL/kg is an upper limit, not a prerequisite for vasoactives. The FEAST trial showed excess mortality with liberal bolus therapy in resource-limited settings without ventilatory support, and the appearance of hepatomegaly and pulmonary crackles marks the point at which further fluid becomes harmful. Vasoactive drugs are therefore started as soon as shock persists despite reassessed boluses — peripherally if necessary — rather than after a fixed volume." },
+        { title: "Management and monitoring", content: "Oxygen, cultures, antibiotics within one hour (ceftriaxone 80 mg/kg, adding antistaphylococcal or antitoxin cover as indicated), 10 mL/kg boluses with reassessment after each (about 40–60 mL/kg is the upper limit where intensive care is available), adrenaline or noradrenaline 0.05–0.3 micrograms/kg/min titrated to an age-appropriate mean arterial pressure and started as soon as shock persists, stress-dose hydrocortisone only for suspected adrenal insufficiency, correction of glucose and ionised calcium, source control, and cardiostable intubation with ketamine and rocuronium when required. Monitor perfusion, conscious level, urine output, lactate clearance, liver size, fluid balance and echocardiographic function, and involve the retrieval service early." },
+        { title: "Exam pitfall", content: "Do not wait for hypotension to diagnose shock, do not treat 40–60 mL/kg as a volume that must be given before vasoactives, do not keep bolusing once hepatomegaly or crackles appear, and do not induce anaesthesia before the circulation is supported." },
       ],
-      takeHome: "Paediatric septic shock is recognised before hypotension: antibiotics within one hour, 10–20 mL/kg boluses capped at 40–60 mL/kg, adrenaline or noradrenaline 0.05–0.3 micrograms/kg/min started early (peripherally if needed), hydrocortisone for catecholamine resistance, and cardiostable intubation with ketamine.",
+      takeHome: "Paediatric septic shock is recognised before hypotension: antibiotics within one hour, 10 mL/kg boluses reassessed after each (40–60 mL/kg is a ceiling, not a prerequisite), adrenaline or noradrenaline 0.05–0.3 micrograms/kg/min started as soon as shock persists (peripherally if needed), hydrocortisone only for suspected adrenal insufficiency, and cardiostable intubation with ketamine.",
       sourceLinks: [s.paedsepsis, s.squeeze, s.meningococcal, s.pccsTransfer],
     },
     {

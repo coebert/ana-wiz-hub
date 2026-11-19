@@ -709,7 +709,7 @@ export const icuDrugWithdrawal: Record<string, DrugWithdrawal> = {
     taper: [
       "Complete high-dose parenteral treatment (for example Pabrinex for 3–5 days) then step down to oral thiamine, rather than stopping.",
       "Continue oral thiamine through refeeding and on discharge in alcohol dependence.",
-      "Always give thiamine before glucose loading in a patient at risk.",
+      "In an at-risk patient, treat hypoglycaemia immediately and give thiamine with or immediately after the glucose — never delay glucose to give thiamine first.",
     ],
     monitoring: ["Ocular signs, ataxia and confusion; phosphate, magnesium and potassium during refeeding."],
   },
