@@ -53,9 +53,6 @@
   "dependencies": {
     "@ai-sdk/openai-compatible": "^2.0.51",
     "@ai-sdk/react": "^3.0.211",
-    "@capacitor/android": "^7",
-    "@capacitor/core": "^7",
-    "@capacitor/ios": "^7",
     "@hookform/resolvers": "^3.10.0",
     "@lovable.dev/cloud-auth-js": "^1.1.2",
     "@radix-ui/react-accordion": "^1.2.11",
@@ -125,7 +122,6 @@
     "zustand": "^5.0.14"
   },
   "devDependencies": {
-    "@capacitor/cli": "^7",
     "@eslint/js": "^9.32.0",
     "@gltf-transform/core": "^4.3.0",
     "@gltf-transform/extensions": "^4.3.0",
@@ -181,5 +177,8 @@
     "browserslist": "^4.29.5",
     "baseline-browser-mapping": "^2.11.37",
     "@babel/plugin-transform-modules-systemjs": "^7.26.0"
-  }
+  },
+  "workspaces": [
+    "native"
+  ]
 }
