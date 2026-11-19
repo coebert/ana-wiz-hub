@@ -65,9 +65,16 @@ export const InlineRef = ({
       </PopoverTrigger>
       <PopoverContent className="w-96 max-w-[92vw] text-xs leading-relaxed max-h-[70vh] overflow-y-auto" side="top">
         <p className="font-semibold text-foreground mb-1">{ref.label}</p>
-        <p className="text-muted-foreground mb-2">{ref.citation}</p>
+        {ref.withheld ? (
+          <p className="text-muted-foreground mb-2">
+            <span className="font-medium text-foreground">Source gap — </span>
+            {ref.gapNote}
+          </p>
+        ) : (
+          <p className="text-muted-foreground mb-2">{ref.citation}</p>
+        )}
         {ref.reviewNote && <p className="text-muted-foreground mb-2">{ref.reviewNote}</p>}
-        {ref.excerpt && (
+        {!ref.withheld && ref.excerpt && (
           <blockquote
             className="mb-2 border-l-2 border-perioperative/60 bg-muted/40 pl-2.5 pr-2 py-1.5 italic text-foreground/80 rounded-r"
             aria-label="Verbatim source excerpt"
@@ -78,7 +85,7 @@ export const InlineRef = ({
             “{ref.excerpt}”
           </blockquote>
         )}
-        {(ref.pmid || ref.url) && (
+        {!ref.withheld && (ref.pmid || ref.url) && (
           <div className="flex flex-wrap items-center gap-2">
             {ref.pmid && (
               <a

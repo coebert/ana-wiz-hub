@@ -13,6 +13,10 @@ Branch: `audit-content-coverage` (from `main`).
 | `source-verification.json` | The sources independently opened and read in this audit, what was checked, and the records that were unverifiable or superseded. |
 | `changes.json` | Every correction by ID, with severity, finding, files, source and verification status. |
 
+| `reference-candidates.json` | The 117-record bibliography triage list supplied on 19 November 2026. |
+| `reference-triage.json` | Per-candidate disposition: what the stored DOI resolves to, what was done, and the evidence. |
+| `reference-triage.md` | Human-readable version: repaired citations with their verified titles and destinations, and the withheld list. |
+
 Regenerate the inventory with:
 
 ```bash

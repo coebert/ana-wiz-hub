@@ -18,7 +18,7 @@ export function generateVivaDeck() {
   const pairs=faqs[path] ?? [];
   const sourceFile=routes[path].replace(resolve('.')+'/', '');
   const cards=pairs.map(([question,answer],tupleIndex)=>({id:`faq-${hash([topic.id,question,answer]).slice(0,24)}`,question,answer,sourceFile,tupleIndex,contentHash:hash([question,answer])}));
-  const payload={schema:1 as const,topicId:topic.id,title:topic.title,path,exams,references:topicReferences[topic.id] ?? [],cards};
+  const payload={schema:1 as const,topicId:topic.id,title:topic.title,path,exams,references:(topicReferences[topic.id] ?? []).filter(r=>!r.withheld),cards};
   const revision=hash(payload);
   // Source text is unchanged. Topic references are contextual, not certification of each FAQ.
   const deck={...payload,revision};decks.push(deck);

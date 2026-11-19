@@ -1,111 +1,154 @@
 {
-  "generated_at": "2026-11-19T12:30:00Z",
-  "branch": "audit-content-coverage",
-  "base": "main",
-  "scope": "Learner-facing authored content only. No private learner data, no held podcast content, no bulk unverified rewrite, no dispensing advice.",
-  "changes": [
-    {
-      "id": "CAP-01",
-      "severity": "high",
-      "finding": "The capnography worked example and 'common exam pitfalls' taught a six-breath, normal-shape confirmation and an unqualified instruction to remove the tube when the trace fell away. This omitted the PUMA four criteria (including at least seven breaths) and the dangerous-to-remove exception.",
-      "correction": "Replaced with the PUMA/RCoA sustained exhaled CO2 standard: four criteria over at least seven breaths. Default tube removal is stated, followed by oxygenation by facemask or supraglottic airway. The exception is stated with its test (reasonable basis for believing the tube is tracheal plus likely serious harm from removal) and the urgent alternative verification pathway (repeat laryngoscopy first, then bronchoscopy, ultrasound or oesophageal detector). The tube is removed if sustained CO2 is not restored promptly. Auscultation, misting and chest rise are explicitly rejected as confirmation.",
-      "files": [
-        "src/pages/topics/CapnographyTopic.tsx",
-        "src/components/diagrams/physics/CapnographyDiagram.tsx",
-        "src/data/references.ts"
-      ],
-      "sources": ["SRC-PUMA-2022", "SRC-RCOA-SUSTAINED-CO2"],
-      "verified": "Source text read; see source-verification.json"
-    },
-    {
-      "id": "CAP-02",
-      "severity": "medium",
-      "finding": "A quiz keyed 'at least 6 consecutive normal-shaped waveforms' and a capnography FAQ that told clinicians only to 'confirm tube position' without the default-removal rule.",
-      "correction": "Quiz now keys at least seven breaths and the four criteria. The 'sudden loss of ETCO2' FAQ now states default tube removal, the dangerous-to-remove exception and urgent alternative verification.",
-      "files": ["src/data/quizzes.ts", "src/pages/topics/CapnographyWaveformsTopic.tsx"],
-      "sources": ["SRC-PUMA-2022", "SRC-RCOA-SUSTAINED-CO2"],
-      "verified": "Source text read; see source-verification.json"
-    },
-    {
-      "id": "LAST-01",
-      "severity": "high",
-      "finding": "LAST lipid dosing and timing were inconsistent across the app: 1-minute bolus in several pages, 2-3 minutes in another, '0.25 mL/kg/min' ASRA framing mixed into UK text, a wrong 'about 1000 mL in a 70 kg adult' maximum, and a claim of a '2024 RCoA/Association guideline'.",
-      "correction": "Standardised on Association of Anaesthetists QRH 3-10 version 2 (June 2023): 1.5 mL/kg over 2-3 min, then 15 mL/kg/h; repeat the same bolus at 5 and 10 min; double to 30 mL/kg/h if the circulation is not restored; maximum cumulative 12 mL/kg (840 mL at 70 kg). Applied across the clinical-incidents topic, local-anaesthetics topic, LAST note, regional-anaesthesia topic, pain medicine, toxicology FAQ, arrhythmia table, pharmacology cases, quizzes and the drug-reference summary.",
-      "files": [
-        "src/pages/topics/ClinicalIncidentsTopic.tsx",
-        "src/pages/topics/LocalAnaestheticsTopic.tsx",
-        "src/pages/notes/LocalAnaestheticToxicityNote.tsx",
-        "src/pages/topics/RegionalAnaesthesiaTopic.tsx",
-        "src/pages/topics/PainMedicineTopic.tsx",
-        "src/pages/topics/ToxicologyTopic.tsx",
-        "src/pages/topics/ArrhythmiasEcgIcuTopic.tsx",
-        "src/pages/topics/BurnsPlasticsTopic.tsx",
-        "src/data/cases/pharmacologyCases.ts",
-        "src/data/quizzes.ts",
-        "src/features/drugReference/topics.ts",
-        "src/components/exam/FinalFrcaExtras.tsx",
-        "src/components/topic/RegionalAnaesthesiaRiskTeaching.tsx",
-        "src/data/references.ts",
-        "src/data/anaestheticRiskReferences.ts"
-      ],
-      "sources": ["SRC-AA-QRH-3-10-2023", "SRC-AA-LAST-2023-PAGE"],
-      "verified": "QRH section text read; see source-verification.json"
-    },
-    {
-      "id": "LAST-02",
-      "severity": "critical",
-      "finding": "The clinical-incidents topic twice instructed clinicians to AVOID amiodarone in LAST cardiac arrest. The current UK QRH does not say this; it advises standard arrhythmia therapy and avoidance of lidocaine, and amiodarone is used for ventricular arrhythmias.",
-      "correction": "Removed both amiodarone-avoidance instructions. Text now states: adrenaline <= 1 microgram/kg, avoid vasopressin and lidocaine, use amiodarone for ventricular arrhythmias. The LAST note FAQ and the exam answer were aligned.",
-      "files": [
-        "src/pages/topics/ClinicalIncidentsTopic.tsx",
-        "src/pages/notes/LocalAnaestheticToxicityNote.tsx",
-        "src/pages/topics/LocalAnaestheticsTopic.tsx",
-        "src/components/exam/FinalFrcaExtras.tsx"
-      ],
-      "sources": ["SRC-AA-QRH-3-10-2023"],
-      "verified": "QRH text read; see source-verification.json"
-    },
-    {
-      "id": "LAST-03",
-      "severity": "medium",
-      "finding": "Bibliographic records 'AA LAST 2024' and 'AA LAST 2020' could not be verified as real guideline pages; both URLs resolve to the generic Association guidelines listing. The 2010 laminate is withdrawn.",
-      "correction": "Replaced with the verified QRH 3-10 v2 2023 record and removed the unverifiable 2020 record. Historical 2010 wording removed from teaching.",
-      "files": ["src/data/references.ts", "src/pages/tools/MaxLADoseTool.tsx"],
-      "sources": ["SRC-AA-QRH-3-10-2023", "SRC-AA-LAST-2023-PAGE"],
-      "verified": "Publisher page and QRH PDF read; see source-verification.json"
-    },
-    {
-      "id": "NEO-01",
-      "severity": "high",
-      "finding": "The neonatal resuscitation case taught adrenaline 'repeated every 3-5 minutes' and linked the 2021 NLS guideline.",
-      "correction": "Changed to repeat every 4 minutes, the 2025 RCUK simplification, with the 10-30 micrograms/kg (0.1-0.3 mL/kg of 1:10,000) dose retained. Updated the source link and the paediatric ICU newborn summary. Paediatric PALS 3-5 minute dosing is left unchanged because that is a different pathway.",
-      "files": [
-        "src/pages/PerioperativeCaseBank.tsx",
-        "src/pages/topics/PaediatricIcuTopic.tsx",
-        "src/data/references.ts"
-      ],
-      "sources": ["SRC-RCUK-NLS-2025"],
-      "verified": "RCUK 2025 key points read; see source-verification.json"
-    },
-    {
-      "id": "FAST-01",
-      "severity": "high",
-      "finding": "Paediatric fasting was taught as 6-4-2 (2 h clear fluids, 4 h breast milk) and one case used 'APAGBI 6-4-2'. Current APAGBI guidance is 1 h clear fluids, 3 h breast milk, 6 h formula/solids, with sip-til-send as an option; adult and paediatric pathways were mixed.",
-      "correction": "Separated adult (6 h food / 2 h clear fluids) from paediatric intervals. Paediatric text now uses 6 h solids/formula, 3 h breast milk, 1 h clear fluids, with sip-til-send (3 mL/kg/h up to 150 mL/h) and explicit exceptions for delayed gastric emptying, GLP-1 agonists, significant reflux, severe obesity, neurological impairment and emergency surgery.",
-      "files": [
-        "src/pages/topics/DaySurgeryTopic.tsx",
-        "src/pages/PerioperativeCaseBank.tsx",
-        "src/data/references.ts"
-      ],
-      "sources": ["SRC-APAGBI-FASTING-2025", "SRC-ESAIC-FASTING-2022"],
-      "verified": "APAGBI 2025 PDF and ESAIC 2022 PDF read; see source-verification.json"
-    }
-  ],
-  "not_changed": [
-    "Held podcast scripts and audio were not touched or released.",
-    "Private learner data (viva attempts, study time, discussions, inaccuracy reports, support messages) was not read or exported.",
-    "The separate production database was not modified. Live content_overrides and topic_references rows were not read in this sandbox.",
-    "Paediatric PALS adrenaline interval remains 3-5 minutes; it is a different pathway from newborn resuscitation.",
-    "The 2010 AAGBI LAST laminate is not reproduced; historical references to it were replaced rather than retained."
-  ]
+ "generated_at": "2026-11-19T12:30:00Z",
+ "branch": "audit-content-coverage",
+ "base": "main",
+ "scope": "Learner-facing authored content only. No private learner data, no held podcast content, no bulk unverified rewrite, no dispensing advice.",
+ "changes": [
+  {
+   "id": "CAP-01",
+   "severity": "high",
+   "finding": "The capnography worked example and 'common exam pitfalls' taught a six-breath, normal-shape confirmation and an unqualified instruction to remove the tube when the trace fell away. This omitted the PUMA four criteria (including at least seven breaths) and the dangerous-to-remove exception.",
+   "correction": "Replaced with the PUMA/RCoA sustained exhaled CO2 standard: four criteria over at least seven breaths. Default tube removal is stated, followed by oxygenation by facemask or supraglottic airway. The exception is stated with its test (reasonable basis for believing the tube is tracheal plus likely serious harm from removal) and the urgent alternative verification pathway (repeat laryngoscopy first, then bronchoscopy, ultrasound or oesophageal detector). The tube is removed if sustained CO2 is not restored promptly. Auscultation, misting and chest rise are explicitly rejected as confirmation.",
+   "files": [
+    "src/pages/topics/CapnographyTopic.tsx",
+    "src/components/diagrams/physics/CapnographyDiagram.tsx",
+    "src/data/references.ts"
+   ],
+   "sources": [
+    "SRC-PUMA-2022",
+    "SRC-RCOA-SUSTAINED-CO2"
+   ],
+   "verified": "Source text read; see source-verification.json"
+  },
+  {
+   "id": "CAP-02",
+   "severity": "medium",
+   "finding": "A quiz keyed 'at least 6 consecutive normal-shaped waveforms' and a capnography FAQ that told clinicians only to 'confirm tube position' without the default-removal rule.",
+   "correction": "Quiz now keys at least seven breaths and the four criteria. The 'sudden loss of ETCO2' FAQ now states default tube removal, the dangerous-to-remove exception and urgent alternative verification.",
+   "files": [
+    "src/data/quizzes.ts",
+    "src/pages/topics/CapnographyWaveformsTopic.tsx"
+   ],
+   "sources": [
+    "SRC-PUMA-2022",
+    "SRC-RCOA-SUSTAINED-CO2"
+   ],
+   "verified": "Source text read; see source-verification.json"
+  },
+  {
+   "id": "LAST-01",
+   "severity": "high",
+   "finding": "LAST lipid dosing and timing were inconsistent across the app: 1-minute bolus in several pages, 2-3 minutes in another, '0.25 mL/kg/min' ASRA framing mixed into UK text, a wrong 'about 1000 mL in a 70 kg adult' maximum, and a claim of a '2024 RCoA/Association guideline'.",
+   "correction": "Standardised on Association of Anaesthetists QRH 3-10 version 2 (June 2023): 1.5 mL/kg over 2-3 min, then 15 mL/kg/h; repeat the same bolus at 5 and 10 min; double to 30 mL/kg/h if the circulation is not restored; maximum cumulative 12 mL/kg (840 mL at 70 kg). Applied across the clinical-incidents topic, local-anaesthetics topic, LAST note, regional-anaesthesia topic, pain medicine, toxicology FAQ, arrhythmia table, pharmacology cases, quizzes and the drug-reference summary.",
+   "files": [
+    "src/pages/topics/ClinicalIncidentsTopic.tsx",
+    "src/pages/topics/LocalAnaestheticsTopic.tsx",
+    "src/pages/notes/LocalAnaestheticToxicityNote.tsx",
+    "src/pages/topics/RegionalAnaesthesiaTopic.tsx",
+    "src/pages/topics/PainMedicineTopic.tsx",
+    "src/pages/topics/ToxicologyTopic.tsx",
+    "src/pages/topics/ArrhythmiasEcgIcuTopic.tsx",
+    "src/pages/topics/BurnsPlasticsTopic.tsx",
+    "src/data/cases/pharmacologyCases.ts",
+    "src/data/quizzes.ts",
+    "src/features/drugReference/topics.ts",
+    "src/components/exam/FinalFrcaExtras.tsx",
+    "src/components/topic/RegionalAnaesthesiaRiskTeaching.tsx",
+    "src/data/references.ts",
+    "src/data/anaestheticRiskReferences.ts"
+   ],
+   "sources": [
+    "SRC-AA-QRH-3-10-2023",
+    "SRC-AA-LAST-2023-PAGE"
+   ],
+   "verified": "QRH section text read; see source-verification.json"
+  },
+  {
+   "id": "LAST-02",
+   "severity": "critical",
+   "finding": "The clinical-incidents topic twice instructed clinicians to AVOID amiodarone in LAST cardiac arrest. The current UK QRH does not say this; it advises standard arrhythmia therapy and avoidance of lidocaine, and amiodarone is used for ventricular arrhythmias.",
+   "correction": "Removed both amiodarone-avoidance instructions. Text now states: adrenaline <= 1 microgram/kg, avoid vasopressin and lidocaine, use amiodarone for ventricular arrhythmias. The LAST note FAQ and the exam answer were aligned.",
+   "files": [
+    "src/pages/topics/ClinicalIncidentsTopic.tsx",
+    "src/pages/notes/LocalAnaestheticToxicityNote.tsx",
+    "src/pages/topics/LocalAnaestheticsTopic.tsx",
+    "src/components/exam/FinalFrcaExtras.tsx"
+   ],
+   "sources": [
+    "SRC-AA-QRH-3-10-2023"
+   ],
+   "verified": "QRH text read; see source-verification.json"
+  },
+  {
+   "id": "LAST-03",
+   "severity": "medium",
+   "finding": "Bibliographic records 'AA LAST 2024' and 'AA LAST 2020' could not be verified as real guideline pages; both URLs resolve to the generic Association guidelines listing. The 2010 laminate is withdrawn.",
+   "correction": "Replaced with the verified QRH 3-10 v2 2023 record and removed the unverifiable 2020 record. Historical 2010 wording removed from teaching.",
+   "files": [
+    "src/data/references.ts",
+    "src/pages/tools/MaxLADoseTool.tsx"
+   ],
+   "sources": [
+    "SRC-AA-QRH-3-10-2023",
+    "SRC-AA-LAST-2023-PAGE"
+   ],
+   "verified": "Publisher page and QRH PDF read; see source-verification.json"
+  },
+  {
+   "id": "NEO-01",
+   "severity": "high",
+   "finding": "The neonatal resuscitation case taught adrenaline 'repeated every 3-5 minutes' and linked the 2021 NLS guideline.",
+   "correction": "Changed to repeat every 4 minutes, the 2025 RCUK simplification, with the 10-30 micrograms/kg (0.1-0.3 mL/kg of 1:10,000) dose retained. Updated the source link and the paediatric ICU newborn summary. Paediatric PALS 3-5 minute dosing is left unchanged because that is a different pathway.",
+   "files": [
+    "src/pages/PerioperativeCaseBank.tsx",
+    "src/pages/topics/PaediatricIcuTopic.tsx",
+    "src/data/references.ts"
+   ],
+   "sources": [
+    "SRC-RCUK-NLS-2025"
+   ],
+   "verified": "RCUK 2025 key points read; see source-verification.json"
+  },
+  {
+   "id": "FAST-01",
+   "severity": "high",
+   "finding": "Paediatric fasting was taught as 6-4-2 (2 h clear fluids, 4 h breast milk) and one case used 'APAGBI 6-4-2'. Current APAGBI guidance is 1 h clear fluids, 3 h breast milk, 6 h formula/solids, with sip-til-send as an option; adult and paediatric pathways were mixed.",
+   "correction": "Separated adult (6 h food / 2 h clear fluids) from paediatric intervals. Paediatric text now uses 6 h solids/formula, 3 h breast milk, 1 h clear fluids, with sip-til-send (3 mL/kg/h up to 150 mL/h) and explicit exceptions for delayed gastric emptying, GLP-1 agonists, significant reflux, severe obesity, neurological impairment and emergency surgery.",
+   "files": [
+    "src/pages/topics/DaySurgeryTopic.tsx",
+    "src/pages/PerioperativeCaseBank.tsx",
+    "src/data/references.ts"
+   ],
+   "sources": [
+    "SRC-APAGBI-FASTING-2025",
+    "SRC-ESAIC-FASTING-2022"
+   ],
+   "verified": "APAGBI 2025 PDF and ESAIC 2022 PDF read; see source-verification.json"
+  },
+  {
+   "id": "BIB-01",
+   "severity": "high",
+   "finding": "A 117-record bibliography triage resolved every stored DOI against Crossref. 41 identifiers resolved to an unrelated article: 'Temperature monitoring. BJA Education. 2018;18(1):13-17' resolved to a knee arthroplasty review, the thyroid-haematoma consensus guideline resolved to a videolaryngoscope editorial, NUTRIREA-3 resolved to a poliovirus sewage-surveillance correspondence, and the LOLIPOP lidocaine trial resolved to a single-use-plastics paper. In each case the citation text named a different work from the one the identifier pointed at.",
+   "correction": "11 records re-pointed to the article the citation actually describes, with the published title, authors, journal, volume, issue and pages read from the publisher record (for example NUTRIREA-3 to Lancet Respir Med 2023;11(7):602-612, DOI 10.1016/S2213-2600(23)00092-9; the thyroid-haematoma guideline to Anaesthesia 2022;77(1):82-95, DOI 10.1111/anae.15585). 19 records kept a correct identifier but had the citation text replaced with the published title and author list. 1 label that named the wrong journal and year was corrected. 39 records whose cited work could not be located were withheld from learner-facing source lists: they stay in the pool so section and inline labels resolve, but they are not rendered as sources and a 'Source gap' disclosure appears at the claim. 2 stale copies that survived only in a previously generated viva-deck asset were removed by regenerating the deck.",
+   "files": [
+    "src/data/references.ts",
+    "src/components/topic/SectionReferences.tsx",
+    "src/components/topic/TopicReferencesButton.tsx",
+    "src/components/references/InlineRef.tsx",
+    "scripts/generate-viva-deck.ts",
+    "public/viva-deck/*.json",
+    "docs/audit-2026-11-19/reference-triage.json",
+    "docs/audit-2026-11-19/reference-triage.md",
+    "src/test/reference-triage-2026-11-19.test.ts"
+   ],
+   "verification": "Each replacement DOI was resolved through the Crossref API and its title, container, volume, issue, pages and author list read before the citation was rewritten. Withheld records are asserted by src/test/reference-triage-2026-11-19.test.ts (52 assertions) and were checked in the running app: the thermodynamics reference sheet shows one 'Source gap' and no longer lists the withheld pressure and temperature citations; the ENT sheet links the haematoma guideline to 10.1111/anae.15585; the ICU nutrition sheet links NUTRIREA-3 to 10.1016/s2213-2600(23)00092-9. Not verified: whether each corrected source supports the exact sentence it is attached to for records without a stored excerpt."
+  }
+ ],
+ "not_changed": [
+  "Held podcast scripts and audio were not touched or released.",
+  "Private learner data (viva attempts, study time, discussions, inaccuracy reports, support messages) was not read or exported.",
+  "The separate production database was not modified. Live content_overrides and topic_references rows were not read in this sandbox.",
+  "Paediatric PALS adrenaline interval remains 3-5 minutes; it is a different pathway from newborn resuscitation.",
+  "The 2010 AAGBI LAST laminate is not reproduced; historical references to it were replaced rather than retained."
+ ]
 }
