@@ -13,11 +13,11 @@ const RapidSequenceInductionNote = () => (
     faqs={[
       {
         q: "What are the standard adult RSI drugs?",
-        a: "Induction: thiopentone 3–7 mg/kg or propofol 1.5–2.5 mg/kg (ketamine 1–2 mg/kg in shock; etomidate 0.3 mg/kg historically). Neuromuscular blocker: suxamethonium 1.0–1.5 mg/kg, or rocuronium 1.0–1.2 mg/kg. Sugammadex is a reversal option, not a substitute for front-of-neck access if intubation and oxygenation fail.",
+        a: "Induction: thiopentone 3–7 mg/kg or propofol 1.5–2.5 mg/kg (ketamine dosing must be adjusted to haemodynamic status; etomidate 0.3 mg/kg historically). Neuromuscular blocker: suxamethonium 1.0–1.5 mg/kg, or rocuronium 1.0–1.2 mg/kg. Sugammadex is a reversal option, not a substitute for front-of-neck access if intubation and oxygenation fail.",
       },
       {
         q: "When is rocuronium preferred over suxamethonium?",
-        a: "Sux contraindications: hyperkalaemia, major burns > 24 h old, prolonged immobility, denervation injury, neuromuscular disease (MG, myotonia), suspected MH, malignant pseudocholinesterase deficiency. Rocuronium 1.2 mg/kg gives comparable intubating conditions at 60 s; sugammadex 16 mg/kg can reverse it, but in declared can't-intubate-can't-oxygenate (CICO) do not delay immediate front-of-neck access to give or wait for sugammadex. DAS 2025 permits gentle low-pressure mask ventilation if needed while progressing to FONA; in obstetrics, OAA/DAS specifically supports mask ventilation and early release of cricoid pressure.",
+        a: "Rocuronium is an option when suxamethonium is unsuitable, including susceptibility to malignant hyperthermia or clinically important hyperkalaemia risk. If intubation fails, prioritise rescue oxygenation. Declared CICO requires immediate emergency front-of-neck airway. OAA/DAS supports gentle facemask ventilation when needed in obstetric RSI and early release of cricoid pressure if it impedes airway management.",
       },
       {
         q: "Is cricoid pressure still indicated?",
@@ -44,7 +44,7 @@ const RapidSequenceInductionNote = () => (
       <li><strong>Position</strong> — ear-to-sternal-notch (ramped if obese), 20–30° head-up to reduce reflux.</li>
       <li><strong>Induction agent + <Link to="/pharmacology/muscle-relaxants">neuromuscular blocker</Link></strong> in immediate succession.</li>
       <li><strong>Apply cricoid pressure</strong> — 10 N awake, 30 N once asleep (or omit if departmental policy).</li>
-      <li><strong>Maintain oxygenation.</strong> Use gentle low-pressure mask ventilation when needed rather than prolonged apnoea, avoiding high-pressure or large-volume ventilation that inflates the stomach. Intubate, inflate the cuff and confirm placement with sustained <Link to="/physics/capnography">waveform capnography</Link>. Follow the <Link to="/notes/das-difficult-airway-algorithm">DAS algorithm</Link> if intubation fails.</li>
+      <li><strong>Maintain oxygenation.</strong> Use gentle low-pressure mask ventilation when needed and avoid high inflation pressures. Intubate, inflate the cuff and confirm placement with sustained <Link to="/physics/capnography">waveform capnography</Link>. Follow the <Link to="/notes/das-difficult-airway-algorithm">DAS algorithm</Link> if intubation fails.</li>
       <li><strong>Release cricoid</strong> after tube confirmed and cuff up.</li>
     </ol>
 

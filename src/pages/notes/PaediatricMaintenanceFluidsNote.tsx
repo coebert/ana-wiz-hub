@@ -30,7 +30,7 @@ const PaediatricMaintenanceFluidsNote = () => (
       },
       {
         q: "Does the 4-2-1 rule cover fasting and third-space losses?",
-        a: "No. It is maintenance only. Deficit (fasting hours × maintenance rate), ongoing losses and blood loss are prescribed separately, though modern short fasting times and clear-fluid-until-1-hour regimens have made large calculated deficits largely obsolete.",
+        a: "No. It is maintenance only. Assess any deficit from history, examination and measured losses. Prescribe replacement separately and avoid automatically multiplying fasting hours by the maintenance rate.",
       },
     ]}
     related={[
@@ -89,8 +89,7 @@ const PaediatricMaintenanceFluidsNote = () => (
       Maintenance water replaces obligatory losses: urine, stool and insensible
       loss from skin and respiratory tract. Holliday and Segar tied those losses
       to metabolic rate, giving 100 mL/kg/day for the first 10 kg, 50 mL/kg/day
-      for the next 10 kg and 20 mL/kg/day thereafter. Expressed hourly this
-      becomes the familiar <strong>4-2-1 rule</strong>:
+      for the next 10 kg and 20 mL/kg/day thereafter. Rounding each hourly weight band gives the approximate <strong>4-2-1 rule</strong>:
     </p>
     <ul>
       <li>First 10 kg — 4 mL/kg/h</li>
@@ -171,7 +170,7 @@ const PaediatricMaintenanceFluidsNote = () => (
 
     <h2>Exam summary</h2>
     <ul>
-      <li>4-2-1 mL/kg/h = the hourly form of 100/50/20 mL/kg/day.</li>
+      <li>4-2-1 is a rounded hourly approximation. Use 100/50/20 mL/kg/day for the NICE NG29 daily estimate.</li>
       <li>Volume derived from energy expenditure (~1 mL water per kcal).</li>
       <li>The rule gives a <em>rate</em>, not a fluid composition.</li>
       <li>

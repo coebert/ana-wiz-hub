@@ -210,10 +210,10 @@ export const paediatricIcuFlows: ManagementFlow[] = [
         title: "Secure and set physiological targets",
         timeframe: "0–60 min",
         actions: [
-          "Intubate with a neuroprotective sequence: preoxygenate, avoid hypotension (age-adjusted systolic ≥ 70 + 2×age in years as a floor; higher in TBI), use ketamine or fentanyl-based induction and rocuronium.",
-          "Ventilate to normocapnia (PaCO₂ 4.5–5.0 kPa); head-up 30°, midline, loosen collar ties; SpO₂ > 94%.",
+          "In TBI requiring intubation, use a neuroprotective sequence: preoxygenate, avoid hypotension (age-adjusted systolic ≥ 70 + 2×age in years as a floor; higher in TBI), use ketamine or fentanyl-based induction and rocuronium.",
+          "For TBI, aim for normocapnia; head-up 30°, midline, loosen collar ties; SpO₂ > 94%.",
           "Normoglycaemia, normothermia — treat fever aggressively; no prophylactic hyperventilation.",
-          "In DKA cerebral oedema: slow the fluids, exclude other causes, and treat immediately — do not wait for imaging.",
+          "Suspected DKA cerebral oedema requires immediate treatment and paediatric critical-care advice. If intubation is unavoidable, maintain the ventilation needed to compensate for the metabolic acidosis.",
         ],
         drugs: ["Fentanyl", "Ketamine", "Rocuronium"],
         infusions: ["Fentanyl", "Midazolam", "Morphine"],
@@ -221,11 +221,11 @@ export const paediatricIcuFlows: ManagementFlow[] = [
           "A single episode of hypotension in paediatric TBI roughly doubles mortality — draw up push-dose pressor before induction, not after the fall.",
       },
       {
-        title: "Tiered therapy for raised ICP",
+        title: "Tiered therapy for raised ICP after trauma",
         timeframe: "First 24–72 h",
         actions: [
           "Tier 1: sedation to target, analgesia, normocapnia, head-up nursing, treat seizures (clinical and subclinical — CFAM/EEG).",
-          "Tier 2 osmotherapy: hypertonic saline boluses (3 mL/kg of 2.7–3%) for ICP crises or sodium targets; mannitol 0.25–0.5 g/kg as an alternative; in DKA cerebral oedema give hypertonic saline or mannitol at the first sign.",
+          "Tier 2 osmotherapy: hypertonic saline boluses (3 mL/kg of 2.7–3%) for ICP crises or sodium targets; mannitol 0.25–0.5 g/kg as an alternative. Use the separate DKA regimen below for suspected DKA cerebral oedema.",
           "Tier 3: decompressive craniectomy or barbiturate coma (thiopentone) for refractory intracranial hypertension after neurosurgical discussion.",
           "Lumbar drains are contraindicated with mass effect; image before any CSF diversion.",
         ],
@@ -237,11 +237,11 @@ export const paediatricIcuFlows: ManagementFlow[] = [
         title: "DKA-specific measures",
         timeframe: "Ongoing",
         actions: [
-          "BSUKED/NICE paediatric DKA pathway: cautious rehydration over 48 h in moderate–severe DKA, insulin at 0.05 units/kg/h once fluids are running, and no insulin boluses.",
-          "Neurological observations hourly on a formal tool; any deterioration means treat as cerebral oedema and call for senior help.",
-          "Monitor potassium closely — expect falls once insulin starts; replace into the fluid.",
+          "NICE NG18: for clinical dehydration without shock, give 10 mL/kg IV 0.9% saline over 30 minutes. Reassess and discuss with the senior paediatrician before considering another bolus. In shock give 10 mL/kg as soon as possible. Replace the deficit over 48 hours plus maintenance, subtracting non-shock boluses only. Start IV insulin 0.05–0.1 units/kg/h 1–2 hours after IV fluids begin, without an insulin bolus.",
+          "If cerebral oedema is suspected, give whichever is immediately available: IV 20% mannitol 0.5–1 g/kg or 2.7%/3% sodium chloride 2.5–5 mL/kg over 10–15 minutes. Do not wait for imaging; seek urgent paediatric critical-care input.",
+          "Monitor potassium and ECG. Exclude potassium from initial boluses. Use 40 mmol/L in ongoing fluids unless anuric or serum potassium is above normal; in initial hyperkalaemia, add only after urine has been passed or potassium is below 5.5 mmol/L.",
         ],
-        drugs: ["Insulin (soluble)", "Mannitol", "Hypertonic saline 2.7–5%"],
+        drugs: ["Insulin (soluble)", "Mannitol 20%", "Hypertonic saline 2.7% or 3%"],
       },
     ],
     rescue: [

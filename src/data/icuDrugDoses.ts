@@ -597,9 +597,9 @@ export const icuDrugDoseGroups: DrugDoseGroup[] = [
     drugs: [
       {
         drug: "Tranexamic acid",
-        dose: "1 g over 10 min then 1 g over 8 h (trauma, within 3 h of injury)",
+        dose: "Adult bleeding trauma: 1 g IV over 10 min then 1 g over 8 h, started within 3 h of injury. Postpartum haemorrhage: 1 g IV over 10 min as soon as possible within 3 h of birth.",
         route: "IV",
-        frequency: "Load then infusion",
+        frequency: "Trauma: loading dose and infusion. PPH: second 1 g IV if bleeding continues after 30 min or restarts within 24 h.",
         indications: "Trauma haemorrhage, obstetric haemorrhage, surgical bleeding, hyperfibrinolysis",
         notes: "Give as early as possible; benefit lost and possible harm after 3 h in trauma.",
         topicIds: ["transfusion-coagulation", "trauma-resuscitation"],

@@ -77,7 +77,7 @@ const waveformPatterns: Array<{
     description:
       "Trace abruptly drops to zero across all phases. No upstroke, no plateau, no oscillation.",
     causes:
-      "Oesophageal intubation, accidental extubation, complete circuit disconnection, total airway obstruction, or cardiac arrest with no cardiac output.",
+      "Exclude oesophageal placement or displacement urgently. Also check for disconnection, sampling failure and obstruction. Low pulmonary flow can reduce CO₂, but a flat trace during high-quality CPR needs urgent airway reassessment.",
     action:
       "Treat as a life-threatening event. Check connections from patient to machine and palpate a central pulse. If the tube has just been placed, actively exclude oesophageal placement even in cardiac arrest: sustained exhaled CO₂ is the primary confirmation, and a flat trace is presumed oesophageal until proven otherwise. PUMA's default is to remove the tube and reoxygenate by mask or supraglottic airway unless removal is judged more dangerous; if removal is hazardous, obtain urgent valid independent confirmation. Call for help.",
   },

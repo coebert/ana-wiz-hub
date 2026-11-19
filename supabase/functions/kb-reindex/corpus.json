@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-19T14:55:03.335Z",
+  "generated_at": "2026-11-19T15:19:59.893Z",
   "chunks": [
     {
       "topic_id": "si-units-thermodynamics",
@@ -2003,7 +2003,7 @@
         "final"
       ],
       "chunk_kind": "faq",
-      "content": "Gastrointestinal Physiology — Q: What are the current ASA fasting guidelines?\nA: Clear fluids — 2 h. Breast milk — 4 h. Infant formula and light meal (toast) — 6 h. Fatty meal — 8 h. Recent ESAIC and APAGBI guidance encourages clear-fluid intake up to 1 h pre-op in children and adults (1-2-6 rule), reducing dehydration and improving comfort without increasing aspiration risk."
+      "content": "Gastrointestinal Physiology — Q: What are the current ASA fasting guidelines?\nA: For healthy patients having elective procedures, the ASA framework uses 2 hours for clear liquids, 4 hours for breast milk, 6 hours for infant formula or a light meal, and 8 hours or longer for fatty meals. ESAIC paediatric guidance uses 1 hour for clear fluids and 3 hours for breast milk in suitable children. The 2026 international adult consensus encourages clear liquids until 2 hours before anaesthesia and allows shorter intervals under an agreed local protocol. Select the relevant age group and local pathway and assess individual aspiration risk."
     },
     {
       "topic_id": "gi-physiology",
@@ -2115,7 +2115,7 @@
         "final"
       ],
       "chunk_kind": "faq",
-      "content": "Endocrine Physiology — Q: What is the perioperative steroid replacement regimen for adrenal suppression?\nA: Patients on >5 mg prednisolone/day for >3 weeks are at risk of HPA suppression. Replacement scaled to surgical stress: minor — usual dose + 25 mg hydrocortisone at induction. Moderate — 25 mg at induction + 100 mg/day for 24 h. Major — 100 mg at induction + 200 mg/day for 48–72 h, then taper. Avoid abrupt withdrawal — addisonian crisis is life-threatening."
+      "content": "Endocrine Physiology — Q: What is the perioperative steroid replacement regimen for adrenal suppression?\nA: The 2020 UK guideline identifies adults taking at least 5 mg prednisolone daily or equivalent for a month or more as potentially at risk of adrenal suppression. For major or intermediate surgery in adults receiving adrenosuppressive treatment, its corrected Table 2 uses hydrocortisone 100 mg IV at induction followed immediately by 200 mg over 24 hours by infusion. After major surgery continue IV cover while nil by mouth. When oral therapy resumes, use double the usual oral dose for 48 hours after uncomplicated surgery, then resume baseline. Established adrenal insufficiency has a separate pathway."
     },
     {
       "topic_id": "endocrine-physiology",
@@ -2763,7 +2763,7 @@
         "final"
       ],
       "chunk_kind": "faq",
-      "content": "Local Anaesthetic Agents — Q: Outline the management of local-anaesthetic systemic toxicity (LAST).\nA: Association QRH 3-10 v2: STOP injection, call for help, ABC (100 % O₂, secure airway, IV access). Manage seizures with a small dose of benzodiazepine; propofol is not recommended when there is cardiovascular instability. Treat arrhythmias (avoid lidocaine, calcium, vasopressin; use small adrenaline ≤1 µg/kg). Give 20 % lipid emulsion 1.5 mL/kg over 2–3 min, then infuse 15 mL/kg/h. If instability persists, give no more than two repeat boluses after 5 and 10 min, review and increase the infusion as directed by the QRH. Maximum total 12 mL/kg (840 mL at 70 kg). Continue CPR — prolonged resuscitation is often successful. Monitor for pancreatitis after lipid rescue, refer to critical care and report to the national registry."
+      "content": "Local Anaesthetic Agents — Q: Outline the management of local-anaesthetic systemic toxicity (LAST).\nA: Association QRH 3-10 v2: STOP injection, call for help, ABC (100 % O₂, secure airway, IV access). Manage seizures with a small dose of benzodiazepine; propofol is not recommended when there is cardiovascular instability. Treat arrhythmias (avoid lidocaine, calcium channel blockers and vasopressin; use small adrenaline ≤1 µg/kg). Give 20 % lipid emulsion 1.5 mL/kg over 2–3 min, then infuse 15 mL/kg/h. If instability persists, give no more than two repeat boluses after 5 and 10 min, if instability persists or recurs after 5 minutes, double the infusion to 30 mL/kg/h. Maximum total 12 mL/kg (840 mL at 70 kg). Continue CPR — prolonged resuscitation is often successful. Arrange monitored post-event care, assess for pancreatitis with clinical review and daily amylase or lipase, and report through the appropriate incident system."
     },
     {
       "topic_id": "opioids",
@@ -3902,7 +3902,7 @@
         "final"
       ],
       "chunk_kind": "faq",
-      "content": "Regional & Neuraxial Anaesthesia — Q: How are local anaesthetics dosed safely to avoid toxicity (LAST)?\nA: Maximum safe doses: lidocaine 3 mg/kg plain (7 mg/kg with adrenaline); bupivacaine and levobupivacaine 2 mg/kg; ropivacaine 3 mg/kg. Always calculate by lean body weight. LAST presents with peri-oral tingling, agitation, seizures, then cardiovascular collapse. Management: stop injection, ABC, 20% Intralipid 1.5 ml/kg bolus then 0.25 ml/kg/min infusion (repeat bolus up to twice at 5-minute intervals, maximum cumulative 12 ml/kg — AAGBI LAST guideline). Treat arrhythmias without lidocaine; ASRA also advises avoiding vasopressin, calcium-channel and β-blockers and reducing adrenaline boluses to <1 µg/kg. Prolonged CPR may be needed."
+      "content": "Regional & Neuraxial Anaesthesia — Q: How are local anaesthetics dosed safely to avoid toxicity (LAST)?\nA: Calculate the total milligrams from all injections. Use the named product, route and procedure instructions, with reductions for relevant patient factors. If severe LAST develops, stop injecting, call for help, oxygenate and manage seizures. Association QRH 3-10 uses 20% lipid emulsion: 1.5 mL/kg over 2–3 minutes, then 15 mL/kg/h. If cardiovascular instability persists or recurs, repeat the bolus at 5 and 10 minutes (up to two repeats) and double the infusion after 5 minutes if indicated. Keep the total at or below 12 mL/kg."
     },
     {
       "topic_id": "regional-anaesthesia",
@@ -4722,7 +4722,7 @@
         "final"
       ],
       "chunk_kind": "faq",
-      "content": "Cardiothoracic Anaesthesia — Q: How is cardiac arrest managed differently after cardiac surgery?\nA: Cardiac arrest in the first 24–72 hours after cardiac surgery is managed with modified Cardiac Advanced Life Support (CALS), not standard ALS, because the arrest is witnessed, monitored, and usually has a surgically reversible cause. Key modifications: (1) deliver up to three stacked DC shocks (200 J biphasic) BEFORE starting chest compressions for VF/pVT — first-shock success is high and compressions may disrupt grafts; (2) withhold or minimise bolus adrenaline initially because it can cause catastrophic rebound hypertension after recent anastomoses — use pacing for asystole/PEA; (3) prepare for emergency re-sternotomy within 5 minutes (10-minute window from arrest) if no return of spontaneous circulation — internal cardiac massage is more effective and excludes tamponade or graft occlusion; (4) use epicardial pacing wires if available; (5) escalate to VA-ECMO or IABP early if ROSC is not achieved."
+      "content": "Cardiothoracic Anaesthesia — Q: How is cardiac arrest managed differently after cardiac surgery?\nA: In a monitored cardiac surgical unit, confirm arrest by clinical signs and the pulseless pressure waveform, call for help and prepare for resternotomy. In PEA, start chest compressions immediately. In witnessed VF/pVT give up to three consecutive shocks if immediately available. In asystole or extreme bradycardia, briefly pause epicardial pacing to identify the underlying rhythm, then try maximum-output pacing when appropriate. If shocks or pacing are unavailable or fail, start compressions promptly, within the first minute. RCUK recommends 50–100 micrograms IV if adrenaline is used. In persistent arrest up to ten days after surgery, perform resternotomy within five minutes and start internal cardiac massage after reopening."
     },
     {
       "topic_id": "cardiothoracic",
@@ -5956,7 +5956,7 @@
         "final"
       ],
       "chunk_kind": "faq",
-      "content": "Bariatric Anaesthesia — Q: How are induction and maintenance drug doses calculated in obesity?\nA: Use ideal body weight (IBW) for propofol induction and remifentanil; lean body weight (LBW) for propofol maintenance and rocuronium; ideal body weight (IBW) for suxamethonium at 1–1.5 mg/kg; total body weight (TBW) for paracetamol (max 4 g/day), antibiotics and sugammadex; and adjusted body weight for aminoglycosides."
+      "content": "Bariatric Anaesthesia — Q: How are induction and maintenance drug doses calculated in obesity?\nA: Use lean body weight as a starting point for propofol induction, fentanyl and non-depolarising blockers such as rocuronium. Titrate anaesthesia and monitor neuromuscular block quantitatively. Use total body weight for suxamethonium. Dose sugammadex by actual body weight and measured depth of block. Propofol infusions and target-controlled models require model-specific dosing. Antimicrobial and paracetamol doses depend on the individual product and applicable maximum."
     },
     {
       "topic_id": "bariatric-anaesthesia",
@@ -6345,7 +6345,7 @@
         "fficm"
       ],
       "chunk_kind": "faq",
-      "content": "Trauma & Emergency Anaesthesia — Q: What is rapid sequence induction (RSI) in trauma?\nA: RSI in trauma follows the same core principles as standard RSI — pre-oxygenation, rapid induction, cricoid pressure (controversial), and intubation without bag-mask ventilation — but with critical modifications for the injured patient: (1) resuscitate before you intubate where possible; (2) choose ketamine 0.5–2 mg/kg as the induction agent because it preserves sympathetic tone and cardiac output; (3) avoid propofol or thiopentone in hypovolaemic patients as they cause catastrophic vasodilation; (4) use rocuronium 1.2 mg/kg for rapid paralysis with sugammadex available for immediate reversal once the airway is secure — not as a CICO rescue; (5) maintain manual in-line stabilisation with the collar front removed; (6) have vasopressors drawn up before laryngoscopy because intubation can precipitate arrest in the shocked patient."
+      "content": "Trauma & Emergency Anaesthesia — Q: What is rapid sequence induction (RSI) in trauma?\nA: Preoxygenate, prepare suction and rescue airway equipment, and resuscitate haemorrhagic shock alongside airway management. Choose the induction agent and dose for the patient’s physiology, with blood and vasopressor support available. Ketamine can still cause hypotension. Maintain oxygenation, including gentle low-pressure facemask ventilation when required. If intubation fails, progress through the DAS rescue oxygenation plans. Once CICO is declared, proceed immediately to emergency front-of-neck airway."
     },
     {
       "topic_id": "trauma-emergency",
@@ -6357,7 +6357,7 @@
         "fficm"
       ],
       "chunk_kind": "faq",
-      "content": "Trauma & Emergency Anaesthesia — Q: What is damage control resuscitation?\nA: Damage control resuscitation (DCR) is a strategy for severe trauma that targets the 'lethal triad' of hypothermia, acidosis and coagulopathy. Its four pillars are: (1) permissive hypotension — allowing SBP 80–90 mmHg in bleeding trauma without TBI until surgical haemorrhage control, to reduce clot disruption; (2) haemostatic resuscitation — using 1:1:1 ratios of PRBC:FFP:platelets rather than crystalloid; (3) tranexamic acid 1 g IV within 3 hours of injury (CRASH-2); and (4) limiting crystalloid to prevent dilutional coagulopathy. Active warming and early surgical control of bleeding are simultaneous priorities."
+      "content": "Trauma & Emergency Anaesthesia — Q: What is damage control resuscitation?\nA: Control bleeding promptly, prevent heat loss, limit crystalloid and give tranexamic acid when indicated. In actively bleeding adults, start the local major haemorrhage protocol with plasma and red cells at 1:1, then use laboratory results and the local viscoelastic algorithm to guide further components. Until bleeding is controlled, the European guideline recommends SBP 80–90 mmHg if there is no clinical evidence of brain injury."
     },
     {
       "topic_id": "trauma-emergency",
@@ -6369,7 +6369,7 @@
         "fficm"
       ],
       "chunk_kind": "faq",
-      "content": "Trauma & Emergency Anaesthesia — Q: When should a massive transfusion protocol (MTP) be activated?\nA: Activate the MTP when any of the following are met: anticipated need for ≥10 units PRBC in 24 hours, >4 units PRBC in 1 hour, haemodynamic instability despite initial fluid resuscitation, ongoing uncontrolled surgical bleeding, or a base deficit >6 mmol/L with tachycardia suggesting significant occult haemorrhage. The protocol delivers pre-thawed blood products in fixed 1:1:1 ratios (PRBC:FFP:platelets) via a rapid infuser, with point-of-care viscoelastic testing (TEG/ROTEM) to guide individual component therapy once available."
+      "content": "Trauma & Emergency Anaesthesia — Q: When should a massive transfusion protocol (MTP) be activated?\nA: Activate the local major haemorrhage protocol promptly for suspected major bleeding, using haemodynamic status, response to resuscitation and expected ongoing blood loss. NICE NG39 starts plasma and red cells at 1:1 in adults with active bleeding. Give platelets under the local protocol and move to laboratory-guided replacement as early as possible."
     },
     {
       "topic_id": "trauma-emergency",
@@ -6393,7 +6393,7 @@
         "fficm"
       ],
       "chunk_kind": "faq",
-      "content": "Trauma & Emergency Anaesthesia — Q: What is permissive hypotension and when is it contraindicated?\nA: Permissive hypotension is the deliberate restriction of fluid resuscitation to maintain SBP 80–90 mmHg (or mean arterial pressure ~50–60 mmHg) in a bleeding trauma patient before definitive surgical haemorrhage control. The rationale is that restoring normal blood pressure in uncontrolled bleeding disrupts fragile clots and worsens haemorrhage. It is ABSOLUTELY CONTRAINDICATED in traumatic brain injury (TBI), where the injured brain has lost autoregulation and relies on adequate perfusion pressure — target SBP >110 mmHg or MAP ≥80 mmHg in TBI to maintain cerebral perfusion pressure and prevent secondary brain injury."
+      "content": "Trauma & Emergency Anaesthesia — Q: What is permissive hypotension and when is it contraindicated?\nA: Restrict volume replacement until bleeding is controlled. Without clinical evidence of brain injury, the European trauma guideline recommends an initial SBP of 80–90 mmHg. If haemorrhagic shock and TBI coexist, NICE NG39 recommends continuing a restrictive approach when haemorrhage dominates and a less restrictive approach to preserve cerebral perfusion when brain injury dominates. The European MAP target of at least 80 mmHg applies to severe TBI (GCS ≤8)."
     },
     {
       "topic_id": "trauma-emergency",
@@ -6405,7 +6405,7 @@
         "fficm"
       ],
       "chunk_kind": "faq",
-      "content": "Trauma & Emergency Anaesthesia — Q: When should tranexamic acid (TXA) be given in trauma?\nA: Give TXA 1 g IV over 10 minutes as early as possible, and always within 3 hours of injury — the CRASH-2 mortality benefit is strongly time-dependent, and treatment started beyond 3 hours confers no benefit and may cause harm. The CRASH-2 regimen adds a second 1 g by infusion over 8 hours; neither CRASH-2 nor CRASH-3 tested the loading dose separately from the infusion, so give the full regimen unless your local major haemorrhage protocol specifies otherwise. CRASH-3 (isolated head injury) showed no significant overall reduction in head-injury death; benefit was confined to mild-to-moderate injury treated early. Follow your local major haemorrhage protocol. TXA inhibits fibrinolysis by blocking plasminogen activation and should be given to all trauma patients with significant bleeding or at risk of it, unless clearly contraindicated."
+      "content": "Trauma & Emergency Anaesthesia — Q: When should tranexamic acid (TXA) be given in trauma?\nA: For adult major trauma with active or suspected active bleeding, give TXA promptly, normally within 3 hours of injury: 1 g IV over 10 minutes then 1 g over 8 hours. NICE NG39 allows use after 3 hours only with evidence of hyperfibrinolysis. For head injury with GCS ≤12 and no suspected active extracranial bleeding, NICE NG232 advises considering a 2 g IV bolus in people aged 16 or over within 2 hours of injury, before imaging. CRASH-3 did not establish an overall reduction in head-injury death among patients treated within 3 hours (RR 0.94, 95% CI 0.86–1.02); the estimate favoured TXA in mild-to-moderate injury."
     },
     {
       "topic_id": "trauma-emergency",
@@ -6417,7 +6417,7 @@
         "fficm"
       ],
       "chunk_kind": "faq",
-      "content": "Trauma & Emergency Anaesthesia — Q: How do you manage a traumatic brain injury (TBI) patient?\nA: TBI management follows the mantra 'avoid the secondary insults': (1) prevent hypoxia — target SpO₂ >94% with early definitive airway if GCS ≤8 or risk of aspiration; (2) prevent hypotension — maintain SBP >110 mmHg or MAP ≥80 mmHg at all times; (3) prevent hypercapnia and hypocapnia — target PaCO₂ 4.5–5.0 kPa (mild hypocapnia 4.0–4.5 kPa only if herniation suspected); (4) head-up 15–30° to reduce ICP; (5) osmotherapy with mannitol 0.25–1 g/kg or hypertonic saline 3% 250 mL for signs of raised ICP; (6) urgent CT imaging and neurosurgical consultation; (7) avoid hyperglycaemia and hyponatraemia; (8) seizure prophylaxis if indicated. Permissive hypotension is contraindicated in TBI."
+      "content": "Trauma & Emergency Anaesthesia — Q: How do you manage a traumatic brain injury (TBI) patient?\nA: TBI management follows the mantra 'avoid the secondary insults': (1) prevent hypoxia — target SpO₂ >94% with early definitive airway if GCS ≤8 or risk of aspiration; (2) avoid hypotension and set a target appropriate to the severity of brain injury and the presence of haemorrhagic shock; (3) prevent hypercapnia and hypocapnia — initially target PaCO₂ 35–45 mmHg (4.7–6.0 kPa) when intracranial pressure is not elevated. Temporary controlled hyperventilation may bridge impending herniation to definitive treatment; (4) head-up 15–30° to reduce ICP; (5) if intracranial hypertension or herniation is suspected, use hyperosmolar therapy under the neurotrauma protocol, accounting for haemodynamics, sodium and renal function; (6) urgent CT imaging and neurosurgical consultation; (7) avoid hyperglycaemia and hyponatraemia; (8) seizure prophylaxis if indicated. In severe TBI, Brain Trauma Foundation systolic thresholds depend on age. In combined TBI and haemorrhagic shock, NICE NG39 bases fluid restriction on the dominant condition."
     },
     {
       "topic_id": "trauma-emergency",
@@ -6441,7 +6441,7 @@
         "fficm"
       ],
       "chunk_kind": "faq",
-      "content": "Trauma & Emergency Anaesthesia — Q: How do you choose an induction agent for a haemodynamically unstable trauma patient?\nA: Ketamine is the agent of choice in haemodynamically unstable trauma patients. At doses of 0.5–2 mg/kg IV, it preserves sympathetic tone, maintains cardiac output and blood pressure, provides analgesia, and is a bronchodilator — all valuable in the shocked polytrauma patient. Etomidate 0.3 mg/kg is an acceptable alternative and is often preferred in TBI because it reduces cerebral metabolic rate and ICP, though it can cause adrenal suppression. Propofol and thiopentone should be AVOIDED in hypovolaemic trauma patients because they cause profound vasodilation and myocardial depression, potentially causing cardiovascular collapse on induction."
+      "content": "Trauma & Emergency Anaesthesia — Q: How do you choose an induction agent for a haemodynamically unstable trauma patient?\nA: Ketamine or etomidate can be used for emergency induction. Adjust the dose to consciousness, shock severity and preceding resuscitation. Both can be followed by cardiovascular collapse. Treat haemorrhage and prepare haemodynamic support before induction where time permits."
     },
     {
       "topic_id": "trauma-emergency",
@@ -6453,7 +6453,7 @@
         "fficm"
       ],
       "chunk_kind": "faq",
-      "content": "Trauma & Emergency Anaesthesia — Q: What is the role of TEG/ROTEM in massive transfusion?\nA: Thromboelastography (TEG) and rotational thromboelastometry (ROTEM) are point-of-care viscoelastic coagulation tests that assess clot formation, stability and lysis in real time. In massive transfusion they enable goal-directed therapy: a flat r-time / CT suggests give FFP; low alpha-angle / low fibrinogen amplitude suggests give cryoprecipitate or fibrinogen concentrate; low maximum amplitude suggests give platelets; rapid lysis suggests give TXA. Using TEG/ROTEM reduces unnecessary blood product administration, identifies fibrinolysis, and allows individualised component therapy rather than blind fixed-ratio resuscitation alone."
+      "content": "Trauma & Emergency Anaesthesia — Q: What is the role of TEG/ROTEM in massive transfusion?\nA: Viscoelastic testing can guide haemostatic treatment during major bleeding within a locally validated algorithm. TEG reports reaction time (R) and ROTEM reports clotting time (CT). Consider anticoagulant effects and factor deficiency if initiation is delayed. Interpret clot strength alongside fibrin-specific tests, platelet count, conventional laboratory results and the clinical bleeding. A single prolonged clotting time cannot determine a plasma prescription."
     },
     {
       "topic_id": "trauma-emergency",
@@ -6477,7 +6477,7 @@
         "fficm"
       ],
       "chunk_kind": "faq",
-      "content": "Trauma & Emergency Anaesthesia — Q: What fluid should be used for resuscitation in major trauma?\nA: Blood and blood products, not crystalloid. NICE NG39 recommends blood products in a 1:1 plasma:red cell ratio for active bleeding and advises against crystalloid in hospital — large crystalloid volumes cause haemodilution, dilutional coagulopathy, hypothermia and acidosis, and worsen outcomes. Pre-hospital, if blood is unavailable, 250 mL crystalloid boluses titrated to a radial pulse may be used. Resuscitation targets are permissive hypotension (a palpable radial pulse or SBP ~80–90 mmHg) until haemorrhage is controlled, except in traumatic brain injury where cerebral perfusion must be maintained (Brain Trauma Foundation: SBP ≥100–110 mmHg depending on age). Once bleeding is controlled, restore normal perfusion."
+      "content": "Trauma & Emergency Anaesthesia — Q: What fluid should be used for resuscitation in major trauma?\nA: During active bleeding in hospital, NICE NG39 recommends blood components and advises against crystalloids. Use one plasma unit per red-cell unit initially in adults. Pre-hospital, when blood components are unavailable, titrate crystalloid to a palpable central pulse. If TBI coexists, balance restriction for bleeding against the need to maintain cerebral perfusion according to which injury dominates."
     },
     {
       "topic_id": "trauma-emergency",
@@ -7502,7 +7502,7 @@
         "edic"
       ],
       "chunk_kind": "overview",
-      "content": "ICU Discharge Planning and Longer-Term Recovery (Intensive Care · exams: final, fficm, edic). Rehabilitation risk assessment during the stay, timing and handover of ward transfer, ward step-down, home discharge information and 2–3 month review"
+      "content": "ICU Discharge Planning and Longer-Term Recovery (Intensive Care · exams: final, fficm, edic). Rehabilitation risk assessment during the stay, timing and handover of ward transfer, ward step-down, home discharge information, 2–3 month review and a quality-improvement case on handover"
     },
     {
       "topic_id": "icu-outcomes",
@@ -7530,6 +7530,34 @@
       ],
       "chunk_kind": "overview",
       "content": "Anaphylaxis in Critical Care (Intensive Care · exams: primary, final, fficm, edic). Recognition and mimics, IM adrenaline doses and repeats, refractory anaphylaxis and adrenaline infusion, fluids, antihistamine and steroid roles, tryptase and biphasic reactions"
+    },
+    {
+      "topic_id": "icu-anaphylaxis",
+      "topic_title": "Anaphylaxis in Critical Care",
+      "route": "/intensive-care/icu-anaphylaxis",
+      "section": "intensive-care",
+      "exam_tags": [
+        "primary",
+        "final",
+        "fficm",
+        "edic"
+      ],
+      "chunk_kind": "faq",
+      "content": "Anaphylaxis in Critical Care — Q: An adult on a ward develops sudden stridor and hypotension during an antibiotic infusion. They have a pulse. What is the first adrenaline dose, and when should it be repeated?\nA: Stop the suspected trigger and give 500 micrograms of adrenaline intramuscularly into the outer mid-thigh (0.5 mL of 1 mg/mL). Repeat after 5 minutes if airway, breathing or circulation problems persist. Source: Resuscitation Council UK, Emergency treatment of anaphylaxis, section 5."
+    },
+    {
+      "topic_id": "icu-anaphylaxis",
+      "topic_title": "Anaphylaxis in Critical Care",
+      "route": "/intensive-care/icu-anaphylaxis",
+      "section": "intensive-care",
+      "exam_tags": [
+        "primary",
+        "final",
+        "fficm",
+        "edic"
+      ],
+      "chunk_kind": "faq",
+      "content": "Anaphylaxis in Critical Care — Q: An adult with anaphylaxis still has respiratory or cardiovascular compromise after two appropriate IM doses of adrenaline. How should treatment change?\nA: Call for expert help and give IV crystalloid. An experienced team should start a monitored, titrated IV adrenaline infusion. Continue IM adrenaline every 5 minutes while the infusion is being prepared if respiratory or cardiovascular problems persist. Source: Resuscitation Council UK, Emergency treatment of anaphylaxis, section 6."
     },
     {
       "topic_id": "icu-general-unit",
@@ -7647,6 +7675,32 @@
       ],
       "chunk_kind": "overview",
       "content": "Severe Pre-eclampsia and Eclampsia in Critical Care (Intensive Care · exams: final, fficm, edic). Magnesium sulfate (Collaborative Eclampsia Trial regimen, Magpie), severe hypertension control, fluid restriction and critical care"
+    },
+    {
+      "topic_id": "icu-eclampsia",
+      "topic_title": "Severe Pre-eclampsia and Eclampsia in Critical Care",
+      "route": "/intensive-care/icu-eclampsia",
+      "section": "intensive-care",
+      "exam_tags": [
+        "final",
+        "fficm",
+        "edic"
+      ],
+      "chunk_kind": "faq",
+      "content": "Severe Pre-eclampsia and Eclampsia in Critical Care — Q: How is IV magnesium sulfate used after an eclamptic seizure, and what should be given if another seizure occurs during treatment?\nA: Load with 4 g IV over 5–15 minutes, then infuse 1 g/hour. If a seizure recurs, give another 2–4 g IV over 5–15 minutes. Continue the maintenance infusion until 24 hours after the last seizure. Source: NICE NG133, recommendation 1.8.4."
+    },
+    {
+      "topic_id": "icu-eclampsia",
+      "topic_title": "Severe Pre-eclampsia and Eclampsia in Critical Care",
+      "route": "/intensive-care/icu-eclampsia",
+      "section": "intensive-care",
+      "exam_tags": [
+        "final",
+        "fficm",
+        "edic"
+      ],
+      "chunk_kind": "faq",
+      "content": "Severe Pre-eclampsia and Eclampsia in Critical Care — Q: What maintenance fluid limit applies in severe pre-eclampsia, and when does that limit need reassessment?\nA: Limit maintenance fluids to 80 mL/hour in the absence of other ongoing losses. If the patient is losing fluid, for example through haemorrhage, reassess fluid replacement according to those losses. Source: NICE NG133, recommendation 1.8.12."
     },
     {
       "topic_id": "sepsis-resuscitation",
@@ -8051,6 +8105,32 @@
       ],
       "chunk_kind": "overview",
       "content": "Haemorrhagic Shock & Resuscitation (Intensive Care · exams: final, fficm, edic). Shock index and lactate, cuff vs arterial blood pressure in shock, permissive hypotension, PROPPR, PAMPer, RePHILL, CRASH-2 timing, calcium and ITACTIC"
+    },
+    {
+      "topic_id": "haemorrhagic-shock",
+      "topic_title": "Haemorrhagic Shock & Resuscitation",
+      "route": "/intensive-care/haemorrhagic-shock",
+      "section": "intensive-care",
+      "exam_tags": [
+        "final",
+        "fficm",
+        "edic"
+      ],
+      "chunk_kind": "faq",
+      "content": "Haemorrhagic Shock & Resuscitation — Q: In adult trauma with uncontrolled major bleeding, how does severe traumatic brain injury change the initial blood-pressure target?\nA: Without clinical evidence of brain injury, use restricted volume replacement and aim for a systolic pressure of 80–90 mmHg until bleeding is controlled. With severe traumatic brain injury (GCS 8 or less), maintain a mean arterial pressure of at least 80 mmHg. Source: European trauma bleeding guideline, sixth edition, recommendation 13."
+    },
+    {
+      "topic_id": "haemorrhagic-shock",
+      "topic_title": "Haemorrhagic Shock & Resuscitation",
+      "route": "/intensive-care/haemorrhagic-shock",
+      "section": "intensive-care",
+      "exam_tags": [
+        "final",
+        "fficm",
+        "edic"
+      ],
+      "chunk_kind": "faq",
+      "content": "Haemorrhagic Shock & Resuscitation — Q: An adult trauma patient is bleeding or at risk of significant bleeding. When and how should tranexamic acid be given?\nA: Start as soon as possible and within 3 hours of injury. Infuse 1 g IV over 10 minutes, followed by a second 1 g IV over 8 hours. Source: European trauma bleeding guideline, sixth edition, recommendation 23."
     },
     {
       "topic_id": "hypovolaemia",
@@ -8765,7 +8845,7 @@
         "edic"
       ],
       "chunk_kind": "faq",
-      "content": "Toxicology & Poisoning — Q: How is lipid emulsion used in local anaesthetic toxicity?\nA: Association of Anaesthetists 2023: give 20% lipid emulsion 1.5 mL/kg as an initial bolus (simplified to a fixed 100 mL bolus if >70 kg), then start an infusion of 0.25 mL/kg/min (equivalent to 15 mL/kg/h) — the same weight-based rate for every patient, which equates to about 1000 mL/h in an adult over 70 kg. Up to two further boluses at 5-minute intervals (three in total), and double the infusion to 0.5 mL/kg/min (30 mL/kg/h) if the circulation remains unstable; total maximum 12 mL/kg."
+      "content": "Toxicology & Poisoning — Q: How is lipid emulsion used in local anaesthetic toxicity?\nA: The Association of Anaesthetists’ Quick Reference Handbook uses 20% lipid emulsion. Give 1.5 mL/kg IV over 2–3 minutes, then infuse 15 mL/kg/hour. If cardiovascular instability persists or recurs, a bolus may be repeated at 5 and 10 minutes and the infusion doubled after 5 minutes. The maximum cumulative dose is 12 mL/kg. Use the current checklist during resuscitation."
     },
     {
       "topic_id": "toxicology",
@@ -8830,7 +8910,7 @@
         "edic"
       ],
       "chunk_kind": "faq",
-      "content": "Transfusion & Coagulation — Q: When is prothrombin complex concentrate preferred over FFP?\nA: For warfarin reversal in major bleeding (25–50 U/kg with vitamin K, BSH 2018), or factor replacement in liver disease where volume load from FFP is harmful; PCC restores INR within minutes versus hours for FFP."
+      "content": "Transfusion & Coagulation — Q: When is prothrombin complex concentrate preferred over FFP?\nA: In major bleeding due to warfarin, give four-factor PCC with IV vitamin K under the local reversal protocol. In liver transplantation, a raised INR alone does not justify PCC or plasma. Guide factor replacement by clinical bleeding, viscoelastic findings and the transplant protocol."
     },
     {
       "topic_id": "transfusion-coagulation",
@@ -8843,7 +8923,7 @@
         "edic"
       ],
       "chunk_kind": "faq",
-      "content": "Transfusion & Coagulation — Q: How is ROTEM/TEG used to guide blood product use?\nA: FIBTEM A5 <12 mm → fibrinogen concentrate or cryoprecipitate; EXTEM CT >80 s → FFP or PCC; EXTEM A5 <40 mm with normal FIBTEM → platelets; ML >15% → tranexamic acid (ITACTIC trial)."
+      "content": "Transfusion & Coagulation — Q: How is ROTEM/TEG used to guide blood product use?\nA: TEG reaction time (R) and ROTEM clotting time (CT) assess clot initiation. Fibrin-specific and whole-clot measurements help assess fibrinogen and platelet contributions. In active major bleeding, use the locally validated algorithm for the assay and indication, alongside clinical findings and conventional tests. A single result does not establish which product to give."
     },
     {
       "topic_id": "haematology-icu",
@@ -9351,7 +9431,7 @@
         "edic"
       ],
       "chunk_kind": "overview",
-      "content": "Non-Technical Skills & Human Factors (Intensive Care · exams: fficm, edic). ANTS framework, situation awareness, decision-making, teamwork, leadership, crisis resource management, debriefing, just culture"
+      "content": "Non-Technical Skills & Human Factors (Intensive Care · exams: fficm, edic). ANTS framework, situation awareness, decision-making, teamwork, leadership, crisis resource management, debriefing, just culture, clinical teaching and supervision, and a quality-improvement case"
     },
     {
       "topic_id": "non-technical-skills",

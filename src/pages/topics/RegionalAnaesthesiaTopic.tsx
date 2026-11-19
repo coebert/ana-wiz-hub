@@ -73,7 +73,7 @@ const regionalFaqs: Array<[string, string]> = [
   ],
   [
     "How are local anaesthetics dosed safely to avoid toxicity (LAST)?",
-    "Maximum safe doses: lidocaine 3 mg/kg plain (7 mg/kg with adrenaline); bupivacaine and levobupivacaine 2 mg/kg; ropivacaine 3 mg/kg. Always calculate by lean body weight. LAST presents with peri-oral tingling, agitation, seizures, then cardiovascular collapse. Management: stop injection, ABC, 20% Intralipid 1.5 ml/kg bolus then 0.25 ml/kg/min infusion (repeat bolus up to twice at 5-minute intervals, maximum cumulative 12 ml/kg — AAGBI LAST guideline). Treat arrhythmias without lidocaine; ASRA also advises avoiding vasopressin, calcium-channel and β-blockers and reducing adrenaline boluses to <1 µg/kg. Prolonged CPR may be needed.",
+    "Calculate the total milligrams from all injections. Use the named product, route and procedure instructions, with reductions for relevant patient factors. If severe LAST develops, stop injecting, call for help, oxygenate and manage seizures. Association QRH 3-10 uses 20% lipid emulsion: 1.5 mL/kg over 2–3 minutes, then 15 mL/kg/h. If cardiovascular instability persists or recurs, repeat the bolus at 5 and 10 minutes (up to two repeats) and double the infusion after 5 minutes if indicated. Keep the total at or below 12 mL/kg.",
   ],
   [
     "How is block height tested at the bedside?",
@@ -406,7 +406,7 @@ const RegionalAnaesthesiaTopic = () => {
             </div>
             <div className="p-4 rounded-lg border border-border bg-secondary/30">
               <p className="font-semibold text-foreground text-sm">Local anaesthetic systemic toxicity (LAST)</p>
-              <p className="text-sm text-muted-foreground mt-1">Signs range from perioral tingling, tinnitus and agitation to seizures, arrhythmia and cardiovascular collapse — sometimes cardiac signs occur first, especially under sedation or GA. Stop injecting, call for help, manage airway and seizures (benzodiazepine), and give <strong>20% lipid emulsion 1.5 ml/kg over 1 min then 15 ml/kg/h</strong>, repeating the bolus up to twice and doubling the infusion if unstable (maximum 12 ml/kg). Prevention: dose by lean body weight, incremental aspiration-guided injection, ultrasound, and an adrenaline-containing marker where appropriate<InlineRef topicId="regional-anaesthesia" refLabel="AAGBI LAST 2010" />.</p>
+              <p className="text-sm text-muted-foreground mt-1">Neurological symptoms, seizures or cardiovascular collapse may occur. Stop injection, call for help, manage oxygenation and seizures, and follow Association QRH 3-10. For severe LAST, give <strong>20% lipid emulsion 1.5 mL/kg over 2–3 minutes, then 15 mL/kg/h</strong>. If instability persists or recurs, repeat the bolus at 5 and 10 minutes, with up to two repeats, and double the infusion after 5 minutes if indicated. Limit the total to 12 mL/kg.<InlineRef topicId="regional-anaesthesia" refLabel="AAGBI Lipid Rescue" /></p>
             </div>
             <div className="p-4 rounded-lg border border-border bg-secondary/30">
               <p className="font-semibold text-foreground text-sm">Other block-specific complications</p>
@@ -662,7 +662,7 @@ const RegionalAnaesthesiaTopic = () => {
       >
         <ul className="space-y-2 list-disc list-inside text-sm">
           <li><strong>Stop-Before-You-Block</strong>: name, mark, side, allergies, anticoagulation, plan documented immediately before injection.</li>
-          <li><strong>LA toxicity (LAST)</strong>: max safe doses (lidocaine 3 mg/kg plain / 7 with adrenaline; bupivacaine 2 mg/kg). Treat with 20% Intralipid 1.5 ml/kg bolus + 0.25 ml/kg/min infusion.</li>
+          <li><strong>LA toxicity (LAST)</strong>: check the cumulative dose for the product and planned block. For severe toxicity, use the Association QRH 3-10 lipid-emulsion regimen.</li>
           <li><strong>Neuraxial — anticoagulation</strong>: follow AAGBI 2013 — LMWH prophylactic 12 h gap, treatment 24 h; remove catheter only when coagulation back to baseline.</li>
           <li><strong>Block height assessment</strong>: cold (Aδ, C-fibres) — most reliable bedside test; pinprick = surgical anaesthesia; T4 needed for upper-abdominal surgery.</li>
           <li><strong>Ultrasound vs nerve stimulator</strong>: US improves block success rate (Cochrane 2019) and may reduce minor complications, though its effect on severe neurological complications is unclear. Combination with nerve stimulation is often used for deep blocks.</li>

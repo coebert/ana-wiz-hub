@@ -86,7 +86,7 @@ const workedExamples: WorkedExample[] = [
         haemodynamically and consider TOE / CT once stabilised.
       </>
     ),
-    cites: ["Kodali 2013 Capnography", "Association of Anaesthetists 2021"],
+    cites: ["BJA Educ 2017 Capnography", "Association of Anaesthetists 2021"],
   },
   {
     title: "Confirming tracheal intubation in an obese patient",
@@ -99,28 +99,18 @@ const workedExamples: WorkedExample[] = [
     ),
     working: (
       <>
-        A single squeeze is unreliable: oesophageal intubation produces
-        small CO₂ traces for up to <strong>6 breaths</strong> from gastric
-        CO₂ (carbonated drinks, mask ventilation pre-induction). Sustained
-        EtCO₂ of a normal shape and value across <strong>≥ 7 consecutive
-        breaths</strong> is the gold standard for tracheal placement
-        (NAP4; PUMA consensus 2022; DAS 2025). A flat or vanishing trace is presumed
-        oesophageal until proven otherwise. Sustained CO₂ confirms tracheal
-        location, not adequate anaesthetic depth — depth is judged separately
-        (clinically and, during TIVA with neuromuscular blockade, with processed EEG).
+        Gastric CO₂ can produce transient waveforms. Look for a rise on expiration and a fall on inspiration,
+        with a peak more than 1 kPa above baseline and consistent or increasing amplitude over at least seven
+        breaths. The result should fit the clinical situation.
+        Assess anaesthetic depth separately, including processed EEG during TIVA with neuromuscular blockade.
       </>
     ),
     answer: (
       <>
-        Continue to ventilate and observe at least seven waveforms. If the
-        capnograph maintains a normal-shaped plateau, the tube is
-        tracheal. If sustained exhaled CO₂ is absent or the trace falls
-        away, actively exclude oesophageal placement: PUMA's default is to
-        remove the tube and reoxygenate by mask or supraglottic airway
-        unless removal is judged more dangerous, in which case obtain
-        urgent valid independent confirmation. Do <em>not</em> use
-        auscultation, misting or chest rise as the sole confirmation, even
-        in cardiac arrest.
+        If sustained exhaled CO₂ is absent, remove the tube and reoxygenate by default. If removing it
+        would be dangerous, urgently exclude oesophageal placement by a valid alternative method while
+        checking ventilation and the circuit. A flat or dwindling trace calls for immediate action.
+        Chest rise, auscultation and misting cannot exclude oesophageal placement, even during cardiac arrest.
       </>
     ),
     cites: ["NAP4", "PUMA 2022", "DAS 2025"],
@@ -153,7 +143,7 @@ const workedExamples: WorkedExample[] = [
 const keyPoints = [
   {
     text: "Capnography measures CO₂ continuously throughout the respiratory cycle and displays it as a waveform; capnometry shows only a number. Both use infrared absorption at the 4.26 μm CO₂ band (Beer-Lambert law: A = ε·c·l).",
-    cites: ["Kodali 2013 Capnography"],
+    cites: ["BJA Educ 2017 Capnography"],
   },
   {
     text: "Sidestream analyser aspirates ~50–200 mL/min from a Luer port at the patient end; introduces a 2–4 s delay and a sampling-line water trap. Mainstream analyser sits inline at the airway with no delay but adds bulk, heat (39 °C to prevent condensation) and dead space — used in MRI, neonates, transport.",
@@ -165,11 +155,11 @@ const keyPoints = [
   },
   {
     text: "EtCO₂ ≈ PaCO₂ − 0.5 kPa (4 mmHg) in healthy lungs; gradient widens in any condition that increases alveolar dead space (PE, low CO, COPD, ARDS, high airway pressures). A widening gradient is a sensitive marker of evolving V/Q mismatch.",
-    cites: ["Kodali 2013 Capnography"],
+    cites: ["BJA Educ 2017 Capnography"],
   },
   {
     text: "Shark-fin (sloping II, no clear III, prolonged): bronchospasm, COPD, kinked/partly obstructed ETT. Slope of phase III tracks severity and resolves with effective bronchodilator therapy.",
-    cites: ["Kodali 2013 Capnography"],
+    cites: ["BJA Educ 2017 Capnography"],
   },
   {
     text: "Curare cleft: a notch in the alveolar plateau caused by a returning diaphragmatic effort during IPPV — reflects wearing-off of neuromuscular blockade or light anaesthesia. Confirm with PNS train-of-four.",
@@ -177,10 +167,10 @@ const keyPoints = [
   },
   {
     text: "Raised baseline = patient is inspiring CO₂ (rebreathing). Causes: exhausted soda lime, faulty expiratory unidirectional valve, inadequate FGF in a Mapleson D or coaxial inner-tube disconnection (Bain — positive Pethick's test). Sort causes by breathing system. Circle: exhausted soda lime (most common — check colour change); incompetent expiratory valve (exhaled gas re-enters the inspiratory side: raised baseline with a slurred inspiratory downstroke/widened β angle); incompetent inspiratory valve (exhaled gas pushed back up the inspiratory limb). Mapleson A/D/Bain: FGF too low for the minute ventilation; for a Bain also do Pethick's test (flush with the patient port occluded then released — the bag should collapse via the Venturi effect if the inner tube is intact). Troubleshooting: (1) raise FGF immediately to wash out CO₂; (2) check soda lime colour; (3) watch the valve discs move; (4) if unresolved, switch to a self-inflating bag or a fresh circuit and change the absorber.",
-    cites: ["Kodali 2013 Capnography"],
+    cites: ["BJA Educ 2017 Capnography"],
   },
   {
-    text: "After intubation, absence of sustained exhaled CO₂ requires active exclusion of oesophageal placement. Default to removing the tube and reoxygenating. If removal is dangerous, check placement urgently using a valid alternative while assessing the circuit and ventilation. Oesophageal CO₂ from a stomach full of carbonated fluid is the classic trap — it dies away within ~6 breaths.",
+    text: "After intubation, absence of sustained exhaled CO₂ requires active exclusion of oesophageal placement. Default to removing the tube and reoxygenating. If removal is dangerous, check placement urgently using a valid alternative while assessing the circuit and ventilation.",
     cites: ["PUMA 2022"],
   },
   {
@@ -221,9 +211,9 @@ const CapnographyTopic = () => {
         keyPoints: { exams: [Exam.PRIMARY, Exam.FINAL, Exam.FFICM] },
       }}
       sectionSources={{
-        objectives: ["Kodali 2013 Capnography", "Association of Anaesthetists 2021"],
-        keyPoints: ["Kodali 2013 Capnography", "Bhavani-Shankar & Philip 2000", "Al-Shaikh & Stacey Ch.10-11"],
-        workedExamples: ["Kodali 2013 Capnography", "NAP4", "RCUK 2021 ALS"],
+        objectives: ["BJA Educ 2017 Capnography", "Association of Anaesthetists 2021"],
+        keyPoints: ["BJA Educ 2017 Capnography", "Bhavani-Shankar & Philip 2000", "Al-Shaikh & Stacey Ch.10-11"],
+        workedExamples: ["BJA Educ 2017 Capnography", "PUMA 2022", "RCUK 2025 ALS"],
       }}
       coreConcepts={
         <ExamSection exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]} className="scroll-mt-24">
@@ -431,7 +421,7 @@ const CapnographyTopic = () => {
                 capnography (VCap, the single-breath test for CO₂) plots CO₂ against
                 <strong> expired volume</strong>, so the area under the curve is the volume of
                 CO₂ eliminated per breath (VCO₂) and dead space can be quantified rather than
-                inferred <InlineRef topicId="capnography" refLabel="Kodali 2013 Capnography" />.
+                inferred <InlineRef topicId="capnography" refLabel="BJA Educ 2017 Capnography" />.
               </p>
               <div className="grid sm:grid-cols-3 gap-3 mb-3">
                 {[

@@ -27,6 +27,9 @@ import { fileURLToPath } from "node:url";
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = resolve(__dirname, "..");
 const OUT = resolve(ROOT, "scripts/required-citations.snapshot.json");
+// Some archived findings name superseded or incorrectly attributed sources. Use
+// the reviewed labels for those finding IDs while the original audit history is retained.
+const reviewedLabels = JSON.parse(readFileSync(resolve(ROOT, "scripts/required-citations-reviewed-labels.json"), "utf8"));
 
 function psql(sql) {
   const out = execSync(`psql -At -F $'\\t' -v ON_ERROR_STOP=1`, {
@@ -93,6 +96,13 @@ const rows = psql(
 const snapshot = [];
 let skipped = 0;
 for (const [id, topicId, urlsJoined] of rows) {
+  const reviewed = reviewedLabels[id];
+  if (reviewed) {
+    const file = topicFiles.get(topicId);
+    if (!file) throw new Error(`Missing topic file for reviewed finding ${id} (${topicId})`);
+    snapshot.push({ findingId: id, topicId, file, requiredLabels: reviewed });
+    continue;
+  }
   const urls = urlsJoined ? urlsJoined.split("|").filter(Boolean) : [];
   if (urls.length === 0) {
     skipped++;

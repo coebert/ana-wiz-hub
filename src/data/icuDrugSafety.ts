@@ -913,7 +913,7 @@ export const icuDrugSafetyGroups: DrugSafetyGroup[] = [
         contraindications: [
           "Active intravascular thrombosis, seizures (dose-related risk), and previous hypersensitivity.",
           "Subarachnoid haemorrhage with vasospasm risk (specialist decision); dose reduction in renal impairment.",
-          "Traumatic haemorrhage more than 3 h after injury — mortality benefit is lost and harm is possible.",
+          "Major trauma: do not start TXA more than 3 h after injury unless there is evidence of hyperfibrinolysis (NICE NG39). For diagnosed postpartum haemorrhage, the WHO 3-hour window starts at birth.",
         ],
         monitoring: [
           "Bleeding, transfusion requirement and any clinical thrombosis.",

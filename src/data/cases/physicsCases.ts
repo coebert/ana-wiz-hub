@@ -3,7 +3,7 @@ import type { CaseBank } from "./types";
 const s = {
   oximetryPigment: { label: "Physiol Meas 2023 (skin pigmentation)", href: "https://doi.org/10.1088/1361-6579/acd51a" },
   oximetryPrinciples: { label: "BJA Educ: pulse oximetry", href: "https://doi.org/10.1093/bjaceaccp/mkg038" },
-  capnography: { label: "Kodali: capnography outside the operating rooms", href: "https://doi.org/10.1097/ALN.0b013e318278c8b6" },
+  capnography: { label: "Anesthesiology 2013: capnography", href: "https://doi.org/10.1097/ALN.0b013e318278c8b6" },
   capnoShape: { label: "Bhavani-Shankar & Philip 2000", href: "https://doi.org/10.1097/00000539-200010000-00038" },
   monitoring: { label: "Association of Anaesthetists Standards of Monitoring 2021", href: "https://doi.org/10.1111/anae.15501" },
   electrical: { label: "BJA Educ: electrical safety", href: "https://doi.org/10.1093/bjaed/mkx035" },

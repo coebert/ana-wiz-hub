@@ -196,7 +196,7 @@ export const pharmacologyCaseBank: CaseBank = {
       summary: "Elimination pathways, sugammadex versus neostigmine and the consequences of drug choice in organ failure.",
       topicIds: ["muscle-relaxants", "neuromuscular", "rocuronium", "aki-rrt", "pharmacokinetics"],
       patient: "A dialysis-dependent patient needs urgent surgery. Rocuronium was given for a rapid sequence induction 25 minutes ago; the post-tetanic count is 1.",
-      presentation: "Surgery finishes early and rapid, complete reversal is required.",
+      presentation: "Surgery finishes early. The patient remains intubated and ventilated with a post-tetanic count of 1. The team asks whether it is safe to reverse and extubate now.",
       stages: [
         {
           title: "Explain the elimination",
@@ -211,9 +211,9 @@ export const pharmacologyCaseBank: CaseBank = {
           title: "Choose reversal now",
           prompt: "What do you give at a post-tetanic count of 1?",
           answer: [
-            "Neostigmine cannot reverse this depth of block; it requires at least two twitches on train-of-four and has a ceiling effect from acetylcholinesterase saturation.",
-            "Give sugammadex 4 mg/kg for deep block (2 mg/kg once two twitches have returned), and confirm recovery quantitatively to a train-of-four ratio of 0.9 or more.",
-            "In severe renal impairment sugammadex is still recommended for reversal. The sugammadex–rocuronium complex is cleared by the kidneys, so its elimination is significantly delayed; clinical reversal is nevertheless effective, but monitor carefully for any recurarisation.",
+            "A post-tetanic count of 1 indicates deep block. Maintain adequate anaesthesia or sedation, ventilation and quantitative monitoring. Neostigmine cannot reliably reverse this depth.",
+            "The UK Bridion SmPC advises against sugammadex in severe renal impairment, including dialysis or creatinine clearance below 30 mL/min. A standard deep-block dose is inappropriate as the routine answer for this patient.",
+            "Agree a plan with the senior anaesthetist for supported recovery and postoperative care. When considering neostigmine, establish sufficient spontaneous recovery by quantitative monitoring, give an antimuscarinic, and confirm a train-of-four ratio of at least 0.9 before extubation.",
           ],
         },
         {
@@ -221,18 +221,18 @@ export const pharmacologyCaseBank: CaseBank = {
           prompt: "What complications should you plan for?",
           answer: [
             "Recurarisation, especially if surgery is short, dosing marginal or clearance impaired — keep monitoring after reversal.",
-            "Sugammadex encapsulates aminosteroids only, so if further blockade is needed within 24 hours use a benzylisoquinolinium drug or a much larger rocuronium dose.",
+            "If further paralysis is needed, review measured recovery, the reversal agent already given, renal function and the product information before choosing an agent.",
             "Neostigmine requires an antimuscarinic to limit bradycardia, secretions and bronchospasm; sugammadex can cause bradycardia and rare anaphylaxis.",
           ],
         },
       ],
       detailedAnswer: [
-        { title: "Clinical reasoning", content: "Reversal choice is a pharmacokinetic decision. Neostigmine increases synaptic acetylcholine but cannot overcome deep receptor occupancy, so its effect plateaus. Sugammadex forms a 1:1 complex with aminosteroid relaxants, creating a concentration gradient away from the junction and reversing any depth of block; because both free and complexed drug rely on glomerular filtration, renal failure prolongs elimination even though clinical reversal is still rapid." },
-        { title: "Management and monitoring", content: "Use quantitative monitoring throughout, choose the sugammadex dose by measured depth, and continue observation in recovery for recurarisation. In dialysis-dependent patients, consider planning ahead with cisatracurium for maintenance where a rapid sequence induction is not required, and document the reversal drug and time because it affects subsequent relaxant choice." },
-        { title: "Exam pitfall", content: "Do not offer neostigmine for deep block, and do not claim sugammadex removes the need for monitoring. Mention the 24-hour aminosteroid re-dosing problem." },
+        { title: "Clinical reasoning", content: "A dialysis-dependent patient can retain both sugammadex and its complex with rocuronium. The UK product information advises against its use in this group. For patients eligible for sugammadex, the labelled routine 2 mg/kg regimen starts at reappearance of the second train-of-four twitch. A twitch count describes block depth; the quantitative ratio assesses recovery." },
+        { title: "Management and monitoring", content: "Use measured recovery to plan reversal and extubation. At a post-tetanic count of 1, continue sedation and ventilation with a plan for ongoing care. Consider an organ-independent relaxant for a future procedure when clinically appropriate." },
+        { title: "Exam pitfall", content: "An urgent finish to surgery does not establish readiness for extubation. Protect the airway and ventilation while the patient remains blocked." },
       ],
-      takeHome: "Match reversal to measured depth and organ function: sugammadex reverses deep aminosteroid block, neostigmine cannot, and Hofmann-eliminated drugs avoid the issue.",
-      sourceLinks: [s.nmbGuideline, s.pk],
+      takeHome: "In dialysis-dependent renal failure with deep block, plan supported recovery. Use quantitative monitoring and confirm a train-of-four ratio of at least 0.9 before extubation.",
+      sourceLinks: [s.nmbGuideline, { label: "Bridion UK SmPC, sections 4.2 and 4.4", href: "https://www.medicines.org.uk/emc/product/6409/smpc" }],
     },
     {
       id: "pharmacology-vasopressor-choice",

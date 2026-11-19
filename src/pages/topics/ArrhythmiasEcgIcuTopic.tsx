@@ -61,7 +61,7 @@ const workedExamples: WorkedExample[] = [
     working: (
       <>
         <p>
-          Treat the rhythm, not the number. Step 1 — membrane stabilisation: {HYPERKALAEMIA_CALCIUM_TEACHING}{" "}
+          Treat ECG toxicity and severe hyperkalaemia in parallel. Membrane stabilisation: {HYPERKALAEMIA_CALCIUM_TEACHING}{" "}
           <InlineRef topicId="arrhythmias-ecg-icu" refLabel="MHRA NatPSA/2023/007" />
           <InlineRef topicId="arrhythmias-ecg-icu" refLabel="UKKA Hyperkalaemia July 2026" />
         </p>
@@ -73,7 +73,7 @@ const workedExamples: WorkedExample[] = [
       </>
     ),
     answer:
-      "Calcium first (cardio-protection within minutes), then insulin–dextrose ± salbutamol to shift K⁺, then RRT for definitive removal. Re-check K⁺ at 30 min and 1 h.",
+      "Give calcium for ECG toxicity and begin potassium-lowering treatment promptly. Arrange urgent dialysis for this anuric patient. Recheck potassium at least at 1, 2, 4, 6 and 24 hours and check blood glucose regularly for 6 hours after insulin–glucose.",
     cites: ["MHRA NatPSA/2023/007", "UKKA Hyperkalaemia July 2026"],
   },
 ];
@@ -124,7 +124,7 @@ const ArrhythmiasEcgIcuTopic = () => {
         { text: "Site of AV block predicts the device: nodal (1°/Mobitz I) tolerate observation; infranodal (Mobitz II/complete) need urgent pacing", cites: ["TTM2 2021"] },
         { text: "Adverse features (shock, syncope, ischaemia, heart failure) drive the algorithm: synchronised DCCV for unstable tachy, atropine → pacing for unstable brady", cites: ["BJA Educ 2018"] },
         { text: "Always replace magnesium when replacing potassium — refractory hypoK⁺ is often hypoMg²⁺", cites: ["ESC AF 2020"] },
-        { text: "Hyperkalaemia: treat the rhythm with calcium first, the number afterwards", cites: ["ERC/ESICM 2021 Post-Resus"] },
+        { text: "Give calcium for hyperkalaemic ECG toxicity and start potassium-lowering treatment promptly. Severe potassium elevation (≥6.5 mmol/L) requires urgent treatment even with a normal ECG.", cites: ["UKKA Hyperkalaemia July 2026"] },
         { text: "Post-ROSC: 12-lead within 10 min, MAP ≥ 65 mmHg, SpO₂ 94–98 %, normocapnia, fever avoidance for 72 h", cites: ["Resuscitation Council UK 2021"] },
       ]}
       coreConcepts={
@@ -445,7 +445,7 @@ const ArrhythmiasEcgIcuTopic = () => {
             <CollapsibleSubsection title="Electrolyte & Drug-Induced Arrhythmias">
             <div className="space-y-2">
               {[
-                { label: "Hyperkalaemia (K⁺ > 6.0)", ecg: "Peaked T → loss of P → wide QRS → sine-wave → VF/asystole.", treatment: "For adult non-arrest ECG toxicity, 30 mL 10% calcium gluconate IV over 10 min (or 10 mL 10% calcium chloride over 5 min, equivalent elemental calcium, preferred peri-arrest); insulin–dextrose, salbutamol nebs, sodium bicarbonate (if acidotic), definitive removal (RRT). During CPR, calcium chloride follows the separate arrest protocol." },
+                { label: "Hyperkalaemia (K⁺ > 6.0)", ecg: "Peaked T → loss of P → wide QRS → sine-wave → VF/asystole.", treatment: "For adult non-arrest ECG toxicity, 30 mL 10% calcium gluconate IV over 10 min (or 10 mL 10% calcium chloride over 5 min, equivalent elemental calcium, preferred peri-arrest); give insulin–glucose and adjunctive nebulised salbutamol, and arrange potassium removal. IV bicarbonate is not routinely used to lower potassium. During CPR, calcium chloride follows the separate arrest protocol." },
                 { label: "Hypokalaemia (K⁺ < 3.5)", ecg: "Flat / inverted T, prominent U wave, prolonged QU, ST depression.", treatment: "Replace cautiously (max 20 mmol/h peripherally, 40 mmol/h centrally with monitoring). Always replace Mg²⁺ alongside." },
                 { label: "Hypomagnesaemia (Mg²⁺ < 0.7)", ecg: "Prolonged QT, torsades de pointes, refractory hypoK⁺.", treatment: "2 g IV Mg²⁺ over 10 min for torsades, then infusion." },
                 { label: "Hypocalcaemia (iCa²⁺ < 1.0)", ecg: "Prolonged QT (long ST segment), neuromuscular irritability.", treatment: "10 mL 10 % calcium gluconate IV (peripheral) or 10 mL 10 % calcium chloride centrally." },

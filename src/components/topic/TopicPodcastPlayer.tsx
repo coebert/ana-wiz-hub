@@ -31,6 +31,7 @@ import {
   isStaleGenerating,
   type PodcastResult,
 } from "@/lib/podcast";
+import { isHeldPodcastAudio } from "@/lib/podcast-audit-holds";
 import { useAuth } from "@/hooks/useAuth";
 import {
   attachPodcastJob,
@@ -564,11 +565,11 @@ export const TopicPodcastPlayer = ({ topicId, topicTitle }: TopicPodcastPlayerPr
     );
   }
 
-  if (podcast?.audit_hold) {
+  if (podcast && (podcast.audit_hold || (podcast.audio_url && isHeldPodcastAudio(podcast.audio_url)))) {
     return (
       <div role="status" className="border border-border bg-card p-4 space-y-2">
         <h3 className="font-serif font-semibold text-foreground">Recording temporarily withdrawn</h3>
-        <p className="text-sm text-muted-foreground">{podcast.audit_hold_reason}</p>
+        <p className="text-sm text-muted-foreground">{podcast.audit_hold_reason || "This recording is awaiting clinical review and replacement."}</p>
         <a href="#references" className="text-sm text-primary underline">Read the current topic and its sources</a>
       </div>
     );

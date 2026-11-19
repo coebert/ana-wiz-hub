@@ -13,7 +13,7 @@ import { ParacetamolTeaching } from "@/components/topic/ParacetamolTeaching";
 
 const toxicologyFaqs: Array<[string, string]> = [
   ["When is haemodialysis indicated in poisoning?", "For low-Vd, low-protein-bound, water-soluble toxins: salicylates (≥7.2 mmol/L or AKI), methanol/ethylene glycol, lithium (>4 mmol/L acute), valproate (severe), metformin-associated lactic acidosis, and theophylline."],
-  ["How is lipid emulsion used in local anaesthetic toxicity?", "Association of Anaesthetists 2023: give 20% lipid emulsion 1.5 mL/kg as an initial bolus (simplified to a fixed 100 mL bolus if >70 kg), then start an infusion of 0.25 mL/kg/min (equivalent to 15 mL/kg/h) — the same weight-based rate for every patient, which equates to about 1000 mL/h in an adult over 70 kg. Up to two further boluses at 5-minute intervals (three in total), and double the infusion to 0.5 mL/kg/min (30 mL/kg/h) if the circulation remains unstable; total maximum 12 mL/kg."],
+  ["How is lipid emulsion used in local anaesthetic toxicity?", "The Association of Anaesthetists’ Quick Reference Handbook uses 20% lipid emulsion. Give 1.5 mL/kg IV over 2–3 minutes, then infuse 15 mL/kg/hour. If cardiovascular instability persists or recurs, a bolus may be repeated at 5 and 10 minutes and the infusion doubled after 5 minutes. The maximum cumulative dose is 12 mL/kg. Use the current checklist during resuscitation."],
   ["What is the antidote and threshold for paracetamol overdose?", "N-acetylcysteine using the 21-h SNAP/IV regimen; treat if plasma paracetamol crosses the single 100 mg/L at 4 h treatment line, with staggered ingestion or unknown timing, or in established hepatotoxicity."],
 ];
 
@@ -115,23 +115,20 @@ const workedExamples: WorkedExample[] = [
     ),
     working: (
       <>
-        AAGBI Lipid Rescue 2010/2023: stop injection, call for help, ALS with adrenaline at
+        Association of Anaesthetists QRH 3-10: stop injection, call for help, ALS with adrenaline at
         reduced dose (≤1 µg/kg), avoid lidocaine and vasopressin. Lipid emulsion acts as a{" "}
         <strong>lipid sink</strong> sequestering lipophilic LA + provides metabolic substrate.
       </>
     ),
     answer: (
       <>
-        Intralipid 20% (Association of Anaesthetists 2023, weight-banded): if <strong>&gt;70 kg</strong>,
-        a fixed <strong>100 mL bolus</strong> over 2–3 min then an infusion at{" "}
-        <strong>1000 mL/hr</strong>; if <strong>&lt;70 kg</strong>, <strong>1.5 mL/kg bolus</strong> then{" "}
-        <strong>15 mL/kg/hr</strong>. Up to <strong>two repeat boluses</strong> at 5-min intervals (three
-        boluses in total) and the infusion may be doubled if circulation is not restored. Maximum cumulative dose 12 mL/kg. Continue CPR &gt;1 h — recovery
-        documented after prolonged arrest. Report to{" "}
-        <a href="https://www.lipidrescue.org" className="text-primary underline">lipidrescue.org</a>.
+        Use the UK QRH 3-10 lipid regimen. Give 20% lipid emulsion 1.5 mL/kg IV over 2–3 minutes and
+        infuse 15 mL/kg/hour. If instability persists or recurs, repeat the bolus at 5 and 10 minutes if
+        indicated and double the infusion after 5 minutes. Keep the overall dose at or below 12 mL/kg.
+        Recovery can require prolonged resuscitation. Consider extracorporeal support where available.
       </>
     ),
-    cites: ["BJA Educ 2016"],
+    cites: ["AAGBI Lipid Rescue"],
   },
 ];
 
@@ -147,14 +144,14 @@ const ToxicologyTopic = () => {
       workedExamples={workedExamples}
       keyPoints={[
         { text: "Stabilise (ABCDE) before identifying the toxin — call NPIS/TOXBASE early", cites: ["NPIS Toxbase"] },
-        { text: "Activated charcoal: best if <1 h post-ingestion; useless for hydrocarbons, metals, alcohols, acids/alkalis", cites: ["AAGBI Lipid Rescue"] },
+        { text: "Activated charcoal: best if <1 h post-ingestion; useless for hydrocarbons, metals, alcohols, acids/alkalis", cites: ["NPIS Toxbase"] },
         { text: "Five core toxidromes: anticholinergic, cholinergic, sympathomimetic, opioid, sedative — pattern recognition guides empirical therapy", cites: ["BJA Educ 2016"] },
         { text: "Paracetamol: UK 100 mg/L treatment line, NAC most effective <8 h. Treat empirically if staggered or unknown timing", cites: ["NPIS Toxbase"] },
-        { text: "TCA toxicity: wide QRS >120 ms or R in aVR >3 mm → IV NaHCO₃ 1–2 mmol/kg, target pH 7.45–7.55", cites: ["AAGBI Lipid Rescue"] },
+        { text: "TCA toxicity: wide QRS >120 ms or R in aVR >3 mm → IV NaHCO₃ 1–2 mmol/kg, target pH 7.45–7.55", cites: ["NPIS Toxbase"] },
         { text: "Salicylate: respiratory alkalosis → mixed → metabolic acidosis. Urinary alkalinisation, dialyse if level >700 mg/L or severe", cites: ["BJA Educ 2016"] },
         { text: "EXTRIP HD criteria: low Vd (<1 L/kg), low protein binding, MW <500 Da — methanol, ethylene glycol, lithium, salicylates, valproate, metformin", cites: ["NPIS Toxbase"] },
-        { text: "TCAs, digoxin, CCBs, β-blockers (most), iron and phenytoin are NOT effectively dialysed — use specific antidotes", cites: ["AAGBI Lipid Rescue"] },
-        { text: "Intralipid 20% for LAST (AoA 2023): >70 kg — 100 mL bolus then 1000 mL/hr; <70 kg — 1.5 mL/kg bolus then 15 mL/kg/hr; up to 2 repeat boluses (3 total), max 12 mL/kg", cites: ["AAGBI Lipid Rescue"] },
+        { text: "TCAs, digoxin, CCBs, β-blockers (most), iron and phenytoin are NOT effectively dialysed — use specific antidotes", cites: ["NPIS Toxbase"] },
+        { text: "UK QRH for severe LAST: 20% lipid emulsion 1.5 mL/kg IV over 2–3 minutes, then 15 mL/kg/hour. Follow the checklist for repeat dosing and the cumulative limit of 12 mL/kg", cites: ["AAGBI Lipid Rescue"] },
         { text: "Naloxone: titrate to respiratory rate, not GCS; short t½ — anticipate re-narcotisation, consider infusion", cites: ["NPIS Toxbase"] },
       ]}
       topicId="toxicology"
@@ -207,7 +204,7 @@ const ToxicologyTopic = () => {
                   <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Organophosphates</td><td>Atropine + pralidoxime</td><td>Atropine (large doses, titrate to secretions). Pralidoxime reactivates AChE if given early (&lt;24 h)</td></tr>
                   <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Methanol / ethylene glycol</td><td>Fomepizole (or ethanol)</td><td>Inhibit alcohol dehydrogenase. Prevent toxic metabolite formation. Dialysis for severe cases</td></tr>
                   <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Digoxin</td><td>Digoxin-specific Fab fragments</td><td>Binds free digoxin. Indicated for life-threatening arrhythmias or K⁺ &gt;5 mmol/L</td></tr>
-                  <tr><td className="py-2 font-medium text-foreground">Local anaesthetic toxicity</td><td>Intralipid 20%</td><td>&gt;70 kg: 100 mL bolus then 1000 mL/hr. &lt;70 kg: 1.5 mL/kg bolus then 15 mL/kg/hr (AoA 2023). Acts as 'lipid sink' + metabolic support</td></tr>
+                  <tr><td className="py-2 font-medium text-foreground">Local anaesthetic toxicity</td><td>Intralipid 20%</td><td>UK QRH: 1.5 mL/kg IV over 2–3 minutes, then 15 mL/kg/hour. Follow QRH 3-10 for escalation and the cumulative limit.</td></tr>
                 </tbody>
               </table>
             </div>
@@ -470,7 +467,7 @@ const ToxicologyTopic = () => {
               "ABC first, then specific antidote; consult TOXBASE.",
               "Paracetamol — NAC by UK nomogram (SNAP 2-bag: 100 mg/kg over 2 h, then 200 mg/kg over 10 h); opioid — naloxone titrated (start 100–400 µg IV); β-blocker/CCB — glucagon, high-dose insulin euglycaemia.",
               "TCA overdose: wide QRS + hypotension → sodium bicarbonate 1–2 mmol/kg; treat seizures and arrhythmias.",
-              "LAST: 20% lipid emulsion — bolus 1.5 mL/kg (fixed 100 mL if >70 kg), then infusion 15 mL/kg/h for all patients (≈1000 mL/h in an adult >70 kg), doubled to 30 mL/kg/h if circulation remains unstable; up to 2 repeat boluses, max 12 mL/kg.",
+              "For LAST, the UK QRH gives weight-based lipid doses. Select one named checklist and use its bolus, infusion, reassessment and maximum-dose instructions together.",
               "Toxidromes: cholinergic (DUMBELS — atropine + pralidoxime), anticholinergic (hot/dry/mad), sympathomimetic, opioid, sedative.",
             ]}
           />

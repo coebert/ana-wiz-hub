@@ -1,4 +1,5 @@
 import type { CaseBank } from "./types";
+import { professionalPracticeCases } from "./professionalPracticeCases";
 
 const s = {
   acidBase: { label: "BJA Educ: acid–base interpretation", href: "https://doi.org/10.1093/bjaed/mkx008" },
@@ -58,12 +59,12 @@ export const icuCaseBank: CaseBank = {
   slug: "intensive-care",
   path: "/intensive-care/case-bank",
   title: "Intensive Care Case Bank",
-  subtitle: "Twenty-nine progressive critical care scenarios covering acid–base interpretation, ventilation strategy, sepsis, organ support, neuroprotection, resuscitation, burns, paediatric and neonatal critical care, organ donation and haematological emergencies.",
-  metaDescription: "Twenty-nine progressive FFICM intensive care cases on acid–base, ARDS and proning, sepsis, renal replacement, poisoning, trauma, brain injury, post-arrest care, burns, organ donation, TTP and paediatric critical care including paediatric ARDS, septic shock, DKA, HUS, bronchiolitis, head injury, major trauma, burns, neonatal sepsis and newborn resuscitation.",
+  subtitle: "Progressive critical care scenarios covering acid–base interpretation, ventilation strategy, sepsis, organ support, neuroprotection, resuscitation, burns, paediatric and neonatal critical care, organ donation, haematological emergencies, clinical supervision and quality improvement.",
+  metaDescription: "Progressive intensive care cases on acid–base, ARDS and proning, sepsis, renal replacement, poisoning, trauma, brain injury, post-arrest care, burns, organ donation, TTP and paediatric critical care including paediatric ARDS, neonatal sepsis and newborn resuscitation. Practise clinical supervision and quality improvement through ICU handover cases.",
   backPath: "/intensive-care",
   backLabel: "Intensive Care",
   accentColor: "text-icu",
-  categories: ["Acid–base", "Ventilation", "Infection & immunity", "Organ support & metabolic", "Neuro & resuscitation", "Paediatric critical care"],
+  categories: ["Acid–base", "Ventilation", "Infection & immunity", "Organ support & metabolic", "Neuro & resuscitation", "Paediatric critical care", "Professional practice"],
   cases: [
     {
       id: "icu-hagma-dka",
@@ -1401,5 +1402,6 @@ export const icuCaseBank: CaseBank = {
       takeHome: "In a paediatric major burn use a Lund–Browder chart, give modified Parkland 3–4 mL/kg per % burn from the time of injury plus separate 4-2-1 maintenance with glucose, titrate to urine output 1–1.5 mL/kg/h, defend temperature at 36.5–37.5 °C, and escalate safeguarding when the history does not fit.",
       sourceLinks: [s.parkland, s.ibi, s.emsbBurns, s.safeguarding],
     },
+    ...professionalPracticeCases,
   ],
 };

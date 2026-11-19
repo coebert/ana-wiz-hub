@@ -77,7 +77,7 @@ export const pkNeuroCoag: DrugPharmacokineticsMap = {
     infusionBehaviour: "When enteral absorption fails, IV nimodipine may be used but with continuous blood pressure monitoring, as onset of hypotension can be abrupt; if hypotension limits therapy, reduce to 30 mg 2-hourly rather than omitting doses.",
   },
   "tranexamic-acid": {
-    onset: "IV onset within minutes; benefit in trauma and post-partum haemorrhage is critically time-dependent, with efficacy lost if given beyond 3 h of injury or bleeding onset.",
+    onset: "IV onset within minutes; benefit in trauma and post-partum haemorrhage is critically time-dependent, with routine treatment started within 3 hours of injury for bleeding trauma or within 3 hours of birth for diagnosed postpartum haemorrhage.",
     duration: "Antifibrinolytic effect persists for several hours after a single dose, tracking plasma concentration rather than a separate tissue effect.",
     halfLife: "~2 h.",
     volumeOfDistribution: "Vd ~0.35–0.5 L/kg; distributes into most body fluids including CSF, aqueous humour, joint fluid and crosses the placenta.",

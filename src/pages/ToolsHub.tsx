@@ -21,9 +21,9 @@ const TOOLS = [
   },
   {
     slug: "maintenance-fluid",
-    title: "Maintenance fluid (4-2-1)",
+    title: "Maintenance fluid (children and adults)",
     blurb:
-      "Holliday–Segar hourly maintenance rate and 24-hour requirement by weight.",
+      "Paediatric 4-2-1 and Holliday–Segar estimates, or the NICE adult routine maintenance range.",
     icon: Droplet,
   },
   {

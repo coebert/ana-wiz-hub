@@ -12,6 +12,7 @@ const sources = {
   steroid: { label: "Association of Anaesthetists 2020", href: "https://doi.org/10.1111/anae.14963" },
   phaeo: { label: "BJA Education: phaeochromocytoma", href: "https://doi.org/10.1093/bjaed/mkv033" },
   crash2: { label: "CRASH-2", href: "https://doi.org/10.1016/S0140-6736(10)60835-5" },
+  whoPph: { label: "WHO postpartum haemorrhage guidance", href: "https://www.who.int/publications/i/item/9789240115637" },
   woman: { label: "WOMAN trial", href: "https://doi.org/10.1016/S0140-6736(17)30638-4" },
   poise3: { label: "POISE-3", href: "https://doi.org/10.1056/NEJMoa2201171" },
   apagbi: { label: "APAGBI guidelines and standards", href: "https://www.apagbi.org.uk/guidelines" },
@@ -64,13 +65,13 @@ const detailedAnswers: Record<string, DetailedAnswerSection[]> = {
   ],
   "txa-trauma": [
     { title: "Clinical reasoning", content: "TXA inhibits plasminogen activation and limits fibrin breakdown. In significant traumatic haemorrhage, survival benefit is time dependent and greatest with early administration; viscoelastic results are not required before the first dose. Beyond three hours after injury, routine CRASH-2 treatment should not be initiated because benefit is lost and harm is possible." },
-    { title: "Management and monitoring", content: "Give 1 g IV over 10 minutes as the priority dose, then a second 1 g while bleeding continues — either the CRASH-2 eight-hour infusion or a further short bolus per local major haemorrhage protocol — while continuing definitive haemorrhage control, balanced blood-component resuscitation, warming and calcium replacement. Use ROTEM or TEG to guide subsequent fibrinogen, plasma and platelet therapy and track temperature, pH, ionised calcium and lactate." },
+    { title: "Management and monitoring", content: "The adult bleeding-trauma regimen is 1 g IV over 10 minutes then 1 g over eight hours. Continue definitive haemorrhage control, balanced blood-component resuscitation, warming and calcium replacement. Use ROTEM or TEG to guide subsequent fibrinogen, plasma and platelet therapy and track temperature, pH, ionised calcium and lactate." },
     { title: "Exam pitfall", content: "TXA is an adjunct, not a reason to delay theatre, interventional radiology or damage-control resuscitation. Always state the injury-to-dose interval." },
   ],
   "txa-pph": [
-    { title: "Clinical reasoning", content: "Postpartum haemorrhage activates fibrinolysis early, so TXA should be given promptly once PPH is diagnosed and within three hours of bleeding onset. It reduces death from bleeding but does not correct uterine atony, retained tissue, trauma or coagulopathy by itself." },
-    { title: "Management and monitoring", content: "Give TXA 1 g IV as soon as possible; repeat 1 g if bleeding continues after 30 minutes or restarts within 24 hours, following local protocol. Continue uterotonics, surgical or radiological control and major-haemorrhage resuscitation. Measure fibrinogen early, warm the patient and products, and monitor platelets, coagulation, pH and ionised calcium." },
-    { title: "Exam pitfall", content: "Do not postpone TXA until laboratory results return, but also do not let it distract from the four causes of PPH and definitive control. Record bleeding onset and dose times." },
+    { title: "Clinical reasoning", content: "Postpartum haemorrhage activates fibrinolysis early, so TXA should be given promptly once PPH is diagnosed and within three hours of birth. It reduces death from bleeding but does not correct uterine atony, retained tissue, trauma or coagulopathy by itself." },
+    { title: "Management and monitoring", content: "Give 1 g IV over 10 minutes promptly within 3 hours of birth. Repeat 1 g if bleeding continues after 30 minutes or restarts within 24 hours of the first dose. Continue uterotonics, surgical or radiological control and major-haemorrhage resuscitation. Measure fibrinogen early, warm the patient and products, and monitor platelets, coagulation, pH and ionised calcium." },
+    { title: "Exam pitfall", content: "Do not postpone TXA until laboratory results return, but also do not let it distract from the four causes of PPH and definitive control. Record the time of birth, the onset of bleeding and each dose time." },
   ],
   "txa-elective": [
     { title: "Clinical reasoning", content: "In major non-cardiac surgery, TXA lowers bleeding, but POISE-3 did not prove non-inferiority for its composite cardiovascular safety outcome. Decision-making therefore combines procedural blood-loss risk with active or previous thrombosis, vascular disease, anticoagulation and renal function. A remote provoked DVT is not the same as active thrombosis." },
@@ -274,18 +275,18 @@ const caseSeeds: CaseSeed[] = [
       { title: "Use viscoelastic testing", prompt: "What role does ROTEM play after initial treatment?", answer: ["ROTEM/TEG guides fibrinogen, plasma and platelet therapy and can identify ongoing hyperfibrinolysis.", "It complements rather than replaces immediate evidence-based TXA in early major trauma.", "Trend physiology: temperature, pH, ionised calcium, lactate and surgical control."] },
       { title: "Avoid the timing trap", prompt: "What if the patient arrived four hours after injury?", answer: ["Routine CRASH-2 trauma TXA should not be started beyond three hours because benefit is absent and harm is possible.", "Management remains urgent haemorrhage control and goal-directed resuscitation."] },
     ],
-    takeHome: "For bleeding trauma, TXA is a time-dependent adjunct: the 1 g loading dose within three hours carries the benefit; the second 1 g follows per local protocol while bleeding continues.", sourceLinks: [sources.crash2],
+    takeHome: "For bleeding trauma, TXA is a time-dependent adjunct: give 1 g IV over 10 minutes within three hours of injury and follow with 1 g over eight hours. CRASH-2 tested the full regimen.", sourceLinks: [sources.crash2],
   },
   {
     id: "txa-pph", title: "Postpartum haemorrhage after caesarean birth", category: "Antifibrinolytics", difficulty: "Intermediate",
     patient: "A 34-year-old develops uterine atony and 1.4 L blood loss 25 minutes after caesarean delivery.",
     presentation: "Uterotonics and surgical measures are underway. She remains tachycardic with brisk ongoing bleeding.",
     stages: [
-      { title: "Add antifibrinolytic treatment", prompt: "What is the TXA plan?", answer: ["Give TXA 1 g IV as soon as possible and within three hours of bleeding onset.", "If bleeding continues after 30 minutes or restarts within 24 hours, a second 1 g dose may be given according to the WOMAN regimen and local protocol.", "TXA does not replace uterotonics, surgical control or activation of the obstetric major-haemorrhage pathway."] },
+      { title: "Add antifibrinolytic treatment", prompt: "What is the TXA plan?", answer: ["Give TXA 1 g IV over 10 minutes as soon as possible and within three hours of birth.", "If bleeding continues after 30 minutes or restarts within 24 hours, a second 1 g dose may be given according to the WOMAN regimen and local protocol.", "TXA does not replace uterotonics, surgical control or activation of the obstetric major-haemorrhage pathway."] },
       { title: "Resuscitate in parallel", prompt: "Which targets deserve repeated attention?", answer: ["Assess fibrinogen early because it can fall rapidly in obstetric haemorrhage.", "Warm patient and products; monitor ionised calcium, acid–base status, platelets and coagulation.", "Use blood products and fibrinogen replacement according to clinical bleeding, laboratory or viscoelastic results and local protocol."] },
-      { title: "Communicate the endpoint", prompt: "What should the team document?", answer: ["Time of bleeding onset and each TXA dose, cumulative blood loss, interventions and response.", "Thrombosis risk assessment later remains important, but appropriate TXA for active PPH is not a reason to withhold indicated prophylaxis indefinitely."] },
+      { title: "Communicate the endpoint", prompt: "What should the team document?", answer: ["Time of birth, onset of bleeding and each TXA dose, cumulative blood loss, interventions and response.", "Thrombosis risk assessment later remains important, but appropriate TXA for active PPH is not a reason to withhold indicated prophylaxis indefinitely."] },
     ],
-    takeHome: "In postpartum haemorrhage, give TXA early alongside—never instead of—uterotonic, surgical and transfusion management.", sourceLinks: [sources.woman],
+    takeHome: "In postpartum haemorrhage, give TXA early alongside—never instead of—uterotonic, surgical and transfusion management.", sourceLinks: [sources.woman, sources.whoPph],
   },
   {
     id: "txa-elective", title: "Tranexamic acid in high-risk non-cardiac surgery", category: "Antifibrinolytics", difficulty: "Advanced",

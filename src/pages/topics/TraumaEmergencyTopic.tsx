@@ -44,15 +44,15 @@ const tocItems = [
 const traumaFaqs: Array<[string, string]> = [
   [
     "What is rapid sequence induction (RSI) in trauma?",
-    "RSI in trauma follows the same core principles as standard RSI — pre-oxygenation, rapid induction, cricoid pressure (controversial), and intubation without bag-mask ventilation — but with critical modifications for the injured patient: (1) resuscitate before you intubate where possible; (2) choose ketamine 0.5–2 mg/kg as the induction agent because it preserves sympathetic tone and cardiac output; (3) avoid propofol or thiopentone in hypovolaemic patients as they cause catastrophic vasodilation; (4) use rocuronium 1.2 mg/kg for rapid paralysis with sugammadex available for immediate reversal once the airway is secure — not as a CICO rescue; (5) maintain manual in-line stabilisation with the collar front removed; (6) have vasopressors drawn up before laryngoscopy because intubation can precipitate arrest in the shocked patient.",
+    "Preoxygenate, prepare suction and rescue airway equipment, and resuscitate haemorrhagic shock alongside airway management. Choose the induction agent and dose for the patient’s physiology, with blood and vasopressor support available. Ketamine can still cause hypotension. Maintain oxygenation, including gentle low-pressure facemask ventilation when required. If intubation fails, progress through the DAS rescue oxygenation plans. Once CICO is declared, proceed immediately to emergency front-of-neck airway.",
   ],
   [
     "What is damage control resuscitation?",
-    "Damage control resuscitation (DCR) is a strategy for severe trauma that targets the 'lethal triad' of hypothermia, acidosis and coagulopathy. Its four pillars are: (1) permissive hypotension — allowing SBP 80–90 mmHg in bleeding trauma without TBI until surgical haemorrhage control, to reduce clot disruption; (2) haemostatic resuscitation — using 1:1:1 ratios of PRBC:FFP:platelets rather than crystalloid; (3) tranexamic acid 1 g IV within 3 hours of injury (CRASH-2); and (4) limiting crystalloid to prevent dilutional coagulopathy. Active warming and early surgical control of bleeding are simultaneous priorities.",
+    "Control bleeding promptly, prevent heat loss, limit crystalloid and give tranexamic acid when indicated. In actively bleeding adults, start the local major haemorrhage protocol with plasma and red cells at 1:1, then use laboratory results and the local viscoelastic algorithm to guide further components. Until bleeding is controlled, the European guideline recommends SBP 80–90 mmHg if there is no clinical evidence of brain injury.",
   ],
   [
     "When should a massive transfusion protocol (MTP) be activated?",
-    "Activate the MTP when any of the following are met: anticipated need for ≥10 units PRBC in 24 hours, >4 units PRBC in 1 hour, haemodynamic instability despite initial fluid resuscitation, ongoing uncontrolled surgical bleeding, or a base deficit >6 mmol/L with tachycardia suggesting significant occult haemorrhage. The protocol delivers pre-thawed blood products in fixed 1:1:1 ratios (PRBC:FFP:platelets) via a rapid infuser, with point-of-care viscoelastic testing (TEG/ROTEM) to guide individual component therapy once available.",
+    "Activate the local major haemorrhage protocol promptly for suspected major bleeding, using haemodynamic status, response to resuscitation and expected ongoing blood loss. NICE NG39 starts plasma and red cells at 1:1 in adults with active bleeding. Give platelets under the local protocol and move to laboratory-guided replacement as early as possible.",
   ],
   [
     "What are the complications of massive transfusion?",
@@ -60,15 +60,15 @@ const traumaFaqs: Array<[string, string]> = [
   ],
   [
     "What is permissive hypotension and when is it contraindicated?",
-    "Permissive hypotension is the deliberate restriction of fluid resuscitation to maintain SBP 80–90 mmHg (or mean arterial pressure ~50–60 mmHg) in a bleeding trauma patient before definitive surgical haemorrhage control. The rationale is that restoring normal blood pressure in uncontrolled bleeding disrupts fragile clots and worsens haemorrhage. It is ABSOLUTELY CONTRAINDICATED in traumatic brain injury (TBI), where the injured brain has lost autoregulation and relies on adequate perfusion pressure — target SBP >110 mmHg or MAP ≥80 mmHg in TBI to maintain cerebral perfusion pressure and prevent secondary brain injury.",
+    "Restrict volume replacement until bleeding is controlled. Without clinical evidence of brain injury, the European trauma guideline recommends an initial SBP of 80–90 mmHg. If haemorrhagic shock and TBI coexist, NICE NG39 recommends continuing a restrictive approach when haemorrhage dominates and a less restrictive approach to preserve cerebral perfusion when brain injury dominates. The European MAP target of at least 80 mmHg applies to severe TBI (GCS ≤8).",
   ],
   [
     "When should tranexamic acid (TXA) be given in trauma?",
-    "Give TXA 1 g IV over 10 minutes as early as possible, and always within 3 hours of injury — the CRASH-2 mortality benefit is strongly time-dependent, and treatment started beyond 3 hours confers no benefit and may cause harm. The CRASH-2 regimen adds a second 1 g by infusion over 8 hours; neither CRASH-2 nor CRASH-3 tested the loading dose separately from the infusion, so give the full regimen unless your local major haemorrhage protocol specifies otherwise. CRASH-3 (isolated head injury) showed no significant overall reduction in head-injury death; benefit was confined to mild-to-moderate injury treated early. Follow your local major haemorrhage protocol. TXA inhibits fibrinolysis by blocking plasminogen activation and should be given to all trauma patients with significant bleeding or at risk of it, unless clearly contraindicated.",
+    "For adult major trauma with active or suspected active bleeding, give TXA promptly, normally within 3 hours of injury: 1 g IV over 10 minutes then 1 g over 8 hours. NICE NG39 allows use after 3 hours only with evidence of hyperfibrinolysis. For head injury with GCS ≤12 and no suspected active extracranial bleeding, NICE NG232 advises considering a 2 g IV bolus in people aged 16 or over within 2 hours of injury, before imaging. CRASH-3 did not establish an overall reduction in head-injury death among patients treated within 3 hours (RR 0.94, 95% CI 0.86–1.02); the estimate favoured TXA in mild-to-moderate injury.",
   ],
   [
     "How do you manage a traumatic brain injury (TBI) patient?",
-    "TBI management follows the mantra 'avoid the secondary insults': (1) prevent hypoxia — target SpO₂ >94% with early definitive airway if GCS ≤8 or risk of aspiration; (2) prevent hypotension — maintain SBP >110 mmHg or MAP ≥80 mmHg at all times; (3) prevent hypercapnia and hypocapnia — target PaCO₂ 4.5–5.0 kPa (mild hypocapnia 4.0–4.5 kPa only if herniation suspected); (4) head-up 15–30° to reduce ICP; (5) osmotherapy with mannitol 0.25–1 g/kg or hypertonic saline 3% 250 mL for signs of raised ICP; (6) urgent CT imaging and neurosurgical consultation; (7) avoid hyperglycaemia and hyponatraemia; (8) seizure prophylaxis if indicated. Permissive hypotension is contraindicated in TBI.",
+    "TBI management follows the mantra 'avoid the secondary insults': (1) prevent hypoxia — target SpO₂ >94% with early definitive airway if GCS ≤8 or risk of aspiration; (2) avoid hypotension and set a target appropriate to the severity of brain injury and the presence of haemorrhagic shock; (3) prevent hypercapnia and hypocapnia — initially target PaCO₂ 35–45 mmHg (4.7–6.0 kPa) when intracranial pressure is not elevated. Temporary controlled hyperventilation may bridge impending herniation to definitive treatment; (4) head-up 15–30° to reduce ICP; (5) if intracranial hypertension or herniation is suspected, use hyperosmolar therapy under the neurotrauma protocol, accounting for haemodynamics, sodium and renal function; (6) urgent CT imaging and neurosurgical consultation; (7) avoid hyperglycaemia and hyponatraemia; (8) seizure prophylaxis if indicated. In severe TBI, Brain Trauma Foundation systolic thresholds depend on age. In combined TBI and haemorrhagic shock, NICE NG39 bases fluid restriction on the dominant condition.",
   ],
   [
     "What is the lethal triad in trauma?",
@@ -76,11 +76,11 @@ const traumaFaqs: Array<[string, string]> = [
   ],
   [
     "How do you choose an induction agent for a haemodynamically unstable trauma patient?",
-    "Ketamine is the agent of choice in haemodynamically unstable trauma patients. At doses of 0.5–2 mg/kg IV, it preserves sympathetic tone, maintains cardiac output and blood pressure, provides analgesia, and is a bronchodilator — all valuable in the shocked polytrauma patient. Etomidate 0.3 mg/kg is an acceptable alternative and is often preferred in TBI because it reduces cerebral metabolic rate and ICP, though it can cause adrenal suppression. Propofol and thiopentone should be AVOIDED in hypovolaemic trauma patients because they cause profound vasodilation and myocardial depression, potentially causing cardiovascular collapse on induction.",
+    "Ketamine or etomidate can be used for emergency induction. Adjust the dose to consciousness, shock severity and preceding resuscitation. Both can be followed by cardiovascular collapse. Treat haemorrhage and prepare haemodynamic support before induction where time permits.",
   ],
   [
     "What is the role of TEG/ROTEM in massive transfusion?",
-    "Thromboelastography (TEG) and rotational thromboelastometry (ROTEM) are point-of-care viscoelastic coagulation tests that assess clot formation, stability and lysis in real time. In massive transfusion they enable goal-directed therapy: a flat r-time / CT suggests give FFP; low alpha-angle / low fibrinogen amplitude suggests give cryoprecipitate or fibrinogen concentrate; low maximum amplitude suggests give platelets; rapid lysis suggests give TXA. Using TEG/ROTEM reduces unnecessary blood product administration, identifies fibrinolysis, and allows individualised component therapy rather than blind fixed-ratio resuscitation alone.",
+    "Viscoelastic testing can guide haemostatic treatment during major bleeding within a locally validated algorithm. TEG reports reaction time (R) and ROTEM reports clotting time (CT). Consider anticoagulant effects and factor deficiency if initiation is delayed. Interpret clot strength alongside fibrin-specific tests, platelet count, conventional laboratory results and the clinical bleeding. A single prolonged clotting time cannot determine a plasma prescription.",
   ],
   [
     "When is spinal immobilisation needed in trauma?",
@@ -88,7 +88,7 @@ const traumaFaqs: Array<[string, string]> = [
   ],
   [
     "What fluid should be used for resuscitation in major trauma?",
-    "Blood and blood products, not crystalloid. NICE NG39 recommends blood products in a 1:1 plasma:red cell ratio for active bleeding and advises against crystalloid in hospital — large crystalloid volumes cause haemodilution, dilutional coagulopathy, hypothermia and acidosis, and worsen outcomes. Pre-hospital, if blood is unavailable, 250 mL crystalloid boluses titrated to a radial pulse may be used. Resuscitation targets are permissive hypotension (a palpable radial pulse or SBP ~80–90 mmHg) until haemorrhage is controlled, except in traumatic brain injury where cerebral perfusion must be maintained (Brain Trauma Foundation: SBP ≥100–110 mmHg depending on age). Once bleeding is controlled, restore normal perfusion.",
+    "During active bleeding in hospital, NICE NG39 recommends blood components and advises against crystalloids. Use one plasma unit per red-cell unit initially in adults. Pre-hospital, when blood components are unavailable, titrate crystalloid to a palpable central pulse. If TBI coexists, balance restriction for bleeding against the need to maintain cerebral perfusion according to which injury dominates.",
   ],
   [
     "How is haemorrhage controlled in major trauma?",
@@ -116,17 +116,17 @@ const workedExamples: WorkedExample[] = [
       <div className="space-y-2">
         <p className="font-semibold text-foreground">Step-by-step RSI plan</p>
         <ol className="list-decimal list-inside space-y-1">
-          <li><strong>Resuscitate before you intubate.</strong> Activate MHP, give 1 g TXA IV (CRASH-2 window: within 3 h), start 1:1:1 product through a rapid infuser.</li>
+          <li><strong>Resuscitate before you intubate.</strong> Activate MHP, give 1 g TXA IV (CRASH-2 window: within 3 h), start warmed plasma and red cells at 1:1 under the adult major haemorrhage protocol.</li>
           <li><strong>Pre-oxygenate while preparing.</strong> 3 min tidal-volume O₂ at 15 L/min; head-up 20° if BP allows; apnoeic oxygenation via nasal cannula 15 L/min.</li>
-          <li><strong>Choose induction agent.</strong> Ketamine <strong>1–2 mg/kg IV</strong> (preserves SVR, bronchodilator). Reduce to 0.5–1 mg/kg if obtunded. Avoid propofol/thiopentone — drop SVR catastrophically in shock.</li>
-          <li><strong>Choose neuromuscular blocker.</strong> Rocuronium <strong>1.2 mg/kg</strong> (rapid, no IOP/ICP rise, sugammadex 16 mg/kg available for failed intubation).</li>
+          <li><strong>Choose induction agent.</strong> Select ketamine or etomidate according to physiology. Reduce the dose in profound shock and prepare blood and vasopressor support. Neither drug guarantees a stable circulation.</li>
+          <li><strong>Choose neuromuscular blocker.</strong> Rocuronium 1.2 mg/kg is an adult RSI option. If intubation fails, prioritise rescue oxygenation. In CICO, proceed immediately to emergency front-of-neck airway with adequate paralysis.</li>
           <li><strong>Manage the C-spine.</strong> Manual in-line stabilisation with the front of the collar removed. Cricoid pressure remains controversial — release if it impairs the laryngoscopy view.</li>
           <li><strong>Plan A → B → C.</strong> Videolaryngoscope first attempt; second-generation SAD ready; FONA kit open on the trolley.</li>
           <li><strong>Vasopressor on the syringe.</strong> Push-dose metaraminol 0.5 mg or noradrenaline infusion ready to run before laryngoscopy.</li>
         </ol>
         <p className="font-semibold text-foreground mt-2">Decision points</p>
         <ul className="list-disc list-inside space-y-1">
-          <li>If isolated TBI: keep MAP ≥ 80 mmHg (CPP) — permissive hypotension does NOT apply.</li>
+          <li>In severe TBI (GCS ≤8), the European trauma guideline recommends MAP ≥80 mmHg. With haemorrhagic shock and TBI, use the dominant condition to guide volume replacement.</li>
           <li>If suxamethonium chosen: avoid in crush injury &gt; 24 h, burns &gt; 24 h, spinal cord injury &gt; 72 h (hyperkalaemia).</li>
         </ul>
         <div className="mt-2 rounded-md border border-destructive/30 bg-destructive/5 p-2">
@@ -140,7 +140,7 @@ const workedExamples: WorkedExample[] = [
       </div>
     ),
     answer:
-      "Ketamine + rocuronium RSI with manual in-line stabilisation, videolaryngoscope, and vasopressor on the syringe. Run damage-control resuscitation in parallel: 1:1:1 products, TXA within 3 h, permissive hypotension (SBP target 80–90 mmHg, except in TBI where MAP ≥ 80). Anticipate haemodynamic collapse on induction.",
+      "Ketamine + rocuronium RSI with manual in-line stabilisation, videolaryngoscope, and vasopressor on the syringe. Run damage-control resuscitation in parallel: plasma and red cells at 1:1 initially, TXA within 3 h, and a perfusion strategy guided by haemorrhage and brain injury. Anticipate haemodynamic collapse on induction.",
     cites: ["CRASH-2 2010"],
   },
   {
@@ -156,12 +156,12 @@ const workedExamples: WorkedExample[] = [
           <li><strong>Treat ↓ iCa²⁺ now.</strong> 10 mL of 10% calcium chloride IV (= 6.8 mmol Ca²⁺) OR 30 mL of 10% calcium gluconate (= 6.6 mmol Ca²⁺). CaCl₂ delivers 3× more elemental calcium per mL but is more vesicant — central line preferred.</li>
           <li><strong>Treat hyperkalaemia.</strong> 10 units soluble insulin with 25 g glucose (125 mL 20%, 50 mL 50%, or 250 mL 10%) per local protocol; nebulised salbutamol 10–20 mg as an adjunct. The calcium also stabilises the myocardium. Check glucose at baseline, 30, 60, 90, 120, 180, 240, 300 and 360 minutes; extend if high risk/repeated dosing. Pretreatment glucose &lt;7 mmol/L: follow with 10% glucose 50 mL/h for 5 h. <InlineRef topicId="trauma-emergency" refLabel="UKKA Hyperkalaemia July 2026" /></li>
           <li><strong>Address the lethal triad.</strong> Active warming (Bair Hugger + warmed fluids); correct acidosis by restoring perfusion (not bicarbonate); ROTEM/TEG to guide further FFP/cryo/platelets.</li>
-          <li><strong>Repeat ABG every 30 min</strong> during ongoing MHP — iCa²⁺ &gt; 1.0, K⁺ &lt; 5.5, pH &gt; 7.25, temp &gt; 36 °C.</li>
+          <li><strong>Repeat ABG every 30 min</strong> during ongoing MHP — aim for normal ionised calcium (usually 1.1–1.3 mmol/L), K⁺ &lt; 5.5, pH &gt; 7.25, temp &gt; 36 °C.</li>
         </ol>
         <p className="font-semibold text-foreground mt-2">Decision points</p>
         <ul className="list-disc list-inside space-y-1">
           <li>Fibrinogen replacement (cryoprecipitate or concentrate) if Clauss fibrinogen ≤ 1.5 g/L or viscoelastic testing shows a functional fibrinogen deficit.</li>
-          <li>Stop platelets if count &gt; 100 unless ongoing surgical bleeding.</li>
+          <li>Guide further platelets by bleeding, platelet count, injury site and the major haemorrhage protocol.</li>
         </ul>
         <div className="mt-2 rounded-md border border-destructive/30 bg-destructive/5 p-2">
           <p className="text-xs font-semibold uppercase tracking-wide text-destructive mb-1">Common traps</p>
@@ -220,10 +220,10 @@ const TraumaEmergencyTopic = () => {
       }}
       keyPoints={[
         { text: "RSI: pre-oxygenation, rapid induction, no ventilation (unless desaturation), rapid intubation", cites: ["BJA Educ 2016"] },
-        { text: "Damage control: permissive hypotension (except TBI), 1:1:1 ratio, TXA within 3 hours", cites: ["CRASH-2 2010"] },
+        { text: "Start adult trauma plasma and red cells at 1:1. With TBI and haemorrhagic shock, the dominant condition guides volume replacement. Give TXA promptly when indicated.", cites: ["NG39 1:1", "NG39 TBI and shock", "CRASH-2 2010"] },
         { text: "The lethal triad: hypothermia, acidosis, coagulopathy — prevent all three", cites: ["ATLS 10th ed"] },
-        { text: "Ketamine is the induction agent of choice in haemodynamically unstable patients", cites: ["BJA Educ 2016"] },
-        { text: "TEG/ROTEM enables goal-directed transfusion and reduces blood product use", cites: ["CRASH-2 2010"] },
+        { text: "Tailor induction to the severity of shock and prepare for cardiovascular collapse with either ketamine or etomidate.", cites: ["Ketamine or etomidate 2025"] },
+        { text: "Use conventional or viscoelastic tests to guide further haemostatic treatment during major bleeding.", cites: ["European Trauma Bleeding Guideline 2023"] },
         { text: "Citrate toxicity (↓ iCa²⁺) and hyperkalaemia are the commonest metabolic complications of MHP", cites: ["ATLS 10th ed"] },
       ]}
       coreConcepts={
@@ -256,9 +256,9 @@ const TraumaEmergencyTopic = () => {
               {[
                 { label: "Pre-oxygenation", value: "3 min tidal breathing or 8 vital capacity breaths with 100% O₂" },
                 { label: "Cricoid pressure", value: "30N applied by trained assistant (controversial — may impair laryngoscopy)" },
-                { label: "Induction", value: "Ketamine 1-2 mg/kg (haemodynamically unstable) or propofol (if stable)" },
+                { label: "Induction", value: "Choose and titrate the induction agent to physiology; prepare haemodynamic support" },
                 { label: "Muscle relaxant", value: "Suxamethonium 1-1.5 mg/kg or rocuronium 1.2 mg/kg" },
-                { label: "No bag-mask ventilation", value: "Between induction and intubation (unless SpO₂ falls)" },
+                { label: "Maintain oxygenation", value: "Use gentle low-pressure facemask ventilation when required during RSI" },
                 { label: "Plan B ready", value: "2nd-gen SAD and FONA equipment immediately available" },
               ].map((item) => (
                 <div key={item.label} className="p-3 rounded-lg bg-secondary/30 border border-border">
@@ -281,25 +281,22 @@ const TraumaEmergencyTopic = () => {
               <div className="p-3 rounded-lg border border-border">
                 <p className="font-semibold text-foreground text-sm">Advantages</p>
                 <ul className="list-disc list-inside space-y-1 text-sm text-muted-foreground mt-1">
-                  <li>The most cardiostable induction agent — minimal fall in SVR, contractility or cardiac output, so it preserves coronary and cerebral perfusion pressure in shock, hypovolaemia, aortic stenosis and ischaemic heart disease.</li>
-                  <li>Reduces cerebral metabolic rate, cerebral blood flow and ICP while maintaining MAP, so CPP is better protected than with propofol or thiopentone.</li>
+                  <li>Etomidate generally causes less cardiovascular depression than several alternatives. Severe hypovolaemia and positive-pressure ventilation can still precipitate cardiovascular collapse.</li>
+                  <li>Reduces cerebral metabolic rate, cerebral blood flow and ICP ; the effect on CPP also depends on maintaining systemic blood pressure or thiopentone.</li>
                   <li>Rapid, predictable onset and offset with a wide therapeutic index; no histamine release and bronchospasm is uncommon.</li>
                 </ul>
               </div>
               <div className="p-3 rounded-lg border border-border">
                 <p className="font-semibold text-foreground text-sm">Disadvantages</p>
                 <ul className="list-disc list-inside space-y-1 text-sm text-muted-foreground mt-1">
-                  <li><strong>Adrenocortical suppression</strong> — dose-dependent inhibition of 11β-hydroxylase for up to 24–72 hours after a single dose; associated with impaired cortisol response and, in sepsis, with worse outcomes. This is the reason it has largely been abandoned for ICU sedation and is avoided in septic shock <InlineRef topicId="trauma-emergency" refLabel="Cuthbertson 2009 (Etomidate)" />.</li>
+                  <li><strong>Adrenocortical suppression</strong> — dose-dependent inhibition of 11β-hydroxylase for up to 24–72 hours after a single dose; associated with impaired cortisol response after induction. Clinical outcomes depend on the patient and indication. This is the reason it has largely been abandoned for ICU sedation and is avoided in septic shock <InlineRef topicId="trauma-emergency" refLabel="Cuthbertson 2009 (Etomidate)" />.</li>
                   <li>Myoclonus and involuntary movements (may be mistaken for seizures), pain on injection and thrombophlebitis, and a high incidence of postoperative nausea and vomiting.</li>
                   <li>No analgesic properties; propylene glycol formulations risk osmolar load and haemolysis with repeated dosing.</li>
                 </ul>
               </div>
             </div>
             <p className="text-sm text-muted-foreground leading-relaxed mt-2">
-              <strong className="text-foreground">Practical position in trauma:</strong> ketamine 0.5–2 mg/kg remains the usual first choice because it maintains sympathetic
-              tone without adrenal suppression. Etomidate is a reasonable alternative where sympathomimetic effects are undesirable (e.g. severe aortic stenosis, critical
-              coronary disease) or where ketamine is unavailable, given as a single reduced dose with a vasopressor drawn up — but it should be avoided in established sepsis
-              and never used as an infusion.
+              <strong className="text-foreground">Practical position in trauma:</strong> choose ketamine or etomidate according to physiology, adjust the induction dose in shock and prepare haemodynamic support. Cardiovascular collapse can follow either agent. The comparative trial in critically ill adults was not a trauma-specific trial.<InlineRef topicId="trauma-emergency" refLabel="Ketamine or etomidate 2025" />
             </p>
             </CollapsibleSubsection>
           </ExamSection>
@@ -367,8 +364,8 @@ const TraumaEmergencyTopic = () => {
               Targets the lethal triad of hypothermia, acidosis, and coagulopathy:
             </p>
             <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside">
-              <li><strong>Permissive hypotension</strong>: target SBP 80-90 mmHg (except TBI) until surgical haemorrhage control</li>
-              <li><strong>Haemostatic resuscitation</strong>: 1:1:1 ratio (PRBC : FFP : platelets)</li>
+              <li><strong>Permissive hypotension</strong>: with no clinical evidence of brain injury, aim for SBP 80–90 mmHg until bleeding is controlled. If TBI and haemorrhagic shock coexist, identify which dominates. <InlineRef topicId="trauma-emergency" refLabel="Rossaint 2023 BP target" /><InlineRef topicId="trauma-emergency" refLabel="NG39 TBI and shock" /></li>
+              <li><strong>Haemostatic resuscitation</strong>: start plasma and red cells at 1:1 in adults, then tailor replacement to bleeding and tests. Give platelets under the local protocol. <InlineRef topicId="trauma-emergency" refLabel="NG39 1:1" /></li>
               <li><strong>Tranexamic acid</strong>: 1g IV within 3 hours of injury (CRASH-2)<InlineRef topicId="trauma-emergency" refLabel="CRASH-2 2010" /></li>
               <li><strong>Limit crystalloid</strong>: avoid haemodilution and worsening coagulopathy</li>
               <li><strong>Warm fluids/patient</strong>: active warming to prevent hypothermia</li>
@@ -388,9 +385,9 @@ const TraumaEmergencyTopic = () => {
             <div className="space-y-3">
               {[
                 { label: "Before blood is available", detail: "NG39 limits crystalloid to the pre-hospital setting when blood components are unavailable, titrated to a palpable central (carotid or femoral) pulse; it does not specify a bolus volume. Do not chase a normal blood pressure with litres of clear fluid — this 'resuscitation injury' worsens the lethal triad." },
-                { label: "Permissive hypotension", detail: "Target SBP 80–90 mmHg (or palpable radial pulse) until surgical or radiological haemorrhage control. Restoring normal pressure in uncontrolled bleeding 'pops the clot' and increases blood loss. Key exception: TBI, where hypotension must be avoided (Brain Trauma Foundation: SBP ≥110 mmHg aged 15–49 or >70, ≥100 mmHg aged 50–69). Permissive hypotension is consensus-based; trial evidence is limited." },
-                { label: "Balanced blood-product resuscitation", detail: "1:1:1 PRBC:FFP:platelets approximates whole blood. PROPPR (680 patients) found no significant difference in 24-h (12.7% vs 17.0%) or 30-day mortality (22.4% vs 26.1%) between 1:1:1 and 1:1:2, but 1:1:1 achieved haemostasis more often (86% vs 78%) with fewer deaths from exsanguination at 24 h (9.2% vs 14.6%) and no increase in complications. Give via a warmed rapid infuser through wide-bore access (two 14–16 G peripherals or a trauma line)." },
-                { label: "Endpoints of resuscitation", detail: "After haemorrhage control, resuscitate to normal physiology: lactate or base deficit trending down, urine output >0.5 mL/kg/h, normothermia, iCa²⁺ >1.0 mmol/L, fibrinogen >1.5 g/L, platelets >50–100 × 10⁹/L. Lactate clearance and base deficit are better guides than blood pressure alone." },
+                { label: "Permissive hypotension", detail: "Without clinical evidence of brain injury, use SBP 80–90 mmHg until bleeding is controlled. NICE advises a less restrictive approach when brain injury dominates over haemorrhagic shock. For severe TBI, BTF suggests SBP ≥100 mmHg at ages 50–69 or ≥110 mmHg at ages 15–49 or over 70." },
+                { label: "Balanced blood-product resuscitation", detail: "In PROPPR, 1:1:1 refers to plasma, platelet-unit equivalents and red cells. The pack contained six plasma units, one adult platelet dose and six red-cell units. PROPPR (680 patients) found no significant difference in 24-h (12.7% vs 17.0%) or 30-day mortality (22.4% vs 26.1%) between 1:1:1 and 1:1:2, but 1:1:1 achieved haemostasis more often (86% vs 78%) with fewer deaths from exsanguination at 24 h (9.2% vs 14.6%) and no increase in complications. Give via a warmed rapid infuser through wide-bore access (two 14–16 G peripherals or a trauma line)." },
+                { label: "Endpoints of resuscitation", detail: "After haemorrhage control, resuscitate to normal physiology: lactate or base deficit trending down, urine output >0.5 mL/kg/h, normothermia, ionised calcium in the normal range (usually 1.1–1.3 mmol/L), fibrinogen >1.5 g/L, platelets >50–100 × 10⁹/L. Lactate clearance and base deficit are better guides than blood pressure alone." },
                 { label: "Special situations", detail: "Elderly patients and those on anticoagulants decompensate earlier and need lower activation thresholds; reverse anticoagulation (PCC for warfarin/DOACs per local protocol). In isolated TBI avoid hypotension entirely — a single episode of SBP <90 mmHg was associated with roughly doubled mortality in observational data (Chesnut 1993)." },
               ].map(item => (
                 <div key={item.label} className="p-3 rounded-lg border border-border">
@@ -489,7 +486,7 @@ const TraumaEmergencyTopic = () => {
               {[
                 { label: "Hypothermia", value: "Core temp <35°C → impaired clotting, platelet dysfunction. Active warming essential." },
                 { label: "Acidosis", value: "pH <7.2 → reduced clotting factor activity, fibrinogen dysfunction. Correct by restoring perfusion." },
-                { label: "Coagulopathy", value: "Dilutional + consumptive. Treat with 1:1:1 products, fibrinogen, platelets, calcium." },
+                { label: "Coagulopathy", value: "Dilution and consumption both contribute. Follow the local major haemorrhage protocol, then target replacement to bleeding and tests." },
               ].map((item) => (
                 <div key={item.label} className="p-3 rounded-lg bg-secondary/30 border border-border">
                   <p className="text-xs text-muted-foreground">{item.label}</p>
@@ -503,12 +500,12 @@ const TraumaEmergencyTopic = () => {
           <ExamSection id="tbi" exams={[Exam.FINAL, Exam.FFICM]}>
             <CollapsibleSubsection title="Traumatic Brain Injury">
             <p className="text-muted-foreground leading-relaxed mb-3">
-              TBI requires a fundamentally different approach — permissive hypotension is contraindicated. Target SBP &gt;110 mmHg and SpO₂ &gt;94% at all times to prevent secondary brain injury.
+              Protect the brain from hypoxia and hypotension. In severe TBI (GCS ≤8), the European trauma guideline recommends MAP ≥80 mmHg. In combined haemorrhagic shock and TBI, NICE advises a less restrictive volume strategy when brain injury dominates, and continued restriction when haemorrhage dominates. <InlineRef topicId="trauma-emergency" refLabel="Rossaint 2023 BP target" /><InlineRef topicId="trauma-emergency" refLabel="NG39 TBI and shock" />
             </p>
             <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside">
               <li><strong>Airway</strong>: early intubation if GCS ≤8 or risk of aspiration</li>
-              <li><strong>Targets</strong>: PaCO₂ 4.5–5.0 kPa; mild hypocapnia (4.0–4.5 kPa) only if herniation suspected</li>
-              <li><strong>Osmotherapy</strong>: mannitol 0.25–1 g/kg or 3% hypertonic saline 250 mL for raised ICP</li>
+              <li><strong>Ventilation:</strong> initially target PaCO₂ 35–45 mmHg (4.7–6.0 kPa) in the absence of intracranial hypertension. With impending herniation, temporary controlled hyperventilation can bridge to definitive treatment.<InlineRef topicId="trauma-emergency" refLabel="ACS TBI 2024" /></li>
+              <li><strong>Osmotherapy:</strong> treat intracranial hypertension or impending herniation with a protocol-based hyperosmolar bolus, selecting the agent and dose for the patient’s haemodynamics, sodium, renal function and response.<InlineRef topicId="trauma-emergency" refLabel="ACS TBI 2024" /></li>
               <li><strong>Position</strong>: head-up 15–30° to aid venous drainage</li>
               <li><strong>Avoid</strong>: hypoglycaemia, hyperglycaemia, hyponatraemia</li>
             </ul>
@@ -538,10 +535,10 @@ const TraumaEmergencyTopic = () => {
           <ExamPitfallsCallout
             accent="clinical"
             pitfalls={[
-              "Damage-control resuscitation: permissive hypotension (SBP ~80–90 mmHg until haemorrhage controlled, except in TBI), 1:1:1 blood products, tranexamic acid within 3 h.",
+              "Damage-control resuscitation includes bleeding control, initial adult plasma:red cells at 1:1, early TXA when indicated, warming and a blood pressure target appropriate to the injuries.",
               "ATLS A-B-C-D-E with simultaneous resuscitation; reassess after every intervention.",
               "Massive transfusion protocol: activate early — fixed-ratio products, calcium replacement, replace fibrinogen at ≤1.5 g/L, avoid hypothermia and acidosis.",
-              "Traumatic brain injury: avoid hypoxia, hypotension and hypercapnia; target SBP >110 mmHg, SpO₂ >94%, PaCO₂ 4.5–5.0 kPa.",
+              "Traumatic brain injury: avoid hypoxia and hypotension. Severe TBI has age-specific systolic targets. Coordinate cerebral perfusion and haemorrhage control if both injuries are present.",
               "Tension pneumothorax is a clinical diagnosis — decompress before imaging.",
             ]}
           />

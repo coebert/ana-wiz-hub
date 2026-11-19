@@ -17,7 +17,7 @@ const LocalAnaestheticToxicityNote = () => (
       },
       {
         q: "What is the Intralipid 20% dose in LAST?",
-        a: "Bolus 1.5 mL/kg lean body weight over 2–3 minutes (≈ 100 mL in a 70 kg adult), followed by an infusion of 15 mL/kg/h. If circulation is not restored, give no more than two repeat boluses after 5 and 10 minutes; review ongoing instability and increase the infusion as directed by the QRH. Maximum cumulative dose 12 mL/kg (840 mL at 70 kg).",
+        a: "Bolus 1.5 mL/kg over 2–3 minutes (≈ 100 mL in a 70 kg adult), followed by an infusion of 15 mL/kg/h. If circulation is not restored, give no more than two repeat boluses after 5 and 10 minutes; if instability persists or recurs after 5 minutes, double the infusion to 30 mL/kg/h. Maximum cumulative dose 12 mL/kg (840 mL at 70 kg).",
       },
       {
         q: "What are the early warning signs of LAST?",
@@ -53,12 +53,11 @@ const LocalAnaestheticToxicityNote = () => (
       <li>
         <strong>Lipid emulsion 20%</strong>: 1.5 mL/kg over 2–3 min, then
         15 mL/kg/h infusion. If circulation is not restored, give no more
-        than two repeat boluses after 5 and 10 min; review ongoing
-        instability and increase the infusion as directed by the QRH.
+        than two repeat boluses after 5 and 10 min; if instability persists or recurs after 5 minutes, double the infusion to 30 mL/kg/h.
         Maximum total 12 mL/kg (840 mL at 70 kg).
       </li>
       <li>Continue CPR throughout. Consider VA-ECMO early.</li>
-      <li>Monitor in critical care for at least 12 hours — recurrence has been reported. Monitor for pancreatitis after lipid rescue independently of whether propofol was used.</li>
+      <li>Arrange monitored care appropriate to the severity and course of the event. Assess for pancreatitis after lipid rescue with clinical review and daily amylase or lipase.</li>
     </ol>
 
     <h2>Prevention</h2>

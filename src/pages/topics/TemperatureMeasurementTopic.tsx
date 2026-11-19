@@ -37,7 +37,7 @@ const keyPoints = [
   { text: "Thermistors are NTC semiconductors — resistance falls exponentially with rising temperature; very sensitive but non-linear", cites: ["Cross & Plunkett Ch.11"] },
   { text: "Platinum RTDs have a positive temperature coefficient and stable calibrated response. Accuracy and speed depend on the complete probe and readout; they are not universally the slowest sensor.", cites: ["NIST Industrial Thermometer Calibration"] },
   { text: "Handheld infrared ear thermometers use the Stefan–Boltzmann law (P ∝ T⁴) with a thermopile to estimate IR emission from the ear canal/tympanic region; they are indirect estimates, not a direct tympanic-membrane measurement", cites: ["Cross & Plunkett Ch.11", "NICE CG65 Measurement Sites"] },
-  { text: "A contact tympanic-membrane probe lies close to the internal carotid supply to the hypothalamus and tracks core temperature; a handheld infrared ear device does not necessarily see the membrane and applies a correction algorithm", cites: ["Cross & Plunkett Ch.11", "NICE CG65 Measurement Sites"] },
+  { text: "A correctly positioned contact probe measures temperature at the tympanic membrane. A handheld infrared ear thermometer gives an indirect estimate. NICE advises against indirect infrared estimates in adults having surgery.", cites: ["Cross & Plunkett Ch.11", "NICE CG65 Measurement Sites"] },
   { text: "NICE CG65 recommendations 1.1.5–1.1.6: use a direct core site or a direct estimate shown to be accurate within 0.5 °C; do not use indirect infrared tympanic, temporal or forehead estimates in adults having surgery", cites: ["NICE CG65 Measurement Sites"] },
   { text: "Handheld infrared ear readings are error-prone: poor probe alignment, ear canal wax or narrowing, and a cooler canal wall cause under-reading. In critically ill adults they agreed poorly with pulmonary artery temperature, so they should not replace a core site when accuracy matters", cites: ["Moran 2007 (Tympanic ICU)"] },
   { text: "Thermocouples are self-generating (no battery needed); thermistors and RTDs require external power via a Wheatstone bridge", cites: ["Cross & Plunkett Ch.11"] },
@@ -54,7 +54,7 @@ const TemperatureMeasurementTopicWorkedExamples: WorkedExample[] = [
         <ol className="list-decimal list-inside space-y-1">
           <li>NICE CG65 (Hypothermia: prevention and management in adults having surgery, 2008, last updated December 2016) requires temperature measurement before induction and every 30 minutes intra-operatively, with forced-air warming set to maintain at least 36.5 °C. NG180 (Perioperative care in adults, 2020) cross-refers to CG65 rather than replacing it</li>
           <li>Distal oesophageal probe (lower third) tracks cardiac/aortic blood temperature accurately — first choice in intubated abdominal surgery</li>
-          <li>Nasopharyngeal probe approximates brain temperature; risk of epistaxis with coagulopathy</li>
+          <li>A nasopharyngeal probe can estimate core temperature. Consider the risk of epistaxis with coagulopathy.</li>
           <li>NICE excludes handheld infrared ear thermometry for perioperative core-temperature measurement. A direct-contact membrane probe uses a different method.</li>
           <li>Bladder temperature lags during rapid changes (e.g., CPB rewarming) and is unreliable with low urine flow</li>
         </ol>
@@ -93,7 +93,7 @@ const TemperatureMeasurementTopic = () => {
       }}
       sectionSources={{
         objectives: ["Cross & Plunkett Ch.11", "NICE CG65"],
-        keyPoints: ["Bindu 2017 (Temperature)", "NICE CG65", "Cross & Plunkett Ch.11", "NICE CG65 Measurement Sites", "Kurz 1996 wound infection", "Eshraghi 2014 Zero Heat Flux", "NICE NG125", "BJA Educ Temperature 2020", "SCCM IDSA Fever 2023"],
+        keyPoints: ["Bindu 2017 (Temperature)", "NICE CG65", "Cross & Plunkett Ch.11", "NICE CG65 Measurement Sites", "Kurz 1996 wound infection", "Eshraghi 2014 Zero Heat Flux", "SCCM IDSA Fever 2023"],
       }}
       coreConcepts={
         <>
@@ -133,8 +133,7 @@ const TemperatureMeasurementTopic = () => {
               historical ice-bath reference <InlineRef topicId="temperature-measurement" refLabel="Cross & Plunkett Ch.11" />.
             </p>
             <p>
-              <strong>Clinical use:</strong> Nasopharyngeal and oesophageal temperature probes. The nasopharyngeal probe reflects
-              brain temperature as it sits near the internal carotid artery.
+              <strong>Clinical use:</strong> Nasopharyngeal and distal oesophageal probes can estimate core temperature during surgery. Neither directly measures brain temperature.
             </p>
           </div>
         </div>
@@ -264,9 +263,8 @@ const TemperatureMeasurementTopic = () => {
               <strong>indirect estimate</strong>, not a direct tympanic-membrane measurement.
             </p>
             <p>
-              A <strong>contact tympanic-membrane probe</strong> is a different device: the probe touches the membrane, which shares its
-              blood supply with the hypothalamus through the internal carotid, so it can track core temperature closely. Proximity of the
-              ear to the brain does not make a handheld infrared device equivalent: it may sample the cooler canal wall, and cerumen,
+              A correctly positioned <strong>contact tympanic-membrane probe</strong> measures temperature at the membrane.
+              A handheld infrared ear thermometer may sample the cooler canal wall. Cerumen,
               a narrow or curved canal, otitis, recent ear surgery, hearing aids, lying on one ear and ambient temperature all alter the
               reading. Critically ill adults may show poor agreement with central measurements <InlineRef topicId="temperature-measurement" refLabel="Moran 2007 (Tympanic ICU)" />.
             </p>
@@ -312,12 +310,9 @@ const TemperatureMeasurementTopic = () => {
             <div className="rounded-lg border border-border p-3">
               <p className="font-semibold text-foreground mb-1">Brain temperature</p>
               <p>
-                After traumatic brain injury, brain temperature is often higher than core temperature — on average about 1 °C,
-                and by up to 2 °C or more in some patients. The gap is associated with worse outcome and changes with cerebral
-                perfusion pressure and blood flow (a fall in CPP narrows it). <strong>Direct intraparenchymal probes</strong> (often
-                combined with an ICP monitor) are the gold standard. Nasopharyngeal probes, near the hypothalamus and internal
-                carotid supply, are the usual non-invasive surrogate, but they still read below injured-brain temperature;
-                jugular bulb temperature reflects mixed cerebral venous blood and can underestimate regional brain temperature
+                An intraparenchymal probe measures brain temperature directly. In a study of patients with head injury,
+                brain temperature was often higher than systemic temperature. The gap widened when cerebral perfusion
+                pressure fell to 20–50 mmHg. A core or jugular bulb temperature reading cannot reliably substitute for the brain measurement
                 <InlineRef topicId="temperature-measurement" refLabel="Rumana 1998 Brain Temp" />.
               </p>
             </div>

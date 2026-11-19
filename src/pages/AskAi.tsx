@@ -27,6 +27,7 @@ import { Input } from "@/components/ui/input";
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetDescription, SheetTrigger } from "@/components/ui/sheet";
 import { SectionLayout } from "@/components/layout/SectionLayout";
 import { supabase } from "@/integrations/supabase/client";
+import { SavedAskAnswerReview } from "@/components/SavedAskAnswerReview";
 
 /**
  * Ask AnaesthesiaCore — a single-conversation tutor that retrieves the most
@@ -478,27 +479,29 @@ const Bubble = ({ message }: { message: UIMessage }) => {
         <BookOpen className="h-3.5 w-3.5" aria-hidden />
       </div>
       <div className="flex-1 min-w-0 prose prose-sm max-w-none dark:prose-invert prose-headings:font-serif prose-a:text-primary prose-a:font-medium">
-        <ReactMarkdown
-          components={{
-            // Use react-router Link for in-app paths so we don't full-page reload.
-            a: ({ href, children, ...rest }) => {
-              if (href && href.startsWith("/")) {
+        <SavedAskAnswerReview text={text}>
+          <ReactMarkdown
+            components={{
+              // Use react-router Link for in-app paths so we don't full-page reload.
+              a: ({ href, children, ...rest }) => {
+                if (href && href.startsWith("/")) {
+                  return (
+                    <Link to={href} className="text-primary underline-offset-2 hover:underline">
+                      {children}
+                    </Link>
+                  );
+                }
                 return (
-                  <Link to={href} className="text-primary underline-offset-2 hover:underline">
+                  <a href={href} target="_blank" rel="noreferrer" {...rest}>
                     {children}
-                  </Link>
+                  </a>
                 );
-              }
-              return (
-                <a href={href} target="_blank" rel="noreferrer" {...rest}>
-                  {children}
-                </a>
-              );
-            },
-          }}
-        >
-          {text || "…"}
-        </ReactMarkdown>
+              },
+            }}
+          >
+            {text || "…"}
+          </ReactMarkdown>
+        </SavedAskAnswerReview>
       </div>
     </div>
   );

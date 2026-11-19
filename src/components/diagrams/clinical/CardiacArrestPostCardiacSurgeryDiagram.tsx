@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { DiagramFigure } from "../_shared/DiagramFigure";
 
-type RhythmKey = "vf-vt" | "asystole-pea";
+type RhythmKey = "vf-vt" | "asystole" | "pea";
 
 interface Step {
   id: string;
@@ -16,15 +16,15 @@ const sharedFinal: Step[] = [
   {
     id: "resternotomy",
     title: "Emergency Resternotomy (≤5 min)",
-    detail: "Performed by a trained surgeon at the bedside. Internal cardiac massage at 100/min, internal defibrillation 20 J. Open chest gives access to control bleeding, relieve tamponade, and start internal massage.",
+    detail: "Performed by a trained cardiac surgical team at the bedside. Internal cardiac massage at 100/min, internal defibrillation 20 J. Open chest gives access to control bleeding, relieve tamponade, and start internal massage.",
     color: "hsl(0, 75%, 50%)",
     modified: true,
-    modificationNote: "Replaces standard external CPR after 3 shocks (VF/VT) or 3 min (asystole/PEA). Resternotomy set kept at the bedside on every cardiac ICU.",
+    modificationNote: "Prepare for reopening from the moment of arrest. RCUK advises emergency resternotomy within five minutes in persistent arrest up to ten days after cardiac surgery.",
   },
   {
     id: "ecmo",
     title: "Consider VA-ECMO / mechanical support",
-    detail: "If no return of spontaneous circulation despite resternotomy and reversible cause correction: escalate to VA-ECMO, IABP, or temporary VAD. Decision made by senior cardiac surgeon and intensivist.",
+    detail: "Consider extracorporeal CPR with the specialist team for prolonged resuscitation or when minimally invasive surgery delays reopening.",
     color: "hsl(280, 55%, 50%)",
     modified: true,
     modificationNote: "Cardiac surgical patients have rapid access to mechanical circulatory support — uniquely available rescue therapy.",
@@ -42,38 +42,38 @@ const pathways: Record<RhythmKey, Step[]> = {
     {
       id: "shock-x3",
       title: "Up to 3 stacked shocks BEFORE chest compressions",
-      detail: "If witnessed/monitored VF or pulseless VT (the usual scenario in CICU), give 3 sequential biphasic shocks (150–200 J) before starting external compressions. Defibrillator pads pre-applied.",
+      detail: "In witnessed monitored VF/pVT, give up to three consecutive shocks if a defibrillator is immediately available. Start compressions immediately if shocks cannot be delivered promptly, or if they fail. The initial exception lasts at most one minute.",
       color: "hsl(0, 75%, 50%)",
       modified: true,
       modificationNote: "Standard ALS gives 1 shock then 2 min CPR. Here, post-cardiac-surgery patients usually arrest while monitored and the underlying cause (e.g. reperfusion VF) often responds to immediate shocks without compressions, which can damage grafts/sternotomy.",
     },
     {
       id: "compressions",
-      title: "External chest compressions ONLY if shocks fail",
+      title: "Start compressions if immediate shocks fail or are unavailable",
       detail: "If still in VF/VT after 3 shocks, start external compressions at 100–120/min, depth 5–6 cm, allow full chest recoil. Anticipate reduced effectiveness due to recent sternotomy.",
       color: "hsl(210, 65%, 50%)",
     },
     {
       id: "drugs",
       title: "Modified drug strategy",
-      detail: "Withhold initial adrenaline. Amiodarone 300 mg IV for refractory VF/VT after 3 shocks. Consider lidocaine 1 mg/kg.",
+      detail: "For refractory VF/pVT, follow the cardiac surgical arrest protocol for antiarrhythmic treatment. If adrenaline is used, RCUK advises a reduced IV dose of 50–100 micrograms.",
       color: "hsl(140, 55%, 42%)",
       modified: true,
-      modificationNote: "Bolus adrenaline 1 mg can cause severe rebound hypertension after ROSC, disrupting fresh anastomoses. If used, give in 100–300 mcg increments only, on senior advice.",
+      modificationNote: "After cardiac surgery, excessive vasopressor doses can cause severe hypertension if spontaneous circulation returns.",
     },
     ...sharedFinal,
   ],
-  "asystole-pea": [
+  asystole: [
     {
       id: "recognise",
       title: "Recognise arrest — call for help",
-      detail: "Confirm asystole or PEA on monitor + arterial trace + absent pulse. Call cardiac arrest team AND on-call cardiac surgeon. Note time.",
+      detail: "Confirm arrest with the clinical signs and pulseless pressure waveform. Call the cardiac arrest and surgical teams, and prepare for emergency resternotomy.",
       color: "hsl(45, 90%, 50%)",
     },
     {
       id: "pacing",
       title: "Check & use epicardial pacing FIRST",
-      detail: "Almost all post-cardiac-surgery patients have epicardial pacing wires. For asystole or extreme bradycardia, set DDD or VVI at 80–100 bpm with maximum output BEFORE starting compressions.",
+      detail: "In asystole or extreme bradycardia, briefly pause epicardial pacing to identify the underlying rhythm. If it remains asystole or extreme bradycardia and wires are available, attempt immediate pacing at maximum output. Check for mechanical capture.",
       color: "hsl(195, 70%, 45%)",
       modified: true,
       modificationNote: "Standard ALS does not include this step — but pacing wires can immediately restore output without the trauma of CPR.",
@@ -81,7 +81,7 @@ const pathways: Record<RhythmKey, Step[]> = {
     {
       id: "compressions",
       title: "External chest compressions if no capture",
-      detail: "If pacing fails to produce output, start external compressions at 100–120/min. Brief pause for any rhythm/pulse check at the next assessment.",
+      detail: "Start compressions immediately if pacing is unavailable or fails to restore circulation. Limit the initial attempt to the first minute.",
       color: "hsl(210, 65%, 50%)",
     },
     {
@@ -95,10 +95,25 @@ const pathways: Record<RhythmKey, Step[]> = {
     {
       id: "drugs",
       title: "Modified drug strategy",
-      detail: "Withhold bolus adrenaline. Atropine no longer routine. Consider calcium, sodium bicarbonate if hyperkalaemia/acidosis suspected (cardioplegia effect).",
+      detail: "If adrenaline is used, RCUK advises a reduced IV dose of 50–100 micrograms. Identify and treat reversible causes.",
       color: "hsl(140, 55%, 42%)",
       modified: true,
       modificationNote: "Avoid 1 mg adrenaline boluses — risk of catastrophic hypertension with ROSC. Titrated low-dose only on senior advice.",
+    },
+    ...sharedFinal,
+  ],
+  pea: [
+    {
+      id: "compressions",
+      title: "Start external chest compressions immediately",
+      detail: "In pulseless electrical activity, call the cardiac arrest and surgical teams, start CPR and prepare for resternotomy immediately. If there is a paced rhythm, briefly pause pacing to check for underlying VF/pVT or asystole.",
+      color: "hsl(210, 65%, 50%)",
+    },
+    {
+      id: "causes",
+      title: "Treat reversible causes during CPR",
+      detail: "Assess tamponade, bleeding and hypovolaemia, tension pneumothorax and other reversible causes. If adrenaline is used, RCUK advises 50–100 micrograms IV. Prepare for early surgical reopening.",
+      color: "hsl(25, 80%, 50%)",
     },
     ...sharedFinal,
   ],
@@ -122,7 +137,7 @@ export default function CardiacArrestPostCardiacSurgeryDiagram() {
             Cardiac Arrest Following Cardiac Surgery — EACTS/EACTA Algorithm
           </h3>
           <p className="text-xs text-muted-foreground mt-1">
-            Click any step to read why it differs from the standard ALS algorithm. Toggle the initial rhythm to see the two pathways.
+            Click any step to read why it differs from the standard ALS algorithm. Select the initial rhythm to see its immediate treatment.
           </p>
         </figcaption>
   
@@ -131,7 +146,8 @@ export default function CardiacArrestPostCardiacSurgeryDiagram() {
           {(
             [
               { key: "vf-vt", label: "VF / pulseless VT" },
-              { key: "asystole-pea", label: "Asystole / PEA" },
+              { key: "asystole", label: "Asystole / extreme bradycardia" },
+              { key: "pea", label: "Pulseless electrical activity" },
             ] as const
           ).map((opt) => (
             <button
@@ -214,7 +230,7 @@ export default function CardiacArrestPostCardiacSurgeryDiagram() {
         </div>
   
         <p className="text-[11px] text-muted-foreground italic mt-4">
-          Source: Dunning et al., EACTS/EACTA Guideline for resuscitation after cardiac surgery (2009; updated 2017). Resternotomy capability and trained team must be immediately available wherever cardiac surgery is performed.
+          <a className="underline" href="https://www.resus.org.uk/professional-library/2025-resuscitation-guidelines/special-circumstances-guidelines">RCUK 2025 cardiac surgery guidance</a> and <a className="underline" href="https://www.sts.org/sites/default/files/documents/ExpertConsensus_ResuscitationAfterCardiacSurgery.pdf">STS post-cardiac-surgery resuscitation consensus</a>.
         </p>
       </figure>
     </DiagramFigure>

@@ -394,10 +394,9 @@ const MuscleRelaxantsTopic = () => {
             <h3 className="text-lg font-serif font-semibold text-foreground mt-6 mb-2">Relative rates and clinical pattern by agent</h3>
             <p className="text-foreground/90 leading-relaxed mb-3">
               NMBAs are the second commonest overall trigger of perioperative anaphylaxis after antibiotics, with an
-              incidence across all UK anaesthetics of roughly <strong>1 in 10,000</strong>. Within the NMBA group,
-              <strong> suxamethonium</strong> carries the highest reaction rate of any agent in current use, with
-              <strong> rocuronium and atracurium</strong> implicated less often and at broadly similar rates to one
-              another, and vecuronium and cisatracurium rarer still<InlineRef topicId="muscle-relaxants" refLabel="NAP6 2018" />. The clinical picture also differs by agent: reactions to <strong>suxamethonium</strong> more
+              overall incidence of severe perioperative anaphylaxis of about <strong>1 in 10,000 anaesthetics</strong>.
+              NAP6 estimated approximately twice the incidence with suxamethonium as with other NMBAs.
+              The main non-depolarising NMBAs had similar rates per administration<InlineRef topicId="muscle-relaxants" refLabel="NAP6 2018" />. The clinical picture also differs by agent: reactions to <strong>suxamethonium</strong> more
               frequently feature prominent <strong>bronchospasm</strong>, whereas reactions to <strong>atracurium</strong>
               (a benzylisoquinolinium prone to direct, non-immune histamine release as well as true IgE-mediated
               anaphylaxis) more often present with pronounced <strong>hypotension</strong>, sometimes with an urticarial

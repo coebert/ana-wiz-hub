@@ -12,7 +12,7 @@ import { Exam } from "@/data/curriculum";
 const gastrointestinalPhysiologyFaqs: Array<[string, string]> = [
   [
     "What are the current ASA fasting guidelines?",
-    "Clear fluids — 2 h. Breast milk — 4 h. Infant formula and light meal (toast) — 6 h. Fatty meal — 8 h. Recent ESAIC and APAGBI guidance encourages clear-fluid intake up to 1 h pre-op in children and adults (1-2-6 rule), reducing dehydration and improving comfort without increasing aspiration risk."
+    "For healthy patients having elective procedures, the ASA framework uses 2 hours for clear liquids, 4 hours for breast milk, 6 hours for infant formula or a light meal, and 8 hours or longer for fatty meals. ESAIC paediatric guidance uses 1 hour for clear fluids and 3 hours for breast milk in suitable children. The 2026 international adult consensus encourages clear liquids until 2 hours before anaesthesia and allows shorter intervals under an agreed local protocol. Select the relevant age group and local pathway and assess individual aspiration risk."
   ],
   [
     "What factors increase the risk of aspiration?",
@@ -29,7 +29,7 @@ const objectives = [
   "Map the four afferent inputs to the vomiting centre and link each to a class of antiemetic.",
   "Explain the determinants of lower oesophageal barrier pressure and the implications for aspiration risk.",
   "Outline gut motility, the migrating motor complex, and the time-course of post-operative ileus.",
-  "Apply RCoA pre-operative fasting guidance to common clinical scenarios.",
+  "Distinguish adult and paediatric elective fasting protocols and assess individual aspiration risk.",
 ];
 
 const workedExamples: WorkedExample[] = [
@@ -113,9 +113,9 @@ const GastrointestinalPhysiologyTopic = () => {
         keyPoints: { exams: [Exam.PRIMARY, Exam.FINAL] },
       }}
       sectionSources={{
-        objectives: ["Peck & Hill Ch.11", "RCoA Fasting 2019"],
+        objectives: ["Peck & Hill Ch.11", "ASA fasting guidance", "Adult fasting consensus 2026", "ESAIC paediatric fasting 2022"],
         workedExamples: ["Gan et al. 2020", "BJA Educ 2018", "Peck & Hill Ch.11"],
-        keyPoints: ["Peck & Hill Ch.11", "BJA Educ 2018", "Gan et al. 2020", "RCoA Fasting 2019", "Assoc Anaesth GLP-1 2024"],
+        keyPoints: ["Peck & Hill Ch.11", "BJA Educ 2018", "Gan et al. 2020", "ASA fasting guidance", "Adult fasting consensus 2026", "ESAIC paediatric fasting 2022", "Assoc Anaesth GLP-1 2024"],
       }}
       keyPoints={[
         { text: "Parietal cells secrete HCl via H⁺/K⁺-ATPase, stimulated by ACh (M₃), histamine (H₂), and gastrin (CCK-B).", cites: ["Gan et al. 2020"] },
@@ -315,18 +315,17 @@ const GastrointestinalPhysiologyTopic = () => {
             <CollapsibleSubsection title="Anaesthetic Implications">
             <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside leading-relaxed">
               <li>
-                <strong>Aspiration risk</strong>: RCoA fasting guidance — 2 h clear fluids, 6 h light meal/milk, 6 h
-                expressed breast milk in infants<InlineRef topicId="gi-physiology" refLabel="RCoA Fasting 2019" />. RSI for full-stomach scenarios; cricoid pressure (controversial but UK
-                standard).
+                <strong>Elective fasting.</strong> In adults, the 2026 international consensus encourages clear liquids until 2 hours before anaesthesia and permits shorter intervals under a local protocol
+                <InlineRef topicId="gi-physiology" refLabel="Adult fasting consensus 2026" />. For suitable children, ESAIC uses 1 hour for clear liquids and 3 hours for breast milk
+                <InlineRef topicId="gi-physiology" refLabel="ESAIC paediatric fasting 2022" />. ASA guidance uses 4 hours for breast milk
+                <InlineRef topicId="gi-physiology" refLabel="ASA fasting guidance" />. Emergencies and patients at increased aspiration risk need individual assessment.
               </li>
               <li>
                 <strong>Hepatic first-pass</strong>: oral drugs pass through portal circulation → extensive metabolism of
                 high extraction-ratio drugs (propranolol, lidocaine, GTN).
               </li>
               <li>
-                <strong>GLP-1 receptor agonists</strong> (semaglutide): markedly delayed gastric emptying — 2024 CPOC/Association of Anaesthetists
-                guidance recommends withholding ≥1 week (weekly) or the day before (daily) where clinically safe, and
-                treating as full-stomach if continued<InlineRef topicId="gi-physiology" refLabel="Assoc Anaesth GLP-1 2024" />.
+                <strong>GLP-1 receptor agonists.</strong> The 2025 UK multidisciplinary consensus recommends continuing treatment for elective procedures. Assess aspiration risk from the medication, patient and procedure, and agree a plan to reduce that risk <InlineRef topicId="gi-physiology" refLabel="Assoc Anaesth GLP-1 2024" />.
               </li>
             </ul>
             </CollapsibleSubsection>
@@ -334,7 +333,7 @@ const GastrointestinalPhysiologyTopic = () => {
 
           <ExamPitfallsCallout
             pitfalls={[
-              <><strong>GLP-1 agonists</strong> (semaglutide, tirzepatide): treat as full-stomach unless held per ASA/AAGBI 2024 guidance — gastric residual volume can be high even after prolonged fasting.</>,
+              <><strong>GLP-1 agonists</strong> (semaglutide, tirzepatide): the 2025 UK elective consensus recommends continuation with individual assessment of aspiration risk. Fasting time alone does not establish gastric emptying.</>,
               <><strong>RSI indications</strong>: hiatus hernia + symptoms, bowel obstruction, pregnancy &gt;20 weeks, recent trauma, emergency surgery, gastroparesis.</>,
               <><strong>Multimodal PONV prophylaxis</strong> beats single-agent every time — combine 5-HT₃ + dexamethasone ± droperidol or cyclizine.</>,
               <><strong>Ileus prevention</strong>: opioid-sparing analgesia, early enteral nutrition, gum chewing, alvimopan in selected ERAS pathways.</>,

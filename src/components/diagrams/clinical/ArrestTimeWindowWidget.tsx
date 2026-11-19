@@ -13,56 +13,23 @@ interface Threshold {
 
 const THRESHOLDS: Threshold[] = [
   {
-    at: 0,
-    label: "0:00",
-    title: "Arrest recognised",
-    action: "Confirm on monitor + arterial trace. Call cardiac arrest team AND on-call cardiac surgeon. Note time. Pre-applied defib pads in use.",
-    color: "hsl(45, 90%, 50%)",
-    tone: "info",
+    at: 0, label: "0:00", title: "Start rhythm-specific resuscitation",
+    action: "Confirm arrest, call the cardiac arrest and surgical teams and prepare for resternotomy. Start compressions immediately in PEA. In witnessed monitored VF/pVT, give up to three immediately available shocks. In asystole or extreme bradycardia try immediate pacing at maximum output if wires are available. Start compressions promptly if shocks or pacing are unavailable or fail.",
+    color: "hsl(45, 90%, 50%)", tone: "warn",
   },
   {
-    at: 60,
-    label: "1:00",
-    title: "Stacked shocks / pacing window",
-    action: "VF/VT: deliver up to 3 sequential biphasic shocks (150–200 J) BEFORE compressions. Asystole/PEA: switch epicardial wires to DDD/VVI 80–100 bpm at max output before compressions.",
-    color: "hsl(0, 75%, 50%)",
-    tone: "warn",
+    at: 60, label: "1:00", title: "Upper limit for initial shocks or pacing",
+    action: "If circulation has not returned, CPR should already be underway. Continue high-quality compressions and ventilation, address reversible causes and proceed with the surgical team’s preparations for reopening. If adrenaline is used, RCUK advises 50–100 micrograms IV.",
+    color: "hsl(0, 75%, 50%)", tone: "critical",
   },
   {
-    at: 120,
-    label: "2:00",
-    title: "Compressions if rhythm persists",
-    action: "If still arrested after 3 shocks (or no pacing capture): start external compressions 100–120/min, depth 5–6 cm. Amiodarone 300 mg IV for refractory VF/VT. Withhold bolus adrenaline.",
-    color: "hsl(210, 65%, 50%)",
-    tone: "warn",
-  },
-  {
-    at: 180,
-    label: "3:00",
-    title: "Asystole/PEA → prepare resternotomy",
-    action: "If still in asystole/PEA at 3 min, the resternotomy clock has expired. Open the resternotomy set. Address surgery-specific reversible causes (tamponade, bleeding, graft occlusion, hyperK⁺/acidosis).",
-    color: "hsl(25, 80%, 50%)",
-    tone: "critical",
-  },
-  {
-    at: 300,
-    label: "5:00",
-    title: "Emergency resternotomy",
-    action: "Refractory VF/VT or any persisting arrest at 5 min: perform bedside resternotomy by trained surgeon. Internal cardiac massage 100/min, internal defibrillation 20 J. Control bleeding, relieve tamponade.",
-    color: "hsl(0, 75%, 40%)",
-    tone: "critical",
-  },
-  {
-    at: 600,
-    label: "10:00",
-    title: "Escalate to mechanical support",
-    action: "No ROSC after resternotomy and reversible cause correction: escalate to VA-ECMO, IABP, or temporary VAD. Senior cardiac surgeon + intensivist decision. Continue internal massage until on support.",
-    color: "hsl(280, 55%, 50%)",
-    tone: "critical",
+    at: 300, label: "5:00", title: "Resternotomy within five minutes",
+    action: "For persistent arrest up to ten days after cardiac surgery, the trained team should reopen the chest within five minutes of arrest. Begin internal cardiac massage after reopening. Consider extracorporeal CPR for prolonged resuscitation or when reopening may be delayed.",
+    color: "hsl(0, 75%, 40%)", tone: "critical",
   },
 ];
 
-const MAX_SECONDS = 720; // 12 min display window
+const MAX_SECONDS = 300; // early surgical reopening window
 
 function fmt(t: number) {
   const m = Math.floor(t / 60);
@@ -121,7 +88,7 @@ export default function ArrestTimeWindowWidget() {
             </h3>
             <p className="text-xs text-muted-foreground mt-1">
               Simulate elapsed arrest time. The widget highlights the action
-              required as you approach each EACTS/EACTA threshold.
+              appropriate to the rhythm and the time limits for initial treatment and reopening.
             </p>
           </div>
           <div className="flex items-center gap-2">
@@ -245,9 +212,7 @@ export default function ArrestTimeWindowWidget() {
         </div>
   
         <p className="text-[11px] text-muted-foreground italic mt-4">
-          Educational tool only — not for live clinical use. Thresholds adapted
-          from Dunning et al., EACTS/EACTA Guideline for resuscitation after
-          cardiac surgery.
+          Teaching simulation. <a className="underline" href="https://www.resus.org.uk/professional-library/2025-resuscitation-guidelines/special-circumstances-guidelines">RCUK 2025 cardiac surgery guidance</a> and <a className="underline" href="https://www.sts.org/sites/default/files/documents/ExpertConsensus_ResuscitationAfterCardiacSurgery.pdf">STS post-cardiac-surgery resuscitation consensus</a>.
         </p>
       </div>
     </DiagramFigure>

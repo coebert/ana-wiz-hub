@@ -12,7 +12,7 @@ const SugammadexReversesRocuroniumNote = () => (
     faqs={[
       {
         q: "Can sugammadex reverse rocuronium that has only just been given?",
-        a: "In adults needing immediate reversal after rocuronium 1.2 mg/kg, the licensed sugammadex dose is 16 mg/kg, which reverses even a post-tetanic count of 0 within about 2–3 minutes. Reversal does not guarantee a patent airway: DAS 2025 states sugammadex is not a reliable strategy in failed tracheal intubation, so with declared CICO maintain paralysis and proceed immediately to emergency front-of-neck airway.",
+        a: "In adults needing immediate reversal after rocuronium 1.2 mg/kg, the licensed sugammadex dose is 16 mg/kg. Reversal does not guarantee a patent airway. With declared CICO, maintain paralysis and proceed immediately to emergency front-of-neck airway.",
       },
       {
         q: "Why doesn't sugammadex reverse atracurium or cisatracurium?",
@@ -71,11 +71,7 @@ const SugammadexReversesRocuroniumNote = () => (
         no TOF response.
       </li>
       <li>
-        <strong>16 mg/kg</strong> — adult immediate reversal after rocuronium
-        1.2 mg/kg. This is not a CICO rescue: DAS 2025 states sugammadex is not a
-        reliable strategy in failed tracheal intubation, so in declared CICO
-        maintain paralysis and proceed immediately to emergency front-of-neck
-        airway.
+        <strong>16 mg/kg</strong> — adult immediate reversal after rocuronium 1.2 mg/kg. In declared CICO, maintain paralysis and proceed immediately to emergency front-of-neck airway.
       </li>
     </ul>
     <p>
