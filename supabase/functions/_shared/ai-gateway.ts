@@ -1,85 +1,48 @@
-/**
- * Shared Lovable AI Gateway helper for Supabase Edge Functions.
- * Returns an OpenAI-compatible provider pre-wired with LOVABLE_API_KEY,
- * plus a `runIdReady` promise so streaming responses can forward the
- * X-Lovable-AIG-Run-ID header back to the browser.
- */
 import { createOpenAICompatible } from "npm:@ai-sdk/openai-compatible";
+import { callBase44Relay } from "./base44-assertion.ts";
+import { relayChat } from "./base44-ai.ts";
 
-const LOVABLE_AIG_RUN_ID_HEADER = "X-Lovable-AIG-Run-ID";
-
-export function createLovableAiGatewayProvider(lovableApiKey: string, initialRunId?: string) {
-  let runId = initialRunId?.trim() || undefined;
-  let resolveRunId: (value: string | undefined) => void = () => {};
-  let runIdResolved = false;
-  const runIdReady = new Promise<string | undefined>((resolve) => {
-    resolveRunId = resolve;
-  });
-  const publishRunId = (value?: string) => {
-    const next = value?.trim() || undefined;
-    if (!runId && next) runId = next;
-    if (!runIdResolved) {
-      runIdResolved = true;
-      resolveRunId(runId);
-    }
-  };
-  if (runId) publishRunId(runId);
-
-  const provider = createOpenAICompatible({
-    name: "lovable",
-    baseURL: "https://ai.gateway.lovable.dev/v1",
-    headers: {
-      "Lovable-API-Key": lovableApiKey,
-      "X-Lovable-AIG-SDK": "vercel-ai-sdk",
-    },
-    fetch: async (input, init) => {
-      const headers = new Headers(init?.headers);
-      if (runId && !headers.has(LOVABLE_AIG_RUN_ID_HEADER)) {
-        headers.set(LOVABLE_AIG_RUN_ID_HEADER, runId);
+/** The SDK uses our fetch implementation for every request. No provider URL is fetched here. */
+export function createBase44ChatProvider() {
+  return createOpenAICompatible({
+    name: "base44",
+    baseURL: "https://base44-sdk.invalid/v1",
+    fetch: async (_input, init) => {
+      if (typeof init?.body !== "string") {
+        return Response.json({ error: "Invalid chat request" }, { status: 400 });
       }
-      try {
-        const response = await fetch(input, { ...init, headers });
-        publishRunId(response.headers.get(LOVABLE_AIG_RUN_ID_HEADER) ?? undefined);
-        return response;
-      } catch (err) {
-        publishRunId(undefined);
-        throw err;
-      }
+      return relayChat(JSON.parse(init.body), init.signal ?? undefined);
     },
-  });
-
-  return Object.assign(provider, {
-    getRunId: () => runId,
-    waitForRunId: () => (runId ? Promise.resolve(runId) : runIdReady),
   });
 }
 
-/**
- * Embeds one or more strings via the Lovable AI Gateway. Uses
- * `openai/text-embedding-3-small` (1536 dims) — pgvector's HNSW index caps at
- * 2000 dims, ruling out the 3072-dim Gemini default.
- */
-export async function embedTexts(lovableApiKey: string, input: string | string[]) {
-  const res = await fetch("https://ai.gateway.lovable.dev/v1/embeddings", {
-    method: "POST",
-    headers: {
-      "Lovable-API-Key": lovableApiKey,
-      "X-Lovable-AIG-SDK": "vercel-ai-sdk",
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({
-      model: "openai/text-embedding-3-small",
-      input,
-    }),
-  });
-  if (!res.ok) {
-    const body = await res.text();
-    throw new Error(`embeddings failed (${res.status}): ${body}`);
+/** Existing kb_chunks and its pgvector index require the original model and 1,536 coordinates. */
+export async function embedTexts(input: string | string[]): Promise<number[][]> {
+  const texts = typeof input === "string" ? [input] : input;
+  if (!Array.isArray(texts) || !texts.length || texts.length > 32 ||
+      texts.some(text => typeof text !== "string" || !text.trim())) {
+    throw new Error("Invalid embedding batch");
   }
-  const data = await res.json();
-  return (data.data as Array<{ embedding: number[]; index: number }>)
-    .sort((a, b) => a.index - b.index)
-    .map((d) => d.embedding);
-}
+  let response: Response;
+  try {
+    response = await callBase44Relay("embeddings", { input: texts }, AbortSignal.timeout(60_000));
+  } catch {
+    throw new Error("EMBEDDINGS_UNAVAILABLE");
+  }
+  if (!response.ok) throw new Error("EMBEDDINGS_UNAVAILABLE");
+  const result = await response.json();
+  if (result?.model !== "text-embedding-3-small" || !Array.isArray(result.data) || result.data.length !== texts.length) {
+    throw new Error("Invalid embedding model or batch size");
+  }
 
-export { LOVABLE_AIG_RUN_ID_HEADER };
+  const ordered = new Map<number, number[]>();
+  for (const row of result.data) {
+    if (!Number.isInteger(row?.index) || row.index < 0 || row.index >= texts.length ||
+        ordered.has(row.index) || !Array.isArray(row.embedding) || row.embedding.length !== 1536 ||
+        !row.embedding.every((value: unknown) => typeof value === "number" && Number.isFinite(value))) {
+      throw new Error("Invalid embedding vector");
+    }
+    ordered.set(row.index, row.embedding);
+  }
+  return texts.map((_, index) => ordered.get(index)!);
+}

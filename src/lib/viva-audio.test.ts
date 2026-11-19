@@ -1,6 +1,8 @@
-import { describe, expect, it } from "vitest";
-import { resolveVoice, speechBody, SPEECH_MODEL } from "../../supabase/functions/tts-demo/request-audio";
+import { describe, expect, it, vi } from "vitest";
+import { resolveVoice, speechBody } from "../../supabase/functions/tts-demo/request-audio";
 import { chunkSpeechText, decodePCM, MAX_CHUNK_CHARS } from "./viva-audio";
+
+vi.mock("@/integrations/supabase/client", () => ({ supabase: {} }));
 
 describe("streaming viva speech", () => {
   it("splits long text into short chunks without losing words", () => {
@@ -27,11 +29,26 @@ describe("streaming viva speech", () => {
     expect(second.pending.length).toBe(0);
   });
 
-  it("requests SSE streaming from the hosted voice engine and keeps examiner/candidate voices distinct", () => {
-    const body = speechBody("Question", resolveVoice("onyx"));
-    expect(body.model).toBe(SPEECH_MODEL);
-    expect(body.stream_format).toBe("sse");
-    expect(resolveVoice("onyx")).not.toBe(resolveVoice("nova"));
+  it("requests examiner speech as PCM events", () => {
+    expect(speechBody("Question", resolveVoice("onyx"))).toEqual({
+      text: "Question",
+      voice: "onyx",
+      format: "pcm-sse",
+      instructions: "Read aloud in a clear, calm British examiner tone.",
+    });
+  });
+
+  it.each([
+    ["Kore", "alloy"], ["Charon", "onyx"], ["Aoede", "nova"],
+    ["Puck", "verse"], ["Fenrir", "ash"], ["Leda", "shimmer"],
+    ["Orus", "cedar"], ["Zephyr", "coral"],
+  ])("restores the saved %s preset using %s", (saved, expected) => {
+    expect(speechBody("Question", resolveVoice(saved)).voice).toBe(expected);
+  });
+
+  it("retains installed role selections and defaults unknown names", () => {
+    for (const role of ["alloy", "onyx", "nova"]) expect(resolveVoice(role)).toBe(role);
     expect(resolveVoice("made-up")).toBe(resolveVoice(undefined));
+    expect(resolveVoice(undefined)).toBe("alloy");
   });
 });

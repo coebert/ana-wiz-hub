@@ -1,3 +1,4 @@
+import { relayChat } from "../_shared/base44-ai.ts";
 // Topic accuracy auditor.
 // For each topic:
 //   1. Load the complete topic content from the build-time source corpus
@@ -87,7 +88,6 @@ const corsHeaders = {
     "authorization, x-client-info, apikey, content-type, x-internal-token",
 };
 
-const LOVABLE_API_KEY = Deno.env.get("LOVABLE_API_KEY")!;
 const FIRECRAWL_API_KEY = Deno.env.get("FIRECRAWL_API_KEY")!;
 const SUPABASE_URL = Deno.env.get("SUPABASE_URL")!;
 const SUPABASE_SERVICE_ROLE_KEY = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")!;
@@ -847,7 +847,6 @@ async function callAI(args: {
   system: string;
   userText: string;
   imageUrl?: string;
-  model?: string;
   timeoutMs?: number;
 }): Promise<any[]> {
   const userContent: any = args.imageUrl
@@ -857,41 +856,26 @@ async function callAI(args: {
       ]
     : args.userText;
 
-  const res = await fetchJsonWithTimeout(
-    "https://ai.gateway.lovable.dev/v1/chat/completions",
-    {
-      method: "POST",
-      headers: {
-        Authorization: `Bearer ${LOVABLE_API_KEY}`,
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        model: args.model ?? "google/gemini-3.1-pro-preview",
-        messages: [
-          { role: "system", content: args.system },
-          { role: "user", content: userContent },
-        ],
-        tools: [FINDING_TOOL],
-        tool_choice: {
-          type: "function",
-          function: { name: "emit_findings" },
-        },
-      }),
-    },
-    args.timeoutMs ?? (args.imageUrl ? 25_000 : 30_000),
-  );
-  if (!res.ok) {
-    throw new Error(`AI gateway ${res.status}: ${res.text.slice(0, 300)}`);
+  const signal = AbortSignal.timeout(args.timeoutMs ?? (args.imageUrl ? 25_000 : 30_000));
+  const response = await relayChat({
+    messages: [
+      { role: "system", content: args.system },
+      { role: "user", content: userContent },
+    ],
+    tools: [FINDING_TOOL],
+    tool_choice: { type: "function", function: { name: "emit_findings" } },
+  }, signal);
+  if (!response.ok) {
+    throw new Error(`AI gateway ${response.status}: ${(await response.text()).slice(0, 300)}`);
   }
-  const data = res.json as any;
-  const call = data?.choices?.[0]?.message?.tool_calls?.[0];
-  if (!call) return [];
-  try {
-    const parsed = JSON.parse(call.function.arguments);
-    return Array.isArray(parsed.findings) ? parsed.findings : [];
-  } catch {
-    return [];
+  const data = await response.json();
+  const call = data?.choices?.[0]?.message?.tool_calls?.[0]?.function;
+  if (call?.name !== "emit_findings" || typeof call.arguments !== "string") {
+    throw new Error("Invalid structured audit response");
   }
+  const result = JSON.parse(call.arguments);
+  if (!Array.isArray(result?.findings)) throw new Error("Invalid audit findings");
+  return result.findings;
 }
 
 // ---------- SVG label extraction ----------
@@ -1500,7 +1484,6 @@ async function auditTopic(
             "Audit every diagram for visual / anatomical / physiological accuracy.",
           ].join("\n"),
           imageUrl: screenshot,
-          model: "google/gemini-3.1-pro-preview",
           timeoutMs: Math.min(22_000, Math.max(10_000, remainingBudget() - 4_000)),
         });
         stages.diagram_findings = diagramFindings.length;
@@ -2023,7 +2006,7 @@ async function runBatch(jobId: string) {
       if (aiBlocked || consecutiveRateLimits >= 4) {
         const reason = aiBlocked
           ? `Audit paused — the AI gateway refused the request: ${aiBlocked}. ` +
-            `Top up AI credits (402) or re-enable Lovable AI / raise the workspace limit (403), then re-run.`
+            `Top up AI credits (402) or restore Base44 AI access / check the workspace limit (403), then re-run.`
           : `Audit paused after ${consecutiveRateLimits} consecutive AI rate limits (429). ` +
             `Rate limits are transient — re-run the audit later.`;
         console.error(`[audit-topics] halting job ${jobId}: ${reason}`);

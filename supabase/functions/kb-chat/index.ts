@@ -20,7 +20,7 @@ function sourceUnavailable(headers: HeadersInit = {}): Response {
   );
 }
 
-import { getAuthedUserId, isAdminUser } from "../_shared/require-user.ts";
+import { getAuthedUserId } from "../_shared/require-user.ts";
 /**
  * Ask AI chat endpoint. Receives an AI SDK UIMessage[] history, embeds the
  * latest user question, retrieves the top-K relevant `kb_chunks` snippets,
@@ -34,7 +34,7 @@ import { getAuthedUserId, isAdminUser } from "../_shared/require-user.ts";
 import { convertToModelMessages, streamText, type UIMessage } from "npm:ai";
 import { createClient } from "npm:@supabase/supabase-js@2";
 import { corsHeaders } from "npm:@supabase/supabase-js@2/cors";
-import { createLovableAiGatewayProvider, embedTexts, LOVABLE_AIG_RUN_ID_HEADER } from "../_shared/ai-gateway.ts";
+import { createBase44ChatProvider, embedTexts } from "../_shared/ai-gateway.ts";
 import { moderateText } from "../_shared/moderation.ts";
 
 interface MatchedChunk {
@@ -94,7 +94,7 @@ Deno.serve(async (req) => {
   }
   // Rebuild the history server-side: only plain text from user/assistant turns
   // is kept, so callers cannot inject system/tool roles or non-text parts.
-  const rawMessages = Array.isArray(body.messages) ? body.messages.slice(-20) : [];
+  const rawMessages = Array.isArray(body?.messages) ? body.messages.slice(-20) : [];
   const messages: UIMessage[] = rawMessages
     .filter((m) => m && (m.role === "user" || m.role === "assistant"))
     .map((m, i) => {
@@ -124,10 +124,9 @@ Deno.serve(async (req) => {
   // Stop before clinical generation/cache/provider work. Authentication remains first.
   return sourceUnavailable(corsHeaders);
 
-  const lovableKey = Deno.env.get("LOVABLE_API_KEY");
   const supabaseUrl = Deno.env.get("SUPABASE_URL");
   const serviceKey = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY");
-  if (!lovableKey || !supabaseUrl || !serviceKey) {
+  if (!supabaseUrl || !serviceKey) {
     return new Response(JSON.stringify({ error: "Server misconfigured" }), {
       status: 500,
       headers: { ...corsHeaders, "Content-Type": "application/json" },
@@ -141,7 +140,7 @@ Deno.serve(async (req) => {
 
   if (userQuestion) {
     try {
-      const [embedding] = await embedTexts(lovableKey, userQuestion);
+      const [embedding] = await embedTexts(userQuestion);
       const supabase = createClient(supabaseUrl, serviceKey, {
         auth: { persistSession: false },
       });
@@ -161,6 +160,7 @@ Deno.serve(async (req) => {
       }
     } catch (err) {
       console.error("[kb-chat] retrieval failed", err);
+      return sourceUnavailable(corsHeaders);
     }
   }
 
@@ -169,9 +169,7 @@ Deno.serve(async (req) => {
       .map(([route, { title, section }]) => `- ${title} (${section}) → ${route}`)
       .join("\n") || "(none)";
 
-  const initialRunId = req.headers.get(LOVABLE_AIG_RUN_ID_HEADER)?.trim() || undefined;
-  const gateway = createLovableAiGatewayProvider(lovableKey, initialRunId);
-  const model = gateway("google/gemini-3-flash-preview");
+  const model = createBase44ChatProvider()("base44");
 
   const augmentedSystem = `${SYSTEM_PROMPT}
 

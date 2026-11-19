@@ -1,3 +1,4 @@
+import { relayChat } from "../_shared/base44-ai.ts";
 import { createClient } from 'https://esm.sh/@supabase/supabase-js@2'
 
 const corsHeaders = {
@@ -31,30 +32,16 @@ function isRateLimited(ip: string): boolean {
 }
 
 async function moderateWithAI(text: string): Promise<{ allowed: boolean; reason?: string }> {
-  const LOVABLE_API_KEY = Deno.env.get('LOVABLE_API_KEY')
-  if (!LOVABLE_API_KEY) {
-    console.error('LOVABLE_API_KEY missing — defaulting to block')
-    return { allowed: false, reason: 'Moderation unavailable' }
-  }
-
-  const resp = await fetch('https://ai.gateway.lovable.dev/v1/chat/completions', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-      Authorization: `Bearer ${LOVABLE_API_KEY}`,
-    },
-    body: JSON.stringify({
-      model: 'google/gemini-3.1-flash-lite',
-      messages: [
-        {
-          role: 'system',
-          content:
-            'You are a strict content moderator for a medical education app review wall. Classify the user submission. Reject if it contains: profanity, expletives, slurs, racism, sexism, homophobia, threats, sexual content, harassment, doxxing, spam/advertising, or any clearly offensive language. Negative but civil criticism is ALLOWED. Respond ONLY with strict JSON: {"allowed": true} or {"allowed": false, "reason": "<short reason>"}. No prose.',
-        },
-        { role: 'user', content: text },
-      ],
-      temperature: 0,
-    }),
+  const resp = await relayChat({
+    messages: [
+      {
+        role: 'system',
+        content:
+          'You are a strict content moderator for a medical education app review wall. Classify the user submission. Reject if it contains: profanity, expletives, slurs, racism, sexism, homophobia, threats, sexual content, harassment, doxxing, spam/advertising, or any clearly offensive language. Negative but civil criticism is ALLOWED. Respond ONLY with strict JSON: {"allowed": true} or {"allowed": false, "reason": "<short reason>"}. No prose.',
+      },
+      { role: 'user', content: text },
+    ],
+    temperature: 0,
   })
 
   if (resp.status === 429) return { allowed: false, reason: 'Moderation rate limit, try again shortly' }
