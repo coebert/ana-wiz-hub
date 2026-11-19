@@ -562,7 +562,7 @@ const MuscleRelaxantsTopic = () => {
             <p className="text-foreground/90 leading-relaxed mt-3">
               <strong>Sugammadex</strong>: modified γ-cyclodextrin. Encapsulates rocuronium (and to lesser extent vecuronium) in
               a 1:1 complex, rendering it inactive. Can reverse profound block. Dose: 2 mg/kg (moderate block, TOF ≥2), 4 mg/kg
-              (deep block, PTC ≥1), 16 mg/kg (immediate reversal — "can't intubate, can't oxygenate" rescue).
+              (deep block, PTC ≥1), 16 mg/kg (immediate reversal after a 1.2 mg/kg intubating dose — not a CICO rescue; maintain paralysis and proceed to front-of-neck access).
             </p>
             <div className="bg-secondary/30 rounded-lg p-4 mt-3 border border-border">
               <p className="text-sm font-medium text-foreground">Sugammadex Considerations</p>

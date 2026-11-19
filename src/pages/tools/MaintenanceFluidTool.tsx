@@ -22,13 +22,15 @@ export default function MaintenanceFluidTool() {
     <ToolShell
       slug="maintenance-fluid"
       title="4-2-1 Rule Maintenance Fluid Calculator"
-      description="Work out maintenance IV fluids with the 4-2-1 rule (Holliday–Segar): hourly and 24-hour rates by weight, with worked examples for children and adults."
+      description="Work out paediatric maintenance IV fluids with the 4-2-1 rule (Holliday–Segar): hourly and 24-hour rates by weight, with worked examples for children. Adult ward maintenance is 25–30 mL/kg/day (NICE CG174), not 4-2-1."
       intro={
         <>
           Enter a weight to get the hourly and daily maintenance rate from the
-          4-2-1 rule (Holliday–Segar) for healthy euvolaemic children and
-          adults. Add deficit and ongoing losses separately. For the
-          derivation, fluid choice and the move to isotonic solutions, read the{" "}
+          4-2-1 rule (Holliday–Segar) for healthy euvolaemic children. Add
+          deficit and ongoing losses separately. This is not a DKA rehydration
+          schedule: paediatric DKA follows NICE NG18 (10 mL/kg 0.9% saline bolus,
+          deficit replaced over 48 h plus paediatric Holliday–Segar maintenance).
+          For the derivation, fluid choice and the move to isotonic solutions, read the{" "}
           <Link
             to="/notes/paediatric-maintenance-fluids-4-2-1-rule"
             className="text-pharmacology hover:underline"

@@ -102,15 +102,17 @@ const workedExamples: WorkedExample[] = [
         A single squeeze is unreliable: oesophageal intubation produces
         small CO₂ traces for up to <strong>6 breaths</strong> from gastric
         CO₂ (carbonated drinks, mask ventilation pre-induction). Sustained
-        EtCO₂ of a normal shape and value across <strong>≥ 6 consecutive
+        EtCO₂ of a normal shape and value across <strong>≥ 7 consecutive
         breaths</strong> is the gold standard for tracheal placement
         (NAP4; PUMA consensus 2022; DAS 2025). A flat or vanishing trace is presumed
-        oesophageal until proven otherwise.
+        oesophageal until proven otherwise. Sustained CO₂ confirms tracheal
+        location, not adequate anaesthetic depth — depth is judged separately
+        (clinically and, during TIVA with neuromuscular blockade, with processed EEG).
       </>
     ),
     answer: (
       <>
-        Continue to ventilate and observe at least six waveforms. If the
+        Continue to ventilate and observe at least seven waveforms. If the
         capnograph maintains a normal-shaped plateau, the tube is
         tracheal. If sustained exhaled CO₂ is absent or the trace falls
         away, actively exclude oesophageal placement: PUMA's default is to
@@ -469,7 +471,7 @@ const CapnographyTopic = () => {
                 Common exam pitfalls
               </h2>
               <ul className="list-disc list-inside text-sm text-muted-foreground space-y-1">
-                <li>Confirming tracheal intubation on a single breath — confirm across ≥ 6 sustained, normal-shaped waveforms.</li>
+                <li>Confirming tracheal intubation on a single breath — confirm across ≥ 7 sustained, normal-shaped waveforms.</li>
                 <li><strong>Never use clinical signs to confirm tracheal placement when sustained capnography is absent.</strong> Tube misting has a false-positive rate up to 69%; ordinary auscultation about 14%, and even five-point auscultation about 18%. Chest rise is also unreliable. False reassurance from these signs recurs in fatal unrecognised oesophageal intubation: if sustained exhaled CO₂ is absent, actively exclude oesophageal placement even in cardiac arrest. PUMA's default is to remove the tube and reoxygenate by mask or supraglottic airway unless removal is judged more dangerous; if removal is hazardous, obtain urgent valid independent confirmation. <InlineRef topicId="capnography" refLabel="Anaesthesia 2023 Intubation Tests" /><InlineRef topicId="capnography" refLabel="PUMA 2022" /></li>
                 <li>Quoting EtCO₂ alone for adequacy of ventilation in COPD or PE — the PaCO₂–EtCO₂ gradient is what matters.</li>
                 <li>Calling a raised baseline "ventilator artefact" — it is rebreathing; check absorber and valves.</li>

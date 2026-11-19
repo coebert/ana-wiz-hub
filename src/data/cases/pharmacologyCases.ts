@@ -351,7 +351,7 @@ export const pharmacologyCaseBank: CaseBank = {
           answer: [
             "Stop injecting, call for help, secure the airway with 100% oxygen and avoid hypoxia, hypercapnia and acidosis, which all increase toxicity.",
             "Control seizures with a benzodiazepine — or small-dose propofol if that is what is available and cardiovascular stability allows — and start advanced life support if arrest occurs.",
-            "Give 20% lipid emulsion: an initial bolus of 1.5 mL/kg over one minute followed by an infusion of 15 mL/kg/hour, with up to two further boluses and doubling of the infusion rate for persistent instability, to a maximum of about 12 mL/kg.",
+            "Give 20% lipid emulsion: an initial bolus of 1.5 mL/kg over 2–3 minutes followed by an infusion of 15 mL/kg/hour, with up to two further boluses and doubling of the infusion rate for persistent instability, to a maximum of about 12 mL/kg.",
           ],
         },
         {
@@ -892,7 +892,7 @@ export const pharmacologyCaseBank: CaseBank = {
           title: "Choose the reversal dose",
           prompt: "What dose of sugammadex is needed at this depth of block, and could neostigmine be used instead?",
           answer: [
-            "Post-tetanic count of 2 with no train-of-four response is a deep block, so sugammadex 4 mg/kg is required; 2 mg/kg is only appropriate once at least two twitches have returned on train-of-four, and 16 mg/kg is reserved for immediate reversal within a few minutes of rocuronium at induction (a 'can't intubate, can't ventilate' rescue).",
+            "Post-tetanic count of 2 with no train-of-four response is a deep block, so sugammadex 4 mg/kg is required; 2 mg/kg is only appropriate once at least two twitches have returned on train-of-four, and 16 mg/kg is reserved for immediate reversal within a few minutes of rocuronium at induction — not a CICO rescue: maintain paralysis and proceed to front-of-neck access (DAS 2025).",
             "Neostigmine cannot reliably reverse a deep block because acetylcholinesterase inhibition has a ceiling effect; it should only be given once at least two twitches are present, ideally with a train-of-four ratio guiding adequacy.",
             "Whichever agent is used, confirm recovery with quantitative neuromuscular monitoring to a train-of-four ratio of 0.9 or more before extubation, since qualitative (visual/tactile) assessment misses residual block above a ratio of about 0.4.",
           ],

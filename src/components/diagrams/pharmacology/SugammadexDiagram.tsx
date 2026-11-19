@@ -39,11 +39,11 @@ const decide = (a: Record<string, Answer>): Verdict => {
   }
   if (a.ccov === "yes") {
     return {
-      give: "give",
-      headline: "Give — emergency rescue dose",
+      give: "withhold",
+      headline: "Do not rely on sugammadex — proceed to FONA",
       detail:
-        "Immediate full reversal of profound rocuronium block. Onset ~1.5 min — faster than spontaneous suxamethonium recovery. Does not solve airway oedema or laryngospasm; reversal restores spontaneous ventilation only if no obstruction.",
-      dose: "16 mg/kg IV bolus (ideal/total body weight in obesity per local protocol).",
+        "DAS 2025 states sugammadex is not a reliable strategy in failed tracheal intubation. Maintain neuromuscular blockade and proceed to emergency front-of-neck access; do not delay FONA to give or wait for sugammadex. Once the airway is secure, 16 mg/kg can reverse a 1.2 mg/kg rocuronium dose.",
+      dose: "16 mg/kg IV only after the airway is secured or waking is planned (ideal/total body weight in obesity per local protocol).",
       reparalysis:
         "Avoid rocuronium/vecuronium for 24 h — use cisatracurium or atracurium if relaxation is needed sooner.",
     };
@@ -191,7 +191,7 @@ const Rocuronium = ({ dimmed }: { dimmed: boolean }) => {
 const DOSE_TIERS = [
   { key: "moderate", dose: "2 mg/kg", depth: "Moderate block · TOF count ≥ 2", time: "≈ 2 min", color: "hsl(var(--chart-2))" },
   { key: "deep", dose: "4 mg/kg", depth: "Deep block · PTC ≥ 1, TOF count 0", time: "≈ 3 min", color: "hsl(var(--chart-3))" },
-  { key: "rescue", dose: "16 mg/kg", depth: "Immediate rescue · 3 min after 1.2 mg/kg roc", time: "≈ 1.5 min", color: "hsl(var(--destructive))" },
+  { key: "rescue", dose: "16 mg/kg", depth: "Immediate reversal · 3 min after 1.2 mg/kg roc (not a CICO rescue)", time: "≈ 1.5 min", color: "hsl(var(--destructive))" },
 ];
 
 const DoseDepthDiagram = () => {

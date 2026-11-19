@@ -12,7 +12,7 @@ const SugammadexReversesRocuroniumNote = () => (
     faqs={[
       {
         q: "Can sugammadex reverse rocuronium that has only just been given?",
-        a: "Yes. Sugammadex 16 mg/kg will reverse a 1.2 mg/kg rocuronium intubating dose within 2–3 minutes, even before twitches return (post-tetanic count of 0). This is the basis for using sugammadex as a rescue strategy after a failed RSI when rocuronium has been chosen instead of suxamethonium.",
+        a: "Yes. Sugammadex 16 mg/kg will reverse a 1.2 mg/kg rocuronium intubating dose within 2–3 minutes, even before twitches return (post-tetanic count of 0). It is not, however, a reliable CICO rescue: DAS 2025 states sugammadex is not a reliable strategy in failed tracheal intubation, so maintain paralysis and proceed to front-of-neck access without delaying for reversal.",
       },
       {
         q: "Why doesn't sugammadex reverse atracurium or cisatracurium?",
@@ -72,8 +72,10 @@ const SugammadexReversesRocuroniumNote = () => (
       </li>
       <li>
         <strong>16 mg/kg</strong> — immediate reversal after a 1.2 mg/kg
-        rocuronium intubating dose (the “can't intubate, can't oxygenate”
-        scenario).
+        rocuronium intubating dose. This is not a CICO rescue: DAS 2025 states
+        sugammadex is not a reliable strategy in failed tracheal intubation, so
+        maintain paralysis and proceed to front-of-neck access without delaying
+        for reversal.
       </li>
     </ul>
     <p>

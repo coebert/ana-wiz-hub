@@ -118,7 +118,7 @@ const SCENARIOS: Scenario[] = [
       {
         label: "CICO pathway",
         detail:
-          "If can't intubate, can't oxygenate → declare CICO, follow DAS algorithm: full neuromuscular blockade (sugammadex-reversible NMBA), front-of-neck access (scalpel-bougie-tube). Crash team, post-event debrief and Datix.",
+          "If can't intubate, can't oxygenate → declare CICO, follow DAS algorithm: maintain full neuromuscular blockade (do not reverse it during CICO), front-of-neck access (scalpel-bougie-tube). Crash team, post-event debrief and Datix.",
         severity: "escalate",
       },
     ],
