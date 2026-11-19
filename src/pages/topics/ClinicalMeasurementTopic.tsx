@@ -127,7 +127,9 @@ const ClinicalMeasurementTopic = () => {
               The transducer must be <strong>zeroed</strong> (opened to atmosphere to set the reference point) and <strong>levelled</strong> to
               the <strong>phlebostatic axis</strong> — the level of the right atrium, approximated by the mid-axillary line at the 4th
               intercostal space. If the transducer is positioned below this level, hydrostatic pressure is added and readings are
-              falsely high; if above, readings are falsely low. Approximately 1.3 cmH₂O (1 mmHg) error per centimetre of displacement.
+              falsely high; if above, readings are falsely low. The hydrostatic error is about 0.74–0.75 mmHg per centimetre
+              (7.5 mmHg per 10 cm), so a transducer 10 cm below the phlebostatic axis over-reads by roughly 7.5 mmHg and one
+              10 cm above under-reads by the same amount <InlineRef topicId="clinical-measurement" refLabel="Saugel 2020 Arterial Measurement" />.
             </p>
             <p>
               The arterial waveform shows <strong>systolic amplification</strong> in distal arteries — systolic pressure increases and
@@ -258,7 +260,7 @@ const ClinicalMeasurementTopic = () => {
               "Fast-flush ringing or sluggish return screens for distortion; inspect spacing/amplitude and the complete chain, not a universal 1–2 oscillation pass rule.",
               "CVP waveform a/c/v waves and x/y descents reflect right-heart events; cannon a waves suggest AV dissociation.",
               "Thermodilution (Stewart–Hamilton): area under the temperature–time curve is inversely proportional to cardiac output.",
-              "Always level the transducer to the phlebostatic axis; raising it by 10 cm under-reads pressure by ~7 mmHg.",
+              "Always level the transducer to the phlebostatic axis; a 10 cm height difference changes the reading by ~7.5 mmHg — below the axis reads high, above reads low.",
             ]}
           />
         </ExamSection>

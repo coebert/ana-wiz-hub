@@ -6,18 +6,18 @@ const LocalAnaestheticToxicityNote = () => (
     slug="local-anaesthetic-systemic-toxicity-management"
     title="Local anaesthetic systemic toxicity (LAST) management"
     shortTitle="LAST management"
-    description="Local anaesthetic systemic toxicity (LAST): recognition, AAGBI Safety Guideline management, Intralipid 20% dosing, and prevention strategies."
+    description="Local anaesthetic systemic toxicity (LAST): recognition, Association QRH 3-10 v2 management, lipid emulsion dosing, and prevention strategies."
     datePublished="2026-06-18"
     examTags={["primary", "final"]}
-    lede="Local anaesthetic systemic toxicity (LAST) is a life-threatening complication of regional anaesthesia: CNS excitation followed by cardiovascular collapse from sodium-channel block in the myocardium. The 2010/2021 AAGBI Safety Guideline mandates immediate Intralipid 20% as part of the resuscitation."
+    lede="Local anaesthetic systemic toxicity (LAST) is a life-threatening complication of regional anaesthesia: CNS excitation followed by cardiovascular collapse from sodium-channel block in the myocardium. The Association of Anaesthetists QRH 3-10 v2 makes immediate lipid emulsion part of resuscitation."
     faqs={[
       {
         q: "What is the maximum safe dose of lidocaine and bupivacaine?",
-        a: "Lidocaine: 3 mg/kg plain, 7 mg/kg with adrenaline. Bupivacaine and levobupivacaine: 2 mg/kg (no adrenaline-enhanced dose). Ropivacaine: 3 mg/kg. Always calculate against lean body weight and use the lowest effective dose; reduce in the elderly, pregnant, and hepatically impaired.",
+        a: "There is no single universal maximum across formulations and routes. Use the named product label and the procedure: for example, UK lidocaine 2% (emc 15150) limits a single adult dose to 4.5 mg/kg and 300 mg, while Xylocaine with adrenaline (emc 2397) has a 500 mg adult ceiling. Named bupivacaine field-block/infiltration (emc 11611) limits 150 mg. These are not interchangeable with spinal, major nerve block or IVRA doses. Calculate against the labelled weight basis, use the lowest effective dose, and reduce in the elderly, pregnant and hepatically impaired.",
       },
       {
         q: "What is the Intralipid 20% dose in LAST?",
-        a: "Bolus 1.5 mL/kg lean body weight over 1 minute (≈ 100 mL in a 70 kg adult), followed by an infusion of 15 mL/kg/h. If circulation is not restored after 5 minutes: repeat bolus up to twice (5-minute intervals) and double the infusion rate to 30 mL/kg/h. Maximum cumulative dose 12 mL/kg.",
+        a: "Bolus 1.5 mL/kg lean body weight over 2–3 minutes (≈ 100 mL in a 70 kg adult), followed by an infusion of 15 mL/kg/h. If circulation is not restored, give no more than two repeat boluses after 5 and 10 minutes; review ongoing instability and increase the infusion as directed by the QRH. Maximum cumulative dose 12 mL/kg (840 mL at 70 kg).",
       },
       {
         q: "What are the early warning signs of LAST?",
@@ -45,18 +45,20 @@ const LocalAnaestheticToxicityNote = () => (
       Bier's blocks.
     </p>
 
-    <h2>Immediate management (AAGBI 2010, reaffirmed 2021)</h2>
+    <h2>Immediate management (Association QRH 3-10 v2)</h2>
     <ol>
       <li>Stop injecting LA. Call for help. ABC, 100% O₂, secure the airway.</li>
       <li>Treat seizures with a small dose of benzodiazepine, thiopentone or propofol — avoid large propofol doses (cardiovascular depression).</li>
       <li>If cardiac arrest: start CPR with reduced adrenaline (≤ 1 µg/kg), avoid lidocaine and vasopressin.</li>
       <li>
-        <strong>Intralipid 20%</strong>: 1.5 mL/kg bolus over 1 min, then 15
-        mL/kg/h infusion. Repeat bolus up to twice and double the infusion
-        rate if circulation is not restored. Maximum 12 mL/kg.
+        <strong>Lipid emulsion 20%</strong>: 1.5 mL/kg over 2–3 min, then
+        15 mL/kg/h infusion. If circulation is not restored, give no more
+        than two repeat boluses after 5 and 10 min; review ongoing
+        instability and increase the infusion as directed by the QRH.
+        Maximum total 12 mL/kg (840 mL at 70 kg).
       </li>
       <li>Continue CPR throughout. Consider VA-ECMO early.</li>
-      <li>Monitor in critical care for at least 12 hours — recurrence has been reported.</li>
+      <li>Monitor in critical care for at least 12 hours — recurrence has been reported. Monitor for pancreatitis after lipid rescue independently of whether propofol was used.</li>
     </ol>
 
     <h2>Prevention</h2>
@@ -65,7 +67,7 @@ const LocalAnaestheticToxicityNote = () => (
       <li>Use ultrasound guidance and incremental injection (3–5 mL aliquots) with intermittent aspiration — covered in the <Link to="/clinical/regional-anaesthesia">regional anaesthesia topic</Link>.</li>
       <li>Test dose with adrenaline-containing solution if not contraindicated.</li>
       <li>Continuous verbal contact with the patient to detect early CNS symptoms.</li>
-      <li>Display the AAGBI LAST guideline on every block trolley alongside Intralipid 20%. See <Link to="/pharmacology/local-anaesthetics">local anaesthetic pharmacology</Link> for agent-specific safety margins.</li>
+      <li>Display the Association QRH 3-10 v2 LAST guideline on every block trolley alongside lipid emulsion 20%. See <Link to="/pharmacology/local-anaesthetics">local anaesthetic pharmacology</Link> for agent-specific safety margins.</li>
     </ul>
   </NoteLayout>
 );

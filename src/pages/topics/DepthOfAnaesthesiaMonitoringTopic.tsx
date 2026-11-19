@@ -17,7 +17,7 @@ import { InlineRef } from "@/components/references/InlineRef";
 const depthOfAnaesthesiaMonitoringFaqs: Array<[string, string]> = [
   [
     "What is the target BIS range for general anaesthesia and what is its evidence base?",
-    "BIS 40–60 corresponds to surgical anaesthesia. B-Aware and B-Unaware trials showed BIS-guided anaesthesia reduces awareness in high-risk patients (TIVA, paralysed, low-MAC techniques). NICE DG6 recommends DoA monitoring for TIVA and for any case where end-tidal volatile monitoring is unreliable. BIS values are derived from EEG but are not a direct EEG; they lag by 15–30 s."
+    "BIS 40–60 corresponds to surgical anaesthesia. B-Aware and B-Unaware trials showed BIS-guided anaesthesia reduces awareness in high-risk patients (TIVA, paralysed, low-MAC techniques). NICE DG6 recommends depth-of-anaesthesia monitoring for TIVA with neuromuscular blockade and for patients at higher risk of awareness; the Association of Anaesthetists 2021 states the same TIVA-plus-NMB recommendation and suggests considering pEEG more broadly. BIS values are derived from EEG but are not a direct EEG; they lag by 15–30 s."
   ],
   [
     "How does processed EEG differ from raw EEG?",
@@ -41,11 +41,12 @@ const keyPoints = [
   { text: "BIS target 40–60 for GA. BIS >60 with NMB = awareness risk. BIS <40 sustained = excessive depth", cites: ["Purdon et al. 2015"] },
   { text: "Suppression Ratio: % of time EEG is isoelectric — any SR >0% indicates burst suppression, reduce anaesthetic", cites: ["BJA Educ 2014"] },
   { text: "SEF95: frequency below which 95% of EEG power lies. Awake ~25 Hz, anaesthetised ~10–15 Hz, deep <8 Hz", cites: ["NICE DG6"] },
-  { text: "Entropy: RE−SE gap >5–10 suggests EMG activation (pain/light anaesthesia) — unique nociception indicator", cites: ["NAP5 2014"] },
+  { text: "Entropy: RE−SE gap >5–10 suggests EMG activation (pain/light anaesthesia) — a nociception clue, not a validated depth index on its own", cites: ["BJA Educ 2014"] },
   { text: "Narcotrend: stages A–F with NI 0–100. Target D0–D2 (NI 37–65). Pattern recognition rather than spectral analysis", cites: ["Purdon et al. 2015"] },
   { text: "EMG contamination falsely ELEVATES BIS. NMB may artefactually DROP BIS by removing EMG — not deeper anaesthesia", cites: ["BJA Educ 2014"] },
   { text: "Ketamine causes high BIS despite adequate anaesthesia (beta EEG activation) — processed EEG unreliable", cites: ["NICE DG6"] },
-  { text: "NAP5: awareness 1:19,600 overall, 1:8,000 with TIVA. Recommends processed EEG for all TIVA cases", cites: ["NAP5 2014"] },
+  { text: "NAP5: awareness about 1:19,600 overall, about 1:8,200 with neuromuscular blockade and 1:135,900 without it — not a TIVA-specific figure", cites: ["NAP5 2014"] },
+  { text: "Association of Anaesthetists 2021: use processed EEG when TIVA is given with neuromuscular blockade; consider it for other techniques and high-risk patients", cites: ["AoA Monitoring 2021 pEEG"] },
 ];
 
 type Monitor = "bis" | "entropy" | "narcotrend";
@@ -143,7 +144,7 @@ const DepthOfAnaesthesiaMonitoringTopicWorkedExamples: WorkedExample[] = [
         </div>
       </div>
     ),
-    answer: "Check TIVA delivery, deepen anaesthesia to target BIS 40–60, and document. NAP5 mandates depth-of-anaesthesia monitoring when NMB is used with TIVA.",
+    answer: "Check TIVA delivery, deepen anaesthesia to target BIS 40–60, and document. NAP5 found most reported awareness occurred during neuromuscular blockade; the Association of Anaesthetists 2021 recommends processed EEG when TIVA is combined with neuromuscular blockade, and suggests considering it for other techniques and high-risk patients.",
     cites: ["NAP5 2014", "NICE DG6", "BJA Educ 2014"],
   },
 ];
@@ -191,12 +192,12 @@ const DepthOfAnaesthesiaMonitoringTopic = () => {
         <div>
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Why Monitor Depth of Anaesthesia?</h2>
           <p className="text-muted-foreground leading-relaxed mb-3">
-            Depth of anaesthesia monitoring aims to reduce the risk of intraoperative awareness (incidence ~1:19,000 with neuromuscular blockade — NAP5 2014), avoid unnecessarily deep anaesthesia (associated with postoperative delirium and mortality in the elderly), and guide titration of anaesthetic agents to an individual patient's needs.
+            Depth of anaesthesia monitoring aims to reduce the risk of intraoperative awareness (NAP5 2014 reported about 1:19,600 overall, about 1:8,200 with neuromuscular blockade and about 1:135,900 without it), avoid unnecessarily deep anaesthesia (associated with postoperative delirium and mortality in the elderly), and guide titration of anaesthetic agents to an individual patient's needs.
           </p>
           <div className="grid sm:grid-cols-3 gap-3">
             <div className="p-4 rounded-lg border border-border bg-secondary/30">
               <p className="font-semibold text-foreground text-sm">NAP5 (2014)</p>
-              <p className="text-xs text-muted-foreground mt-1">5th National Audit Project. Incidence of accidental awareness during GA in the UK: 1:19,600 overall. Higher risk with TIVA (1:8,000) and NMB use. Recommended processed EEG monitoring for all TIVA cases.</p>
+              <p className="text-xs text-muted-foreground mt-1">5th National Audit Project. Incidence of accidental awareness during GA in the UK and Ireland: about 1:19,600 overall, about 1:8,200 with neuromuscular blockade and about 1:135,900 without it. NAP5 is an audit of reported cases, not a trial of processed EEG; current monitoring guidance comes from the Association of Anaesthetists 2021.</p>
             </div>
             <div className="p-4 rounded-lg border border-border bg-secondary/30">
               <p className="font-semibold text-foreground text-sm">NICE Guidance (2012)</p>
@@ -399,7 +400,7 @@ const DepthOfAnaesthesiaMonitoringTopic = () => {
                 </tr>
                 <tr className="border-b border-border">
                   <td className="py-2 font-medium text-foreground">NAP5 (2014)</td>
-                  <td className="py-2">UK national audit: 1:19,600 awareness incidence. 1:8,000 with TIVA. Recommended processed EEG for all TIVA. Most awareness occurred during induction/emergence.</td>
+                  <td className="py-2">UK/Ireland national audit: about 1:19,600 overall; about 1:8,200 with neuromuscular blockade and 1:135,900 without. Most reported awareness occurred during neuromuscular blockade, often at induction or emergence.</td>
                 </tr>
                 <tr className="border-b border-border">
                   <td className="py-2 font-medium text-foreground">CODA (2019)</td>
@@ -450,7 +451,7 @@ const DepthOfAnaesthesiaMonitoringTopic = () => {
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Clinical Practice Recommendations</h2>
           <div className="space-y-2">
             {[
-              { rec: "Use processed EEG for ALL TIVA cases", detail: "No end-tidal agent to guide dosing. Risk of awareness is 5× higher with TIVA (NAP5). BIS/Entropy is the primary depth indicator alongside clinical signs." },
+              { rec: "Use processed EEG for TIVA with neuromuscular blockade", detail: "The Association of Anaesthetists 2021 recommends pEEG whenever TIVA is combined with a neuromuscular blocking drug, starting before induction and continuing until full recovery. Consider it for TIVA alone, inhalational anaesthesia and high-risk patients. There is no end-tidal agent to guide dosing, so the pEEG index and delivery checks complement clinical signs." },
               { rec: "Consider for high-risk patients", detail: "Emergency surgery, cardiac surgery, caesarean section under GA, haemodynamically unstable patients where anaesthetic is deliberately limited, prior history of awareness." },
               { rec: "Target BIS/SE 40–60 for general anaesthesia", detail: "Avoid sustained BIS <40 especially in elderly (association with delirium). Avoid BIS >60 with NMB (awareness risk). Use SQI and EMG to validate readings." },
               { rec: "Monitor SR — aim for 0%", detail: "Any suppression ratio >0% = burst suppression. Reduce anaesthetic depth. Particularly important in the elderly. Suppression time >10% of total anaesthetic associated with worse outcomes." },
@@ -485,7 +486,7 @@ const DepthOfAnaesthesiaMonitoringTopic = () => {
               "BIS is a dimensionless 0–100 scale derived from processed EEG; 40–60 target for general anaesthesia.",
               "Suppression ratio quantifies burst suppression; SEF₉₅ is the frequency below which 95% of EEG power lies.",
               "Ketamine and N₂O can paradoxically raise BIS despite deep anaesthesia; EMG contamination can inflate values.",
-              "Processed-EEG monitors reduce awareness in TIVA without NM block, but evidence is weakest with volatile + ETAG monitoring.",
+              "Processed-EEG monitoring is recommended when TIVA is combined with neuromuscular blockade; evidence is weaker for volatile-based anaesthesia already guided by end-tidal agent concentration.",
               "Always interpret in clinical context — never titrate purely to a number.",
             ]}
           />

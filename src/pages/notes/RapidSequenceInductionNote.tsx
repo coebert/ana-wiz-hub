@@ -13,11 +13,11 @@ const RapidSequenceInductionNote = () => (
     faqs={[
       {
         q: "What are the standard adult RSI drugs?",
-        a: "Induction: thiopentone 3–7 mg/kg or propofol 1.5–2.5 mg/kg (ketamine 1–2 mg/kg in shock; etomidate 0.3 mg/kg historically). Neuromuscular blocker: suxamethonium 1.0–1.5 mg/kg, or rocuronium 1.0–1.2 mg/kg if sugammadex is immediately available for rescue.",
+        a: "Induction: thiopentone 3–7 mg/kg or propofol 1.5–2.5 mg/kg (ketamine 1–2 mg/kg in shock; etomidate 0.3 mg/kg historically). Neuromuscular blocker: suxamethonium 1.0–1.5 mg/kg, or rocuronium 1.0–1.2 mg/kg if sugammadex is immediately available. Sugammadex is a reversal option, not a substitute for front-of-neck access if intubation and oxygenation fail.",
       },
       {
         q: "When is rocuronium preferred over suxamethonium?",
-        a: "Sux contraindications: hyperkalaemia, major burns > 24 h old, prolonged immobility, denervation injury, neuromuscular disease (MG, myotonia), suspected MH, malignant pseudocholinesterase deficiency. Rocuronium 1.2 mg/kg gives comparable intubating conditions at 60 s with sugammadex 16 mg/kg as the rescue option for can't-intubate-can't-oxygenate.",
+        a: "Sux contraindications: hyperkalaemia, major burns > 24 h old, prolonged immobility, denervation injury, neuromuscular disease (MG, myotonia), suspected MH, malignant pseudocholinesterase deficiency. Rocuronium 1.2 mg/kg gives comparable intubating conditions at 60 s; sugammadex 16 mg/kg can reverse it, but in declared can't-intubate-can't-oxygenate (CICO) do not delay immediate front-of-neck access to give or wait for sugammadex. DAS 2025 permits gentle low-pressure mask ventilation if needed while progressing to FONA; in obstetrics, OAA/DAS specifically supports mask ventilation and early release of cricoid pressure.",
       },
       {
         q: "Is cricoid pressure still indicated?",
@@ -44,7 +44,7 @@ const RapidSequenceInductionNote = () => (
       <li><strong>Position</strong> — ear-to-sternal-notch (ramped if obese), 20–30° head-up to reduce reflux.</li>
       <li><strong>Induction agent + <Link to="/pharmacology/muscle-relaxants">neuromuscular blocker</Link></strong> in immediate succession.</li>
       <li><strong>Apply cricoid pressure</strong> — 10 N awake, 30 N once asleep (or omit if departmental policy).</li>
-      <li><strong>Intubate without bag-mask ventilation</strong>, confirm with <Link to="/physics/capnography">capnography</Link>, inflate cuff, secure. If intubation fails progress to the <Link to="/notes/das-difficult-airway-algorithm">DAS difficult airway algorithm</Link>.</li>
+      <li><strong>Intubate</strong>, confirm with <Link to="/physics/capnography">capnography</Link>, inflate cuff, secure. DAS 2025 allows gentle low-pressure mask ventilation if required rather than prolonged apnoea; avoid high-pressure or large-volume ventilation that inflates the stomach. If intubation fails, progress to the <Link to="/notes/das-difficult-airway-algorithm">DAS difficult airway algorithm</Link>.</li>
       <li><strong>Release cricoid</strong> after tube confirmed and cuff up.</li>
     </ol>
 
@@ -59,7 +59,7 @@ const RapidSequenceInductionNote = () => (
         <tr><td>Ketamine</td><td>1–2 mg/kg</td><td>Preserves BP; agent of choice in shock.</td></tr>
         <tr><td>Etomidate</td><td>0.3 mg/kg</td><td>Adrenal suppression — avoid in sepsis.</td></tr>
         <tr><td>Suxamethonium</td><td>1.0–1.5 mg/kg</td><td>Onset 45–60 s; 1.5 mg/kg in <Link to="/clinical/obstetric-anaesthesia">obstetrics</Link>.</td></tr>
-        <tr><td>Rocuronium</td><td>1.0–1.2 mg/kg</td><td>Onset 60 s; reverse with <Link to="/notes/how-sugammadex-reverses-rocuronium">sugammadex 16 mg/kg</Link>.</td></tr>
+        <tr><td>Rocuronium</td><td>1.0–1.2 mg/kg</td><td>Onset 60 s; <Link to="/notes/how-sugammadex-reverses-rocuronium">sugammadex 16 mg/kg</Link> can reverse it, but declared CICO still needs immediate front-of-neck access — do not delay for reversal.</td></tr>
       </tbody>
     </table>
 

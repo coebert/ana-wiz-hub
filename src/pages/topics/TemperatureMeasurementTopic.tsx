@@ -16,7 +16,7 @@ const temperatureMeasurementFaqs: Array<[string, string]> = [
   ],
   [
     "Where are core temperature measurements taken and which is the gold standard?",
-    "Pulmonary artery (gold standard — true core). Distal oesophagus (within 0.5 °C of PA; influenced by airway gas), nasopharynx (close to hypothalamus), tympanic membrane (good for brain temperature). Bladder and rectum lag behind. Skin and axilla underestimate core by 1–2 °C and are unreliable intra-operatively."
+    "Pulmonary artery (gold standard — true core). Distal oesophagus (within 0.5 °C of PA; influenced by airway gas), nasopharynx (close to the hypothalamus), and a contact tympanic-membrane probe (close to the carotid supply to the hypothalamus). A handheld infrared ear thermometer is a different measurement: it estimates canal/tympanic radiation after a correction factor, and NICE CG65 recommendation 1.1.6 advises against indirect infrared tympanic estimates in adults having surgery. Bladder and rectum lag behind. Skin and axilla underestimate core by 1–2 °C and are unreliable intra-operatively."
   ],
   [
     "What are the consequences of perioperative hypothermia (<36 °C)?",
@@ -36,9 +36,10 @@ const keyPoints = [
   { text: "Thermocouples use the Seebeck effect — EMF generated at junction of two dissimilar metals proportional to temperature difference", cites: ["BJA Educ 2014"] },
   { text: "Thermistors are NTC semiconductors — resistance falls exponentially with rising temperature; very sensitive but non-linear", cites: ["Cross & Plunkett Ch.11"] },
   { text: "Platinum RTDs have a positive temperature coefficient and stable calibrated response. Accuracy and speed depend on the complete probe and readout; they are not universally the slowest sensor.", cites: ["NIST Industrial Thermometer Calibration"] },
-  { text: "Infrared tympanic thermometry uses the Stefan-Boltzmann law (P ∝ T⁴) with a thermopile sensor to detect IR radiation from the tympanic membrane", cites: ["BJA Educ 2014"] },
-  { text: "The tympanic membrane lies close to the internal carotid artery; its emitted IR radiation is therefore a surrogate for the temperature of blood supplying the hypothalamus, reflecting core temperature", cites: ["Cross & Plunkett Ch.11"] },
-  { text: "Infrared tympanic readings are error-prone: poor probe alignment, ear canal wax or narrowing, and a cooler canal wall cause under-reading. In critically ill adults they agreed poorly with pulmonary artery temperature, so they should not replace a core site when accuracy matters", cites: ["Moran 2007 (Tympanic ICU)"] },
+  { text: "Handheld infrared ear thermometers use the Stefan–Boltzmann law (P ∝ T⁴) with a thermopile to estimate IR emission from the ear canal/tympanic region; they are indirect estimates, not a direct tympanic-membrane measurement", cites: ["BJA Educ 2014"] },
+  { text: "A contact tympanic-membrane probe lies close to the internal carotid supply to the hypothalamus and tracks core temperature; a handheld infrared ear device does not necessarily see the membrane and applies a correction algorithm", cites: ["Cross & Plunkett Ch.11", "NICE CG65 Measurement Sites"] },
+  { text: "NICE CG65 recommendations 1.1.5–1.1.6: use a direct core site or a direct estimate shown to be accurate within 0.5 °C; do not use indirect infrared tympanic, temporal or forehead estimates in adults having surgery", cites: ["NICE CG65 Measurement Sites"] },
+  { text: "Handheld infrared ear readings are error-prone: poor probe alignment, ear canal wax or narrowing, and a cooler canal wall cause under-reading. In critically ill adults they agreed poorly with pulmonary artery temperature, so they should not replace a core site when accuracy matters", cites: ["Moran 2007 (Tympanic ICU)"] },
   { text: "Thermocouples are self-generating (no battery needed); thermistors and RTDs require external power via a Wheatstone bridge", cites: ["Cross & Plunkett Ch.11"] },
   { text: "PA catheter thermistor is the gold standard for core temperature; nasopharyngeal thermocouple best reflects brain temperature", cites: ["BJA Educ 2014"] },
 ];
@@ -257,11 +258,24 @@ const TemperatureMeasurementTopic = () => {
           <div className="text-muted-foreground leading-relaxed space-y-3">
             <p>
               All objects at temperatures above absolute zero emit infrared radiation. The <strong>Stefan-Boltzmann law</strong>
-              states that the power radiated is proportional to T⁴ (P = εσAT⁴). An IR tympanic thermometer uses a
-              <strong> thermopile</strong> (multiple thermocouples in series) to detect the IR radiation emitted by the tympanic membrane.
+              states that the power radiated is proportional to T⁴ (P = εσAT⁴). A handheld infrared ear thermometer uses a
+              <strong>thermopile</strong> (multiple thermocouples in series) to detect IR radiation from the ear canal and, if correctly
+              aimed, the tympanic membrane. It then applies a correction algorithm to estimate core temperature. That is an
+              <strong>indirect estimate</strong>, not a direct tympanic-membrane measurement.
             </p>
             <p>
-              Proximity of the ear to the brain does not establish reliable core-temperature measurement for an infrared ear-canal device. The device may sample canal radiation rather than directly measure the tympanic membrane. Device validation and technique are essential; critically ill adults may show poor agreement with central measurements <InlineRef topicId="temperature-measurement" refLabel="Moran 2007 (Tympanic ICU)" />.
+              A <strong>contact tympanic-membrane probe</strong> is a different device: the probe touches the membrane, which shares its
+              blood supply with the hypothalamus through the internal carotid, so it can track core temperature closely. Proximity of the
+              ear to the brain does not make a handheld infrared device equivalent: it may sample the cooler canal wall, and cerumen,
+              a narrow or curved canal, otitis, recent ear surgery, hearing aids, lying on one ear and ambient temperature all alter the
+              reading. Critically ill adults may show poor agreement with central measurements <InlineRef topicId="temperature-measurement" refLabel="Moran 2007 (Tympanic ICU)" />.
+            </p>
+            <p>
+              <strong>UK guidance:</strong> NICE CG65 recommendation 1.1.5 accepts a direct core measurement or a direct estimate shown
+              in research to be accurate within 0.5 °C of direct measurement. Recommendation 1.1.6 then states that indirect estimates
+              of core temperature should <strong>not</strong> be used in adults having surgery, naming infrared tympanic, infrared temporal,
+              infrared forehead and forehead strips as examples <InlineRef topicId="temperature-measurement" refLabel="NICE CG65 Measurement Sites" />.
+              This is a stronger statement than “use with caution”, and it applies to the handheld infrared ear devices commonly used on wards.
             </p>
             <p>
               <strong>Sources of error:</strong> straighten the canal (pinna up and back in adults; down and back in infants), insert far enough
@@ -393,7 +407,7 @@ const TemperatureMeasurementTopic = () => {
               "Thermocouples: Seebeck effect, fastest response, no battery — best for nasopharyngeal/oesophageal probes.",
               "Thermistors: NTC semiconductor, very sensitive but non-linear — used in PA-catheter thermodilution.",
               "Platinum resistance (Pt100): linear, accurate, slow — laboratory standard, not bedside.",
-              "Infrared tympanic uses Stefan–Boltzmann (P ∝ T⁴); cerumen and poor seal cause falsely low readings.",
+              "Handheld infrared ear thermometers use Stefan–Boltzmann (P ∝ T⁴) but are indirect estimates; NICE CG65 1.1.6 advises against them in adults having surgery, and cerumen or a poor seal causes falsely low readings.",
               "Core-peripheral gradient >2 °C suggests significant vasoconstriction; redistribution dominates the first hour of GA.",
             ]}
           />

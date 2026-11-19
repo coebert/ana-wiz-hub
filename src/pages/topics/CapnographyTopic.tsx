@@ -112,9 +112,13 @@ const workedExamples: WorkedExample[] = [
       <>
         Continue to ventilate and observe at least six waveforms. If the
         capnograph maintains a normal-shaped plateau, the tube is
-        tracheal. If the trace falls away, remove the tube and re-attempt
-        intubation; <em>do not</em> use auscultation as the sole
-        confirmation.
+        tracheal. If sustained exhaled CO₂ is absent or the trace falls
+        away, actively exclude oesophageal placement: PUMA's default is to
+        remove the tube and reoxygenate by mask or supraglottic airway
+        unless removal is judged more dangerous, in which case obtain
+        urgent valid independent confirmation. Do <em>not</em> use
+        auscultation, misting or chest rise as the sole confirmation, even
+        in cardiac arrest.
       </>
     ),
     cites: ["NAP4", "PUMA 2022", "DAS 2025"],
@@ -179,7 +183,7 @@ const keyPoints = [
     cites: ["BJA Educ 2017 Capnography"],
   },
   {
-    text: "Sudden loss of trace is a never-event signal — work through tube position (oesophageal, dislodged), circuit (disconnection, sample-line failure) and circulation (arrest) in that order. Oesophageal CO₂ from a stomach full of carbonated fluid is the classic trap — it dies away within ~6 breaths.",
+    text: "Sudden loss of trace is a never-event signal — work through tube position (oesophageal, dislodged), circuit (disconnection, sample-line failure) and circulation (arrest) in that order. Oesophageal CO₂ from a stomach full of carbonated fluid is the classic trap — it dies away within ~6 breaths. If the tube has just been placed, actively exclude oesophageal placement even in arrest; PUMA's default is to remove the tube and reoxygenate unless removal is judged more dangerous, then obtain urgent valid independent confirmation.",
     cites: ["NAP4", "DAS 2025"],
   },
   {
@@ -466,7 +470,7 @@ const CapnographyTopic = () => {
               </h2>
               <ul className="list-disc list-inside text-sm text-muted-foreground space-y-1">
                 <li>Confirming tracheal intubation on a single breath — confirm across ≥ 6 sustained, normal-shaped waveforms.</li>
-                <li><strong>Never use clinical signs to confirm tracheal placement when sustained capnography is absent.</strong> Tube misting has a false-positive rate up to 69%; ordinary auscultation about 14%, and even five-point auscultation about 18%. Chest rise is also unreliable. False reassurance from these signs recurs in fatal unrecognised oesophageal intubation: if sustained exhaled CO₂ is absent, exclude oesophageal placement systematically rather than accepting clinical signs. <InlineRef topicId="capnography" refLabel="Anaesthesia 2023 Intubation Tests" /></li>
+                <li><strong>Never use clinical signs to confirm tracheal placement when sustained capnography is absent.</strong> Tube misting has a false-positive rate up to 69%; ordinary auscultation about 14%, and even five-point auscultation about 18%. Chest rise is also unreliable. False reassurance from these signs recurs in fatal unrecognised oesophageal intubation: if sustained exhaled CO₂ is absent, actively exclude oesophageal placement even in cardiac arrest. PUMA's default is to remove the tube and reoxygenate by mask or supraglottic airway unless removal is judged more dangerous; if removal is hazardous, obtain urgent valid independent confirmation. <InlineRef topicId="capnography" refLabel="Anaesthesia 2023 Intubation Tests" /><InlineRef topicId="capnography" refLabel="PUMA 2022" /></li>
                 <li>Quoting EtCO₂ alone for adequacy of ventilation in COPD or PE — the PaCO₂–EtCO₂ gradient is what matters.</li>
                 <li>Calling a raised baseline "ventilator artefact" — it is rebreathing; check absorber and valves.</li>
                 <li>Missing curare cleft on a long display — examine the plateau, not the peak.</li>

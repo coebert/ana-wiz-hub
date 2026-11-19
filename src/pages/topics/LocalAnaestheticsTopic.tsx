@@ -25,7 +25,7 @@ const localAnaestheticsFaqs: Array<[string, string]> = [
   ],
   [
     "Outline the management of local-anaesthetic systemic toxicity (LAST).",
-    "RCoA/Association of Anaesthetists 2024 algorithm: STOP injection, call for help, ABC (100 % O₂, secure airway, IV access). Manage seizures (small dose benzodiazepine or propofol). Treat arrhythmias (avoid lidocaine, calcium, vasopressin; use small adrenaline 1 µg/kg). Give 20 % Intralipid: 1.5 mL/kg bolus, then 15 mL/kg/h infusion, repeat bolus up to 3×, max 12 mL/kg total. Continue CPR — long resuscitation often successful. Refer to ITU and report to NPSA / Lipid Rescue registry."
+    "Association QRH 3-10 v2: STOP injection, call for help, ABC (100 % O₂, secure airway, IV access). Manage seizures with a small dose of benzodiazepine; propofol is not recommended when there is cardiovascular instability. Treat arrhythmias (avoid lidocaine, calcium, vasopressin; use small adrenaline ≤1 µg/kg). Give 20 % lipid emulsion 1.5 mL/kg over 2–3 min, then infuse 15 mL/kg/h. If instability persists, give no more than two repeat boluses after 5 and 10 min, review and increase the infusion as directed by the QRH. Maximum total 12 mL/kg (840 mL at 70 kg). Continue CPR — prolonged resuscitation is often successful. Monitor for pancreatitis after lipid rescue, refer to critical care and report to the national registry."
   ]
 ];
 
@@ -41,9 +41,9 @@ const workedExamples: WorkedExample[] = [
           <li>Call for help and the LAST trolley. Stop injecting LA immediately. Manage airway and ventilate with 100% O₂ — hypoxia and acidosis worsen toxicity.</li>
           <li>Terminate the seizure: small-dose benzodiazepine (midazolam 1–2 mg) preferred. Propofol is not recommended if there is any cardiovascular instability — it is a myocardial depressant and is not a substitute for lipid emulsion.</li>
           <li>Start ALS if pulseless. CPR may need to be prolonged (&gt;60 min) because bupivacaine binds avidly to sodium channels.</li>
-          <li>Give 20% lipid emulsion (Intralipid): 1.5 mL/kg bolus over 1 min then 15 mL/kg/h infusion. Repeat bolus every 5 min up to 3 times if circulation not restored; double the infusion rate if BP remains low. Max cumulative dose 12 mL/kg.</li>
+          <li>Give 20% lipid emulsion: 1.5 mL/kg over 2–3 min, then 15 mL/kg/h. If circulation is not restored, give no more than two repeat boluses after 5 and 10 min; review ongoing instability and increase the infusion as directed by the QRH. Maximum cumulative dose 12 mL/kg (840 mL at 70 kg).</li>
           <li>Modify ALS drugs: reduce adrenaline to ≤1 µg/kg boluses; avoid vasopressin, calcium channel blockers, β-blockers, and lidocaine.</li>
-          <li>Once stable, transfer to ICU for ≥12 h monitoring (delayed cardiotoxicity), serum amylase/lipase if propofol used, and report to NAP/LAST registry.</li>
+          <li>Once stable, transfer to ICU for ≥12 h monitoring (delayed cardiotoxicity). Monitor for pancreatitis after lipid rescue independently of whether propofol was used (serum amylase/lipase, abdominal symptoms), and report to the national LAST registry.</li>
         </ol>
         <div className="mt-2 rounded-md border border-destructive/30 bg-destructive/5 p-2">
           <p className="text-xs font-semibold uppercase tracking-wide text-destructive mb-1">Common traps</p>
@@ -426,13 +426,13 @@ const LocalAnaestheticsTopic = () => {
             <div className="bg-accent/10 rounded-lg p-4 mt-3 border border-accent/30">
               <p className="text-sm font-semibold text-accent mb-2">Treatment: Intralipid (20% Lipid Emulsion)</p>
               <ul className="text-sm text-foreground/80 space-y-1">
-                <li>• Initial bolus: 1.5 mL/kg over 1 minute</li>
+                <li>• Initial bolus: 1.5 mL/kg over 2–3 minutes</li>
                 <li>• Infusion: 15 mL/kg/h (or 0.25 mL/kg/min)</li>
-                <li>• Repeat bolus after 5 min if cardiovascular instability persists (max 2 further boluses)</li>
-                <li>• Maximum cumulative dose: approximately 12 mL/kg (about 1000 mL in a 70 kg adult)</li>
+                <li>• If instability persists: no more than two repeat boluses, after 5 and 10 min; review and increase the infusion as directed by the QRH</li>
+                <li>• Maximum cumulative dose: 12 mL/kg (840 mL in a 70 kg adult)</li>
                 <li>• Modify ALS: adrenaline boluses &lt;1 µg/kg; avoid vasopressin, calcium channel blockers, β-blockers and further local anaesthetic<InlineRef topicId="local-anaesthetics" refLabel="ASRA LAST 2020" /></li>
                 <li>• Paediatric doses are the same per kilogram; the 2020 update brought paediatric lipid resuscitation into the main guideline<InlineRef topicId="local-anaesthetics" refLabel="AA LAST 2020" /></li>
-                <li>• Post-event care: critical care for at least 12 h (delayed cardiotoxicity), check triglycerides/amylase, and report to the national registry<InlineRef topicId="local-anaesthetics" refLabel="AA LAST 2024" /></li>
+                <li>• Post-event care: critical care for at least 12 h (delayed cardiotoxicity), monitor for pancreatitis independently of whether propofol was used (symptoms, amylase/lipase, triglycerides), and report to the national registry<InlineRef topicId="local-anaesthetics" refLabel="AA LAST 2024" /></li>
                 <li>• The RCoA/Association of Anaesthetists 2024 guideline requires lipid emulsion to be immediately available wherever local anaesthetic is used, with a laminated checklist</li>
               </ul>
             </div>

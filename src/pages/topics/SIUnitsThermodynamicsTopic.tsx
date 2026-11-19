@@ -88,7 +88,7 @@ const SIUnitsThermodynamicsTopic = () => {
           "NICE NG180",
           "BJA Educ 2017 (Pressure)",
           "NIST SI Guide App B.8",
-          "BJA Educ 2008",
+          "Sessler 2008",
         ],
         workedExamples: ["Middleton Ch.8", "Middleton Ch.1"],
       }}
