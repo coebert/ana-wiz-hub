@@ -4027,7 +4027,7 @@
       "topicId": "neuroanaesthesia",
       "file": "src/pages/topics/NeuroanaesthesiaTopic.tsx",
       "requiredLabels": [
-        "BJA 1989 N\u2082O & Volatiles"
+        "BJA 1989 N₂O & Volatiles"
       ]
     },
     {
@@ -6079,8 +6079,7 @@
       "topicId": "si-units-thermodynamics",
       "file": "src/pages/topics/SIUnitsThermodynamicsTopic.tsx",
       "requiredLabels": [
-        "BJA Educ 2016 (Thermo)",
-        "BJA Educ 2018 (Temperature)"
+        "BJA Educ 2008"
       ]
     },
     {
@@ -6121,7 +6120,7 @@
       "topicId": "si-units-thermodynamics",
       "file": "src/pages/topics/SIUnitsThermodynamicsTopic.tsx",
       "requiredLabels": [
-        "BJA Educ 2016 (Thermo)"
+        "BJA Educ 2008"
       ]
     },
     {
@@ -6137,7 +6136,7 @@
       "topicId": "si-units-thermodynamics",
       "file": "src/pages/topics/SIUnitsThermodynamicsTopic.tsx",
       "requiredLabels": [
-        "BJA Educ 2018 (Temperature)"
+        "BJA Educ 2008"
       ]
     },
     {
@@ -6178,7 +6177,7 @@
       "topicId": "si-units-thermodynamics",
       "file": "src/pages/topics/SIUnitsThermodynamicsTopic.tsx",
       "requiredLabels": [
-        "BJA Educ 2018 (Temperature)"
+        "BJA Educ 2008"
       ]
     },
     {
@@ -6364,7 +6363,7 @@
       "topicId": "temperature-measurement",
       "file": "src/pages/topics/TemperatureMeasurementTopic.tsx",
       "requiredLabels": [
-        "BJA Educ Temperature 2020",
+        "Zero-heat-flux 2014",
         "Intensive Care Med 2003"
       ]
     },
@@ -6381,7 +6380,7 @@
       "topicId": "temperature-measurement",
       "file": "src/pages/topics/TemperatureMeasurementTopic.tsx",
       "requiredLabels": [
-        "BJA Educ Temperature 2020"
+        "Zero-heat-flux 2014"
       ]
     },
     {
@@ -6406,7 +6405,7 @@
       "topicId": "temperature-measurement",
       "file": "src/pages/topics/TemperatureMeasurementTopic.tsx",
       "requiredLabels": [
-        "BJA Educ Temperature 2020",
+        "Zero-heat-flux 2014",
         "Intensive Care Med 2003"
       ]
     },
@@ -6431,7 +6430,7 @@
       "topicId": "temperature-measurement",
       "file": "src/pages/topics/TemperatureMeasurementTopic.tsx",
       "requiredLabels": [
-        "BJA Educ Temperature 2020",
+        "Zero-heat-flux 2014",
         "Intensive Care Med 2003"
       ]
     },

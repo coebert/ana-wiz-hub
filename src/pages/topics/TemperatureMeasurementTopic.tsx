@@ -92,7 +92,7 @@ const TemperatureMeasurementTopic = () => {
       }}
       sectionSources={{
         objectives: ["Cross & Plunkett Ch.11", "NICE CG65"],
-        keyPoints: ["BJA Educ 2014", "NICE CG65", "Cross & Plunkett Ch.11", "NICE NG125", "BJA Educ Temperature 2020", "SCCM IDSA Fever 2023"],
+        keyPoints: ["BJA Educ 2014", "NICE CG65", "Cross & Plunkett Ch.11", "NICE NG125", "Zero-heat-flux 2014", "SCCM IDSA Fever 2023"],
       }}
       coreConcepts={
         <>
@@ -332,8 +332,10 @@ const TemperatureMeasurementTopic = () => {
                   <strong>Mechanism:</strong> the heater warms the skin until the two thermistors read the same
                   temperature, i.e. there is no temperature gradient and therefore <strong>zero heat flux</strong>
                   between deep tissue and the skin surface. With heat loss abolished, the skin surface temperature
-                  equilibrates with, and so reports, the underlying deep-tissue (core) temperature. Equilibration takes
-                  a few minutes after application <InlineRef topicId="temperature-measurement" refLabel="BJA Educ Temperature 2020" />.
+                  equilibrates with, and so reports, the underlying deep-tissue (core) temperature. In a 105-patient
+                  cardiac-surgical validation, forehead zero-heat-flux temperature had a mean bias of −0.23 °C against
+                  pulmonary artery temperature, with 95% limits of agreement of ±0.82 °C
+                  <InlineRef topicId="temperature-measurement" refLabel="Zero-heat-flux 2014" />.
                 </p>
                 <p>
                   <strong>Clinical use:</strong> continuous, non-invasive core temperature in theatre, recovery and ICU,

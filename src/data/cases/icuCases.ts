@@ -24,7 +24,7 @@ const s = {
   vap: { label: "IDSA/ATS 2016 hospital-acquired and ventilator-associated pneumonia guideline", href: "https://doi.org/10.1093/cid/ciw353" },
   parkland: { label: "BJA Educ: burns resuscitation", href: "https://doi.org/10.1093/bjaceaccp/mkt062" },
   ibi: { label: "ISBI Practice Guidelines for Burn Care", href: "https://doi.org/10.1016/j.burns.2016.05.013" },
-  paedsepsis: { label: "Surviving Sepsis Campaign: paediatric guideline", href: "https://doi.org/10.1097/PCC.0000000000002198" },
+  paedsepsis: { label: "Surviving Sepsis Campaign: paediatric guideline 2026", href: "https://doi.org/10.1097/PCC.0000000000003927" },
   pards: { label: "PALICC-2: paediatric ARDS definition", href: "https://doi.org/10.1097/PCC.0000000000002419" },
   akademiy: { label: "AoMRC Code of Practice: diagnosis and confirmation of death", href: "https://www.aomrc.org.uk/reports-guidance/ukdec-reports-and-guidance/code-practice-diagnosis-confirmation-death/" },
   odt: { label: "NHS Blood and Transplant: donation after brainstem/circulatory death", href: "https://www.odt.nhs.uk/deceased-donation/best-practice-guidance/" },
