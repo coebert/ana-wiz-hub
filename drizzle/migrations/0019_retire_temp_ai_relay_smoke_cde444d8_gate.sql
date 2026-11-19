@@ -1,0 +1,2 @@
+drop function if exists public.consume_ai_relay_smoke_cde444d8(text);
+comment on table private.ai_relay_smoke_cde444d8_gate is 'DEPRECATED: retired one-run relay smoke gate (2026-11-19); no function reads it, keep empty.';
