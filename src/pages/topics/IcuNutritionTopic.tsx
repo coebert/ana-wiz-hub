@@ -232,7 +232,7 @@ const IcuNutritionTopic = () => {
                 </li>
                 <li>
                   <strong>Electrolyte and micronutrient derangement</strong> — refeeding syndrome
-                  (PO₄³⁻/K⁺/Mg²⁺ collapse — give thiamine first), hyponatraemia, metabolic acidosis, and
+                  (PO₄³⁻/K⁺/Mg²⁺ collapse — give thiamine before feeding), hyponatraemia, metabolic acidosis, and
                   after weeks of PN, deficiencies of thiamine, selenium, zinc, copper and essential fatty
                   acids. Gut atrophy and loss of mucosal immunity occur when nothing is given enterally.
                 </li>

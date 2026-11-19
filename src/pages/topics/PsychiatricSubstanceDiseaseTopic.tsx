@@ -47,8 +47,8 @@ const keyPoints = [
     cites: ["BJA Educ ECT 2020"],
   },
   {
-    text: "Alcohol withdrawal is managed with a symptom-triggered, CIWA-Ar-guided reducing regimen of chlordiazepoxide, with parenteral thiamine (Pabrinex) given before glucose to prevent precipitating Wernicke's encephalopathy.",
-    cites: ["NICE CG100 Alcohol"],
+    text: "Alcohol withdrawal is managed with a symptom-triggered, CIWA-Ar-guided reducing regimen of chlordiazepoxide, with parenteral thiamine (Pabrinex) given promptly to at-risk patients with or immediately after glucose — hypoglycaemia is an emergency, so never delay glucose to give thiamine first.",
+    cites: ["NICE CG100 Alcohol", "DBTH Hypoglycaemia 2025"],
   },
   {
     text: "Patients on methadone or buprenorphine maintenance should continue their usual dose perioperatively; expect significantly higher opioid requirements from tolerance, and use multimodal and regional analgesia rather than abrupt substitution to avoid precipitated withdrawal.",
@@ -377,7 +377,7 @@ const PsychiatricSubstanceDiseaseTopic = () => {
                 <div className="bg-card border border-border rounded-lg p-4">
                   <h3 className="font-semibold text-foreground mb-2">Wernicke's Prophylaxis</h3>
                   <ul className="list-disc list-inside space-y-1 text-sm">
-                    <li>Give <strong>parenteral thiamine (Pabrinex)</strong> before or with any glucose administration — glucose without thiamine can precipitate or worsen Wernicke's encephalopathy in a thiamine-deplete patient.</li>
+                    <li>Give <strong>parenteral thiamine (Pabrinex)</strong> with or immediately after glucose in at-risk patients — never delay urgent treatment of hypoglycaemia to give thiamine first. Thiamine is still needed because a carbohydrate load can precipitate or worsen Wernicke's encephalopathy in a thiamine-deplete patient <InlineRef topicId="psychiatric-substance-disease" refLabel="DBTH Hypoglycaemia 2025" />.</li>
                     <li>Classic triad: confusion, ataxia, ophthalmoplegia — often incomplete; treat any suspicion empirically without waiting for the full triad <InlineRef topicId="psychiatric-substance-disease" refLabel="NICE CG100 Alcohol" />.</li>
                   </ul>
                 </div>
@@ -491,7 +491,7 @@ const PsychiatricSubstanceDiseaseTopic = () => {
               pitfalls={[
                 "Never give pethidine or tramadol to a patient on an MAOI or SSRI — high risk of serotonin syndrome; use fentanyl/morphine and avoid indirect sympathomimetics.",
                 "Do not stop methadone or buprenorphine 'to simplify' perioperative care — continue maintenance dosing and add multimodal/regional analgesia on top.",
-                "Do not give glucose before thiamine in a malnourished or alcohol-dependent patient — this can precipitate Wernicke's encephalopathy.",
+                "Do not withhold or delay glucose to give thiamine first in a malnourished or alcohol-dependent patient — treat the hypoglycaemia immediately and give parenteral thiamine with or immediately after the glucose.",
                 "Avoid unopposed beta-blockade in cocaine-intoxicated patients — worsens coronary vasospasm; use benzodiazepines and nitrates first.",
                 "Detention under the Mental Health Act does not equal incapacity, and does not authorise unrelated physical health treatment — capacity must be assessed decision-by-decision under the MCA 2005.",
                 "Lead-pipe rigidity with hyporeflexia and a slow onset over days points to NMS, not serotonin syndrome (hyperreflexia/clonus, rapid onset).",

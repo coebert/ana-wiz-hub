@@ -1480,9 +1480,10 @@ const PaediatricIcuTopic = () => {
               <p className="text-sm text-muted-foreground mt-1">
                 <strong>Bolus:</strong> 10 mL/kg isotonic crystalloid over 5–10 min with reassessment after each
                 (20 mL/kg only for profound shock; DKA uses 10 mL/kg per NICE NG18 and haemorrhagic trauma prioritises blood and haemorrhage control)
-                <InlineRef topicId="paediatric-icu" refLabel="APLS 2021" />. After 40–60 mL/kg without
-                improvement, start vasoactive support and re-examine for hepatomegaly, crepitations and rising
-                oxygen requirement — signs of fluid overload.
+                <InlineRef topicId="paediatric-icu" refLabel="APLS 2021" />. In septic shock, up to 40–60 mL/kg is
+                used only where intensive care is available, with serial reassessment after every bolus; if shock
+                persists, start vasoactive support and re-examine for hepatomegaly, crepitations and rising
+                oxygen requirement — signs of fluid overload<InlineRef topicId="paediatric-icu" refLabel="SSC Children 2026 vasoactives" />.
               </p>
               <p className="text-sm text-muted-foreground mt-1">
                 <strong>Estimating deficit:</strong> % dehydration × weight(kg) × 10 = mL deficit. Clinically 5%

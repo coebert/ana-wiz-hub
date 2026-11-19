@@ -131,7 +131,7 @@ export const pdMetabolicInfection: DrugPharmacodynamicsMap = {
       "No cumulative toxicity: excess is renally excreted.",
     ],
     interactions: [
-      "Glucose administration before thiamine precipitates or worsens Wernicke's encephalopathy — always give thiamine first or simultaneously.",
+      "A carbohydrate load can precipitate or worsen Wernicke's encephalopathy in a thiamine-deplete patient — give thiamine with or immediately after glucose, without delaying urgent treatment of hypoglycaemia.",
       "Requirement increased by refeeding, continuous renal replacement therapy (water-soluble vitamin losses), diuretics and alcohol dependence.",
       "No significant drug–drug interactions, which is why empirical replacement in at-risk patients is safe.",
     ],

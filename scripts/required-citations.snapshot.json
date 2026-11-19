@@ -3639,7 +3639,7 @@
       "topicId": "local-anaesthetics",
       "file": "src/pages/topics/LocalAnaestheticsTopic.tsx",
       "requiredLabels": [
-        "AA LAST 2024",
+        "AA LAST QRH 2023",
         "ASRA LAST 2020"
       ]
     },
@@ -3664,7 +3664,7 @@
       "topicId": "local-anaesthetics",
       "file": "src/pages/topics/LocalAnaestheticsTopic.tsx",
       "requiredLabels": [
-        "AA LAST 2020"
+        "AA LAST QRH 2023"
       ]
     },
     {
@@ -4763,7 +4763,7 @@
       "topicId": "organ-donation",
       "file": "src/pages/topics/OrganDonationTopic.tsx",
       "requiredLabels": [
-        "AoMRC 2008"
+        "AoMRC 2025"
       ]
     },
     {

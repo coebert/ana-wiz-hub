@@ -25,7 +25,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the FAQ count p
   "/clinical/elderly-anaesthesia": 3,
   "/clinical/emergency-surgery": 3,
   "/clinical/ent-anaesthesia": 10,
-  "/clinical/gynaecological-anaesthesia": 10,
+  "/clinical/gynaecological-anaesthesia": 11,
   "/clinical/hepatobiliary-transplant": 10,
   "/clinical/interventional-radiology": 3,
   "/clinical/mass-casualty-military": 3,
@@ -652,8 +652,12 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the full FAQ co
       "q": "What enhanced recovery (ERAS) principles apply to gynaecological surgery?",
     },
     {
-      "a": "Ruptured ectopic pregnancy is a surgical emergency with life-threatening intra-abdominal haemorrhage. Presentation ranges from haemodynamic stability to profound shock. Key anaesthetic considerations include: resuscitation with blood products (activate major haemorrhage protocol if indicated); rapid sequence induction with cricoid pressure (full stomach, pain, and opioids all increase aspiration risk); haemodynamic monitoring with arterial line and ideally cardiac output monitoring; crossmatch at least 4 units; cell salvage is appropriate (no malignancy risk); maintain normothermia and correct coagulopathy (1:1:1 transfusion ratio if massive); anti-D immunoglobulin for Rh-negative patients; and postoperative HDU/ICU for ongoing resuscitation. For unruptured ectopic managed laparoscopically, standard laparoscopic anaesthesia applies with awareness of haemorrhage risk and crossmatch availability.",
+      "a": "Ruptured ectopic pregnancy is a surgical emergency with life-threatening intra-abdominal haemorrhage. Presentation ranges from haemodynamic stability to profound shock. Key anaesthetic considerations include: resuscitation with blood products (activate major haemorrhage protocol if indicated); rapid sequence induction with cricoid pressure (full stomach, pain, and opioids all increase aspiration risk); haemodynamic monitoring with arterial line and ideally cardiac output monitoring; crossmatch at least 4 units; cell salvage is appropriate (no malignancy risk); maintain normothermia and correct coagulopathy (1:1:1 transfusion ratio if massive); gestation-appropriate anti-D only — none at or before 11+6 weeks, and at least 250 IU (50 µg) at 12+0–12+6 weeks in RhD-negative people having surgery (NICE NG126 2026); and postoperative HDU/ICU for ongoing resuscitation. For unruptured ectopic managed laparoscopically, standard laparoscopic anaesthesia applies with awareness of haemorrhage risk and crossmatch availability.",
       "q": "What are the anaesthetic considerations for ruptured ectopic pregnancy?",
+    },
+    {
+      "a": "NICE NG140 (updated 2025) follows the WHO abortion care guideline: for RhD-negative people having a medical or surgical abortion at 11+6 weeks' gestation or less, anti-D prophylaxis is not recommended. At 12 weeks or over, ensure RhD testing and anti-D prophylaxis supply do not delay the abortion and that anti-D is available at the time of the procedure. Ectopic pregnancy and miscarriage follow NICE NG126 (updated 2026), a separate pathway with the same 11+6-week threshold: no anti-D at 11+6 weeks or less, and at least 250 IU (50 µg) at 12+0–12+6 weeks for RhD-negative people having medical management or surgery. Molar pregnancy is managed as gestational trophoblastic disease under its own pathway, so do not extend the abortion or early-pregnancy anti-D rules to it.",
+      "q": "What anti-D prophylaxis is needed after abortion, and how does it differ from ectopic pregnancy and miscarriage?",
     },
   ],
   "/clinical/hepatobiliary-transplant": [
@@ -4743,9 +4747,17 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the synthesised
         "@type": "Question",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Ruptured ectopic pregnancy is a surgical emergency with life-threatening intra-abdominal haemorrhage. Presentation ranges from haemodynamic stability to profound shock. Key anaesthetic considerations include: resuscitation with blood products (activate major haemorrhage protocol if indicated); rapid sequence induction with cricoid pressure (full stomach, pain, and opioids all increase aspiration risk); haemodynamic monitoring with arterial line and ideally cardiac output monitoring; crossmatch at least 4 units; cell salvage is appropriate (no malignancy risk); maintain normothermia and correct coagulopathy (1:1:1 transfusion ratio if massive); anti-D immunoglobulin for Rh-negative patients; and postoperative HDU/ICU for ongoing resuscitation. For unruptured ectopic managed laparoscopically, standard laparoscopic anaesthesia applies with awareness of haemorrhage risk and crossmatch availability.",
+          "text": "Ruptured ectopic pregnancy is a surgical emergency with life-threatening intra-abdominal haemorrhage. Presentation ranges from haemodynamic stability to profound shock. Key anaesthetic considerations include: resuscitation with blood products (activate major haemorrhage protocol if indicated); rapid sequence induction with cricoid pressure (full stomach, pain, and opioids all increase aspiration risk); haemodynamic monitoring with arterial line and ideally cardiac output monitoring; crossmatch at least 4 units; cell salvage is appropriate (no malignancy risk); maintain normothermia and correct coagulopathy (1:1:1 transfusion ratio if massive); gestation-appropriate anti-D only — none at or before 11+6 weeks, and at least 250 IU (50 µg) at 12+0–12+6 weeks in RhD-negative people having surgery (NICE NG126 2026); and postoperative HDU/ICU for ongoing resuscitation. For unruptured ectopic managed laparoscopically, standard laparoscopic anaesthesia applies with awareness of haemorrhage risk and crossmatch availability.",
         },
         "name": "What are the anaesthetic considerations for ruptured ectopic pregnancy?",
+      },
+      {
+        "@type": "Question",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "NICE NG140 (updated 2025) follows the WHO abortion care guideline: for RhD-negative people having a medical or surgical abortion at 11+6 weeks' gestation or less, anti-D prophylaxis is not recommended. At 12 weeks or over, ensure RhD testing and anti-D prophylaxis supply do not delay the abortion and that anti-D is available at the time of the procedure. Ectopic pregnancy and miscarriage follow NICE NG126 (updated 2026), a separate pathway with the same 11+6-week threshold: no anti-D at 11+6 weeks or less, and at least 250 IU (50 µg) at 12+0–12+6 weeks for RhD-negative people having medical management or surgery. Molar pregnancy is managed as gestational trophoblastic disease under its own pathway, so do not extend the abortion or early-pregnancy anti-D rules to it.",
+        },
+        "name": "What anti-D prophylaxis is needed after abortion, and how does it differ from ectopic pregnancy and miscarriage?",
       },
     ],
   },

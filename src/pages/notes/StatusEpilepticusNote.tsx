@@ -38,7 +38,7 @@ const StatusEpilepticusNote = () => (
     <ul>
       <li>ABCDE, high-flow oxygen, protect from injury, note the time of onset.</li>
       <li>Check capillary glucose; treat hypoglycaemia (e.g. 10% glucose IV).</li>
-      <li>Give IV thiamine (Pabrinex) before glucose if alcohol misuse or malnutrition is possible.</li>
+      <li>Give IV thiamine (Pabrinex) with or immediately after glucose if alcohol misuse or malnutrition is possible — never delay treating hypoglycaemia to give thiamine first.</li>
       <li>IV access, bloods including anti-seizure drug levels, electrolytes (Na⁺, Ca²⁺, Mg²⁺) and a pregnancy test where relevant.</li>
     </ul>
 
