@@ -61,6 +61,9 @@ These are coverage gaps, not clinical errors. A topic can be accurate without a 
 | `LAST-03` | Replaced unverifiable "2024/2020 LAST" bibliographic records with the verified QRH 2023 record. |
 | `NEO-01` | Neonatal adrenaline repeat interval changed from 3-5 minutes to 4 minutes (RCUK 2025). |
 | `FAST-01` | UK paediatric elective fasting separated from adult fasting and updated to APAGBI 1 h / 3 h / 6 h, with sip-til-send and exceptions. |
+| `CALC-01` | Paediatric emergency doses: IV and oral paracetamol separated (7.5 mg/kg at ≤10 kg, 1 g above 50 kg); RCUK 2025 adrenaline 1 mg, amiodarone 300/150 mg and atropine 600 microgram caps; staged defibrillation with adult-device advice; ondansetron and dexamethasone age-scoped. |
+| `CALC-02` | Local anaesthetic tool rebuilt around named product, technique and route tables (prilocaine 1% 400 mg; plain lidocaine 1% 300 mg), with unsupported combinations failing closed. |
+| `CALC-03` | MAC for age: the Mapleson regression is withheld below 1 year instead of extrapolated to infants. |
 
 ## How to verify
 

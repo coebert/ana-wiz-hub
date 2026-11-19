@@ -73,7 +73,7 @@ const regionalFaqs: Array<[string, string]> = [
   ],
   [
     "How are local anaesthetics dosed safely to avoid toxicity (LAST)?",
-    "Maximum safe doses: lidocaine 3 mg/kg plain (7 mg/kg with adrenaline); bupivacaine and levobupivacaine 2 mg/kg; ropivacaine 3 mg/kg. Always calculate by lean body weight. LAST presents with peri-oral tingling, agitation, seizures, then cardiovascular collapse. Management: stop injection, ABC, 20% lipid emulsion 1.5 ml/kg over 2–3 min then 15 ml/kg/h; repeat the same bolus at 5 and 10 min and double the infusion to 30 ml/kg/h if the circulation is not restored; maximum cumulative 12 ml/kg (Association of Anaesthetists QRH 3-10, 2023). Use adrenaline ≤ 1 microgram/kg and avoid vasopressin; avoid lidocaine, and use amiodarone for ventricular arrhythmias. Prolonged CPR may be needed.",
+    "Use named product limits, not an agent-wide maximum: lidocaine 1% plain is limited to 4.5 mg/kg and 300 mg per single dose, and with a vasoconstrictor to 7 mg/kg and 500 mg; the bupivacaine field-block table limits 2 mg/kg and 150 mg, and the levobupivacaine infiltration table 150 mg; prilocaine 1% has a 400 mg adult maximum; no universal ropivacaine maximum is inferred. Check the exact product, technique and route table and calculate by lean body weight. LAST presents with peri-oral tingling, agitation, seizures, then cardiovascular collapse. Management: stop injection, ABC, 20% lipid emulsion 1.5 ml/kg over 2–3 min then 15 ml/kg/h; repeat the same bolus at 5 and 10 min and double the infusion to 30 ml/kg/h if the circulation is not restored; maximum cumulative 12 ml/kg (Association of Anaesthetists QRH 3-10, 2023). Use adrenaline ≤ 1 microgram/kg and avoid vasopressin; avoid lidocaine, and use amiodarone for ventricular arrhythmias. Prolonged CPR may be needed.",
   ],
   [
     "How is block height tested at the bedside?",
@@ -662,7 +662,7 @@ const RegionalAnaesthesiaTopic = () => {
       >
         <ul className="space-y-2 list-disc list-inside text-sm">
           <li><strong>Stop-Before-You-Block</strong>: name, mark, side, allergies, anticoagulation, plan documented immediately before injection.</li>
-          <li><strong>LA toxicity (LAST)</strong>: max safe doses (lidocaine 3 mg/kg plain / 7 with adrenaline; bupivacaine 2 mg/kg). Treat with 20% lipid emulsion 1.5 ml/kg over 2–3 min, then 15 ml/kg/h; repeat at 5 and 10 min and double to 30 ml/kg/h if unstable (maximum 12 ml/kg).</li>
+          <li><strong>LA toxicity (LAST)</strong>: use the named product table, not an agent-wide maximum — lidocaine 1% plain ≤4.5 mg/kg and ≤300 mg, with adrenaline ≤7 mg/kg and ≤500 mg; bupivacaine field block 2 mg/kg (≤150 mg); prilocaine 1% ≤400 mg. Treat with 20% lipid emulsion 1.5 ml/kg over 2–3 min, then 15 ml/kg/h; repeat at 5 and 10 min and double to 30 ml/kg/h if unstable (maximum 12 ml/kg).</li>
           <li><strong>Neuraxial — anticoagulation</strong>: follow AAGBI 2013 — LMWH prophylactic 12 h gap, treatment 24 h; remove catheter only when coagulation back to baseline.</li>
           <li><strong>Block height assessment</strong>: cold (Aδ, C-fibres) — most reliable bedside test; pinprick = surgical anaesthesia; T4 needed for upper-abdominal surgery.</li>
           <li><strong>Ultrasound vs nerve stimulator</strong>: US improves block success rate (Cochrane 2019) and may reduce minor complications, though its effect on severe neurological complications is unclear. Combination with nerve stimulation is often used for deep blocks.</li>

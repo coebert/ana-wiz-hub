@@ -566,7 +566,7 @@ const LocalAnaestheticsTopic = () => {
             accent="pharmacology"
             pitfalls={[
               "Onset depends on pKa (closer to 7.4 = faster); duration depends on protein binding (higher = longer); potency depends on lipid solubility.",
-              "Maximum safe doses: lidocaine 3 mg/kg (7 with adrenaline); bupivacaine 2 mg/kg; ropivacaine 3 mg/kg — body-weight ideal, not actual.",
+              "Product-specific single-dose limits, not agent-wide maxima: lidocaine 1% plain ≤4.5 mg/kg and ≤300 mg (with adrenaline ≤7 mg/kg and ≤500 mg); bupivacaine field block 2 mg/kg and ≤150 mg; prilocaine 1% ≤400 mg; no universal ropivacaine maximum — use the exact product table, by lean body weight.",
               "LAST (local anaesthetic systemic toxicity): CNS first (perioral tingling, seizures), then cardiovascular collapse — bupivacaine is most cardiotoxic.",
               "Treat LAST: stop injection, ABC, control seizures, then 20% lipid emulsion 1.5 mL/kg over 2–3 min followed by 15 mL/kg/h; repeat the bolus at 5 and 10 min and double to 30 mL/kg/h if unstable (maximum 12 mL/kg; Association of Anaesthetists QRH 3-10, 2023).",
               "Adrenaline-containing solutions prolong duration and reduce systemic absorption; avoid in end-arteries (digits, penis, nose).",

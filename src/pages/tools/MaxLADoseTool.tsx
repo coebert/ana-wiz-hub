@@ -1,77 +1,80 @@
 import { useMemo, useState } from "react";
 import { Link } from "react-router-dom";
 import { ToolShell } from "@/components/tools/ToolShell";
-
-interface LA {
-  key: string;
-  name: string;
-  plain: number; // mg/kg
-  withAdr?: number; // mg/kg with adrenaline
-  absoluteCap?: number; // mg
-}
-
-const AGENTS: LA[] = [
-  { key: "lido", name: "Lidocaine", plain: 3, withAdr: 7, absoluteCap: 500 },
-  { key: "bupi", name: "Bupivacaine", plain: 2, withAdr: 2, absoluteCap: 175 },
-  { key: "levo", name: "Levobupivacaine", plain: 2, withAdr: 2, absoluteCap: 150 },
-  { key: "ropi", name: "Ropivacaine", plain: 3, withAdr: 3, absoluteCap: 225 },
-  { key: "prilo", name: "Prilocaine", plain: 6, withAdr: 8, absoluteCap: 600 },
-];
-
-const CONCENTRATIONS = [0.25, 0.5, 1, 2]; // %
+import {
+  LOCAL_ANAESTHETIC_ROWS,
+  calculateLocalAnaestheticLimit,
+  localAnaestheticUnsupportedReason,
+} from "@/lib/local-anaesthetic-limits";
 
 export default function MaxLADoseTool() {
   const [weight, setWeight] = useState(70);
-  const [withAdr, setWithAdr] = useState(false);
-  const [agentKey, setAgentKey] = useState<string>("lido");
-  const [conc, setConc] = useState(1); // %
+  const [rowKey, setRowKey] = useState("lidocaine-plain");
 
-  const agent = AGENTS.find((a) => a.key === agentKey)!;
+  const row = LOCAL_ANAESTHETIC_ROWS.find((r) => r.key === rowKey)!;
+  const [conc, setConc] = useState(row.concentrations[0]);
 
-  const { maxMg, maxMl } = useMemo(() => {
-    const perKg = withAdr ? agent.withAdr ?? agent.plain : agent.plain;
-    const raw = perKg * weight;
-    const capped = agent.absoluteCap ? Math.min(raw, agent.absoluteCap) : raw;
-    const mgPerMl = conc * 10; // 1% = 10 mg/mL
-    return { maxMg: capped, maxMl: capped / mgPerMl };
-  }, [agent, weight, withAdr, conc]);
+  const concentration = row.concentrations.includes(conc) ? conc : row.concentrations[0];
+
+  const limit = useMemo(
+    () => calculateLocalAnaestheticLimit(rowKey, weight, concentration),
+    [rowKey, weight, concentration]
+  );
+  const unsupported = useMemo(
+    () => localAnaestheticUnsupportedReason(rowKey, weight, concentration),
+    [rowKey, weight, concentration]
+  );
 
   return (
     <ToolShell
       slug="max-local-anaesthetic-dose"
-      title="Max local anaesthetic dose"
-      description="Calculate maximum safe local anaesthetic dose and volume by agent, weight, concentration, and adrenaline status."
+      title="Local anaesthetic product limits"
+      description="Product-, technique- and route-scoped local anaesthetic limits for named UK products, with the volume at the chosen strength."
       intro={
         <>
-          Maximum safe single-shot dose for the most commonly used local
-          anaesthetics. Doses are upper limits in fit adults — reduce in frailty,
-          extremes of age, or hepatic/cardiac disease. If toxicity occurs, follow the{" "}
+          Each option below is a single named UK product table, not an agent-wide ceiling. Select
+          the product and technique you are actually using; the calculator refuses combinations that
+          product does not cover. If toxicity occurs, follow the{" "}
           <Link
             to="/notes/local-anaesthetic-systemic-toxicity-management"
             className="text-pharmacology hover:underline"
           >
             LAST management guide
           </Link>{" "}
-          (AAGBI/Association of Anaesthetists algorithm and lipid emulsion dosing).
+          (Association of Anaesthetists QRH 3-10, 2023).
         </>
       }
       references={
         <>
           <p>
-            Association of Anaesthetists Quick Reference Handbook 3-10:
-            local anaesthetic toxicity, version 2 (2023). The 2010 laminate
-            is withdrawn; the QRH is the current UK reference version.
+            Association of Anaesthetists Quick Reference Handbook 3-10: local anaesthetic toxicity,
+            version 2 (2023).
           </p>
-          <p>BNF / SPCs for each agent (current edition).</p>
+          <p>
+            Named product SmPCs:{" "}
+            <a className="underline" href={row.sourceUrl}>
+              {row.product}
+            </a>
+            .
+          </p>
         </>
       }
       caveat={
         <>
-          Educational aid only. Always have lipid emulsion 20% and resuscitation
-          equipment immediately available before any regional block.
+          Educational aid only. A listed ceiling is a product upper limit, not a target and not a
+          toxicity threshold; prior doses, mixed agents, site, weight basis and patient factors need
+          individual assessment. Check against your local formulary and protocol with pharmacist
+          review before prescribing. Always have lipid emulsion 20% and resuscitation equipment
+          immediately available before any regional block.
         </>
       }
     >
+      <div className="mb-5 rounded-xl border border-amber-500/40 bg-amber-500/10 p-3 text-xs text-foreground">
+        <strong>Pharmacist review and local protocol required.</strong> These are product-specific
+        single-dose ceilings for adults; they do not certify a safe dose for a particular patient or
+        block.
+      </div>
+
       <div className="grid gap-4 sm:grid-cols-2">
         <label className="block text-sm">
           <span className="text-muted-foreground">Weight (kg)</span>
@@ -86,28 +89,35 @@ export default function MaxLADoseTool() {
         </label>
 
         <label className="block text-sm">
-          <span className="text-muted-foreground">Agent</span>
+          <span className="text-muted-foreground">Product, technique and route</span>
           <select
-            value={agentKey}
-            onChange={(e) => setAgentKey(e.target.value)}
+            value={rowKey}
+            onChange={(e) => {
+              const next = LOCAL_ANAESTHETIC_ROWS.find((r) => r.key === e.target.value)!;
+              setRowKey(next.key);
+              setConc(next.concentrations[0]);
+            }}
             className="mt-1 w-full rounded-lg border border-input bg-background px-3 py-2 text-foreground"
           >
-            {AGENTS.map((a) => (
-              <option key={a.key} value={a.key}>
-                {a.name}
+            {LOCAL_ANAESTHETIC_ROWS.map((r) => (
+              <option key={r.key} value={r.key}>
+                {r.agent} — {r.technique}
+                {r.withAdrenaline ? " (+ adrenaline)" : ""}
               </option>
             ))}
           </select>
         </label>
 
         <label className="block text-sm">
-          <span className="text-muted-foreground">Concentration (%)</span>
+          <span className="text-muted-foreground">
+            Concentration (%) — covered by this product table
+          </span>
           <select
-            value={conc}
+            value={concentration}
             onChange={(e) => setConc(Number(e.target.value))}
             className="mt-1 w-full rounded-lg border border-input bg-background px-3 py-2 text-foreground"
           >
-            {CONCENTRATIONS.map((c) => (
+            {row.concentrations.map((c) => (
               <option key={c} value={c}>
                 {c}%
               </option>
@@ -115,42 +125,60 @@ export default function MaxLADoseTool() {
           </select>
         </label>
 
-        <label className="flex items-end gap-2 text-sm">
-          <input
-            id="adr"
-            type="checkbox"
-            checked={withAdr}
-            onChange={(e) => setWithAdr(e.target.checked)}
-            className="h-4 w-4 rounded border-input"
-          />
-          <span className="text-foreground">With adrenaline</span>
-        </label>
+        <div className="text-xs text-muted-foreground sm:pt-6">
+          <p className="font-medium text-foreground">{row.product}</p>
+          <p>{row.route}</p>
+        </div>
       </div>
 
-      <div className="mt-5 grid gap-3 sm:grid-cols-2">
-        <div className="rounded-xl border border-border bg-muted/40 p-4">
-          <div className="text-xs uppercase text-muted-foreground">Max dose</div>
-          <div className="mt-1 text-3xl font-bold text-foreground">
-            {maxMg.toFixed(0)}{" "}
-            <span className="text-base font-medium text-muted-foreground">mg</span>
+      {limit ? (
+        <div className="mt-5 grid gap-3 sm:grid-cols-2">
+          <div className="rounded-xl border border-border bg-muted/40 p-4">
+            <div className="text-xs uppercase text-muted-foreground">
+              Product single-dose ceiling
+            </div>
+            <div className="mt-1 text-3xl font-bold text-foreground">
+              {limit.maxMg.toFixed(0)}{" "}
+              <span className="text-base font-medium text-muted-foreground">mg</span>
+            </div>
+            <div className="text-xs text-muted-foreground mt-1">
+              {limit.mgPerKg !== undefined
+                ? `${limit.mgPerKg} mg/kg × ${weight} kg`
+                : "no adult mg/kg figure in this product table"}
+              {limit.cappedBy === "absolute" && ", capped by the product maximum"}
+              {limit.cappedBy === "product-only" && ", product maximum"}
+            </div>
           </div>
-          <div className="text-xs text-muted-foreground mt-1">
-            {(withAdr ? agent.withAdr ?? agent.plain : agent.plain)} mg/kg
-            {agent.absoluteCap && `, capped at ${agent.absoluteCap} mg`}
+          <div className="rounded-xl border border-border bg-muted/40 p-4">
+            <div className="text-xs uppercase text-muted-foreground">
+              Equivalent volume @ {concentration}%
+            </div>
+            <div className="mt-1 text-3xl font-bold text-foreground">
+              {limit.maxMl.toFixed(1)}{" "}
+              <span className="text-base font-medium text-muted-foreground">mL</span>
+            </div>
+            <div className="text-xs text-muted-foreground mt-1">
+              ({limit.mgPerMl.toFixed(0)} mg/mL)
+            </div>
           </div>
         </div>
-        <div className="rounded-xl border border-border bg-muted/40 p-4">
-          <div className="text-xs uppercase text-muted-foreground">
-            Max volume @ {conc}%
-          </div>
-          <div className="mt-1 text-3xl font-bold text-foreground">
-            {maxMl.toFixed(1)}{" "}
-            <span className="text-base font-medium text-muted-foreground">mL</span>
-          </div>
-          <div className="text-xs text-muted-foreground mt-1">
-            ({(conc * 10).toFixed(0)} mg/mL)
-          </div>
+      ) : (
+        <div className="mt-5 rounded-xl border border-destructive/40 bg-destructive/5 p-4 text-sm">
+          <p className="font-semibold text-foreground">No calculated limit</p>
+          <p className="mt-1 text-muted-foreground">{unsupported}</p>
         </div>
+      )}
+
+      <div className="mt-4 rounded-xl border border-border p-4 text-xs text-muted-foreground">
+        <p className="font-semibold text-foreground">Scope of this row</p>
+        <p className="mt-1">{row.notes}</p>
+        <p className="mt-2">
+          Source:{" "}
+          <a className="underline" href={row.sourceUrl}>
+            {row.product}
+          </a>
+          . Not interchangeable with another product, concentration, technique or route.
+        </p>
       </div>
     </ToolShell>
   );

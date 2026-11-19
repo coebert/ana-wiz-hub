@@ -12,8 +12,8 @@ const LocalAnaestheticToxicityNote = () => (
     lede="Local anaesthetic systemic toxicity (LAST) is a life-threatening complication of regional anaesthesia: CNS excitation followed by cardiovascular collapse from sodium-channel block in the myocardium. The Association of Anaesthetists Quick Reference Handbook (3-10, 2023) is the current UK reference and mandates immediate 20% lipid emulsion as part of resuscitation."
     faqs={[
       {
-        q: "What is the maximum safe dose of lidocaine and bupivacaine?",
-        a: "Lidocaine: 3 mg/kg plain, 7 mg/kg with adrenaline. Bupivacaine and levobupivacaine: 2 mg/kg (no adrenaline-enhanced dose). Ropivacaine: 3 mg/kg. Always calculate against lean body weight and use the lowest effective dose; reduce in the elderly, pregnant, and hepatically impaired.",
+        q: "What is the maximum dose of lidocaine and bupivacaine?",
+        a: "There is no single agent-wide maximum — use the named product, technique and route table. For example, lidocaine 1% plain is limited to 4.5 mg/kg and 300 mg per single dose, and with a vasoconstrictor to 7 mg/kg and 500 mg; the named bupivacaine field-block table limits 2 mg/kg and 150 mg; levobupivacaine infiltration 150 mg; prilocaine 1% has a 400 mg adult maximum and no adult mg/kg figure. No universal ropivacaine maximum is inferred. Calculate against lean body weight, use the lowest effective dose, and reduce in the elderly, pregnant and hepatically impaired.",
       },
       {
         q: "What is the Intralipid 20% dose in LAST?",
@@ -62,7 +62,7 @@ const LocalAnaestheticToxicityNote = () => (
 
     <h2>Prevention</h2>
     <ul>
-      <li>Calculate maximum dose against lean body weight before drawing up — the <Link to="/tools/max-local-anaesthetic-dose">maximum LA dose calculator</Link> handles agent, adrenaline status and weight.</li>
+      <li>Check the named product, technique and route table against lean body weight before drawing up — the <Link to="/tools/max-local-anaesthetic-dose">local anaesthetic product-limit calculator</Link> shows the product's own ceiling and refuses combinations it does not cover.</li>
       <li>Use ultrasound guidance and incremental injection (3–5 mL aliquots) with intermittent aspiration — covered in the <Link to="/clinical/regional-anaesthesia">regional anaesthesia topic</Link>.</li>
       <li>Test dose with adrenaline-containing solution if not contraindicated.</li>
       <li>Continuous verbal contact with the patient to detect early CNS symptoms.</li>

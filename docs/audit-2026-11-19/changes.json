@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-11-19T12:30:00Z",
+ "generated_at": "2026-11-19T13:50:00Z",
  "branch": "audit-content-coverage",
  "base": "main",
  "scope": "Learner-facing authored content only. No private learner data, no held podcast content, no bulk unverified rewrite, no dispensing advice.",
@@ -142,6 +142,52 @@
     "src/test/reference-triage-2026-11-19.test.ts"
    ],
    "verification": "Each replacement DOI was resolved through the Crossref API and its title, container, volume, issue, pages and author list read before the citation was rewritten. Withheld records are asserted by src/test/reference-triage-2026-11-19.test.ts (52 assertions) and were checked in the running app: the thermodynamics reference sheet shows one 'Source gap' and no longer lists the withheld pressure and temperature citations; the ENT sheet links the haematoma guideline to 10.1111/anae.15585; the ICU nutrition sheet links NUTRIREA-3 to 10.1016/s2213-2600(23)00092-9. Not verified: whether each corrected source supports the exact sentence it is attached to for records without a stored excerpt."
+  },
+  {
+   "id": "CALC-01",
+   "severity": "high",
+   "finding": "PaedDoseTool computed IV paracetamol as 15 mg/kg at every weight, giving 150 mg at exactly 10 kg and 1050 mg at 70 kg, against the named UK product's 75 mg and 1 g. Adrenaline and amiodarone had no ceiling, the second amiodarone dose was not distinguished, defibrillation was a single '4 J/kg every cycle' line, and the ondansetron and dexamethasone rows rendered without an age or indication scope.",
+   "correction": "IV and oral paracetamol separated. IV now follows emc 100803: <=10 kg 7.5 mg/kg and 30 mg/kg/day; >10-33 kg 15 mg/kg and 60 mg/kg/day to 2 g; >33-50 kg to 3 g; >50 kg 1 g and 3-4 g/day, with the 4-hour interval and 15-minute infusion. Oral is 10-15 mg/kg and 60 mg/kg/day to 4 g, withheld under 2 months. RCUK 2025 (Feb 2026 V3) ceilings: adrenaline 10 micrograms/kg max 1 mg with the 1:10,000 volume; amiodarone 5 mg/kg max 300 mg after the 3rd shock and max 150 mg after the 5th; atropine 20 micrograms/kg max 600 micrograms. Defibrillation is staged: 4 J/kg with the chart's 150 J column cap, refractory VF/pVT after the 5th shock stepwise to 8 J/kg max 360 J (adolescent 360 J), cardioversion 1 J/kg doubling to 4 J/kg, with adult-device and pad advice. Ondansetron is PONV-only over 1 month, 0.1 mg/kg max 4 mg; dexamethasone is PONV prophylaxis from 1 year, 0.15 mg/kg max 8 mg, labelled guideline-based and withheld below 1 year. Arithmetic moved to a pure module.",
+   "files": [
+    "src/lib/paediatric-emergency-doses.ts",
+    "src/lib/paediatric-emergency-doses.test.ts",
+    "src/pages/tools/PaedDoseTool.tsx",
+    "src/pages/ToolsHub.tsx"
+   ],
+   "verification": "38 unit assertions at 5, 10, 10.1, 40, 70 and 120 kg cover every band and cap. The rendered tool was driven in the preview at 10, 70 and 120 kg: 75 mg and 300 mg/day, 1000 mg, amiodarone 300/150 mg, adrenaline 700 and 1000 micrograms."
+  },
+  {
+   "id": "CALC-02",
+   "severity": "high",
+   "finding": "MaxLADoseTool presented agent-wide 'maximum safe' doses from an adrenaline checkbox: plain prilocaine 1% up to 600 mg and plain lidocaine sharing the 500 mg adrenaline ceiling. Neither matches the named UK products, which cap prilocaine 1% at 400 mg and plain lidocaine 1% at 300 mg.",
+   "correction": "Replaced with named product, technique and route rows: lidocaine 1% plain 4.5 mg/kg and 300 mg (emc 15149); lidocaine with adrenaline 7 mg/kg and 500 mg (emc 2397); prilocaine 1% adult 400 mg with no adult mg/kg figure (emc 870); bupivacaine field block 2 mg/kg and 150 mg (emc 11611); levobupivacaine infiltration 150 mg (emc 13644); ropivacaine lookup-only. Unsupported combinations (weight below the adult table, uncovered concentration, lookup-only agent) return no number with a stated reason. Static duplicates in the LAST note, regional anaesthesia, local anaesthetics, clinical incidents and paediatric core teaching were reworded to product-scoped limits.",
+   "files": [
+    "src/lib/local-anaesthetic-limits.ts",
+    "src/lib/local-anaesthetic-limits.test.ts",
+    "src/pages/tools/MaxLADoseTool.tsx",
+    "src/pages/ToolsHub.tsx",
+    "src/pages/notes/LocalAnaestheticToxicityNote.tsx",
+    "src/pages/topics/RegionalAnaesthesiaTopic.tsx",
+    "src/pages/topics/LocalAnaestheticsTopic.tsx",
+    "src/pages/topics/ClinicalIncidentsTopic.tsx",
+    "src/pages/topics/PaediatricCoreTopic.tsx",
+    "src/data/anaesthesiaDrugDoses.ts",
+    "src/test/__snapshots__/topic-faq-snapshots.test.ts.snap"
+   ],
+   "verification": "11 unit assertions cover each product ceiling and the fail-closed cases. The preview showed prilocaine 400 mg at 70 kg and the no-calculated-limit message at 10 kg."
+  },
+  {
+   "id": "CALC-03",
+   "severity": "high",
+   "finding": "MACForAgeTool applied the Mapleson age regression to any age, including infants, although the meta-analysis is derived from data for age over 1 year, and described the fall as 'above 40 y' rather than across the fitted range.",
+   "correction": "The age correction is a pure module that returns no value below 1 year; the tool withholds the table values and explains that infant MAC is higher than the trend predicts. The wording now states the fit is for age over 1 year.",
+   "files": [
+    "src/lib/mac-for-age.ts",
+    "src/lib/mac-for-age.test.ts",
+    "src/pages/tools/MACForAgeTool.tsx",
+    "src/pages/ToolsHub.tsx"
+   ],
+   "verification": "8 unit assertions. The preview at 0.5 years showed the withheld notice and dashes; at 60 years it computed values."
   }
  ],
  "not_changed": [

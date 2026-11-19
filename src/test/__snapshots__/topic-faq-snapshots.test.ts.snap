@@ -1092,7 +1092,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the full FAQ co
       "q": "When is spinal anaesthesia contraindicated?",
     },
     {
-      "a": "Maximum safe doses: lidocaine 3 mg/kg plain (7 mg/kg with adrenaline); bupivacaine and levobupivacaine 2 mg/kg; ropivacaine 3 mg/kg. Always calculate by lean body weight. LAST presents with peri-oral tingling, agitation, seizures, then cardiovascular collapse. Management: stop injection, ABC, 20% lipid emulsion 1.5 ml/kg over 2–3 min then 15 ml/kg/h; repeat the same bolus at 5 and 10 min and double the infusion to 30 ml/kg/h if the circulation is not restored; maximum cumulative 12 ml/kg (Association of Anaesthetists QRH 3-10, 2023). Use adrenaline ≤ 1 microgram/kg and avoid vasopressin; avoid lidocaine, and use amiodarone for ventricular arrhythmias. Prolonged CPR may be needed.",
+      "a": "Use named product limits, not an agent-wide maximum: lidocaine 1% plain is limited to 4.5 mg/kg and 300 mg per single dose, and with a vasoconstrictor to 7 mg/kg and 500 mg; the bupivacaine field-block table limits 2 mg/kg and 150 mg, and the levobupivacaine infiltration table 150 mg; prilocaine 1% has a 400 mg adult maximum; no universal ropivacaine maximum is inferred. Check the exact product, technique and route table and calculate by lean body weight. LAST presents with peri-oral tingling, agitation, seizures, then cardiovascular collapse. Management: stop injection, ABC, 20% lipid emulsion 1.5 ml/kg over 2–3 min then 15 ml/kg/h; repeat the same bolus at 5 and 10 min and double the infusion to 30 ml/kg/h if the circulation is not restored; maximum cumulative 12 ml/kg (Association of Anaesthetists QRH 3-10, 2023). Use adrenaline ≤ 1 microgram/kg and avoid vasopressin; avoid lidocaine, and use amiodarone for ventricular arrhythmias. Prolonged CPR may be needed.",
       "q": "How are local anaesthetics dosed safely to avoid toxicity (LAST)?",
     },
     {
@@ -2070,8 +2070,8 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the full FAQ co
   ],
   "/notes/local-anaesthetic-systemic-toxicity-management": [
     {
-      "a": "Lidocaine: 3 mg/kg plain, 7 mg/kg with adrenaline. Bupivacaine and levobupivacaine: 2 mg/kg (no adrenaline-enhanced dose). Ropivacaine: 3 mg/kg. Always calculate against lean body weight and use the lowest effective dose; reduce in the elderly, pregnant, and hepatically impaired.",
-      "q": "What is the maximum safe dose of lidocaine and bupivacaine?",
+      "a": "There is no single agent-wide maximum — use the named product, technique and route table. For example, lidocaine 1% plain is limited to 4.5 mg/kg and 300 mg per single dose, and with a vasoconstrictor to 7 mg/kg and 500 mg; the named bupivacaine field-block table limits 2 mg/kg and 150 mg; levobupivacaine infiltration 150 mg; prilocaine 1% has a 400 mg adult maximum and no adult mg/kg figure. No universal ropivacaine maximum is inferred. Calculate against lean body weight, use the lowest effective dose, and reduce in the elderly, pregnant and hepatically impaired.",
+      "q": "What is the maximum dose of lidocaine and bupivacaine?",
     },
     {
       "a": "Bolus 1.5 mL/kg lean body weight over 2–3 minutes (≈ 100 mL in a 70 kg adult), followed by an infusion of 15 mL/kg/h. Give the same bolus again at 5 and 10 minutes and double the infusion rate to 30 mL/kg/h if the circulation is not restored. Maximum cumulative dose 12 mL/kg (≈ 840 mL in a 70 kg adult).",
@@ -5651,7 +5651,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the synthesised
         "@type": "Question",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Maximum safe doses: lidocaine 3 mg/kg plain (7 mg/kg with adrenaline); bupivacaine and levobupivacaine 2 mg/kg; ropivacaine 3 mg/kg. Always calculate by lean body weight. LAST presents with peri-oral tingling, agitation, seizures, then cardiovascular collapse. Management: stop injection, ABC, 20% lipid emulsion 1.5 ml/kg over 2–3 min then 15 ml/kg/h; repeat the same bolus at 5 and 10 min and double the infusion to 30 ml/kg/h if the circulation is not restored; maximum cumulative 12 ml/kg (Association of Anaesthetists QRH 3-10, 2023). Use adrenaline ≤ 1 microgram/kg and avoid vasopressin; avoid lidocaine, and use amiodarone for ventricular arrhythmias. Prolonged CPR may be needed.",
+          "text": "Use named product limits, not an agent-wide maximum: lidocaine 1% plain is limited to 4.5 mg/kg and 300 mg per single dose, and with a vasoconstrictor to 7 mg/kg and 500 mg; the bupivacaine field-block table limits 2 mg/kg and 150 mg, and the levobupivacaine infiltration table 150 mg; prilocaine 1% has a 400 mg adult maximum; no universal ropivacaine maximum is inferred. Check the exact product, technique and route table and calculate by lean body weight. LAST presents with peri-oral tingling, agitation, seizures, then cardiovascular collapse. Management: stop injection, ABC, 20% lipid emulsion 1.5 ml/kg over 2–3 min then 15 ml/kg/h; repeat the same bolus at 5 and 10 min and double the infusion to 30 ml/kg/h if the circulation is not restored; maximum cumulative 12 ml/kg (Association of Anaesthetists QRH 3-10, 2023). Use adrenaline ≤ 1 microgram/kg and avoid vasopressin; avoid lidocaine, and use amiodarone for ventricular arrhythmias. Prolonged CPR may be needed.",
         },
         "name": "How are local anaesthetics dosed safely to avoid toxicity (LAST)?",
       },
@@ -7705,9 +7705,9 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the synthesised
         "@type": "Question",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Lidocaine: 3 mg/kg plain, 7 mg/kg with adrenaline. Bupivacaine and levobupivacaine: 2 mg/kg (no adrenaline-enhanced dose). Ropivacaine: 3 mg/kg. Always calculate against lean body weight and use the lowest effective dose; reduce in the elderly, pregnant, and hepatically impaired.",
+          "text": "There is no single agent-wide maximum — use the named product, technique and route table. For example, lidocaine 1% plain is limited to 4.5 mg/kg and 300 mg per single dose, and with a vasoconstrictor to 7 mg/kg and 500 mg; the named bupivacaine field-block table limits 2 mg/kg and 150 mg; levobupivacaine infiltration 150 mg; prilocaine 1% has a 400 mg adult maximum and no adult mg/kg figure. No universal ropivacaine maximum is inferred. Calculate against lean body weight, use the lowest effective dose, and reduce in the elderly, pregnant and hepatically impaired.",
         },
-        "name": "What is the maximum safe dose of lidocaine and bupivacaine?",
+        "name": "What is the maximum dose of lidocaine and bupivacaine?",
       },
       {
         "@type": "Question",

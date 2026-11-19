@@ -16,7 +16,7 @@ const TOOLS = [
     slug: "paediatric-emergency-doses",
     title: "Paediatric emergency drug doses",
     blurb:
-      "Weight-based bolus doses for arrest, induction and analgesia in children.",
+      "RCUK 2025 arrest ceilings, staged defibrillation and named-product paracetamol bands for children.",
     icon: Baby,
   },
   {
@@ -28,9 +28,9 @@ const TOOLS = [
   },
   {
     slug: "max-local-anaesthetic-dose",
-    title: "Max local anaesthetic dose",
+    title: "Local anaesthetic product limits",
     blurb:
-      "Maximum safe dose and volume by agent, weight and concentration.",
+      "Named-product, technique- and route-scoped single-dose ceilings with the volume at your chosen strength.",
     icon: Syringe,
   },
   {

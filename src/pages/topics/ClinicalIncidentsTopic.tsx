@@ -217,7 +217,7 @@ const ClinicalIncidentsTopic = () => {
           <ExamSection id="section-last" className="scroll-mt-24" exams={[Exam.FINAL, Exam.FFICM]}>
             <CollapsibleSubsection title="Local Anaesthetic Systemic Toxicity (LAST)">
             <p className="text-muted-foreground leading-relaxed mb-3">
-              CNS toxicity precedes cardiac toxicity (except with bupivacaine which can cause simultaneous cardiac arrest). Maximum doses: lidocaine 3 mg/kg (7 with adrenaline), bupivacaine 2 mg/kg.
+              CNS toxicity precedes cardiac toxicity (except with bupivacaine which can cause simultaneous cardiac arrest). Use the named product table rather than an agent-wide maximum: lidocaine 1% plain ≤4.5 mg/kg and ≤300 mg, with adrenaline ≤7 mg/kg and ≤500 mg; bupivacaine field block 2 mg/kg and ≤150 mg.
             </p>
             <div className="p-4 rounded-lg border border-border">
               <p className="font-semibold text-foreground text-sm mb-2">Association of Anaesthetists QRH 3-10 (2023) LAST protocol</p>
