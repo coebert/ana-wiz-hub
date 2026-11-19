@@ -817,7 +817,8 @@
       "topicId": "arrhythmias-ecg-icu",
       "file": "src/pages/topics/ArrhythmiasEcgIcuTopic.tsx",
       "requiredLabels": [
-        "RCUK 2021 Tachycardia"
+        "RCUK 2021 Tachycardia",
+        "RCUK Tachycardia March 2026"
       ]
     },
     {
@@ -825,7 +826,8 @@
       "topicId": "arrhythmias-ecg-icu",
       "file": "src/pages/topics/ArrhythmiasEcgIcuTopic.tsx",
       "requiredLabels": [
-        "RCUK 2021 Tachycardia"
+        "RCUK 2021 Tachycardia",
+        "RCUK Tachycardia March 2026"
       ]
     },
     {
@@ -4763,7 +4765,8 @@
       "topicId": "organ-donation",
       "file": "src/pages/topics/OrganDonationTopic.tsx",
       "requiredLabels": [
-        "AoMRC 2008"
+        "AoMRC DNC Code of Practice (PDF)",
+        "AoMRC 2025"
       ]
     },
     {
@@ -4982,7 +4985,8 @@
       "topicId": "paediatric-icu",
       "file": "src/pages/topics/PaediatricIcuTopic.tsx",
       "requiredLabels": [
-        "SSC Paediatric 2020"
+        "SSC Paediatric 2020",
+        "SSC Children 2026 antibiotics"
       ]
     },
     {
@@ -5006,7 +5010,8 @@
       "topicId": "paediatric-icu",
       "file": "src/pages/topics/PaediatricIcuTopic.tsx",
       "requiredLabels": [
-        "SSC Paediatric 2020"
+        "SSC Paediatric 2020",
+        "SSC Children 2026 antibiotics"
       ]
     },
     {
@@ -5030,7 +5035,8 @@
       "topicId": "paediatric-icu",
       "file": "src/pages/topics/PaediatricIcuTopic.tsx",
       "requiredLabels": [
-        "SSC Paediatric 2020"
+        "SSC Paediatric 2020",
+        "SSC Children 2026 antibiotics"
       ]
     },
     {
@@ -5038,7 +5044,8 @@
       "topicId": "paediatric-icu",
       "file": "src/pages/topics/PaediatricIcuTopic.tsx",
       "requiredLabels": [
-        "SSC Paediatric 2020"
+        "SSC Paediatric 2020",
+        "SSC Children 2026 antibiotics"
       ]
     },
     {
@@ -5110,7 +5117,8 @@
       "topicId": "paediatric-icu",
       "file": "src/pages/topics/PaediatricIcuTopic.tsx",
       "requiredLabels": [
-        "SSC Paediatric 2020"
+        "SSC Paediatric 2020",
+        "SSC Children 2026 antibiotics"
       ]
     },
     {
@@ -5118,7 +5126,8 @@
       "topicId": "paediatric-icu",
       "file": "src/pages/topics/PaediatricIcuTopic.tsx",
       "requiredLabels": [
-        "SSC Paediatric 2020"
+        "SSC Paediatric 2020",
+        "SSC Children 2026 antibiotics"
       ]
     },
     {
@@ -6080,7 +6089,9 @@
       "file": "src/pages/topics/SIUnitsThermodynamicsTopic.tsx",
       "requiredLabels": [
         "BJA Educ 2016 (Thermo)",
-        "BJA Educ 2018 (Temperature)"
+        "Middleton Ch.1",
+        "BJA Educ 2018 (Temperature)",
+        "Middleton Ch.8"
       ]
     },
     {
@@ -6121,7 +6132,8 @@
       "topicId": "si-units-thermodynamics",
       "file": "src/pages/topics/SIUnitsThermodynamicsTopic.tsx",
       "requiredLabels": [
-        "BJA Educ 2016 (Thermo)"
+        "BJA Educ 2016 (Thermo)",
+        "Middleton Ch.1"
       ]
     },
     {
@@ -6137,7 +6149,8 @@
       "topicId": "si-units-thermodynamics",
       "file": "src/pages/topics/SIUnitsThermodynamicsTopic.tsx",
       "requiredLabels": [
-        "BJA Educ 2018 (Temperature)"
+        "BJA Educ 2018 (Temperature)",
+        "Middleton Ch.8"
       ]
     },
     {
@@ -6145,7 +6158,8 @@
       "topicId": "si-units-thermodynamics",
       "file": "src/pages/topics/SIUnitsThermodynamicsTopic.tsx",
       "requiredLabels": [
-        "BJA Educ 2017 (Gas Supply)"
+        "BJA Educ 2017 (Gas Supply)",
+        "Srivastava 2013 (Gas Cylinders)"
       ]
     },
     {
@@ -6170,7 +6184,8 @@
       "topicId": "si-units-thermodynamics",
       "file": "src/pages/topics/SIUnitsThermodynamicsTopic.tsx",
       "requiredLabels": [
-        "BJA Educ 2017 (Gas Supply)"
+        "BJA Educ 2017 (Gas Supply)",
+        "Srivastava 2013 (Gas Cylinders)"
       ]
     },
     {
@@ -6178,7 +6193,8 @@
       "topicId": "si-units-thermodynamics",
       "file": "src/pages/topics/SIUnitsThermodynamicsTopic.tsx",
       "requiredLabels": [
-        "BJA Educ 2018 (Temperature)"
+        "BJA Educ 2018 (Temperature)",
+        "Middleton Ch.8"
       ]
     },
     {
@@ -6186,7 +6202,8 @@
       "topicId": "si-units-thermodynamics",
       "file": "src/pages/topics/SIUnitsThermodynamicsTopic.tsx",
       "requiredLabels": [
-        "BJA Educ 2017 (Gas Supply)"
+        "BJA Educ 2017 (Gas Supply)",
+        "Srivastava 2013 (Gas Cylinders)"
       ]
     },
     {
@@ -6202,7 +6219,8 @@
       "topicId": "si-units-thermodynamics",
       "file": "src/pages/topics/SIUnitsThermodynamicsTopic.tsx",
       "requiredLabels": [
-        "BJA Educ 2017 (Gas Supply)"
+        "BJA Educ 2017 (Gas Supply)",
+        "Srivastava 2013 (Gas Cylinders)"
       ]
     },
     {

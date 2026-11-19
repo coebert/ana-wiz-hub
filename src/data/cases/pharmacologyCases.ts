@@ -56,7 +56,7 @@ export const pharmacologyCaseBank: CaseBank = {
       category: "Kinetics & delivery",
       difficulty: "Intermediate",
       summary: "Context-sensitive half-time, compartment models and weight scalars in target-controlled infusion.",
-      topicIds: ["pharmacokinetics", "intravenous-anaesthetics", "propofol", "bariatric-anaesthesia", "depth-of-anaesthesia-monitoring"],
+      topicIds: ["pharmacokinetics", "intravenous-anaesthetics", "propofol", "bariatric-anaesthesia", "depth-of-anaesthesia"],
       patient: "A patient weighing 145 kg (body mass index 46) has a five-hour propofol and remifentanil anaesthetic. Total body weight was entered into a Marsh model.",
       presentation: "Forty minutes after stopping the infusion the patient remains unresponsive with normal gases, temperature and glucose.",
       stages: [
@@ -240,7 +240,7 @@ export const pharmacologyCaseBank: CaseBank = {
       category: "Critical care drugs",
       difficulty: "Advanced",
       summary: "Receptor pharmacodynamics, dose-dependent effects and rational escalation of vasoactive support.",
-      topicIds: ["pharmacodynamics", "inotropes-vasopressors", "sepsis", "shock-states", "cardiac-output-monitoring"],
+      topicIds: ["pharmacodynamics", "vasoactive-agents", "sepsis", "shock-states", "cardiac-output-monitoring"],
       patient: "A patient with septic shock remains hypotensive at a mean arterial pressure of 55 mmHg on noradrenaline 0.4 micrograms/kg/min despite fluid resuscitation.",
       presentation: "Cardiac index is 4.2 L/min/m², lactate 4.1 mmol/L, echocardiography shows preserved contractility.",
       stages: [
@@ -976,7 +976,7 @@ export const pharmacologyCaseBank: CaseBank = {
       category: "Critical care drugs",
       difficulty: "Advanced",
       summary: "Vasoplegic shock pathophysiology and staged escalation through noradrenaline, vasopressin, hydrocortisone and methylene blue.",
-      topicIds: ["inotropes-vasopressors", "shock-states", "cardiac-output-monitoring", "pharmacodynamics", "cardiac-anaesthesia"],
+      topicIds: ["vasoactive-agents", "shock-states", "cardiac-output-monitoring", "pharmacodynamics", "cardiothoracic"],
       patient: "An adult comes off cardiopulmonary bypass with a warm periphery, low systemic vascular resistance and mean arterial pressure of 45 mmHg despite a noradrenaline infusion at 0.5 micrograms/kg/min and preserved cardiac output.",
       presentation: "Hypotension persists despite escalating noradrenaline, with no evidence of bleeding, tamponade or poor ventricular function on transoesophageal echocardiography.",
       stages: [
@@ -1022,7 +1022,7 @@ export const pharmacologyCaseBank: CaseBank = {
       category: "Analgesia & anaesthetics",
       difficulty: "Advanced",
       summary: "Antipsychotic and serotonergic drug interactions in the perioperative period, including clozapine, agranulocytosis and MAOI–pethidine interaction.",
-      topicIds: ["cardiac-arrhythmias", "pharmacodynamics", "sepsis", "preoperative-assessment", "chronic-pain"],
+      topicIds: ["arrhythmias-ecg-icu", "pharmacodynamics", "sepsis", "preoperative-assessment", "chronic-pain"],
       patient: "A patient with treatment-resistant schizophrenia on clozapine presents for emergency appendicectomy. The preoperative electrocardiogram shows a corrected QT interval of 480 ms, and the patient also takes phenelzine for comorbid depression.",
       presentation: "The surgical team wants to proceed urgently; the anaesthetic team must plan safe drug choices around psychotropic medication that cannot simply be stopped.",
       stages: [
@@ -1114,7 +1114,7 @@ export const pharmacologyCaseBank: CaseBank = {
       category: "Analgesia & anaesthetics",
       difficulty: "Advanced",
       summary: "Local anaesthetic systemic toxicity recognition, maximum safe doses and lipid emulsion rescue protocol.",
-      topicIds: ["local-anaesthetics", "regional-anaesthesia", "cardiac-arrhythmias", "clinical-incidents", "airway-management"],
+      topicIds: ["local-anaesthetics", "regional-anaesthesia", "arrhythmias-ecg-icu", "clinical-incidents", "airway-management"],
       patient: "An adult weighing 70 kg receives a large-volume brachial plexus block using levobupivacaine. Shortly after injection they develop perioral tingling, agitation and then a generalised tonic-clonic seizure, followed by bradycardia and broad-complex tachycardia.",
       presentation: "The seizure is not settling with usual first-line management and cardiovascular instability is worsening.",
       stages: [

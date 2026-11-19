@@ -210,7 +210,7 @@ export const icuCaseBank: CaseBank = {
       category: "Ventilation",
       difficulty: "Advanced",
       summary: "Dynamic hyperinflation, intrinsic PEEP and the ventilator settings that reverse it.",
-      topicIds: ["bronchospastic-failure", "mechanical-ventilation", "lung-mechanics", "shock-states", "inotropes-vasopressors"],
+      topicIds: ["bronchospastic-failure", "mechanical-ventilation", "lung-mechanics", "shock-states", "vasoactive-agents"],
       patient: "A patient with life-threatening asthma is intubated after failing to respond to nebulisers and magnesium.",
       presentation: "Minutes later the pressure falls to 70/40 mmHg with rising peak pressures, a rate of 22 breaths per minute, tidal volume 8 mL/kg and no audible wheeze.",
       stages: [
@@ -670,7 +670,7 @@ export const icuCaseBank: CaseBank = {
       category: "Infection & immunity",
       difficulty: "Advanced",
       summary: "Reassessed fluid boluses, early adrenaline and paediatric early warning in decompensating sepsis.",
-      topicIds: ["paediatric-icu", "paediatric-anaesthesia", "sepsis", "shock-states", "inotropes-vasopressors"],
+      topicIds: ["paediatric-icu", "paediatric-anaesthesia", "sepsis", "shock-states", "vasoactive-agents"],
       patient: "A 3-year-old with fever and lethargy has a heart rate of 190/min, capillary refill of 4 seconds, mottled skin and a rising PEWS score.",
       presentation: "After 20 mL/kg of balanced crystalloid the child remains tachycardic and poorly perfused with a blood pressure of 70/40 mmHg (5th centile for age).",
       stages: [
@@ -947,7 +947,7 @@ export const icuCaseBank: CaseBank = {
       category: "Paediatric critical care",
       difficulty: "Advanced",
       summary: "Weight-based resuscitation, vasoactive choice, fluid-refractory shock and time-critical retrieval.",
-      topicIds: ["paediatric-icu", "sepsis", "shock", "vasoactive-drugs", "paediatric-anaesthesia"],
+      topicIds: ["paediatric-icu", "sepsis", "shock", "vasoactive-agents", "paediatric-anaesthesia"],
       patient: "A 2-year-old (12 kg) presents with fever, a non-blanching purpuric rash, capillary refill 5 seconds, cold peripheries, heart rate 190/min, blood pressure 62/38 mmHg, lactate 6.4 mmol/L and blood glucose 2.8 mmol/L.",
       presentation: "After 40 mL/kg of balanced crystalloid the child remains shocked with a rising lactate and a widening base deficit, and the district general hospital is 90 minutes from the paediatric intensive care unit.",
       stages: [
@@ -1039,7 +1039,7 @@ export const icuCaseBank: CaseBank = {
       category: "Paediatric critical care",
       difficulty: "Advanced",
       summary: "Weight-based deficit replacement, insulin timing and recognition and treatment of cerebral injury.",
-      topicIds: ["paediatric-icu", "diabetes-emergencies", "acid-base", "neuro-icu", "perioperative-fluids"],
+      topicIds: ["paediatric-icu", "diabetes-emergencies", "acid-base", "neurointensive-care", "perioperative-fluids"],
       patient: "A 9-year-old (30 kg) presents with pH 6.98, bicarbonate 5 mmol/L, glucose 34 mmol/L, ketones 6.8 mmol/L, sodium 132 mmol/L and 10% clinical dehydration.",
       presentation: "Eight hours into treatment the child develops headache, bradycardia to 55/min, rising blood pressure and a falling Glasgow Coma Scale score from 15 to 10.",
       stages: [
@@ -1131,7 +1131,7 @@ export const icuCaseBank: CaseBank = {
       category: "Paediatric critical care",
       difficulty: "Advanced",
       summary: "Age-specific cerebral perfusion targets, tiered intracranial pressure management and safe transfer for neurosurgery.",
-      topicIds: ["paediatric-icu", "traumatic-brain-injury", "neuro-icu", "trauma-resuscitation", "icp-management"],
+      topicIds: ["paediatric-icu", "traumatic-brain-injury", "neurointensive-care", "trauma-resuscitation", "icp-management"],
       patient: "An 8-year-old is struck by a car: Glasgow Coma Scale 6 (E1 V1 M4), unequal pupils, heart rate 68/min, blood pressure 130/75 mmHg, SpO₂ 94%. CT shows diffuse swelling with a small extradural collection and effaced basal cisterns.",
       presentation: "After intubation, intracranial pressure via a monitor reads 26 mmHg with a mean arterial pressure of 70 mmHg.",
       stages: [
@@ -1223,7 +1223,7 @@ export const icuCaseBank: CaseBank = {
       category: "Paediatric critical care",
       difficulty: "Advanced",
       summary: "Group B streptococcal sepsis in a 3.2 kg neonate — antibiotic choice, 10 mL/kg boluses, adrenaline first-line and the differential of duct-dependent cardiac disease.",
-      topicIds: ["paediatric-icu", "sepsis", "paediatric-core", "paediatric-physiology", "vasoactive-drugs"],
+      topicIds: ["paediatric-icu", "sepsis", "paediatric-core", "paediatric-physiology", "vasoactive-agents"],
       patient: "A 3.2 kg term neonate at 14 hours of age is grunting with a temperature of 35.6 °C, heart rate 190/min, capillary refill 5 seconds, lactate 6.8 mmol/L and glucose 2.2 mmol/L. Mother had prolonged rupture of membranes and intrapartum pyrexia.",
       presentation: "After two 10 mL/kg boluses of balanced crystalloid the perfusion is unchanged, blood pressure is 38/20 mmHg and the baby becomes apnoeic.",
       stages: [
@@ -1269,7 +1269,7 @@ export const icuCaseBank: CaseBank = {
       category: "Paediatric critical care",
       difficulty: "Intermediate",
       summary: "Recognition without hypotension, the first-hour bundle in a 25 kg child, vasoactive choice and thresholds for intubation and retrieval.",
-      topicIds: ["paediatric-icu", "sepsis", "shock", "paediatric-core", "vasoactive-drugs"],
+      topicIds: ["paediatric-icu", "sepsis", "shock", "paediatric-core", "vasoactive-agents"],
       patient: "A 7-year-old (25 kg) with a two-day history of thigh pain is tachycardic at 160/min, capillary refill 4 seconds, temperature 39.4 °C, blood pressure 92/44 mmHg, lactate 4.6 mmol/L and mottled peripheries.",
       presentation: "After 40 mL/kg of balanced crystalloid over 45 minutes the heart rate is 155/min, the child is drowsy, urine output is 0.3 mL/kg/h and the liver edge is now 3 cm below the costal margin.",
       stages: [

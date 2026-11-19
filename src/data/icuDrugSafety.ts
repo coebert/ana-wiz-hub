@@ -930,7 +930,7 @@ export const icuDrugSafetyGroups: DrugSafetyGroup[] = [
         ],
         contraindications: [
           "Active major bleeding, platelets <50 ×10⁹/L, heparin-induced thrombocytopenia (current or historic).",
-          "Neuraxial procedure within 12 h of a prophylactic dose or 24 h of a treatment dose.",
+          "Before neuraxial puncture or catheter insertion/removal, allow at least 12 h after prophylactic enoxaparin or 24 h after a treatment dose. At creatinine clearance 15–30 mL/min, consider extending these intervals to at least 24 h and 48 h respectively (UK Inhixa SmPC, section 4.2, emc 785).",
           "Severe renal impairment (eGFR <30) — reduce the dose or use unfractionated heparin.",
         ],
         monitoring: [

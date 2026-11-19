@@ -33,15 +33,15 @@ const objectives = [
 ];
 
 const keyPoints = [
-  { text: "Thermocouples use the Seebeck effect — EMF generated at junction of two dissimilar metals proportional to temperature difference", cites: ["BJA Educ 2014"] },
+  { text: "Thermocouples use the Seebeck effect — EMF generated at junction of two dissimilar metals proportional to temperature difference", cites: ["Cross & Plunkett Ch.11"] },
   { text: "Thermistors are NTC semiconductors — resistance falls exponentially with rising temperature; very sensitive but non-linear", cites: ["Cross & Plunkett Ch.11"] },
   { text: "Platinum RTDs have a positive temperature coefficient and stable calibrated response. Accuracy and speed depend on the complete probe and readout; they are not universally the slowest sensor.", cites: ["NIST Industrial Thermometer Calibration"] },
-  { text: "Handheld infrared ear thermometers use the Stefan–Boltzmann law (P ∝ T⁴) with a thermopile to estimate IR emission from the ear canal/tympanic region; they are indirect estimates, not a direct tympanic-membrane measurement", cites: ["BJA Educ 2014"] },
+  { text: "Handheld infrared ear thermometers use the Stefan–Boltzmann law (P ∝ T⁴) with a thermopile to estimate IR emission from the ear canal/tympanic region; they are indirect estimates, not a direct tympanic-membrane measurement", cites: ["BJA Educ Temperature 2020", "NICE CG65 Measurement Sites"] },
   { text: "A contact tympanic-membrane probe lies close to the internal carotid supply to the hypothalamus and tracks core temperature; a handheld infrared ear device does not necessarily see the membrane and applies a correction algorithm", cites: ["Cross & Plunkett Ch.11", "NICE CG65 Measurement Sites"] },
   { text: "NICE CG65 recommendations 1.1.5–1.1.6: use a direct core site or a direct estimate shown to be accurate within 0.5 °C; do not use indirect infrared tympanic, temporal or forehead estimates in adults having surgery", cites: ["NICE CG65 Measurement Sites"] },
   { text: "Handheld infrared ear readings are error-prone: poor probe alignment, ear canal wax or narrowing, and a cooler canal wall cause under-reading. In critically ill adults they agreed poorly with pulmonary artery temperature, so they should not replace a core site when accuracy matters", cites: ["Moran 2007 (Tympanic ICU)"] },
   { text: "Thermocouples are self-generating (no battery needed); thermistors and RTDs require external power via a Wheatstone bridge", cites: ["Cross & Plunkett Ch.11"] },
-  { text: "PA catheter thermistor is the gold standard for core temperature; nasopharyngeal thermocouple best reflects brain temperature", cites: ["BJA Educ 2014"] },
+  { text: "PA catheter thermistor is the gold standard for core temperature; nasopharyngeal thermocouple best reflects brain temperature", cites: ["Intensive Care Med 2003", "Rumana 1998 Brain Temp"] },
 ];
 
 const TemperatureMeasurementTopicWorkedExamples: WorkedExample[] = [
@@ -69,7 +69,7 @@ const TemperatureMeasurementTopicWorkedExamples: WorkedExample[] = [
       </div>
     ),
     answer: "Use a distal oesophageal probe with continuous display, target core ≥36.5 °C, pre-warm and forced-air warm intra-operatively per NICE CG65.",
-    cites: ["BJA Educ 2014", "NICE CG65", "Cross & Plunkett Ch.11"],
+    cites: ["NICE CG65", "Cross & Plunkett Ch.11"],
   },
 ];
 
@@ -93,7 +93,7 @@ const TemperatureMeasurementTopic = () => {
       }}
       sectionSources={{
         objectives: ["Cross & Plunkett Ch.11", "NICE CG65"],
-        keyPoints: ["BJA Educ 2014", "NICE CG65", "Cross & Plunkett Ch.11", "NICE NG125", "BJA Educ Temperature 2020", "SCCM IDSA Fever 2023"],
+        keyPoints: ["NICE CG65", "Cross & Plunkett Ch.11", "NICE NG125", "BJA Educ Temperature 2020", "SCCM IDSA Fever 2023"],
       }}
       coreConcepts={
         <>
