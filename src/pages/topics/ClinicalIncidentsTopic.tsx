@@ -154,6 +154,8 @@ const ClinicalIncidentsTopic = () => {
         
           "NAP Reports",
           "AAGBI 2009",
+          "AAGBI severe LAST 2023",
+          "Lidocaine 2% SmPC",
         ],
       }}
       keyPoints={[
@@ -217,7 +219,7 @@ const ClinicalIncidentsTopic = () => {
           <ExamSection id="section-last" className="scroll-mt-24" exams={[Exam.FINAL, Exam.FFICM]}>
             <CollapsibleSubsection title="Local Anaesthetic Systemic Toxicity (LAST)">
             <p className="text-muted-foreground leading-relaxed mb-3">
-              CNS toxicity precedes cardiac toxicity (except with bupivacaine which can cause simultaneous cardiac arrest). Maximum doses: lidocaine 3 mg/kg (7 with adrenaline), bupivacaine 2 mg/kg.
+              CNS toxicity precedes cardiac toxicity (except with bupivacaine, which can cause simultaneous cardiac arrest). There is <strong>no single universal maximum dose</strong>: the limit is set by the exact product, its route and the technique, and by patient risk. Read the named product&apos;s UK SmPC — for example, plain <a className="text-clinical underline" href="https://www.medicines.org.uk/emc/product/15150/smpc" target="_blank" rel="noreferrer">2% w/v lidocaine injection</a> limits a single dose at sites of marked systemic absorption to 4.5 mg/kg (300 mg) without a vasoconstrictor and 7 mg/kg (500 mg) with one, with lower technique-specific maxima for minor nerve blocks, spinal and IVRA. These limits are not interchangeable between products, routes or techniques, previous doses and mixed agents count towards them, and toxicity remains possible below a listed ceiling. Follow local policy and check the SmPC for the preparation actually drawn up; management of established toxicity follows the Association of Anaesthetists <a className="text-clinical underline" href="https://anaesthetists.org/Guidelines-and-publications/Guidelines/Management-of-severe-local-anaesthetic-toxicity-2023" target="_blank" rel="noreferrer">severe LAST 2023</a> page and QRH 3-10<InlineRef topicId="clinical-incidents" refLabel="AAGBI severe LAST 2023" /><InlineRef topicId="clinical-incidents" refLabel="Lidocaine 2% SmPC" />.
             </p>
             <div className="p-4 rounded-lg border border-border">
               <p className="font-semibold text-foreground text-sm mb-2">Association of Anaesthetists QRH 3-10</p>

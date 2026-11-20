@@ -3,10 +3,12 @@ import { DiagramFigure } from "../_shared/DiagramFigure";
 
 /**
  * Empirical sepsis antibiotic chooser.
- * Pick suspected source + patient factors → suggested empirical regimen
- * adapted from UK (NICE NG253/NG254/NG255, BNF, Surviving Sepsis Campaign)
- * and IDSA guidance.
+ * Pick suspected source + patient factors → suggested empirical regimen for
+ * ADULTS (16+) WHO ARE NOT PREGNANT, drawing on NICE NG250 (pneumonia),
+ * NICE CG151 (neutropenic sepsis), NICE NG253 (adult sepsis timing), the BNF
+ * and ATS/IDSA 2019 (CAP risk factors).
  *
+ * Paediatric (NG254) and pregnancy (NG255) pathways are not modelled here.
  * Educational tool only — local antibiogram, allergy testing and microbiology
  * advice always supersede.
  */
@@ -61,33 +63,39 @@ const SOURCES: Source[] = [
           : `Amoxicillin 500 mg–1 g PO TDS (CURB-65 0–1)`;
       } else {
         firstLine = allergy === "anaphylaxis"
-          ? `Levofloxacin 500 mg IV BD + ${macrolide} (severe — CURB-65 ≥ 3)`
+          ? "Levofloxacin 500 mg IV BD (severe — CURB-65 ≥ 3). NICE NG250 lists levofloxacin as the penicillin-allergy alternative; consult a local microbiologist if a fluoroquinolone is not appropriate"
           : `Co-amoxiclav 1.2 g IV TDS + ${macrolide} (severe — CURB-65 ≥ 3)`;
       }
       const alternatives: Recommendation["alternatives"] = [];
       if (allergy === "non-severe" && severity === "severe") {
         alternatives.push({
           trigger: "Non-severe penicillin allergy (rash only)",
-          regimen: `Ceftriaxone 2 g IV OD + ${macrolide}`,
+          regimen: "NG250's high-severity penicillin-allergy alternative is levofloxacin 500 mg IV BD. A cephalosporin is not the NICE alternative — take local microbiology or antimicrobial policy advice before substituting one.",
         });
       }
-      if (mrsa || recentAbx) {
+      if (mrsa) {
         alternatives.push({
-          trigger: mrsa ? "MRSA risk (e.g. previous MRSA, dialysis)" : "Recent broad-spectrum exposure / hospitalisation",
-          regimen: "Add vancomycin (AUC₂₄-guided 400–600 mg·h/L) or linezolid 600 mg IV BD; broaden to piperacillin/tazobactam 4.5 g IV QDS for HCAP-pattern risk",
+          trigger: "MRSA risk with locally validated risk factors (e.g. previous MRSA isolation)",
+          regimen: "Add vancomycin (AUC₂₄-guided 400–600 mg·h/L) or linezolid 600 mg IV BD. ATS/IDSA 2019 advises covering MRSA only when locally validated risk factors are present.",
+        });
+      }
+      if (recentAbx) {
+        alternatives.push({
+          trigger: "Recent broad-spectrum antibiotics or hospitalisation",
+          regimen: "Not an automatic indication for broad-spectrum escalation: review recent microbiology and local resistance data with the antimicrobial policy or microbiologist. The former HCAP pattern was abandoned by ATS/IDSA 2019 because it increased broad-spectrum use without improving outcomes.",
         });
       }
       return {
         firstLine,
         rationale:
-          "Strep pneumoniae remains the dominant pathogen — β-lactam covers it. Macrolide adds atypical cover (Legionella, Mycoplasma) which is essential in severe disease.",
+          "Strep pneumoniae remains the dominant pathogen — a β-lactam covers it. A macrolide adds atypical cover (Legionella, Mycoplasma) in severe disease; NG250 never combines a macrolide with a fluoroquinolone.",
         alternatives,
         pearls: [
           "Use CURB-65 (or CRB-65 in primary care) to grade severity.",
           "Send urine for pneumococcal + Legionella antigen if severe.",
-          "Switch IV → PO at 48–72 h once afebrile and tolerating oral intake.",
+          "NG250: stop antibiotics after 5 days unless the patient is not clinically stable or microbiology indicates a longer course.",
         ],
-        reviewAt: "48 h with cultures and biomarker trend — de-escalate aggressively.",
+        reviewAt: "48 h with cultures and biomarker trend — narrow per sensitivities; NG250 stops treatment at 5 days if the patient is stable.",
       };
     },
   },
@@ -260,7 +268,7 @@ const SOURCES: Source[] = [
       if (allergy === "anaphylaxis") {
         firstLine = "Meropenem 1 g IV TDS (covers most organisms; safe in non-IgE penicillin allergy under specialist supervision)";
       } else {
-        firstLine = "Piperacillin/tazobactam 4.5 g IV QDS WITHIN 1 HOUR (NICE NG151)";
+        firstLine = "Piperacillin/tazobactam 4.5 g IV TDS–QDS as initial β-lactam monotherapy, given immediately (NICE CG151); the 1-hour target is from NICE NG253";
       }
       const alternatives: Recommendation["alternatives"] = [];
       if (mrsa || recentAbx) {
@@ -276,10 +284,10 @@ const SOURCES: Source[] = [
       return {
         firstLine,
         rationale:
-          "Empirical anti-pseudomonal monotherapy is standard (NICE NG151, IDSA 2018). Adding routine glycopeptide does NOT improve outcomes and increases nephrotoxicity — reserve for specific risk factors.",
+          "Empirical anti-pseudomonal β-lactam monotherapy is standard (NICE CG151). Routine aminoglycoside and routine glycopeptide cover are both explicitly not recommended without patient-specific or local microbiological indications.",
         alternatives,
         pearls: [
-          "Time-to-antibiotic < 1 h is the key quality metric.",
+          "Time-to-antibiotic < 1 h is the key quality metric for adults with suspected sepsis (NICE NG253); CG151 requires empiric therapy immediately.",
           "Use MASCC score to identify low-risk patients suitable for outpatient oral therapy.",
           "Continue until afebrile + neutrophils > 0.5 × 10⁹/L (typically 7–10 days).",
           "G-CSF only for high-risk febrile neutropenia per ASCO criteria.",
@@ -357,15 +365,23 @@ const EmpiricalSepsisChooser = () => {
     <DiagramFigure
       id="empirical-sepsis-chooser"
       title="Empirical sepsis chooser"
-      description="Empirical sepsis antibiotic chooser. Pick suspected source + patient factors → suggested empirical regimen adapted from UK (NICE NG253/NG254/NG255, BNF, Surviving Sepsis Campaign) and IDSA guidance."
+      description="Empirical sepsis antibiotic chooser for adults (16+) who are not pregnant. Pick suspected source + patient factors → suggested empirical regimen drawing on NICE NG250, NICE CG151, NICE NG253, the BNF and ATS/IDSA 2019."
     >
                   <div className="rounded-xl border border-border bg-card p-4 my-6">
         <h3 className="text-lg font-semibold text-foreground">
           Empirical sepsis antibiotic chooser
         </h3>
-        <p className="text-xs text-muted-foreground mb-4">
-          Pick the suspected source and patient factors to see a suggested empirical regimen, with alternatives and clinical pearls. Adapted from NICE NG253 (adults), NG254 (under-16s), NG255 (pregnancy), NG151, BNF, Surviving Sepsis Campaign and IDSA guidance — local antibiogram, allergy testing and microbiology advice always supersede.
+        <p className="text-xs text-muted-foreground mb-3">
+          Pick the suspected source and patient factors to see a suggested empirical regimen, with alternatives and clinical pearls. Sources are listed under the output — local antibiogram, allergy testing and microbiology advice always supersede.
         </p>
+        <div className="rounded-md border border-amber-500/40 bg-amber-500/10 p-2.5 mb-4">
+          <p className="text-[11px] uppercase tracking-wide font-semibold text-foreground">Scope</p>
+          <p className="text-xs text-muted-foreground mt-0.5 leading-snug">
+            Adults aged 16 or over who are not pregnant. Paediatric (NICE NG254) and pregnancy (NICE NG255) pathways are
+            not modelled here, and none of these adult doses is evidence for those groups. Doses are teaching examples from
+            the cited adult guidance and the BNF; confirm them against local antimicrobial policy and the product SmPC.
+          </p>
+        </div>
   
         {/* Source selector */}
         <div className="mb-4">
@@ -548,6 +564,64 @@ const EmpiricalSepsisChooser = () => {
             <span className="font-semibold"> Give 3:</span> high-flow O₂ · IV broad-spectrum antibiotics · IV fluid challenge.
             Source control as soon as feasible.
           </p>
+        </div>
+
+        {/* Source-specific provenance */}
+        <div className="mt-3 rounded-md border border-border bg-background/60 p-2.5">
+          <p className="text-[11px] uppercase tracking-wide font-semibold text-foreground">
+            Sources for these outputs
+          </p>
+          <ul className="mt-1 space-y-1 text-xs text-muted-foreground leading-snug">
+            <li>
+              Community- and hospital-acquired pneumonia:{" "}
+              <a
+                className="underline"
+                href="https://www.nice.org.uk/guidance/ng250/chapter/Recommendations"
+                target="_blank"
+                rel="noreferrer"
+              >
+                NICE NG250 (2025), tables 1 and 3
+              </a>
+              .
+            </li>
+            <li>
+              Neutropenic sepsis:{" "}
+              <a
+                className="underline"
+                href="https://www.nice.org.uk/guidance/cg151/chapter/Recommendations"
+                target="_blank"
+                rel="noreferrer"
+              >
+                NICE CG151
+              </a>{" "}
+              — β-lactam monotherapy with piperacillin/tazobactam; no routine aminoglycoside or glycopeptide.
+            </li>
+            <li>
+              One-hour antimicrobial target for adults with suspected sepsis:{" "}
+              <a
+                className="underline"
+                href="https://www.nice.org.uk/guidance/ng253/chapter/Recommendations"
+                target="_blank"
+                rel="noreferrer"
+              >
+                NICE NG253
+              </a>
+              .
+            </li>
+            <li>
+              MRSA/Pseudomonas risk in CAP (HCAP abandoned):{" "}
+              <a
+                className="underline"
+                href="https://pmc.ncbi.nlm.nih.gov/articles/PMC6812437/"
+                target="_blank"
+                rel="noreferrer"
+              >
+                ATS/IDSA 2019
+              </a>
+              .
+            </li>
+            <li>Doses and renal adjustment: BNF and the product SmPC; local policy overrides.</li>
+          </ul>
         </div>
       </div>
     </DiagramFigure>

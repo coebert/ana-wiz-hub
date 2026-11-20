@@ -199,8 +199,11 @@ export function interpretAbg({
   let anionGap: string | null = null;
   if (na != null && cl != null && na > 0 && cl > 0) {
     const ag = na - (cl + hco3);
-    anionGap = `Anion gap ${ag.toFixed(0)} mmol/L (normal ~8–12; add ~2.5 × (4 − albumin g/dL) if hypoalbuminaemic).`;
-    if (ag > 12) notes.push("Raised anion gap — consider MUDPILES.");
+    anionGap =
+      `Anion gap ${ag.toFixed(0)} mmol/L. Compare it with your local laboratory's ` +
+      `reference interval — commonly quoted as 8–16 mmol/L, but ranges differ between ` +
+      `laboratories. Add about 2.5 mmol/L for each 1 g/dL that albumin is below 4 g/dL. ` +
+      `Educational only: it is not a diagnosis and does not trigger treatment.`;
   }
 
   return {

@@ -12,8 +12,10 @@ export default function ABGInterpreterTool() {
   const [pH, setPH] = useState("7.25");
   const [pCO2, setPCO2] = useState("3.2");
   const [HCO3, setHCO3] = useState("10");
-  const [Na, setNa] = useState("140");
-  const [Cl, setCl] = useState("105");
+  // Optional electrolytes start blank: the anion gap must never be calculated
+  // from demonstration numbers the user did not enter.
+  const [Na, setNa] = useState("");
+  const [Cl, setCl] = useState("");
 
   const result = useMemo(
     () =>
@@ -42,17 +44,18 @@ export default function ABGInterpreterTool() {
         <>
           Enter pH, pCO₂ (kPa) and HCO₃⁻ from the <strong>same arterial sample</strong>.
           pCO₂ is converted to mmHg at {MMHG_PER_KPA} mmHg per kPa before the
-          compensation rules are applied. Optional Na⁺/Cl⁻ unlocks the anion gap.
-          Values that are not mutually consistent are flagged rather than
-          interpreted.
+          compensation rules are applied. The optional Na⁺/Cl⁻ fields start
+          blank and unlock the anion gap only once you enter both; the gap is
+          shown against your local laboratory&apos;s reference interval. Values
+          that are not mutually consistent are flagged rather than interpreted.
         </>
       }
       references={
         <>
           <p>
-            Berend K, Duits AJ, van der Horst ICC, de Vries M. Physiological
-            approach to assessment of acid–base disturbances. N Engl J Med
-            2014;371:1434–45.{" "}
+            Berend K, de Vries APJ, Gans ROB. Physiological approach to
+            assessment of acid–base disturbances. N Engl J Med.
+            2014;371(15):1434–1445.{" "}
             <a
               className="underline"
               href="https://doi.org/10.1056/NEJMra1003327"
@@ -60,7 +63,32 @@ export default function ABGInterpreterTool() {
               rel="noreferrer"
             >
               doi:10.1056/NEJMra1003327
+            </a>{" "}
+            (PMID{" "}
+            <a
+              className="underline"
+              href="https://pubmed.ncbi.nlm.nih.gov/25295502/"
+              target="_blank"
+              rel="noreferrer"
+            >
+              25295502
             </a>
+            ).
+          </p>
+          <p>
+            Erratum: N Engl J Med. 2014;371(20):1948,{" "}
+            <a
+              className="underline"
+              href="https://doi.org/10.1056/NEJMx140053"
+              target="_blank"
+              rel="noreferrer"
+            >
+              doi:10.1056/NEJMx140053
+            </a>{" "}
+            — corrects the &ldquo;blood urea nitrogen&rdquo; and
+            &ldquo;glucose&rdquo; terms to urine urea nitrogen and urine glucose
+            in the normal anion-gap acidosis equations. It does not change the
+            compensation rules or thresholds used here.
           </p>
           <p>Boston / Winters compensation formulas (standard texts).</p>
         </>

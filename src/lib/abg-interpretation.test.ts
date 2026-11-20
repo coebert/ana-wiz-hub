@@ -58,9 +58,37 @@ describe("ABG interpreter reference and conversion", () => {
       cl: 105,
     });
     expect(withElectrolytes.anionGap).toContain("25 mmol/L");
-    expect(withElectrolytes.notes.join(" ")).toContain("MUDPILES");
+    expect(withElectrolytes.anionGap).toContain("local laboratory");
+    expect(withElectrolytes.anionGap).toContain("Educational only");
+    expect(withElectrolytes.notes.join(" ")).not.toContain("MUDPILES");
     const without = interpretAbg({ pH: 7.25, pCO2KPa: 3.2, hco3: 10 });
     expect(without.anionGap).toBeNull();
+  });
+
+  it("does not inherit demonstration electrolytes into a new gas", () => {
+    // The former tool preloaded Na 140 / Cl 105, so a user's own gas silently
+    // produced an invented anion gap. Blank optional fields must stay null.
+    expect(parseAbgValue("")).toBeNull();
+    const userGas = interpretAbg({
+      pH: 7.25,
+      pCO2KPa: 3.2,
+      hco3: 10,
+      na: parseAbgValue(""),
+      cl: parseAbgValue(""),
+    });
+    expect(userGas.status).toBe("interpreted");
+    expect(userGas.anionGap).toBeNull();
+  });
+
+  it("shows no anion gap when only one optional electrolyte is entered", () => {
+    const halfEntered = interpretAbg({
+      pH: 7.25,
+      pCO2KPa: 3.2,
+      hco3: 10,
+      na: 140,
+      cl: null,
+    });
+    expect(halfEntered.anionGap).toBeNull();
   });
 });
 

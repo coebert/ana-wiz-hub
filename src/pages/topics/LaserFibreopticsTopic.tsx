@@ -12,11 +12,11 @@ import InlineRef from "@/components/references/InlineRef";
 const laserFibreopticsFaqs: Array<[string, string]> = [
   [
     "What are the key safety measures for airway laser surgery?",
-    "FiO₂ ≤30 %, avoid N₂O (supports combustion), use a laser-resistant ETT (red-rubber wrapped with metallic foil, or purpose-built Mallinckrodt Laser-Flex), saline-filled cuff with methylene blue indicator, eye protection for staff and patient (wavelength-specific goggles), warning signs on theatre doors, smoke evacuation, and immediate access to saline and a backup tube."
+    "Keep the inspired oxygen as low as is clinically feasible while the laser is in use, guided by pulse oximetry — many units work to ≤0.30 in air, but there is no fixed fraction in the guidance; avoid N₂O (it acts as an oxidiser), use a laser-resistant ETT appropriate to the procedure and laser (purpose-built, e.g. Laser-Flex, or a wrapped tube), fill the cuff with saline tinted with methylene blue as a puncture marker, eye protection for staff and patient (wavelength-specific goggles), warning signs on theatre doors, smoke evacuation, and immediate access to saline and a backup tube."
   ],
   [
     "What is the management of an airway fire?",
-    "Stop ventilation and disconnect O₂. Remove the burning tube. Pour saline into the airway to extinguish. Re-mask ventilate on air. Re-intubate (often with a smaller tube), then perform flexible or rigid bronchoscopy to assess thermal and inhalational injury and remove debris. Administer humidified O₂ and admit to critical care for observation of progressive airway oedema."
+    "Stop the flow of airway gases and remove the tracheal tube without waiting, remove other burning material, and pour saline into the airway to extinguish it. Re-establish ventilation by mask, avoiding supplemental oxygen and nitrous oxide if possible. Examine the tube for fragments left in the airway and consider bronchoscopy (preferably rigid) to look for tube fragments, assess thermal injury and remove residual debris; if the patient was not intubated, assess for smoke inhalation. Then assess the patient's status and devise an individual plan for ongoing care with the airway and critical care teams — the advisory specifies no fixed observation period or imaging schedule."
   ],
   [
     "How does an optical fibre transmit light?",
