@@ -26,8 +26,8 @@ import { PostArrestOxygenTeaching } from "@/components/topic/PostArrestOxygenTea
 
 const arrestFaqs: Array<[string, string]> = [
   [
-    "What does the 2021 Resuscitation Council UK / ERC ALS algorithm say for an adult in cardiac arrest?",
-    "Confirm arrest, call for help and start chest compressions at 100–120 min⁻¹, depth 5–6 cm, with full recoil and minimal interruptions. Attach defibrillator pads as soon as available and assess rhythm every 2 minutes. For VF/pVT: deliver a shock (biphasic 120–200 J per manufacturer, then equal or escalating), resume CPR immediately for 2 minutes, give adrenaline 1 mg IV after the third shock and every 3–5 minutes thereafter, and amiodarone 300 mg after the third shock with a further 150 mg after the fifth. For non-shockable rhythms (asystole / PEA): give adrenaline 1 mg IV as soon as access is obtained and every 3–5 minutes, continue CPR, and actively look for reversible causes. Secure the airway (supraglottic device or tracheal tube) and switch to continuous compressions with asynchronous ventilations once an advanced airway is in place. Use waveform capnography throughout.",
+    "What does the 2025 Resuscitation Council UK (March 2026 algorithm) / ERC ALS guidance say for an adult in cardiac arrest?",
+    "Confirm arrest, call for help and start chest compressions at 100–120 min⁻¹, depth 5–6 cm, with full recoil and minimal interruptions. Attach defibrillator pads as soon as available and assess rhythm every 2 minutes. For VF/pVT: deliver a shock using the RCUK 2025 waveform-specific first-shock energy (escalating if the shock fails), resume CPR immediately for 2 minutes, give adrenaline 1 mg IV after the third shock and every 3–5 minutes thereafter, and amiodarone 300 mg after the third shock with a further 150 mg after the fifth. For non-shockable rhythms (asystole / PEA): give adrenaline 1 mg IV as soon as access is obtained and every 3–5 minutes, continue CPR, and actively look for reversible causes. Secure the airway (supraglottic device or tracheal tube) and switch to continuous compressions with asynchronous ventilations once an advanced airway is in place. Use waveform capnography throughout.",
   ],
   [
     "What are the 4 Hs and 4 Ts and how do I treat each at the bedside?",
@@ -35,7 +35,7 @@ const arrestFaqs: Array<[string, string]> = [
   ],
   [
     "When should defibrillation energy be escalated and what's the role of dual sequential defibrillation?",
-    "Use the manufacturer-recommended first biphasic energy (typically 120–200 J). If the manufacturer dose is unknown, default to the maximum available. Subsequent shocks should be of equal or higher energy. The DOSE-VF trial (Cheskes, NEJM 2022) randomised refractory VF after 3 standard shocks to (a) continued standard defibrillation, (b) vector-change (pad reposition anterior-posterior), or (c) double sequential external defibrillation (DSED, two defibrillators delivered ~1 second apart): DSED improved survival to hospital discharge (30.4% vs 13.3%) and survival with good neurological outcome. Vector-change was also superior to standard. That is trial evidence, not the UK recommendation: DOSE-VF was a single-system Canadian trial stopped early by COVID-19. RCUK 2025 advises considering a vector change (antero-posterior pads) after three failed shocks once correct antero-lateral positioning is ensured, and does not recommend routine dual (double) sequential defibrillation.",
+    "Use the RCUK 2025 first-shock energy for the device's waveform — higher for a rectilinear or truncated exponential biphasic waveform than for pulsed biphasic. If the device's recommendation is unknown, default to the maximum available. Subsequent shocks should be escalated if the first fails. The DOSE-VF trial (Cheskes, NEJM 2022) randomised refractory VF after 3 standard shocks to (a) continued standard defibrillation, (b) vector-change (pad reposition anterior-posterior), or (c) double sequential external defibrillation (DSED, two defibrillators delivered ~1 second apart): DSED improved survival to hospital discharge (30.4% vs 13.3%) and survival with good neurological outcome. Vector-change was also superior to standard. That is trial evidence, not the UK recommendation: DOSE-VF was a single-system Canadian trial stopped early by COVID-19. RCUK 2025 advises considering a vector change (antero-posterior pads) after three failed shocks once correct antero-lateral positioning is ensured, and does not recommend routine dual (double) sequential defibrillation.",
   ],
   [
     "Does adrenaline actually improve outcome — what did PARAMEDIC2 show?",
@@ -218,7 +218,7 @@ const coreConcepts = (
           <div className="p-4 rounded-lg border border-icu/30 bg-icu/5">
             <p className="text-sm font-semibold text-foreground mb-2">Shockable (VF / pulseless VT)</p>
             <ul className="text-xs text-muted-foreground space-y-1 list-disc list-inside">
-              <li>Shock 1 — biphasic 120–200 J (manufacturer-specified); equal or escalating thereafter</li>
+              <li>Shock 1 — biphasic at least 150 J (rectilinear/truncated exponential) or 130–150 J (pulsed); escalate if the shock fails</li>
               <li>Resume CPR immediately for 2 min — do not pulse-check post-shock</li>
               <li>After shock 3: <span className="font-medium text-foreground">adrenaline 1 mg IV</span> + <span className="font-medium text-foreground">amiodarone 300 mg IV</span></li>
               <li>After shock 5: amiodarone 150 mg IV (or lidocaine 1 mg/kg if amiodarone unavailable)</li>

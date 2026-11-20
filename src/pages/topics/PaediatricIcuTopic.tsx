@@ -965,7 +965,7 @@ const PaediatricIcuTopic = () => {
                   <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Compression rate</td><td>100–120/min</td><td>100–120/min</td></tr>
                   <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Depth</td><td>⅓ AP (~4 cm)</td><td>⅓ AP (~5 cm)</td></tr>
                   <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">C:V ratio</td><td>15:2</td><td>15:2</td></tr>
-                  <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Defibrillation</td><td>4 J/kg</td><td>4 J/kg</td></tr>
+                  <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Defibrillation</td><td>4 J/kg (then up to 8 J/kg, max 360 J)</td><td>4 J/kg (then up to 8 J/kg, max 360 J)</td></tr>
                   <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Adrenaline</td><td>10 mcg/kg (0.1 ml/kg 1:10,000)</td><td>10 mcg/kg</td></tr>
                   <tr><td className="py-2 font-medium text-foreground">Amiodarone</td><td>5 mg/kg</td><td>5 mg/kg</td></tr>
                 </tbody>
@@ -1012,7 +1012,7 @@ const PaediatricIcuTopic = () => {
                   <div className="bg-card border border-border rounded-lg p-4">
                     <h3 className="font-semibold text-foreground mb-2">Shockable (VF, pulseless VT)</h3>
                     <ul className="list-disc list-inside space-y-1 text-sm text-muted-foreground">
-                      <li>Defibrillate at <strong>4 J/kg</strong> and resume compressions immediately, reassessing every 2 minutes <InlineRef topicId="paediatric-icu" refLabel="RCUK PALS 2021" />.</li>
+                      <li>Defibrillate at <strong>4 J/kg</strong> (escalating stepwise to 8 J/kg, maximum 360 J, for refractory VF/pVT) and resume compressions immediately, reassessing every 2 minutes <InlineRef topicId="paediatric-icu" refLabel="RCUK PALS 2025" />.</li>
                       <li>After the <strong>third</strong> shock give adrenaline 10 micrograms/kg IV/IO (maximum 1 mg) and amiodarone 5 mg/kg; repeat both after the <strong>fifth</strong> shock, with adrenaline then continuing every 3–5 minutes.</li>
                       <li>Use paediatric pads or an attenuator under 8 years where available; adult pads are acceptable if that is all that is available.</li>
                       <li>Think of a channelopathy, myocarditis, poisoning, electrolyte abnormality or an underlying repaired congenital lesion in an unexpected shockable arrest.</li>

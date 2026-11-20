@@ -50,7 +50,7 @@ const WETFLAGDiagram = () => {
       value: `${energy} J`,
       formula: "4 J/kg (DC shock)",
       detail:
-        "Same energy for VF/pulseless VT and synchronised cardioversion (1 J/kg for first synchronised shock per UK guidance, 2 J/kg if needed; 4 J/kg for defibrillation). Use paediatric pads <10 kg or <1 yr; adult pads acceptable above this — anteroposterior position if pads overlap.",
+        "Defibrillation for VF/pulseless VT is 4 J/kg, increasing stepwise to 8 J/kg (max 360 J) for refractory VF/pVT; synchronised cardioversion starts at 1 J/kg, then 2 J/kg if needed. Use paediatric pads <10 kg or <1 yr; adult pads acceptable above this — anteroposterior position if pads overlap.",
       color: "hsl(0 70% 50%)",
     },
     {

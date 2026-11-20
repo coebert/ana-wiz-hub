@@ -101,7 +101,7 @@ const DRUGS: DrugRow[] = [
     name: "Defibrillation",
     route: "Shock",
     jPerKg: 4,
-    notes: "4 J/kg every cycle; same energy for subsequent shocks.",
+    notes: "4 J/kg for the initial shock; increase stepwise to 8 J/kg (max 360 J) for refractory VF/pVT (RCUK PALS 2025).",
   },
 ];
 

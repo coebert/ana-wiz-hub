@@ -1497,15 +1497,15 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the full FAQ co
   ],
   "/intensive-care/cardiac-arrest-post-resus": [
     {
-      "a": "Confirm arrest, call for help and start chest compressions at 100–120 min⁻¹, depth 5–6 cm, with full recoil and minimal interruptions. Attach defibrillator pads as soon as available and assess rhythm every 2 minutes. For VF/pVT: deliver a shock (biphasic 120–200 J per manufacturer, then equal or escalating), resume CPR immediately for 2 minutes, give adrenaline 1 mg IV after the third shock and every 3–5 minutes thereafter, and amiodarone 300 mg after the third shock with a further 150 mg after the fifth. For non-shockable rhythms (asystole / PEA): give adrenaline 1 mg IV as soon as access is obtained and every 3–5 minutes, continue CPR, and actively look for reversible causes. Secure the airway (supraglottic device or tracheal tube) and switch to continuous compressions with asynchronous ventilations once an advanced airway is in place. Use waveform capnography throughout.",
-      "q": "What does the 2021 Resuscitation Council UK / ERC ALS algorithm say for an adult in cardiac arrest?",
+      "a": "Confirm arrest, call for help and start chest compressions at 100–120 min⁻¹, depth 5–6 cm, with full recoil and minimal interruptions. Attach defibrillator pads as soon as available and assess rhythm every 2 minutes. For VF/pVT: deliver a shock (at least 150 J for a rectilinear or truncated exponential biphasic waveform; 130–150 J for pulsed biphasic, escalating if the shock fails), resume CPR immediately for 2 minutes, give adrenaline 1 mg IV after the third shock and every 3–5 minutes thereafter, and amiodarone 300 mg after the third shock with a further 150 mg after the fifth. For non-shockable rhythms (asystole / PEA): give adrenaline 1 mg IV as soon as access is obtained and every 3–5 minutes, continue CPR, and actively look for reversible causes. Secure the airway (supraglottic device or tracheal tube) and switch to continuous compressions with asynchronous ventilations once an advanced airway is in place. Use waveform capnography throughout.",
+      "q": "What does the 2025 Resuscitation Council UK (March 2026 algorithm) / ERC ALS guidance say for an adult in cardiac arrest?",
     },
     {
       "a": "The reversible causes are Hypoxia (high-flow O₂, secure airway, check ETT position and ventilation), Hypovolaemia (rapid IV/IO crystalloid, control haemorrhage, consider blood/MTP), Hyper/hypokalaemia and other metabolic disorders (10 mL 10% calcium chloride, 10 U insulin + 50 mL 50% dextrose, salbutamol, sodium bicarbonate; correct hypoglycaemia and acidosis), and Hypothermia (active rewarming, extended resuscitation and consider eCPR — 'not dead until warm and dead'); Tension pneumothorax (needle decompression / finger thoracostomy then chest drain), Tamponade (pericardiocentesis or resuscitative thoracotomy in trauma), Toxins (antidotes — naloxone, flumazenil, digibind, intralipid 20% for local-anaesthetic toxicity, sodium bicarbonate for TCAs), and Thrombosis (thrombolysis with alteplase 50 mg for suspected pulmonary embolism, then continue CPR for 60–90 minutes; primary PCI for coronary cause).",
       "q": "What are the 4 Hs and 4 Ts and how do I treat each at the bedside?",
     },
     {
-      "a": "Use the manufacturer-recommended first biphasic energy (typically 120–200 J). If the manufacturer dose is unknown, default to the maximum available. Subsequent shocks should be of equal or higher energy. The DOSE-VF trial (Cheskes, NEJM 2022) randomised refractory VF after 3 standard shocks to (a) continued standard defibrillation, (b) vector-change (pad reposition anterior-posterior), or (c) double sequential external defibrillation (DSED, two defibrillators delivered ~1 second apart): DSED improved survival to hospital discharge (30.4% vs 13.3%) and survival with good neurological outcome. Vector-change was also superior to standard. That is trial evidence, not the UK recommendation: DOSE-VF was a single-system Canadian trial stopped early by COVID-19. RCUK 2025 advises considering a vector change (antero-posterior pads) after three failed shocks once correct antero-lateral positioning is ensured, and does not recommend routine dual (double) sequential defibrillation.",
+      "a": "For a rectilinear or truncated exponential biphasic waveform, use at least 150 J for the first shock (130–150 J for pulsed biphasic). If the device's recommendation is unknown, default to the maximum available. Subsequent shocks should be escalated if the first fails. The DOSE-VF trial (Cheskes, NEJM 2022) randomised refractory VF after 3 standard shocks to (a) continued standard defibrillation, (b) vector-change (pad reposition anterior-posterior), or (c) double sequential external defibrillation (DSED, two defibrillators delivered ~1 second apart): DSED improved survival to hospital discharge (30.4% vs 13.3%) and survival with good neurological outcome. Vector-change was also superior to standard. That is trial evidence, not the UK recommendation: DOSE-VF was a single-system Canadian trial stopped early by COVID-19. RCUK 2025 advises considering a vector change (antero-posterior pads) after three failed shocks once correct antero-lateral positioning is ensured, and does not recommend routine dual (double) sequential defibrillation.",
       "q": "When should defibrillation energy be escalated and what's the role of dual sequential defibrillation?",
     },
     {
@@ -2641,7 +2641,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the full FAQ co
       "q": "Outline the Vaughan-Williams classification with examples.",
     },
     {
-      "a": "Unstable (chest pain, hypotension, heart failure, syncope): synchronised DC cardioversion 120–200 J biphasic. Stable: rate control with β-blocker (esmolol, metoprolol) or calcium-channel blocker (avoid in heart failure); amiodarone 300 mg IV over 30 min if needs rhythm control or rate control fails. Anticoagulation considered if AF >48 h or known chronic. Look for and treat precipitants — hypoxia, electrolytes, sepsis, ischaemia, fluid overload.",
+      "a": "Unstable (chest pain, hypotension, heart failure, syncope): synchronised DC cardioversion — for AF an initial shock at maximum defibrillator output rather than an escalating approach, for atrial flutter/SVT 70–120 J, and for VT with a pulse 120–150 J (RCUK 2025). Stable: rate control with β-blocker (esmolol, metoprolol) or calcium-channel blocker (avoid in heart failure); amiodarone 300 mg IV over 30 min if needs rhythm control or rate control fails. Anticoagulation considered if AF >48 h or known chronic. Look for and treat precipitants — hypoxia, electrolytes, sepsis, ischaemia, fluid overload.",
       "q": "What is the management of unstable AF in theatre?",
     },
     {
@@ -3015,11 +3015,11 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the full FAQ co
   ],
   "/physics/defibrillation-pacing": [
     {
-      "a": "Monophasic — current flows in one direction; 360 J for all shocks (older defibrillators). Biphasic — current reverses direction mid-shock, lowers myocardial damage and skin burns, higher first-shock success at lower energy (120–200 J device-specific). Biphasic is now standard; Resus Council recommends manufacturer's setting, typically 150 J then escalating.",
+      "a": "Monophasic — current flows in one direction; 360 J for all shocks (older defibrillators). Biphasic — current reverses direction mid-shock, lowers myocardial damage and skin burns, higher first-shock success at lower energy. Biphasic is now standard; RCUK 2025 recommends at least 150 J for the first shock with a rectilinear or truncated exponential biphasic waveform (130–150 J for pulsed biphasic), escalating if the first shock fails, and the highest available setting if the device's recommendation is unknown.",
       "q": "What is the difference between monophasic and biphasic defibrillation?",
     },
     {
-      "a": "For unstable tachyarrhythmias with a pulse (AF, atrial flutter, SVT, VT with pulse). Synchronisation delivers the shock on the R wave to avoid the vulnerable T wave period — an unsynchronised shock on the T wave can induce VF. Energy: AF 120–200 J biphasic, atrial flutter and SVT 70–120 J, VT 100 J starting.",
+      "a": "For unstable tachyarrhythmias with a pulse (AF, atrial flutter, SVT, VT with pulse). Synchronisation delivers the shock on the R wave to avoid the vulnerable T wave period — an unsynchronised shock on the T wave can induce VF. Energy (RCUK 2025): for AF, an initial synchronised shock at maximum defibrillator output rather than an escalating approach; atrial flutter and SVT 70–120 J; VT with a pulse 120–150 J, escalating stepwise if the first shock fails.",
       "q": "When is synchronised cardioversion indicated and why must the shock be synchronised?",
     },
     {
@@ -6525,9 +6525,9 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the synthesised
         "@type": "Question",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Confirm arrest, call for help and start chest compressions at 100–120 min⁻¹, depth 5–6 cm, with full recoil and minimal interruptions. Attach defibrillator pads as soon as available and assess rhythm every 2 minutes. For VF/pVT: deliver a shock (biphasic 120–200 J per manufacturer, then equal or escalating), resume CPR immediately for 2 minutes, give adrenaline 1 mg IV after the third shock and every 3–5 minutes thereafter, and amiodarone 300 mg after the third shock with a further 150 mg after the fifth. For non-shockable rhythms (asystole / PEA): give adrenaline 1 mg IV as soon as access is obtained and every 3–5 minutes, continue CPR, and actively look for reversible causes. Secure the airway (supraglottic device or tracheal tube) and switch to continuous compressions with asynchronous ventilations once an advanced airway is in place. Use waveform capnography throughout.",
+          "text": "Confirm arrest, call for help and start chest compressions at 100–120 min⁻¹, depth 5–6 cm, with full recoil and minimal interruptions. Attach defibrillator pads as soon as available and assess rhythm every 2 minutes. For VF/pVT: deliver a shock (at least 150 J for a rectilinear or truncated exponential biphasic waveform; 130–150 J for pulsed biphasic, escalating if the shock fails), resume CPR immediately for 2 minutes, give adrenaline 1 mg IV after the third shock and every 3–5 minutes thereafter, and amiodarone 300 mg after the third shock with a further 150 mg after the fifth. For non-shockable rhythms (asystole / PEA): give adrenaline 1 mg IV as soon as access is obtained and every 3–5 minutes, continue CPR, and actively look for reversible causes. Secure the airway (supraglottic device or tracheal tube) and switch to continuous compressions with asynchronous ventilations once an advanced airway is in place. Use waveform capnography throughout.",
         },
-        "name": "What does the 2021 Resuscitation Council UK / ERC ALS algorithm say for an adult in cardiac arrest?",
+        "name": "What does the 2025 Resuscitation Council UK (March 2026 algorithm) / ERC ALS guidance say for an adult in cardiac arrest?",
       },
       {
         "@type": "Question",
@@ -6541,7 +6541,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the synthesised
         "@type": "Question",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Use the manufacturer-recommended first biphasic energy (typically 120–200 J). If the manufacturer dose is unknown, default to the maximum available. Subsequent shocks should be of equal or higher energy. The DOSE-VF trial (Cheskes, NEJM 2022) randomised refractory VF after 3 standard shocks to (a) continued standard defibrillation, (b) vector-change (pad reposition anterior-posterior), or (c) double sequential external defibrillation (DSED, two defibrillators delivered ~1 second apart): DSED improved survival to hospital discharge (30.4% vs 13.3%) and survival with good neurological outcome. Vector-change was also superior to standard. That is trial evidence, not the UK recommendation: DOSE-VF was a single-system Canadian trial stopped early by COVID-19. RCUK 2025 advises considering a vector change (antero-posterior pads) after three failed shocks once correct antero-lateral positioning is ensured, and does not recommend routine dual (double) sequential defibrillation.",
+          "text": "For a rectilinear or truncated exponential biphasic waveform, use at least 150 J for the first shock (130–150 J for pulsed biphasic). If the device's recommendation is unknown, default to the maximum available. Subsequent shocks should be escalated if the first fails. The DOSE-VF trial (Cheskes, NEJM 2022) randomised refractory VF after 3 standard shocks to (a) continued standard defibrillation, (b) vector-change (pad reposition anterior-posterior), or (c) double sequential external defibrillation (DSED, two defibrillators delivered ~1 second apart): DSED improved survival to hospital discharge (30.4% vs 13.3%) and survival with good neurological outcome. Vector-change was also superior to standard. That is trial evidence, not the UK recommendation: DOSE-VF was a single-system Canadian trial stopped early by COVID-19. RCUK 2025 advises considering a vector change (antero-posterior pads) after three failed shocks once correct antero-lateral positioning is ensured, and does not recommend routine dual (double) sequential defibrillation.",
         },
         "name": "When should defibrillation energy be escalated and what's the role of dual sequential defibrillation?",
       },
@@ -8941,7 +8941,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the synthesised
         "@type": "Question",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Unstable (chest pain, hypotension, heart failure, syncope): synchronised DC cardioversion 120–200 J biphasic. Stable: rate control with β-blocker (esmolol, metoprolol) or calcium-channel blocker (avoid in heart failure); amiodarone 300 mg IV over 30 min if needs rhythm control or rate control fails. Anticoagulation considered if AF >48 h or known chronic. Look for and treat precipitants — hypoxia, electrolytes, sepsis, ischaemia, fluid overload.",
+          "text": "Unstable (chest pain, hypotension, heart failure, syncope): synchronised DC cardioversion — for AF an initial shock at maximum defibrillator output rather than an escalating approach, for atrial flutter/SVT 70–120 J, and for VT with a pulse 120–150 J (RCUK 2025). Stable: rate control with β-blocker (esmolol, metoprolol) or calcium-channel blocker (avoid in heart failure); amiodarone 300 mg IV over 30 min if needs rhythm control or rate control fails. Anticoagulation considered if AF >48 h or known chronic. Look for and treat precipitants — hypoxia, electrolytes, sepsis, ischaemia, fluid overload.",
         },
         "name": "What is the management of unstable AF in theatre?",
       },
@@ -9731,7 +9731,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the synthesised
         "@type": "Question",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Monophasic — current flows in one direction; 360 J for all shocks (older defibrillators). Biphasic — current reverses direction mid-shock, lowers myocardial damage and skin burns, higher first-shock success at lower energy (120–200 J device-specific). Biphasic is now standard; Resus Council recommends manufacturer's setting, typically 150 J then escalating.",
+          "text": "Monophasic — current flows in one direction; 360 J for all shocks (older defibrillators). Biphasic — current reverses direction mid-shock, lowers myocardial damage and skin burns, higher first-shock success at lower energy. Biphasic is now standard; RCUK 2025 recommends at least 150 J for the first shock with a rectilinear or truncated exponential biphasic waveform (130–150 J for pulsed biphasic), escalating if the first shock fails, and the highest available setting if the device's recommendation is unknown.",
         },
         "name": "What is the difference between monophasic and biphasic defibrillation?",
       },
@@ -9739,7 +9739,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the synthesised
         "@type": "Question",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "For unstable tachyarrhythmias with a pulse (AF, atrial flutter, SVT, VT with pulse). Synchronisation delivers the shock on the R wave to avoid the vulnerable T wave period — an unsynchronised shock on the T wave can induce VF. Energy: AF 120–200 J biphasic, atrial flutter and SVT 70–120 J, VT 100 J starting.",
+          "text": "For unstable tachyarrhythmias with a pulse (AF, atrial flutter, SVT, VT with pulse). Synchronisation delivers the shock on the R wave to avoid the vulnerable T wave period — an unsynchronised shock on the T wave can induce VF. Energy (RCUK 2025): for AF, an initial synchronised shock at maximum defibrillator output rather than an escalating approach; atrial flutter and SVT 70–120 J; VT with a pulse 120–150 J, escalating stepwise if the first shock fails.",
         },
         "name": "When is synchronised cardioversion indicated and why must the shock be synchronised?",
       },
