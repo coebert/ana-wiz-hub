@@ -60,7 +60,11 @@ contain the claim).
 AC-01 to AC-15 are the sepsis, capnography, SAB and antimicrobial findings from
 the previous turn. The follow-up review labels **AC-10**, **AC-11** and
 **AC-13** refer to **AC-16**, **AC-17** and **AC-18** below, because those
-numbers were already assigned in this register.
+numbers were already assigned in this register. For the same reason the final
+review's labels **AC-18** (the frail-patient sedation case mirror) and **AC-20**
+(the anaphylaxis adrenaline pitfall) are recorded below as **AC-21** and
+**AC-22**; AC-18 and AC-20 in this register remain the MRI safety and sepsis
+chooser rows.
 
 | ID | Surface | Discrepancy found | Population / setting | Source | Before → after | Verification | Status |
 | --- | --- | --- | --- | --- | --- | --- | --- |
@@ -84,6 +88,8 @@ numbers were already assigned in this register.
 | AC-18 (review AC-13) | `src/pages/topics/ElectricalSafetyTopic.tsx` MRI paragraphs and MRI FAQ answer | Paragraph ended with "use the minimum necessary monitoring" and cited a held record whose publication covered a different work; RF-burn and gradient-current wording was loose and the cable routing/contact instructions were unsupported | Patients and staff in the MR environment | Wilson SR, Shinde S, Appleby I, et al. Guidelines for the safe provision of anaesthesia in magnetic resonance units 2019. Anaesthesia. 2019;74(5):638-650, https://doi.org/10.1111/anae.14578 — sections "Induced currents from time-varying magnetic fields", "Heating from radiofrequency fields", "Equipment and monitoring" | "Minimum necessary monitoring" → monitoring conforming to national guidance and the same as that provided in the operating theatre, using MR Safe or MR Conditional devices within their specified conditions, with control-room monitoring where available and all monitoring maintained during transfers. Gradient currents (peripheral nerve and muscle stimulation, with limb movement or ventricular fibrillation as the extreme) and RF heating (severe, rapid burns from conductive material on the skin; contact limited unless the device is known safe) rewritten to the article. Cable routing, loop, skin-to-skin and insulation claims omitted as unsupported. Held `BJA Educ 2019 (MRI)` replaced by `Assoc Anaesth 2019 (MRI)`; FAQ answer mirrored | `clinical-audit-2026-11-20.test.ts`; `required-citations` with the reviewed-label override for finding 33a21274 (`scripts/required-citations-reviewed-labels.json` and its snapshot entry); browser: paragraph text and citation popover on `/physics/electrical-safety`, no "minimum necessary monitoring", 375 px with no horizontal overflow | F |
 | AC-19 | `src/pages/topics/LaserFibreopticsTopic.tsx` (objective, worked example, key point, safety prose, tube-table note); `src/data/references.ts` lasers pool | Prevention and the fire drill were attributed to an "Association of Anaesthetists 2023" guideline that does not contain them, the oxygen value was fixed at "typically ≤0.30", and the post-fire plan was fixed ("admit for at least 24 h", "repeat imaging"); the pool record had been renamed to `ASA 2013 OR Fire`, so seven inline labels pointed at a label that no longer existed, and `MHRA Lasers 2015` was cited from a pool that did not hold it | Adults and children having airway laser surgery, theatre/ICU | Apfelbaum JL, Caplan RA, Barker SJ, et al. Practice advisory for the prevention and management of operating room fires: an updated report by the American Society of Anesthesiologists Task Force on Operating Room Fires. Anesthesiology. 2013;118(2):271-290. PMID 23287706, https://pubmed.ncbi.nlm.nih.gov/23287706/ | Attribution → the ASA 2013 practice advisory throughout; oxygen → "as low as clinically feasible, guided by monitoring of oxygenation — the advisory sets no fixed fraction"; drill → stop the flow of all airway gases and remove the tube, pour saline into the airway, re-mask on air avoiding oxygen and nitrous oxide, consider rigid bronchoscopy for fragments, then an individual plan; the fixed 24-hour admission and imaging schedule removed in favour of "the advisory specifies no observation period / no imaging schedule"; the exam-pitfalls bullet's "FiO₂ <30%" replaced with the same qualified value; `MHRA Lasers 2015` added to the lasers pool so every inline label resolves | `clinical-audit-2026-11-20.test.ts` (label-resolution loop over every `refLabel` on the page; no "Association of Anaesthetists 2023"; no "at least 24 h"); `required-citations` with reviewed-label overrides for findings 3dc214c1 and 99cb65a0; `diagram-source-citations` baseline unchanged | A |
 | AC-20 | `src/components/diagrams/pharmacology/EmpiricalSepsisChooser.tsx` | "Time-to-antibiotic < 1 h is the key quality metric for adults with suspected sepsis (NICE NG253)" and the "Sepsis-6 — within 1 hour" banner presented a universal one-hour target; NG253 1.8.3 is limited to adults at high risk of severe illness or death and times from the first NEWS2 score at emergency-department assessment or ward deterioration. The hospital-acquired-pneumonia penicillin-allergy path (aztreonam plus ciprofloxacin), "extended infusion 4 h preferred" and meropenem 1–2 g are not in NG250, and the renal selector changed nothing outside HAP | Adults 16 or over, not pregnant; ICU/ED | NICE NG253 recommendations 1.8.3, 1.8.17, 1.8.23 and 1.10.1, https://www.nice.org.uk/guidance/ng253/chapter/Antibiotic-therapy-intravenous-fluid-and-oxygen; NICE CG151 §1.4.1; NICE NG250 tables 1 and 3, https://www.nice.org.uk/guidance/ng250/chapter/Recommendations | Pearl → risk-stratified: within 1 hour only at high risk (1.8.3), timed from the first NEWS2 score, up to 3 hours at medium risk (1.8.17) and 6 hours at low risk (1.8.23) as maxima, never delaying once the decision is made; CG151 immediate therapy for suspected neutropenic sepsis. Banner → "the antibiotic clock depends on risk" with the 94–98% (88–92% if hypercapnic risk) oxygen target. HAP penicillin allergy → NG250's levofloxacin option with its "only when other first-line antibiotics are unsuitable" caveat; piperacillin/tazobactam and meropenem doses aligned to NG250; the unlisted doxycycline macrolide substitute removed from CAP. An amber panel now appears at CrCl < 30 ml/min stating the regimen is not renally adjusted (or, for HAP, that the modification is BNF-derived), and a "Not source-backed here" note holds the intra-abdominal, urinary, meningitic and skin/soft-tissue regimens and their allergy alternatives | `clinical-audit-2026-11-20.test.ts` (3 chooser assertions); browser: chooser on `/pharmacology/antimicrobials-pharm` with CrCl < 30 and with anaphylaxis selected | F |
+| AC-21 (review AC-18) | `src/pages/topics/ProceduralSedationTopic.tsx` frail colonoscopy worked example (working, answer, cites); `src/data/references.ts` `BSG 2023` record | The explanation warned against stacking a benzodiazepine, an opioid and propofol, but the short answer still directed low-dose propofol top-ups (10 mg) on that same pair, and the takeaway carried a fixed, unsourced midazolam 0.5–1 mg + fentanyl 25 µg schedule; the case cited only `BJA Educ 2021`, and the BSG record's excerpt did not carry the high-risk dosing or the anaesthetist statement | Frail elderly adult (78 years, 52 kg, eGFR 38, frailty 5, on apixaban) for diagnostic colonoscopy under sedation, endoscopy unit | Sidhu R, Turnbull D, Haboubi H, et al. British Society of Gastroenterology guidelines on sedation in gastrointestinal endoscopy. Gut. 2024;73(2):219-245, https://doi.org/10.1136/gutjnl-2023-330396 — recommendation 36 (frail, elderly or comorbid ASA grade 3 or greater: half or less of the dose required for younger healthy patients and smaller incremental doses) and the deep-sedation section (deep propofol sedation or general anaesthesia requires an anaesthetic team and in the UK can only be delivered by trained anaesthetists) | Propofol top-up on the pair removed and the fixed milligram schedule deleted → one agent at a time titrated to comfort, at half or less of the dose a younger healthy adult would need and in smaller increments with peak effect allowed, stated as "not a fixed benzodiazepine–opioid–propofol schedule"; deep propofol sedation described as an anaesthetic-team pathway with ECG, non-invasive blood pressure, capnography and core temperature recorded; case `cites` → `BSG 2023` + `BJA Educ 2021`; the `BSG 2023` excerpt extended with the verbatim recommendation 36 and trained-anaesthetist sentences, and its reviewNote records that the guideline sets no fixed milligram schedule | `clinical-audit-2026-11-20.test.ts` (2 BSG assertions: removed top-up and fixed schedule, new dose and team wording, case cites, excerpt text and DOI); browser on `/clinical/procedural-sedation`: working and takeaway render the half-or-less wording, "propofol top-ups" and the fixed schedule are absent, no horizontal overflow at 680 px | F |
+| AC-22 (review AC-20) | `src/pages/topics/ClinicalIncidentsTopic.tsx` anaphylaxis worked example (Common traps, answer, cites) | The Clinical Pitfalls bullet said "Using IV adrenaline 1:1,000 (1 mg/mL) — dilute to 1:100,000 first", an unsupported mandatory ratio that contradicts the same page's named RCUK peri-operative algorithm; the answer gave only "IM 0.5 mg (or IV 50 µg titrated)" without preparations, and the case cited `AAGBI 2009`, which is the post-anaesthesia recovery record | Adults and children under 12 in a monitored anaesthetic or intensive-care setting; IM route when IV access is unavailable; community IM algorithm kept separate | RCUK peri-operative anaphylaxis algorithm 2024, https://www.resus.org.uk/sites/default/files/2024-01/2526%20AAP%20RCUK%20periop%20anaphylaxis-8C.pdf ("Adult and child > 12 years: 50 micrograms IV (0.5 mL IV of 1 mg/10 mL [1:10,000])"; "Child < 12 years: 1 microgram/kg, needs careful dilution"; "If no IV access: 10 micrograms/kg IM, (max 500 micrograms IM) of 1 mg/mL (1:1,000)"); RCUK 2021 community IM algorithm preserved separately (500 micrograms IM, repeated after 5 minutes) | Pitfall → preparation and route separated: IV 1 mg in 10 mL (1:10,000), 50 micrograms (0.5 mL) in an adult or child over 12 years titrated to effect; under 12 years 1 microgram/kg of a carefully diluted preparation; IM 1 mg/mL (1:1,000), 10 micrograms/kg (maximum 500 micrograms) with no IV access; 500 micrograms IM in the community algorithm, repeated after 5 minutes; the closing sentence states the guideline does not mandate a 1:100,000 dilution, with an inline `RCUK Periop Anaphylaxis 2024` reference. Answer aligned to "IV adrenaline 50 µg of 1:10,000 … (IM 0.5 mg of 1 mg/mL if there is no IV access)"; `cites` → `RCUK Periop Anaphylaxis 2024` + `RCUK Anaphylaxis 2021` | `clinical-audit-2026-11-20.test.ts` (preparation, paediatric and IM assertions, old ratio absent, inline label resolves in the pool); browser on `/clinical/clinical-incidents`: pitfalls show "1 mg in 10 mL (1:10,000)", "child under 12 years needs 1 microgram/kg", the IM and community doses and the no-mandate sentence, with "dilute to 1:100,000 first" absent and no horizontal overflow at 680 px | F |
 
 ## Access-limited material (not counted as verified)
 
@@ -135,7 +141,8 @@ numbers were already assigned in this register.
 Closed for this branch. Every row above is either **F** (fixed and exercised
 in the running app), **A** (fixed with automated coverage only), **S**
 (screened, no change needed) or listed under access-limited / held material.
-No row is left open, and no source hold was cleared to make a row pass.
+No row is left open, and no source hold was cleared to make a row pass. AC-21
+and AC-22 were added in the final focused turn and are both **F**.
 
 ## Verification run
 
@@ -164,6 +171,27 @@ All commands were run inside the `web` compose service
   above are measured by executing `src/data/references.ts` directly. The 62
   unresolved DOIs recorded earlier are unchanged and none was relabelled.
 
+**Final focused turn (AC-21 and AC-22).** Same `web` compose service:
+
+- `node_modules/.bin/tsc -p tsconfig.app.json --noEmit` — clean, exit 0.
+- `node_modules/.bin/vitest run src/test/clinical-audit-2026-11-20.test.ts` —
+  **40 passed (40)**, including the two new BSG assertions and the
+  peri-operative adrenaline-preparation assertion.
+- Focused citation and snapshot suites — `cites-labels`,
+  `section-sources-labels`, `required-citations`, `sources`,
+  `topic-faq-snapshots`, `diagram-source-citations`, `governance-citations`,
+  `external-urls` plus the audit file — **9 files, 70 tests passed**.
+- Full suite `node_modules/.bin/vitest run` — **3,314 passed, 14 failed, 25
+  skipped (3,353)**. The 14 failures are the same pre-existing baseline
+  categories (approved-model 6, JSON-LD 5, SEO 3). The first full run after the
+  content edits also caught the stale viva-deck content hash, which was
+  regenerated before the final run.
+- Generated artifacts rebuilt after the edits: search index (192 topics, 1,248
+  heading + 16,913 prose records), audit corpus (192 topics), podcast
+  topic-corpus and viva deck (649 cards, 151 topics, content hash refreshed).
+  No reference placement, hold or identifier count changed — the only
+  bibliography edit was the `BSG 2023` excerpt text.
+
 ### Browser verification (managed preview browser, 680 px viewport)
 
 - `/intensive-care/paediatric-icu` — the rendered figure contains "AED with
@@ -191,7 +219,20 @@ All commands were run inside the `web` compose service
   and "NICE CG151 requires empiric therapy immediately" are all rendered, and
   the old "key quality metric" wording is gone. The banner reads "Sepsis bundle
   — the antibiotic clock depends on risk".
-- Zero console errors across the three routes.
+- `/clinical/clinical-incidents` (AC-22) — the Common traps box renders
+  "1 mg in 10 mL (1:10,000)", "child under 12 years needs 1 microgram/kg",
+  "10 micrograms/kg IM (maximum 500 micrograms)", "500 micrograms IM in the
+  community algorithm, repeated after 5 minutes" and "does not mandate a
+  1:100,000 dilution"; "dilute to 1:100,000 first" is absent; the take-home
+  reads "IV adrenaline 50 µg of 1:10,000"; no horizontal overflow at 680 px.
+- `/clinical/procedural-sedation` (AC-21) — the frail colonoscopy case working
+  renders "half or less of the dose a younger healthy patient would need" and
+  "can only be delivered by trained anaesthetists"; the takeaway renders "half
+  or less of the dose a younger healthy adult would need", "not a fixed
+  benzodiazepine–opioid–propofol schedule" and the anaesthetic-team pathway;
+  "propofol top-ups" and "Midazolam 0.5–1 mg + fentanyl 25 µg" are absent; no
+  horizontal overflow at 680 px.
+- Zero console errors across the five routes.
 - Final focused re-run after the last copy edit:
   `clinical-audit-2026-11-20`, `topic-faq-snapshots`, `required-citations`,
   `diagram-source-citations` — **4 files, 47 tests passed**; typecheck clean.
@@ -215,6 +256,15 @@ All commands were run inside the `web` compose service
   (1.8.17) and up to 6 hours at low risk (1.8.23)."
 - Laser page: "Prevention follows the ASA 2013 practice advisory on
   operating-room fires" and "the advisory specifies no observation period".
+- Anaphylaxis pitfalls (AC-22): "The monitored peri-operative IV bolus uses the
+  dilute 1 mg in 10 mL (1:10,000) preparation: 50 micrograms (0.5 mL) in an
+  adult or child over 12 years, titrated to effect; a child under 12 years needs
+  1 microgram/kg of a carefully diluted preparation." … "The peri-operative
+  guideline does not mandate a 1:100,000 dilution for the adult IV bolus."
+- Frail colonoscopy takeaway (AC-21): "Titrate one agent at a time to comfort,
+  at half or less of the dose a younger healthy adult would need and in smaller
+  increments, allowing peak effect before the next increment — not a fixed
+  benzodiazepine–opioid–propofol schedule."
 
 ## Not attempted
 

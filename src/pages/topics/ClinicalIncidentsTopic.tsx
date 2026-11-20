@@ -58,7 +58,7 @@ const workedExamples: WorkedExample[] = [
           <p className="text-xs font-semibold uppercase tracking-wide text-destructive mb-1">Common traps</p>
           <ul className="list-disc list-inside space-y-1 text-foreground">
             <li>Reaching for chlorphenamine/hydrocortisone before adrenaline — they do not treat airway, breathing or circulation problems.</li>
-            <li>Using IV adrenaline 1:1,000 (1 mg/mL) — dilute to 1:100,000 first.</li>
+            <li>Mixing up the strength and the route. The monitored peri-operative IV bolus uses the dilute <strong>1 mg in 10 mL (1:10,000)</strong> preparation: 50 micrograms (0.5 mL) in an adult or child over 12 years, titrated to effect; a child under 12 years needs 1 microgram/kg of a carefully diluted preparation. The <strong>1 mg/mL (1:1,000)</strong> strength is the intramuscular one: 10 micrograms/kg IM (maximum 500 micrograms) when IV access is unavailable, and 500 micrograms IM in the community algorithm, repeated after 5 minutes. The peri-operative guideline does not mandate a 1:100,000 dilution for the adult IV bolus <InlineRef topicId="clinical-incidents" refLabel="RCUK Periop Anaphylaxis 2024" />.</li>
             <li>Forgetting the baseline tryptase at 24 h — without it the acute level is uninterpretable.</li>
             <li>Missing chlorhexidine as a culprit (catheter coatings, skin prep).</li>
           </ul>
@@ -66,8 +66,8 @@ const workedExamples: WorkedExample[] = [
       </div>
     ),
     answer:
-      "IM adrenaline 0.5 mg (or IV 50 µg titrated) is the immediate priority, followed by oxygen, fluids, and second-line agents. Send tryptase at presentation, 1–2 h, and ≥ 24 h, refer to allergy clinic, and document the suspected trigger on the patient's records.",
-   cites: ["AAGBI 2009"],
+      "IV adrenaline 50 µg of 1:10,000, titrated in the monitored peri-operative setting (IM 0.5 mg of 1 mg/mL if there is no IV access), is the immediate priority, followed by oxygen, fluids, and second-line agents. Send tryptase at presentation, 1–2 h, and ≥ 24 h, refer to allergy clinic, and document the suspected trigger on the patient's records.",
+   cites: ["RCUK Periop Anaphylaxis 2024", "RCUK Anaphylaxis 2021"],
   },
   {
     title: "Rising EtCO₂ in a young patient on volatile",

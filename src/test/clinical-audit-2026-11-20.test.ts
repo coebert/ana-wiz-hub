@@ -363,3 +363,38 @@ describe("NICE NG253 risk-stratified antibiotic timing in the sepsis chooser", (
     expect(chooser()).toContain("only when other first-line antibiotics are unsuitable");
   });
 });
+
+describe("RCUK peri-operative anaphylaxis adrenaline preparation", () => {
+  it("does not require a 1:100,000 dilution and separates the IV, paediatric and IM preparations", () => {
+    const page = read("src/pages/topics/ClinicalIncidentsTopic.tsx");
+    expect(page).not.toContain("dilute to 1:100,000 first");
+    expect(page).toContain("1 mg in 10 mL (1:10,000)");
+    expect(page).toContain("child under 12 years needs 1 microgram/kg");
+    expect(page).toContain("10 micrograms/kg IM (maximum 500 micrograms)");
+    expect(page).toContain("500 micrograms IM in the community algorithm, repeated after 5 minutes");
+    expect(page).toContain("does not mandate a 1:100,000 dilution");
+    expect(page).toContain('refLabel="RCUK Periop Anaphylaxis 2024"');
+    const labels = pool("clinical-incidents").map((r) => r.label);
+    expect(labels).toContain("RCUK Periop Anaphylaxis 2024");
+  });
+});
+
+describe("BSG 2023 frail-patient sedation case", () => {
+  const page = () => read("src/pages/topics/ProceduralSedationTopic.tsx");
+
+  it("removes the propofol top-up on the benzodiazepine–opioid pair and the fixed schedule", () => {
+    expect(page()).not.toContain("low-dose propofol top-ups");
+    expect(page()).not.toContain("Midazolam 0.5–1 mg + fentanyl 25 µg titrated");
+    expect(page()).toContain("half or less of the dose a younger healthy adult would need");
+    expect(page()).toContain("delivered by trained anaesthetists");
+    expect(page()).toContain('cites: ["BSG 2023", "BJA Educ 2021"]');
+  });
+
+  it("quotes the BSG high-risk dose and anaesthetic-team recommendations in the record", () => {
+    const bsg = pool("procedural-sedation").find((r) => r.label === "BSG 2023");
+    expect(bsg?.url).toBe("https://doi.org/10.1136/gutjnl-2023-330396");
+    expect(bsg?.excerpt).toContain("half or less of the dose required for younger healthy patients");
+    expect(bsg?.excerpt).toContain("smaller incremental doses");
+    expect(bsg?.excerpt).toContain("trained anaesthetists");
+  });
+});
