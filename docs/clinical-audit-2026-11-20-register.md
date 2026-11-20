@@ -123,15 +123,19 @@ chooser rows.
   urinary, meningitic and skin/soft-tissue regimens and their allergy
   alternatives are teaching examples compiled from the BNF and standard UK
   practice. They are not quoted from NG250, CG151 or NG253 and were not
-  re-verified against a primary guideline. They are now labelled on the page as
-  "Not source-backed here" rather than presented as guideline-derived.
+  re-verified against a primary guideline. **Closed by the AC-16 hold below**:
+  those selections now render a hold panel and generate no dose, regimen or
+  alternative.
 - **Renal dose adjustment**: the chooser adjusts nothing for CrCl < 30 ml/min
   outside the hospital-acquired-pneumonia path, and that path's figures are
-  BNF-derived rather than NG250 statements. A visible amber panel now says so
-  whenever renal impairment is selected. No renal dose was invented or added.
+  BNF-derived rather than NG250 statements. **Closed by the AC-16 hold below**:
+  every renal-impairment selection is held and no adjusted dose is shown, and
+  the "BNF-derived" claim is gone because no traceable monograph is held.
 - **Two-cuff technique** on the laser page is retained as a teaching practice;
   the ASA 2013 advisory specifies the tube choice, the saline-filled tinted
   cuff, the oxygen and nitrous oxide points, but not a two-cuff technique.
+  **Closed by the AC-19 hold below**: the two-cuff technique and saline-soaked
+  pledgets are no longer presented as advisory recommendations.
 - The `BJA Educ 2017` and `BJA Educ 2004` records in the lasers pool remain
   held (`underReview: true`, display label "Citation under review"). They are
   not counted as verified and no hold was cleared.
@@ -274,3 +278,39 @@ All commands were run inside the `web` compose service
 - The ABG tool was not compared against a second analyser-derived dataset; the
   consistency guard uses the Henderson–Hasselbalch relation only.
 - No deployment was performed and nothing was published.
+
+## Evidence holds closed after review — AC-16 (sepsis chooser) and AC-19 (laser adjuncts)
+
+The review thread's **AC-16** and **AC-19** are the two held items listed under
+"Held / unverified selections" above; they map to register rows **AC-20**
+(chooser) and **AC-19** (laser). Both were previously *labelled* as unverified
+while still rendering the unverified dose, regimen or adjunct. They are now
+held: the unverified branch emits nothing prescribable and names the sources to
+use instead.
+
+| ID | Surface | Discrepancy | Population / setting | Exact source | Before → after | Verification | Status |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| AC-16 (register AC-20) | `src/components/diagrams/pharmacology/sepsisChooserModel.ts` (logic extracted from `EmpiricalSepsisChooser.tsx`); mirrors `data-build/audit-corpus.json`, `supabase/functions/process-podcast-rerecord/topic-corpus.json`, `supabase/functions/kb-reindex/corpus.json`, `src/data/searchIndex.generated.json` | The figure still rendered a first-line dose, rationale, modifications and review point for the intra-abdominal, urinary, meningitic and skin/soft-tissue indications, with a page-level "Not source-backed here" note; every renal-impairment selection still rendered the standard adult dose plus a renal alternative described as "BNF-derived" with no traceable monograph; the hospital-acquired-pneumonia MRSA toggle added cover NG250 does not recommend; the neutropenic penicillin-allergy path substituted meropenem with no supporting statement; the HAP panel showed the severe intravenous row whatever severity was selected | Adults 16 or over, not pregnant; ICU/ED empiric prescribing | NICE NG250 (2025) table 1 (CAP, low- and high-severity first-line and penicillin-allergy rows), table 3 (HAP, non-severe oral row and severe/higher-resistance intravenous row), recommendations 1.7.2, 1.7.3, 1.7.5, https://www.nice.org.uk/guidance/ng250/chapter/Recommendations; NICE CG151 recommendations 1.4.1.1, 1.4.3.1, 1.4.3.2, 1.4.3.3, https://www.nice.org.uk/guidance/cg151/chapter/Recommendations; ATS/IDSA 2019 (CAP MRSA risk factors, HCAP abandoned), https://pmc.ncbi.nlm.nih.gov/articles/PMC6812437/ | Held branches return `{ held: true, reason, teaching, consult }` and the component renders "Selection held — no regimen generated" plus "Awaiting source verification" — no first-line, modifications, pearls or review point. Held: intra-abdominal, urinary, meningitic and skin/soft-tissue indications (all factor combinations); every renal-impairment selection (NG250 defers renal dosing to the BNF without figures, and no traceable monograph is held, so the "BNF-derived" claim is removed rather than restated); HAP with MRSA risk (NG250 table 3 sets no MRSA cover); neutropenic sepsis with any penicillin allergy (CG151 names piperacillin/tazobactam and gives no alternative). Active examples are now quoted from, and linked to, the exact recommendation: CAP amoxicillin 500 mg TDS (low) / co-amoxiclav 1.2 g IV TDS + clarithromycin 500 mg BD (high) / doxycycline 200 mg then 100 mg OD (low, allergy) / levofloxacin 500 mg BD (high, allergy); HAP co-amoxiclav 500/125 mg TDS (non-severe) / piperacillin-tazobactam 4.5 g TDS, QDS if severe (severe or higher resistance) with the table 3 oral and intravenous alternatives named; neutropenic piperacillin/tazobactam monotherapy with CG151 stating the agent and not the dose, so no dose is generated. HAP is now severity-aware and the 7-day/8-day course claim is replaced by NG250 1.7.5 (review after 5 days) | `src/test/sepsis-chooser-hold.test.ts` — all 32 factor combinations × 7 sources: held sources, every CrCl < 30 selection, HAP + MRSA and neutropenic + allergy assert `held: true`, no `firstLine` key and no dose token in the outcome; CAP severe, CAP low-severity allergy, HAP severe and neutropenic assert the exact dose plus the NG250 table 1 / table 3 / CG151 label and href. `clinical-audit-2026-11-20.test.ts` updated to the same strings and to the held-panel wording | F |
+| AC-19 | `src/pages/topics/LaserFibreopticsTopic.tsx` (safety paragraph, worked example, tube-table general principles); `src/data/references.ts` `ASA 2013 OR Fire` review note | The general-principles list — introduced as "per the ASA 2013 practice advisory" — recommended a two-cuff tube and saline-soaked pledgets over the cuff, and the safety paragraph and worked example added pledgets and a "spare circuit" to the advisory's mitigations; none of those appears in the advisory | Adults and children having airway laser surgery, theatre/ICU | Apfelbaum JL, Caplan RA, Barker SJ, et al. Practice advisory for the prevention and management of operating room fires. Anesthesiology. 2013;118(2):271-290. PMID 23287706, https://pubmed.ncbi.nlm.nih.gov/23287706/ — the statements held in the pool excerpt cover tube choice, the saline-filled methylene-blue-tinted cuff, oxygen "as low as clinically feasible", avoidance of nitrous oxide and the fire drill, and no two-cuff technique or pledget placement | Two-cuff and pledget recommendations removed from the advisory-attributed lists; both now read "not specified in the ASA 2013 advisory … held here as unverified practice, not advisory recommendations", and the worked example says the same. The citation popover's review note carries the hold so the source record states it too. No replacement technique was invented and no hold was cleared | `clinical-audit-2026-11-20.test.ts` "holds optional adjuncts instead of presenting them as advisory recommendations" (no `use a tube with <b>two cuffs</b>`, no pledgets in the advisory list, the hold wording present); label-resolution loop over every `refLabel` still passes | F |
+
+Access-limited material (unchanged): the ASA 2013 advisory is not open access,
+so only the recommendation text held in the reference pool is relied on; no
+statement beyond that excerpt is made, and the two-cuff/pledget hold is recorded
+as held rather than sourced.
+
+Verification for this section: `npx tsc --noEmit` clean;
+`npx vitest run` over `sepsis-chooser-hold`, `clinical-audit-2026-11-20`,
+`required-citations`, `diagram-source-citations`, `stewardship-decon` and
+`topic-faq-snapshots` — **6 files, 68 tests passed**. Browser at 680 px: held
+intra-abdominal and urosepsis render "Selection held — no regimen generated",
+"Awaiting source verification" and the sources/local-protocol list with no dose
+token and no agent name; CrCl < 30 for CAP renders "No renal dose adjustment is
+generated" with no dose and no "BNF-derived"; HAP with MRSA renders held;
+verified CAP renders "Co-amoxiclav 1.2 g IV three times a day" with the NG250
+table 1 label and quoted recommendation; verified neutropenic sepsis renders
+piperacillin/tazobactam with the CG151 1.4.3.1 label and no generated dose;
+laser general principles carry the two-cuff/pledget hold. Zero console errors.
+`scripts/content-check.mjs` reports diagrams and sources clean, with the
+pre-existing `safety-citations` (laser temperature targets, identical hit set
+before and after this change) and `drug-doses` failures unchanged. No production
+deploy.

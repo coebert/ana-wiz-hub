@@ -335,32 +335,46 @@ describe("laser airway-fire attribution", () => {
     expect(page).not.toContain("at least 24 h");
     expect(page).not.toContain("(ideally ≤0.30)");
   });
+
+  it("holds optional adjuncts instead of presenting them as advisory recommendations", () => {
+    const page = read("src/pages/topics/LaserFibreopticsTopic.tsx");
+    expect(page).not.toContain("use a tube with <strong>two cuffs</strong>");
+    expect(page).not.toContain("marker for cuff puncture; and saline-soaked pledgets");
+    expect(page).toContain("not specified in the ASA 2013 advisory");
+    expect(page).toContain("held here as unverified practice");
+    expect(page).toContain("held as unverified practice, not advisory recommendations");
+  });
 });
 
 describe("NICE NG253 risk-stratified antibiotic timing in the sepsis chooser", () => {
   const chooser = () => read("src/components/diagrams/pharmacology/EmpiricalSepsisChooser.tsx");
+  const model = () => read("src/components/diagrams/pharmacology/sepsisChooserModel.ts");
 
   it("does not present a 1-hour target for every adult with suspected sepsis", () => {
     expect(chooser()).not.toContain("Time-to-antibiotic < 1 h is the key quality metric");
-    expect(chooser()).toContain("within 1 hour only for adults at high risk");
-    expect(chooser()).toContain("recommendation 1.8.3");
-    expect(chooser()).toContain("on ward deterioration");
-    expect(chooser()).toContain("up to 3 hours at medium risk (1.8.17)");
-    expect(chooser()).toContain("up to 6 hours at low risk (1.8.23)");
-    expect(chooser()).toContain("NICE CG151 requires empiric therapy immediately");
+    expect(model()).toContain("within 1 hour only for adults at high risk");
+    expect(model()).toContain("recommendation 1.8.3");
+    expect(model()).toContain("on ward deterioration");
+    expect(model()).toContain("up to 3 hours at medium risk (1.8.17)");
+    expect(model()).toContain("up to 6 hours at low risk (1.8.23)");
+    expect(model()).toContain("NICE CG151 requires empiric therapy immediately");
     expect(chooser()).not.toContain("Sepsis-6 — within 1 hour");
   });
 
-  it("holds renal and non-guideline selections as unverified", () => {
-    expect(chooser()).toContain("not renally adjusted in this tool");
-    expect(chooser()).toContain("Not source-backed here:");
+  it("holds every unverified selection and generates no regimen for it", () => {
+    expect(chooser()).toContain("Selection held — no regimen generated");
+    expect(chooser()).toContain("Awaiting source verification");
+    expect(chooser()).toContain("Held selections — no dose or regimen generated");
+    expect(chooser()).toContain("pneumonia with MRSA risk");
     expect(chooser()).not.toContain("Aztreonam 2 g IV TDS");
+    expect(chooser()).not.toContain("BNF-derived");
   });
 
   it("keeps the NG250 CAP allergy alternatives and HAP fluoroquinolone caveat", () => {
-    expect(chooser()).toContain("Levofloxacin 500 mg IV BD (severe — CURB-65 ≥ 3)");
-    expect(chooser()).toContain("Doxycycline 200 mg PO loading then 100 mg PO OD");
-    expect(chooser()).toContain("only when other first-line antibiotics are unsuitable");
+    const model = read("src/components/diagrams/pharmacology/sepsisChooserModel.ts");
+    expect(model).toContain("Levofloxacin 500 mg PO/IV twice a day for 5 days");
+    expect(model).toContain("Doxycycline 200 mg PO on day 1, then 100 mg PO once a day for 4 days");
+    expect(model).toContain("only if other first-line antibiotics are unsuitable");
   });
 });
 
