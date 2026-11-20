@@ -50,7 +50,7 @@ const objectives = [
   "Recognise abnormal capnograph patterns: obstructive (shark-fin), curare cleft, raised baseline (rebreathing), sudden loss (disconnection / oesophageal / arrest) and cardiac oscillations.",
   "Explain why EtCO₂ underestimates PaCO₂ and how that gradient changes in disease.",
   "Justify capnography as mandatory monitoring for all general anaesthesia, sedation requiring airway support, and intubated transfer (Association of Anaesthetists 2021, NAP4).",
-  "Use EtCO₂ as a marker of cardiac output during CPR (RCUK 2021) and ROSC.",
+  "Use EtCO₂ as a marker of cardiac output during CPR (RCUK 2025) and ROSC.",
 ];
 
 const workedExamples: WorkedExample[] = [

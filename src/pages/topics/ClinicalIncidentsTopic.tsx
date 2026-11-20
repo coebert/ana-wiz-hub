@@ -58,7 +58,7 @@ const workedExamples: WorkedExample[] = [
           <p className="text-xs font-semibold uppercase tracking-wide text-destructive mb-1">Common traps</p>
           <ul className="list-disc list-inside space-y-1 text-foreground">
             <li>Reaching for chlorphenamine/hydrocortisone before adrenaline — they do not treat airway, breathing or circulation problems.</li>
-            <li>Using IV adrenaline 1:1,000 (1 mg/mL) — dilute to 1:100,000 first.</li>
+            <li>Mixing up the strength and the route. The monitored peri-operative IV bolus uses the dilute <strong>1 mg in 10 mL (1:10,000)</strong> preparation: 50 micrograms (0.5 mL) in an adult or child over 12 years, titrated to effect; a child under 12 years needs 1 microgram/kg of a carefully diluted preparation. The <strong>1 mg/mL (1:1,000)</strong> strength is the intramuscular one: 10 micrograms/kg IM (maximum 500 micrograms) when IV access is unavailable, and 500 micrograms IM in the community algorithm, repeated after 5 minutes. The peri-operative guideline does not mandate a 1:100,000 dilution for the adult IV bolus <InlineRef topicId="clinical-incidents" refLabel="RCUK Periop Anaphylaxis 2024" />.</li>
             <li>Forgetting the baseline tryptase at 24 h — without it the acute level is uninterpretable.</li>
             <li>Missing chlorhexidine as a culprit (catheter coatings, skin prep).</li>
           </ul>
@@ -66,8 +66,8 @@ const workedExamples: WorkedExample[] = [
       </div>
     ),
     answer:
-      "IM adrenaline 0.5 mg (or IV 50 µg titrated) is the immediate priority, followed by oxygen, fluids, and second-line agents. Send tryptase at presentation, 1–2 h, and ≥ 24 h, refer to allergy clinic, and document the suspected trigger on the patient's records.",
-   cites: ["AAGBI 2009"],
+      "IV adrenaline 50 µg of 1:10,000, titrated in the monitored peri-operative setting (IM 0.5 mg of 1 mg/mL if there is no IV access), is the immediate priority, followed by oxygen, fluids, and second-line agents. Send tryptase at presentation, 1–2 h, and ≥ 24 h, refer to allergy clinic, and document the suspected trigger on the patient's records.",
+   cites: ["RCUK Periop Anaphylaxis 2024", "RCUK Anaphylaxis 2021"],
   },
   {
     title: "Rising EtCO₂ in a young patient on volatile",
@@ -154,6 +154,8 @@ const ClinicalIncidentsTopic = () => {
         
           "NAP Reports",
           "AAGBI 2009",
+          "AAGBI severe LAST 2023",
+          "Lidocaine 2% SmPC",
         ],
       }}
       keyPoints={[
@@ -217,7 +219,7 @@ const ClinicalIncidentsTopic = () => {
           <ExamSection id="section-last" className="scroll-mt-24" exams={[Exam.FINAL, Exam.FFICM]}>
             <CollapsibleSubsection title="Local Anaesthetic Systemic Toxicity (LAST)">
             <p className="text-muted-foreground leading-relaxed mb-3">
-              CNS toxicity precedes cardiac toxicity (except with bupivacaine which can cause simultaneous cardiac arrest). Maximum doses: lidocaine 3 mg/kg (7 with adrenaline), bupivacaine 2 mg/kg.
+              CNS toxicity precedes cardiac toxicity (except with bupivacaine, which can cause simultaneous cardiac arrest). There is <strong>no single universal maximum dose</strong>: the limit is set by the exact product, its route and the technique, and by patient risk. Read the named product&apos;s UK SmPC — for example, plain <a className="text-clinical underline" href="https://www.medicines.org.uk/emc/product/15150/smpc" target="_blank" rel="noreferrer">2% w/v lidocaine injection</a> limits a single dose at sites of marked systemic absorption to 4.5 mg/kg (300 mg) without a vasoconstrictor and 7 mg/kg (500 mg) with one, with lower technique-specific maxima for minor nerve blocks, spinal and IVRA. These limits are not interchangeable between products, routes or techniques, previous doses and mixed agents count towards them, and toxicity remains possible below a listed ceiling. Follow local policy and check the SmPC for the preparation actually drawn up; management of established toxicity follows the Association of Anaesthetists <a className="text-clinical underline" href="https://anaesthetists.org/Guidelines-and-publications/Guidelines/Management-of-severe-local-anaesthetic-toxicity-2023" target="_blank" rel="noreferrer">severe LAST 2023</a> page and QRH 3-10<InlineRef topicId="clinical-incidents" refLabel="AAGBI severe LAST 2023" /><InlineRef topicId="clinical-incidents" refLabel="Lidocaine 2% SmPC" />.
             </p>
             <div className="p-4 rounded-lg border border-border">
               <p className="font-semibold text-foreground text-sm mb-2">Association of Anaesthetists QRH 3-10</p>
