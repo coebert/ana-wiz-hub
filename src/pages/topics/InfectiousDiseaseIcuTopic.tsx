@@ -42,10 +42,10 @@ const workedExamples: WorkedExample[] = [
     scenario:
       "Previously well 38-year-old, 24 h history of severe leg pain after minor scratch. BP 80/40, HR 130, lactate 5.2, WCC 22, CK 6000, sodium 128, creatinine 220. Erythema with disproportionate pain; LRINEC = 9.",
     working:
-      "LRINEC ≥6 strongly suggests necrotising soft-tissue infection. Most likely Type II monomicrobial (Group A Streptococcus) given previously well patient and rapid course. Streptococcal toxic shock often coexists. Surgical debridement is the single most important intervention — must not be delayed for imaging. Antibiotics: piperacillin-tazobactam OR meropenem (broad cover) + clindamycin (toxin suppression — Eagle effect; β-lactams alone less effective at high inoculum) + vancomycin if MRSA risk. Consider IVIG for streptococcal TSS (INSTINCT-style data).",
+      "LRINEC ≥6 supports, but does not establish, necrotising soft-tissue infection: pooled sensitivity is only 68.2% at ≥6 and 40.8% at ≥8, so a score below the threshold cannot exclude the diagnosis and must not delay surgical assessment when the clinical picture fits. Here the disproportionate pain, rapid spread and shock are the diagnostic drivers. Most likely Type II monomicrobial (Group A Streptococcus) given previously well patient and rapid course. Streptococcal toxic shock often coexists. Surgical debridement is the single most important intervention — must not be delayed for imaging. Antibiotics: piperacillin-tazobactam OR meropenem (broad cover) + clindamycin (toxin suppression — Eagle effect; β-lactams alone less effective at high inoculum) + vancomycin if MRSA risk. Consider IVIG for streptococcal TSS (INSTINCT-style data).",
     answer:
-      "Emergency theatre for radical debridement (anticipate relooks at 24–48 h); antibiotics = pip-tazo/meropenem + clindamycin + vancomycin; IVIG if streptococcal TSS confirmed; ICU for vasopressors, AKI/RRT, anticipate ARDS and DIC.",
-    cites: ["SSC 2021"],
+      "Early surgical assessment and emergency theatre for radical debridement (anticipate relooks at 24–48 h), not reassurance from the LRINEC score; antibiotics = pip-tazo/meropenem + clindamycin + vancomycin; IVIG if streptococcal TSS confirmed; ICU for vasopressors, AKI/RRT, anticipate ARDS and DIC.",
+    cites: ["SSC 2021", "Fernando 2019 LRINEC"],
   },
 ];
 
@@ -615,7 +615,7 @@ const InfectiousDiseaseIcuTopic = () => {
 
             <h3 className="text-lg font-semibold text-foreground mt-4 mb-2">LRINEC Score</h3>
             <p className="text-muted-foreground leading-relaxed mb-2 text-sm">
-              The Laboratory Risk Indicator for Necrotising Fasciitis combines six weighted variables: CRP, white cell count, haemoglobin, sodium, creatinine, and glucose. A score ≥6 is "suspicious" for necrotising fasciitis and ≥8 is "high-risk". Critically, a low LRINEC score <strong>must not be used to exclude the diagnosis</strong> — necrotising fasciitis remains a clinical diagnosis and surgical exploration should not be withheld on the basis of a reassuring score <InlineRef topicId="infectious-disease-icu" refLabel="IDSA SSTI 2014" />.
+              The Laboratory Risk Indicator for Necrotising Fasciitis combines six weighted variables: CRP, white cell count, haemoglobin, sodium, creatinine, and glucose. A score ≥6 is commonly described as "suspicious" and ≥8 as "high-risk", but the score has limited sensitivity: in a meta-analysis of 23 studies (n = 5,982) a score ≥6 had a sensitivity of 68.2% and specificity of 84.8%, and a score ≥8 a sensitivity of 40.8% and specificity of 94.9%. A low LRINEC score <strong>must not be used to exclude the diagnosis</strong> — necrotising fasciitis remains a clinical diagnosis, and clinical suspicion warrants early surgical assessment rather than a reassuring score or further imaging <InlineRef topicId="infectious-disease-icu" refLabel="Fernando 2019 LRINEC" />.
             </p>
 
             <div className="space-y-2">

@@ -191,3 +191,80 @@ describe("vancomycin AUC and procalcitonin attribution", () => {
     expect(record?.excerpt).toContain("adequate source control");
   });
 });
+
+describe("RCUK 2025 paediatric AED mode, pad placement and cardioversion", () => {
+  it("WETFLAG drops the superseded 10 kg pad rule and the truncated cardioversion ladder", () => {
+    const diagram = read("src/components/diagrams/intensive-care/WETFLAGDiagram.tsx");
+    expect(diagram).not.toContain("paediatric pads <10 kg");
+    expect(diagram).not.toContain("then 2 J/kg if needed");
+    expect(diagram).toContain("less than 25 kg (approximately 8 years)");
+    expect(diagram).toContain("doubles with each attempt to a maximum of 4 J/kg");
+    expect(diagram).toContain('refLabel="RCUK PALS 2025 pads"');
+    expect(diagram).toContain('refLabel="RCUK PALS 2025 cardioversion"');
+  });
+
+  it("keeps the age-based weight estimate and the 4 J/kg energy arithmetic", () => {
+    const diagram = read("src/components/diagrams/intensive-care/WETFLAGDiagram.tsx");
+    expect(diagram).toContain("(2 × age) + 8");
+    expect(diagram).toContain("(3 × age) + 7");
+    expect(diagram).toContain("Math.round(4 * w)");
+  });
+
+  it("electrical safety paediatric defibrillation uses the 2025 size rule, not the 2021 one", () => {
+    const page = read("src/pages/topics/ElectricalSafetyTopic.tsx");
+    expect(page).not.toContain("under 10 kg");
+    expect(page).not.toContain("RCUK Paediatric ALS 2021");
+    expect(page).toContain("less than 25 kg (approximately 8 years)");
+    expect(page).toContain('refLabel="RCUK PALS 2025 pads"');
+  });
+
+  it("reference pools carry the 2025 pad and cardioversion excerpts", () => {
+    const pads = pool("paediatric-icu").find((r) => r.label === "RCUK PALS 2025 pads");
+    expect(pads?.excerpt).toContain("less than 25 kg");
+    expect(pads?.url).toContain("paediatric-basic-life-support-guidelines");
+    const cardio = pool("paediatric-icu").find(
+      (r) => r.label === "RCUK PALS 2025 cardioversion",
+    );
+    expect(cardio?.excerpt).toContain("maximum of 4 J kg-1");
+  });
+});
+
+describe("LRINEC score diagnostic performance", () => {
+  it("does not present a score of 6 as establishing the diagnosis", () => {
+    const page = read("src/pages/topics/InfectiousDiseaseIcuTopic.tsx");
+    expect(page).not.toContain("LRINEC ≥6 strongly suggests necrotising soft-tissue infection");
+    expect(page).toContain("pooled sensitivity is only 68.2%");
+    expect(page).toContain("cannot exclude the diagnosis");
+    expect(page).toContain('cites: ["SSC 2021", "Fernando 2019 LRINEC"]');
+  });
+
+  it("links the item citation to the meta-analysis record", () => {
+    const record = pool("infectious-disease-icu").find(
+      (r) => r.label === "Fernando 2019 LRINEC",
+    );
+    expect(record?.excerpt).toContain("sensitivity of 68.2%");
+    expect(record?.excerpt).toContain("should not be used to rule-out NSTI");
+    expect(record?.url).toContain("pubmed.ncbi.nlm.nih.gov/29672405");
+  });
+});
+
+describe("MRI electrical safety sourcing", () => {
+  it("requires indicated monitoring rather than a minimum, and cites the 2019 Association guidance", () => {
+    const page = read("src/pages/topics/ElectricalSafetyTopic.tsx");
+    expect(page).not.toContain("minimum necessary monitoring");
+    expect(page).not.toContain('refLabel="BJA Educ 2019 (MRI)"');
+    expect(page).toContain("be the same as that provided in the operating theatre");
+    expect(page).toContain('refLabel="Assoc Anaesth 2019 (MRI)"');
+  });
+
+  it("replaces the held record with one that carries the induced-current, RF-heating and monitoring text", () => {
+    const records = pool("electrical-safety");
+    expect(records.map((r) => r.label)).not.toContain("BJA Educ 2019 (MRI)");
+    const record = records.find((r) => r.label === "Assoc Anaesth 2019 (MRI)");
+    expect(record?.underReview).toBeFalsy();
+    expect(record?.url).toBe("https://doi.org/10.1111/anae.14578");
+    expect(record?.excerpt).toContain("gradient fields");
+    expect(record?.excerpt).toContain("severe and rapid burns");
+    expect(record?.excerpt).toContain("same as that provided within the operating theatre");
+  });
+});

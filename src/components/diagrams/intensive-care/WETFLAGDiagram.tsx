@@ -50,7 +50,7 @@ const WETFLAGDiagram = () => {
       value: `${energy} J`,
       formula: "4 J/kg (DC shock)",
       detail:
-        "Defibrillation for VF/pulseless VT is 4 J/kg, increasing stepwise to 8 J/kg (max 360 J) for refractory VF/pVT; synchronised cardioversion starts at 1 J/kg, then 2 J/kg if needed. Use paediatric pads <10 kg or <1 yr; adult pads acceptable above this — anteroposterior position if pads overlap.",
+        "Defibrillation for VF/pulseless VT is 4 J/kg for every shock, increasing stepwise to 8 J/kg (max 360 J) once more than five shocks are needed. Synchronised cardioversion for a tachyarrhythmia with circulatory failure starts at 1 J/kg and doubles with each attempt to a maximum of 4 J/kg. AED mode and pad placement are set out below.",
       color: "hsl(0 70% 50%)",
     },
     {
@@ -179,6 +179,32 @@ const WETFLAGDiagram = () => {
           ))}
         </div>
   
+        <div className="mt-3 p-3 rounded-lg border border-border bg-secondary/30">
+          <p className="text-sm font-semibold text-foreground mb-1">AED mode, pad placement and cardioversion (RCUK 2025)</p>
+          <ul className="list-disc list-inside space-y-1 text-xs text-muted-foreground">
+            <li>
+              <strong className="text-foreground">AED:</strong> activate paediatric mode, if available, in all infants and
+              children weighing less than 25 kg (approximately 8 years); use standard adult mode in larger children and
+              adolescents, or when the AED has no paediatric mode.
+            </li>
+            <li>
+              <strong className="text-foreground">&lt;25 kg:</strong> anteroposterior pads — anterior pad mid-chest
+              immediately left of the sternum, posterior pad centred between the scapulae. Use anterolateral only if
+              anteroposterior cannot be achieved without the pads touching.
+            </li>
+            <li>
+              <strong className="text-foreground">&gt;25 kg:</strong> anterolateral or anteroposterior pads; avoid breast
+              tissue with the anteroposterior position in adolescents. Pads must never touch each other
+              <InlineRef topicId="paediatric-icu" refLabel="RCUK PALS 2025 pads" />.
+            </li>
+            <li>
+              <strong className="text-foreground">Cardioversion:</strong> 1 J/kg, doubling with each attempt to a maximum
+              of 4 J/kg, with a 12-lead ECG running and sedation if the child is not comatose
+              <InlineRef topicId="paediatric-icu" refLabel="RCUK PALS 2025 cardioversion" />.
+            </li>
+          </ul>
+        </div>
+
         <div className="mt-3 p-2.5 rounded bg-destructive/5 border border-destructive/20 text-xs text-muted-foreground">
           <strong className="text-foreground">Clinical use: </strong>
           Calculate WETFLAG on PICU admission and at the start of any resuscitation. Write the values on the whiteboard / drug chart so the team can act without recalculating under stress.

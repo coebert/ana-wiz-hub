@@ -7,28 +7,39 @@ the claim, and no source hold was cleared.
 
 ## Corpus counts (measured, not estimated)
 
-| Measure | Pinned main `6ebab1320` | Branch HEAD `8eab5dab` (before this turn) | After this turn |
+| Measure | Pinned main `6ebab1320` | HEAD `1d6f76126` (before this turn) | After this turn |
 | --- | --- | --- | --- |
 | Curriculum topics (`data-build/audit-corpus.json`) | 192 | 192 | 192 |
 | Reference keys (`Object.keys(topicReferences)`) | 201 | 201 | 201 |
-| Reference placements (`Object.values(...).flat()`) | 3,109 | 3,114 | 3,117 |
-| Explicit source holds (`underReview: true`) | 133 | 133 | 133 |
-| Records without URL or PMID | 324 | 324 | 324 |
-| Records without URL (PMID-only included) | 327 | 327 | 327 |
+| Reference placements (`Object.values(...).flat()`) | 3,109 | 3,117 | 3,120 |
+| Explicit source holds (`underReview: true`) | 133 | 133 | 132 |
+| Records without URL or PMID | 324 | 324 | 323 |
+| Records without URL (PMID-only included) | 327 | 327 | 326 |
 
 Counts were produced by executing `src/data/references.ts` with `tsx` at each
 revision, not by counting `label:` strings. Against pinned main the total rose
-by eight: five placements were already added by the earlier branch commit
-`8eab5dab`, and this turn added four (RCUK 2025 capnography, IDSA/ESCMID SAB
-2026, ASHP/IDSA vancomycin 2020, SSC 2026 procalcitonin) while removing one
-uncited NG51 record. All NG253/NG254 substitutions were one-for-one, so they do
-not change the total.
+by eight in the previous turn: five placements were already added by the earlier
+branch commit `8eab5dab`, and that turn added four (RCUK 2025 capnography,
+IDSA/ESCMID SAB 2026, ASHP/IDSA vancomycin 2020, SSC 2026 procalcitonin) while
+removing one uncited NG51 record.
+
+This turn moved the total from 3,117 to 3,120. Four records were added:
+`Fernando 2019 LRINEC`, `RCUK PALS 2025 pads` in the paediatric-ICU pool,
+`RCUK PALS 2025 cardioversion`, and `RCUK PALS 2025 pads` in the
+electrical-safety pool. The held `BJA Educ 2019 (MRI)` record was replaced
+one-for-one by `Assoc Anaesth 2019 (MRI)`, and the now-unused
+`RCUK Paediatric ALS 2021` record was removed. Holds and the records without a
+machine-checkable identifier each fell by one, both from that replacement: the
+held record carried no identifier, the replacement carries a DOI.
 
 `scripts/check-reference-integrity.ts` currently reports **62 citation errors**
-(unresolved DOIs) and **1,422 warnings** across 3,117 citations. These are
-pre-existing and were not cleared: an unresolved DOI is reported, never
-"fixed" by relabelling. The 324 records without a machine-checkable identifier
-remain unverifiable by that script and are not counted as verified.
+(unresolved DOIs), **1,425 warnings** and **323 unverifiable** records across
+3,120 citations. The errors are pre-existing and were not cleared: an
+unresolved DOI is reported, never "fixed" by relabelling. The three extra
+warnings are the new guideline records that carry a bare URL rather than a DOI
+or PMID, net of the removed 2021 record; no new unresolved-identifier error was
+introduced. The 323 records without a machine-checkable identifier remain
+unverifiable by that script and are not counted as verified.
 
 ## Register
 
@@ -36,6 +47,11 @@ Status key: **F** fixed and verified in the running app; **A** fixed with
 automated coverage only (not separately exercised in the browser);
 **S** screened, no change required; **L** access-limited (the source does not
 contain the claim).
+
+AC-01 to AC-15 are the sepsis, capnography, SAB and antimicrobial findings from
+the previous turn. The follow-up review labels **AC-10**, **AC-11** and
+**AC-13** refer to **AC-16**, **AC-17** and **AC-18** below, because those
+numbers were already assigned in this register.
 
 | ID | Surface | Discrepancy found | Population / setting | Source | Before → after | Verification | Status |
 | --- | --- | --- | --- | --- | --- | --- | --- |
@@ -54,6 +70,9 @@ contain the claim).
 | AC-13 | `src/pages/topics/AntimicrobialsIcuTopic.tsx` vancomycin key point | "AUC24/MIC 400–600 … and a loading dose of 25–30 mg/kg are essential in ICU", cited to NG51 | Adults with serious MRSA infection | ASHP/IDSA/PIDS/SIDP 2020, https://www.idsociety.org/practice-guideline/vancomycin (doi:10.1093/ajhp/zxaa036) | "Essential in ICU" → scoped to serious MRSA infection, AUC target rather than trough-only monitoring, loading dose suggested in serious illness, local policy governs; new reference record with verbatim AUC excerpt | `clinical-audit-2026-11-20.test.ts`; browser text check | F |
 | AC-14 | `src/pages/topics/AntimicrobialsIcuTopic.tsx` procalcitonin key point | "Procalcitonin-guided de-escalation safely reduces antibiotic exposure (PRORATA, SAPS) without increased mortality", cited to NG51 | Adults with sepsis/septic shock, ICU | SSC 2026, https://sccm.org/clinical-resources/guidelines/guidelines/surviving-sepsis-campaign-international-guidelines-for-management-of-sepsis-and-septic-shock-2026; NICE NG253 (2026 update) | Unqualified de-escalation claim → SSC 2026 separation: clinical evaluation alone preferred for starting; procalcitonin plus clinical evaluation suggested for stopping only after adequate source control where duration is unclear; new `SSC 2026 procalcitonin` record with both conditional statements | `clinical-audit-2026-11-20.test.ts`; browser text check | F |
 | AC-15 | `src/data/references.ts` capnography and cardiac-arrest pools | Capnography pool held an uncited RCUK 2021 ALS record while the topic cited a non-existent `RCUK 2025 ALS` label; arrest pool had no capnography-scoped ALS record | Adult ALS | RCUK 2025 ALS | RCUK 2021 ALS record replaced by `RCUK 2025 ALS` with the capnography excerpt; added `RCUK ALS 2025 capnography` (ROSC combination, no low-value-alone stopping, physiology-guided target) | `cites-labels`, `clinical-audit-2026-11-20.test.ts` | A |
+| AC-16 (review AC-10) | `src/components/diagrams/intensive-care/WETFLAGDiagram.tsx`; mirror in the paediatric defibrillation paragraph of `src/pages/topics/ElectricalSafetyTopic.tsx` | Figure kept the superseded "paediatric pads <10 kg or <1 yr" rule and ended the cardioversion ladder at 2 J/kg; it did not separate AED paediatric mode from manual defibrillation and cardioversion | Infants and children, any resuscitation setting | RCUK 2025 paediatric life support — AED and defibrillation pad placement, and tachyarrhythmia with circulatory failure, https://www.resus.org.uk/professional-library/2025-resuscitation-guidelines/paediatric-basic-life-support-guidelines | Energy card: 4 J/kg for every shock, stepwise to 8 J/kg (max 360 J) once more than five shocks are needed; cardioversion 1 J/kg doubling with each attempt to a maximum of 4 J/kg. New RCUK 2025 block separates AED paediatric mode below 25 kg (approximately 8 years) from pad placement: below 25 kg anteroposterior (anterior pad left of the sternum, posterior between the scapulae, anterolateral only if the pads would touch); above 25 kg anterolateral or anteroposterior, avoiding breast tissue; pads must never touch. Electrical-safety paediatric paragraph: 10 kg rule → 25 kg AED mode with the same placement rules, 2021 label → `RCUK PALS 2025 pads`. Added `RCUK PALS 2025 pads` and `RCUK PALS 2025 cardioversion` records; retired the now-unused `RCUK Paediatric ALS 2021` record | `clinical-audit-2026-11-20.test.ts` (old pad rule absent, 25 kg and the 4 J/kg ceiling present, weight-estimate and 4 J/kg arithmetic unchanged); browser: figure block and both citation popovers on `/intensive-care/paediatric-icu`, at 1265 px and 375 px with no horizontal overflow | F |
+| AC-17 (review AC-11) | `src/pages/topics/InfectiousDiseaseIcuTopic.tsx` worked example and LRINEC section | "LRINEC ≥6 strongly suggests necrotising soft-tissue infection" presented a score with 68.2% sensitivity as diagnostic, and the section cited IDSA SSTI 2014 for the score's performance | Adults with suspected necrotising soft-tissue infection, ICU/ED | Fernando SM, Tran A, Cheng W, et al. Necrotizing soft tissue infection: diagnostic accuracy of physical examination, imaging, and LRINEC score: a systematic review and meta-analysis. Ann Surg. 2019;269(1):58-65. PMID 29672405, https://pubmed.ncbi.nlm.nih.gov/29672405/ | Worked example now states pooled sensitivity 68.2% at ≥6 and 40.8% at ≥8, that a low score cannot exclude the diagnosis, and that early surgical assessment follows clinical suspicion; `cites` gains `Fernando 2019 LRINEC`. Section paragraph gives both thresholds with their specificity and cites the meta-analysis instead of IDSA SSTI 2014 | `clinical-audit-2026-11-20.test.ts`; browser: expanded section shows 68.2%/84.8% and early surgical assessment, and the citation popover shows the meta-analysis excerpt | F |
+| AC-18 (review AC-13) | `src/pages/topics/ElectricalSafetyTopic.tsx` MRI paragraphs and MRI FAQ answer | Paragraph ended with "use the minimum necessary monitoring" and cited a held record whose publication covered a different work; RF-burn and gradient-current wording was loose and the cable routing/contact instructions were unsupported | Patients and staff in the MR environment | Wilson SR, Shinde S, Appleby I, et al. Guidelines for the safe provision of anaesthesia in magnetic resonance units 2019. Anaesthesia. 2019;74(5):638-650, https://doi.org/10.1111/anae.14578 — sections "Induced currents from time-varying magnetic fields", "Heating from radiofrequency fields", "Equipment and monitoring" | "Minimum necessary monitoring" → monitoring conforming to national guidance and the same as that provided in the operating theatre, using MR Safe or MR Conditional devices within their specified conditions, with control-room monitoring where available and all monitoring maintained during transfers. Gradient currents (peripheral nerve and muscle stimulation, with limb movement or ventricular fibrillation as the extreme) and RF heating (severe, rapid burns from conductive material on the skin; contact limited unless the device is known safe) rewritten to the article. Cable routing, loop, skin-to-skin and insulation claims omitted as unsupported. Held `BJA Educ 2019 (MRI)` replaced by `Assoc Anaesth 2019 (MRI)`; FAQ answer mirrored | `clinical-audit-2026-11-20.test.ts`; `required-citations` with the reviewed-label override for finding 33a21274 (`scripts/required-citations-reviewed-labels.json` and its snapshot entry); browser: paragraph text and citation popover on `/physics/electrical-safety`, no "minimum necessary monitoring", 375 px with no horizontal overflow | F |
 
 ## Access-limited material (not counted as verified)
 

@@ -2272,7 +2272,7 @@
       "topicId": "electrical-safety",
       "file": "src/pages/topics/ElectricalSafetyTopic.tsx",
       "requiredLabels": [
-        "BJA Educ 2019 (MRI)"
+        "Assoc Anaesth 2019 (MRI)"
       ]
     },
     {
@@ -4027,7 +4027,7 @@
       "topicId": "neuroanaesthesia",
       "file": "src/pages/topics/NeuroanaesthesiaTopic.tsx",
       "requiredLabels": [
-        "BJA 1989 N\u2082O & Volatiles"
+        "BJA 1989 N₂O & Volatiles"
       ]
     },
     {

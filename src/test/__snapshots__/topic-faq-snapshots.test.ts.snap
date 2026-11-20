@@ -3087,7 +3087,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the full FAQ co
       "q": "How does a magnet affect a pacemaker or ICD?",
     },
     {
-      "a": "Diathermy is not used inside the MRI environment. The MRI hazards are different: radiofrequency energy heats conductive loops, so route ECG cables straight without loops, keep them off the skin, use the minimum monitoring, and only equipment labelled MR Safe or used within its MR Conditional limits. Active implants need exact device identification and a documented programme-and-monitor plan because of lead-tip heating and inappropriate therapy.",
+      "a": "Diathermy is not used inside the MRI environment. The MRI hazards are different: rapidly switched gradient fields induce currents that can stimulate nerve and muscle, and radiofrequency energy can cause severe, rapid burns from conductive material left on the skin, so contact with metal in clothing, ECG leads and other equipment must be limited unless the device is known to be safe. Monitoring should be the same as in the operating theatre, using MR Safe or MR Conditional devices within their specified conditions. Active implants need exact device identification and a documented programme-and-monitor plan because of lead-tip heating and inappropriate therapy.",
       "q": "How is diathermy used safely in a patient having MRI or with an intra-aortic device?",
     },
     {
@@ -9879,7 +9879,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the synthesised
         "@type": "Question",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Diathermy is not used inside the MRI environment. The MRI hazards are different: radiofrequency energy heats conductive loops, so route ECG cables straight without loops, keep them off the skin, use the minimum monitoring, and only equipment labelled MR Safe or used within its MR Conditional limits. Active implants need exact device identification and a documented programme-and-monitor plan because of lead-tip heating and inappropriate therapy.",
+          "text": "Diathermy is not used inside the MRI environment. The MRI hazards are different: rapidly switched gradient fields induce currents that can stimulate nerve and muscle, and radiofrequency energy can cause severe, rapid burns from conductive material left on the skin, so contact with metal in clothing, ECG leads and other equipment must be limited unless the device is known to be safe. Monitoring should be the same as in the operating theatre, using MR Safe or MR Conditional devices within their specified conditions. Active implants need exact device identification and a documented programme-and-monitor plan because of lead-tip heating and inappropriate therapy.",
         },
         "name": "How is diathermy used safely in a patient having MRI or with an intra-aortic device?",
       },
