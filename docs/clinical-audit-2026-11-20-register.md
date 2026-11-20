@@ -23,7 +23,16 @@ branch commit `8eab5dab`, and that turn added four (RCUK 2025 capnography,
 IDSA/ESCMID SAB 2026, ASHP/IDSA vancomycin 2020, SSC 2026 procalcitonin) while
 removing one uncited NG51 record.
 
-This turn moved the total from 3,117 to 3,120. Four records were added:
+**Re-measured at HEAD `91fe145e1` for the closing turn** (the table's third
+column predates the commits made on this branch after it was written): 201
+reference keys, **3,128 placements**, **129 holds**, 319 records without a URL
+or PMID, 322 without a URL. After this turn: **3,129 placements** — the only
+change is `MHRA Lasers 2015` added to the `lasers-fibreoptics` pool, which had
+been citing it from a pool that did not hold it. Holds, records without a
+machine-checkable identifier and records without a URL are unchanged at 129,
+319 and 322.
+
+The earlier turn moved the total from 3,117 to 3,120. Four records were added:
 `Fernando 2019 LRINEC`, `RCUK PALS 2025 pads` in the paediatric-ICU pool,
 `RCUK PALS 2025 cardioversion`, and `RCUK PALS 2025 pads` in the
 electrical-safety pool. The held `BJA Educ 2019 (MRI)` record was replaced
@@ -70,9 +79,11 @@ numbers were already assigned in this register.
 | AC-13 | `src/pages/topics/AntimicrobialsIcuTopic.tsx` vancomycin key point | "AUC24/MIC 400–600 … and a loading dose of 25–30 mg/kg are essential in ICU", cited to NG51 | Adults with serious MRSA infection | ASHP/IDSA/PIDS/SIDP 2020, https://www.idsociety.org/practice-guideline/vancomycin (doi:10.1093/ajhp/zxaa036) | "Essential in ICU" → scoped to serious MRSA infection, AUC target rather than trough-only monitoring, loading dose suggested in serious illness, local policy governs; new reference record with verbatim AUC excerpt | `clinical-audit-2026-11-20.test.ts`; browser text check | F |
 | AC-14 | `src/pages/topics/AntimicrobialsIcuTopic.tsx` procalcitonin key point | "Procalcitonin-guided de-escalation safely reduces antibiotic exposure (PRORATA, SAPS) without increased mortality", cited to NG51 | Adults with sepsis/septic shock, ICU | SSC 2026, https://sccm.org/clinical-resources/guidelines/guidelines/surviving-sepsis-campaign-international-guidelines-for-management-of-sepsis-and-septic-shock-2026; NICE NG253 (2026 update) | Unqualified de-escalation claim → SSC 2026 separation: clinical evaluation alone preferred for starting; procalcitonin plus clinical evaluation suggested for stopping only after adequate source control where duration is unclear; new `SSC 2026 procalcitonin` record with both conditional statements | `clinical-audit-2026-11-20.test.ts`; browser text check | F |
 | AC-15 | `src/data/references.ts` capnography and cardiac-arrest pools | Capnography pool held an uncited RCUK 2021 ALS record while the topic cited a non-existent `RCUK 2025 ALS` label; arrest pool had no capnography-scoped ALS record | Adult ALS | RCUK 2025 ALS | RCUK 2021 ALS record replaced by `RCUK 2025 ALS` with the capnography excerpt; added `RCUK ALS 2025 capnography` (ROSC combination, no low-value-alone stopping, physiology-guided target) | `cites-labels`, `clinical-audit-2026-11-20.test.ts` | A |
-| AC-16 (review AC-10) | `src/components/diagrams/intensive-care/WETFLAGDiagram.tsx`; mirror in the paediatric defibrillation paragraph of `src/pages/topics/ElectricalSafetyTopic.tsx` | Figure kept the superseded "paediatric pads <10 kg or <1 yr" rule and ended the cardioversion ladder at 2 J/kg; it did not separate AED paediatric mode from manual defibrillation and cardioversion | Infants and children, any resuscitation setting | RCUK 2025 paediatric life support — AED and defibrillation pad placement, and tachyarrhythmia with circulatory failure, https://www.resus.org.uk/professional-library/2025-resuscitation-guidelines/paediatric-basic-life-support-guidelines | Energy card: 4 J/kg for every shock, stepwise to 8 J/kg (max 360 J) once more than five shocks are needed; cardioversion 1 J/kg doubling with each attempt to a maximum of 4 J/kg. New RCUK 2025 block separates AED paediatric mode below 25 kg (approximately 8 years) from pad placement: below 25 kg anteroposterior (anterior pad left of the sternum, posterior between the scapulae, anterolateral only if the pads would touch); above 25 kg anterolateral or anteroposterior, avoiding breast tissue; pads must never touch. Electrical-safety paediatric paragraph: 10 kg rule → 25 kg AED mode with the same placement rules, 2021 label → `RCUK PALS 2025 pads`. Added `RCUK PALS 2025 pads` and `RCUK PALS 2025 cardioversion` records; retired the now-unused `RCUK Paediatric ALS 2021` record | `clinical-audit-2026-11-20.test.ts` (old pad rule absent, 25 kg and the 4 J/kg ceiling present, weight-estimate and 4 J/kg arithmetic unchanged); browser: figure block and both citation popovers on `/intensive-care/paediatric-icu`, at 1265 px and 375 px with no horizontal overflow | F |
+| AC-16 (review AC-10) | `src/components/diagrams/intensive-care/WETFLAGDiagram.tsx`; `src/pages/topics/PaediatricIcuTopic.tsx` (unstable-SVT worked example, arrhythmia table, quiz, drug table); mirror in `src/components/diagrams/clinical/PaediatricEquipmentSizer.tsx` | The first revision reversed the PALS conditional — "use anterolateral only if anteroposterior cannot be achieved without the pads touching" applied a paediatric-pads/manual exception to adult-size AED pads; the cardioversion ladder still stopped at 2 J/kg in the worked example, table, quiz and sizer; the energy card mixed the initial 4 J/kg with the refractory escalation | Infants and children, any resuscitation setting | RCUK 2025 paediatric life support, sections "Using an Automated External Defibrillator", "Defibrillation during PALS" and "Arrhythmias", https://www.resus.org.uk/professional-library/2025-resuscitation-guidelines/paediatric-basic-life-support-guidelines | Figure now labels three separate placements: **AED with adult-size pads** — anteroposterior under 25 kg, anterolateral or anteroposterior over 25 kg and in adolescents (anterolateral = below the right clavicle plus left axilla), pads off breast tissue in adolescents; **AED with paediatric pads** — anterolateral allowed at 25 kg or less by competent providers provided the pads do not touch; **manual defibrillation (PALS)** — pads must not touch, anteroposterior in under-25 kg children who can easily be turned and in whom anterolateral is hard without pad contact, anterolateral in larger children, breast tissue avoided. No boundary invented where the guideline says smaller or larger. Energy card separates 4 J/kg for the initial shocks and the adult upper-range caveat (120–200 J depending on device) from stepwise escalation to 8 J/kg (max 360 J) after more than five shocks, reusing the successful dose after ROSC. Worked example: immediate synchronised cardioversion 1 J/kg → 2 J/kg (12 J) → 4 J/kg (24 J) with a 12-lead ECG running and sedation, adenosine 0.1–0.2 mg/kg (max 6 mg) only while cardioversion is prepared and never delaying it; table, quiz and sizer carry the same ladder and limits | `clinical-audit-2026-11-20.test.ts` (7 WETFLAG and tachyarrhythmia assertions, including the removed reversed conditional and the "then 2 J/kg" string); browser: rendered figure on `/intensive-care/paediatric-icu` at 680 px | F |
 | AC-17 (review AC-11) | `src/pages/topics/InfectiousDiseaseIcuTopic.tsx` worked example and LRINEC section | "LRINEC ≥6 strongly suggests necrotising soft-tissue infection" presented a score with 68.2% sensitivity as diagnostic, and the section cited IDSA SSTI 2014 for the score's performance | Adults with suspected necrotising soft-tissue infection, ICU/ED | Fernando SM, Tran A, Cheng W, et al. Necrotizing soft tissue infection: diagnostic accuracy of physical examination, imaging, and LRINEC score: a systematic review and meta-analysis. Ann Surg. 2019;269(1):58-65. PMID 29672405, https://pubmed.ncbi.nlm.nih.gov/29672405/ | Worked example now states pooled sensitivity 68.2% at ≥6 and 40.8% at ≥8, that a low score cannot exclude the diagnosis, and that early surgical assessment follows clinical suspicion; `cites` gains `Fernando 2019 LRINEC`. Section paragraph gives both thresholds with their specificity and cites the meta-analysis instead of IDSA SSTI 2014 | `clinical-audit-2026-11-20.test.ts`; browser: expanded section shows 68.2%/84.8% and early surgical assessment, and the citation popover shows the meta-analysis excerpt | F |
 | AC-18 (review AC-13) | `src/pages/topics/ElectricalSafetyTopic.tsx` MRI paragraphs and MRI FAQ answer | Paragraph ended with "use the minimum necessary monitoring" and cited a held record whose publication covered a different work; RF-burn and gradient-current wording was loose and the cable routing/contact instructions were unsupported | Patients and staff in the MR environment | Wilson SR, Shinde S, Appleby I, et al. Guidelines for the safe provision of anaesthesia in magnetic resonance units 2019. Anaesthesia. 2019;74(5):638-650, https://doi.org/10.1111/anae.14578 — sections "Induced currents from time-varying magnetic fields", "Heating from radiofrequency fields", "Equipment and monitoring" | "Minimum necessary monitoring" → monitoring conforming to national guidance and the same as that provided in the operating theatre, using MR Safe or MR Conditional devices within their specified conditions, with control-room monitoring where available and all monitoring maintained during transfers. Gradient currents (peripheral nerve and muscle stimulation, with limb movement or ventricular fibrillation as the extreme) and RF heating (severe, rapid burns from conductive material on the skin; contact limited unless the device is known safe) rewritten to the article. Cable routing, loop, skin-to-skin and insulation claims omitted as unsupported. Held `BJA Educ 2019 (MRI)` replaced by `Assoc Anaesth 2019 (MRI)`; FAQ answer mirrored | `clinical-audit-2026-11-20.test.ts`; `required-citations` with the reviewed-label override for finding 33a21274 (`scripts/required-citations-reviewed-labels.json` and its snapshot entry); browser: paragraph text and citation popover on `/physics/electrical-safety`, no "minimum necessary monitoring", 375 px with no horizontal overflow | F |
+| AC-19 | `src/pages/topics/LaserFibreopticsTopic.tsx` (objective, worked example, key point, safety prose, tube-table note); `src/data/references.ts` lasers pool | Prevention and the fire drill were attributed to an "Association of Anaesthetists 2023" guideline that does not contain them, the oxygen value was fixed at "typically ≤0.30", and the post-fire plan was fixed ("admit for at least 24 h", "repeat imaging"); the pool record had been renamed to `ASA 2013 OR Fire`, so seven inline labels pointed at a label that no longer existed, and `MHRA Lasers 2015` was cited from a pool that did not hold it | Adults and children having airway laser surgery, theatre/ICU | Apfelbaum JL, Caplan RA, Barker SJ, et al. Practice advisory for the prevention and management of operating room fires: an updated report by the American Society of Anesthesiologists Task Force on Operating Room Fires. Anesthesiology. 2013;118(2):271-290. PMID 23287706, https://pubmed.ncbi.nlm.nih.gov/23287706/ | Attribution → the ASA 2013 practice advisory throughout; oxygen → "as low as clinically feasible, guided by monitoring of oxygenation — the advisory sets no fixed fraction"; drill → stop the flow of all airway gases and remove the tube, pour saline into the airway, re-mask on air avoiding oxygen and nitrous oxide, consider rigid bronchoscopy for fragments, then an individual plan; the fixed 24-hour admission and imaging schedule removed in favour of "the advisory specifies no observation period / no imaging schedule"; the exam-pitfalls bullet's "FiO₂ <30%" replaced with the same qualified value; `MHRA Lasers 2015` added to the lasers pool so every inline label resolves | `clinical-audit-2026-11-20.test.ts` (label-resolution loop over every `refLabel` on the page; no "Association of Anaesthetists 2023"; no "at least 24 h"); `required-citations` with reviewed-label overrides for findings 3dc214c1 and 99cb65a0; `diagram-source-citations` baseline unchanged | A |
+| AC-20 | `src/components/diagrams/pharmacology/EmpiricalSepsisChooser.tsx` | "Time-to-antibiotic < 1 h is the key quality metric for adults with suspected sepsis (NICE NG253)" and the "Sepsis-6 — within 1 hour" banner presented a universal one-hour target; NG253 1.8.3 is limited to adults at high risk of severe illness or death and times from the first NEWS2 score at emergency-department assessment or ward deterioration. The hospital-acquired-pneumonia penicillin-allergy path (aztreonam plus ciprofloxacin), "extended infusion 4 h preferred" and meropenem 1–2 g are not in NG250, and the renal selector changed nothing outside HAP | Adults 16 or over, not pregnant; ICU/ED | NICE NG253 recommendations 1.8.3, 1.8.17, 1.8.23 and 1.10.1, https://www.nice.org.uk/guidance/ng253/chapter/Antibiotic-therapy-intravenous-fluid-and-oxygen; NICE CG151 §1.4.1; NICE NG250 tables 1 and 3, https://www.nice.org.uk/guidance/ng250/chapter/Recommendations | Pearl → risk-stratified: within 1 hour only at high risk (1.8.3), timed from the first NEWS2 score, up to 3 hours at medium risk (1.8.17) and 6 hours at low risk (1.8.23) as maxima, never delaying once the decision is made; CG151 immediate therapy for suspected neutropenic sepsis. Banner → "the antibiotic clock depends on risk" with the 94–98% (88–92% if hypercapnic risk) oxygen target. HAP penicillin allergy → NG250's levofloxacin option with its "only when other first-line antibiotics are unsuitable" caveat; piperacillin/tazobactam and meropenem doses aligned to NG250; the unlisted doxycycline macrolide substitute removed from CAP. An amber panel now appears at CrCl < 30 ml/min stating the regimen is not renally adjusted (or, for HAP, that the modification is BNF-derived), and a "Not source-backed here" note holds the intra-abdominal, urinary, meningitic and skin/soft-tissue regimens and their allergy alternatives | `clinical-audit-2026-11-20.test.ts` (3 chooser assertions); browser: chooser on `/pharmacology/antimicrobials-pharm` with CrCl < 30 and with anaphylaxis selected | F |
 
 ## Access-limited material (not counted as verified)
 
@@ -100,26 +111,116 @@ numbers were already assigned in this register.
 - Historical trial evidence (Rivers 2001, ProCESS/ARISE/ProMISe, PRISM) remains
   labelled as trial evidence rather than current guidance.
 
+## Held / unverified selections (not counted as verified)
+
+- **Sepsis chooser regimens outside NG250/CG151**: the intra-abdominal,
+  urinary, meningitic and skin/soft-tissue regimens and their allergy
+  alternatives are teaching examples compiled from the BNF and standard UK
+  practice. They are not quoted from NG250, CG151 or NG253 and were not
+  re-verified against a primary guideline. They are now labelled on the page as
+  "Not source-backed here" rather than presented as guideline-derived.
+- **Renal dose adjustment**: the chooser adjusts nothing for CrCl < 30 ml/min
+  outside the hospital-acquired-pneumonia path, and that path's figures are
+  BNF-derived rather than NG250 statements. A visible amber panel now says so
+  whenever renal impairment is selected. No renal dose was invented or added.
+- **Two-cuff technique** on the laser page is retained as a teaching practice;
+  the ASA 2013 advisory specifies the tube choice, the saline-filled tinted
+  cuff, the oxygen and nitrous oxide points, but not a two-cuff technique.
+- The `BJA Educ 2017` and `BJA Educ 2004` records in the lasers pool remain
+  held (`underReview: true`, display label "Citation under review"). They are
+  not counted as verified and no hold was cleared.
+
+## Register status
+
+Closed for this branch. Every row above is either **F** (fixed and exercised
+in the running app), **A** (fixed with automated coverage only), **S**
+(screened, no change needed) or listed under access-limited / held material.
+No row is left open, and no source hold was cleared to make a row pass.
+
 ## Verification run
 
-- `npx tsc -p tsconfig.app.json --noEmit` — clean.
-- `npx vitest run` — 3,291 passed, 14 failed, 25 skipped. The 14 failures are
-  the pre-existing baseline categories: `approved-model-replacements` (6),
-  JSON-LD coverage/route/structured-data/url-mapping (5) and SEO per-route meta
-  for `/viva/voice` and `/my-enquiries` (3). None touches the files changed
-  here.
-- Focused re-run after regenerating the viva deck, FAQ snapshots and
-  required-citation labels: `required-citations`, `viva-deck`,
-  `topic-faq-snapshots`, `clinical-audit-2026-11-20`, `abg-interpretation`,
-  `cites-labels`, `sources` — 47 tests passed. A second focused run after the
-  final record review notes (41 tests) also passed.
-- `scripts/check-reference-integrity.ts` — 3,117 citations checked, 62 errors,
-  1,422 warnings, 324 unverifiable (unchanged categories).
+All commands were run inside the `web` compose service
+(`docker compose --project-name app --project-directory "$BASE44_PROJECT_ROOT"
+-f "$BASE44_CONFIG_ROOT/docker-compose.base44.yml" exec -T web ...`).
+
+- `node_modules/.bin/tsc -p tsconfig.app.json --noEmit` — clean, exit 0.
+- `node_modules/.bin/vitest run src/test/clinical-audit-2026-11-20.test.ts` —
+  **37 passed (37)**. This file carries the AC-05 to AC-20 assertions.
+- Focused citation and snapshot suites — `cites-labels`,
+  `section-sources-labels`, `required-citations`, `sources`,
+  `topic-faq-snapshots`, `diagram-source-citations`, `governance-citations`,
+  `external-urls` plus the audit file — **9 files, 67 tests passed**.
+- Full suite `node_modules/.bin/vitest run` — **3,311 passed, 14 failed, 25
+  skipped (3,350)**. The 14 failures are the pre-existing baseline categories
+  unchanged by this work: `approved-model-replacements` (6), JSON-LD
+  coverage/route/params/structured-data/url-mapping (5) and SEO per-route meta
+  for `/viva/voice` and `/my-enquiries` (3).
+- Generated artifacts rebuilt after the content edits: FAQ snapshot
+  (`src/test/__snapshots__/topic-faq-snapshots.test.ts.snap`, 2 snapshots
+  updated), search index (192 topics, 1,248 heading + 16,913 prose records),
+  audit corpus (192 topics), diagram registry (475 entries), viva deck (649
+  cards, 151 topics, content-hash assets refreshed).
+- `scripts/check-reference-integrity.ts` was not re-run this turn; the counts
+  above are measured by executing `src/data/references.ts` directly. The 62
+  unresolved DOIs recorded earlier are unchanged and none was relabelled.
+
+### Browser verification (managed preview browser, 680 px viewport)
+
+- `/intensive-care/paediatric-icu` — the rendered figure contains "AED with
+  adult-size pads", "AED with paediatric pads" and "Manual defibrillation
+  (PALS)"; the reversed conditional ("Use anterolateral only if anteroposterior
+  cannot be achieved") is absent; the energy card shows "4 J/kg for the initial
+  shocks", "120–200 J, depending on the type of defibrillator" and "increased
+  stepwise to 8 J/kg (max 360 J)"; the manual guidance shows "who can easily be
+  turned onto their side" and "use anterolateral in larger children"; the worked
+  example shows "Decompensated circulatory failure means immediate synchronised
+  cardioversion" and "maximum of 4 J/kg (12 J, then 24 J)". No horizontal
+  overflow at 680 px.
+- `/physics/lasers-fibreoptics` — "ASA 2013 practice advisory on operating-room
+  fires" present; "Association of Anaesthetists 2023", "FiO₂ <30%",
+  "ideally ≤0.30" and "at least 24 h" absent; with the safety subsection opened,
+  the post-fire box shows "the advisory specifies no observation period" and
+  "the advisory specifies no imaging schedule".
+- `/pharmacology/antimicrobials-pharm` — with HAP/VAP, Anaphylaxis and
+  CrCl < 30 ml/min selected: first line is the NG250 levofloxacin option with
+  "only when other first-line antibiotics are unsuitable", no aztreonam, the
+  amber "not verified here" panel reads "BNF-derived teaching example", and the
+  "Not source-backed here" hold note is present. With Neutropenic sepsis
+  selected: "within 1 hour only for adults at high risk", "on ward
+  deterioration", "up to 3 hours at medium risk", "up to 6 hours at low risk"
+  and "NICE CG151 requires empiric therapy immediately" are all rendered, and
+  the old "key quality metric" wording is gone. The banner reads "Sepsis bundle
+  — the antibiotic clock depends on risk".
+- Zero console errors across the three routes.
+- Final focused re-run after the last copy edit:
+  `clinical-audit-2026-11-20`, `topic-faq-snapshots`, `required-citations`,
+  `diagram-source-citations` — **4 files, 47 tests passed**; typecheck clean.
+
+### Corrected output, verbatim from the changed files
+
+- WETFLAG energy card: "Defibrillation for VF/pulseless VT uses 4 J/kg for the
+  initial shocks, and it seems reasonable not to use doses above those
+  suggested for adults (120–200 J, depending on the type of defibrillator). For
+  refractory VF/pVT — more than five shocks — the dose is increased stepwise to
+  8 J/kg (max 360 J)."
+- WETFLAG manual placement: "Use anteroposterior in infants and children under
+  25 kg who can easily be turned onto their side and in whom the anterolateral
+  position is more difficult without the pads touching; use anterolateral in
+  larger children, because it interrupts chest compressions less."
+- Paediatric ICU worked example: "Decompensated circulatory failure means
+  immediate synchronised cardioversion, not drug therapy first: 1 J/kg (6 J),
+  doubling with each attempt to a maximum of 4 J/kg (12 J, then 24 J)."
+- Sepsis chooser: "within 1 hour only for adults at high risk of severe illness
+  or death from sepsis (recommendation 1.8.3), up to 3 hours at medium risk
+  (1.8.17) and up to 6 hours at low risk (1.8.23)."
+- Laser page: "Prevention follows the ASA 2013 practice advisory on
+  operating-room fires" and "the advisory specifies no observation period".
 
 ## Not attempted
 
-- No medicine-record, podcast-transcript or viva-bank content was re-audited in
-  this turn beyond the citation mirrors regenerated above; those surfaces keep
-  their existing audit status.
+- No medicine-record, podcast-transcript or viva-bank content was re-audited
+  in this turn beyond the citation mirrors and generated assets above; those
+  surfaces keep their existing audit status.
 - The ABG tool was not compared against a second analyser-derived dataset; the
   consistency guard uses the Henderson–Hasselbalch relation only.
+- No deployment was performed and nothing was published.

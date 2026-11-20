@@ -3540,7 +3540,7 @@
       "topicId": "lasers-fibreoptics",
       "file": "src/pages/topics/LaserFibreopticsTopic.tsx",
       "requiredLabels": [
-        "Assoc Anaesth Airway Fire"
+        "ASA 2013 OR Fire"
       ]
     },
     {
@@ -3566,7 +3566,7 @@
       "topicId": "lasers-fibreoptics",
       "file": "src/pages/topics/LaserFibreopticsTopic.tsx",
       "requiredLabels": [
-        "Assoc Anaesth Airway Fire"
+        "ASA 2013 OR Fire"
       ]
     },
     {

@@ -4,9 +4,9 @@ import { DiagramFigure } from "../_shared/DiagramFigure";
 /**
  * Empirical sepsis antibiotic chooser.
  * Pick suspected source + patient factors → suggested empirical regimen for
- * ADULTS (16+) WHO ARE NOT PREGNANT, drawing on NICE NG250 (pneumonia),
- * NICE CG151 (neutropenic sepsis), NICE NG253 (adult sepsis timing), the BNF
- * and ATS/IDSA 2019 (CAP risk factors).
+ * ADULTS (16+) WHO ARE NOT PREGNANT, drawing on NICE NG253 (adults), NG254 (under-16s), NG255 (pregnancy)
+ * — only the adult NG253 pathway is modelled — NICE NG250 (pneumonia), NICE CG151 (neutropenic sepsis),
+ * the BNF and ATS/IDSA 2019 (CAP risk factors).
  *
  * Paediatric (NG254) and pregnancy (NG255) pathways are not modelled here.
  * Educational tool only — local antibiogram, allergy testing and microbiology
@@ -55,7 +55,7 @@ const SOURCES: Source[] = [
     shortLabel: "CAP",
     bugs: "Strep pneumoniae, H. influenzae, Mycoplasma, Legionella, Chlamydophila, Moraxella",
     build: ({ severity, allergy, mrsa, recentAbx }) => {
-      const macrolide = "clarithromycin 500 mg PO/IV BD (or doxycycline 100 mg BD if QT concern)";
+      const macrolide = "clarithromycin 500 mg PO/IV BD";
       let firstLine: string;
       if (severity === "mild") {
         firstLine = allergy === "anaphylaxis"
@@ -108,14 +108,14 @@ const SOURCES: Source[] = [
       const broadMRSA = mrsa || recentAbx;
       let firstLine: string;
       if (allergy === "anaphylaxis") {
-        firstLine = `Aztreonam 2 g IV TDS + ciprofloxacin 400 mg IV BD${broadMRSA ? " + vancomycin (AUC-guided) or linezolid 600 mg IV BD" : ""}`;
+        firstLine = `Levofloxacin 500 mg IV once or twice daily (higher dose if severe infection; off-label for HAP). NICE NG250 lists a fluoroquinolone only when other first-line antibiotics are unsuitable — confirm with a local microbiologist${broadMRSA ? " + vancomycin (AUC-guided) or linezolid 600 mg IV BD" : ""}`;
       } else {
-        firstLine = `Piperacillin/tazobactam 4.5 g IV QDS (extended infusion 4 h preferred)${broadMRSA ? " + vancomycin (AUC-guided) or linezolid 600 mg IV BD" : ""}`;
+        firstLine = `Piperacillin/tazobactam 4.5 g IV four times daily (NG250 gives 4.5 g three times daily, increased to four times daily if severe infection)${broadMRSA ? " + vancomycin (AUC-guided) or linezolid 600 mg IV BD" : ""}`;
       }
       const alternatives: Recommendation["alternatives"] = [
         {
           trigger: "Septic shock OR known ESBL/AmpC colonisation",
-          regimen: "Meropenem 1–2 g IV TDS (extended infusion) + vancomycin or linezolid",
+          regimen: "Meropenem 1 g IV three times daily (NG250: 0.5–1 g three times daily) + vancomycin or linezolid",
         },
       ];
       if (renal === "impaired") {
@@ -268,7 +268,7 @@ const SOURCES: Source[] = [
       if (allergy === "anaphylaxis") {
         firstLine = "Meropenem 1 g IV TDS (covers most organisms; safe in non-IgE penicillin allergy under specialist supervision)";
       } else {
-        firstLine = "Piperacillin/tazobactam 4.5 g IV TDS–QDS as initial β-lactam monotherapy, given immediately (NICE CG151); the 1-hour target is from NICE NG253";
+        firstLine = "Piperacillin/tazobactam 4.5 g IV TDS–QDS as initial β-lactam monotherapy, given immediately (NICE CG151 requires empiric therapy immediately in suspected neutropenic sepsis); NG253's 1-hour target applies to adults at high risk of severe illness or death from sepsis";
       }
       const alternatives: Recommendation["alternatives"] = [];
       if (mrsa || recentAbx) {
@@ -287,7 +287,7 @@ const SOURCES: Source[] = [
           "Empirical anti-pseudomonal β-lactam monotherapy is standard (NICE CG151). Routine aminoglycoside and routine glycopeptide cover are both explicitly not recommended without patient-specific or local microbiological indications.",
         alternatives,
         pearls: [
-          "Time-to-antibiotic < 1 h is the key quality metric for adults with suspected sepsis (NICE NG253); CG151 requires empiric therapy immediately.",
+          "NICE NG253 times antibiotics from the first NEWS2 score on initial assessment in the emergency department or on ward deterioration: within 1 hour only for adults at high risk of severe illness or death from sepsis (recommendation 1.8.3), up to 3 hours at medium risk (1.8.17) and up to 6 hours at low risk (1.8.23). Those are maxima — once the decision to treat is made, do not delay further. Suspected neutropenic sepsis is separate: NICE CG151 requires empiric therapy immediately.",
           "Use MASCC score to identify low-risk patients suitable for outpatient oral therapy.",
           "Continue until afebrile + neutrophils > 0.5 × 10⁹/L (typically 7–10 days).",
           "G-CSF only for high-risk febrile neutropenia per ASCO criteria.",
@@ -515,6 +515,21 @@ const EmpiricalSepsisChooser = () => {
             <p className="text-[11px] uppercase tracking-wide font-semibold text-foreground mb-1">First-line</p>
             <p className="text-sm font-semibold text-foreground leading-snug">{rec.firstLine}</p>
           </div>
+
+          {renal === "impaired" && (
+            <div className="mt-2 rounded-md border border-amber-500/40 bg-amber-500/10 p-2.5">
+              <p className="text-[11px] uppercase tracking-wide font-semibold text-foreground">
+                Renal impairment (CrCl &lt; 30 ml/min) — not verified here
+              </p>
+              <p className="text-xs text-muted-foreground mt-0.5 leading-snug">
+                {activeSource.key === "hap"
+                  ? "The CrCl modification listed below is a BNF-derived teaching example, not a NICE NG250 statement."
+                  : "The regimen above is the standard adult dose and is not renally adjusted in this tool."}{" "}
+                Piperacillin/tazobactam, meropenem, co-amoxiclav, ciprofloxacin, vancomycin and gentamicin all need
+                review against the BNF or SmPC before prescribing.
+              </p>
+            </div>
+          )}
   
           <div className="mt-3 rounded-md bg-background/60 border border-border p-2.5">
             <p className="text-[11px] uppercase tracking-wide font-semibold text-foreground">Rationale</p>
@@ -557,11 +572,14 @@ const EmpiricalSepsisChooser = () => {
         {/* Sepsis-6 reminder */}
         <div className="mt-3 rounded-md bg-destructive/10 border border-destructive/30 p-2.5">
           <p className="text-[11px] uppercase tracking-wide font-semibold text-destructive">
-            Sepsis-6 — within 1 hour
+            Sepsis bundle — the antibiotic clock depends on risk
           </p>
           <p className="text-xs text-foreground mt-0.5 leading-snug">
             <span className="font-semibold">Take 3:</span> blood cultures · lactate · urine output ·
-            <span className="font-semibold"> Give 3:</span> high-flow O₂ · IV broad-spectrum antibiotics · IV fluid challenge.
+            <span className="font-semibold"> Give 3:</span> oxygen to a target saturation of 94–98% (88–92% if at risk of
+            hypercapnic respiratory failure) · IV broad-spectrum antibiotics · IV fluid bolus. Antibiotics within 1 hour
+            apply to adults at high risk of severe illness or death from sepsis, timed from the first NEWS2 score; medium
+            risk allows up to 3 hours and low risk up to 6 hours, and suspected neutropenic sepsis is treated immediately.
             Source control as soon as feasible.
           </p>
         </div>
@@ -597,16 +615,17 @@ const EmpiricalSepsisChooser = () => {
               — β-lactam monotherapy with piperacillin/tazobactam; no routine aminoglycoside or glycopeptide.
             </li>
             <li>
-              One-hour antimicrobial target for adults with suspected sepsis:{" "}
+              Antibiotic timing for adults aged 16 or over:{" "}
               <a
                 className="underline"
-                href="https://www.nice.org.uk/guidance/ng253/chapter/Recommendations"
+                href="https://www.nice.org.uk/guidance/ng253/chapter/Antibiotic-therapy-intravenous-fluid-and-oxygen"
                 target="_blank"
                 rel="noreferrer"
               >
                 NICE NG253
-              </a>
-              .
+              </a>{" "}
+              — within 1 hour of the first NEWS2 score for high risk of severe illness or death (1.8.3), up to 3 hours at
+              medium risk (1.8.17), up to 6 hours at low risk (1.8.23); oxygen to 94–98% (1.10.1).
             </li>
             <li>
               MRSA/Pseudomonas risk in CAP (HCAP abandoned):{" "}
@@ -620,7 +639,13 @@ const EmpiricalSepsisChooser = () => {
               </a>
               .
             </li>
-            <li>Doses and renal adjustment: BNF and the product SmPC; local policy overrides.</li>
+            <li>
+              <strong className="text-foreground">Not source-backed here:</strong> the intra-abdominal, urinary, meningitic
+              and skin/soft-tissue regimens, their allergy alternatives, and every renal dose adjustment except the
+              hospital-acquired pneumonia one are teaching examples compiled from the BNF and standard UK practice. They are
+              not quoted from NG250, CG151 or NG253 and were not re-verified against a primary guideline in this review —
+              treat them as unverified selections and confirm with local antimicrobial policy or a microbiologist.
+            </li>
           </ul>
         </div>
       </div>

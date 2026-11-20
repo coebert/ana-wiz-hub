@@ -1057,7 +1057,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the full FAQ co
       "q": "What are the ASA levels of sedation and when does it become anaesthesia?",
     },
     {
-      "a": "Continuous pulse oximetry, ECG, NIBP every 3–5 min, level of consciousness, and capnography for any moderate or deep sedation (AAGBI/RCoA 2021). Supplemental oxygen, suction, and full resuscitation equipment must be immediately available, and the sedationist must have no other clinical role.",
+      "a": "Continuous pulse oximetry, ECG, NIBP every 3–5 min, level of consciousness, and capnography for any moderate or deep sedation (AAGBI/RCoA 2021). Supplemental oxygen, suction, and full resuscitation equipment must be immediately available, and the sedationist must have no other clinical role. For gastrointestinal endoscopy under deep sedation (propofol) or general anaesthesia, the BSG 2023 guideline additionally requires core body temperature to be monitored and recorded.",
       "q": "What monitoring is mandatory for procedural sedation?",
     },
     {
@@ -2755,7 +2755,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the full FAQ co
       "q": "When should rocuronium replace suxamethonium for rapid sequence induction?",
     },
     {
-      "a": "Sugammadex is a modified γ-cyclodextrin that encapsulates aminosteroid NMBAs 1:1, removing free drug from plasma and reversing block within 2–3 min regardless of depth. Dosing: 2 mg/kg at T2 for routine reversal, 4 mg/kg at PTC 1–2 for deep block, 16 mg/kg for immediate reversal of a 1.2 mg/kg intubating dose. Confirm reversal with TOF ratio ≥0.9. Ineffective against benzylisoquinoliniums.",
+      "a": "Sugammadex is a modified γ-cyclodextrin that encapsulates rocuronium and vecuronium 1:1, removing free drug from plasma. Dosing follows the licensed depth of block: 2 mg/kg once T2 has reappeared, 4 mg/kg at 1–2 post-tetanic counts, and 16 mg/kg for immediate reversal after a single 1.2 mg/kg rocuronium dose, for which there is no recommended vecuronium equivalent. Confirm reversal with TOF ratio ≥0.9. Ineffective against benzylisoquinoliniums and not a cannot-intubate-cannot-oxygenate rescue.",
       "q": "How does sugammadex reverse rocuronium?",
     },
     {
@@ -3183,11 +3183,11 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the full FAQ co
   ],
   "/physics/lasers-fibreoptics": [
     {
-      "a": "FiO₂ ≤30 %, avoid N₂O (supports combustion), use a laser-resistant ETT (red-rubber wrapped with metallic foil, or purpose-built Mallinckrodt Laser-Flex), saline-filled cuff with methylene blue indicator, eye protection for staff and patient (wavelength-specific goggles), warning signs on theatre doors, smoke evacuation, and immediate access to saline and a backup tube.",
+      "a": "Keep the inspired oxygen as low as is clinically feasible while the laser is in use, guided by pulse oximetry — many units work to ≤0.30 in air, but there is no fixed fraction in the guidance; avoid N₂O (it acts as an oxidiser), use a laser-resistant ETT appropriate to the procedure and laser (purpose-built, e.g. Laser-Flex, or a wrapped tube), fill the cuff with saline tinted with methylene blue as a puncture marker, eye protection for staff and patient (wavelength-specific goggles), warning signs on theatre doors, smoke evacuation, and immediate access to saline and a backup tube.",
       "q": "What are the key safety measures for airway laser surgery?",
     },
     {
-      "a": "Stop ventilation and disconnect O₂. Remove the burning tube. Pour saline into the airway to extinguish. Re-mask ventilate on air. Re-intubate (often with a smaller tube), then perform flexible or rigid bronchoscopy to assess thermal and inhalational injury and remove debris. Administer humidified O₂ and admit to critical care for observation of progressive airway oedema.",
+      "a": "Stop the flow of airway gases and remove the tracheal tube without waiting, remove other burning material, and pour saline into the airway to extinguish it. Re-establish ventilation by mask, avoiding supplemental oxygen and nitrous oxide if possible. Examine the tube for fragments left in the airway and consider bronchoscopy (preferably rigid) to look for tube fragments, assess thermal injury and remove residual debris; if the patient was not intubated, assess for smoke inhalation. Then assess the patient's status and devise an individual plan for ongoing care with the airway and critical care teams — the advisory specifies no fixed observation period or imaging schedule.",
       "q": "What is the management of an airway fire?",
     },
     {
@@ -5609,7 +5609,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the synthesised
         "@type": "Question",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Continuous pulse oximetry, ECG, NIBP every 3–5 min, level of consciousness, and capnography for any moderate or deep sedation (AAGBI/RCoA 2021). Supplemental oxygen, suction, and full resuscitation equipment must be immediately available, and the sedationist must have no other clinical role.",
+          "text": "Continuous pulse oximetry, ECG, NIBP every 3–5 min, level of consciousness, and capnography for any moderate or deep sedation (AAGBI/RCoA 2021). Supplemental oxygen, suction, and full resuscitation equipment must be immediately available, and the sedationist must have no other clinical role. For gastrointestinal endoscopy under deep sedation (propofol) or general anaesthesia, the BSG 2023 guideline additionally requires core body temperature to be monitored and recorded.",
         },
         "name": "What monitoring is mandatory for procedural sedation?",
       },
@@ -9183,7 +9183,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the synthesised
         "@type": "Question",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Sugammadex is a modified γ-cyclodextrin that encapsulates aminosteroid NMBAs 1:1, removing free drug from plasma and reversing block within 2–3 min regardless of depth. Dosing: 2 mg/kg at T2 for routine reversal, 4 mg/kg at PTC 1–2 for deep block, 16 mg/kg for immediate reversal of a 1.2 mg/kg intubating dose. Confirm reversal with TOF ratio ≥0.9. Ineffective against benzylisoquinoliniums.",
+          "text": "Sugammadex is a modified γ-cyclodextrin that encapsulates rocuronium and vecuronium 1:1, removing free drug from plasma. Dosing follows the licensed depth of block: 2 mg/kg once T2 has reappeared, 4 mg/kg at 1–2 post-tetanic counts, and 16 mg/kg for immediate reversal after a single 1.2 mg/kg rocuronium dose, for which there is no recommended vecuronium equivalent. Confirm reversal with TOF ratio ≥0.9. Ineffective against benzylisoquinoliniums and not a cannot-intubate-cannot-oxygenate rescue.",
         },
         "name": "How does sugammadex reverse rocuronium?",
       },
@@ -10083,7 +10083,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the synthesised
         "@type": "Question",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "FiO₂ ≤30 %, avoid N₂O (supports combustion), use a laser-resistant ETT (red-rubber wrapped with metallic foil, or purpose-built Mallinckrodt Laser-Flex), saline-filled cuff with methylene blue indicator, eye protection for staff and patient (wavelength-specific goggles), warning signs on theatre doors, smoke evacuation, and immediate access to saline and a backup tube.",
+          "text": "Keep the inspired oxygen as low as is clinically feasible while the laser is in use, guided by pulse oximetry — many units work to ≤0.30 in air, but there is no fixed fraction in the guidance; avoid N₂O (it acts as an oxidiser), use a laser-resistant ETT appropriate to the procedure and laser (purpose-built, e.g. Laser-Flex, or a wrapped tube), fill the cuff with saline tinted with methylene blue as a puncture marker, eye protection for staff and patient (wavelength-specific goggles), warning signs on theatre doors, smoke evacuation, and immediate access to saline and a backup tube.",
         },
         "name": "What are the key safety measures for airway laser surgery?",
       },
@@ -10091,7 +10091,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the synthesised
         "@type": "Question",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Stop ventilation and disconnect O₂. Remove the burning tube. Pour saline into the airway to extinguish. Re-mask ventilate on air. Re-intubate (often with a smaller tube), then perform flexible or rigid bronchoscopy to assess thermal and inhalational injury and remove debris. Administer humidified O₂ and admit to critical care for observation of progressive airway oedema.",
+          "text": "Stop the flow of airway gases and remove the tracheal tube without waiting, remove other burning material, and pour saline into the airway to extinguish it. Re-establish ventilation by mask, avoiding supplemental oxygen and nitrous oxide if possible. Examine the tube for fragments left in the airway and consider bronchoscopy (preferably rigid) to look for tube fragments, assess thermal injury and remove residual debris; if the patient was not intubated, assess for smoke inhalation. Then assess the patient's status and devise an individual plan for ongoing care with the airway and critical care teams — the advisory specifies no fixed observation period or imaging schedule.",
         },
         "name": "What is the management of an airway fire?",
       },

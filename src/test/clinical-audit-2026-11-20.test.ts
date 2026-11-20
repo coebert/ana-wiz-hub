@@ -74,7 +74,7 @@ describe("RCUK paediatric life support 2025 energy escalation", () => {
     const icu = read("src/pages/topics/PaediatricIcuTopic.tsx");
     expect(icu).toContain("then up to 8 J/kg, max 360 J");
     const wetflag = read("src/components/diagrams/intensive-care/WETFLAGDiagram.tsx");
-    expect(wetflag).toContain("increasing stepwise to 8 J/kg (max 360 J)");
+    expect(wetflag).toContain("increased stepwise to 8 J/kg (max 360 J)");
     expect(wetflag).not.toContain("Same energy for VF/pulseless VT and synchronised cardioversion");
   });
 });
@@ -193,14 +193,34 @@ describe("vancomycin AUC and procalcitonin attribution", () => {
 });
 
 describe("RCUK 2025 paediatric AED mode, pad placement and cardioversion", () => {
-  it("WETFLAG drops the superseded 10 kg pad rule and the truncated cardioversion ladder", () => {
+  it("WETFLAG labels AED adult-size pads separately from manual PALS placement", () => {
     const diagram = read("src/components/diagrams/intensive-care/WETFLAGDiagram.tsx");
     expect(diagram).not.toContain("paediatric pads <10 kg");
     expect(diagram).not.toContain("then 2 J/kg if needed");
+    expect(diagram).not.toContain("Use anterolateral only if");
+    expect(diagram).toContain("AED with adult-size pads:");
+    expect(diagram).toContain("AED with paediatric pads:");
+    expect(diagram).toContain("Manual defibrillation (PALS):");
     expect(diagram).toContain("less than 25 kg (approximately 8 years)");
     expect(diagram).toContain("doubles with each attempt to a maximum of 4 J/kg");
     expect(diagram).toContain('refLabel="RCUK PALS 2025 pads"');
     expect(diagram).toContain('refLabel="RCUK PALS 2025 cardioversion"');
+  });
+
+  it("keeps the PALS conditional priority for anteroposterior pads in smaller children", () => {
+    const diagram = read("src/components/diagrams/intensive-care/WETFLAGDiagram.tsx");
+    expect(diagram).toContain("who can easily be turned onto their side and in whom the anterolateral");
+    expect(diagram).toContain("use anterolateral in larger children");
+    expect(diagram).toContain("Avoid breast tissue in adolescents");
+    expect(diagram).toContain("provided the pads do not touch each other");
+  });
+
+  it("separates the initial 4 J/kg and adult upper-range caveat from refractory escalation", () => {
+    const diagram = read("src/components/diagrams/intensive-care/WETFLAGDiagram.tsx");
+    expect(diagram).toContain("4 J/kg for the initial shocks");
+    expect(diagram).toContain("not to use doses above those suggested for adults (120–200 J");
+    expect(diagram).toContain("more than five shocks");
+    expect(diagram).toContain("increased stepwise to 8 J/kg (max 360 J)");
   });
 
   it("keeps the age-based weight estimate and the 4 J/kg energy arithmetic", () => {
@@ -266,5 +286,80 @@ describe("MRI electrical safety sourcing", () => {
     expect(record?.excerpt).toContain("gradient fields");
     expect(record?.excerpt).toContain("severe and rapid burns");
     expect(record?.excerpt).toContain("same as that provided within the operating theatre");
+  });
+});
+
+describe("RCUK 2025 tachyarrhythmia with circulatory failure in the paediatric ICU topic", () => {
+  it("the unstable SVT worked example starts with immediate cardioversion through the 4 J/kg ladder", () => {
+    const page = read("src/pages/topics/PaediatricIcuTopic.tsx");
+    expect(page).not.toContain("then 2 J/kg");
+    expect(page).toContain("Decompensated circulatory failure means immediate synchronised cardioversion");
+    expect(page).toContain("doubling with each attempt to a maximum of 4 J/kg (12 J,");
+    expect(page).toContain("must not delay cardioversion");
+    expect(page).toContain('refLabel="RCUK PALS 2025 cardioversion"');
+  });
+
+  it("the arrhythmia table, quiz and drug table carry the same 2025 ladder and adenosine limits", () => {
+    const page = read("src/pages/topics/PaediatricIcuTopic.tsx");
+    expect(page).toContain('refLabel="RCUK PALS 2025 arrhythmias" /> Not in decompensated circulatory failure');
+    expect(page).toContain("0.1–0.2 mg/kg (maximum 6 mg)");
+    expect(page).toContain("0.3 mg/kg (maximum 12–18 mg)");
+    expect(page).toContain("immediate synchronised cardioversion 1 J/kg, doubling with each attempt to a maximum of 4 J/kg");
+  });
+
+  it("the equipment sizer no longer repeats the fixed-energy and 1-then-2 J/kg claims", () => {
+    const page = read("src/components/diagrams/clinical/PaediatricEquipmentSizer.tsx");
+    expect(page).not.toContain("Same energy each shock");
+    expect(page).not.toContain("Synchronised cardioversion: 1 then 2 J/kg");
+    expect(page).toContain("increase stepwise to 8 J/kg (max 360 J)");
+  });
+});
+
+describe("laser airway-fire attribution", () => {
+  it("cites the ASA 2013 practice advisory and every inline label resolves in the pool", () => {
+    const page = read("src/pages/topics/LaserFibreopticsTopic.tsx");
+    expect(page).not.toContain("Assoc Anaesth Airway Fire");
+    expect(page).not.toContain("Association of Anaesthetists 2023");
+    expect(page).toContain('refLabel="ASA 2013 OR Fire"');
+    const labels = new Set(pool("lasers-fibreoptics").map((r) => r.label));
+    const referenced = [...page.matchAll(/refLabel="([^"]+)"/g)].map((m) => m[1]);
+    expect(referenced.length).toBeGreaterThan(0);
+    for (const label of referenced) expect(labels, label).toContain(label);
+  });
+
+  it("qualifies the oxygen value and individualises the post-fire plan", () => {
+    const page = read("src/pages/topics/LaserFibreopticsTopic.tsx");
+    expect(page).toContain("the advisory sets no fixed fraction");
+    expect(page).toContain("the advisory specifies no observation period");
+    expect(page).toContain("the advisory specifies no imaging schedule");
+    expect(page).not.toContain("at least 24 h");
+    expect(page).not.toContain("(ideally ≤0.30)");
+  });
+});
+
+describe("NICE NG253 risk-stratified antibiotic timing in the sepsis chooser", () => {
+  const chooser = () => read("src/components/diagrams/pharmacology/EmpiricalSepsisChooser.tsx");
+
+  it("does not present a 1-hour target for every adult with suspected sepsis", () => {
+    expect(chooser()).not.toContain("Time-to-antibiotic < 1 h is the key quality metric");
+    expect(chooser()).toContain("within 1 hour only for adults at high risk");
+    expect(chooser()).toContain("recommendation 1.8.3");
+    expect(chooser()).toContain("on ward deterioration");
+    expect(chooser()).toContain("up to 3 hours at medium risk (1.8.17)");
+    expect(chooser()).toContain("up to 6 hours at low risk (1.8.23)");
+    expect(chooser()).toContain("NICE CG151 requires empiric therapy immediately");
+    expect(chooser()).not.toContain("Sepsis-6 — within 1 hour");
+  });
+
+  it("holds renal and non-guideline selections as unverified", () => {
+    expect(chooser()).toContain("not renally adjusted in this tool");
+    expect(chooser()).toContain("Not source-backed here:");
+    expect(chooser()).not.toContain("Aztreonam 2 g IV TDS");
+  });
+
+  it("keeps the NG250 CAP allergy alternatives and HAP fluoroquinolone caveat", () => {
+    expect(chooser()).toContain("Levofloxacin 500 mg IV BD (severe — CURB-65 ≥ 3)");
+    expect(chooser()).toContain("Doxycycline 200 mg PO loading then 100 mg PO OD");
+    expect(chooser()).toContain("only when other first-line antibiotics are unsuitable");
   });
 });
