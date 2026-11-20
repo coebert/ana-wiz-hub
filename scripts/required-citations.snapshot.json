@@ -3032,7 +3032,7 @@
       "file": "src/pages/topics/HaematologyImmunityTopic.tsx",
       "requiredLabels": [
         "Sepsis-3 2016",
-        "NICE NG51 Sepsis",
+        "NICE NG253 Sepsis",
         "Remy TRIM 2018",
         "AAGBI Anaphylaxis 2021"
       ]
@@ -3043,7 +3043,7 @@
       "file": "src/pages/topics/HaematologyImmunityTopic.tsx",
       "requiredLabels": [
         "Sepsis-3 2016",
-        "NICE NG51 Sepsis",
+        "NICE NG253 Sepsis",
         "Remy TRIM 2018",
         "AAGBI Anaphylaxis 2021"
       ]
@@ -3054,7 +3054,7 @@
       "file": "src/pages/topics/HaematologyImmunityTopic.tsx",
       "requiredLabels": [
         "Sepsis-3 2016",
-        "NICE NG51 Sepsis",
+        "NICE NG253 Sepsis",
         "Remy TRIM 2018",
         "AAGBI Anaphylaxis 2021"
       ]
@@ -3065,7 +3065,7 @@
       "file": "src/pages/topics/HaematologyImmunityTopic.tsx",
       "requiredLabels": [
         "Sepsis-3 2016",
-        "NICE NG51 Sepsis",
+        "NICE NG253 Sepsis",
         "Remy TRIM 2018",
         "AAGBI Anaphylaxis 2021"
       ]
@@ -3075,7 +3075,7 @@
       "topicId": "haematology-immunity",
       "file": "src/pages/topics/HaematologyImmunityTopic.tsx",
       "requiredLabels": [
-        "NICE NG51 Sepsis"
+        "NICE NG253 Sepsis"
       ]
     },
     {
@@ -3084,7 +3084,7 @@
       "file": "src/pages/topics/HaematologyImmunityTopic.tsx",
       "requiredLabels": [
         "Sepsis-3 2016",
-        "NICE NG51 Sepsis",
+        "NICE NG253 Sepsis",
         "Remy TRIM 2018",
         "AAGBI Anaphylaxis 2021"
       ]

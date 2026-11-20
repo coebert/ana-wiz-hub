@@ -204,7 +204,7 @@ const coreConcepts = (
     {/* ─────────── Post-ROSC bundle ─────────── */}
     {/* ─────────── ALS algorithm ─────────── */}
     <ExamSection id="als-algorithm" exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM, Exam.EDIC]} className="scroll-mt-24">
-      <CollapsibleSubsection title="Adult ALS Algorithm — RCUK / ERC 2021" defaultOpen>
+      <CollapsibleSubsection title="Adult ALS Algorithm — RCUK 2025" defaultOpen>
         <p className="text-muted-foreground leading-relaxed mb-3">
           Confirm arrest, call for help, deliver continuous chest compressions
           (100–120 min⁻¹, depth 5–6 cm, full recoil), attach the defibrillator
@@ -271,8 +271,9 @@ const coreConcepts = (
         <div className="mt-4 p-3 rounded-lg border border-border bg-card">
           <p className="text-sm font-semibold text-foreground mb-1">Capnography during CPR</p>
           <ul className="text-xs text-muted-foreground space-y-1 list-disc list-inside">
-            <li>ETCO₂ &lt; 1.3 kPa (10 mmHg) after 20 min of ALS predicts very poor outcome (but use as part of the overall picture, never in isolation)</li>
-            <li>Sudden rise in ETCO₂ ≥ 1.3 kPa often heralds ROSC — finish the 2-minute cycle before pulse-checking</li>
+            <li>A rise in ETCO₂ during CPR may indicate ROSC, but chest compressions should not be interrupted on this sign alone — confirm with a combination of clinical and physiological signs <InlineRef topicId="cardiac-arrest-post-resus" refLabel="RCUK ALS 2025 capnography" /></li>
+            <li>Do not use a low ETCO₂ value alone to decide whether a resuscitation attempt should be stopped; a persistently low value is one prognostic factor among others <InlineRef topicId="cardiac-arrest-post-resus" refLabel="RCUK ALS 2025 capnography" /></li>
+            <li>If physiology-guided CPR is used, RCUK 2025 suggests aiming for ETCO₂ ≥ 3.3 kPa (25 mmHg) and a diastolic pressure ≥ 30 mmHg <InlineRef topicId="cardiac-arrest-post-resus" refLabel="RCUK ALS 2025 capnography" /></li>
             <li>Persistent flat trace with chest rise strongly suggests oesophageal intubation</li>
           </ul>
         </div>

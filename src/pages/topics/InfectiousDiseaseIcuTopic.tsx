@@ -74,7 +74,7 @@ const InfectiousDiseaseIcuTopic = () => {
           "epic4 2023",
           "IDSA HAP/VAP 2016",
           "BJA Educ Sepsis 2017",
-          "NICE NG51",
+          "NICE NG253",
         ],
         keyPoints: [
           "SSC 2021",
@@ -82,16 +82,16 @@ const InfectiousDiseaseIcuTopic = () => {
           "epic4 2023",
           "IDSA HAP/VAP 2016",
           "BJA Educ Sepsis 2017",
-          "NICE NG51",
+          "NICE NG253",
         ],
         workedExamples: ["IDSA HAP/VAP 2016", "NICE NG191", "SSC 2021"],
       }}
       keyPoints={[
-        { text: "Pneumonia is the commonest infection requiring ICU admission — categorise CAP/HAP/VAP and tailor empirical cover to local antibiogram", cites: ["NICE NG51"] },
+        { text: "Pneumonia is the commonest infection requiring ICU admission — categorise CAP/HAP/VAP and tailor empirical cover to local antibiogram", cites: ["NICE NG253"] },
         { text: "Legionella: hyponatraemia + dry cough + GI symptoms + raised CK — treat with macrolide or fluoroquinolone (β-lactams ineffective)", cites: ["BJA Educ Sepsis 2017"] },
         { text: "PVL-positive S. aureus necrotising pneumonia: leucopenia + haemoptysis in young patient → linezolid + clindamycin + IVIG, consider VV-ECMO", cites: ["IDSA HAP/VAP 2016"] },
         { text: "Source control (drainage/debridement) is paramount in intra-abdominal sepsis and necrotising fasciitis — antibiotics alone are insufficient", cites: ["SSC 2021"] },
-        { text: "S. aureus bacteraemia always requires echocardiography, repeat cultures at 48–72 h, and minimum 2 weeks IV therapy", cites: ["NICE NG51"] },
+        { text: "S. aureus bacteraemia: risk-stratify rather than apply a universal bundle — the 2026 IDSA/ESCMID consensus advises follow-up blood cultures, routine TTE in all adults (in children, TTE when structural heart disease, prolonged bacteraemia or endocarditis features are present), prompt removal of an implicated central line, source control, and duration guided by whether a deep-seated focus is found", cites: ["IDSA/ESCMID SAB 2026"] },
         { text: "ESBL bacteraemia: meropenem first-line — MERINO showed pip-tazo inferior", cites: ["BJA Educ Sepsis 2017"] },
         { text: "C. difficile: oral vancomycin first-line; fidaxomicin for recurrence; FMT for refractory disease", cites: ["IDSA HAP/VAP 2016"] },
         { text: "Antimicrobial stewardship: start smart, then focus — de-escalate at 48–72 h; procalcitonin can shorten duration", cites: ["SSC 2021"] },
@@ -643,7 +643,7 @@ const InfectiousDiseaseIcuTopic = () => {
             <div className="grid sm:grid-cols-3 gap-3">
               <div className="p-3 rounded-lg border border-border">
                 <p className="font-semibold text-foreground text-sm">Organisms</p>
-                <p className="text-xs text-muted-foreground mt-1">CoNS, S. aureus, Candida, Enterococcus, Gram-negatives. S. aureus bacteraemia: always echo + prolonged therapy.</p>
+                <p className="text-xs text-muted-foreground mt-1">CoNS, S. aureus, Candida, Enterococcus, Gram-negatives. S. aureus bacteraemia: risk-stratified echocardiography and follow-up cultures; duration depends on whether a deep-seated focus is found.</p>
               </div>
               <div className="p-3 rounded-lg border border-border">
                 <p className="font-semibold text-foreground text-sm">Prevention Bundle</p>

@@ -4,7 +4,8 @@ import { DiagramFigure } from "../_shared/DiagramFigure";
 /**
  * Empirical sepsis antibiotic chooser.
  * Pick suspected source + patient factors → suggested empirical regimen
- * adapted from UK (NICE NG51, BNF, Surviving Sepsis 2021) and IDSA guidance.
+ * adapted from UK (NICE NG253/NG254/NG255, BNF, Surviving Sepsis Campaign)
+ * and IDSA guidance.
  *
  * Educational tool only — local antibiogram, allergy testing and microbiology
  * advice always supersede.
@@ -356,14 +357,14 @@ const EmpiricalSepsisChooser = () => {
     <DiagramFigure
       id="empirical-sepsis-chooser"
       title="Empirical sepsis chooser"
-      description="Empirical sepsis antibiotic chooser. Pick suspected source + patient factors → suggested empirical regimen adapted from UK (NICE NG51, BNF, Surviving Sepsis 2021) and IDSA guidance."
+      description="Empirical sepsis antibiotic chooser. Pick suspected source + patient factors → suggested empirical regimen adapted from UK (NICE NG253/NG254/NG255, BNF, Surviving Sepsis Campaign) and IDSA guidance."
     >
                   <div className="rounded-xl border border-border bg-card p-4 my-6">
         <h3 className="text-lg font-semibold text-foreground">
           Empirical sepsis antibiotic chooser
         </h3>
         <p className="text-xs text-muted-foreground mb-4">
-          Pick the suspected source and patient factors to see a suggested empirical regimen, with alternatives and clinical pearls. Adapted from NICE NG51/NG151, BNF, Surviving Sepsis Campaign 2021 and IDSA guidance — local antibiogram, allergy testing and microbiology advice always supersede.
+          Pick the suspected source and patient factors to see a suggested empirical regimen, with alternatives and clinical pearls. Adapted from NICE NG253 (adults), NG254 (under-16s), NG255 (pregnancy), NG151, BNF, Surviving Sepsis Campaign and IDSA guidance — local antibiogram, allergy testing and microbiology advice always supersede.
         </p>
   
         {/* Source selector */}

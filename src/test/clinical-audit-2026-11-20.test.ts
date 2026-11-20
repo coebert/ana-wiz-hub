@@ -93,3 +93,101 @@ describe("PUMA sustained exhaled CO₂ wording", () => {
     expect(diagram).toContain("no single EtCO₂ value is a stand-alone stopping rule");
   });
 });
+
+describe("RCUK 2025 waveform capnography during CPR", () => {
+  it("waveform CPR action no longer aims at the 2021 1.3 kPa threshold", () => {
+    const page = read("src/pages/topics/CapnographyWaveformsTopic.tsx");
+    expect(page).not.toContain("RCUK/ERC 2021");
+    expect(page).not.toContain("Persistent ETCO₂ < 1.3 kPa after 20 minutes");
+    expect(page).toContain("Do not use a low ETCO₂ value alone to decide whether to stop resuscitation");
+    expect(page).toContain("≥ 3.3 kPa (25 mmHg)");
+  });
+
+  it("adult ALS subsection heading and ETCO₂ bullets are 2025-scoped", () => {
+    const page = read("src/pages/topics/CardiacArrestPostResusTopic.tsx");
+    expect(page).toContain("Adult ALS Algorithm — RCUK 2025");
+    expect(page).not.toContain("Adult ALS Algorithm — RCUK / ERC 2021");
+    expect(page).not.toContain("after 20 min of ALS predicts very poor outcome");
+    expect(page).toContain("should not be interrupted on this sign alone");
+    expect(page).toContain('refLabel="RCUK ALS 2025 capnography"');
+  });
+});
+
+describe("superseded NICE NG51 citations", () => {
+  const surfaces = [
+    "src/components/topic/SepsisCriteriaEgdtTeaching.tsx",
+    "src/pages/topics/HaematologyImmunityTopic.tsx",
+    "src/pages/topics/PaediatricIcuTopic.tsx",
+    "src/components/diagrams/pharmacology/EmpiricalSepsisChooser.tsx",
+    "src/pages/topics/InfectiousDiseaseIcuTopic.tsx",
+    "src/pages/topics/AntimicrobialsIcuTopic.tsx",
+  ];
+
+  it("no reviewed surface cites NG51", () => {
+    for (const path of surfaces) {
+      expect(read(path), path).not.toContain("NG51");
+    }
+  });
+
+  it("assigns NG253 to adults, NG254 to children and keeps pregnancy on NG255", () => {
+    expect(read("src/components/topic/SepsisCriteriaEgdtTeaching.tsx")).toContain("NICE NG253");
+    expect(read("src/pages/topics/HaematologyImmunityTopic.tsx")).toContain("NICE NG253 Sepsis");
+    expect(read("src/pages/topics/PaediatricIcuTopic.tsx")).toContain('refLabel="NICE NG254"');
+    expect(read("src/pages/topics/PaediatricIcuTopic.tsx")).not.toContain('refLabel="NICE NG51"');
+    const chooser = read("src/components/diagrams/pharmacology/EmpiricalSepsisChooser.tsx");
+    expect(chooser).toContain("NG253 (adults), NG254 (under-16s), NG255 (pregnancy)");
+  });
+
+  it("reference pools carry the current population-specific records", () => {
+    const labels = (topicId: string) => pool(topicId).map((r) => r.label);
+    expect(labels("antimicrobials-icu")).toContain("NICE NG253");
+    expect(labels("infectious-disease-icu")).toContain("NICE NG253");
+    expect(labels("haematology-immunity")).toContain("NICE NG253 Sepsis");
+    expect(labels("paediatric-icu")).toContain("NICE NG254");
+    expect(labels("paediatric-icu")).not.toContain("NICE NG51");
+  });
+});
+
+describe("IDSA/ESCMID 2026 S. aureus bacteraemia statements", () => {
+  it("does not present a universal SAB bundle", () => {
+    const page = read("src/pages/topics/InfectiousDiseaseIcuTopic.tsx");
+    expect(page).not.toContain("S. aureus bacteraemia always requires echocardiography");
+    expect(page).not.toContain("always echo + prolonged therapy");
+    expect(page).toContain("risk-stratify rather than apply a universal bundle");
+    expect(page).toContain('cites: ["IDSA/ESCMID SAB 2026"]');
+  });
+
+  it("separates adult and paediatric echo assessment in the record", () => {
+    const record = pool("infectious-disease-icu").find(
+      (r) => r.label === "IDSA/ESCMID SAB 2026",
+    );
+    expect(record?.excerpt).toContain("routinely performing TTE in all adults with SAB");
+    expect(record?.excerpt).toContain("children with SAB who have structural heart disease");
+    expect(record?.url).toContain("idsociety.org/practice-guideline/staphylococcus-aureus-bacteremia");
+  });
+});
+
+describe("vancomycin AUC and procalcitonin attribution", () => {
+  it("scopes AUC guidance to serious MRSA infection, not universal ICU dosing", () => {
+    const page = read("src/pages/topics/AntimicrobialsIcuTopic.tsx");
+    expect(page).not.toContain("are essential in ICU");
+    expect(page).toContain("serious MRSA infection");
+    expect(page).toContain('cites: ["ASHP/IDSA Vancomycin 2020"]');
+    const record = pool("antimicrobials-icu").find(
+      (r) => r.label === "ASHP/IDSA Vancomycin 2020",
+    );
+    expect(record?.excerpt).toContain("400-600");
+    expect(record?.url).toContain("doi.org/10.1093/ajhp/zxaa036");
+  });
+
+  it("separates procalcitonin for starting from stopping antibiotics", () => {
+    const page = read("src/pages/topics/AntimicrobialsIcuTopic.tsx");
+    expect(page).toContain("clinical evaluation alone over procalcitonin");
+    expect(page).toContain("decide when to stop");
+    expect(page).toContain('cites: ["SSC 2026 procalcitonin"]');
+    const record = pool("antimicrobials-icu").find(
+      (r) => r.label === "SSC 2026 procalcitonin",
+    );
+    expect(record?.excerpt).toContain("adequate source control");
+  });
+});

@@ -235,7 +235,7 @@ const PaediatricIcuTopic = () => {
   },
   {
     text: "Neonatal sepsis frequently presents without fever — poor feeding, lethargy, temperature instability, apnoea, grunting, jaundice, hypoglycaemia or an unexplained metabolic acidosis are the common presentations, and empirical cover must include Listeria and group B streptococcus.",
-    cites: ["NICE NG195", "NICE NG51"],
+    cites: ["NICE NG195", "NICE NG254"],
   },
   {
     text: "Any encephalopathic child with hypoglycaemia, hyperammonaemia or an unexplained acidosis needs the emergency metabolic screen taken during the crisis, stopping of protein and feed, and a glucose infusion delivering 8–10 mg/kg/min; ammonia-lowering therapy and specialist metabolic advice must not wait for a diagnosis.",
@@ -616,7 +616,7 @@ const PaediatricIcuTopic = () => {
                     treated as meningococcal disease with immediate antibiotics and no waiting for
                     lumbar puncture; lumbar puncture is deferred in shock, coagulopathy, raised
                     intracranial pressure or focal signs{" "}
-                    <InlineRef topicId="paediatric-icu" refLabel="NICE NG51" />{" "}
+                    <InlineRef topicId="paediatric-icu" refLabel="NICE NG254" />{" "}
                     <InlineRef topicId="paediatric-icu" refLabel="NICE NG240" />.
                   </p>
                 </div>
@@ -660,7 +660,7 @@ const PaediatricIcuTopic = () => {
                 Practically it identifies the sick child who needs escalation rather than replacing the
                 clinical response: <strong>oxygen, cultures, antibiotics with shock-specific urgency, lactate,
                 fluid, early senior/PICU involvement</strong>. Score-based definitions are for
-                epidemiology and audit — treat the child in front of you <InlineRef topicId="paediatric-icu" refLabel="NICE NG51" />.
+                epidemiology and audit — treat the child in front of you <InlineRef topicId="paediatric-icu" refLabel="NICE NG254" />.
               </p>
             </div>
             <FeastTrialTeaching />
