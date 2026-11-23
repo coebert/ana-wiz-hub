@@ -31,6 +31,16 @@ describe("homepage App Store band", () => {
     expect(link.getAttribute("href")).toBe("https://apps.apple.com/gb/app/lung-sim-pro/id6829721030");
   });
 
+  it("links Anaesthesia Drug Guide to its exact UK App Store listing", () => {
+    renderBand();
+    const link = screen.getByRole("link", {
+      name: /View on the App Store\s+for Anaesthesia Drug Guide/,
+    });
+    expect(link.getAttribute("href")).toBe(
+      "https://apps.apple.com/gb/app/anaesthesia-drug-guide/id6830358278",
+    );
+  });
+
   it("keeps a path to free web revision", () => {
     renderBand();
     expect(screen.getByRole("link", { name: /keep revising free on the web/i }).getAttribute("href")).toBe("/revise");

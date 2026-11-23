@@ -5,6 +5,7 @@ import { getReduceMotion } from "@/contexts/MotionPreferenceContext";
 import { Button } from "@/components/ui/button";
 import { PageContainer } from "@/components/layout/PageContainer";
 import { isNativeApp } from "@/lib/native-platform";
+import { cn } from "@/lib/utils";
 import anaesthesiaCoreIcon from "@/assets/app-store/anaesthesiacore_app_icon.webp.asset.json";
 import lungSimProIcon from "@/assets/app-store/lung_sim_pro_app_icon.webp.asset.json";
 
@@ -38,6 +39,17 @@ export const STORE_APPS: StoreApp[] = [
       "Adjust ventilator settings across six modes and 11 simulated patient profiles, and watch pressure, flow and volume waveforms respond live in a teaching model.",
     href: "https://apps.apple.com/gb/app/lung-sim-pro/id6829721030",
     iconUrl: lungSimProIcon.url,
+  },
+  {
+    id: "anaesthesia-drug-guide",
+    name: "Anaesthesia Drug Guide",
+    tagline: "Adult anaesthesia & critical care reference",
+    description:
+      "Browse 210 drug monographs, search by name or class, save favourites and compare selected medicines. Core reference content is available offline on iPhone and iPad.",
+    note: "For qualified healthcare professionals. Use alongside current product information, the BNF and local policies.",
+    href: "https://apps.apple.com/gb/app/anaesthesia-drug-guide/id6830358278",
+    iconUrl:
+      "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/04/b6/90/04b6902d-2153-2a52-bdf3-1978a60eb65a/AppIcon-0-0-1x_U007epad-0-1-85-220.png/512x512bb.jpg",
   },
 ];
 
@@ -102,11 +114,17 @@ export function AppStoreApps() {
             </Link>
           </div>
 
-          <ul className="grid gap-4 md:grid-cols-2">
-            {STORE_APPS.map((app) => (
+          <ul className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {STORE_APPS.map((app, index) => (
               <li
                 key={app.id}
-                className="flex flex-col rounded-xl border border-border bg-card p-5 shadow-elev-1 md:p-6"
+                className={cn(
+                  "flex flex-col rounded-xl border border-border bg-card p-5 shadow-elev-1 md:p-6",
+                  // Odd card count: let the last card span the pair row on tablets.
+                  index === STORE_APPS.length - 1 &&
+                    STORE_APPS.length % 2 === 1 &&
+                    "sm:col-span-2 lg:col-span-1"
+                )}
               >
                 <div className="flex items-start gap-4">
                   <img

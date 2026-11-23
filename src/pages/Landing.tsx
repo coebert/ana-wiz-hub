@@ -251,7 +251,7 @@ const Landing = () => {
         </PageContainer>
       </section>
 
-      {/* Both iOS apps, directly under the hero (web only; hidden in the native app) */}
+      {/* iOS apps, directly under the hero (web only; hidden in the native app) */}
       <AppStoreApps />
 
       <PageSection spacing="default" width="full" className="flex-1">
