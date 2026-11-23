@@ -14,6 +14,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ProgressProvider } from "@/contexts/ProgressContext";
 import { SubsectionProgressProvider } from "@/contexts/SubsectionProgressContext";
 import { AuthProvider } from "@/hooks/useAuth";
+import { Base44AdminSessionProvider } from "@/hooks/useBase44AdminSession";
 import { TooltipProvider } from "@/components/ui/tooltip";
 
 // Motion, Unit and ExamFilter preferences moved off React context into
@@ -28,11 +29,15 @@ export function AppProviders({ children }: { children: ReactNode }) {
   return (
     <QueryClientProvider client={queryClient}>
       <AuthProvider>
-        <ProgressProvider>
-          <SubsectionProgressProvider>
-            <TooltipProvider>{children}</TooltipProvider>
-          </SubsectionProgressProvider>
-        </ProgressProvider>
+        {/* Staged, opt-in Base44 admin session. Inert unless
+            VITE_BASE44_ADMIN_SESSION=1, so it changes nothing in production. */}
+        <Base44AdminSessionProvider>
+          <ProgressProvider>
+            <SubsectionProgressProvider>
+              <TooltipProvider>{children}</TooltipProvider>
+            </SubsectionProgressProvider>
+          </ProgressProvider>
+        </Base44AdminSessionProvider>
       </AuthProvider>
     </QueryClientProvider>
   );
