@@ -178,6 +178,18 @@ one.
 | Progress read/write across devices after an identity change | Not verified — needs the identity map |
 | Support inbox access parity, visitor classification, AI relay behaviour | Not verified — unchanged in this slice, but must be re-checked in the migration slice |
 
+**Sandbox preview data calls.** The committed `.env` still points at the Lovable
+project host `aqkusdwwhlqqttvnxuwu.supabase.co`, which now answers `NXDOMAIN`
+(checked with a public resolver on 23 November 2026). A fresh preview load
+therefore logs three failed requests — `functions/v1/log-visit`,
+`rest/v1/home_announcement`, `rest/v1/reviews` — and the announcement banner,
+public reviews and visitor logging cannot be exercised in this environment.
+Those failures predate this slice (the commit touches no Supabase call site, no
+data hook and no `.env` value) and come from the paused backend, not from the
+Base44 boundary; they clear when the data slice points these reads at a reachable
+store. The pages themselves render and handle the failures without unhandled
+exceptions.
+
 ### Bundled Apple apps
 
 * Native sign-in is **not implemented** for a packaged `capacitor://` origin
