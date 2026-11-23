@@ -51,7 +51,7 @@ const workedExamples: WorkedExample[] = [
         not for pneumonia — surfactant inactivation).
       </>
     ),
-    cites: ["NICE NG51"],
+    cites: ["ASHP/IDSA Vancomycin 2020"],
   },
   {
     title: "ESBL E. coli bacteraemia — MERINO decision",
@@ -94,10 +94,10 @@ const AntimicrobialsIcuTopic = () => {
       workedExamples={workedExamples}
       keyPoints={[
         { text: "β-lactams are time-dependent — prolonged or continuous infusions improve fT>MIC in critical illness", cites: ["SSC 2021 Antimicrobials"] },
-        { text: "Vancomycin: AUC24/MIC 400–600 (ASHP/IDSA 2020) and a loading dose of 25–30 mg/kg are essential in ICU", cites: ["NICE NG51"] },
+        { text: "For serious MRSA infection the 2020 ASHP/IDSA/PIDS/SIDP consensus recommends AUC24/MIC 400–600 mg·h/L (MIC assumed 1 mg/L) rather than trough-only monitoring, and suggests a loading dose in seriously ill adults; it is not a universal requirement for every vancomycin course and local policy governs dosing and monitoring", cites: ["ASHP/IDSA Vancomycin 2020"] },
         { text: "MERINO trial: pip-taz inferior to meropenem for ESBL E. coli/Klebsiella bacteraemia even when in vitro sensitive", cites: ["BJA Educ 2016"] },
         { text: "Start Smart Then Focus: empiric broad-spectrum within 1 h of sepsis recognition → de-escalate at 48–72 h on cultures", cites: ["SSC 2021 Antimicrobials"] },
-        { text: "Procalcitonin-guided de-escalation safely reduces antibiotic exposure (PRORATA, SAPS) without increased mortality", cites: ["NICE NG51"] },
+        { text: "SSC 2026 suggests clinical evaluation alone over procalcitonin plus clinical evaluation when deciding whether to start antibiotics; after adequate source control, where the optimal duration is unclear, it suggests procalcitonin plus clinical evaluation to decide when to stop", cites: ["SSC 2026 procalcitonin"] },
         { text: "Source control is non-negotiable — no antibiotic regimen can compensate for a missed abscess or infected line", cites: ["BJA Educ 2016"] },
         { text: "Augmented renal clearance (CrCl >130 mL/min) is common in young trauma/sepsis patients and causes under-dosing of hydrophilic antibiotics", cites: ["SSC 2021 Antimicrobials"] },
       ]}
@@ -105,9 +105,9 @@ const AntimicrobialsIcuTopic = () => {
       topicTitle="Antimicrobials in ICU"
       quizQuestions={antimicrobialsIcuQuestions}
       sectionSources={{
-        objectives: ["SSC 2021 Antimicrobials", "BJA Educ 2016", "NICE NG51"],
-        workedExamples: ["BJA Educ 2016", "NICE NG51"],
-        keyPoints: ["SSC 2021 Antimicrobials", "BJA Educ 2016", "NICE NG51"],
+        objectives: ["SSC 2021 Antimicrobials", "BJA Educ 2016", "ASHP/IDSA Vancomycin 2020", "SSC 2026 procalcitonin", "NICE NG253"],
+        workedExamples: ["BJA Educ 2016", "ASHP/IDSA Vancomycin 2020"],
+        keyPoints: ["SSC 2021 Antimicrobials", "BJA Educ 2016", "ASHP/IDSA Vancomycin 2020", "SSC 2026 procalcitonin", "NICE NG253"],
         
       }}
       sectionExamMapping={{

@@ -403,8 +403,8 @@ const ArrhythmiasEcgIcuTopic = () => {
             </CollapsibleSubsection>
           </ExamSection>
 
-          <ExamSection id="peri-arrest" exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]} curriculumCodes={["RCUK 2021"]}>
-            <CollapsibleSubsection title="Peri-arrest Algorithms (RCUK 2021)">
+          <ExamSection id="peri-arrest" exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]} curriculumCodes={["RCUK 2025"]}>
+            <CollapsibleSubsection title="Peri-arrest Algorithms (RCUK 2025, March 2026 algorithms)">
             <div className="grid md:grid-cols-2 gap-3">
               <div className="p-4 rounded-lg border border-border bg-card">
                 <p className="font-semibold text-foreground text-sm mb-2">Tachycardia algorithm</p>
@@ -419,9 +419,9 @@ const ArrhythmiasEcgIcuTopic = () => {
               <div className="p-4 rounded-lg border border-border bg-card">
                 <p className="font-semibold text-foreground text-sm mb-2">Bradycardia algorithm</p>
                 <ul className="text-xs text-muted-foreground space-y-1">
-                  <li>1. <span className="font-medium text-foreground">Adverse features?</span> (shock, syncope, myocardial ischaemia, heart failure) → <span className="font-medium text-foreground">atropine 500 mcg IV</span>, repeated every 3–5 min to a maximum total of 3 mg (the 2021 RCUK adult bradycardia algorithm uses a 500 mcg first dose, not 1 mg) <InlineRef topicId="arrhythmias-ecg-icu" refLabel="Resuscitation Council UK 2021" />.</li>
+                  <li>1. <span className="font-medium text-foreground">Adverse features?</span> (shock, syncope, myocardial ischaemia, heart failure) → <span className="font-medium text-foreground">atropine 500 mcg IV</span>, repeated every 3–5 min to a maximum total of 3 mg (the RCUK 2025 adult bradycardia algorithm uses a 500 microgram first dose, not 1 mg) <InlineRef topicId="arrhythmias-ecg-icu" refLabel="RCUK 2025 ALS" />.</li>
                   <li>2. Risk factors for asystole: recent asystole, Mobitz II, complete block with broad QRS, ventricular pause &gt; 3 s.</li>
-                  <li>3. Interim: <span className="font-medium text-foreground">isoprenaline 5 µg/min</span>, <span className="font-medium text-foreground">adrenaline 2–10 µg/min</span>, or <span className="font-medium text-foreground">dopamine</span>; consider aminophylline in bradycardia after acute inferior MI, spinal-cord injury or cardiac transplant, and glycopyrronium as an alternative antimuscarinic <InlineRef topicId="arrhythmias-ecg-icu" refLabel="Resuscitation Council UK 2021" />.</li>
+                  <li>3. Interim: <span className="font-medium text-foreground">isoprenaline 5 µg/min</span>, <span className="font-medium text-foreground">adrenaline 2–10 µg/min</span>, or <span className="font-medium text-foreground">dopamine</span>; consider aminophylline in bradycardia after acute inferior MI, spinal-cord injury or cardiac transplant, and glycopyrronium as an alternative antimuscarinic <InlineRef topicId="arrhythmias-ecg-icu" refLabel="RCUK 2025 ALS" />.</li>
                   <li>4. <span className="font-medium text-foreground">Glucagon</span> for β-blocker or calcium-channel-blocker toxicity: it stimulates cardiac glucagon receptors, which raises intracellular cyclic AMP through a Gs-adenylyl-cyclase pathway that bypasses the blocked β-adrenoceptor or L-type calcium channel, producing inotropy and chronotropy. Dose <strong>2–10 mg IV bolus</strong> (commonly 5 mg, repeated after 10 min if needed) followed by an infusion of <strong>2–5 mg/h</strong> titrated to heart rate and perfusion; reconstitute in 5% glucose or saline rather than the supplied phenol-containing diluent for these larger doses. Expect nausea and vomiting (protect the airway), hyperglycaemia and hypokalaemia; supplies are often limited, so escalate early to high-dose insulin–euglycaemia therapy, calcium, and pacing or mechanical support as required.</li>
                   <li>5. <span className="font-medium text-foreground">Transcutaneous pacing</span> as a bridge — sedate; capture is mechanical (palpate pulse), not just electrical.</li>
                   <li>6. Definitive: <span className="font-medium text-foreground">transvenous pacing wire</span> ± permanent device.</li>
@@ -430,7 +430,7 @@ const ArrhythmiasEcgIcuTopic = () => {
               <div className="md:col-span-2 p-4 rounded-lg border border-border bg-card">
                 <p className="font-semibold text-foreground text-sm mb-2">Cardiac arrest — shockable rhythms (VF / pulseless VT)</p>
                 <ul className="text-xs text-muted-foreground space-y-1">
-                  <li>• Defibrillate immediately — biphasic 120–150 J first shock (manufacturer-specific), then 150–200 J.</li>
+                  <li>• Defibrillate immediately — at least 150 J for a rectilinear or truncated exponential biphasic waveform (130–150 J pulsed biphasic), escalating if the shock fails; use the highest setting if the device's recommendation is unknown.</li>
                   <li>• 2 min CPR (30:2 if no advanced airway; continuous if intubated). Minimise hands-off time.</li>
                   <li>• Adrenaline 1 mg IV after the 3rd shock, then every 3–5 min. Amiodarone 300 mg after the 3rd shock; further 150 mg after the 5th.</li>
                   <li>• Search for the <span className="font-medium text-foreground">4 Hs and 4 Ts</span>: Hypoxia, Hypovolaemia, Hyper/hypokalaemia &amp; metabolic, Hypothermia · Tension pneumothorax, Tamponade, Toxins, Thrombosis.</li>
@@ -581,7 +581,7 @@ const ArrhythmiasEcgIcuTopic = () => {
               "Systematic ECG: rate, rhythm, axis, P-QRS-T morphology, intervals (PR <200, QRS <120, QTc <440 M / 460 F).",
               "Narrow-complex regular tachy without pre-excitation: vagal manoeuvres, adenosine 6 mg, then 12 mg, then 18 mg if required; AF/flutter — rate vs rhythm control + anticoagulation.",
               "Broad-complex tachy: assume VT until proven otherwise; if unstable → synchronised DC shock.",
-              "Bradyarrhythmia + adverse signs: atropine 500 mcg IV repeated every 3–5 min to a 3 mg maximum, escalating to transcutaneous pacing, isoprenaline or adrenaline infusion (RCUK 2021).",
+              "Bradyarrhythmia + adverse signs: atropine 500 mcg IV repeated every 3–5 min to a 3 mg maximum, escalating to transcutaneous pacing, isoprenaline or adrenaline infusion (RCUK 2025).",
               "Long QT predisposes to torsades — withdraw culprits, correct K⁺/Mg²⁺/Ca²⁺, IV magnesium 2 g, overdrive pacing if persistent.",
             ]}
           />

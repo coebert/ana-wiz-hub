@@ -312,7 +312,7 @@ const PaediatricEquipmentSizer = () => {
       indication: "VF/pVT",
       dose: `${Math.round(4 * w)} J`,
       formula: "4 J/kg",
-      note: "Same energy each shock. Synchronised cardioversion: 1 then 2 J/kg.",
+      note: "4 J/kg for the initial shocks; increase stepwise to 8 J/kg (max 360 J) once more than five shocks are needed. Synchronised cardioversion: 1 J/kg doubling with each attempt to a maximum of 4 J/kg.",
       color: "hsl(0 80% 50%)",
     },
   ];

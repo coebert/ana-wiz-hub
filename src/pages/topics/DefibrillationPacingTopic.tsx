@@ -12,11 +12,11 @@ import InlineRef from "@/components/references/InlineRef";
 const defibrillationPacingFaqs: Array<[string, string]> = [
   [
     "What is the difference between monophasic and biphasic defibrillation?",
-    "Monophasic — current flows in one direction; 360 J for all shocks (older defibrillators). Biphasic — current reverses direction mid-shock, lowers myocardial damage and skin burns, higher first-shock success at lower energy (120–200 J device-specific). Biphasic is now standard; Resus Council recommends manufacturer's setting, typically 150 J then escalating."
+    "Monophasic — current flows in one direction; 360 J for all shocks (older defibrillators). Biphasic — current reverses direction mid-shock, lowers myocardial damage and skin burns, higher first-shock success at lower energy. Biphasic is now standard; RCUK 2025 recommends at least 150 J for the first shock with a rectilinear or truncated exponential biphasic waveform (130–150 J for pulsed biphasic), escalating if the first shock fails, and the highest available setting if the device's recommendation is unknown."
   ],
   [
     "When is synchronised cardioversion indicated and why must the shock be synchronised?",
-    "For unstable tachyarrhythmias with a pulse (AF, atrial flutter, SVT, VT with pulse). Synchronisation delivers the shock on the R wave to avoid the vulnerable T wave period — an unsynchronised shock on the T wave can induce VF. Energy: AF 120–200 J biphasic, atrial flutter and SVT 70–120 J, VT 100 J starting."
+    "For unstable tachyarrhythmias with a pulse (AF, atrial flutter, SVT, VT with pulse). Synchronisation delivers the shock on the R wave to avoid the vulnerable T wave period — an unsynchronised shock on the T wave can induce VF. Energy (RCUK 2025): for AF, an initial synchronised shock at maximum defibrillator output rather than an escalating approach; atrial flutter and SVT 70–120 J; VT with a pulse 120–150 J, escalating stepwise if the first shock fails."
   ],
   [
     "What are the indications for temporary transvenous pacing?",
@@ -74,11 +74,11 @@ const DefibrillationPacingTopic = () => {
         keyPoints: { exams: [Exam.PRIMARY, Exam.FINAL, Exam.FFICM] },
       }}
       sectionSources={{
-        workedExamples: ["Resuscitation Council UK 2021", "RCUK Paediatric ALS 2021", "BJA Educ 2005", "Cross & Plunkett Ch.14"],
-        keyPoints: ["Resuscitation Council UK 2021", "RCUK Paediatric ALS 2021", "BJA Educ 2005", "Cross & Plunkett Ch.14", "Assoc Anaesth CIED 2022"],
+        workedExamples: ["RCUK 2025 ALS", "RCUK PALS 2025", "BJA Educ 2005", "Cross & Plunkett Ch.14"],
+        keyPoints: ["RCUK 2025 ALS", "RCUK PALS 2025", "BJA Educ 2005", "Cross & Plunkett Ch.14", "Assoc Anaesth CIED 2022"],
       }}
       keyPoints={[
-        { text: "Biphasic defibrillators use lower energy (120–200 J vs 360 J monophasic) with equal or superior efficacy and less myocardial damage", cites: ["Resuscitation Council UK 2021"] },
+        { text: "Biphasic defibrillators use lower energy than 360 J monophasic (at least 150 J first shock for rectilinear or truncated exponential waveforms; 130–150 J pulsed biphasic) with equal or superior efficacy and less myocardial damage", cites: ["RCUK 2025 ALS"] },
         { text: "Transthoracic impedance (typically 70–80 Ω) determines how much current reaches the heart — only ~4% traverses the myocardium", cites: ["BJA Educ 2005"] },
         { text: "Factors reducing TTI: gel pads, firm pressure, expiration, larger pads, repeated shocks, and shaving a hairy chest", cites: ["Cross & Plunkett Ch.14"] },
         { text: "NBG pacemaker code: 5 positions — I (paced), II (sensed), III (response), IV (rate modulation), V (multisite)", cites: ["Resuscitation Council UK 2021"] },
@@ -117,8 +117,9 @@ const DefibrillationPacingTopic = () => {
               <p>
                 <strong>Biphasic waveforms</strong> reverse polarity during the shock, delivering current first in one direction
                 then the other. Two subtypes exist: <strong>biphasic truncated exponential (BTE)</strong> and <strong>rectilinear
-                biphasic (RLB)</strong>. Both achieve equivalent or superior defibrillation success at lower energies (120–200 J),
-                causing less myocardial injury and post-shock ST changes.
+                biphasic (RLB)</strong>. Both achieve equivalent or superior defibrillation success at lower energies than
+                monophasic shocks (at least 150 J for the first shock with a rectilinear or truncated exponential waveform;
+                130–150 J for pulsed biphasic), causing less myocardial injury and post-shock ST changes.
               </p>
               <p>
                 A key advantage of biphasic devices is <strong>impedance compensation</strong> — the waveform automatically adjusts
@@ -135,8 +136,9 @@ const DefibrillationPacingTopic = () => {
               <p>
                 In synchronised cardioversion the shock is timed to the R wave to avoid the relative refractory
                 period (T wave) and the risk of inducing VF. Energies below are for <strong>biphasic</strong> devices
-                — manufacturer guidance always takes precedence. For monophasic devices, use 200 J for AF and
-                consider 360 J early; double the listed biphasic dose as a rough guide for other rhythms.
+                — manufacturer guidance always takes precedence. For monophasic devices, use 360 J for VF/pulseless VT.
+                The energies below follow RCUK 2025: an initial maximum-output synchronised shock for AF, 70–120 J for
+                atrial flutter/SVT, and 120–150 J for VT with a pulse.
               </p>
 
               <div className="overflow-x-auto">
@@ -151,8 +153,8 @@ const DefibrillationPacingTopic = () => {
                   <tbody className="divide-y divide-border">
                     <tr>
                       <td className="py-2 pr-3"><strong>Atrial fibrillation</strong></td>
-                      <td className="py-2 pr-3">120–150 J synchronised</td>
-                      <td className="py-2">Escalate to maximum (typically 200 J), then consider AP pad position</td>
+                      <td className="py-2 pr-3">Maximum device output, synchronised</td>
+                      <td className="py-2">RCUK 2025 favours an initial maximum-output shock over an escalating ladder; if it fails, optimise pads and contact and consider AP pad position</td>
                     </tr>
                     <tr>
                       <td className="py-2 pr-3"><strong>Atrial flutter / SVT</strong></td>
@@ -167,17 +169,17 @@ const DefibrillationPacingTopic = () => {
                     <tr>
                       <td className="py-2 pr-3"><strong>Polymorphic VT (pulse) / unsynchronised</strong></td>
                       <td className="py-2 pr-3">Treat as VF — defibrillate <em>unsynchronised</em></td>
-                      <td className="py-2">120–200 J first shock, then 150–360 J per device guidance</td>
+                      <td className="py-2">At least 150 J first shock (waveform-dependent), then escalate if the device permits; use the highest setting if its recommendation is unknown</td>
                     </tr>
                     <tr>
                       <td className="py-2 pr-3"><strong>VF / pulseless VT</strong></td>
-                      <td className="py-2 pr-3">120–150 J unsynchronised</td>
-                      <td className="py-2">Subsequent shocks 150–200 J (or up to 360 J biphasic per manufacturer)</td>
+                      <td className="py-2 pr-3">At least 150 J unsynchronised (rectilinear/truncated exponential); 130–150 J pulsed biphasic</td>
+                      <td className="py-2">Escalate if the device permits; use the highest setting if its recommendation is unknown</td>
                     </tr>
                     <tr>
                       <td className="py-2 pr-3"><strong>Paediatric (synch or defib)</strong></td>
                       <td className="py-2 pr-3">1 J/kg synch; initial defibrillation 4 J/kg</td>
-                      <td className="py-2">Escalate refractory VF/pVT towards 8 J/kg or the adult dose when appropriate; never exceed 10 J/kg. Synchronised cardioversion may be escalated to 2 J/kg <InlineRef topicId="defibrillation-pacing" refLabel="RCUK Paediatric ALS 2021" /></td>
+                      <td className="py-2">Increase stepwise to 8 J/kg (maximum 360 J) for refractory VF/pVT, and not above the adult dose. Synchronised cardioversion starts at 1 J/kg <InlineRef topicId="defibrillation-pacing" refLabel="RCUK PALS 2025" /></td>
                     </tr>
                   </tbody>
                 </table>
@@ -197,8 +199,9 @@ const DefibrillationPacingTopic = () => {
                 <li><strong>Troubleshooting synchronisation failure:</strong> the device may not sense small, broad or unusual QRS complexes, or may mark tall T waves or artefact. Change the monitored ECG lead (e.g. II to I or III), increase the ECG gain, check electrode contact and reduce movement or interference, and confirm the marker sits on each R wave. In pulseless or peri-arrest polymorphic VT, abandon synchronisation and give an unsynchronised shock.</li>
               </ul>
               <p className="text-xs italic">
-                Sources: Resuscitation Council UK Adult Advanced Life Support (2021); ERC Guidelines 2021; ESC
-                Guidelines for AF (2024) and Ventricular Arrhythmias (2022); APLS / RCUK Paediatric ALS 2021.
+                Sources: Resuscitation Council UK Adult Advanced Life Support (2025, algorithms updated March 2026);
+                RCUK Paediatric Life Support (2025); ERC Guidelines 2021; ESC Guidelines for AF (2024) and Ventricular
+                Arrhythmias (2022).
               </p>
             </div>
             </CollapsibleSubsection>

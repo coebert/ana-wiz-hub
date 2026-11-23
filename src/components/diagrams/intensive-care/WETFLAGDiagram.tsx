@@ -50,7 +50,7 @@ const WETFLAGDiagram = () => {
       value: `${energy} J`,
       formula: "4 J/kg (DC shock)",
       detail:
-        "Same energy for VF/pulseless VT and synchronised cardioversion (1 J/kg for first synchronised shock per UK guidance, 2 J/kg if needed; 4 J/kg for defibrillation). Use paediatric pads <10 kg or <1 yr; adult pads acceptable above this — anteroposterior position if pads overlap.",
+        "Defibrillation for VF/pulseless VT uses 4 J/kg for the initial shocks, and it seems reasonable not to use doses above those suggested for adults (120–200 J, depending on the type of defibrillator). For refractory VF/pVT — more than five shocks — the dose is increased stepwise to 8 J/kg (max 360 J). If ROSC is achieved and the child returns to a shockable rhythm, reuse the dose that was previously successful. Synchronised cardioversion for a tachyarrhythmia with circulatory failure starts at 1 J/kg and doubles with each attempt to a maximum of 4 J/kg. AED mode and pad placement are set out below.",
       color: "hsl(0 70% 50%)",
     },
     {
@@ -179,6 +179,43 @@ const WETFLAGDiagram = () => {
           ))}
         </div>
   
+        <div className="mt-3 p-3 rounded-lg border border-border bg-secondary/30">
+          <p className="text-sm font-semibold text-foreground mb-1">Pad placement, AED mode and cardioversion (RCUK 2025)</p>
+          <ul className="list-disc list-inside space-y-1 text-xs text-muted-foreground">
+            <li>
+              <strong className="text-foreground">AED mode:</strong> activate paediatric mode, if available, in all infants
+              and children weighing less than 25 kg (approximately 8 years); use standard adult mode in larger children and
+              adolescents, or when the AED has no paediatric mode. Follow the device's prompts.
+            </li>
+            <li>
+              <strong className="text-foreground">AED with adult-size pads:</strong> anteroposterior in infants and
+              children under 25 kg — anterior pad mid-chest immediately left of the sternum, posterior pad centred between
+              the scapulae. In children over 25 kg and adolescents, anterolateral or anteroposterior: anterolateral places
+              one pad below the right clavicle and the other in the left axilla; if anteroposterior is used in an adolescent,
+              keep the pads off breast tissue
+              <InlineRef topicId="paediatric-icu" refLabel="RCUK PALS 2025 pads" />.
+            </li>
+            <li>
+              <strong className="text-foreground">AED with paediatric pads:</strong> competent providers may use the
+              anterolateral position in children of 25 kg or less, provided the pads do not touch each other.
+            </li>
+            <li>
+              <strong className="text-foreground">Manual defibrillation (PALS):</strong> pads in the anterolateral or
+              anteroposterior position, and the pads must not touch — contact can cause charge arcing. Use anteroposterior
+              in infants and children under 25 kg who can easily be turned onto their side and in whom the anterolateral
+              position is more difficult without the pads touching; use anterolateral in larger children, because it
+              interrupts chest compressions less. Avoid breast tissue in adolescents
+              <InlineRef topicId="paediatric-icu" refLabel="RCUK PALS 2025 pads" />.
+            </li>
+            <li>
+              <strong className="text-foreground">Cardioversion:</strong> 1 J/kg, doubling with each attempt to a maximum
+              of 4 J/kg, with a 12-lead ECG running and analgesia and sedation if the child is not comatose; reassess signs
+              of life and pulse after each attempt
+              <InlineRef topicId="paediatric-icu" refLabel="RCUK PALS 2025 cardioversion" />.
+            </li>
+          </ul>
+        </div>
+
         <div className="mt-3 p-2.5 rounded bg-destructive/5 border border-destructive/20 text-xs text-muted-foreground">
           <strong className="text-foreground">Clinical use: </strong>
           Calculate WETFLAG on PICU admission and at the start of any resuscitation. Write the values on the whiteboard / drug chart so the team can act without recalculating under stress.

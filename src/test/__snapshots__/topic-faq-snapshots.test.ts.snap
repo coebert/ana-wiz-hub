@@ -1057,7 +1057,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the full FAQ co
       "q": "What are the ASA levels of sedation and when does it become anaesthesia?",
     },
     {
-      "a": "Continuous pulse oximetry, ECG, NIBP every 3–5 min, level of consciousness, and capnography for any moderate or deep sedation (AAGBI/RCoA 2021). Supplemental oxygen, suction, and full resuscitation equipment must be immediately available, and the sedationist must have no other clinical role.",
+      "a": "Continuous pulse oximetry, ECG, NIBP every 3–5 min, level of consciousness, and capnography for any moderate or deep sedation (AAGBI/RCoA 2021). Supplemental oxygen, suction, and full resuscitation equipment must be immediately available, and the sedationist must have no other clinical role. For gastrointestinal endoscopy under deep sedation (propofol) or general anaesthesia, the BSG 2023 guideline additionally requires core body temperature to be monitored and recorded.",
       "q": "What monitoring is mandatory for procedural sedation?",
     },
     {
@@ -1497,15 +1497,15 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the full FAQ co
   ],
   "/intensive-care/cardiac-arrest-post-resus": [
     {
-      "a": "Confirm arrest, call for help and start chest compressions at 100–120 min⁻¹, depth 5–6 cm, with full recoil and minimal interruptions. Attach defibrillator pads as soon as available and assess rhythm every 2 minutes. For VF/pVT: deliver a shock (biphasic 120–200 J per manufacturer, then equal or escalating), resume CPR immediately for 2 minutes, give adrenaline 1 mg IV after the third shock and every 3–5 minutes thereafter, and amiodarone 300 mg after the third shock with a further 150 mg after the fifth. For non-shockable rhythms (asystole / PEA): give adrenaline 1 mg IV as soon as access is obtained and every 3–5 minutes, continue CPR, and actively look for reversible causes. Secure the airway (supraglottic device or tracheal tube) and switch to continuous compressions with asynchronous ventilations once an advanced airway is in place. Use waveform capnography throughout.",
-      "q": "What does the 2021 Resuscitation Council UK / ERC ALS algorithm say for an adult in cardiac arrest?",
+      "a": "Confirm arrest, call for help and start chest compressions at 100–120 min⁻¹, depth 5–6 cm, with full recoil and minimal interruptions. Attach defibrillator pads as soon as available and assess rhythm every 2 minutes. For VF/pVT: deliver a shock using the RCUK 2025 waveform-specific first-shock energy (escalating if the shock fails), resume CPR immediately for 2 minutes, give adrenaline 1 mg IV after the third shock and every 3–5 minutes thereafter, and amiodarone 300 mg after the third shock with a further 150 mg after the fifth. For non-shockable rhythms (asystole / PEA): give adrenaline 1 mg IV as soon as access is obtained and every 3–5 minutes, continue CPR, and actively look for reversible causes. Secure the airway (supraglottic device or tracheal tube) and switch to continuous compressions with asynchronous ventilations once an advanced airway is in place. Use waveform capnography throughout.",
+      "q": "What does the 2025 Resuscitation Council UK (March 2026 algorithm) / ERC ALS guidance say for an adult in cardiac arrest?",
     },
     {
       "a": "The reversible causes are Hypoxia (high-flow O₂, secure airway, check ETT position and ventilation), Hypovolaemia (rapid IV/IO crystalloid, control haemorrhage, consider blood/MTP), Hyper/hypokalaemia and other metabolic disorders (10 mL 10% calcium chloride, 10 U insulin + 50 mL 50% dextrose, salbutamol, sodium bicarbonate; correct hypoglycaemia and acidosis), and Hypothermia (active rewarming, extended resuscitation and consider eCPR — 'not dead until warm and dead'); Tension pneumothorax (needle decompression / finger thoracostomy then chest drain), Tamponade (pericardiocentesis or resuscitative thoracotomy in trauma), Toxins (antidotes — naloxone, flumazenil, digibind, intralipid 20% for local-anaesthetic toxicity, sodium bicarbonate for TCAs), and Thrombosis (thrombolysis with alteplase 50 mg for suspected pulmonary embolism, then continue CPR for 60–90 minutes; primary PCI for coronary cause).",
       "q": "What are the 4 Hs and 4 Ts and how do I treat each at the bedside?",
     },
     {
-      "a": "Use the manufacturer-recommended first biphasic energy (typically 120–200 J). If the manufacturer dose is unknown, default to the maximum available. Subsequent shocks should be of equal or higher energy. The DOSE-VF trial (Cheskes, NEJM 2022) randomised refractory VF after 3 standard shocks to (a) continued standard defibrillation, (b) vector-change (pad reposition anterior-posterior), or (c) double sequential external defibrillation (DSED, two defibrillators delivered ~1 second apart): DSED improved survival to hospital discharge (30.4% vs 13.3%) and survival with good neurological outcome. Vector-change was also superior to standard. That is trial evidence, not the UK recommendation: DOSE-VF was a single-system Canadian trial stopped early by COVID-19. RCUK 2025 advises considering a vector change (antero-posterior pads) after three failed shocks once correct antero-lateral positioning is ensured, and does not recommend routine dual (double) sequential defibrillation.",
+      "a": "Use the RCUK 2025 first-shock energy for the device's waveform — higher for a rectilinear or truncated exponential biphasic waveform than for pulsed biphasic. If the device's recommendation is unknown, default to the maximum available. Subsequent shocks should be escalated if the first fails. The DOSE-VF trial (Cheskes, NEJM 2022) randomised refractory VF after 3 standard shocks to (a) continued standard defibrillation, (b) vector-change (pad reposition anterior-posterior), or (c) double sequential external defibrillation (DSED, two defibrillators delivered ~1 second apart): DSED improved survival to hospital discharge (30.4% vs 13.3%) and survival with good neurological outcome. Vector-change was also superior to standard. That is trial evidence, not the UK recommendation: DOSE-VF was a single-system Canadian trial stopped early by COVID-19. RCUK 2025 advises considering a vector change (antero-posterior pads) after three failed shocks once correct antero-lateral positioning is ensured, and does not recommend routine dual (double) sequential defibrillation.",
       "q": "When should defibrillation energy be escalated and what's the role of dual sequential defibrillation?",
     },
     {
@@ -2641,7 +2641,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the full FAQ co
       "q": "Outline the Vaughan-Williams classification with examples.",
     },
     {
-      "a": "Unstable (chest pain, hypotension, heart failure, syncope): synchronised DC cardioversion 120–200 J biphasic. Stable: rate control with β-blocker (esmolol, metoprolol) or calcium-channel blocker (avoid in heart failure); amiodarone 300 mg IV over 30 min if needs rhythm control or rate control fails. Anticoagulation considered if AF >48 h or known chronic. Look for and treat precipitants — hypoxia, electrolytes, sepsis, ischaemia, fluid overload.",
+      "a": "Unstable (chest pain, hypotension, heart failure, syncope): synchronised DC cardioversion — for AF an initial shock at maximum defibrillator output rather than an escalating approach, for atrial flutter/SVT 70–120 J, and for VT with a pulse 120–150 J (RCUK 2025). Stable: rate control with β-blocker (esmolol, metoprolol) or calcium-channel blocker (avoid in heart failure); amiodarone 300 mg IV over 30 min if needs rhythm control or rate control fails. Anticoagulation considered if AF >48 h or known chronic. Look for and treat precipitants — hypoxia, electrolytes, sepsis, ischaemia, fluid overload.",
       "q": "What is the management of unstable AF in theatre?",
     },
     {
@@ -2755,7 +2755,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the full FAQ co
       "q": "When should rocuronium replace suxamethonium for rapid sequence induction?",
     },
     {
-      "a": "Sugammadex is a modified γ-cyclodextrin that encapsulates aminosteroid NMBAs 1:1, removing free drug from plasma and reversing block within 2–3 min regardless of depth. Dosing: 2 mg/kg at T2 for routine reversal, 4 mg/kg at PTC 1–2 for deep block, 16 mg/kg for immediate reversal of a 1.2 mg/kg intubating dose. Confirm reversal with TOF ratio ≥0.9. Ineffective against benzylisoquinoliniums.",
+      "a": "Sugammadex is a modified γ-cyclodextrin that encapsulates rocuronium and vecuronium 1:1, removing free drug from plasma. Dosing follows the licensed depth of block: 2 mg/kg once T2 has reappeared, 4 mg/kg at 1–2 post-tetanic counts, and 16 mg/kg for immediate reversal after a single 1.2 mg/kg rocuronium dose, for which there is no recommended vecuronium equivalent. Confirm reversal with TOF ratio ≥0.9. Ineffective against benzylisoquinoliniums and not a cannot-intubate-cannot-oxygenate rescue.",
       "q": "How does sugammadex reverse rocuronium?",
     },
     {
@@ -3015,11 +3015,11 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the full FAQ co
   ],
   "/physics/defibrillation-pacing": [
     {
-      "a": "Monophasic — current flows in one direction; 360 J for all shocks (older defibrillators). Biphasic — current reverses direction mid-shock, lowers myocardial damage and skin burns, higher first-shock success at lower energy (120–200 J device-specific). Biphasic is now standard; Resus Council recommends manufacturer's setting, typically 150 J then escalating.",
+      "a": "Monophasic — current flows in one direction; 360 J for all shocks (older defibrillators). Biphasic — current reverses direction mid-shock, lowers myocardial damage and skin burns, higher first-shock success at lower energy. Biphasic is now standard; RCUK 2025 recommends at least 150 J for the first shock with a rectilinear or truncated exponential biphasic waveform (130–150 J for pulsed biphasic), escalating if the first shock fails, and the highest available setting if the device's recommendation is unknown.",
       "q": "What is the difference between monophasic and biphasic defibrillation?",
     },
     {
-      "a": "For unstable tachyarrhythmias with a pulse (AF, atrial flutter, SVT, VT with pulse). Synchronisation delivers the shock on the R wave to avoid the vulnerable T wave period — an unsynchronised shock on the T wave can induce VF. Energy: AF 120–200 J biphasic, atrial flutter and SVT 70–120 J, VT 100 J starting.",
+      "a": "For unstable tachyarrhythmias with a pulse (AF, atrial flutter, SVT, VT with pulse). Synchronisation delivers the shock on the R wave to avoid the vulnerable T wave period — an unsynchronised shock on the T wave can induce VF. Energy (RCUK 2025): for AF, an initial synchronised shock at maximum defibrillator output rather than an escalating approach; atrial flutter and SVT 70–120 J; VT with a pulse 120–150 J, escalating stepwise if the first shock fails.",
       "q": "When is synchronised cardioversion indicated and why must the shock be synchronised?",
     },
     {
@@ -3087,7 +3087,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the full FAQ co
       "q": "How does a magnet affect a pacemaker or ICD?",
     },
     {
-      "a": "Diathermy is not used inside the MRI environment. The MRI hazards are different: radiofrequency energy heats conductive loops, so route ECG cables straight without loops, keep them off the skin, use the minimum monitoring, and only equipment labelled MR Safe or used within its MR Conditional limits. Active implants need exact device identification and a documented programme-and-monitor plan because of lead-tip heating and inappropriate therapy.",
+      "a": "Diathermy is not used inside the MRI environment. The MRI hazards are different: rapidly switched gradient fields induce currents that can stimulate nerve and muscle, and radiofrequency energy can cause severe, rapid burns from conductive material left on the skin, so contact with metal in clothing, ECG leads and other equipment must be limited unless the device is known to be safe. Monitoring should be the same as in the operating theatre, using MR Safe or MR Conditional devices within their specified conditions. Active implants need exact device identification and a documented programme-and-monitor plan because of lead-tip heating and inappropriate therapy.",
       "q": "How is diathermy used safely in a patient having MRI or with an intra-aortic device?",
     },
     {
@@ -3183,11 +3183,11 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the full FAQ co
   ],
   "/physics/lasers-fibreoptics": [
     {
-      "a": "FiO₂ ≤30 %, avoid N₂O (supports combustion), use a laser-resistant ETT (red-rubber wrapped with metallic foil, or purpose-built Mallinckrodt Laser-Flex), saline-filled cuff with methylene blue indicator, eye protection for staff and patient (wavelength-specific goggles), warning signs on theatre doors, smoke evacuation, and immediate access to saline and a backup tube.",
+      "a": "Keep the inspired oxygen as low as is clinically feasible while the laser is in use, guided by pulse oximetry — many units work to ≤0.30 in air, but there is no fixed fraction in the guidance; avoid N₂O (it acts as an oxidiser), use a laser-resistant ETT appropriate to the procedure and laser (purpose-built, e.g. Laser-Flex, or a wrapped tube), fill the cuff with saline tinted with methylene blue as a puncture marker, eye protection for staff and patient (wavelength-specific goggles), warning signs on theatre doors, smoke evacuation, and immediate access to saline and a backup tube.",
       "q": "What are the key safety measures for airway laser surgery?",
     },
     {
-      "a": "Stop ventilation and disconnect O₂. Remove the burning tube. Pour saline into the airway to extinguish. Re-mask ventilate on air. Re-intubate (often with a smaller tube), then perform flexible or rigid bronchoscopy to assess thermal and inhalational injury and remove debris. Administer humidified O₂ and admit to critical care for observation of progressive airway oedema.",
+      "a": "Stop the flow of airway gases and remove the tracheal tube without waiting, remove other burning material, and pour saline into the airway to extinguish it. Re-establish ventilation by mask, avoiding supplemental oxygen and nitrous oxide if possible. Examine the tube for fragments left in the airway and consider bronchoscopy (preferably rigid) to look for tube fragments, assess thermal injury and remove residual debris; if the patient was not intubated, assess for smoke inhalation. Then assess the patient's status and devise an individual plan for ongoing care with the airway and critical care teams — the advisory specifies no fixed observation period or imaging schedule.",
       "q": "What is the management of an airway fire?",
     },
     {
@@ -5609,7 +5609,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the synthesised
         "@type": "Question",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Continuous pulse oximetry, ECG, NIBP every 3–5 min, level of consciousness, and capnography for any moderate or deep sedation (AAGBI/RCoA 2021). Supplemental oxygen, suction, and full resuscitation equipment must be immediately available, and the sedationist must have no other clinical role.",
+          "text": "Continuous pulse oximetry, ECG, NIBP every 3–5 min, level of consciousness, and capnography for any moderate or deep sedation (AAGBI/RCoA 2021). Supplemental oxygen, suction, and full resuscitation equipment must be immediately available, and the sedationist must have no other clinical role. For gastrointestinal endoscopy under deep sedation (propofol) or general anaesthesia, the BSG 2023 guideline additionally requires core body temperature to be monitored and recorded.",
         },
         "name": "What monitoring is mandatory for procedural sedation?",
       },
@@ -6525,9 +6525,9 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the synthesised
         "@type": "Question",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Confirm arrest, call for help and start chest compressions at 100–120 min⁻¹, depth 5–6 cm, with full recoil and minimal interruptions. Attach defibrillator pads as soon as available and assess rhythm every 2 minutes. For VF/pVT: deliver a shock (biphasic 120–200 J per manufacturer, then equal or escalating), resume CPR immediately for 2 minutes, give adrenaline 1 mg IV after the third shock and every 3–5 minutes thereafter, and amiodarone 300 mg after the third shock with a further 150 mg after the fifth. For non-shockable rhythms (asystole / PEA): give adrenaline 1 mg IV as soon as access is obtained and every 3–5 minutes, continue CPR, and actively look for reversible causes. Secure the airway (supraglottic device or tracheal tube) and switch to continuous compressions with asynchronous ventilations once an advanced airway is in place. Use waveform capnography throughout.",
+          "text": "Confirm arrest, call for help and start chest compressions at 100–120 min⁻¹, depth 5–6 cm, with full recoil and minimal interruptions. Attach defibrillator pads as soon as available and assess rhythm every 2 minutes. For VF/pVT: deliver a shock using the RCUK 2025 waveform-specific first-shock energy (escalating if the shock fails), resume CPR immediately for 2 minutes, give adrenaline 1 mg IV after the third shock and every 3–5 minutes thereafter, and amiodarone 300 mg after the third shock with a further 150 mg after the fifth. For non-shockable rhythms (asystole / PEA): give adrenaline 1 mg IV as soon as access is obtained and every 3–5 minutes, continue CPR, and actively look for reversible causes. Secure the airway (supraglottic device or tracheal tube) and switch to continuous compressions with asynchronous ventilations once an advanced airway is in place. Use waveform capnography throughout.",
         },
-        "name": "What does the 2021 Resuscitation Council UK / ERC ALS algorithm say for an adult in cardiac arrest?",
+        "name": "What does the 2025 Resuscitation Council UK (March 2026 algorithm) / ERC ALS guidance say for an adult in cardiac arrest?",
       },
       {
         "@type": "Question",
@@ -6541,7 +6541,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the synthesised
         "@type": "Question",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Use the manufacturer-recommended first biphasic energy (typically 120–200 J). If the manufacturer dose is unknown, default to the maximum available. Subsequent shocks should be of equal or higher energy. The DOSE-VF trial (Cheskes, NEJM 2022) randomised refractory VF after 3 standard shocks to (a) continued standard defibrillation, (b) vector-change (pad reposition anterior-posterior), or (c) double sequential external defibrillation (DSED, two defibrillators delivered ~1 second apart): DSED improved survival to hospital discharge (30.4% vs 13.3%) and survival with good neurological outcome. Vector-change was also superior to standard. That is trial evidence, not the UK recommendation: DOSE-VF was a single-system Canadian trial stopped early by COVID-19. RCUK 2025 advises considering a vector change (antero-posterior pads) after three failed shocks once correct antero-lateral positioning is ensured, and does not recommend routine dual (double) sequential defibrillation.",
+          "text": "Use the RCUK 2025 first-shock energy for the device's waveform — higher for a rectilinear or truncated exponential biphasic waveform than for pulsed biphasic. If the device's recommendation is unknown, default to the maximum available. Subsequent shocks should be escalated if the first fails. The DOSE-VF trial (Cheskes, NEJM 2022) randomised refractory VF after 3 standard shocks to (a) continued standard defibrillation, (b) vector-change (pad reposition anterior-posterior), or (c) double sequential external defibrillation (DSED, two defibrillators delivered ~1 second apart): DSED improved survival to hospital discharge (30.4% vs 13.3%) and survival with good neurological outcome. Vector-change was also superior to standard. That is trial evidence, not the UK recommendation: DOSE-VF was a single-system Canadian trial stopped early by COVID-19. RCUK 2025 advises considering a vector change (antero-posterior pads) after three failed shocks once correct antero-lateral positioning is ensured, and does not recommend routine dual (double) sequential defibrillation.",
         },
         "name": "When should defibrillation energy be escalated and what's the role of dual sequential defibrillation?",
       },
@@ -8941,7 +8941,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the synthesised
         "@type": "Question",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Unstable (chest pain, hypotension, heart failure, syncope): synchronised DC cardioversion 120–200 J biphasic. Stable: rate control with β-blocker (esmolol, metoprolol) or calcium-channel blocker (avoid in heart failure); amiodarone 300 mg IV over 30 min if needs rhythm control or rate control fails. Anticoagulation considered if AF >48 h or known chronic. Look for and treat precipitants — hypoxia, electrolytes, sepsis, ischaemia, fluid overload.",
+          "text": "Unstable (chest pain, hypotension, heart failure, syncope): synchronised DC cardioversion — for AF an initial shock at maximum defibrillator output rather than an escalating approach, for atrial flutter/SVT 70–120 J, and for VT with a pulse 120–150 J (RCUK 2025). Stable: rate control with β-blocker (esmolol, metoprolol) or calcium-channel blocker (avoid in heart failure); amiodarone 300 mg IV over 30 min if needs rhythm control or rate control fails. Anticoagulation considered if AF >48 h or known chronic. Look for and treat precipitants — hypoxia, electrolytes, sepsis, ischaemia, fluid overload.",
         },
         "name": "What is the management of unstable AF in theatre?",
       },
@@ -9183,7 +9183,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the synthesised
         "@type": "Question",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Sugammadex is a modified γ-cyclodextrin that encapsulates aminosteroid NMBAs 1:1, removing free drug from plasma and reversing block within 2–3 min regardless of depth. Dosing: 2 mg/kg at T2 for routine reversal, 4 mg/kg at PTC 1–2 for deep block, 16 mg/kg for immediate reversal of a 1.2 mg/kg intubating dose. Confirm reversal with TOF ratio ≥0.9. Ineffective against benzylisoquinoliniums.",
+          "text": "Sugammadex is a modified γ-cyclodextrin that encapsulates rocuronium and vecuronium 1:1, removing free drug from plasma. Dosing follows the licensed depth of block: 2 mg/kg once T2 has reappeared, 4 mg/kg at 1–2 post-tetanic counts, and 16 mg/kg for immediate reversal after a single 1.2 mg/kg rocuronium dose, for which there is no recommended vecuronium equivalent. Confirm reversal with TOF ratio ≥0.9. Ineffective against benzylisoquinoliniums and not a cannot-intubate-cannot-oxygenate rescue.",
         },
         "name": "How does sugammadex reverse rocuronium?",
       },
@@ -9731,7 +9731,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the synthesised
         "@type": "Question",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Monophasic — current flows in one direction; 360 J for all shocks (older defibrillators). Biphasic — current reverses direction mid-shock, lowers myocardial damage and skin burns, higher first-shock success at lower energy (120–200 J device-specific). Biphasic is now standard; Resus Council recommends manufacturer's setting, typically 150 J then escalating.",
+          "text": "Monophasic — current flows in one direction; 360 J for all shocks (older defibrillators). Biphasic — current reverses direction mid-shock, lowers myocardial damage and skin burns, higher first-shock success at lower energy. Biphasic is now standard; RCUK 2025 recommends at least 150 J for the first shock with a rectilinear or truncated exponential biphasic waveform (130–150 J for pulsed biphasic), escalating if the first shock fails, and the highest available setting if the device's recommendation is unknown.",
         },
         "name": "What is the difference between monophasic and biphasic defibrillation?",
       },
@@ -9739,7 +9739,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the synthesised
         "@type": "Question",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "For unstable tachyarrhythmias with a pulse (AF, atrial flutter, SVT, VT with pulse). Synchronisation delivers the shock on the R wave to avoid the vulnerable T wave period — an unsynchronised shock on the T wave can induce VF. Energy: AF 120–200 J biphasic, atrial flutter and SVT 70–120 J, VT 100 J starting.",
+          "text": "For unstable tachyarrhythmias with a pulse (AF, atrial flutter, SVT, VT with pulse). Synchronisation delivers the shock on the R wave to avoid the vulnerable T wave period — an unsynchronised shock on the T wave can induce VF. Energy (RCUK 2025): for AF, an initial synchronised shock at maximum defibrillator output rather than an escalating approach; atrial flutter and SVT 70–120 J; VT with a pulse 120–150 J, escalating stepwise if the first shock fails.",
         },
         "name": "When is synchronised cardioversion indicated and why must the shock be synchronised?",
       },
@@ -9879,7 +9879,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the synthesised
         "@type": "Question",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Diathermy is not used inside the MRI environment. The MRI hazards are different: radiofrequency energy heats conductive loops, so route ECG cables straight without loops, keep them off the skin, use the minimum monitoring, and only equipment labelled MR Safe or used within its MR Conditional limits. Active implants need exact device identification and a documented programme-and-monitor plan because of lead-tip heating and inappropriate therapy.",
+          "text": "Diathermy is not used inside the MRI environment. The MRI hazards are different: rapidly switched gradient fields induce currents that can stimulate nerve and muscle, and radiofrequency energy can cause severe, rapid burns from conductive material left on the skin, so contact with metal in clothing, ECG leads and other equipment must be limited unless the device is known to be safe. Monitoring should be the same as in the operating theatre, using MR Safe or MR Conditional devices within their specified conditions. Active implants need exact device identification and a documented programme-and-monitor plan because of lead-tip heating and inappropriate therapy.",
         },
         "name": "How is diathermy used safely in a patient having MRI or with an intra-aortic device?",
       },
@@ -10083,7 +10083,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the synthesised
         "@type": "Question",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "FiO₂ ≤30 %, avoid N₂O (supports combustion), use a laser-resistant ETT (red-rubber wrapped with metallic foil, or purpose-built Mallinckrodt Laser-Flex), saline-filled cuff with methylene blue indicator, eye protection for staff and patient (wavelength-specific goggles), warning signs on theatre doors, smoke evacuation, and immediate access to saline and a backup tube.",
+          "text": "Keep the inspired oxygen as low as is clinically feasible while the laser is in use, guided by pulse oximetry — many units work to ≤0.30 in air, but there is no fixed fraction in the guidance; avoid N₂O (it acts as an oxidiser), use a laser-resistant ETT appropriate to the procedure and laser (purpose-built, e.g. Laser-Flex, or a wrapped tube), fill the cuff with saline tinted with methylene blue as a puncture marker, eye protection for staff and patient (wavelength-specific goggles), warning signs on theatre doors, smoke evacuation, and immediate access to saline and a backup tube.",
         },
         "name": "What are the key safety measures for airway laser surgery?",
       },
@@ -10091,7 +10091,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the synthesised
         "@type": "Question",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Stop ventilation and disconnect O₂. Remove the burning tube. Pour saline into the airway to extinguish. Re-mask ventilate on air. Re-intubate (often with a smaller tube), then perform flexible or rigid bronchoscopy to assess thermal and inhalational injury and remove debris. Administer humidified O₂ and admit to critical care for observation of progressive airway oedema.",
+          "text": "Stop the flow of airway gases and remove the tracheal tube without waiting, remove other burning material, and pour saline into the airway to extinguish it. Re-establish ventilation by mask, avoiding supplemental oxygen and nitrous oxide if possible. Examine the tube for fragments left in the airway and consider bronchoscopy (preferably rigid) to look for tube fragments, assess thermal injury and remove residual debris; if the patient was not intubated, assess for smoke inhalation. Then assess the patient's status and devise an individual plan for ongoing care with the airway and critical care teams — the advisory specifies no fixed observation period or imaging schedule.",
         },
         "name": "What is the management of an airway fire?",
       },

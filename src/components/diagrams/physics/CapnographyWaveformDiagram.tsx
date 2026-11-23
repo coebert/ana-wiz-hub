@@ -258,14 +258,14 @@ const PATTERNS: Record<Pattern, PatternSpec> = {
     tagline: "Trace falls abruptly to zero (or never rises above ~1 kPa).",
     causes: [
       "Circuit disconnection",
-      "Oesophageal intubation (small bumps for ~6 breaths from gastric CO₂, then flat)",
+      "Oesophageal intubation (small CO₂ bumps from gastric insufflation that do not meet the criteria for sustained exhaled CO₂: ≥7 breaths, >1 kPa above baseline)",
       "Complete airway obstruction",
       "Cardiac arrest (loss of pulmonary blood flow → no CO₂ delivery)",
     ],
     pearls: [
       "An absent or vanishing trace is a never-event signal — confirm tube position, circuit and circulation in that order.",
-      "During CPR, EtCO₂ < 1.3 kPa (10 mmHg) after 20 min predicts non-survival; a sudden rise heralds ROSC.",
-      "Gastric CO₂ peters out within ~6 breaths — never use a single squeeze of the bag to confirm tracheal placement.",
+      "During CPR, a sudden rise in EtCO₂ may herald ROSC and a sudden fall may indicate cardiac arrest or very low cardiac output; no single EtCO₂ value is a stand-alone stopping rule.",
+      "Gastric CO₂ may fade or persist — never use a single squeeze of the bag or a transient trace to confirm tracheal placement.",
     ],
   },
   cardiac: {

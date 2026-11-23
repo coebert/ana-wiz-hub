@@ -60,7 +60,7 @@ const electricalSafetyFaqs: Array<[string, string]> = [
   ],
   [
     "How is diathermy used safely in a patient having MRI or with an intra-aortic device?",
-    "Diathermy is not used inside the MRI environment. The MRI hazards are different: radiofrequency energy heats conductive loops, so route ECG cables straight without loops, keep them off the skin, use the minimum monitoring, and only equipment labelled MR Safe or used within its MR Conditional limits. Active implants need exact device identification and a documented programme-and-monitor plan because of lead-tip heating and inappropriate therapy."
+    "Diathermy is not used inside the MRI environment. The MRI hazards are different: rapidly switched gradient fields induce currents that can stimulate nerve and muscle, and radiofrequency energy can cause severe, rapid burns from conductive material left on the skin, so contact with metal in clothing, ECG leads and other equipment must be limited unless the device is known to be safe. Monitoring should be the same as in the operating theatre, using MR Safe or MR Conditional devices within their specified conditions. Active implants need exact device identification and a documented programme-and-monitor plan because of lead-tip heating and inappropriate therapy."
   ],
   [
     "What is a leakage current and what limits apply?",
@@ -237,14 +237,14 @@ const ElectricalSafetyTopic = () => {
           "Cross & Plunkett Ch.14",
           "Middleton Ch.16",
           "IEC 60601-1",
-          "RCUK Paediatric ALS 2021",
+          "RCUK PALS 2025 pads",
         ],
         keyPoints: [
           "BJA Educ 2017",
           "Cross & Plunkett Ch.14",
           "Middleton Ch.16",
           "IEC 60601-1",
-          "RCUK Paediatric ALS 2021",
+          "RCUK PALS 2025 pads",
         ],
       }}
       coreConcepts={
@@ -268,17 +268,28 @@ const ElectricalSafetyTopic = () => {
         <section className="mb-10">
           <h2 className="text-2xl font-serif font-bold text-foreground">Electrical Safety in the MRI Environment</h2>
           <p className="text-foreground/90 leading-relaxed">
-            MRI adds time-varying radiofrequency (RF) and gradient fields to the static magnetic-field hazard. Conductive loops
-            formed by ECG leads, monitoring cables or pacing wires can act as aerials: RF energy produces focal heating and burns,
-            while rapidly switched gradients can induce currents and unwanted stimulation. Route leads straight, avoid loops and
-            skin-to-skin contact, insulate cables from the patient and use the minimum necessary monitoring
-            <InlineRef topicId="electrical-safety" refLabel="BJA Educ 2019 (MRI)" />.
+            MRI adds time-varying radiofrequency (RF) and gradient fields to the static magnetic-field hazard. Gradient fields
+            switched rapidly during image acquisition induce currents sufficient to stimulate peripheral nerve and muscle,
+            sometimes causing discomfort; scanners limit gradient switching to avoid more extreme consequences such as limb
+            movement or ventricular fibrillation. RF energy is deposited non-uniformly in tissue as heat and can cause severe,
+            rapid burns from any conductive material left on the patient's skin, so contact with metal in clothing, ECG leads and
+            other equipment must be limited unless the device is known to be safe; similar risks apply to conductive material
+            within the patient, particularly pacemaker or neurostimulator wires. The level of monitoring and equipment should
+            conform to national guidance and be the same as that provided in the operating theatre, using appropriately
+            <strong> MR Safe or MR Conditional</strong> devices within their specified conditions, with monitoring in the control
+            room where the unit allows and all monitoring maintained during transfers
+            <InlineRef topicId="electrical-safety" refLabel="Assoc Anaesth 2019 (MRI)" />.
           </p>
           <p className="text-foreground/90 leading-relaxed mt-3">
-            Equipment labelled <strong>MR Safe</strong> poses no known hazard; <strong>MR Conditional</strong> equipment is safe only
-            within its specified field strength, spatial gradient, RF exposure and positioning conditions. Standard pumps,
-            ventilators and monitors must remain outside the controlled area unless specifically approved. Fibre-optic monitoring
-            and signal transmission avoid conductive cables and therefore reduce induced-current and heating risks.
+            For MR purposes equipment and implants are <strong>MR Safe</strong> (no hazard at any field), <strong>MR Conditional</strong>
+            (safe only under the manufacturer's specified conditions, based on testing) or <strong>MR Unsafe</strong>; the term
+            "MR compatible" is ambiguous and should no longer be used. Only MR Safe vaporisers and gas cylinders should be used in
+            the scanning room, and standard infusion pumps should not enter the MR environment, although MR Conditional and MR Safe
+            anaesthetic machines, ventilators and pumps are available and are sited according to the field of the individual magnet.
+            Fibre-optic pulse oximeters should be used because standard oximeters have caused burns from induced currents; ECG and EEG
+            electrodes must be removed before scanning unless they are specific MR Safe electrodes, and the field-dependent ECG
+            changes of scanning (T-wave elevation, reduced R-wave amplitude) are harmless and resolve when scanning stops
+            <InlineRef topicId="electrical-safety" refLabel="Assoc Anaesth 2019 (MRI)" />.
           </p>
           <p className="text-foreground/90 leading-relaxed mt-3">
             Pacemakers, ICDs, neurostimulators and other active implants require exact device and lead identification, confirmation
@@ -596,11 +607,14 @@ const ElectricalSafetyTopic = () => {
           </ul>
           <h3 className="text-lg font-serif font-bold text-foreground mt-5 mb-2">Paediatric defibrillation</h3>
           <p className="text-foreground/90 leading-relaxed">
-            Use <strong>4 J/kg</strong> for paediatric defibrillation. Paediatric attenuator pads or cables reduce the energy delivered
-            by an adult device. If unavailable, use standard adult pads and select the nearest available dose (a 50 J starting setting
-            may be needed on some devices). For infants and children under 10 kg, anterior–posterior placement usually provides enough
-            separation; otherwise use anterolateral placement. Pads must never touch or overlap because this can arc or shunt current
-            away from the myocardium <InlineRef topicId="electrical-safety" refLabel="RCUK Paediatric ALS 2021" />.
+            Use <strong>4 J/kg</strong> for every paediatric defibrillation shock, increasing stepwise to <strong>8 J/kg</strong>
+            (maximum 360 J) once more than five shocks are needed for refractory VF/pVT, and do not exceed the adult dose
+            (120–200 J depending on the device). Activate the AED's paediatric mode, if it has one, for all infants and children
+            weighing less than 25 kg (approximately 8 years); use standard adult mode in larger children or when no paediatric mode
+            exists. Place pads anteroposteriorly in infants and children under 25 kg — anterior pad mid-chest immediately left of the
+            sternum, posterior pad centred between the scapulae — and anterolaterally or anteroposteriorly in larger children, avoiding
+            breast tissue in adolescents. Pads must never touch or overlap because this can arc or shunt current away from the
+            myocardium <InlineRef topicId="electrical-safety" refLabel="RCUK PALS 2025 pads" />.
           </p>
           <h3 className="text-lg font-serif font-bold text-foreground mt-5 mb-2">Synchronised DC cardioversion</h3>
           <p className="text-foreground/90 leading-relaxed">
