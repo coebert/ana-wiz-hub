@@ -36,6 +36,7 @@
     "verify:claims:extract": "bun scripts/check-anatomy-references.ts",
     "check:anatomy-references": "bun scripts/check-anatomy-references.ts",
     "base44:manifest": "tsx scripts/base44/migration-manifest.ts",
+    "base44:validate": "tsx scripts/base44/migration-validate.ts",
     "check": "node scripts/content-check.mjs",
     "check:all": "npm run check",
     "build:audit-corpus": "bun scripts/build-audit-corpus.ts",

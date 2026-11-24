@@ -211,3 +211,89 @@ No data copy, no role grant, no schema change, no storage move, no function port
 no scheduler change, no billing/domain/secret/deploy change, and no change to
 clinical content or the AI relay safeguards. The only runtime write path added is
 a read-only admin-session probe.
+
+---
+
+## 6. Slice 2 — dry-run validator and target mapping (24 November 2026)
+
+Status: **dry run only**. No production record was read, nothing was written to
+Base44, and no credential, record, domain, integration or deployment changed.
+The validator runs on synthetic fixtures in this environment; the owner's report
+that the Lovable database now answers `SELECT current_timestamp` does not make it
+reachable from this sandbox (the project host still returns `NXDOMAIN` here), so
+no live read was attempted.
+
+### Target mapping (`scripts/base44/migration-mapping.ts`)
+
+| Source | Restricted Base44 entity | Access | Identity carried |
+| --- | --- | --- | --- |
+| `auth.users` | `MigratedAccountIdentity` | service-only | `id` (join e-mail only, purged after cutover) |
+| `user_roles` | `MigratedAccountRole` | admin-only | `user_id` + `role` |
+| `user_topic_progress` | `MigratedTopicProgress` | owner-scoped | `user_id` + `topic_id` |
+| `user_subsection_progress` | `MigratedSubsectionProgress` | owner-scoped | `user_id` + `topic_id` + `subsection_id` |
+| `user_study_time` | `MigratedStudyTime` | owner-scoped | `user_id` + `topic_id` + `day` |
+| `user_recent_topics` | `MigratedRecentTopic` | owner-scoped | `user_id` + `topic_id` |
+| `viva_attempts` | `MigratedVivaAttempt` | owner-scoped | `id` |
+| `support_tickets` | `MigratedSupportTicket` | service-only | `id` |
+| `support_messages` | `MigratedSupportMessage` | service-only | `id`, parent `ticket_id` |
+
+Id-keyed tables reuse the source UUID as the Base44 record id; composite-key
+tables keep their source column names verbatim. Ownership is resolved only
+through an explicit `auth.users.id → Base44 user id` map — e-mail is a join hint
+that the validator counts for collisions and never treats as identity. Roles are
+restricted to the source `app_role` enum, and the admin role is deployment
+configuration (`BASE44_ADMIN_ROLE`) with no default.
+
+### What the dry run checks
+
+`scripts/base44/migration-validate.ts` reports aggregates only — counts, deltas
+and issue codes, never an id, address or body:
+
+* stable source ids preserved (target rows keyed by the source id/keys)
+* orphaned rows whose owner or parent ticket is not in the id map
+* duplicate source rows, duplicate target rows and duplicate identity targets
+* identity-map entries that point at no source account
+* source/target/eligible row counts and the delta per entity
+* role mapping (values outside the enum; admin rows with no configured role)
+* ownership rewritten to a different account between source and target
+* credential columns in a snapshot (refused outright, so only a projection can
+  be validated)
+
+### Running it
+
+```bash
+npm run base44:validate                      # synthetic fixtures, exit 0 when clean
+npm run base44:validate -- --source <file> --target <file> --id-map <file> --admin-role <name>
+```
+
+Exit code is 0 only when `ok` is true. The command reads JSON and writes nothing.
+
+### Requirements before staging
+
+1. Export **only the projected columns** in the mapping (for accounts: `id`,
+   `email`, `created_at`). The validator refuses `password`, `*_token`,
+   `api_key`, `secret`, `credential` and `service_role` columns by name.
+2. Create the nine Base44 entities with the declared access before any row lands:
+   service-only for accounts and support, admin-only for roles, owner-scoped for
+   progress and viva attempts.
+3. Build the identity map with the owner, review it by hand, and decide the route
+   for Apple private-relay addresses; no e-mail-only matching.
+4. Configure `BASE44_ADMIN_ROLE` per environment and record the audited role
+   assignment; an unset role must refuse every caller.
+5. Obtain the privacy, lawful-basis and retention decision for support
+   correspondence before its first row is staged.
+6. Run the validator against the staged copy and require `ok: true` before
+   enabling any Base44 read path.
+
+### Requirements before production cutover
+
+1. Freeze the source, record row counts and checksums, and run the dry run against
+   that frozen snapshot immediately before the cutover — a green run on an older
+   snapshot is not evidence.
+2. Prove the progress merge rule (last-write-wins vs union) by replaying the
+   validator over a dual-run window, with no lost or duplicated ticks.
+3. Purge `joinEmail` from `MigratedAccountIdentity` once sign-off is complete.
+4. Keep source ids as target ids so a migrated row can always be matched back to
+   its source row for rollback, without a second map.
+5. Keep snapshots under the same retention and access control as the source
+   export, and never commit them to the repository.
