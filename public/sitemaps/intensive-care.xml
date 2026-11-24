@@ -2,31 +2,31 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://anaesthesiacore.app/intensive-care</loc>
-    <lastmod>2026-11-19</lastmod>
+    <lastmod>2026-09-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://anaesthesiacore.app/intensive-care/case-bank</loc>
-    <lastmod>2026-11-19</lastmod>
+    <lastmod>2026-09-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://anaesthesiacore.app/intensive-care/drug-doses</loc>
-    <lastmod>2026-11-19</lastmod>
+    <lastmod>2026-11-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://anaesthesiacore.app/intensive-care/infusions</loc>
-    <lastmod>2026-11-19</lastmod>
+    <lastmod>2026-09-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://anaesthesiacore.app/intensive-care/management-flows</loc>
-    <lastmod>2026-11-19</lastmod>
+    <lastmod>2026-09-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -38,85 +38,85 @@
   </url>
   <url>
     <loc>https://anaesthesiacore.app/intensive-care/paediatric-withdrawal</loc>
-    <lastmod>2026-11-19</lastmod>
+    <lastmod>2026-09-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://anaesthesiacore.app/intensive-care/adult-withdrawal</loc>
-    <lastmod>2026-11-19</lastmod>
+    <lastmod>2026-09-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://anaesthesiacore.app/intensive-care/calculator</loc>
-    <lastmod>2026-11-19</lastmod>
+    <lastmod>2026-10-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://anaesthesiacore.app/intensive-care/nursing-protocols</loc>
-    <lastmod>2026-11-19</lastmod>
+    <lastmod>2026-09-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://anaesthesiacore.app/intensive-care/drug-mechanisms</loc>
-    <lastmod>2026-11-19</lastmod>
+    <lastmod>2026-09-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://anaesthesiacore.app/intensive-care/drug-safety</loc>
-    <lastmod>2026-11-19</lastmod>
+    <lastmod>2026-11-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://anaesthesiacore.app/intensive-care/interaction-checker</loc>
-    <lastmod>2026-11-19</lastmod>
+    <lastmod>2026-09-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://anaesthesiacore.app/intensive-care/interaction-matrix</loc>
-    <lastmod>2026-11-19</lastmod>
+    <lastmod>2026-09-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://anaesthesiacore.app/intensive-care/drug-comparison</loc>
-    <lastmod>2026-11-19</lastmod>
+    <lastmod>2026-09-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://anaesthesiacore.app/intensive-care/drug-cards</loc>
-    <lastmod>2026-11-19</lastmod>
+    <lastmod>2026-09-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://anaesthesiacore.app/intensive-care/pharmacology</loc>
-    <lastmod>2026-11-19</lastmod>
+    <lastmod>2026-09-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://anaesthesiacore.app/intensive-care/paediatric-pharmacokinetics</loc>
-    <lastmod>2026-11-19</lastmod>
+    <lastmod>2026-09-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://anaesthesiacore.app/intensive-care/septic-shock</loc>
-    <lastmod>2026-11-19</lastmod>
+    <lastmod>2026-11-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://anaesthesiacore.app/intensive-care/sepsis-resuscitation</loc>
-    <lastmod>2026-11-19</lastmod>
+    <lastmod>2026-11-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -128,7 +128,7 @@
   </url>
   <url>
     <loc>https://anaesthesiacore.app/intensive-care/icu-outcomes</loc>
-    <lastmod>2026-11-19</lastmod>
+    <lastmod>2026-10-25</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -146,79 +146,79 @@
   </url>
   <url>
     <loc>https://anaesthesiacore.app/intensive-care/icu-staffing-ratios</loc>
-    <lastmod>2026-11-19</lastmod>
+    <lastmod>2026-10-25</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://anaesthesiacore.app/intensive-care/icu-staffing-by-unit</loc>
-    <lastmod>2026-11-19</lastmod>
+    <lastmod>2026-10-25</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://anaesthesiacore.app/intensive-care/icu-staffing-by-country</loc>
-    <lastmod>2026-11-19</lastmod>
+    <lastmod>2026-10-25</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://anaesthesiacore.app/intensive-care/icu-cost-by-country</loc>
-    <lastmod>2026-11-19</lastmod>
+    <lastmod>2026-10-25</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://anaesthesiacore.app/intensive-care/icu-cost-timeline</loc>
-    <lastmod>2026-11-19</lastmod>
+    <lastmod>2026-10-25</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://anaesthesiacore.app/intensive-care/icu-general-unit</loc>
-    <lastmod>2026-11-19</lastmod>
+    <lastmod>2026-10-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://anaesthesiacore.app/intensive-care/icu-cardiac-unit</loc>
-    <lastmod>2026-11-19</lastmod>
+    <lastmod>2026-10-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://anaesthesiacore.app/intensive-care/icu-neuro-unit</loc>
-    <lastmod>2026-11-19</lastmod>
+    <lastmod>2026-10-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://anaesthesiacore.app/intensive-care/icu-liver-unit</loc>
-    <lastmod>2026-11-19</lastmod>
+    <lastmod>2026-10-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://anaesthesiacore.app/intensive-care/icu-obstetric-unit</loc>
-    <lastmod>2026-11-19</lastmod>
+    <lastmod>2026-10-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://anaesthesiacore.app/intensive-care/icu-costs</loc>
-    <lastmod>2026-11-19</lastmod>
+    <lastmod>2026-10-25</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://anaesthesiacore.app/intensive-care/icu-cost-by-condition</loc>
-    <lastmod>2026-11-19</lastmod>
+    <lastmod>2026-10-25</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://anaesthesiacore.app/intensive-care/icu-length-of-stay</loc>
-    <lastmod>2026-11-19</lastmod>
+    <lastmod>2026-10-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -230,79 +230,79 @@
   </url>
   <url>
     <loc>https://anaesthesiacore.app/intensive-care/mechanical-ventilation</loc>
-    <lastmod>2026-11-19</lastmod>
+    <lastmod>2026-11-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://anaesthesiacore.app/intensive-care/peep-management</loc>
-    <lastmod>2026-11-19</lastmod>
+    <lastmod>2026-10-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://anaesthesiacore.app/intensive-care/ventilation-protocols</loc>
-    <lastmod>2026-11-19</lastmod>
+    <lastmod>2026-10-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://anaesthesiacore.app/intensive-care/circulatory-failure</loc>
-    <lastmod>2026-11-19</lastmod>
+    <lastmod>2026-10-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://anaesthesiacore.app/intensive-care/aki-rrt</loc>
-    <lastmod>2026-11-19</lastmod>
+    <lastmod>2026-10-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://anaesthesiacore.app/intensive-care/acute-liver-failure</loc>
-    <lastmod>2026-11-19</lastmod>
+    <lastmod>2026-11-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://anaesthesiacore.app/intensive-care/acute-pancreatitis</loc>
-    <lastmod>2026-11-19</lastmod>
+    <lastmod>2026-11-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://anaesthesiacore.app/intensive-care/abdominal-compartment-syndrome</loc>
-    <lastmod>2026-11-19</lastmod>
+    <lastmod>2026-11-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://anaesthesiacore.app/intensive-care/neurointensive-care</loc>
-    <lastmod>2026-11-19</lastmod>
+    <lastmod>2026-11-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://anaesthesiacore.app/intensive-care/cardiac-output-monitoring</loc>
-    <lastmod>2026-11-19</lastmod>
+    <lastmod>2026-10-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://anaesthesiacore.app/intensive-care/acid-base</loc>
-    <lastmod>2026-11-19</lastmod>
+    <lastmod>2026-10-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://anaesthesiacore.app/intensive-care/metabolic-alkalosis</loc>
-    <lastmod>2026-11-19</lastmod>
+    <lastmod>2026-10-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://anaesthesiacore.app/intensive-care/fluid-balance</loc>
-    <lastmod>2026-11-19</lastmod>
+    <lastmod>2026-10-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -314,73 +314,73 @@
   </url>
   <url>
     <loc>https://anaesthesiacore.app/intensive-care/hypovolaemia</loc>
-    <lastmod>2026-11-19</lastmod>
+    <lastmod>2026-10-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://anaesthesiacore.app/intensive-care/peritonitis</loc>
-    <lastmod>2026-11-19</lastmod>
+    <lastmod>2026-10-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://anaesthesiacore.app/intensive-care/critical-care-overview</loc>
-    <lastmod>2026-11-19</lastmod>
+    <lastmod>2026-10-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://anaesthesiacore.app/intensive-care/icu-inpatient-journey</loc>
-    <lastmod>2026-11-19</lastmod>
+    <lastmod>2026-10-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://anaesthesiacore.app/intensive-care/ards</loc>
-    <lastmod>2026-11-19</lastmod>
+    <lastmod>2026-11-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://anaesthesiacore.app/intensive-care/icu-nutrition</loc>
-    <lastmod>2026-11-19</lastmod>
+    <lastmod>2026-10-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://anaesthesiacore.app/intensive-care/postop-high-risk-icu</loc>
-    <lastmod>2026-11-19</lastmod>
+    <lastmod>2026-10-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://anaesthesiacore.app/intensive-care/icu-endocrine-emergencies</loc>
-    <lastmod>2026-11-19</lastmod>
+    <lastmod>2026-11-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://anaesthesiacore.app/intensive-care/dka</loc>
-    <lastmod>2026-11-19</lastmod>
+    <lastmod>2026-10-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://anaesthesiacore.app/intensive-care/thyroid-storm</loc>
-    <lastmod>2026-11-19</lastmod>
+    <lastmod>2026-10-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://anaesthesiacore.app/intensive-care/adrenal-crisis</loc>
-    <lastmod>2026-11-19</lastmod>
+    <lastmod>2026-11-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://anaesthesiacore.app/intensive-care/pituitary-apoplexy</loc>
-    <lastmod>2026-11-19</lastmod>
+    <lastmod>2026-10-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -392,49 +392,49 @@
   </url>
   <url>
     <loc>https://anaesthesiacore.app/intensive-care/icu-sedation-delirium</loc>
-    <lastmod>2026-11-19</lastmod>
+    <lastmod>2026-10-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://anaesthesiacore.app/intensive-care/organ-donation</loc>
-    <lastmod>2026-11-19</lastmod>
+    <lastmod>2026-11-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://anaesthesiacore.app/intensive-care/antimicrobials-icu</loc>
-    <lastmod>2026-11-19</lastmod>
+    <lastmod>2026-10-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://anaesthesiacore.app/intensive-care/paediatric-icu</loc>
-    <lastmod>2026-11-19</lastmod>
+    <lastmod>2026-11-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://anaesthesiacore.app/intensive-care/burns-icu</loc>
-    <lastmod>2026-11-19</lastmod>
+    <lastmod>2026-10-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://anaesthesiacore.app/intensive-care/haematology-icu</loc>
-    <lastmod>2026-11-19</lastmod>
+    <lastmod>2026-10-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://anaesthesiacore.app/intensive-care/immunology-intensivists</loc>
-    <lastmod>2026-11-19</lastmod>
+    <lastmod>2026-10-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://anaesthesiacore.app/intensive-care/ecmo</loc>
-    <lastmod>2026-11-19</lastmod>
+    <lastmod>2026-11-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -446,31 +446,31 @@
   </url>
   <url>
     <loc>https://anaesthesiacore.app/intensive-care/infectious-disease-icu</loc>
-    <lastmod>2026-11-19</lastmod>
+    <lastmod>2026-10-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://anaesthesiacore.app/intensive-care/bronchospastic-failure</loc>
-    <lastmod>2026-11-19</lastmod>
+    <lastmod>2026-11-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://anaesthesiacore.app/intensive-care/prognostication-ethics-icu</loc>
-    <lastmod>2026-11-19</lastmod>
+    <lastmod>2026-11-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://anaesthesiacore.app/intensive-care/pics-follow-up</loc>
-    <lastmod>2026-11-19</lastmod>
+    <lastmod>2026-10-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://anaesthesiacore.app/intensive-care/pulmonary-hypertension</loc>
-    <lastmod>2026-11-19</lastmod>
+    <lastmod>2026-09-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -482,19 +482,19 @@
   </url>
   <url>
     <loc>https://anaesthesiacore.app/intensive-care/cardiac-arrest-post-resus</loc>
-    <lastmod>2026-11-19</lastmod>
+    <lastmod>2026-11-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://anaesthesiacore.app/intensive-care/neuroprognostication</loc>
-    <lastmod>2026-11-19</lastmod>
+    <lastmod>2026-10-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://anaesthesiacore.app/intensive-care/end-of-life-communication</loc>
-    <lastmod>2026-11-19</lastmod>
+    <lastmod>2026-10-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>

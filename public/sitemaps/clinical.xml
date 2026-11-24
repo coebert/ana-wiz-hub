@@ -2,13 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://anaesthesiacore.app/clinical</loc>
-    <lastmod>2026-11-19</lastmod>
+    <lastmod>2026-07-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://anaesthesiacore.app/clinical/airway-management</loc>
-    <lastmod>2026-11-19</lastmod>
+    <lastmod>2026-11-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -26,7 +26,7 @@
   </url>
   <url>
     <loc>https://anaesthesiacore.app/clinical/paediatric-anaesthesia</loc>
-    <lastmod>2026-11-19</lastmod>
+    <lastmod>2026-11-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -62,19 +62,19 @@
   </url>
   <url>
     <loc>https://anaesthesiacore.app/clinical/resource-poor-anaesthesia</loc>
-    <lastmod>2026-11-19</lastmod>
+    <lastmod>2026-10-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://anaesthesiacore.app/clinical/mass-casualty-military</loc>
-    <lastmod>2026-11-19</lastmod>
+    <lastmod>2026-10-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://anaesthesiacore.app/clinical/pain-medicine</loc>
-    <lastmod>2026-11-19</lastmod>
+    <lastmod>2026-11-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -86,49 +86,49 @@
   </url>
   <url>
     <loc>https://anaesthesiacore.app/clinical/anaesthesia-basics</loc>
-    <lastmod>2026-11-19</lastmod>
+    <lastmod>2026-10-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://anaesthesiacore.app/clinical/orthopaedic-anaesthesia</loc>
-    <lastmod>2026-11-19</lastmod>
+    <lastmod>2026-10-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://anaesthesiacore.app/clinical/ophthalmic-anaesthesia</loc>
-    <lastmod>2026-11-19</lastmod>
+    <lastmod>2026-10-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://anaesthesiacore.app/clinical/day-surgery</loc>
-    <lastmod>2026-11-19</lastmod>
+    <lastmod>2026-10-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://anaesthesiacore.app/clinical/operating-theatre-environment</loc>
-    <lastmod>2026-11-19</lastmod>
+    <lastmod>2026-10-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://anaesthesiacore.app/clinical/procedural-sedation</loc>
-    <lastmod>2026-11-19</lastmod>
+    <lastmod>2026-10-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://anaesthesiacore.app/clinical/transfer-medicine</loc>
-    <lastmod>2026-11-19</lastmod>
+    <lastmod>2026-10-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://anaesthesiacore.app/clinical/patient-positioning</loc>
-    <lastmod>2026-11-19</lastmod>
+    <lastmod>2026-09-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -140,73 +140,73 @@
   </url>
   <url>
     <loc>https://anaesthesiacore.app/clinical/general-colorectal-surgery</loc>
-    <lastmod>2026-11-19</lastmod>
+    <lastmod>2026-10-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://anaesthesiacore.app/clinical/surgical-protocols</loc>
-    <lastmod>2026-11-19</lastmod>
+    <lastmod>2026-10-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://anaesthesiacore.app/clinical/vascular-anaesthesia</loc>
-    <lastmod>2026-11-19</lastmod>
+    <lastmod>2026-10-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://anaesthesiacore.app/clinical/ent-anaesthesia</loc>
-    <lastmod>2026-11-19</lastmod>
+    <lastmod>2026-11-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://anaesthesiacore.app/clinical/burns-plastics</loc>
-    <lastmod>2026-11-19</lastmod>
+    <lastmod>2026-09-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://anaesthesiacore.app/clinical/emergency-surgery</loc>
-    <lastmod>2026-11-19</lastmod>
+    <lastmod>2026-10-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://anaesthesiacore.app/clinical/urological-anaesthesia</loc>
-    <lastmod>2026-11-19</lastmod>
+    <lastmod>2026-10-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://anaesthesiacore.app/clinical/gynaecological-anaesthesia</loc>
-    <lastmod>2026-11-19</lastmod>
+    <lastmod>2026-10-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://anaesthesiacore.app/clinical/hepatobiliary-transplant</loc>
-    <lastmod>2026-11-19</lastmod>
+    <lastmod>2026-09-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://anaesthesiacore.app/clinical/plastic-surgery</loc>
-    <lastmod>2026-11-19</lastmod>
+    <lastmod>2026-09-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://anaesthesiacore.app/clinical/interventional-radiology</loc>
-    <lastmod>2026-11-19</lastmod>
+    <lastmod>2026-10-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://anaesthesiacore.app/clinical/elderly-anaesthesia</loc>
-    <lastmod>2026-11-19</lastmod>
+    <lastmod>2026-10-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
