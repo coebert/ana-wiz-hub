@@ -971,6 +971,48 @@ export type Database = {
         }
         Relationships: []
       }
+      podcast_review_drafts: {
+        Row: {
+          created_at: string
+          draft_script: string
+          hold_reasons: Json
+          id: string
+          review_note: string | null
+          reviewed_at: string | null
+          reviewed_by: string | null
+          status: string
+          topic_id: string
+          topic_title: string
+          updated_at: string
+        }
+        Insert: {
+          created_at?: string
+          draft_script: string
+          hold_reasons?: Json
+          id?: string
+          review_note?: string | null
+          reviewed_at?: string | null
+          reviewed_by?: string | null
+          status?: string
+          topic_id: string
+          topic_title: string
+          updated_at?: string
+        }
+        Update: {
+          created_at?: string
+          draft_script?: string
+          hold_reasons?: Json
+          id?: string
+          review_note?: string | null
+          reviewed_at?: string | null
+          reviewed_by?: string | null
+          status?: string
+          topic_id?: string
+          topic_title?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
       podcasts: {
         Row: {
           audio_path: string | null

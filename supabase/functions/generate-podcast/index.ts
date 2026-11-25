@@ -1418,14 +1418,117 @@ async function sha256Hex(text: string): Promise<string> {
 
 
 
+// ── Held-episode review ────────────────────────────────────────────────────
+// Held recordings are replaced only through an admin-reviewed draft: a fresh
+// script is drafted from the current topic text with the hold reasons as
+// must-fix notes, an admin approves the exact text, and only then is new audio
+// recorded to a new file. The original script and audio file are never touched
+// (the protect_held_podcast_content trigger enforces this too).
+export const heldAudioPath = (topicId: string, voice: string, stamp: number) =>
+  `${topicId}--${voice}--reviewed-${stamp}.mp3`;
+
+const runInBackground = (work: Promise<unknown>) => {
+  // @ts-expect-error — EdgeRuntime is a Supabase Edge Runtime global.
+  if (typeof EdgeRuntime !== "undefined" && EdgeRuntime?.waitUntil) EdgeRuntime.waitUntil(work);
+};
+
+async function handleHoldMode(req: Request, body: { mode: string; topicId?: unknown }) {
+  const supabase = createClient(SUPABASE_URL, SERVICE_ROLE);
+  const callerId = await getAuthedUserId(req);
+  if (!callerId) return jsonResponse({ error: "Sign in required", code: "UNAUTHENTICATED" }, 401);
+  if (!(await isAdminUser(callerId))) return jsonResponse({ error: "Administrators only", code: "FORBIDDEN" }, 403);
+  const topicId = body.topicId;
+  if (typeof topicId !== "string" || !TOPIC_ID_ALLOWLIST.has(topicId)) {
+    return jsonResponse({ error: "Unknown topicId" }, 400);
+  }
+  const { data: held } = await supabase
+    .from("podcasts").select("id,voice,topic_title,audit_hold_reason,audio_path")
+    .eq("topic_id", topicId).eq("audit_hold", true);
+  if (!held?.length) return jsonResponse({ error: "This topic has no held episodes" }, 409);
+  const title = held[0].topic_title as string;
+
+  if (body.mode === "hold_draft") {
+    // Topic text comes only from the private build corpus in storage (uploaded
+    // from data-build/audit-corpus.json), never from a browser request.
+    const { data: blob, error: dlErr } = await supabase.storage.from("audit-corpus").download("audit-corpus.json");
+    if (dlErr || !blob) return jsonResponse({ error: "Topic text is unavailable" }, 503);
+    const corpus = JSON.parse(await blob.text()) as { generated_at?: string; entries?: { topic_id: string; text: string }[] };
+    const text = (corpus.entries ?? []).find((e) => e.topic_id === topicId)?.text?.slice(0, 145_000) ?? "";
+    if (text.length < 200) return jsonResponse({ error: "No current topic text found" }, 422);
+    const { data: existingDraft } = await supabase.from("podcast_review_drafts").select("status").eq("topic_id", topicId).maybeSingle();
+    if (existingDraft?.status === "approved" || existingDraft?.status === "recorded") {
+      return jsonResponse({ error: "An approved script already exists for this topic" }, 409);
+    }
+    const reasons = [...new Set(held.map((h) => (h.audit_hold_reason as string | null) ?? "").filter(Boolean))];
+    const fixes = reasons.map((r, i) => `${i + 1}. ${r}`).join("\n");
+    const prompt = (m: number, w: number) => `${buildSystemPrompt(m, w)}
+
+MANDATORY CORRECTIONS. A previous recording of this topic was withdrawn for these clinical errors. The new script must not repeat them, must follow the current source content, and must state the corrected point accurately where it is relevant:
+${fixes || "Recording withdrawn during clinical-content correction; follow the current source content exactly."}
+Never add doses, thresholds or recommendations that are not in the source content.`;
+    runInBackground((async () => {
+      try {
+        const script = await generatePodcastScript(title, text, prompt, relayChat);
+        await supabase.from("podcast_review_drafts").upsert({
+          topic_id: topicId, topic_title: title, hold_reasons: reasons, draft_script: script,
+          status: "draft", review_note: null, reviewed_by: null, reviewed_at: null,
+        }, { onConflict: "topic_id" });
+      } catch (e) {
+        console.error(`[hold_draft ${topicId}]`, e instanceof Error ? e.message : String(e));
+      }
+    })());
+    return jsonResponse({ status: "drafting" }, 202);
+  }
+
+  if (body.mode === "hold_record") {
+    const { data: draft } = await supabase.from("podcast_review_drafts").select("*").eq("topic_id", topicId).maybeSingle();
+    if (!draft || draft.status !== "approved" || !draft.reviewed_by || !draft.draft_script) {
+      return jsonResponse({ error: "Approve the reviewed script before recording", code: "NOT_APPROVED" }, 409);
+    }
+    const script = draft.draft_script as string;
+    const contentHash = await sha256Hex(script);
+    runInBackground((async () => {
+      let allOk = true;
+      for (const row of held) {
+        try {
+          const { id: voice, preset } = resolveVoice(row.voice);
+          const parts = await synthesiseChunksParallel(chunkScript(script), topicId, preset);
+          const path = heldAudioPath(topicId, voice, Date.now());
+          if (path === row.audio_path) throw new Error("Replacement must use a new file");
+          const { error: upErr } = await supabase.storage.from("podcasts")
+            .upload(path, concatMp3(parts), { contentType: "audio/mpeg", upsert: false });
+          if (upErr) throw new Error(upErr.message);
+          const { error: rowErr } = await supabase.from("podcasts").update({
+            script, audio_path: path, status: "ready", audit_hold: false, audit_hold_reason: null,
+            duration_seconds: Math.round(script.split(/\s+/).length / 2.5), content_hash: contentHash,
+            regenerating: false, error_message: null,
+          }).eq("id", row.id).eq("audit_hold", true);
+          if (rowErr) throw new Error(rowErr.message);
+        } catch (e) {
+          allOk = false;
+          const msg = e instanceof Error ? e.message : String(e);
+          console.error(`[hold_record ${topicId}/${row.voice}]`, msg);
+          await supabase.from("podcasts").update({ error_message: `Reviewed re-record failed: ${msg}`.slice(0, 500) }).eq("id", row.id);
+        }
+      }
+      if (allOk) await supabase.from("podcast_review_drafts").update({ status: "recorded" }).eq("id", draft.id);
+    })());
+    return jsonResponse({ status: "recording", voices: held.length }, 202);
+  }
+  return jsonResponse({ error: "Unknown mode" }, 400);
+}
+
 Deno.serve(async (req) => {
   if (req.method === "OPTIONS") return new Response(null, { headers: corsHeaders });
 
   const supabase = createClient(SUPABASE_URL, SERVICE_ROLE);
 
   try {
-    const { topicId, topicTitle, content, force, regeneratePassword, voiceId, preserveExisting, refreshScript } =
-      (await req.json()) as RequestBody;
+    const rawBody = (await req.json()) as RequestBody & { mode?: string };
+    if (rawBody?.mode === "hold_draft" || rawBody?.mode === "hold_record") {
+      return await handleHoldMode(req, rawBody);
+    }
+    const { topicId, topicTitle, content, force, regeneratePassword, voiceId, preserveExisting, refreshScript } = rawBody;
     const internalRequest = req.headers.get("x-internal-token") === SERVICE_ROLE;
     const { id: voiceIdResolved, preset: voicePreset } = resolveVoice(voiceId);
 

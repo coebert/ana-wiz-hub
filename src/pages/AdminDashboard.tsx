@@ -1084,6 +1084,14 @@ const AdminDashboard = () => {
             <Button
               variant="outline"
               size="sm"
+              onClick={() => navigate("/admin/podcast-holds")}
+              aria-label="Review and re-record held podcast episodes"
+            >
+              Held episodes
+            </Button>
+            <Button
+              variant="outline"
+              size="sm"
               onClick={() => navigate("/admin/donations")}
               aria-label="View and record donations"
             >
