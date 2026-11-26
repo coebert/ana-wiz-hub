@@ -2,9 +2,19 @@ import { ReactNode } from "react";
 import { Navigate } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import { useAuth } from "@/hooks/useAuth";
+import { useBase44AdminSession } from "@/hooks/useBase44AdminSession";
+import { Base44AdminGate } from "@/components/layout/Base44AdminGate";
 
 export const RequireAdmin = ({ children }: { children: ReactNode }) => {
   const { user, isAdmin, loading } = useAuth();
+  const base44AdminSession = useBase44AdminSession();
+
+  // Staged cutover: only when the opt-in flag is on does the admin gate resolve
+  // its session from Base44. With the flag off this branch is never taken and
+  // the Supabase check below is exactly the production behaviour.
+  if (base44AdminSession.enabled) {
+    return <Base44AdminGate>{children}</Base44AdminGate>;
+  }
 
   if (loading) {
     return (

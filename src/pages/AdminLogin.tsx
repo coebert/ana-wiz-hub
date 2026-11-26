@@ -1,7 +1,8 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Navigate, useNavigate } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import { useAuth } from "@/hooks/useAuth";
+import { useBase44AdminSession } from "@/hooks/useBase44AdminSession";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -13,12 +14,15 @@ const AdminLogin = () => {
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
   const { signIn } = useAuth();
+  const base44AdminSession = useBase44AdminSession();
   const navigate = useNavigate();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
-    const { error } = await signIn(email, password);
+    const { error } = base44AdminSession.enabled
+      ? await base44AdminSession.signIn(email, password)
+      : await signIn(email, password);
     setLoading(false);
     if (error) {
       toast.error(error);
@@ -26,6 +30,10 @@ const AdminLogin = () => {
       navigate("/admin");
     }
   };
+
+  if (base44AdminSession.enabled && base44AdminSession.status === "admin") {
+    return <Navigate to="/admin" replace />;
+  }
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-background px-4">
@@ -44,6 +52,11 @@ const AdminLogin = () => {
           </div>
           <h1 className="text-2xl font-serif font-bold text-foreground">Admin Login</h1>
           <p className="text-sm text-muted-foreground">Sign in to access the admin dashboard</p>
+          {base44AdminSession.enabled && (
+            <p className="text-xs text-muted-foreground">
+              Staged Base44 admin session. Learner accounts and production sign-in are unchanged.
+            </p>
+          )}
         </div>
         <form onSubmit={handleSubmit} className="space-y-4">
           <div className="space-y-2">
