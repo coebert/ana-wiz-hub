@@ -1,0 +1,11 @@
+# Edge 404 Worker for anaesthesiacore.app. Not deployed automatically.
+# Deploy (after `npm run gen:route-manifest`): npx wrangler deploy -c cloudflare/wrangler.toml
+# Requires the domain's DNS to be proxied (orange cloud) through this Cloudflare zone.
+name = "anaesthesiacore-not-found"
+main = "not-found-worker.ts"
+compatibility_date = "2026-11-01"
+workers_dev = false
+routes = [
+  { pattern = "anaesthesiacore.app/*", zone_name = "anaesthesiacore.app" },
+  { pattern = "www.anaesthesiacore.app/*", zone_name = "anaesthesiacore.app" },
+]

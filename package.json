@@ -48,7 +48,8 @@
     "gen:anatomy-sources": "bun scripts/generate-anatomy-sources.ts",
     "test:layout": "playwright test tests/visual/diagram-text-squish.spec.ts",
     "test:diagram-snapshots": "npm run gen:diagram-snapshots && playwright test tests/visual/diagram-snapshots.spec.ts",
-    "test:e2e": "playwright test tests/e2e --project=chromium --project=firefox --project=webkit"
+    "test:e2e": "playwright test tests/e2e --project=chromium --project=firefox --project=webkit",
+    "gen:route-manifest": "tsx scripts/generate-route-manifest.ts"
   },
   "dependencies": {
     "@ai-sdk/openai-compatible": "^2.0.51",
