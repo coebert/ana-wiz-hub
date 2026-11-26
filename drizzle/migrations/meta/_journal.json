@@ -162,6 +162,13 @@
       "when": 1795619885372,
       "tag": "0022_podcast_review_drafts",
       "breakpoints": true
+    },
+    {
+      "idx": 23,
+      "version": "7",
+      "when": 1795704625642,
+      "tag": "0023_public_errata_readable",
+      "breakpoints": true
     }
   ]
 }
