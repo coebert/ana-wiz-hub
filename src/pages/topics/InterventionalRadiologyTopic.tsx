@@ -120,7 +120,10 @@ const InterventionalRadiologyTopic = () => {
           <ExamSection id="mri-anaesthesia" exams={[Exam.FINAL]}>
             <CollapsibleSubsection title="Anaesthesia in the MRI Suite">
             <p className="text-muted-foreground leading-relaxed mb-3">
-              MRI anaesthesia carries hazards distinct from other IR settings, governed by <InlineRef topicId="interventional-radiology" refLabel="Assoc Anaesth MRI 2021" />. The scanner room is divided into <strong className="text-foreground">four zones</strong> with progressively restricted access, from Zone 1 (public) through Zone 4 (the scanner room itself), and only appropriately screened and trained staff should enter Zone 3/4.
+              MRI anaesthesia carries hazards distinct from other IR settings. UK practice follows the MHRA safety guidelines and the Association of Anaesthetists guidance on anaesthesia in MR units
+              <InlineRef topicId="interventional-radiology" refLabel="MHRA MRI 2026" />
+              <InlineRef topicId="interventional-radiology" refLabel="Assoc Anaesth 2019 (MRI)" />. UK guidance does <strong className="text-foreground">not</strong> divide the scanner room into four zones. It defines the <strong className="text-foreground">MR Environment</strong> — the three-dimensional volume around the magnet containing the Faraday-shielded volume and the B0 hazard area, the region where the static field may exceed the 0.9 mT threshold — inside a locally defined <strong className="text-foreground">MR Controlled Access Area</strong>: a buffer zone with restricted entry and signage at every entrance, where every individual must be screened before entry and anyone who is not an MR authorised person must be supervised. The familiar <strong className="text-foreground">Zones I–IV</strong> are the US ACR facility-zoning model, not a division of the scanner room, and appear in the MHRA figure only for reference
+              <a className="text-clinical underline" href="https://www.acr.org/Clinical-Resources/Clinical-Tools-and-Reference/Radiology-Safety/MR-Safety" target="_blank" rel="noreferrer">(ACR MR safety)</a>.
             </p>
             <div className="bg-card border border-border rounded-lg p-4 mb-3">
               <h3 className="font-semibold text-foreground mb-2">Static Field Hazards</h3>
@@ -142,7 +145,7 @@ const InterventionalRadiologyTopic = () => {
               <h3 className="font-semibold text-foreground mb-2">Equipment Requirements</h3>
               <ul className="list-disc list-inside space-y-1 text-sm text-muted-foreground">
                 <li>MR-conditional anaesthetic machine, monitors and syringe pumps sited within the approved field strength</li>
-                <li>Long breathing circuits and extended infusion/monitoring lines running from Zone 3 equipment through a waveguide</li>
+                <li>Long breathing circuits and extended infusion/monitoring lines running from equipment in the MR Controlled Access Area through a waveguide</li>
                 <li>Non-ferrous laryngoscopes and aluminium/non-ferromagnetic gas cylinders only</li>
               </ul>
             </div>
@@ -158,7 +161,7 @@ const InterventionalRadiologyTopic = () => {
             <div className="bg-card border border-border rounded-lg p-4">
               <h3 className="font-semibold text-foreground mb-2">Emergency Planning</h3>
               <ul className="list-disc list-inside space-y-1 text-sm text-muted-foreground">
-                <li>A rehearsed cardiac arrest protocol with immediate removal of the patient from Zone 4 to a designated resuscitation area outside the field</li>
+                <li>A rehearsed cardiac arrest protocol with immediate removal of the patient from the MR examination room to a designated resuscitation area outside the field</li>
                 <li>No ferromagnetic resuscitation equipment is taken into the scanner room</li>
                 <li><strong className="text-foreground">Quench</strong> (rapid loss of superconductivity, releasing helium gas) risks room asphyxia, cryogenic burns and a rapid pressure rise — know the location of the emergency quench button and door release</li>
               </ul>

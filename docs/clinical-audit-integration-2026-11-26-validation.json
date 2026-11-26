@@ -1,0 +1,138 @@
+{
+  "review_date": "2026-11-26",
+  "main_sha": "f5d32f7634619a3139a865ea6b3d575e3ee39963",
+  "audit_sha": "506d18b0c10a28ccc5474d56dac149af43118317",
+  "runtime": "Node 24.22.3 / Vitest 3.2.6, maxWorkers=2",
+  "main": {
+    "numPassedTests": 3252,
+    "numFailedTests": 24,
+    "numPendingTests": 31,
+    "numTotalTests": 3307
+  },
+  "integration": {
+    "numPassedTests": 3325,
+    "numFailedTests": 24,
+    "numPendingTests": 27,
+    "numTotalTests": 3376
+  },
+  "new_failed_assertions": [],
+  "shared_failed_assertions": [
+    [
+      "approved-model-replacements.test.ts",
+      "Approved supported-model replacements preserves audit routing, drug-check timeout and podcast speech"
+    ],
+    [
+      "approved-model-replacements.test.ts",
+      "Approved supported-model replacements uses the approved model in _shared/moderation.ts"
+    ],
+    [
+      "approved-model-replacements.test.ts",
+      "Approved supported-model replacements uses the approved model in audit-topics/index.ts"
+    ],
+    [
+      "approved-model-replacements.test.ts",
+      "Approved supported-model replacements uses the approved model in generate-podcast/index.ts"
+    ],
+    [
+      "approved-model-replacements.test.ts",
+      "Approved supported-model replacements uses the approved model in submit-review/index.ts"
+    ],
+    [
+      "approved-model-replacements.test.ts",
+      "Approved supported-model replacements uses the approved model in verify-drugs/index.ts"
+    ],
+    [
+      "jsonld-route-coverage.test.ts",
+      "JSON-LD per-route coverage Viva question library (/viva/library): every page resolves required @type(s) \u2192 FAQPage"
+    ],
+    [
+      "jsonld-route-params.test.ts",
+      "JSON-LD parameterised route mapping (fixture-driven) every expanded URL satisfies its expected JSON-LD @types (n=12)"
+    ],
+    [
+      "jsonld-route-params.test.ts",
+      "JSON-LD parameterised route mapping (fixture-driven) every parameter in every parameterised route has a fixture sample"
+    ],
+    [
+      "jsonld-structured-data.test.ts",
+      "JSON-LD structured data key template 'src/pages/VivaQuestionLibrary.tsx' has documented JSON-LD coverage ('FAQPage')"
+    ],
+    [
+      "jsonld-url-mapping.test.ts",
+      "JSON-LD route-to-URL mapping FAQ URLs ship FAQPage (n=1)"
+    ],
+    [
+      "live-sitemap.test.ts",
+      "live per-section sitemaps GET /sitemaps/anatomy.xml returns 200 and matches repo entries"
+    ],
+    [
+      "live-sitemap.test.ts",
+      "live per-section sitemaps GET /sitemaps/chemistry.xml returns 200 and matches repo entries"
+    ],
+    [
+      "live-sitemap.test.ts",
+      "live per-section sitemaps GET /sitemaps/clinical.xml returns 200 and matches repo entries"
+    ],
+    [
+      "live-sitemap.test.ts",
+      "live per-section sitemaps GET /sitemaps/core.xml returns 200 and matches repo entries"
+    ],
+    [
+      "live-sitemap.test.ts",
+      "live per-section sitemaps GET /sitemaps/drugs.xml returns 200 and matches repo entries"
+    ],
+    [
+      "live-sitemap.test.ts",
+      "live per-section sitemaps GET /sitemaps/intensive-care.xml returns 200 and matches repo entries"
+    ],
+    [
+      "live-sitemap.test.ts",
+      "live per-section sitemaps GET /sitemaps/perioperative.xml returns 200 and matches repo entries"
+    ],
+    [
+      "live-sitemap.test.ts",
+      "live per-section sitemaps GET /sitemaps/pharmacology.xml returns 200 and matches repo entries"
+    ],
+    [
+      "live-sitemap.test.ts",
+      "live per-section sitemaps GET /sitemaps/physics.xml returns 200 and matches repo entries"
+    ],
+    [
+      "live-sitemap.test.ts",
+      "live per-section sitemaps GET /sitemaps/physiology.xml returns 200 and matches repo entries"
+    ],
+    [
+      "seo-regression.test.ts",
+      "SEO: meta tag coverage /my-enquiries (src/pages/SupportInbox.tsx) declares per-route SEO meta"
+    ],
+    [
+      "seo-regression.test.ts",
+      "SEO: meta tag coverage /my-enquiries/:ticketId (src/pages/SupportInbox.tsx) declares per-route SEO meta"
+    ],
+    [
+      "seo-regression.test.ts",
+      "SEO: meta tag coverage /viva/voice (src/pages/VoiceViva.tsx) declares per-route SEO meta"
+    ]
+  ],
+  "focused_tests": {
+    "files": 10,
+    "passed": 104
+  },
+  "typecheck": {
+    "command": "node node_modules/typescript/bin/tsc -p tsconfig.app.json --noEmit",
+    "exit_code": 0
+  },
+  "main_only_files_preserved": 25,
+  "generated_conflicts_resolved": 4,
+  "safety_gate": "fails: existing repository debt plus three new citation-placement flags on checked claims",
+  "dose_range_gate": "fails on existing repository debt; no increased reported count versus main",
+  "browser": "not verified: Chromium executable absent",
+  "main_merged": false,
+  "deployment_initiated": false,
+  "vite_bundle": {
+    "command": "bun node_modules/vite/bin/vite.js build",
+    "exit_code": 0,
+    "full_npm_release_lifecycle": false
+  },
+  "remote_delivery": "git push failed: no git credentials; local branch and verified Git bundle provided"
+}

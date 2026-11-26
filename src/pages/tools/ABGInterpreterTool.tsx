@@ -1,145 +1,94 @@
 import { useMemo, useState } from "react";
 import { ToolShell } from "@/components/tools/ToolShell";
-
-interface Interpretation {
-  primary: string;
-  compensation: string;
-  expected: string;
-  anionGap?: string;
-  notes: string[];
-}
-
-/** Boston-rules acid–base interpretation. pCO2 in kPa, HCO3 in mmol/L. */
-function interpret({
-  pH,
-  pCO2,
-  HCO3,
-  Na,
-  Cl,
-}: {
-  pH: number;
-  pCO2: number;
-  HCO3: number;
-  Na?: number;
-  Cl?: number;
-}): Interpretation {
-  // Convert kPa → mmHg for Boston compensation formulas
-  const pCO2mmHg = pCO2 * 7.5;
-  const notes: string[] = [];
-  let primary = "";
-  let compensation = "";
-  let expected = "";
-
-  const acidaemic = pH < 7.35;
-  const alkalaemic = pH > 7.45;
-
-  if (acidaemic) {
-    if (pCO2mmHg > 45) {
-      primary = "Respiratory acidosis";
-      const expHCO3acute = 24 + (pCO2mmHg - 40) * 0.1;
-      const expHCO3chronic = 24 + (pCO2mmHg - 40) * 0.35;
-      expected = `Expected HCO₃⁻ acute ${expHCO3acute.toFixed(
-        1
-      )} / chronic ${expHCO3chronic.toFixed(1)} mmol/L`;
-      compensation =
-        HCO3 > expHCO3chronic + 2
-          ? "with concurrent metabolic alkalosis"
-          : HCO3 < expHCO3acute - 2
-          ? "with concurrent metabolic acidosis"
-          : HCO3 > expHCO3acute + 2
-          ? "with chronic renal compensation"
-          : "acute, minimal compensation";
-    } else if (HCO3 < 22) {
-      primary = "Metabolic acidosis";
-      const expPCO2 = 1.5 * HCO3 + 8; // Winters, mmHg
-      expected = `Winters: expected pCO₂ ${expPCO2.toFixed(0)} mmHg (${(
-        expPCO2 / 7.5
-      ).toFixed(1)} kPa)`;
-      compensation =
-        pCO2mmHg > expPCO2 + 2
-          ? "with concurrent respiratory acidosis"
-          : pCO2mmHg < expPCO2 - 2
-          ? "with concurrent respiratory alkalosis"
-          : "with appropriate respiratory compensation";
-    } else {
-      primary = "Acidaemia, mixed pattern";
-      compensation = "review pCO₂ and HCO₃⁻ together";
-    }
-  } else if (alkalaemic) {
-    if (HCO3 > 26) {
-      primary = "Metabolic alkalosis";
-      const expPCO2 = 0.7 * HCO3 + 21; // mmHg
-      expected = `Expected pCO₂ ${expPCO2.toFixed(0)} mmHg (${(
-        expPCO2 / 7.5
-      ).toFixed(1)} kPa)`;
-      compensation =
-        pCO2mmHg < expPCO2 - 2
-          ? "with concurrent respiratory alkalosis"
-          : pCO2mmHg > expPCO2 + 2
-          ? "with concurrent respiratory acidosis"
-          : "with appropriate respiratory compensation";
-    } else if (pCO2mmHg < 35) {
-      primary = "Respiratory alkalosis";
-      const expHCO3acute = 24 - (40 - pCO2mmHg) * 0.2;
-      const expHCO3chronic = 24 - (40 - pCO2mmHg) * 0.4;
-      expected = `Expected HCO₃⁻ acute ${expHCO3acute.toFixed(
-        1
-      )} / chronic ${expHCO3chronic.toFixed(1)} mmol/L`;
-      compensation =
-        HCO3 < expHCO3chronic - 2
-          ? "with concurrent metabolic acidosis"
-          : "acute or chronic per HCO₃⁻";
-    } else {
-      primary = "Alkalaemia, mixed pattern";
-      compensation = "review pCO₂ and HCO₃⁻ together";
-    }
-  } else {
-    primary = "Normal pH";
-    if (pCO2mmHg > 45 || pCO2mmHg < 35 || HCO3 < 22 || HCO3 > 26) {
-      compensation = "but abnormal pCO₂/HCO₃⁻ — fully compensated or mixed disorder";
-    } else {
-      compensation = "no disturbance";
-    }
-  }
-
-  let anionGap: string | undefined;
-  if (Na != null && Cl != null && Na > 0 && Cl > 0) {
-    const ag = Na - (Cl + HCO3);
-    anionGap = `Anion gap ${ag.toFixed(0)} mmol/L (normal ~8–12; add ~2.5 × (4 − albumin g/dL) if hypoalbuminaemic).`;
-    if (ag > 12) notes.push("Raised anion gap — consider MUDPILES.");
-  }
-
-  return { primary, compensation, expected, anionGap, notes };
-}
+import {
+  interpretAbg,
+  parseAbgValue,
+  MMHG_PER_KPA,
+} from "@/lib/abg-interpretation";
 
 export default function ABGInterpreterTool() {
-  const [pH, setPH] = useState(7.25);
-  const [pCO2, setPCO2] = useState(3.5);
-  const [HCO3, setHCO3] = useState(14);
-  const [Na, setNa] = useState(140);
-  const [Cl, setCl] = useState(105);
+  // Plausible demonstration from a single arterial sample: a lactic
+  // acidosis with appropriate respiratory compensation.
+  const [pH, setPH] = useState("7.25");
+  const [pCO2, setPCO2] = useState("3.2");
+  const [HCO3, setHCO3] = useState("10");
+  // Optional electrolytes start blank: the anion gap must never be calculated
+  // from demonstration numbers the user did not enter.
+  const [Na, setNa] = useState("");
+  const [Cl, setCl] = useState("");
 
   const result = useMemo(
-    () => interpret({ pH, pCO2, HCO3, Na, Cl }),
-    [pH, pCO2, HCO3, Na, Cl]
+    () =>
+      interpretAbg({
+        pH: parseAbgValue(pH),
+        pCO2KPa: parseAbgValue(pCO2),
+        hco3: parseAbgValue(HCO3),
+        na: parseAbgValue(Na),
+        cl: parseAbgValue(Cl),
+      }),
+    [pH, pCO2, HCO3, Na, Cl],
   );
+
+  const interpreted = result.status === "interpreted";
+  const tone =
+    result.status === "inconsistent"
+      ? "border-amber-500/50 bg-amber-500/10"
+      : "border-border bg-muted/40";
 
   return (
     <ToolShell
       slug="abg-interpreter"
       title="ABG interpreter"
-      description="Acid–base interpretation using the Boston rules: identifies primary disturbance, expected compensation, and anion gap."
+      description="Acid–base interpretation using the Boston rules: identifies the primary disturbance, expected compensation, and anion gap."
       intro={
         <>
-          Enter pH, pCO₂ (kPa) and HCO₃⁻. Optional Na⁺/Cl⁻ unlocks the anion gap.
-          Uses Boston-rules compensation formulas.
+          Enter pH, pCO₂ (kPa) and HCO₃⁻ from the <strong>same arterial sample</strong>.
+          pCO₂ is converted to mmHg at {MMHG_PER_KPA} mmHg per kPa before the
+          compensation rules are applied. The optional Na⁺/Cl⁻ fields start
+          blank and unlock the anion gap only once you enter both; the gap is
+          shown against your local laboratory&apos;s reference interval. Values
+          that are not mutually consistent are flagged rather than interpreted.
         </>
       }
       references={
         <>
           <p>
-            Berend K et al. Physiological approach to assessment of acid–base
-            disturbances. N Engl J Med 2014; 371:1434–45.
+            Berend K, de Vries APJ, Gans ROB. Physiological approach to
+            assessment of acid–base disturbances. N Engl J Med.
+            2014;371(15):1434–1445.{" "}
+            <a
+              className="underline"
+              href="https://doi.org/10.1056/NEJMra1003327"
+              target="_blank"
+              rel="noreferrer"
+            >
+              doi:10.1056/NEJMra1003327
+            </a>{" "}
+            (PMID{" "}
+            <a
+              className="underline"
+              href="https://pubmed.ncbi.nlm.nih.gov/25295502/"
+              target="_blank"
+              rel="noreferrer"
+            >
+              25295502
+            </a>
+            ).
+          </p>
+          <p>
+            Erratum: N Engl J Med. 2014;371(20):1948,{" "}
+            <a
+              className="underline"
+              href="https://doi.org/10.1056/NEJMx140053"
+              target="_blank"
+              rel="noreferrer"
+            >
+              doi:10.1056/NEJMx140053
+            </a>{" "}
+            — corrects the &ldquo;blood urea nitrogen&rdquo; and
+            &ldquo;glucose&rdquo; terms to urine urea nitrogen and urine glucose
+            in the normal anion-gap acidosis equations. It does not change the
+            compensation rules or thresholds used here.
           </p>
           <p>Boston / Winters compensation formulas (standard texts).</p>
         </>
@@ -153,24 +102,53 @@ export default function ABGInterpreterTool() {
         <Input label="Cl⁻ (mmol/L)" value={Cl} step={1} onChange={setCl} />
       </div>
 
-      <div className="mt-5 rounded-xl border border-border bg-muted/40 p-4">
-        <div className="text-xs uppercase text-muted-foreground">Interpretation</div>
-        <div className="mt-1 text-xl font-semibold text-foreground">
-          {result.primary}
+      <div className={`mt-5 rounded-xl border p-4 ${tone}`}>
+        <div className="text-xs uppercase text-muted-foreground">
+          {interpreted ? "Interpretation" : "Input check"}
         </div>
-        <p className="text-sm text-muted-foreground mt-1">{result.compensation}</p>
-        {result.expected && (
-          <p className="text-xs text-muted-foreground mt-2">{result.expected}</p>
-        )}
-        {result.anionGap && (
-          <p className="text-xs text-muted-foreground mt-2">{result.anionGap}</p>
-        )}
-        {result.notes.length > 0 && (
-          <ul className="text-xs text-muted-foreground mt-2 list-disc pl-4">
-            {result.notes.map((n) => (
-              <li key={n}>{n}</li>
-            ))}
-          </ul>
+        {interpreted ? (
+          <>
+            <div className="mt-1 text-xl font-semibold text-foreground">
+              {result.primary}
+            </div>
+            <p className="text-sm text-muted-foreground mt-1">
+              {result.compensation}
+            </p>
+            {result.expected && (
+              <p className="text-xs text-muted-foreground mt-2">
+                {result.expected}
+              </p>
+            )}
+            {result.anionGap && (
+              <p className="text-xs text-muted-foreground mt-2">
+                {result.anionGap}
+              </p>
+            )}
+            {result.notes.length > 0 && (
+              <ul className="text-xs text-muted-foreground mt-2 list-disc pl-4">
+                {result.notes.map((n) => (
+                  <li key={n}>{n}</li>
+                ))}
+              </ul>
+            )}
+            {result.derived && (
+              <p className="text-[11px] text-muted-foreground mt-3">
+                pCO₂ {result.derived.pCO2mmHg.toFixed(0)} mmHg (
+                {parseAbgValue(pCO2)?.toFixed(1)} kPa); Henderson–Hasselbalch pH{" "}
+                {result.derived.expectedPh.toFixed(2)}.
+              </p>
+            )}
+          </>
+        ) : (
+          <p
+            className={`mt-1 text-sm ${
+              result.status === "inconsistent"
+                ? "text-foreground"
+                : "text-muted-foreground"
+            }`}
+          >
+            {result.message}
+          </p>
         )}
       </div>
     </ToolShell>
@@ -184,9 +162,9 @@ function Input({
   onChange,
 }: {
   label: string;
-  value: number;
+  value: string;
   step: number;
-  onChange: (n: number) => void;
+  onChange: (v: string) => void;
 }) {
   return (
     <label className="block text-sm">
@@ -195,7 +173,7 @@ function Input({
         type="number"
         step={step}
         value={value}
-        onChange={(e) => onChange(Number(e.target.value) || 0)}
+        onChange={(e) => onChange(e.target.value)}
         className="mt-1 w-full rounded-lg border border-input bg-background px-3 py-2 text-foreground"
       />
     </label>

@@ -22,7 +22,7 @@ const proceduralSedationFaqs: Array<[string, string]> = [
   ],
   [
     "What monitoring is mandatory for procedural sedation?",
-    "Continuous pulse oximetry, ECG, NIBP every 3–5 min, level of consciousness, and capnography for any moderate or deep sedation (AAGBI/RCoA 2021). Supplemental oxygen, suction, and full resuscitation equipment must be immediately available, and the sedationist must have no other clinical role."
+    "Continuous pulse oximetry, ECG, NIBP every 3–5 min, level of consciousness, and capnography for any moderate or deep sedation (AAGBI/RCoA 2021). Supplemental oxygen, suction, and full resuscitation equipment must be immediately available, and the sedationist must have no other clinical role. For gastrointestinal endoscopy under deep sedation (propofol) or general anaesthesia, the BSG 2023 guideline additionally requires core body temperature to be monitored and recorded."
   ],
   [
     "What are the discharge criteria after procedural sedation?",
@@ -55,10 +55,10 @@ const workedExamples: WorkedExample[] = [
     scenario:
       "A 78-year-old woman (weight 52 kg, eGFR 38, frailty score 5, on apixaban) is booked for diagnostic colonoscopy. Endoscopist requests deep sedation. Discuss your plan.",
     working:
-      "Frail elderly patients are exquisitely sensitive to sedatives — reduced cardiac output prolongs arm-brain time, reduced lean mass alters volume of distribution, reduced hepatic/renal clearance prolongs duration. Deep sedation in this group carries airway, aspiration and cardiovascular risk. Discuss with the endoscopist: moderate sedation is usually adequate. Use small incremental boluses, allow time for peak effect (~90 s after IV propofol), avoid synergistic combinations at full dose. Midazolam 0.5 mg + fentanyl 25 µg as a starting point, titrated. Propofol if available with appropriately trained sedationist — 10–20 mg increments, never exceeding the lowest effective dose. Avoid the propofol + midazolam + opioid 'triple cocktail' which is highly synergistic.",
+      "Frail elderly patients are exquisitely sensitive to sedatives — reduced cardiac output prolongs arm-brain time, reduced lean mass alters volume of distribution, reduced hepatic/renal clearance prolongs duration. Deep sedation in this group carries airway, aspiration and cardiovascular risk. Discuss with the endoscopist: moderate sedation is usually adequate. The BSG guideline recommends half or less of the dose a younger healthy patient would need, given in smaller increments, with each increment titrated to comfort and allowed time to reach peak effect (~90 s after IV propofol). Avoid stacking sedatives: benzodiazepines and opioids act synergistically (the BSG suggests a further 30% reduction if both are used), and adding propofol to that pair deepens respiratory depression unpredictably. If deep propofol sedation is still judged necessary, it is an anaesthetic-team pathway: in the UK deep sedation with propofol or general anaesthesia can only be delivered by trained anaesthetists.",
     answer:
-      "Reframe to moderate sedation. Pre-oxygenate; left lateral position; supplemental O₂ 2 L/min via cannula with ETCO₂; full monitoring; IV access. Midazolam 0.5–1 mg + fentanyl 25 µg titrated, with low-dose propofol top-ups (10 mg) if needed. Reversal drugs (flumazenil, naloxone) immediately available. Extended recovery period and clear discharge criteria (modified Aldrete or PADSS) before going home with a responsible adult. Apixaban: omit morning dose per BSG guidance for low-risk endoscopy.",
-   cites: ["BJA Educ 2021"],
+      "Reframe to moderate sedation. Pre-oxygenate; left lateral position; supplemental O₂ 2 L/min via cannula with ETCO₂; full monitoring; IV access. Titrate one agent at a time to comfort, at half or less of the dose a younger healthy adult would need and in smaller increments, allowing peak effect before the next increment — not a fixed benzodiazepine–opioid–propofol schedule. If deep propofol sedation is still required, involve the anaesthetic team: deep sedation with propofol is delivered by trained anaesthetists, with ECG, non-invasive blood pressure, capnography and core temperature recorded. Reversal drugs (flumazenil, naloxone) immediately available. Extended recovery period and clear discharge criteria (modified Aldrete or PADSS) before going home with a responsible adult. Apixaban: omit morning dose per BSG guidance for low-risk endoscopy.",
+   cites: ["BSG 2023", "BJA Educ 2021"],
   },
 ];
 
@@ -81,7 +81,7 @@ const ProceduralSedationTopic = () => {
         keyPoints: { exams: [Exam.PRIMARY, Exam.FINAL] },
       }}
       sectionSources={{
-        workedExamples: ["DAS Awake Tracheal Intubation 2020", "BSG Endoscopy Sedation 2023", "ASA 2019", "BJA Educ 2021"],
+        workedExamples: ["DAS Awake Tracheal Intubation 2020", "BSG 2023", "ASA 2019", "BJA Educ 2021"],
         keyPoints: ["AAGBI/RCoA 2021", "AoMRC 2013", "ASA 2019", "BJA Educ 2021", "DAS ATI 2020", "BSG 2023"],
       }}
       keyPoints={[
@@ -90,7 +90,7 @@ const ProceduralSedationTopic = () => {
         { text: "Conscious (moderate) sedation: purposeful response to verbal/light tactile stimulus; airway and ventilation maintained; CV function unaffected", cites: ["ASA 2019"] },
         { text: "Minimum monitoring (AAGBI 2021): SpO₂, ETCO₂ (always for moderate/deep), NIBP, ECG, level-of-consciousness scoring (MOAA/S, Ramsay or OAA/S)", cites: ["BJA Educ 2021"] },
         { text: "TCI sedation (propofol Marsh/Schnider, remifentanil Minto) gives stable plasma/effect-site concentrations and rapid titration vs intermittent boluses", cites: ["DAS ATI 2020"] },
-        { text: "Synergy: propofol + midazolam + opioid causes profound respiratory depression — use the lowest effective single agent or carefully titrated pairs", cites: ["BSG 2023"] },
+        { text: "Benzodiazepines and opioids act synergistically: if co-administered, reduce the dose further (the BSG suggests about 30%) and prefer short-acting opioids; titrate to patient comfort rather than to a fixed dose", cites: ["BSG 2023"] },
         { text: "Ketamine sedation preserves airway tone, ventilation and CV stability — first-line in paediatrics, trauma, low-resource and prehospital settings", cites: ["AAGBI/RCoA 2021"] },
         { text: "Dexmedetomidine produces 'arousable' sedation with relatively less respiratory depression; obstruction, hypoventilation and apnoea remain possible and require monitoring — useful for AFOI, MRI, paediatric procedures and ICU bridging", cites: ["AoMRC 2013"] },
       ]}

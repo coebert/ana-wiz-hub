@@ -145,24 +145,31 @@ const workedExamples: WorkedExample[] = [
         (ice-cold pack to the face in an infant) can be tried while preparing drug or electrical
         therapy, but they must not delay treatment in shock.
         <div className="mt-3 bg-secondary/40 border border-border rounded-lg p-3 text-sm">
-          <strong>Common traps.</strong> Adenosine needs a rapid central-ish push and immediate
-          saline flush through a large proximal cannula — a slow injection through a small hand
-          cannula is the usual reason it "fails". Verapamil is contraindicated in infants.
+          <strong>Common traps.</strong> Adenosine needs a rapid push and immediate saline flush
+          through a large proximal vein — a slow injection through a small hand cannula is the
+          usual reason it "fails". It is an adjunct while cardioversion is being set up, never a
+          substitute for it once there is decompensated circulatory failure. Verapamil is
+          contraindicated in infants.
         </div>
       </>
     ),
     answer: (
       <>
-        With decompensated shock, give synchronised cardioversion 1 J/kg (6 J) under sedation,
-        then 2 J/kg if needed; if a large-bore proximal line is already in and the child can wait
-        seconds, adenosine 100 micrograms/kg (0.6 mg) rapid push with a flush is a reasonable
-        first step, escalating to 200 then 300 micrograms/kg. Record a 12-lead ECG in and out of
-        the arrhythmia, correct electrolytes, and involve paediatric cardiology before starting
-        amiodarone or a maintenance agent{" "}
-        <InlineRef topicId="paediatric-icu" refLabel="RCUK PALS 2021" />.
+        Decompensated circulatory failure means immediate synchronised cardioversion, not drug
+        therapy first: 1 J/kg (6 J), doubling with each attempt to a maximum of 4 J/kg (12 J,
+        then 24 J). Have a 12-lead ECG running during the attempt, give analgesia and sedation
+        if the child is not comatose, and reassess signs of life and pulse after each attempt.
+        While anaesthesia and the defibrillator are being prepared, adenosine 0.1–0.2 mg/kg
+        (0.6–1.2 mg, maximum 6 mg) as a rapid flush through a large vein can be attempted, but it
+        must not delay cardioversion; a second dose of 0.3 mg/kg (maximum 12–18 mg) is given only
+        if SVT persists and the child is not in decompensated failure. Record a 12-lead ECG in and
+        out of the arrhythmia, correct electrolytes, and involve paediatric cardiology before
+        starting amiodarone or a maintenance agent{" "}
+        <InlineRef topicId="paediatric-icu" refLabel="RCUK PALS 2025 cardioversion" />{" "}
+        <InlineRef topicId="paediatric-icu" refLabel="RCUK PALS 2025 arrhythmias" />.
       </>
     ),
-    cites: ["RCUK PALS 2021", "APLS 2021"],
+    cites: ["RCUK PALS 2025 cardioversion", "RCUK PALS 2025 arrhythmias"],
   },
   {
     title: "WETFLAG for a 4-year-old in resus",
@@ -235,7 +242,7 @@ const PaediatricIcuTopic = () => {
   },
   {
     text: "Neonatal sepsis frequently presents without fever — poor feeding, lethargy, temperature instability, apnoea, grunting, jaundice, hypoglycaemia or an unexplained metabolic acidosis are the common presentations, and empirical cover must include Listeria and group B streptococcus.",
-    cites: ["NICE NG195", "NICE NG51"],
+    cites: ["NICE NG195", "NICE NG254"],
   },
   {
     text: "Any encephalopathic child with hypoglycaemia, hyperammonaemia or an unexplained acidosis needs the emergency metabolic screen taken during the crisis, stopping of protein and feed, and a glucose infusion delivering 8–10 mg/kg/min; ammonia-lowering therapy and specialist metabolic advice must not wait for a diagnosis.",
@@ -250,8 +257,8 @@ const PaediatricIcuTopic = () => {
     cites: ["RCUK PALS 2025"],
   },
   {
-    text: "Stable SVT is treated with vagal manoeuvres then adenosine 100 micrograms/kg (increasing to 200 then 300 micrograms/kg, adult maximum 12 mg per dose); unstable SVT or VT with a pulse needs synchronised cardioversion at 1 J/kg, then 2 J/kg.",
-    cites: ["RCUK PALS 2021", "APLS 2021"],
+    text: "SVT without decompensated circulatory failure is treated with vagal manoeuvres then adenosine 0.1–0.2 mg/kg (maximum 6 mg) by rapid flush through a large vein, then 0.3 mg/kg (maximum 12–18 mg) if it persists; a tachyarrhythmia with decompensated circulatory failure — SVT or VT — needs immediate synchronised cardioversion at 1 J/kg, doubling with each attempt to a maximum of 4 J/kg, and any drug therapy must not delay it.",
+    cites: ["RCUK PALS 2025 arrhythmias", "RCUK PALS 2025 cardioversion"],
   },
   {
     text: "Childhood stroke is under-recognised because seizures, altered consciousness and non-focal presentations are common in infants; any child with acute focal neurological deficit needs urgent MRI (or CT if MRI cannot be obtained quickly) and discussion with a paediatric neurology and neurointervention centre.",
@@ -616,7 +623,7 @@ const PaediatricIcuTopic = () => {
                     treated as meningococcal disease with immediate antibiotics and no waiting for
                     lumbar puncture; lumbar puncture is deferred in shock, coagulopathy, raised
                     intracranial pressure or focal signs{" "}
-                    <InlineRef topicId="paediatric-icu" refLabel="NICE NG51" />{" "}
+                    <InlineRef topicId="paediatric-icu" refLabel="NICE NG254" />{" "}
                     <InlineRef topicId="paediatric-icu" refLabel="NICE NG240" />.
                   </p>
                 </div>
@@ -660,7 +667,7 @@ const PaediatricIcuTopic = () => {
                 Practically it identifies the sick child who needs escalation rather than replacing the
                 clinical response: <strong>oxygen, cultures, antibiotics with shock-specific urgency, lactate,
                 fluid, early senior/PICU involvement</strong>. Score-based definitions are for
-                epidemiology and audit — treat the child in front of you <InlineRef topicId="paediatric-icu" refLabel="NICE NG51" />.
+                epidemiology and audit — treat the child in front of you <InlineRef topicId="paediatric-icu" refLabel="NICE NG254" />.
               </p>
             </div>
             <FeastTrialTeaching />
@@ -965,7 +972,7 @@ const PaediatricIcuTopic = () => {
                   <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Compression rate</td><td>100–120/min</td><td>100–120/min</td></tr>
                   <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Depth</td><td>⅓ AP (~4 cm)</td><td>⅓ AP (~5 cm)</td></tr>
                   <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">C:V ratio</td><td>15:2</td><td>15:2</td></tr>
-                  <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Defibrillation</td><td>4 J/kg</td><td>4 J/kg</td></tr>
+                  <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Defibrillation</td><td>4 J/kg (then up to 8 J/kg, max 360 J)</td><td>4 J/kg (then up to 8 J/kg, max 360 J)</td></tr>
                   <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Adrenaline</td><td>10 mcg/kg (0.1 ml/kg 1:10,000)</td><td>10 mcg/kg</td></tr>
                   <tr><td className="py-2 font-medium text-foreground">Amiodarone</td><td>5 mg/kg</td><td>5 mg/kg</td></tr>
                 </tbody>
@@ -1012,7 +1019,7 @@ const PaediatricIcuTopic = () => {
                   <div className="bg-card border border-border rounded-lg p-4">
                     <h3 className="font-semibold text-foreground mb-2">Shockable (VF, pulseless VT)</h3>
                     <ul className="list-disc list-inside space-y-1 text-sm text-muted-foreground">
-                      <li>Defibrillate at <strong>4 J/kg</strong> and resume compressions immediately, reassessing every 2 minutes <InlineRef topicId="paediatric-icu" refLabel="RCUK PALS 2021" />.</li>
+                      <li>Defibrillate at <strong>4 J/kg</strong> (escalating stepwise to 8 J/kg, maximum 360 J, for refractory VF/pVT) and resume compressions immediately, reassessing every 2 minutes <InlineRef topicId="paediatric-icu" refLabel="RCUK PALS 2025" />.</li>
                       <li>After the <strong>third</strong> shock give adrenaline 10 micrograms/kg IV/IO (maximum 1 mg) and amiodarone 5 mg/kg; repeat both after the <strong>fifth</strong> shock, with adrenaline then continuing every 3–5 minutes.</li>
                       <li>Use paediatric pads or an attenuator under 8 years where available; adult pads are acceptable if that is all that is available.</li>
                       <li>Think of a channelopathy, myocarditis, poisoning, electrolyte abnormality or an underlying repaired congenital lesion in an unexpected shockable arrest.</li>
@@ -1078,12 +1085,13 @@ const PaediatricIcuTopic = () => {
                     <tr className="border-b border-border">
                       <td className="py-2 font-medium text-foreground">Supraventricular tachycardia</td>
                       <td>Narrow complex, regular, no beat-to-beat variability, rate typically &gt;220 in infants and &gt;180 in children, absent or abnormal P waves</td>
-                      <td><InlineRef topicId="paediatric-icu" refLabel="RCUK PALS 2021" /> Stable: vagal manoeuvres (ice to the face in infants, Valsalva in older children), then adenosine 100 micrograms/kg rapid push with flush, escalating to 200 then 300 micrograms/kg (adult maximum 12 mg per dose). Unstable: synchronised cardioversion 1 J/kg then 2 J/kg with sedation. Amiodarone or procainamide only with cardiology advice</td>
+                      <td><InlineRef topicId="paediatric-icu" refLabel="RCUK PALS 2025 arrhythmias" /> Not in decompensated circulatory failure: vagal manoeuvres (ice to the face in infants, modified Valsalva in older children), then adenosine 0.1–0.2 mg/kg (maximum 6 mg) by rapid flush through a large vein with a 12-lead ECG running, then 0.3 mg/kg (maximum 12–18 mg) if it persists. Decompensated circulatory failure: immediate synchronised cardioversion 1 J/kg, doubling with each attempt to a maximum of 4 J/kg, with sedation if not comatose <InlineRef topicId="paediatric-icu" refLabel="RCUK PALS 2025 cardioversion" />. Amiodarone or procainamide only with cardiology advice</td>
                     </tr>
                     <tr className="border-b border-border">
                       <td className="py-2 font-medium text-foreground">Wide-complex tachycardia with a pulse</td>
                       <td>Rare in children; assume ventricular tachycardia. Look for long QT, myocarditis, electrolyte abnormality, tricyclic or other toxicity, or repaired congenital disease</td>
-                      <td><InlineRef topicId="paediatric-icu" refLabel="RCUK PALS 2021" /> Unstable: synchronised cardioversion 1 J/kg then 2 J/kg. Stable: amiodarone 5 mg/kg over 20–60 min (or procainamide) with cardiology; magnesium sulfate for torsade de pointes; correct potassium and magnesium</td>
+                      <td><InlineRef topicId="paediatric-icu" refLabel="RCUK PALS 2025 cardioversion" /> Decompensated circulatory failure: immediate synchronised cardioversion 1 J/kg, doubling with each attempt to a maximum of 4 J/kg. Not in decompensated failure: vagal manoeuvres and cardiology advice; amiodarone, lidocaine, esmolol, magnesium sulphate or procainamide.
+                        For torsade de pointes, give magnesium sulphate 50 mg/kg (maximum 2 g); correct potassium and magnesium</td>
                     </tr>
                     <tr className="border-b border-border">
                       <td className="py-2 font-medium text-foreground">VF / pulseless VT</td>
@@ -1635,7 +1643,7 @@ const PaediatricIcuTopic = () => {
                   <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Adrenaline (anaphylaxis)</td><td>IM 1:1000 — 150 mcg &lt;6 y, 300 mcg 6–12 y, 500 mcg &gt;12 y</td><td>Anterolateral thigh; repeat at 5 min</td></tr>
                   <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Atropine (selected bradycardia causes)</td><td>20 micrograms/kg IV (maximum 0.5 mg)</td><td>Increased vagal tone or selected conduction disease only; no minimum dose specified in RCUK 2025, not routine pre-intubation medication <InlineRef topicId="paediatric-icu" refLabel="RCUK PALS 2025 arrhythmias" /></td></tr>
                   <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Amiodarone</td><td>5 mg/kg after 3rd and 5th shock</td><td>Max 300 mg</td></tr>
-                  <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Adenosine</td><td>100 mcg/kg, then 200, then 300 mcg/kg</td><td>Max single dose 12 mg; rapid flush, large proximal vein</td></tr>
+                  <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Adenosine</td><td>0.1–0.2 mg/kg, then 0.3 mg/kg if the SVT persists</td><td>Maximum 6 mg first dose, 12–18 mg second dose; rapid flush through a large vein with a 12-lead ECG running; never a substitute for cardioversion in decompensated circulatory failure <InlineRef topicId="paediatric-icu" refLabel="RCUK PALS 2025 arrhythmias" /></td></tr>
                   <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Lorazepam / midazolam (seizure)</td><td>Lorazepam 100 mcg/kg IV (max 4 mg); buccal midazolam 300 mcg/kg (max 10 mg)</td><td>Two doses maximum before escalating</td></tr>
                   <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Levetiracetam / phenytoin</td><td>Levetiracetam 40–60 mg/kg (max 4.5 g); phenytoin 20 mg/kg over 20 min</td><td>Cardiac monitoring for phenytoin; levetiracetam preferred (no monitoring, fewer interactions)</td></tr>
                   <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Induction agents</td><td>Ketamine 1–2 mg/kg; propofol 2–4 mg/kg (higher per kg in infants); thiopentone 4–6 mg/kg (2–3 in neonates)</td><td>Halve doses in shock; ketamine is the usual choice for haemodynamic instability</td></tr>

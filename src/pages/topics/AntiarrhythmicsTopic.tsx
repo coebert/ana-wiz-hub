@@ -15,7 +15,7 @@ const antiarrhythmicsFaqs: Array<[string, string]> = [
   ],
   [
     "What is the management of unstable AF in theatre?",
-    "Unstable (chest pain, hypotension, heart failure, syncope): synchronised DC cardioversion 120–200 J biphasic. Stable: rate control with β-blocker (esmolol, metoprolol) or calcium-channel blocker (avoid in heart failure); amiodarone 300 mg IV over 30 min if needs rhythm control or rate control fails. Anticoagulation considered if AF >48 h or known chronic. Look for and treat precipitants — hypoxia, electrolytes, sepsis, ischaemia, fluid overload."
+    "Unstable (chest pain, hypotension, heart failure, syncope): synchronised DC cardioversion — for AF an initial shock at maximum defibrillator output rather than an escalating approach, for atrial flutter/SVT 70–120 J, and for VT with a pulse 120–150 J (RCUK 2025). Stable: rate control with β-blocker (esmolol, metoprolol) or calcium-channel blocker (avoid in heart failure); amiodarone 300 mg IV over 30 min if needs rhythm control or rate control fails. Anticoagulation considered if AF >48 h or known chronic. Look for and treat precipitants — hypoxia, electrolytes, sepsis, ischaemia, fluid overload."
   ],
   [
     "Why is amiodarone used despite its toxicity profile?",

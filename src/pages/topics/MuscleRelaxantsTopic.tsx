@@ -15,31 +15,34 @@ import { InlineRef } from "@/components/references/InlineRef";
 
 const workedExamples: WorkedExample[] = [
   {
-    title: "Reversal choice after deep rocuronium block in a difficult airway",
+    cites: ["Peck & Hill Ch.10", "Bridion SmPC", "Bridion SmPC contraception", "Bridion SmPC re-administration", "DAS 2025"],
+    title: "Reversal after a CICO rescue has secured the airway",
     scenario:
-      "After a CICO scenario, you successfully intubate but want to wake the patient. Rocuronium 1.2 mg/kg was given 4 minutes ago and TOF count is 0 (post-tetanic count 1). How will you reverse the block and why is sugammadex preferred over neostigmine here?",
+      "A CICO emergency was declared; a rescue tracheal tube has now been placed and the patient is ventilating. Rocuronium 1.2 mg/kg was given 4 minutes ago and the train-of-four count is 0 with a post-tetanic count of 1. How do you reverse the block, and why is sugammadex preferred over neostigmine here?",
     working: (
       <div className="space-y-2">
         <p className="font-semibold text-foreground">Step-by-step reasoning</p>
         <ol className="list-decimal list-inside space-y-1">
-          <li>Assess depth: PTC 1 indicates intense (deep) neuromuscular block — neostigmine cannot reverse this depth (requires TOF count ≥2, ideally ≥4).</li>
-          <li>Choose sugammadex: a modified γ-cyclodextrin that encapsulates rocuronium (and vecuronium) 1:1, removing it from the neuromuscular junction within ~2–3 min regardless of depth.</li>
-          <li>Dose by depth: PTC 1–2 with no TOF = 16 mg/kg for immediate reversal; TOF count 1–2 = 4 mg/kg; routine reversal at reappearance of T2 = 2 mg/kg.</li>
+          <li>Establish the context first. With the airway now secured and the lungs ventilated this is no longer active CICO management: you can oxygenate while waiting for spontaneous recovery, or reverse deliberately. In active CICO (no tube, no oxygenation) sugammadex is not a rescue — maintain paralysis and proceed to front-of-neck access.</li>
+          <li>Assess depth: PTC 1 indicates deep block. Neostigmine is only useful once recovery has started (TOF count ≥2, ideally ≥4); it cannot reverse this depth.</li>
+          <li>Choose sugammadex: a modified γ-cyclodextrin that encapsulates rocuronium and vecuronium 1:1, removing free drug from the neuromuscular junction.</li>
+          <li>Choose the dose by licensed indication, not by lumping PTC and TOF together. <strong>Deep block at 1–2 PTC: 4 mg/kg</strong> (median ~3 min to TOF ratio 0.9). <strong>Moderate block at reappearance of T2: 2 mg/kg</strong> (~2 min). <strong>Immediate reversal after a single 1.2 mg/kg rocuronium dose: 16 mg/kg</strong> (~1.5 min) — an indication in its own right, for rocuronium only. There is no recommended immediate-reversal regimen for vecuronium<InlineRef topicId="muscle-relaxants" refLabel="Bridion SmPC" />.</li>
           <li>Confirm reversal objectively: TOF ratio ≥0.9 at the adductor pollicis before extubation. Clinical signs (head-lift, grip) are insufficient.</li>
-          <li>Counsel and document: sugammadex inactivates hormonal contraceptives for 7 days; rare anaphylaxis (~1:2500); avoid in severe renal impairment (eGFR &lt;30) where data are limited.</li>
+          <li>Counsel and document: a bolus is equivalent to one missed daily dose of an <strong>oral</strong> contraceptive — if given the same day, follow the missed-dose advice in that product&apos;s leaflet; for <strong>non-oral</strong> hormonal contraceptives, use an additional non-hormonal method for 7 days. Rare anaphylaxis; not recommended in severe renal impairment (CrCl &lt;30 mL/min) where safety data are limited.</li>
         </ol>
         <div className="mt-2 rounded-md border border-destructive/30 bg-destructive/5 p-2">
           <p className="text-xs font-semibold uppercase tracking-wide text-destructive mb-1">Common traps</p>
           <ul className="list-disc list-inside space-y-1 text-foreground">
             <li>Giving neostigmine at a deep block — ineffective and risks recurarisation.</li>
-            <li>Forgetting that re-paralysis after sugammadex needs a non-aminosteroid relaxant (e.g. cisatracurium) for 24 h or a much larger rocuronium dose.</li>
+            <li>Using 16 mg/kg as a &quot;deep block&quot; dose: at PTC 1–2 the routine dose is 4 mg/kg. Sixteen mg/kg is the separate immediate-reversal indication for a 1.2 mg/kg rocuronium dose.</li>
+            <li>Treating sugammadex as a CICO rescue instead of proceeding to front-of-neck access.</li>
+            <li>Re-dosing rocuronium too soon: with normal renal function, after routine reversal (up to 4 mg/kg) wait 5 min before rocuronium 1.2 mg/kg and 4 h before rocuronium 0.6 mg/kg or vecuronium 0.1 mg/kg; after 16 mg/kg a 24 h wait is suggested, using a non-steroidal agent if blockade is needed sooner. In mild or moderate renal impairment, wait 24 h before rocuronium 0.6 mg/kg or vecuronium 0.1 mg/kg after routine reversal; if a shorter interval is needed, the SmPC specifies rocuronium 1.2 mg/kg<InlineRef topicId="muscle-relaxants" refLabel="Bridion SmPC re-administration" />.</li>
             <li>Skipping objective TOF monitoring — clinical assessment misses residual paralysis.</li>
           </ul>
         </div>
       </div>
     ),
-    answer: "Use sugammadex 16 mg/kg — the only agent that reliably reverses deep rocuronium block (PTC 1). Confirm TOF ratio ≥0.9 before extubation. Counsel the patient about contraceptive failure for 7 days and choose cisatracurium if re-paralysis is needed within 24 h.",
-    cites: ["Peck & Hill Ch.10","BJA Educ 2019"],
+    answer: "Because the airway is secured, you are reversing a monitored block rather than rescuing a CICO. For deep block at PTC 1–2 give sugammadex 4 mg/kg (2 mg/kg once T2 reappears); reserve 16 mg/kg for immediate reversal of a 1.2 mg/kg rocuronium dose. Confirm TOF ratio ≥0.9 before extubation. Give oral and non-oral contraceptive advice separately, and follow the SmPC waiting-time table before re-administering a steroidal relaxant.",
   },
 ];
 const MuscleRelaxantsTopic = () => {
@@ -65,7 +68,7 @@ const MuscleRelaxantsTopic = () => {
         { text: "Non-depolarising agents: competitive antagonists at nAChR α subunits. Aminosteroids vs benzylisoquinoliniums.", cites: ["Peck & Hill Ch.7"] },
         { text: "Cisatracurium: organ-independent Hofmann elimination. Ideal for renal/hepatic impairment. No histamine release.", cites: ["BJA Educ 2015"] },
         { text: "Neostigmine: anticholinesterase reversal. Requires antimuscarinic co-administration. Cannot reverse deep block.", cites: ["Fourth National Audit Project"] },
-        { text: "Sugammadex: encapsulates rocuronium/vecuronium. Can reverse profound block. 16 mg/kg for emergency reversal.", cites: ["Peck & Hill Ch.7"] },
+        { text: "Sugammadex: encapsulates rocuronium and vecuronium 1:1. Sugammadex doses are 2 mg/kg at reappearance of T2, 4 mg/kg at 1–2 post-tetanic counts, and 16 mg/kg only for immediate reversal of a 1.2 mg/kg rocuronium dose — there is no immediate-reversal regimen for vecuronium.", cites: ["Bridion SmPC"] },
         { text: "TOF ratio <0.9 = residual blockade. Quantitative neuromuscular monitoring is the standard of care.", cites: ["BJA Educ 2015"] },
       ]}
       workedExamples={workedExamples}
@@ -75,8 +78,8 @@ const MuscleRelaxantsTopic = () => {
       }}
       sectionSources={{
         objectives: ["BJA Educ 2015", "Peck & Hill Ch.7", "Fourth National Audit Project"],
-        keyPoints: ["BJA Educ 2015", "Peck & Hill Ch.7", "Fourth National Audit Project"],
-        workedExamples: ["Peck & Hill Ch.10", "BJA Educ 2019"],
+        keyPoints: ["BJA Educ 2015", "Peck & Hill Ch.7", "Fourth National Audit Project", "Bridion SmPC"],
+        workedExamples: ["Peck & Hill Ch.10", "Bridion SmPC", "Bridion SmPC contraception", "Bridion SmPC re-administration","DAS 2025"],
       }}
       coreConcepts={
         <ExamSection exams={[Exam.PRIMARY, Exam.FINAL]} className="scroll-mt-24">
@@ -559,16 +562,30 @@ const MuscleRelaxantsTopic = () => {
               cannot reverse deep block (TOF count &lt;2). Dose 50 µg/kg.
             </p>
             <p className="text-foreground/90 leading-relaxed mt-3">
-              <strong>Sugammadex</strong>: modified γ-cyclodextrin. Encapsulates rocuronium (and to lesser extent vecuronium) in
-              a 1:1 complex, rendering it inactive. Can reverse profound block. Dose: 2 mg/kg (moderate block, TOF ≥2), 4 mg/kg
-              (deep block, PTC ≥1), 16 mg/kg (immediate reversal after a 1.2 mg/kg intubating dose — not a CICO rescue; maintain paralysis and proceed to front-of-neck access).
+              <strong>Sugammadex</strong>: modified γ-cyclodextrin. Encapsulates rocuronium and vecuronium 1:1, rendering them
+              inactive. In adults, the licensed dose depends on the depth of block being reversed, and is not a single &quot;reversal dose&quot;
+              <InlineRef topicId="muscle-relaxants" refLabel="Bridion SmPC" />. <strong>2 mg/kg</strong> once T2 has reappeared
+              (moderate block); <strong>4 mg/kg</strong> at 1–2 post-tetanic counts (deep block); <strong>16 mg/kg</strong> for
+              immediate reversal after a single 1.2 mg/kg rocuronium dose when immediate reversal is clinically required — a
+              separate indication that exists for rocuronium only, with no data to support immediate reversal of vecuronium.
+              Sugammadex is <em>not</em> a CICO rescue: in active cannot-intubate-cannot-oxygenate, maintain paralysis and proceed
+              to emergency front-of-neck access without waiting for reversal<InlineRef topicId="muscle-relaxants" refLabel="DAS 2025" />. Once the airway is secured you can ventilate while waiting for recovery or reverse
+              deliberately at the licensed depth.
             </p>
             <div className="bg-secondary/30 rounded-lg p-4 mt-3 border border-border">
               <p className="text-sm font-medium text-foreground">Sugammadex Considerations</p>
               <p className="text-sm text-muted-foreground mt-1">
-                Binds oral contraceptive steroids → advise additional contraception for 7 days. Allergic reactions (rare but
-                reported). Does not reverse suxamethonium or benzylisoquinoliniums. May interfere with some coagulation assays.
-                Rocuronium + sugammadex has been proposed as an alternative to suxamethonium for RSI.
+                <strong>Hormonal contraception</strong>: a bolus is considered equivalent to one missed daily dose of
+                <strong> oral</strong> contraceptive — if it is given on the same day as an oral contraceptive, follow the
+                missed-dose advice in that product&apos;s leaflet. For <strong>non-oral</strong> hormonal contraceptives, an
+                additional non-hormonal method must be used for the next 7 days
+                <InlineRef topicId="muscle-relaxants" refLabel="Bridion SmPC contraception" />.
+                <strong> Re-administration (normal renal function)</strong>: after routine reversal (up to 4 mg/kg) the minimum waiting time is 5 minutes
+                before rocuronium 1.2 mg/kg and 4 hours before rocuronium 0.6 mg/kg or vecuronium 0.1 mg/kg; after immediate
+                reversal with 16 mg/kg a 24-hour wait is suggested, and a non-steroidal agent should be used if blockade is needed
+                sooner. In mild or moderate renal impairment, wait 24 hours before rocuronium 0.6 mg/kg or vecuronium 0.1 mg/kg after routine reversal; if a shorter interval is needed, the SmPC specifies rocuronium 1.2 mg/kg<InlineRef topicId="muscle-relaxants" refLabel="Bridion SmPC re-administration" />.
+                Doses use actual body weight, including in obesity. Severe renal impairment (CrCl &lt;30 mL/min): use is not recommended. In children, the licence covers routine reversal of rocuronium only; immediate reversal has not been investigated<InlineRef topicId="muscle-relaxants" refLabel="Bridion SmPC" />. Allergic reactions (rare but reported). Does not reverse suxamethonium or benzylisoquinoliniums. May interfere
+                with some coagulation assays. Rocuronium + sugammadex has been proposed as an alternative to suxamethonium for RSI.
               </p>
             </div>
             <div className="mt-6">
@@ -659,11 +676,11 @@ const MuscleRelaxantsTopic = () => {
                 },
                 {
                   q: "When should rocuronium replace suxamethonium for rapid sequence induction?",
-                  a: "Rocuronium 1.0–1.2 mg/kg provides intubating conditions in ~60 s — comparable to suxamethonium — and is preferred when suxamethonium is contraindicated: known or suspected malignant hyperthermia susceptibility, hyperkalaemia or conditions predisposing to it (burns >24 h, denervation injury, prolonged immobilisation, severe muscular dystrophy), plasma cholinesterase deficiency, and patient preference to avoid post-suxamethonium myalgia. Sugammadex must be immediately available to reverse the block if intubation fails.",
+                  a: "Rocuronium 1.0–1.2 mg/kg provides intubating conditions in ~60 s — comparable to suxamethonium — and is preferred when suxamethonium is contraindicated: known or suspected malignant hyperthermia susceptibility, hyperkalaemia or conditions predisposing to it (burns >24 h, denervation injury, prolonged immobilisation, severe muscular dystrophy), plasma cholinesterase deficiency, and patient preference to avoid post-suxamethonium myalgia. Sugammadex availability does not replace the difficult-airway plan: active CICO requires emergency front-of-neck access without waiting for reversal.",
                 },
                 {
                   q: "How does sugammadex reverse rocuronium?",
-                  a: "Sugammadex is a modified γ-cyclodextrin with a lipophilic core that encapsulates aminosteroid NMBAs (rocuronium ≫ vecuronium ≫ pancuronium) in a 1:1 complex, removing free drug from plasma. This shifts the equilibrium, drawing drug away from the neuromuscular junction within 2–3 min regardless of block depth. Dosing: 2 mg/kg at reappearance of T2 for routine reversal, 4 mg/kg at PTC 1–2 for deep block, 16 mg/kg for immediate reversal of a 1.2 mg/kg intubating dose. Adequacy must be confirmed objectively (TOF ratio ≥0.9). Sugammadex is ineffective against benzylisoquinoliniums (atracurium, cisatracurium, mivacurium).",
+                  a: "Sugammadex is a modified γ-cyclodextrin with a lipophilic core that encapsulates aminosteroid NMBAs (rocuronium and vecuronium) in a 1:1 complex, removing free drug from plasma. This shifts the equilibrium, drawing drug away from the neuromuscular junction. Sugammadex dosing follows the licensed depth of block: 2 mg/kg once T2 has reappeared (moderate block), 4 mg/kg at 1–2 post-tetanic counts (deep block), and 16 mg/kg for immediate reversal after a single 1.2 mg/kg rocuronium dose — an indication with no recommended vecuronium equivalent. Adequacy must be confirmed objectively (TOF ratio ≥0.9). Sugammadex is ineffective against benzylisoquinoliniums (atracurium, cisatracurium, mivacurium) and is not a cannot-intubate-cannot-oxygenate rescue.",
                 },
                 {
                   q: "What are the side effects of suxamethonium?",
@@ -716,7 +733,7 @@ const MuscleRelaxantsTopic = () => {
                   ["What is the difference between depolarising and non-depolarising muscle relaxants?","Depolarising agents (only suxamethonium in clinical use) are nicotinic acetylcholine receptor agonists that cause sustained end-plate depolarisation, producing initial fasciculations followed by flaccid paralysis with no TOF fade and no post-tetanic potentiation. Non-depolarising agents (rocuronium, vecuronium, atracurium, cisatracurium) are competitive antagonists at the α-subunits of the nAChR: there are no fasciculations, TOF shows fade, and post-tetanic potentiation is present. Non-depolarising block is reversible (by neostigmine or, for aminosteroids, sugammadex); depolarising block must be allowed to wear off through plasma cholinesterase metabolism."],
                   ["How does suxamethonium work?","Suxamethonium is structurally two acetylcholine molecules joined end-to-end. It binds the α-subunits of postjunctional nicotinic ACh receptors at the neuromuscular junction and persistently opens the ion channel, depolarising the motor end-plate. The sustained depolarisation inactivates perijunctional sodium channels, so the muscle membrane cannot repolarise and propagate further action potentials. It is hydrolysed by plasma cholinesterase; typical onset is 30–60 s and duration 5–10 min at 1–1.5 mg/kg IV."],
                   ["When should rocuronium replace suxamethonium for rapid sequence induction?","Rocuronium 1.0–1.2 mg/kg provides intubating conditions in ~60 s and is preferred when suxamethonium is contraindicated: malignant hyperthermia susceptibility, hyperkalaemia or conditions predisposing to it (burns >24 h, denervation, prolonged immobilisation, severe muscular dystrophy), plasma cholinesterase deficiency, and to avoid post-suxamethonium myalgia. Sugammadex must be immediately available."],
-                  ["How does sugammadex reverse rocuronium?","Sugammadex is a modified γ-cyclodextrin that encapsulates aminosteroid NMBAs 1:1, removing free drug from plasma and reversing block within 2–3 min regardless of depth. Dosing: 2 mg/kg at T2 for routine reversal, 4 mg/kg at PTC 1–2 for deep block, 16 mg/kg for immediate reversal of a 1.2 mg/kg intubating dose. Confirm reversal with TOF ratio ≥0.9. Ineffective against benzylisoquinoliniums."],
+                  ["How does sugammadex reverse rocuronium?","Sugammadex is a modified γ-cyclodextrin that encapsulates rocuronium and vecuronium 1:1, removing free drug from plasma. Sugammadex dosing follows the licensed depth of block: 2 mg/kg once T2 has reappeared, 4 mg/kg at 1–2 post-tetanic counts, and 16 mg/kg for immediate reversal after a single 1.2 mg/kg rocuronium dose, for which there is no recommended vecuronium equivalent. Confirm reversal with TOF ratio ≥0.9. Ineffective against benzylisoquinoliniums and not a cannot-intubate-cannot-oxygenate rescue."],
                   ["What are the side effects of suxamethonium?","Hyperkalaemia, bradycardia (especially with a second dose), raised intraocular, intracranial and intragastric pressure, malignant hyperthermia, anaphylaxis (most common NMBA cause), masseter spasm, post-operative myalgia, and suxamethonium apnoea in plasma cholinesterase deficiency."],
                   ["Why does suxamethonium cause hyperkalaemia in burns patients?","From 24–48 h after a significant burn, extrajunctional (immature) nicotinic ACh receptors proliferate across the muscle membrane. Suxamethonium depolarises them simultaneously, releasing a large bolus of intracellular potassium that can cause cardiac arrest. The risk persists for months until the receptor population normalises, so suxamethonium is avoided beyond the first 24 h post-burn."],
                   ["What is train-of-four (TOF) monitoring and what does a TOF ratio of 0.9 mean?","TOF delivers four supramaximal 2 Hz stimuli to a peripheral nerve. With non-depolarising block the response fades; TOF ratio = T4/T1. A ratio ≥0.9 indicates recovery sufficient to protect the airway. Below 0.9 there is clinically significant residual paralysis. Quantitative monitoring is the standard of care because clinical signs are insensitive to residual block."],
